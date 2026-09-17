@@ -12,7 +12,7 @@ direct_push_threshold = 9.0
 epss_threshold = 0.10
 
 # 回看窗口(小时)。NVD 数据入库有滞后,48h + 去重可兜底,不建议低于 24
-lookback_hours = 48
+lookback_hours = 168
 
 # 每日最多推送条数(硬上限),按价值排序取头部。想多看点就调大
 max_push = 15
