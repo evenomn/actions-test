@@ -837,7 +837,7 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
             break
 
     seen_ids = {i["id"] for i in qualified}  # 没入选的也标记,避免明天旧货刷屏
-    return final, seen_ids, max(len(qualified) - len(final), 0)
+    return final, qualified, seen_ids, max(len(qualified) - len(final), 0)
 
 
 def _kev_date(entry: dict):
@@ -890,8 +890,8 @@ def item_link(item: dict) -> str:
     return item.get("ghsa_url") or f"https://github.com/advisories?q={item['id']}"
 
 
-def build_markdown(items: list[dict], dropped: int, cfg: dict,
-                   lookback_hours: int, now: datetime) -> str:
+def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
+                   now: datetime, archive_name: str | None) -> str:
     today = now.strftime("%Y-%m-%d")
     if not items:
         return (f"# ✅ 漏洞日报 {today}\n\n"
@@ -900,8 +900,8 @@ def build_markdown(items: list[dict], dropped: int, cfg: dict,
     n_critical = sum(1 for i in items if i["tier"] == "critical")
     head = (f"过去 {lookback_hours} 小时,按价值排序选出 {len(items)} 条"
             f"(🔴 严重 {n_critical} / 🟠 高危 {len(items) - n_critical})")
-    if dropped > 0:
-        head += f",另有 {dropped} 条低价值未展示"
+    if total_count > len(items):
+        head += f";今日共 {total_count} 条符合条件,完整清单见仓库 {archive_name}"
     lines = [f"# 🔴 漏洞日报 {today}\n", head + "\n", "---"]
     total_len = sum(len(l.encode()) for l in lines)
 
@@ -937,14 +937,37 @@ def build_markdown(items: list[dict], dropped: int, cfg: dict,
             block.append(f"**PoC**: {links}")
 
         text = "\n".join(block) + "\n"
-        if total_len + len(text.encode()) > 18000:
-            lines.append(f"\n... 其余条目因篇幅截断")
+        if total_len + len(text.encode()) > 17000:
+            lines.append("\n... 其余条目因篇幅截断,完整清单见仓库存档")
             break
         lines.append(text)
         total_len += len(text.encode())
 
     lines.append("\n---\n*数据源: NVD · GitHub GHSA · CISA KEV · EPSS · Exploit-DB · GitHub PoC 搜索*")
     return "\n".join(lines)
+
+
+def write_digest_archive(qualified: list[dict], path: Path, now: datetime):
+    """把当天所有符合条件的漏洞写成完整清单存档,解决钉钉消息只展示头部的问题。"""
+    lines = [f"# 漏洞完整清单 {now.strftime('%Y-%m-%d')}",
+             "", f"共 {len(qualified)} 条符合条件(按价值降序):", ""]
+    for i in qualified:
+        stars = "🔴" if i["tier"] == "critical" else "🟠"
+        signals = []
+        if i["kev"]:
+            signals.append("KEV在野利用")
+        if i["ransomware"]:
+            signals.append("勒索软件")
+        if i["poc_links"] or i["has_exploit_ref"]:
+            signals.append(f"PoC x{max(len(i['poc_links']), 1)}")
+        if i["keyword_hit"]:
+            signals.append(f"关注词:{i['keyword_hit']}")
+        lines.append(
+            f"- {stars} **{item_title(i)}** — [{i['id']}]({item_link(i)}) · "
+            f"CVSS {i['cvss']} · {'/'.join(i['cwe_labels']) or '类型未知'} · "
+            f"难度 {i['difficulty'] or '未知'}"
+            + (f" · {' / '.join(signals)}" if signals else ""))
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 # ---------------------------------------------------------------- 钉钉推送
@@ -1018,9 +1041,10 @@ def main() -> int:
         print(f"  {n_edb} 条候选带公开 PoC", flush=True)
 
     print("筛选与打分 ...", flush=True)
-    items, seen_ids, dropped = enrich_and_filter(
-        candidates, kev_map, load_state(), cfg, now, lookback)
-    print(f"  符合条件 {len(seen_ids)} 条,入选 {len(items)} 条(另有 {dropped} 条低价值未展示)", flush=True)
+    items, qualified, seen_ids = enrich_and_filter(
+        candidates, kev_map, load_state(), cfg, now, lookback)[:3]
+    dropped = max(len(qualified) - len(items), 0)
+    print(f"  符合条件 {len(qualified)} 条,入选 {len(items)} 条(另有 {dropped} 条低价值未展示)", flush=True)
 
     # 入选的漏洞实时搜 GitHub PoC 仓库(研究人员发布 PoC 往往比 EDB 快几天)
     if cfg["search_github_poc"] and items:
@@ -1045,7 +1069,23 @@ def main() -> int:
         n_zh = sum(1 for i in items if i["desc_zh"])
         print(f"  {n_zh}/{len(items)} 条翻译成功", flush=True)
 
-    md = build_markdown(items, dropped, cfg, lookback_hours, now)
+    archive_name = f"data/digest-{now.date().isoformat()}.md"
+    if args.dry_run:
+        write_digest_archive(qualified, Path("/tmp/digest-preview.md"), now)
+        print(f"(dry-run: 完整清单预览在 /tmp/digest-preview.md)", flush=True)
+    else:
+        write_digest_archive(qualified, ROOT / archive_name, now)
+        # 清理过期存档
+        cutoff = (now - timedelta(days=cfg["retention_days"])).date()
+        for f in (ROOT / "data").glob("digest-*.md"):
+            try:
+                if datetime.strptime(f.stem.replace("digest-", ""), "%Y-%m-%d").date() < cutoff:
+                    f.unlink()
+            except ValueError:
+                pass
+
+    md = build_markdown(items, len(qualified), lookback_hours, now,
+                        archive_name if not args.dry_run else None)
     n_critical = sum(1 for i in items if i["tier"] == "critical")
 
     if args.dry_run:
