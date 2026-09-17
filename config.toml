@@ -4,6 +4,10 @@
 # 基础 CVSS 门槛:低于该分数的漏洞不推送(KEV 在野利用漏洞不受此限制,必推)
 cvss_threshold = 7.0
 
+# 直推阈值:CVSS >= 该值的高分漏洞即使没有 PoC/其他信号也直接推送
+# (想关掉这条规则可设为 10.0)
+direct_push_threshold = 9.0
+
 # EPSS 强信号阈值:预测未来 30 天被利用概率 >= 该值视为强信号
 # 新 CVE 的 EPSS 通常 < 0.01;0.1 已是极高热度。想更灵敏可降到 0.02
 epss_threshold = 0.10
@@ -22,6 +26,13 @@ keywords = [
   "spring", "tomcat", "vmware", "jenkins", "gitlab",
 ]
 
+[source]
+# GitHub Security Advisories(仅 GitHub 人工审核的公告,自带包生态/影响版本/修复版本)
+ghsa = true
+
+# Exploit-DB 公开 PoC 映射(CVE -> EDB 链接)
+exploitdb = true
+
 [dingtalk]
 # 何时 @所有人: "never" | "critical"(仅当天有🔴严重漏洞时) | "always"
 at_all = "critical"
@@ -29,6 +40,9 @@ at_all = "critical"
 [notify]
 # 无符合条件漏洞的当天是否也发一条「一切正常」的心跳消息(推荐开,用于确认管道存活)
 notify_empty = true
+
+# 是否机翻中文描述(Google 免费接口;翻译失败自动降级为仅英文)
+translate = true
 
 [state]
 # 已推送 CVE 记录的保留天数(防 state.json 无限增长)
