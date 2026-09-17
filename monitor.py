@@ -713,6 +713,7 @@ def merge_ghsa(candidates: dict[str, dict], advisories: list[dict], cfg: dict):
                 continue
             item = new_item(cve_id)
             item["desc"] = a.get("description") or summary
+            item["published"] = a.get("published_at") or ""
             item["cvss"] = score
             item["severity"] = sev.upper() or None
             item["cwe_labels"] = map_cwes((a.get("cwes") or []))
@@ -880,6 +881,9 @@ def en_summary(item: dict) -> str:
 
 def fmt_meta(item: dict) -> str:
     parts = []
+    if item.get("published"):
+        # 披露日期很重要:编号年份 ≠ 披露时间(厂商预留编号可能隔几个月才公开)
+        parts.append(f"披露 {str(item['published'])[:10]}")
     if item["cvss"] is not None:
         parts.append(f"CVSS {item['cvss']}")
     if item["epss"] is not None:
