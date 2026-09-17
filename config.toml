@@ -1,0 +1,35 @@
+# 漏洞监控配置。修改后无需改代码,GitHub Actions 下次运行即生效。
+
+[cve]
+# 基础 CVSS 门槛:低于该分数的漏洞不推送(KEV 在野利用漏洞不受此限制,必推)
+cvss_threshold = 7.0
+
+# EPSS 强信号阈值:预测未来 30 天被利用概率 >= 该值视为强信号
+# 新 CVE 的 EPSS 通常 < 0.01;0.1 已是极高热度。想更灵敏可降到 0.02
+epss_threshold = 0.10
+
+# 回看窗口(小时)。NVD 数据入库有滞后,48h + 去重可兜底,不建议低于 24
+lookback_hours = 48
+
+# 单条日报最多展示的漏洞条数(按优先级截断)
+max_items = 20
+
+# 关键词关注列表:命中任意关键词时,只要求 CVSS 达门槛即可推送(无需其他信号),
+# 并在日报中置顶排序。不区分大小写,匹配漏洞描述和产品名。
+# 注意:像 windows / linux kernel 这类极宽的词每天会命中上百条,想加请自担刷屏
+keywords = [
+  "nginx", "chrome", "openssh", "openssl", "exchange",
+  "spring", "tomcat", "vmware", "jenkins", "gitlab",
+]
+
+[dingtalk]
+# 何时 @所有人: "never" | "critical"(仅当天有🔴严重漏洞时) | "always"
+at_all = "critical"
+
+[notify]
+# 无符合条件漏洞的当天是否也发一条「一切正常」的心跳消息(推荐开,用于确认管道存活)
+notify_empty = true
+
+[state]
+# 已推送 CVE 记录的保留天数(防 state.json 无限增长)
+retention_days = 30
