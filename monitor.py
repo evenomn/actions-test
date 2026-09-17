@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""每日高质量漏洞监控:NVD + GitHub GHSA + CISA KEV + EPSS + Exploit-DB -> 钉钉机器人推送。
+"""每日高质量漏洞监控:NVD + GitHub GHSA + CISA KEV + EPSS + Exploit-DB + GitHub PoC 搜索 -> 钉钉推送。
 
 纯 Python 标准库实现,无第三方依赖。GitHub Actions 定时运行,
 用 data/state.json 做跨运行去重,由工作流自动提交回仓库。
@@ -17,6 +17,7 @@ import base64
 import csv
 import hashlib
 import hmac
+import http.client
 import io
 import json
 import os
@@ -41,6 +42,7 @@ KEV_URL = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulner
 EPSS_API = "https://api.first.org/data/v1/epss"
 EDB_CSV = "https://gitlab.com/exploit-database/exploitdb/-/raw/main/files_exploits.csv"
 TRANSLATE_API = "https://translate.googleapis.com/translate_a/single"
+GITHUB_SEARCH_API = "https://api.github.com/search/repositories"
 UA = "cve-monitor/1.0 (github-actions)"
 
 NVD_CVSS_KEYS = ["cvssMetricV31", "cvssMetricV40", "cvssMetricV30", "cvssMetricV2"]
@@ -96,6 +98,14 @@ CWE_LABELS = {
     "CWE-918": "SSRF",
 }
 
+# 描述关键句里常见的词,用来从一大段厂商套话里挑出真正在说什么的句子
+DESC_KEYWORDS = [
+    "vulnerab", "allow", "attacker", "unauthenticated", "remote code", "arbitrary code",
+    "execute", "inject", "bypass", "privilege", "escalat", "disclos", "sensitive",
+    "malicious", "crafted", "exploit", "overwrite", "traversal", "deserial",
+    "improper", "out-of-bounds", "use-after-free", "leads to", "could lead",
+]
+
 ROOT = Path(__file__).resolve().parent
 CONFIG_FILE = ROOT / "config.toml"
 STATE_FILE = ROOT / "data" / "state.json"
@@ -114,7 +124,9 @@ def http_get(url: str, headers: dict | None = None, retries: int = 3,
             req = urllib.request.Request(url, headers=req_headers)
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 return resp.read()
-        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError,
+                http.client.HTTPException, OSError) as e:
+            # IncompleteRead/ConnectionReset 等传输中断都按可重试处理
             last_err = e
             if attempt < retries - 1:
                 wait = 10 * (attempt + 1)
@@ -131,6 +143,14 @@ def http_get_json(url: str, headers: dict | None = None, retries: int = 3,
 def nvd_headers() -> dict:
     key = os.environ.get("NVD_API_KEY", "").strip()
     return {"apiKey": key} if key else {}
+
+
+def github_headers() -> dict:
+    headers = {"Accept": "application/vnd.github+json"}
+    token = os.environ.get("GITHUB_TOKEN", "").strip()
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    return headers
 
 
 def nvd_sleep():
@@ -150,6 +170,8 @@ def new_item(cve_id: str) -> dict:
         "published": "",
         "desc": "",
         "desc_zh": None,          # 机器翻译的中文描述
+        "title_zh": None,         # 中文一句话标题(LLM 或启发式)
+        "summary_zh": None,       # 中文摘要(LLM)
         "cvss": None,
         "vector": None,
         "severity": None,
@@ -161,7 +183,7 @@ def new_item(cve_id: str) -> dict:
         "difficulty": None,       # 利用难度(由 CVSS 向量推导)
         "has_exploit_ref": False,
         "exploit_ref_url": None,
-        "poc_links": [],          # Exploit-DB 等公开 PoC 链接
+        "poc_links": [],          # (url, label) 公开 PoC 链接
         "kev": False,
         "kev_name": None,
         "ransomware": False,
@@ -220,6 +242,78 @@ def exploit_difficulty(vector: str | None) -> str | None:
     return f"{grade}({'·'.join(factors)})" if factors else grade
 
 
+# ---------------------------------------------------------------- 描述清洗与标题
+
+def pick_desc(desc: str, limit: int = 240) -> str:
+    """从描述里挑出信息量最大的句子,过滤厂商套话(如 Cisco 的 'As part of ... commitment')。"""
+    flat = " ".join((desc or "").split())
+    if not flat:
+        return ""
+    if len(flat) <= limit:
+        return flat
+    sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+", flat) if len(s.strip()) > 15]
+
+    def info(s: str) -> int:
+        sl = s.lower()
+        return sum(k in sl for k in DESC_KEYWORDS)
+
+    ranked = sorted(sentences, key=info, reverse=True)
+    best = set(ranked[:2])
+    chosen = [s for s in sentences if s in best] or sentences[:1]
+    out = " ".join(chosen)
+    return out[:limit] + ("…" if len(out) > limit else "")
+
+
+def product_name(item: dict) -> str:
+    """挑一个最可读的产品/组件名。"""
+    if item["products"]:
+        # CPE pair 形如 "cisco identity_services_engine",取产品段并还原下划线
+        tokens = item["products"][0].split()
+        return tokens[-1].replace("_", " ")
+    if item["ghsa_ranges"]:
+        first = item["ghsa_ranges"][0].split()[0]  # 形如 "npm:pkg-name"
+        return first.split(":")[-1]
+    return ""
+
+
+STOPWORDS = {"The", "This", "That", "When", "An", "A", "In", "On", "Under", "If",
+             "It", "Its", "These", "Multiple", "Several", "Users", "Attackers"}
+
+# 描述里常见的泛型词,猜出来也不能当产品名
+GENERIC_NAMES = {"Vulnerability", "Critical", "Weakness", "Common", "CVSS", "NVD",
+                 "Description", "Unclassified", "Improper", "Authentication",
+                 "Authorization", "Remote", "Local", "Insufficient", "Uncontrolled",
+                 "Exposure", "Injection", "Path", "Privilege", "Access"}
+
+
+def guess_product_from_desc(desc: str) -> str:
+    """描述里没有 CPE/GHSA 信息时,从首句猜产品名(大写词组)。"""
+    for m in re.finditer(r"\b([A-Z][\w.@/-]*(?:[ -][A-Z][\w.@/-]*){0,3})\b",
+                         pick_desc(desc, 300)):
+        text = m.group(1)
+        if text.split()[0] in STOPWORDS or len(text) < 3 or "CVE-" in text or "CWE-" in text:
+            continue
+        if any(w in GENERIC_NAMES for w in text.split()):
+            continue
+        return text
+    return ""
+
+
+def heuristic_title(item: dict) -> str:
+    """无 LLM 时的可读标题:产品 + (未授权) + 漏洞类型,一眼能看出是什么洞。"""
+    name = product_name(item) or guess_product_from_desc(item["desc"])
+    ttype = item["cwe_labels"][0] if item["cwe_labels"] else (item.get("severity") or "").title() or "漏洞"
+    v = item.get("vector") or ""
+    unauth = "CVSS:3" in v and ":AV:N/" in v + "/" and ":PR:N/" in v + "/"
+    kev = "在野利用 " if item["kev"] else ""
+    title = f"{name} {kev}{prefix_unauth(unauth)}{ttype}".strip()
+    return title[:50]
+
+
+def prefix_unauth(unauth: bool) -> str:
+    return "未授权" if unauth else ""
+
+
 # ---------------------------------------------------------------- 数据抓取
 
 def parse_cve(cve: dict) -> dict | None:
@@ -259,7 +353,7 @@ def parse_cve(cve: dict) -> dict | None:
                     products.append(pair)
                 cons = " ".join(f"{op}{m[k]}" for k, op in CPE_VERSION_OPS.items() if m.get(k))
                 if cons and len(version_ranges) < 3:
-                    version_ranges.append(f"{pair} {cons}")
+                    version_ranges.append(f"{parts[3]} {parts[4]} {cons}")
     item["products"] = products[:5]
     item["version_ranges"] = version_ranges
 
@@ -280,7 +374,18 @@ def parse_cve(cve: dict) -> dict | None:
 
 
 def fetch_nvd_published(start: datetime, end: datetime) -> list[dict]:
-    """按发布时间窗口拉取新入库 CVE(带分页)。"""
+    """按发布时间窗口拉取新入库 CVE。切成 ≤24h 的小片请求,避免单次响应过大被掐断。"""
+    out, cur = [], start
+    while cur < end:
+        nxt = min(cur + timedelta(hours=24), end)
+        out.extend(_fetch_nvd_range(cur, nxt))
+        cur = nxt
+        if cur < end:
+            nvd_sleep()
+    return out
+
+
+def _fetch_nvd_range(start: datetime, end: datetime) -> list[dict]:
     out, start_index = [], 0
     while True:
         q = urllib.parse.urlencode({
@@ -289,7 +394,7 @@ def fetch_nvd_published(start: datetime, end: datetime) -> list[dict]:
             "resultsPerPage": 2000,
             "startIndex": start_index,
         })
-        data = http_get_json(f"{NVD_API}?{q}", headers=nvd_headers())
+        data = http_get_json(f"{NVD_API}?{q}", headers=nvd_headers(), timeout=90)
         for v in data.get("vulnerabilities", []):
             parsed = parse_cve(v.get("cve", {}))
             if parsed:
@@ -317,10 +422,6 @@ def fetch_kev() -> dict:
 
 def fetch_ghsa(since: datetime) -> list[dict]:
     """GitHub Security Advisories(仅 GitHub 人工审核的,质量高且自带影响版本/修复版本)。"""
-    headers = {"Accept": "application/vnd.github+json"}
-    token = os.environ.get("GITHUB_TOKEN", "").strip()
-    if token:
-        headers["Authorization"] = f"Bearer {token}"
     out, page = [], 1
     since_str = since.strftime("%Y-%m-%dT%H:%M:%S")
     while page <= 10:
@@ -330,7 +431,7 @@ def fetch_ghsa(since: datetime) -> list[dict]:
             "per_page": 100,
             "page": page,
         })
-        batch = http_get_json(f"{GHSA_API}?{q}", headers=headers)
+        batch = http_get_json(f"{GHSA_API}?{q}", headers=github_headers())
         if not isinstance(batch, list) or not batch:
             break
         out.extend(a for a in batch if a.get("published_at", "") > since_str)
@@ -355,6 +456,25 @@ def fetch_exploitdb() -> dict:
             url = f"https://www.exploit-db.com/exploits/{edb}"
             if url not in links and len(links) < 3:
                 links.append(url)
+    return out
+
+
+def search_github_poc(cve_id: str, since: datetime) -> list[tuple[str, str]]:
+    """在 GitHub 搜该 CVE 的公开 PoC 仓库(按 star 排序),取前 2 个。"""
+    q = urllib.parse.urlencode({"q": f'"{cve_id}"', "sort": "stars", "per_page": 5})
+    try:
+        data = http_get_json(f"{GITHUB_SEARCH_API}?{q}", headers=github_headers(),
+                             retries=2, timeout=20)
+    except RuntimeError:
+        return []
+    out = []
+    for r in data.get("items", []):
+        if r.get("fork") or r.get("archived"):
+            continue
+        label = f"{r['full_name']} ⭐{r.get('stargazers_count', 0)}"
+        out.append((r["html_url"], label))
+        if len(out) >= 2:
+            break
     return out
 
 
@@ -389,6 +509,40 @@ def translate_zh(text: str) -> str | None:
         return "".join(s[0] for s in segs if s and s[0]) or None
     except Exception:
         return None
+
+
+def llm_enrich(items: list[dict]):
+    """可选:用 OpenAI 兼容接口(LLM_API_KEY 等环境变量)批量生成中文标题和摘要。"""
+    key = os.environ.get("LLM_API_KEY", "").strip()
+    if not key or not items:
+        return
+    base = os.environ.get("LLM_BASE_URL", "https://api.openai.com/v1").rstrip("/")
+    model = os.environ.get("LLM_MODEL", "gpt-4o-mini")
+    payload = [{"id": i["id"], "product": product_name(i),
+                "type": "/".join(i["cwe_labels"]), "desc": pick_desc(i["desc"], 400)}
+               for i in items]
+    prompt = (
+        "你是漏洞分析助手。针对每个CVE生成中文标题和摘要:"
+        "title 不超过22字,格式「产品/组件+漏洞类型+核心要点」,不要以CVE编号开头;"
+        "summary 不超过50字,说清攻击者怎么利用、能造成什么后果。"
+        '严格只输出JSON数组,不要多余文字:[{"id":"...","title":"...","summary":"..."}]。输入:\n'
+        + json.dumps(payload, ensure_ascii=False))
+    body = {"model": model, "temperature": 0.2,
+            "messages": [{"role": "user", "content": prompt}]}
+    req = urllib.request.Request(
+        f"{base}/chat/completions", data=json.dumps(body).encode("utf-8"),
+        headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
+    try:
+        with urllib.request.urlopen(req, timeout=90) as resp:
+            content = json.loads(resp.read().decode("utf-8"))["choices"][0]["message"]["content"]
+        match = re.search(r"\[.*\]", content, re.S)
+        for row in json.loads(match.group()):
+            for i in items:
+                if i["id"] == row.get("id"):
+                    i["title_zh"] = (row.get("title") or "").strip()[:30] or None
+                    i["summary_zh"] = (row.get("summary") or "").strip()[:80] or None
+    except Exception as e:
+        print(f"  [warn] LLM 摘要失败(降级为启发式标题): {e}", flush=True)
 
 
 # ---------------------------------------------------------------- 配置与状态
@@ -470,13 +624,16 @@ def load_config() -> dict:
         "direct_push_threshold": cfg.get("cve", {}).get("direct_push_threshold", 9.0),
         "epss_threshold": cfg.get("cve", {}).get("epss_threshold", 0.10),
         "lookback_hours": cfg.get("cve", {}).get("lookback_hours", 48),
-        "max_items": cfg.get("cve", {}).get("max_items", 20),
+        "max_push": cfg.get("cve", {}).get("max_push", 20),
+        "max_per_vendor": cfg.get("cve", {}).get("max_per_vendor", 3),
         "keywords": [k.lower() for k in cfg.get("cve", {}).get("keywords", [])],
+        "ignore_keywords": [k.lower() for k in cfg.get("cve", {}).get("ignore_keywords", [])],
+        "search_github_poc": cfg.get("source", {}).get("search_github_poc", True),
+        "use_ghsa": cfg.get("source", {}).get("ghsa", True),
+        "use_exploitdb": cfg.get("source", {}).get("exploitdb", True),
         "at_all": cfg.get("dingtalk", {}).get("at_all", "critical"),
         "notify_empty": cfg.get("notify", {}).get("notify_empty", True),
         "translate": cfg.get("notify", {}).get("translate", True),
-        "use_ghsa": cfg.get("source", {}).get("ghsa", True),
-        "use_exploitdb": cfg.get("source", {}).get("exploitdb", True),
         "retention_days": cfg.get("state", {}).get("retention_days", 30),
     }
 
@@ -498,15 +655,20 @@ def save_state(state: dict, retention_days: int, now: datetime):
 
 # ---------------------------------------------------------------- 筛选评分
 
+def item_haystack(item: dict) -> str:
+    return " ".join([
+        item.get("desc", ""), item.get("kev_name") or "",
+        " ".join(item.get("products", [])),
+        " ".join(item.get("ghsa_ranges", [])),
+    ]).lower()
+
+
 def match_keywords(item: dict, keywords: list[str]) -> str | None:
     if not keywords:
         return None
-    haystack = " ".join([
-        item.get("desc", ""), item.get("kev_name") or "",
-        " ".join(item.get("products", [])),
-    ]).lower()
+    hay = item_haystack(item)
     for kw in keywords:
-        if kw in haystack:
+        if kw in hay:
             return kw
     return None
 
@@ -552,14 +714,46 @@ def merge_ghsa(candidates: dict[str, dict], advisories: list[dict], cfg: dict):
             item["cvss"] = score
 
 
-def enrich_and_filter(raw_items: list[dict], kev_map: dict, state: dict,
-                      cfg: dict, now: datetime, lookback: timedelta) -> list[dict]:
-    """合并 KEV/EPSS/PoC 信号,应用筛选规则,返回排序后的待推送列表。"""
+def vendor_key(item: dict) -> str:
+    """同厂商聚合用的 key:批量灌水的厂商(Cisco/WordPress 插件)每天能发十几条。"""
+    if item["products"]:
+        return item["products"][0].split()[0]
+    if item["ghsa_ranges"]:
+        return item["ghsa_ranges"][0].split()[0].split(":")[-1].split("/")[0]
+    if item.get("kev_name"):
+        return item["kev_name"].split()[0].lower()
+    return "_other_"
+
+
+def priority(item: dict, cfg: dict) -> float:
+    """价值排序:在野利用 > 有PoC > 命中关注词 > EPSS热度 > 分数,再加利用难度加成。"""
+    s = (item["cvss"] or 5.0) * 10
+    if item["kev"]:
+        s += 1000
+    if item["ransomware"]:
+        s += 300
+    if item["poc_links"] or item["has_exploit_ref"]:
+        s += 500
+    if item["keyword_hit"]:
+        s += 400
+    if item["epss"]:
+        if item["epss"] >= cfg["epss_threshold"]:
+            s += 200
+        s += min(item["epss"], 0.5) * 100
+    if item["difficulty"] and item["difficulty"].startswith("低"):
+        s += 100
+    return s
+
+
+def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
+                      cfg: dict, now: datetime, lookback: timedelta):
+    """返回 (入选并截断后的列表, 所有符合条件待标记seen的id集合, 未入选条数)。"""
     seen = state.get("seen", {})
     kev_known = set(state.get("kev_ids", []))
     window_date = (now - lookback).date()
 
-    for item in raw_items:
+    items = list(candidates.values())
+    for item in items:
         entry = kev_map.get(item["id"])
         if entry:
             item["kev"] = True
@@ -569,25 +763,27 @@ def enrich_and_filter(raw_items: list[dict], kev_map: dict, state: dict,
                 item["cwe_labels"] = map_cwes(entry.get("cwes") or [])
         item["keyword_hit"] = match_keywords(item, cfg["keywords"])
 
-    selected = []
-    for item in raw_items:
+    qualified = []
+    for item in items:
         if item["id"] in seen:
+            continue
+        hay = item_haystack(item)
+        if any(k in hay for k in cfg["ignore_keywords"]):
             continue
         cvss = item["cvss"]
         epss_high = item["epss"] is not None and item["epss"] >= cfg["epss_threshold"]
         has_poc = item["has_exploit_ref"] or bool(item["poc_links"])
         strong = item["kev"] or epss_high or has_poc or item["keyword_hit"]
         over_threshold = cvss is not None and cvss >= cfg["cvss_threshold"]
-        # 高分漏洞(CVSS >= direct_push_threshold)没有 PoC/其他信号也直接推送
         direct = cvss is not None and cvss >= cfg["direct_push_threshold"]
         if item["kev"] or direct or (over_threshold and strong):
             item["tier"] = "critical" if (item["kev"] or (cvss is not None and cvss >= 9.0)) else "high"
-            selected.append(item)
+            qualified.append(item)
 
     # 旧漏洞新入选 KEV:不在本次发布窗口内,KEV 的 dateAdded 在窗口内
     kev_only = [e for cid, e in kev_map.items()
                 if cid not in seen
-                and not any(i["id"] == cid for i in raw_items)
+                and cid not in candidates
                 and _kev_date(e) and _kev_date(e) >= window_date]
     if kev_only:
         print(f"  发现 {len(kev_only)} 个新入选 KEV 的既有漏洞,补抓 NVD 详情", flush=True)
@@ -610,21 +806,38 @@ def enrich_and_filter(raw_items: list[dict], kev_map: dict, state: dict,
             })
             item["keyword_hit"] = match_keywords(item, cfg["keywords"])
             item["tier"] = "critical"
-            selected.append(item)
+            qualified.append(item)
 
-    missing = [i["id"] for i in selected if i["epss"] is None]
+    # EPSS 只查入选的,省配额
+    missing = [i["id"] for i in qualified if i["epss"] is None]
     if missing:
         for cid, (score, pct) in fetch_epss(missing).items():
-            for i in selected:
+            for i in qualified:
                 if i["id"] == cid:
                     i["epss"], i["epss_percentile"] = score, pct
+                    # EPSS 高热度是补强信号,复核一遍入选资格
+                    if not i["kev"] and (i["cvss"] or 0) < cfg["direct_push_threshold"]:
+                        if score < cfg["epss_threshold"] and not (
+                                (i["cvss"] or 0) >= cfg["cvss_threshold"] and
+                                (i["has_exploit_ref"] or i["poc_links"] or i["keyword_hit"] or i["kev"])):
+                            i["_drop"] = True
+    qualified = [i for i in qualified if not i.get("_drop")]
 
-    def sort_key(i):
-        return (i["tier"] == "critical", i["kev"], i["keyword_hit"] is not None,
-                i["cvss"] or 0, i["epss"] or 0)
+    qualified.sort(key=lambda i: priority(i, cfg), reverse=True)
 
-    selected.sort(key=sort_key, reverse=True)
-    return selected
+    # 同厂商限量 + 每日总量硬上限(识别不出厂商的归入 _other_,不占厂商限额)
+    final, vendor_count = [], {}
+    for i in qualified:
+        v = vendor_key(i)
+        if v != "_other_" and vendor_count.get(v, 0) >= cfg["max_per_vendor"]:
+            continue
+        vendor_count[v] = vendor_count.get(v, 0) + 1
+        final.append(i)
+        if len(final) >= cfg["max_push"]:
+            break
+
+    seen_ids = {i["id"] for i in qualified}  # 没入选的也标记,避免明天旧货刷屏
+    return final, seen_ids, max(len(qualified) - len(final), 0)
 
 
 def _kev_date(entry: dict):
@@ -636,19 +849,31 @@ def _kev_date(entry: dict):
 
 # ---------------------------------------------------------------- 日报生成
 
-def en_title(item: dict) -> str:
-    title = item.get("kev_name") or ""
-    if not title and item["desc"]:
-        flat = " ".join(item["desc"].split()).replace("*", "").replace("`", "")
-        title = flat[:130] + ("…" if len(flat) > 130 else "")
-    return title
+def item_title(item: dict) -> str:
+    if item.get("title_zh"):
+        return item["title_zh"]
+    if item["kev_name"] and len(item["kev_name"]) < 60:
+        return item["kev_name"]
+    return heuristic_title(item)
 
 
-def fmt_epss(item: dict) -> str:
-    if item["epss"] is None:
-        return ""
-    pct = f",前 {round(item['epss_percentile'] * 100)}%" if item.get("epss_percentile") is not None else ""
-    return f" | **EPSS** {item['epss'] * 100:.1f}%{pct}"
+def en_summary(item: dict) -> str:
+    text = pick_desc(item["desc"], 160)
+    return text.replace("*", "").replace("`", "").replace("#", "")
+
+
+def fmt_meta(item: dict) -> str:
+    parts = []
+    if item["cvss"] is not None:
+        parts.append(f"CVSS {item['cvss']}")
+    if item["epss"] is not None:
+        pct = f",前 {round(item['epss_percentile'] * 100)}%" if item.get("epss_percentile") is not None else ""
+        parts.append(f"EPSS {item['epss'] * 100:.1f}%{pct}")
+    if item["cwe_labels"]:
+        parts.append("类型 " + "/".join(item["cwe_labels"]))
+    if item["difficulty"]:
+        parts.append("难度 " + item["difficulty"])
+    return " · ".join(parts)
 
 
 def poc_label(url: str) -> str:
@@ -665,67 +890,60 @@ def item_link(item: dict) -> str:
     return item.get("ghsa_url") or f"https://github.com/advisories?q={item['id']}"
 
 
-def build_markdown(items: list[dict], cfg: dict, lookback_hours: int, now: datetime) -> str:
+def build_markdown(items: list[dict], dropped: int, cfg: dict,
+                   lookback_hours: int, now: datetime) -> str:
     today = now.strftime("%Y-%m-%d")
     if not items:
         return (f"# ✅ 漏洞日报 {today}\n\n"
                 f"过去 {lookback_hours} 小时无符合条件的高质量漏洞,一切正常。")
 
     n_critical = sum(1 for i in items if i["tier"] == "critical")
-    lines = [
-        f"# 🔴 漏洞日报 {today}",
-        f"\n**过去 {lookback_hours} 小时共 {len(items)} 条值得关注的漏洞**"
-        f"(🔴 严重 {n_critical} / 🟠 高危 {len(items) - n_critical})\n",
-        "---",
-    ]
+    head = (f"过去 {lookback_hours} 小时,按价值排序选出 {len(items)} 条"
+            f"(🔴 严重 {n_critical} / 🟠 高危 {len(items) - n_critical})")
+    if dropped > 0:
+        head += f",另有 {dropped} 条低价值未展示"
+    lines = [f"# 🔴 漏洞日报 {today}\n", head + "\n", "---"]
     total_len = sum(len(l.encode()) for l in lines)
 
-    for i in items[:cfg["max_items"]]:
+    for i in items:
         stars = "🔴" if i["tier"] == "critical" else "🟠"
-        cvss_txt = f"**CVSS** {i['cvss']}" if i["cvss"] is not None else "**CVSS** 暂无"
-        block = [
-            f"\n### {stars} [{i['id']}]({item_link(i)})",
-            cvss_txt + fmt_epss(i),
-        ]
-        if i["cwe_labels"]:
-            block.append(f"**类型**: {' / '.join(i['cwe_labels'])}")
-        if i["difficulty"]:
-            block.append(f"**利用难度**: {i['difficulty']}")
+        block = [f"\n### {stars} {item_title(i)}",
+                 f"[{i['id']}]({item_link(i)}) · {fmt_meta(i)}"]
+        if i.get("summary_zh"):
+            block.append(f"**摘要**: {i['summary_zh']}")
+        elif i.get("desc_zh"):
+            block.append(f"**摘要**: {i['desc_zh'][:120]}")
+        en = en_summary(i)
+        if en:
+            block.append(f"**原文**: {en}")
         versions = i["ghsa_ranges"] or i["version_ranges"]
         if versions:
             block.append(f"**影响**: {'; '.join(versions[:2])}")
         elif i["products"]:
             block.append(f"**影响**: {'、'.join(i['products'][:3])}")
-        if i.get("desc_zh"):
-            zh = i["desc_zh"].replace("*", "").replace("`", "")
-            block.append(f"**描述**: {zh[:150]}")
-        title = en_title(i)
-        if title:
-            block.append(f"**原文**: {title[:130]}")
         signals = []
         if i["kev"]:
             signals.append("🔥在野利用(KEV)")
         if i["ransomware"]:
             signals.append("💀勒索软件")
-        if i["has_exploit_ref"] or i["poc_links"]:
-            signals.append("💥公开PoC")
+        if i["poc_links"] or i["has_exploit_ref"]:
+            signals.append("💥有PoC")
         if i["keyword_hit"]:
-            signals.append(f"⭐命中关注词 {i['keyword_hit']}")
+            signals.append(f"⭐{i['keyword_hit']}")
         if signals:
             block.append("**信号**: " + " | ".join(signals))
         if i["poc_links"]:
-            links = " · ".join(f"[{poc_label(u)}]({u})" for u in i["poc_links"][:3])
+            links = " · ".join(f"[{label}]({url})" for url, label in i["poc_links"][:3])
             block.append(f"**PoC**: {links}")
 
         text = "\n".join(block) + "\n"
         if total_len + len(text.encode()) > 18000:
-            remaining = len(items) - items.index(i)
-            lines.append(f"\n... 其余 {remaining} 条因篇幅截断,请登录 NVD 查看")
+            lines.append(f"\n... 其余条目因篇幅截断")
             break
         lines.append(text)
         total_len += len(text.encode())
 
-    lines.append("\n---\n*数据源: NVD · GitHub GHSA · CISA KEV · FIRST EPSS · Exploit-DB,已自动去重*")
+    lines.append("\n---\n*数据源: NVD · GitHub GHSA · CISA KEV · EPSS · Exploit-DB · GitHub PoC 搜索*")
     return "\n".join(lines)
 
 
@@ -792,28 +1010,42 @@ def main() -> int:
         edb_map = fetch_exploitdb()
         n_edb = 0
         for item in candidates.values():
-            item["poc_links"] = list(edb_map.get(item["id"], []))
-            if item["has_exploit_ref"] and item["exploit_ref_url"] and len(item["poc_links"]) < 3:
-                item["poc_links"].append(item["exploit_ref_url"])
-            n_edb += bool(item["poc_links"])
+            links = [(u, f"EDB-{u.rsplit('/', 1)[-1]}") for u in edb_map.get(item["id"], [])]
+            if item["has_exploit_ref"] and item["exploit_ref_url"] and len(links) < 3:
+                links.append((item["exploit_ref_url"], poc_label(item["exploit_ref_url"])))
+            item["poc_links"] = links
+            n_edb += bool(links)
         print(f"  {n_edb} 条候选带公开 PoC", flush=True)
 
     print("筛选与打分 ...", flush=True)
-    items = enrich_and_filter(list(candidates.values()), kev_map, load_state(), cfg, now, lookback)
-    print(f"  符合条件 {len(items)} 条", flush=True)
+    items, seen_ids, dropped = enrich_and_filter(
+        candidates, kev_map, load_state(), cfg, now, lookback)
+    print(f"  符合条件 {len(seen_ids)} 条,入选 {len(items)} 条(另有 {dropped} 条低价值未展示)", flush=True)
 
-    if cfg["translate"]:
-        print("翻译中文描述(并发 5) ...", flush=True)
-        to_translate = items[:cfg["max_items"]]
+    # 入选的漏洞实时搜 GitHub PoC 仓库(研究人员发布 PoC 往往比 EDB 快几天)
+    if cfg["search_github_poc"] and items:
+        print("搜索 GitHub PoC 仓库 ...", flush=True)
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            for item, repos in zip(items, pool.map(
+                    lambda x: search_github_poc(x["id"], now - lookback), items)):
+                for url, label in repos:
+                    if url not in [u for u, _ in item["poc_links"]]:
+                        item["poc_links"].append((url, label))
+
+    # 中文摘要:优先 LLM(需配 LLM_API_KEY),否则机器翻译
+    if items and os.environ.get("LLM_API_KEY", "").strip():
+        print("生成 LLM 中文标题与摘要 ...", flush=True)
+        llm_enrich(items)
+    elif items and cfg["translate"]:
+        print("翻译中文摘要(并发 5) ...", flush=True)
         with ThreadPoolExecutor(max_workers=5) as pool:
-            for item, zh in zip(to_translate,
-                                pool.map(lambda x: translate_zh(x.get("kev_name") or x["desc"]),
-                                         to_translate)):
+            for item, zh in zip(items, pool.map(
+                    lambda x: translate_zh(pick_desc(x["desc"], 300)), items)):
                 item["desc_zh"] = zh
-        n_zh = sum(1 for i in to_translate if i["desc_zh"])
-        print(f"  {n_zh}/{len(to_translate)} 条翻译成功", flush=True)
+        n_zh = sum(1 for i in items if i["desc_zh"])
+        print(f"  {n_zh}/{len(items)} 条翻译成功", flush=True)
 
-    md = build_markdown(items, cfg, lookback_hours, now)
+    md = build_markdown(items, dropped, cfg, lookback_hours, now)
     n_critical = sum(1 for i in items if i["tier"] == "critical")
 
     if args.dry_run:
@@ -825,7 +1057,7 @@ def main() -> int:
         print("无符合条件漏洞且 notify_empty=false,跳过推送", flush=True)
         return 0
 
-    title = f"漏洞日报 {now.strftime('%Y-%m-%d')} 共{len(items)}条"
+    title = f"漏洞日报 {now.strftime('%Y-%m-%d')} {len(items)}条"
     at_all_mode = cfg["at_all"]
     at_all = at_all_mode == "always" or (at_all_mode == "critical" and n_critical > 0)
     print(f"推送钉钉(标题: {title}, @所有人: {at_all}) ...", flush=True)
@@ -833,11 +1065,12 @@ def main() -> int:
 
     state = load_state()
     today = now.date().isoformat()
-    for i in items:
-        state.setdefault("seen", {})[i["id"]] = today
+    state.setdefault("seen", {})
+    for cid in seen_ids:
+        state["seen"][cid] = today
     state["kev_ids"] = sorted(kev_map.keys())
     save_state(state, cfg["retention_days"], now)
-    print(f"完成: 推送 {len(items)} 条,状态已更新到 {STATE_FILE}", flush=True)
+    print(f"完成: 推送 {len(items)} 条,标记已见 {len(seen_ids)} 条", flush=True)
     return 0
 
 

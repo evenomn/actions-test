@@ -4,27 +4,32 @@
 # 基础 CVSS 门槛:低于该分数的漏洞不推送(KEV 在野利用漏洞不受此限制,必推)
 cvss_threshold = 7.0
 
-# 直推阈值:CVSS >= 该值的高分漏洞即使没有 PoC/其他信号也直接推送
-# (想关掉这条规则可设为 10.0)
+# 直推门槛:CVSS >= 该值即使没有 PoC/其他信号也够格入选,
+# 但最终是否推送由「价值排序 + 每日上限 + 同厂商限量」决定,不再见高分就全推
 direct_push_threshold = 9.0
 
 # EPSS 强信号阈值:预测未来 30 天被利用概率 >= 该值视为强信号
-# 新 CVE 的 EPSS 通常 < 0.01;0.1 已是极高热度。想更灵敏可降到 0.02
 epss_threshold = 0.10
 
 # 回看窗口(小时)。NVD 数据入库有滞后,48h + 去重可兜底,不建议低于 24
 lookback_hours = 48
 
-# 单条日报最多展示的漏洞条数(按优先级截断)
-max_items = 20
+# 每日最多推送条数(硬上限),按价值排序取头部。想多看点就调大
+max_push = 15
 
-# 关键词关注列表:命中任意关键词时,只要求 CVSS 达门槛即可推送(无需其他信号),
-# 并在日报中置顶排序。不区分大小写,匹配漏洞描述和产品名。
-# 注意:像 windows / linux kernel 这类极宽的词每天会命中上百条,想加请自担刷屏
+# 同一厂商/生态每天最多推几条,防止 Cisco/WordPress 插件这类一天灌十几条的刷屏
+max_per_vendor = 3
+
+# 关键词关注列表:命中任意关键词提升排序优先级。
+# 注意:像 windows / linux kernel 这类极宽的词命中量巨大
 keywords = [
   "nginx", "openssh", "openssl", "exchange",
   "spring", "tomcat", "vmware", "jenkins", "gitlab",
 ]
+
+# 垃圾过滤:标题/描述/组件命中这些词的直接丢弃
+# (WordPress 插件漏洞是 NVD 每天 9.8 分灌水重灾区,默认拉黑,有需要自行删掉)
+ignore_keywords = ["wordpress plugin"]
 
 [source]
 # GitHub Security Advisories(仅 GitHub 人工审核的公告,自带包生态/影响版本/修复版本)
@@ -32,6 +37,9 @@ ghsa = true
 
 # Exploit-DB 公开 PoC 映射(CVE -> EDB 链接)
 exploitdb = true
+
+# 入选漏洞实时在 GitHub 搜索公开 PoC 仓库(按 star 排序,研究人员发 PoC 比 EDB 快)
+search_github_poc = true
 
 [dingtalk]
 # 何时 @所有人: "never" | "critical"(仅当天有🔴严重漏洞时) | "always"
@@ -41,9 +49,15 @@ at_all = "critical"
 # 无符合条件漏洞的当天是否也发一条「一切正常」的心跳消息(推荐开,用于确认管道存活)
 notify_empty = true
 
-# 是否机翻中文描述(Google 免费接口;翻译失败自动降级为仅英文)
+# 无 LLM 时是否用 Google 免费接口机翻中文摘要(失败自动降级英文;本地被墙属正常,CI 可用)
 translate = true
 
 [state]
 # 已推送 CVE 记录的保留天数(防 state.json 无限增长)
 retention_days = 30
+
+# LLM 摘要说明:在仓库 Secrets 里配置 LLM_API_KEY 后自动启用
+# (可选 LLM_BASE_URL / LLM_MODEL,兼容 OpenAI 接口格式,如 DeepSeek:
+#   LLM_BASE_URL=https://api.deepseek.com  LLM_MODEL=deepseek-chat)
+# 启用后每条漏洞会有高质量中文标题和「谁能利用、造成什么后果」的一句话摘要。
+# 不配置则使用启发式中文标题 + 机器翻译,零成本但可读性略逊。

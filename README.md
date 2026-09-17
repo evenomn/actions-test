@@ -1,65 +1,68 @@
 # CVE Daily Monitor
 
-每天早上 9 点(北京时间)自动抓取过去 48 小时新披露的高质量漏洞,通过钉钉机器人推送中英文日报。
+每天早上 9 点(北京时间)自动抓取过去 48 小时新披露的高质量漏洞,通过钉钉机器人推送**少量、高价值、可读**的中英文漏洞日报。
 
-数据源(全部免费):
+## 每条漏洞展示什么
+
+```
+### 🔴 Cisco ISE 未授权代码注入(RCE)          ← 可读标题,不是裸 CVE 编号
+CVE-2026-73453 · CVSS 10.0 · EPSS 0.7%,前53% · 类型 代码注入(RCE) · 难度 低(远程·免认证)
+摘要: 未授权攻击者可通过 P4Runtime 接口在设备上执行任意代码     ← 中文摘要(LLM 或机翻)
+原文: An unauthenticated P4Runtime client can achieve arbitrary code ...
+影响: cisco identity_services_engine >=6.3                     ← 影响组件与版本
+信号: 🔥在野利用(KEV) | 💥有PoC
+PoC: user/cve-2026-poc ⭐128 · EDB-52311                       ← 真实可点的 PoC 链接
+```
+
+- **标题是人话**:优先 LLM 生成(配了 `LLM_API_KEY` 时),否则启发式拼接「产品 + 未授权 + 漏洞类型」
+- **利用难度**:从 CVSS 向量推导(攻击路径/复杂度/权限/交互)
+- **影响版本**:GHSA 包版本范围(含修复版本)优先,NVD CPE 约束兜底
+- **PoC 是实时搜的**:入选漏洞每天现查 GitHub 新建的 PoC 仓库(按 star 排序)+ Exploit-DB + NVD exploit 引用
+
+## 怎么控制「只推高价值」(核心逻辑)
+
+1. **入选资格**(满足其一):KEV 在野利用 / CVSS ≥ `direct_push_threshold`(9.0)/ CVSS ≥ 7.0 且命中强信号(EPSS≥0.1、有 PoC、命中关注词)
+2. **价值排序**:在野利用 > 有 PoC > 命中关注词 > EPSS 热度 > 分数,利用难度低再加成
+3. **三道闸门防刷屏**:
+   - 每日总量硬上限 `max_push`(默认 15 条),排序取头部
+   - 同厂商/生态每日最多 `max_per_vendor` 条(默认 3),治 Cisco 批量发公告
+   - `ignore_keywords` 直接丢弃(默认拉黑 WordPress 插件灌水)
+4. 没入选的也标记已见,不会明天又冒出来
+
+去重:已推送的 CVE 记录在 `data/state.json`(保留 30 天),由工作流自动提交回仓库。
+
+## 数据源
 
 | 来源 | 作用 |
 |---|---|
-| [NVD API 2.0](https://nvd.nist.gov/developers/vulnerabilities) | 新 CVE、CVSS 评分/向量、CWE 类型、CPE 受影响产品与版本约束、exploit 引用 |
-| [GitHub Security Advisories](https://github.com/advisories)(仅人工审核) | 包生态/组件、受影响版本范围、修复版本 |
-| [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | 确认在野利用(最强信号),含勒索软件利用标记 |
-| [FIRST EPSS](https://www.first.org/epss/) | 未来 30 天被利用概率 |
-| [Exploit-DB](https://www.exploit-db.com/) | 公开 PoC 链接(CVE → EDB 编号) |
-
-## 每条漏洞展示的信息
-
-- 严重度(CVSS 评分 + EPSS 预测)
-- **漏洞类型**:CWE 映射的中文标签(SQL注入 / RCE / 任意文件上传 / 路径遍历 / 反序列化…)
-- **利用难度**:由 CVSS 向量推导(攻击路径/复杂度/所需权限/交互),如 `低(远程·免认证·无交互)`
-- **影响组件与版本**:GHSA 包版本范围(含修复版本)优先,NVD CPE 版本约束兜底
-- **中英文描述**:中文为机翻(Google 免费接口,失败自动降级英文)
-- **信号与 PoC**:KEV 在野利用 / 勒索软件 / 公开 PoC 链接(Exploit-DB 或 NVD exploit 引用)/ 命中关键词
-
-## 筛选规则
-
-满足以下任一条件才推送:
-
-- **CVSS ≥ `direct_push_threshold`(默认 9.0)直接推送** —— 高分漏洞即使没有 PoC 也推
-- **CVSS ≥ `cvss_threshold`(默认 7.0)且命中强信号**:KEV 在野利用 / EPSS ≥ 0.1 / 公开 PoC / 命中关键词
-- **新入选 KEV 的漏洞**(不论新旧 CVE、不论分数,直接推送并标为 🔴)
-
-分级:🔴 严重(KEV 或 CVSS ≥ 9)/ 🟠 高危。关键词命中的条目置顶。所有阈值、关键词都在 [`config.toml`](config.toml) 里调。
-
-去重:已推送过的 CVE 记录在 `data/state.json`(保留 30 天),由工作流自动提交回仓库,同一条漏洞不会重复推送。
+| [NVD API 2.0](https://nvd.nist.gov/developers/vulnerabilities) | 新 CVE、CVSS 向量、CWE、CPE 版本约束 |
+| [GitHub GHSA](https://github.com/advisories)(仅人工审核) | 包生态、影响版本范围、修复版本 |
+| [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | 在野利用确认 + 勒索软件标记 |
+| [FIRST EPSS](https://www.first.org/epss/) | 30 天内被利用概率 |
+| [Exploit-DB](https://www.exploit-db.com/) + GitHub 搜索 | 公开 PoC 链接 |
 
 ## 配置步骤
 
-### 1. 创建钉钉机器人
+### 1. 钉钉机器人
 
-1. 钉钉群 → 群设置 → 智能群助手 → 添加机器人 → **自定义**
-2. 安全设置三选一:
-   - **自定义关键词**(最简单):填 `漏洞`(日报标题固定含这两个字)
-   - **加签**:把密钥配置到 Secrets 的 `DINGTALK_SECRET`
-   - IP 段:不适用于 Actions runner,不推荐
-3. 复制 Webhook 地址
+钉钉群 → 智能群助手 → 添加「自定义」机器人 → 安全设置选**自定义关键词**填 `漏洞` → 复制 Webhook。
 
-### 2. 配置 GitHub Secrets
-
-仓库 Settings → Secrets and variables → Actions → New repository secret:
+### 2. GitHub Secrets(Settings → Secrets and variables → Actions)
 
 | Secret | 必填 | 说明 |
 |---|---|---|
 | `DINGTALK_WEBHOOK` | 是 | 机器人 Webhook 地址 |
-| `DINGTALK_SECRET` | 否 | 加签模式的密钥(自定义关键词模式不用配) |
-| `NVD_API_KEY` | 否 | 免费[申请](https://nvd.nist.gov/developers/request-an-api-key),可提升 NVD 限速,不配也能跑 |
+| `DINGTALK_SECRET` | 否 | 加签模式的密钥 |
+| `NVD_API_KEY` | 否 | 免费[申请](https://nvd.nist.gov/developers/request-an-api-key),提升 NVD 限速 |
+| `LLM_API_KEY` | 否 | **强烈推荐**:启用 LLM 中文标题+摘要,可读性质的飞跃 |
+| `LLM_BASE_URL` | 否 | OpenAI 兼容接口地址,如 `https://api.deepseek.com` |
+| `LLM_MODEL` | 否 | 如 `deepseek-chat` / `gpt-4o-mini` |
 
-`GITHUB_TOKEN` 是 Actions 内置的,已自动传给脚本(用于提升 GHSA 限速),无需配置。
+`GITHUB_TOKEN` 内置自动传入,无需配置。
 
 ### 3. 验证
 
-Actions → CVE Daily Monitor → Run workflow 手动触发一次,群里收到日报即成功。
-第一次运行会推送近 48 小时内所有符合条件的漏洞,属正常现象。
+Actions → CVE Daily Monitor → Run workflow 手动触发,群里收到日报即成功。
 
 ## 本地调试
 
@@ -68,21 +71,21 @@ python3 monitor.py --dry-run                  # 打印日报,不推送、不更�
 python3 monitor.py --dry-run --lookback-hours 24
 ```
 
-注意:中文翻译走 Google 免费接口,本地网络不通时会自动降级为仅英文输出(GitHub Actions 的 runner 在境外,不受影响)。
+注意:Google 机翻和部分 LLM 接口在本地网络可能不通,会自动降级(CI 上正常)。
 
 ## 已知限制
 
-- **GitHub 定时任务不精确**:可能有几分钟到半小时的延迟,偶尔高峰期会跳过一次,下次会补上(回看窗口 + 去重保证不漏)。
-- **NVD 入库滞后**:CVE 编号分配到 NVD 收录详情可能隔几小时甚至几天,所以用 48h 窗口兜底;GHSA 常早于 NVD,已合并补位。
-- **仓库 60 天不活跃会停用定时任务**:本工作流每天自动提交 `state.json` 保持活跃;提交信息带 `[skip ci]`,不会触发其他 `on: push` 工作流。
-- **钉钉消息长度限制**约 20KB:日报最多展示 `max_items` 条,超出部分按优先级截断。
-- **中文翻译是非官方免费接口**:偶发失败只影响个别条目,自动回退英文;不满足需求可接 DeepL/LLM 等(改 `translate_zh` 一个函数)。
+- GitHub 定时任务有几分钟到半小时延迟,偶尔跳过一次,回看窗口 + 去重保证不漏。
+- NVD 入库有滞后(几小时到几天),GHSA 常早于 NVD,已合并补位。
+- 发布当天就出现在 Exploit-DB 的 PoC 很少(收录滞后数天),所以 PoC 主要靠 GitHub 仓库实时搜索;确实没有公开 PoC 的漏洞会如实显示「有PoC」信号为空,用利用难度字段补充判断。
+- 仓库 60 天不活跃会停用定时任务;本工作流每天自动提交 `state.json` 保持活跃,提交带 `[skip ci]` 不会触发其他工作流。
+- 钉钉单条消息约 20KB 上限,超出按排序截断。
 
 ## 文件说明
 
 ```
 monitor.py                       # 核心脚本(纯标准库,零依赖)
-config.toml                      # 阈值 / 关键词 / 数据源开关 / @所有人 配置
+config.toml                      # 阈值 / 上限 / 关键词 / 垃圾过滤 / 数据源开关
 data/state.json                  # 去重状态(自动生成、自动提交)
 .github/workflows/cve-monitor.yml  # 定时任务(手动触发可测)
 ```
