@@ -666,9 +666,20 @@ def item_haystack(item: dict) -> str:
 def match_keywords(item: dict, keywords: list[str]) -> str | None:
     if not keywords:
         return None
-    hay = item_haystack(item)
+    # 产品/组件字段直接子串匹配;描述里用词边界,并跳过 "Key Exchange" 这类组合词误报
+    strong_fields = " ".join([
+        item.get("kev_name") or "",
+        " ".join(item.get("products", [])),
+        " ".join(item.get("ghsa_ranges", [])),
+    ]).lower()
     for kw in keywords:
-        if kw in hay:
+        if kw in strong_fields:
+            return kw
+    desc = item.get("desc", "").lower()
+    for kw in keywords:
+        for m in re.finditer(rf"\b{re.escape(kw)}\b", desc):
+            if desc[max(0, m.start() - 4):m.start()] == "key ":
+                continue
             return kw
     return None
 
@@ -722,6 +733,9 @@ def vendor_key(item: dict) -> str:
         return item["ghsa_ranges"][0].split()[0].split(":")[-1].split("/")[0]
     if item.get("kev_name"):
         return item["kev_name"].split()[0].lower()
+    if item["keyword_hit"]:
+        # 无厂商信息时按关注词聚合(如 Jenkins 插件批量公告)
+        return f"kw:{item['keyword_hit']}"
     return "_other_"
 
 
