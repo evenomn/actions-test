@@ -746,11 +746,11 @@ def priority(item: dict, cfg: dict) -> float:
 
 
 def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
-                      cfg: dict, now: datetime, lookback: timedelta):
-    """返回 (入选并截断后的列表, 所有符合条件待标记seen的id集合, 未入选条数)。"""
+                      cfg: dict, now: datetime, lookback: timedelta, dedup: bool = True):
+    """返回 (入选截断列表, 全部符合条件列表, 待标记seen的id集合, 因去重跳过数)。"""
     seen = state.get("seen", {})
-    kev_known = set(state.get("kev_ids", []))
     window_date = (now - lookback).date()
+    skipped_seen = 0
 
     items = list(candidates.values())
     for item in items:
@@ -766,7 +766,9 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
     qualified = []
     for item in items:
         if item["id"] in seen:
-            continue
+            if dedup:
+                skipped_seen += 1
+                continue
         hay = item_haystack(item)
         if any(k in hay for k in cfg["ignore_keywords"]):
             continue
@@ -782,8 +784,8 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
 
     # 旧漏洞新入选 KEV:不在本次发布窗口内,KEV 的 dateAdded 在窗口内
     kev_only = [e for cid, e in kev_map.items()
-                if cid not in seen
-                and cid not in candidates
+                if cid not in candidates
+                and not (dedup and cid in seen)
                 and _kev_date(e) and _kev_date(e) >= window_date]
     if kev_only:
         print(f"  发现 {len(kev_only)} 个新入选 KEV 的既有漏洞,补抓 NVD 详情", flush=True)
@@ -837,7 +839,7 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
             break
 
     seen_ids = {i["id"] for i in qualified}  # 没入选的也标记,避免明天旧货刷屏
-    return final, qualified, seen_ids, max(len(qualified) - len(final), 0)
+    return final, qualified, seen_ids, skipped_seen
 
 
 def _kev_date(entry: dict):
@@ -891,17 +893,24 @@ def item_link(item: dict) -> str:
 
 
 def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
-                   now: datetime, archive_name: str | None) -> str:
+                   now: datetime, archive_name: str | None, skipped_seen: int = 0) -> str:
     today = now.strftime("%Y-%m-%d")
     if not items:
-        return (f"# ✅ 漏洞日报 {today}\n\n"
-                f"过去 {lookback_hours} 小时无符合条件的高质量漏洞,一切正常。")
+        msg = f"# ✅ 漏洞日报 {today}\n\n过去 {lookback_hours} 小时无**新增**符合条件的高质量漏洞。"
+        if skipped_seen > 0:
+            where = f",完整清单见仓库 {archive_name}" if archive_name else ""
+            msg += f"\n\n窗口内有 {skipped_seen} 条此前已推送过,去重不重推{where}。"
+        return msg
 
     n_critical = sum(1 for i in items if i["tier"] == "critical")
     head = (f"过去 {lookback_hours} 小时,按价值排序选出 {len(items)} 条"
             f"(🔴 严重 {n_critical} / 🟠 高危 {len(items) - n_critical})")
     if total_count > len(items):
-        head += f";今日共 {total_count} 条符合条件,完整清单见仓库 {archive_name}"
+        head += f";今日共 {total_count} 条符合条件"
+        if archive_name:
+            head += f",完整清单见仓库 {archive_name}"
+    if skipped_seen > 0:
+        head += f";另有 {skipped_seen} 条已见过去重"
     lines = [f"# 🔴 漏洞日报 {today}\n", head + "\n", "---"]
     total_len = sum(len(l.encode()) for l in lines)
 
@@ -1005,6 +1014,8 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true", help="只打印日报,不推送、不更新状态")
     ap.add_argument("--lookback-hours", type=int, default=None,
                     help="回看窗口小时数(默认取 config.toml)")
+    ap.add_argument("--no-dedup", action="store_true",
+                    help="忽略去重显示当前窗口的 top 列表,且不更新状态(手动测试用)")
     args = ap.parse_args()
 
     cfg = load_config()
@@ -1040,11 +1051,13 @@ def main() -> int:
             n_edb += bool(links)
         print(f"  {n_edb} 条候选带公开 PoC", flush=True)
 
+    dedup = not args.no_dedup
     print("筛选与打分 ...", flush=True)
-    items, qualified, seen_ids = enrich_and_filter(
-        candidates, kev_map, load_state(), cfg, now, lookback)[:3]
+    items, qualified, seen_ids, skipped_seen = enrich_and_filter(
+        candidates, kev_map, load_state(), cfg, now, lookback, dedup)
     dropped = max(len(qualified) - len(items), 0)
-    print(f"  符合条件 {len(qualified)} 条,入选 {len(items)} 条(另有 {dropped} 条低价值未展示)", flush=True)
+    print(f"  符合条件 {len(qualified)} 条,入选 {len(items)} 条"
+          f"(另有 {dropped} 条低价值未展示,去重跳过 {skipped_seen} 条)", flush=True)
 
     # 入选的漏洞实时搜 GitHub PoC 仓库(研究人员发布 PoC 往往比 EDB 快几天)
     if cfg["search_github_poc"] and items:
@@ -1085,7 +1098,7 @@ def main() -> int:
                 pass
 
     md = build_markdown(items, len(qualified), lookback_hours, now,
-                        archive_name if not args.dry_run else None)
+                        archive_name if not args.dry_run else None, skipped_seen)
     n_critical = sum(1 for i in items if i["tier"] == "critical")
 
     if args.dry_run:
@@ -1102,6 +1115,10 @@ def main() -> int:
     at_all = at_all_mode == "always" or (at_all_mode == "critical" and n_critical > 0)
     print(f"推送钉钉(标题: {title}, @所有人: {at_all}) ...", flush=True)
     push_dingtalk(md, title, at_all)
+
+    if not dedup:
+        print("完成: no-dedup 模式,已推送但不去重、不更新状态(明天定时任务会正常推新增)", flush=True)
+        return 0
 
     state = load_state()
     today = now.date().isoformat()
