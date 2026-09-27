@@ -1,0 +1,81 @@
+"""AI 分析师:JSON 提取、逐条分析落地、简报、降级规则。"""
+
+from vulnmon.llm import (_extract_json, _fallback_urgency, ai_analyze, ai_briefing,
+                         URGENCY_LEVELS)
+from vulnmon.models import new_item
+
+import vulnmon.llm as llm
+
+
+def mk(cve_id="CVE-2026-1", **kw) -> dict:
+    item = new_item(cve_id)
+    item.update({"cvss": 9.8, "desc": "An unauthenticated attacker can execute arbitrary code.",
+                 "tier": "critical"})
+    item.update(kw)
+    return item
+
+
+def test_extract_json_with_fence_and_noise():
+    text = '好的,以下是结果:\n```json\n[{"id":"CVE-1","title":"t"}]\n```\n以上。'
+    assert _extract_json(text) == [{"id": "CVE-1", "title": "t"}]
+
+
+def test_extract_json_object():
+    assert _extract_json('xx {"briefing":["a","b"]} yy') == {"briefing": ["a", "b"]}
+
+
+def test_extract_json_garbage():
+    assert _extract_json(None) is None
+    assert _extract_json(" totally no json ") is None
+    assert _extract_json("{broken") is None
+
+
+def test_ai_analyze_applies_fields(monkeypatch):
+    canned = ('```json\n[{"id":"CVE-2026-1","title":"Acme 代理 RCE",'
+              '"summary":"未授权攻击者可远程执行任意代码","action":"升级到 2.3.1",'
+              '"urgency":"P0 立即处置"}]\n```')
+    monkeypatch.setattr(llm, "llm_available", lambda: True)
+    monkeypatch.setattr(llm, "_chat", lambda prompt, timeout=180: canned)
+    items = [mk()]
+    ai_analyze(items)
+    assert items[0]["title_zh"] == "Acme 代理 RCE"
+    assert "远程执行" in items[0]["summary_zh"]
+    assert items[0]["action_zh"] == "升级到 2.3.1"
+    assert items[0]["urgency"] == "P0 立即处置"
+
+
+def test_ai_analyze_invalid_urgency_falls_back(monkeypatch):
+    canned = '[{"id":"CVE-2026-1","title":"t","summary":"s","action":"a","urgency":"随便"}]'
+    monkeypatch.setattr(llm, "llm_available", lambda: True)
+    monkeypatch.setattr(llm, "_chat", lambda prompt, timeout=180: canned)
+    items = [mk(poc_links=[("https://github.com/x", "x ⭐5")])]
+    ai_analyze(items)
+    assert items[0]["urgency"] == "P1 重点关注"  # 有 PoC → 规则兜底 P1
+
+
+def test_ai_analyze_no_llm_key_noop(monkeypatch):
+    monkeypatch.setattr(llm, "llm_available", lambda: False)
+    items = [mk()]
+    ai_analyze(items)
+    assert items[0]["title_zh"] is None
+
+
+def test_ai_briefing(monkeypatch):
+    monkeypatch.setattr(llm, "llm_available", lambda: True)
+    monkeypatch.setattr(llm, "_chat", lambda prompt, timeout=180:
+                        '{"briefing":["今日 KEV 新增 1 条在野利用","Acme RCE 已有公开 PoC,建议立即处置"]}')
+    out = ai_briefing([mk()])
+    assert out and out.startswith("- ") and "在野利用" in out
+
+
+def test_ai_briefing_failure_returns_none(monkeypatch):
+    monkeypatch.setattr(llm, "llm_available", lambda: True)
+    monkeypatch.setattr(llm, "_chat", lambda prompt, timeout=180: None)
+    assert ai_briefing([mk()]) is None
+    assert ai_briefing([]) is None
+
+
+def test_fallback_urgency_rules():
+    assert _fallback_urgency(mk(kev=True)) == URGENCY_LEVELS[0]
+    assert _fallback_urgency(mk(poc_links=[("u", "l")])) == URGENCY_LEVELS[1]
+    assert _fallback_urgency(mk(cvss=6.0)) == URGENCY_LEVELS[2]

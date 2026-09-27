@@ -1,0 +1,91 @@
+# 漏洞监控配置。修改后无需改代码,GitHub Actions 下次运行即生效。
+
+[cve]
+# 基础 CVSS 门槛:低于该分数的漏洞不推送(KEV 在野利用漏洞不受此限制,必推)
+cvss_threshold = 7.0
+
+# 直推门槛:CVSS >= 该值即使没有 PoC/其他信号也够格入选,
+# 但最终是否推送由「价值排序 + 每日上限 + 同厂商限量」决定,不再见高分就全推
+direct_push_threshold = 9.0
+
+# EPSS 强信号阈值:预测未来 30 天被利用概率 >= 该值视为强信号
+epss_threshold = 0.10
+
+# 回看窗口(小时)。NVD 数据入库有滞后,48h + 去重可兜底,不建议低于 24
+lookback_hours = 48
+
+# 每日最多推送条数(硬上限),按价值排序取头部。想多看点就调大
+max_push = 15
+
+# 同一厂商/生态每天最多推几条,防止 Cisco/WordPress 插件这类一天灌十几条的刷屏。
+# 注意:被截掉的漏洞次日会重新参选,不会丢(v2 行为)
+max_per_vendor = 3
+
+# 关键词关注列表:命中任意关键词提升排序优先级。
+# 注意:像 windows / linux kernel 这类极宽的词命中量巨大
+keywords = [
+  "nginx", "openssh", "openssl", "exchange",
+  "spring", "tomcat", "vmware", "jenkins", "gitlab",
+]
+
+# 垃圾过滤:标题/描述/组件命中这些词的直接丢弃
+# (WordPress 插件漏洞是 NVD 每天 9.8 分灌水重灾区,默认拉黑,有需要自行删掉)
+ignore_keywords = ["wordpress plugin"]
+
+[source]
+# GitHub Security Advisories(仅 GitHub 人工审核的公告,自带包生态/影响版本/修复版本)
+ghsa = true
+
+# Exploit-DB 公开 PoC 映射(CVE -> EDB 链接)
+exploitdb = true
+
+# nomi-sec/PoC-in-GitHub 数据集:社区按日维护的 CVE -> GitHub PoC 仓库映射,
+# raw 直拉、带 star 数,比 GitHub 搜索 API 稳定(推荐保持开启)
+poc_dataset = true
+
+# GitHub 搜索兜底:对数据集没命中的入选条目再搜一次(小预算,防限流)
+search_github_poc = true
+
+# projectdiscovery/nuclei-templates:该 CVE 是否已有公开检测模板(武器化信号)
+nuclei_templates = true
+
+[notify]
+# 推送渠道,可多选: dingtalk / feishu / wecom / telegram / slack。
+# 留空 [] = 按已配置的环境变量自动探测(推荐)
+channels = []
+
+# 无符合条件漏洞的当天是否也发一条「一切正常」的心跳消息(推荐开,用于确认管道存活)
+notify_empty = true
+
+# 无 LLM 时是否用 Google 免费接口机翻中文摘要(失败自动降级英文;本地被墙属正常,CI 可用)
+translate = true
+
+[dingtalk]
+# 何时 @所有人: "never" | "critical"(仅当天有🔴严重漏洞时) | "always"
+at_all = "critical"
+
+[report]
+# 机器可读输出:data/feed.json(结构化,供看板/程序消费)
+feed_json = true
+
+# data/feed.xml(RSS 2.0,可用 RSS 阅读器订阅)
+rss = true
+
+[state]
+# 已见 CVE 记录的保留天数(防 state.json 无限增长)
+retention_days = 30
+
+# ---------------------------------------------------------------- 环境变量速查
+# (在仓库 Settings -> Secrets and variables -> Actions 里配置,全部可选按需)
+#
+# 通用:
+#   NVD_API_KEY          NVD 限速提升(免费申请)
+#   LLM_API_KEY          启用 LLM 中文标题+摘要(OpenAI 兼容)
+#   LLM_BASE_URL/LLM_MODEL  如 https://api.deepseek.com / deepseek-chat
+#
+# 渠道(配置任意一个即启用该渠道;channels 留空时自动探测):
+#   DINGTALK_WEBHOOK / DINGTALK_SECRET
+#   FEISHU_WEBHOOK                 飞书自定义机器人
+#   WECOM_WEBHOOK                  企业微信群机器人
+#   TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID
+#   SLACK_WEBHOOK                  Incoming Webhook
