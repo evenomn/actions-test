@@ -18,10 +18,14 @@ import urllib.request
 
 from .http import env, http_get_json
 from .report import affected_line
+from .scoring import (REPRO_LEVELS, URGENCY_LEVELS, fallback_repro,
+                      fallback_urgency)
 from .text import pick_desc, product_name
 
 LLM_BATCH = 20          # 单次请求最多条数
-URGENCY_LEVELS = ("P0 立即处置", "P1 重点关注", "P2 保持关注")
+
+# 兼容旧导入路径(测试/外部脚本)
+_fallback_urgency = fallback_urgency
 
 
 def llm_available() -> bool:
@@ -73,6 +77,7 @@ def _evidence(item: dict) -> dict:
     ev = {
         "id": item["id"],
         "product": product_name(item) or "、".join(item.get("products", [])[:2]) or None,
+        "category": item.get("category"),
         "type": "/".join(item["cwe_labels"]) or None,
         "desc": pick_desc(item["desc"], 400) or None,
         "cvss": item["cvss"],
@@ -100,19 +105,41 @@ def _fallback_urgency(item: dict) -> str:
 
 
 ANALYZE_PROMPT = (
-    "你是资深漏洞情报分析师。根据每个CVE的结构化证据输出中文分析:\n"
+    "你是资深漏洞情报分析师,兼渗透测试主管。根据每个CVE的结构化证据输出中文分析:\n"
     'title: 不超过22字,格式「产品/组件+漏洞类型+核心要点」,不要以CVE编号开头\n'
     'summary: 不超过55字,说清谁能利用、怎么利用、造成什么后果\n'
     'action: 不超过40字,给出处置建议(如「升级到 x.y.z」/「临时禁用xx功能缓解」);'
     'patched=false 时明确说暂无官方修复\n'
     'urgency: 从["P0 立即处置","P1 重点关注","P2 保持关注"]三选一。'
     "KEV 在野利用/勒索软件在野利用/PoC广泛流传→P0;有公开PoC或EPSS高或高分无PoC→P1;其余→P2\n"
-    '严格只输出JSON数组:[{"id":"...","title":"...","summary":"...","action":"...","urgency":"..."}]'
+    'repro_worthy: 从["强烈推荐","值得","一般","不建议"]四选一,判断安全团队值不值得花时间复现。'
+    "衡量:是否常见 CMS/中间件/边界设备/OA/邮件系统等实战中常见的资产;是否默认配置即可利用;"
+    "利用门槛(免认证>低权限>高权限);有无 PoC/nuclei 模板;在野利用直接拉满。"
+    "小众冷门库、利用条件苛刻、纯信息泄露低危 → 一般或不建议\n"
+    'repro_note: 不超过40字,复现要点:入口(如「未授权 /api/eval 接口」)、前置条件、关键参数;'
+    'repro_worthy 为「不建议」时给 null\n'
+    'impact_scope: 不超过20字,影响面画像(如「边界VPN设备,常暴露公网」「内网中间件,横向移动跳板」)\n'
+    '严格只输出JSON数组:[{"id":"...","title":"...","summary":"...","action":"...",'
+    '"urgency":"...","repro_worthy":"...","repro_note":"...","impact_scope":"..."}]'
     "\n输入:\n")
 
 
+def _sanitize(item: dict, row: dict):
+    item["title_zh"] = (str(row.get("title") or "").strip()[:30]) or None
+    item["summary_zh"] = (str(row.get("summary") or "").strip()[:90]) or None
+    item["action_zh"] = (str(row.get("action") or "").strip()[:60]) or None
+    urgency = str(row.get("urgency") or "").strip()
+    item["urgency"] = urgency if urgency in URGENCY_LEVELS else fallback_urgency(item)
+    repro = str(row.get("repro_worthy") or "").strip()
+    item["repro_worthy"] = repro if repro in REPRO_LEVELS else fallback_repro(item)
+    item["repro_note"] = (str(row.get("repro_note") or "").strip()[:60]) or None
+    item["impact_scope"] = (str(row.get("impact_scope") or "").strip()[:30]) or None
+    if item["repro_worthy"] == "不建议":
+        item["repro_note"] = None
+
+
 def ai_analyze(items: list[dict]):
-    """逐条批量分析,就地写入 title_zh/summary_zh/action_zh/urgency。"""
+    """逐条批量分析,就地写入标题/摘要/处置/优先级/复现判定/影响面。"""
     if not llm_available() or not items:
         return
     for offset in range(0, len(items), LLM_BATCH):
@@ -127,11 +154,7 @@ def ai_analyze(items: list[dict]):
             row = by_id.get(item["id"])
             if not row:
                 continue
-            item["title_zh"] = (str(row.get("title") or "").strip()[:30]) or None
-            item["summary_zh"] = (str(row.get("summary") or "").strip()[:90]) or None
-            item["action_zh"] = (str(row.get("action") or "").strip()[:60]) or None
-            urgency = str(row.get("urgency") or "").strip()
-            item["urgency"] = urgency if urgency in URGENCY_LEVELS else _fallback_urgency(item)
+            _sanitize(item, row)
 
 
 BRIEFING_PROMPT = (

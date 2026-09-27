@@ -36,6 +36,8 @@ def fmt_meta(item: dict) -> str:
     if item.get("published"):
         # 披露日期很重要:编号年份 ≠ 披露时间(厂商预留编号可能隔几个月才公开)
         parts.append(f"披露 {str(item['published'])[:10]}")
+    if item.get("category"):
+        parts.append(f"组件 {item['category']}")
     if item["cvss"] is not None:
         parts.append(f"CVSS {item['cvss']}")
     if item["epss"] is not None:
@@ -128,6 +130,15 @@ def item_block_md(item: dict) -> str:
         block.append(f"**摘要**: {item['desc_zh'][:120]}")
     if item.get("action_zh"):
         block.append(f"**处置**: {item['action_zh']}")
+    repro = item.get("repro_worthy")
+    if repro and repro != "不建议":
+        stars = {"强烈推荐": "⭐⭐⭐", "值得": "⭐⭐", "一般": "⭐"}.get(repro, "")
+        line = f"**复现**: {stars}{repro}"
+        if item.get("impact_scope"):
+            line += f" · 影响面: {item['impact_scope']}"
+        if item.get("repro_note"):
+            line += f" · {item['repro_note']}"
+        block.append(line)
     en = en_summary(item)
     if en:
         block.append(f"**原文**: {en}")
@@ -183,11 +194,21 @@ def build_archive(qualified: list[dict], now: datetime) -> str:
     for i in qualified:
         stars = "🔴" if i["tier"] == "critical" else "🟠"
         sig = signals(i)
-        lines.append(
-            f"- {stars} **{item_title(i)}** — [{i['id']}]({item_link(i)}) · "
-            f"CVSS {i['cvss']} · {'/'.join(i['cwe_labels']) or '类型未知'} · "
-            f"难度 {i['difficulty'] or '未知'}"
-            + (f" · {' / '.join(sig)}" if sig else ""))
+        bits = []
+        if i.get("urgency"):
+            bits.append(i["urgency"])
+        if i.get("category"):
+            bits.append("组件 " + i["category"])
+        bits.append("CVSS " + str(i["cvss"]))
+        bits.append("/".join(i["cwe_labels"]) or "类型未知")
+        bits.append("难度 " + (i["difficulty"] or "未知"))
+        repro = i.get("repro_worthy")
+        if repro and repro != "不建议":
+            bits.append("复现" + repro)
+        if sig:
+            bits.append(" / ".join(sig))
+        lines.append(f"- {stars} **{item_title(i)}** — [{i['id']}]({item_link(i)}) · "
+                     + " · ".join(bits))
         poc = poc_links_line(i)
         if poc:
             lines.append(f"  - PoC: {poc}")
@@ -239,6 +260,9 @@ def build_feed_json(qualified: list[dict], now: datetime, lookback_hours: int,
             "keyword_hit": item["keyword_hit"],
             "urgency": item.get("urgency"),
             "action_zh": item.get("action_zh"),
+            "repro_worthy": item.get("repro_worthy"),
+            "repro_note": item.get("repro_note"),
+            "impact_scope": item.get("impact_scope"),
             "link": item_link(item),
             "description": pick_desc(item["desc"], 500),
         }

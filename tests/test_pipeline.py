@@ -21,14 +21,15 @@ def mk(cve_id, cvss=9.5, **kw) -> dict:
 
 
 def run(candidates, state, kev_map=None, cfg=None, dedup=True, fetch_missing=None,
-        monkeypatch=None):
+        ai_analyze_fn=None, monkeypatch=None):
     kev_map = kev_map or {}
     cfg = cfg or dict(DEFAULTS)
     if monkeypatch:
         monkeypatch.setattr(pipeline, "fetch_epss", lambda ids: {})
         monkeypatch.setattr(pipeline, "nvd_sleep", lambda: None)
     return pipeline.enrich_and_filter(candidates, kev_map, state, cfg, NOW, LOOKBACK,
-                                      fetch_missing=fetch_missing, dedup=dedup)
+                                      fetch_missing=fetch_missing,
+                                      ai_analyze_fn=ai_analyze_fn, dedup=dedup)
 
 
 def test_dedup_suppresses_pushed(monkeypatch):
@@ -150,3 +151,39 @@ def test_apply_kev_fields():
                      "knownRansomwareCampaignUse": "Known", "cwes": ["CWE-89"]})
     assert item["kev"] and item["ransomware"] and item["kev_due"] == "2026-10-01"
     assert item["cwe_labels"] == ["SQL注入"]
+
+
+def test_ai_judgment_changes_selection(monkeypatch):
+    """AI 判定参与排序:高复现价值的边界设备漏洞能挤掉高分冷门库。"""
+    edge = mk("CVE-2026-1", cvss=8.2, products=["fortinet fortios"],
+              desc="An SSL VPN heap overflow allows pre-auth RCE.")
+    edge["poc_links"] = [("https://github.com/x/poc", "x/poc ⭐50")]
+    library = mk("CVE-2026-2", cvss=9.1, products=["acme tinylib"], desc="A flaw.")
+
+    def fake_ai(items):
+        for i in items:
+            if i["id"] == "CVE-2026-1":
+                i["urgency"] = "P0 立即处置"
+                i["repro_worthy"] = "强烈推荐"
+            else:
+                i["urgency"] = "P2 保持关注"
+                i["repro_worthy"] = "一般"
+
+    state = {"version": 2, "seen": {}, "kev_ids": []}
+    cfg = dict(DEFAULTS, max_push=1)
+    final, qualified, _ = run({"CVE-2026-1": edge, "CVE-2026-2": library}, state,
+                              cfg=cfg, ai_analyze_fn=fake_ai, monkeypatch=monkeypatch)
+    assert len(final) == 1
+    assert final[0]["id"] == "CVE-2026-1"  # AI 判定让 8.2 分边界设备挤掉 9.1 分冷门库
+    assert final[0]["category"] == "边界设备/VPN"
+    # 兜底赋值:未进 AI 池的条目也有完整字段
+    assert all(i.get("urgency") and i.get("repro_worthy") for i in qualified)
+
+
+def test_fallback_assignment_without_ai(monkeypatch):
+    """无 AI 时全部条目获得确定性兜底判定。"""
+    state = {"version": 2, "seen": {}, "kev_ids": []}
+    final, qualified, _ = run({"CVE-2026-2": mk("CVE-2026-2", cvss=9.1)},
+                              state, monkeypatch=monkeypatch)
+    assert final[0]["urgency"] == "P1 重点关注"
+    assert final[0]["repro_worthy"] == "值得"

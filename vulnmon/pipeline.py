@@ -1,18 +1,23 @@
-"""筛选管线:富化 → 资格判定 → 排序 → 上限截断。
+"""筛选管线:富化 → 资格判定 → AI 分析 → 排序 → 上限截断。
 
 去重语义(v2):
 - pushed=True 且非新 KEV:跳过(已推送过)
 - pushed=False(上次符合条件但被上限截掉):重新参选,不丢情报
 - 新入选 KEV(无论推没推过):重推,标「升级提醒」
+
+AI 分析在截断之前进行:复现价值/优先级判定会直接影响最终入选与排序;
+无 AI 时用确定性兜底规则(scoring.fallback_urgency/fallback_repro)。
 """
 
 from __future__ import annotations
 
 from datetime import datetime, timedelta
 
+from .components import classify
 from .http import nvd_sleep
 from .models import is_cve, new_item
-from .scoring import item_haystack, match_keywords, priority, vendor_key
+from .scoring import (fallback_repro, fallback_urgency, is_wordpress_plugin,
+                      item_haystack, match_keywords, priority, vendor_key)
 from .sources.epss import fetch_epss
 from .sources.kev import apply_kev
 
@@ -28,6 +33,10 @@ def _qualifies(item: dict, cfg: dict) -> bool:
     hay = item_haystack(item)
     if any(k in hay for k in cfg["ignore_keywords"]):
         return False
+    if cfg.get("ignore_wordpress_plugins", True) and not item["kev"] \
+            and is_wordpress_plugin(item):
+        # WP 插件灌水:除非已进 KEV,否则不推(完整清单存档里仍保留)
+        return False
     cvss = item["cvss"]
     epss_high = item["epss"] is not None and item["epss"] >= cfg["epss_threshold"]
     has_poc = item["has_exploit_ref"] or bool(item["poc_links"])
@@ -39,11 +48,12 @@ def _qualifies(item: dict, cfg: dict) -> bool:
 
 def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
                       cfg: dict, now: datetime, lookback: timedelta,
-                      fetch_missing=None, dedup: bool = True):
+                      fetch_missing=None, ai_analyze_fn=None, dedup: bool = True):
     """返回 (入选列表, 全部符合条件列表, 统计)。
 
-    fetch_missing: KEV-only 条目补抓 NVD 详情的回调(注入便于测试),
-    签名 (cve_id) -> item | None。
+    fetch_missing: KEV-only 条目补抓 NVD 详情的回调(注入便于测试)。
+    ai_analyze_fn: AI 分析回调 (items) -> None,就地写入 urgency/repro 等字段;
+    传 None 时用确定性兜底规则。
     """
     seen = state.get("seen", {})
     prev_kev = set(state.get("kev_ids") or [])
@@ -55,6 +65,7 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
         entry = kev_map.get(item["id"])
         if entry:
             apply_kev(item, entry)
+        item["category"] = classify(item)
         item["keyword_hit"] = match_keywords(item, cfg["keywords"])
 
     qualified = []
@@ -95,6 +106,7 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
             if not parsed:
                 item["desc"] = entry.get("shortDescription", "")
             apply_kev(item, entry)
+            item["category"] = classify(item)
             item["keyword_hit"] = match_keywords(item, cfg["keywords"])
             item["tier"] = "critical"
             qualified.append(item)
@@ -115,6 +127,18 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
                         i["_drop"] = True
     qualified = [i for i in qualified if not i.get("_drop")]
 
+    # 先按规则分预排序,AI 只分析预算内的头部(默认 30 条),省 token
+    qualified.sort(key=lambda i: priority(i, cfg), reverse=True)
+    ai_pool = qualified[:int(cfg.get("ai_analyze_limit", 30))]
+    if ai_analyze_fn is not None and ai_pool:
+        ai_analyze_fn(ai_pool)
+    # 全量兜底赋值(未进 AI 池的、以及 AI 漏答的),保证排序字段完整
+    for i in qualified:
+        if not i.get("urgency"):
+            i["urgency"] = fallback_urgency(i)
+        if not i.get("repro_worthy"):
+            i["repro_worthy"] = fallback_repro(i)
+    # 带 AI 加成重排,决定最终入选
     qualified.sort(key=lambda i: priority(i, cfg), reverse=True)
 
     # 同厂商限量 + 每日总量硬上限(识别不出厂商的归入 _other_,不占厂商限额)

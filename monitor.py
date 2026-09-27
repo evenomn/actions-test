@@ -117,14 +117,21 @@ def main() -> int:
         print(f"  {n_edb} 条候选带公开 PoC", flush=True)
 
     dedup = not args.no_dedup
-    print("筛选与打分 ...", flush=True)
+    ai_fn = ai_analyze if llm_available() else None
+    if ai_fn:
+        print("筛选与打分(AI 分析师参与: 逐条判定优先级/复现价值/影响面) ...", flush=True)
+    else:
+        print("筛选与打分(无 LLM key,用确定性兜底规则判定优先级/复现价值) ...", flush=True)
     state = load_state()
     items, qualified, stats = enrich_and_filter(
-        candidates, kev_map, state, cfg, now, lookback, dedup=dedup)
+        candidates, kev_map, state, cfg, now, lookback,
+        ai_analyze_fn=ai_fn, dedup=dedup)
     dropped = max(len(qualified) - len(items), 0)
+    n_repro = sum(1 for i in items if i.get("repro_worthy") in ("强烈推荐", "值得"))
     print(f"  符合条件 {len(qualified)} 条,入选 {len(items)} 条"
           f"(低价值未展示 {dropped},去重跳过 {stats['dedup_suppressed']},"
-          f"KEV 升级重推 {stats['kev_upgraded']},上次截掉本次重排 {stats['requeued']})", flush=True)
+          f"KEV 升级重推 {stats['kev_upgraded']},上次截掉本次重排 {stats['requeued']},"
+          f"值得复现 {n_repro})", flush=True)
 
     # PoC 富化:数据集优先(稳定、带 star),搜索兜底(仅对无 PoC 的入选条目,小预算)
     if items:
@@ -150,17 +157,12 @@ def main() -> int:
                             if url not in [u for u, _ in item["poc_links"]]:
                                 item["poc_links"].append((url, label))
 
-    # AI 分析师:LLM 逐条生成中文标题/摘要/处置建议/优先级,并写今日简报;
-    # 无 LLM key 时降级为 Google 机翻,两者都失败仍有启发式标题兜底
+    # AI 今日简报(逐条分析已在筛选阶段完成);无 LLM 时机翻兜底
     briefing = None
     if items and llm_available():
-        print("AI 分析师加工中(标题/摘要/处置建议/优先级) ...", flush=True)
-        ai_analyze(items)
-        n_ai = sum(1 for i in items if i.get("summary_zh"))
-        print(f"  {n_ai}/{len(items)} 条完成 AI 分析", flush=True)
         briefing = ai_briefing(items)
         if briefing:
-            print("  今日要点简报已生成", flush=True)
+            print("今日要点简报已生成", flush=True)
     elif items and cfg["translate"]:
         print("无 LLM key,机翻中文摘要(并发 5) ...", flush=True)
         with ThreadPoolExecutor(max_workers=5) as pool:

@@ -33,7 +33,9 @@ def test_extract_json_garbage():
 def test_ai_analyze_applies_fields(monkeypatch):
     canned = ('```json\n[{"id":"CVE-2026-1","title":"Acme 代理 RCE",'
               '"summary":"未授权攻击者可远程执行任意代码","action":"升级到 2.3.1",'
-              '"urgency":"P0 立即处置"}]\n```')
+              '"urgency":"P0 立即处置","repro_worthy":"强烈推荐",'
+              '"repro_note":"未授权 /api/eval 接口,默认配置即可利用",'
+              '"impact_scope":"边界VPN设备,常暴露公网"}]\n```')
     monkeypatch.setattr(llm, "llm_available", lambda: True)
     monkeypatch.setattr(llm, "_chat", lambda prompt, timeout=180: canned)
     items = [mk()]
@@ -42,6 +44,30 @@ def test_ai_analyze_applies_fields(monkeypatch):
     assert "远程执行" in items[0]["summary_zh"]
     assert items[0]["action_zh"] == "升级到 2.3.1"
     assert items[0]["urgency"] == "P0 立即处置"
+    assert items[0]["repro_worthy"] == "强烈推荐"
+    assert items[0]["repro_note"].startswith("未授权")
+    assert items[0]["impact_scope"] == "边界VPN设备,常暴露公网"
+
+
+def test_ai_analyze_invalid_repro_falls_back(monkeypatch):
+    canned = ('[{"id":"CVE-2026-1","title":"t","summary":"s","action":"a",'
+              '"urgency":"P0 立即处置","repro_worthy":"无中生有","repro_note":"x"}]')
+    monkeypatch.setattr(llm, "llm_available", lambda: True)
+    monkeypatch.setattr(llm, "_chat", lambda prompt, timeout=180: canned)
+    items = [mk()]  # kev=False, cvss 9.8 → 兜底「值得」
+    ai_analyze(items)
+    assert items[0]["repro_worthy"] == "值得"
+
+
+def test_ai_analyze_not_recommended_clears_note(monkeypatch):
+    canned = ('[{"id":"CVE-2026-1","title":"t","summary":"s","action":"a",'
+              '"urgency":"P2 保持关注","repro_worthy":"不建议","repro_note":"别浪费时间"}]')
+    monkeypatch.setattr(llm, "llm_available", lambda: True)
+    monkeypatch.setattr(llm, "_chat", lambda prompt, timeout=180: canned)
+    items = [mk(cvss=7.2)]
+    ai_analyze(items)
+    assert items[0]["repro_worthy"] == "不建议"
+    assert items[0]["repro_note"] is None  # 判定为不建议时,复现要点一并隐藏
 
 
 def test_ai_analyze_invalid_urgency_falls_back(monkeypatch):

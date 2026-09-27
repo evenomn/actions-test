@@ -93,6 +93,12 @@ DEFAULTS = {
     "max_per_vendor": 3,
     "keywords": [],
     "ignore_keywords": ["wordpress plugin"],
+    "ignore_wordpress_plugins": True,
+    "focus_categories": [
+        "边界设备/VPN", "Web中间件", "CMS", "邮件系统",
+        "OA/协同办公", "开发运维/CI", "视频监控", "安全设备",
+    ],
+    "ai_analyze_limit": 30,
     "use_ghsa": True,
     "use_exploitdb": True,
     "search_github_poc": True,
@@ -121,6 +127,10 @@ def load_config(path: Path | None = None) -> dict:
         "max_per_vendor": int(cve.get("max_per_vendor", DEFAULTS["max_per_vendor"])),
         "keywords": [k.lower() for k in cve.get("keywords", [])],
         "ignore_keywords": [k.lower() for k in cve.get("ignore_keywords", DEFAULTS["ignore_keywords"])],
+        "ignore_wordpress_plugins": bool(cve.get("ignore_wordpress_plugins", True)),
+        "focus_categories": [str(c) for c in cve.get(
+            "focus_categories", DEFAULTS["focus_categories"])],
+        "ai_analyze_limit": int(cve.get("ai_analyze_limit", DEFAULTS["ai_analyze_limit"])),
         "use_ghsa": bool(source.get("ghsa", True)),
         "use_exploitdb": bool(source.get("exploitdb", True)),
         "search_github_poc": bool(source.get("search_github_poc", True)),

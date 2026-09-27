@@ -58,6 +58,20 @@ def test_build_markdown_with_briefing_and_urgency():
     assert "**处置**: 升级到 2.3.1" in md
 
 
+def test_build_markdown_repro_and_category():
+    item = rich_item()
+    item["urgency"] = "P0 立即处置"
+    item["repro_worthy"] = "强烈推荐"
+    item["repro_note"] = "未授权 /api/eval 接口,默认配置可利用"
+    item["impact_scope"] = "边界VPN设备,常暴露公网"
+    item["category"] = "边界设备/VPN"
+    md = build_markdown([item], 1, 48, NOW, None, {})
+    assert "**复现**: ⭐⭐⭐强烈推荐" in md
+    assert "影响面: 边界VPN设备,常暴露公网" in md
+    assert "默认配置可利用" in md
+    assert "组件 边界设备/VPN" in md
+
+
 def test_build_markdown_truncates_by_bytes():
     items = [rich_item(f"CVE-2026-{i}") for i in range(50)]
     md = build_markdown(items, 50, 48, NOW, None, {}, max_bytes=3000)

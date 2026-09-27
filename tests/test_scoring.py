@@ -2,7 +2,8 @@
 
 from vulnmon.config import DEFAULTS
 from vulnmon.models import new_item
-from vulnmon.scoring import item_haystack, match_keywords, priority, vendor_key
+from vulnmon.scoring import (item_haystack, is_wordpress_plugin,
+                             match_keywords, priority, vendor_key)
 
 
 def mk(**kw) -> dict:
@@ -11,9 +12,32 @@ def mk(**kw) -> dict:
     return item
 
 
+def test_wordpress_plugin_detection():
+    # 描述句式识别:老版本黑名单短语拦不住的灌水都带这个句式
+    assert is_wordpress_plugin(mk(
+        desc="The Quote plugin for WordPress is vulnerable to arbitrary file upload."))
+    assert is_wordpress_plugin(mk(
+        desc="The OTP Login plugin for WordPress allows authentication bypass via OTP brute force."))
+    # CPE 厂商名特征:<slug>_project
+    assert is_wordpress_plugin(mk(products=["contact_form_project contact-form"]))
+    # WordPress 内核漏洞不是插件
+    assert not is_wordpress_plugin(mk(desc="WordPress core allows SQL injection in wp_query."))
+
+
 def test_match_keywords_strong_fields_substring():
     item = mk(products=["openssh openssh"])
     assert match_keywords(item, ["openssh"]) == "openssh"
+
+
+def test_match_keywords_exchange_compound_guard():
+    # AMQP 的 "topic exchange"、OAuth 的 "token exchange" 不是 Microsoft Exchange
+    item = mk(desc="An authenticated user can bind a queue to a topic exchange and publish to it.")
+    assert match_keywords(item, ["exchange"]) is None
+    item = mk(desc="The library reuses the token exchange flow of OAuth 2.0.")
+    assert match_keywords(item, ["exchange"]) is None
+    # 真正的 Microsoft Exchange 描述命中
+    item = mk(desc="Microsoft Exchange Server allows an attacker to escalate privileges.")
+    assert match_keywords(item, ["exchange"]) == "exchange"
 
 
 def test_match_keywords_word_boundary_and_key_exchange():

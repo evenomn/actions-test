@@ -29,8 +29,23 @@ keywords = [
 ]
 
 # 垃圾过滤:标题/描述/组件命中这些词的直接丢弃
-# (WordPress 插件漏洞是 NVD 每天 9.8 分灌水重灾区,默认拉黑,有需要自行删掉)
 ignore_keywords = ["wordpress plugin"]
+
+# WordPress 插件灌水识别:NVD 描述带「plugin for WordPress」句式或 CPE 厂商为
+# <slug>_project 的插件漏洞直接不推(KEV 在野利用除外)。每天几十条 9.8 分插件洞
+# 的重灾区,建议保持开启;想看就把这里改成 false
+ignore_wordpress_plugins = true
+
+# 暴露面加权:命中这些组件类别的漏洞(见 vulnmon/components.py 的分类表)
+# 在价值排序中 +150。实战里边界设备/中间件/CMS/OA 最常见暴露公网
+focus_categories = [
+  "边界设备/VPN", "Web中间件", "CMS", "邮件系统",
+  "OA/协同办公", "开发运维/CI", "视频监控", "安全设备",
+]
+
+# AI 分析预算:价值排序前 N 条送 LLM 做逐条分析(优先级/复现价值/影响面),
+# 分析结果反过来参与最终入选排序。配了 LLM_API_KEY 才生效
+ai_analyze_limit = 30
 
 [source]
 # GitHub Security Advisories(仅 GitHub 人工审核的公告,自带包生态/影响版本/修复版本)
