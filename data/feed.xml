@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>CVE 漏洞监控日报</title>
+    <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
+    <description>过去 48 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <language>zh-CN</language>
+    <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    <lastBuildDate>Mon, 28 Sep 2026 01:32:24 +0000</lastBuildDate>
+    <item>
+      <title>[critical]Citrix NetScaler Improper Input Validation Vulnerability</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88771</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88771-2026-09-28</guid>
+      <description>CVE-2026-88771 · 🎯P0 立即处置 · 披露 2026-09-27 · 组件 边界设备/VPN · CVSS 9.5 · 类型 输入校验缺失
+This issue affects ADC: before 14.1-73.37, before 13.1-64.23, before 14.1-73.37 FIPS, and before 13.1.37.279 FIPS and NDcPP; Gateway: before 14.1-73.37 and befo…
+信号: 🔥在野利用(KEV),CISA 限期 2026-09-30</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Citrix NetScaler ADC 在野利用 未授权 内存破坏</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88772</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88772-2026-09-28</guid>
+      <description>CVE-2026-88772 · 🎯P0 立即处置 · 披露 2026-09-27 · 组件 边界设备/VPN · CVSS 9.5 · 类型 内存破坏
+Vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway.
+信号: 🔥在野利用(KEV),CISA 限期 2026-09-30 | 💥有PoC
+[murrez/CVE-2026-88772 ⭐2](https://github.com/murrez/CVE-2026-88772)</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]IDNA CRLF注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100717</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100717-2026-09-28</guid>
+      <description>CVE-2026-100717 · 🎯P1 重点关注 · 披露 2026-09-26 · CVSS 9.9 · EPSS 0.3%,前 20% · 类型 CRLF注入 · 难度 低(远程·需低权限)
+The value passes validation, survives IDNA encoding, and is written verbatim into the generated nginx or Apache vhost configuration, allowing the attacker to br…
+信号: ⭐nginx</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]NTFS 未授权 大小写处理不一致</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100669</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100669-2026-09-28</guid>
+      <description>CVE-2026-100669 · 🎯P2 保持关注 · 披露 2026-09-26 · 组件 Web中间件 · CVSS 7.5 · EPSS 0.4%,前 36% · 类型 大小写处理不一致 · 难度 低(远程·免认证)
+On IIS running over case-insensitive NTFS, an unauthenticated remote attacker can vary the case of a folder name or file extension (for example GET /user/CONFIG…
+信号: ⭐nginx</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Because 未授权 授权错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101062</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101062-2026-09-28</guid>
+      <description>CVE-2026-101062 · 🎯P2 保持关注 · 披露 2026-09-27 · CVSS 8.8 · 类型 授权错误 · 难度 低(远程·免认证·需用户交互)
+Because the authorization flow auto-completes for an already logged-in user with no consent screen, an attacker who registers a client pointing at their own dom…
+信号: ⭐exchange</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Eval 未授权 代码注入(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100741</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100741-2026-09-28</guid>
+      <description>CVE-2026-100741 · 🎯P1 重点关注 · 披露 2026-09-27 · 组件 邮件系统 · CVSS 9.8 · EPSS 1.7%,前 77% · 类型 代码注入(RCE) · 难度 低(远程·免认证)
+Eval injection in the JScript event-script dispatcher in Progressive Robot Ltd's hMailServer, versions 6.0.0 through 6.3.3 on Windows, allows a remote, unauthen…
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]MatchTrustedPeer 未授权 证书校验缺陷</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93302</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93302-2026-09-28</guid>
+      <description>CVE-2026-93302 · 🎯P2 保持关注 · 披露 2026-09-27 · CVSS 8.3 · EPSS 0.4%,前 28% · 类型 证书校验缺陷
+When the certificate is listed as a trusted peer certificate the issue previously allowed for a malicious (D)TLS server to bypass authentication once knowing wh…
+信号: ⭐nginx</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Joomla Extension 未授权 路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97163</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97163-2026-09-28</guid>
+      <description>CVE-2026-97163 · 🎯P1 重点关注 · 披露 2026-09-26 · 组件 CMS · CVSS 10.0 · EPSS 0.4%,前 33% · 类型 路径遍历/任意文件读取/访问控制缺失
+Joomla Extension - lomart.fr - Unauthenticated remote code installation in UP plugin extension 5.0.0-5.2.0, 6.0.0-6.0.29
+信号: 💥有PoC
+[murrez/CVE-2026-97163 ⭐1](https://github.com/murrez/CVE-2026-97163) · [qeize/cve-2026-97163-payload ⭐0](https://github.com/qeize/cve-2026-97163-payload)</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Joomla Extension 未授权 任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-94132</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-94132-2026-09-28</guid>
+      <description>CVE-2026-94132 · 🎯P1 重点关注 · 披露 2026-09-26 · 组件 CMS · CVSS 9.5 · EPSS 0.6%,前 44% · 类型 任意文件上传
+Joomla Extension - acymailing.com - Remote Code Execution vulnerability in mailbox action feature in AcyMailing Enterprise extension &lt; 11.1.0 - MIME parts of in…
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Joomla Extension 代码注入(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97160</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97160-2026-09-28</guid>
+      <description>CVE-2026-97160 · 🎯P1 重点关注 · 披露 2026-09-26 · 组件 CMS · CVSS 9.4 · EPSS 1.3%,前 70% · 类型 代码注入(RCE)
+Joomla Extension - lomart.fr - Authenticated, privileged PHP command injection in UP plugin extension 5.0.0-5.2.0, 6.0.0-6.0.29
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Joomla Extension 未授权 SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-94130</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-94130-2026-09-28</guid>
+      <description>CVE-2026-94130 · 🎯P1 重点关注 · 披露 2026-09-26 · 组件 CMS · CVSS 9.3 · EPSS 0.4%,前 30% · 类型 SQL注入
+Joomla Extension - joomlaboat.com - Unauthenticated SQL injection in YouTube Gallery extension &lt; 5.7.3 - An SQL injection vulnerability in video search function…
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Inconsistent 未授权 CWE-444</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88773</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88773-2026-09-28</guid>
+      <description>CVE-2026-88773 · 🎯P1 重点关注 · 披露 2026-09-27 · 组件 边界设备/VPN · CVSS 9.3 · 类型 CWE-444
+Inconsistent interpretation of HTTP requests ('HTTP Request/Response smuggling') vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway.
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Joomla Extension 未授权 路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97161</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97161-2026-09-28</guid>
+      <description>CVE-2026-97161 · 🎯P1 重点关注 · 披露 2026-09-26 · 组件 CMS · CVSS 9.2 · EPSS 0.4%,前 33% · 类型 路径遍历/任意文件读取/访问控制缺失
+Joomla Extension - lomart.fr - Various path traversal / file access vectors in UP plugin extension 5.0.0-5.2.0, 6.0.0-6.0.29
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Seetong T8108 未授权 认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100886</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100886-2026-09-28</guid>
+      <description>CVE-2026-100886 · 🎯P1 重点关注 · 披露 2026-09-27 · CVSS 10.0 · 类型 认证绕过 · 难度 低(远程·免认证)
+A vulnerability was identified in Seetong T8108, T8108P, T8116 and T8232 4.6.1.4-build202604241011. Such manipulation leads to improper authentication.
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MutatingWebhookConfiguration 意图代理错误(混源下载)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100706</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100706-2026-09-28</guid>
+      <description>CVE-2026-100706 · 🎯P1 重点关注 · 披露 2026-09-26 · CVSS 9.9 · EPSS 0.6%,前 47% · 类型 意图代理错误(混源下载) · 难度 低(远程·需低权限)
+Attackers can exploit this by using percent-encoded directory traversal sequences to create MutatingWebhookConfiguration objects cluster-wide or PolicyException…
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]D-Link DIR-895L A1_102b07. Performing 内存破坏</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100740</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100740-2026-09-28</guid>
+      <description>CVE-2026-100740 · 🎯P1 重点关注 · 披露 2026-09-27 · 组件 网络设备 · CVSS 9.9 · EPSS 0.5%,前 37% · 类型 内存破坏/越界写入 · 难度 低(远程·需低权限)
+A vulnerability was detected in D-Link DIR-895L A1_102b07. Performing a manipulation results in out-of-bounds write.
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Froxlor 文件链接绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100716</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100716-2026-09-28</guid>
+      <description>CVE-2026-100716 · 🎯P1 重点关注 · 披露 2026-09-26 · CVSS 9.9 · EPSS 0.4%,前 31% · 类型 文件链接绕过 · 难度 低(远程·需低权限)
+Froxlor is a server administration panel. Exploitation is deterministic and requires no race.
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Owner 未授权 缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101065</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101065-2026-09-28</guid>
+      <description>CVE-2026-101065 · 🎯P1 重点关注 · 披露 2026-09-27 · 组件 容器/虚拟化 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+When authentication is disabled, every request is mapped to a synthetic "nobody" user that holds the Owner and Admin roles, so any unauthenticated party who can…
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OAuth2 未授权 开放重定向</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101090</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101090-2026-09-28</guid>
+      <description>CVE-2026-101090 · 🎯P1 重点关注 · 披露 2026-09-27 · CVSS 9.8 · 类型 开放重定向 · 难度 低(远程·免认证)
+An attacker who induces a victim to begin OAuth2 login via a request that reaches Nezha with a forged Host header can cause an attacker-controlled callback URL …
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Froxlor 文件链接绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100715</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100715-2026-09-28</guid>
+      <description>CVE-2026-100715 · 🎯P1 重点关注 · 披露 2026-09-26 · CVSS 9.6 · EPSS 0.4%,前 32% · 类型 文件链接绕过 · 难度 低(远程·需低权限)
+Froxlor through 2.3.10 is vulnerable to arbitrary file deletion via symlink following in the FTP data deletion cron task.
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MCP 越权(IDOR)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101084</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101084-2026-09-28</guid>
+      <description>CVE-2026-101084 · 🎯P1 重点关注 · 披露 2026-09-27 · CVSS 9.6 · 类型 越权(IDOR) · 难度 低(远程·需低权限)
+Attackers can bypass authorization checks to access and manipulate sensitive backend systems through MCP tool calls using stored OAuth credentials.
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 授权错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100721</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100721-2026-09-28</guid>
+      <description>CVE-2026-100721 · 🎯P1 重点关注 · 披露 2026-09-27 · CVSS 9.0 · EPSS 0.4%,前 32% · 类型 授权错误 · 难度 低(远程·利用条件苛刻·免认证)
+.../node_modules/foo2/index.js); the sibling passes isPathAllowedForModule and is loaded through hostRequire, so its top-level code runs in the host proce…
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Froxlor 参数拼接注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100714</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100714-2026-09-28</guid>
+      <description>CVE-2026-100714 · 🎯P1 重点关注 · 披露 2026-09-26 · CVSS 9.1 · EPSS 0.5%,前 44% · 类型 参数拼接注入 · 难度 中(远程·需高权限)
+Froxlor before 2.3.12 does not restrict or escape the system.letsencryptchallengepath setting: unlike sibling settings hardened in GHSA-33mp, the field has no s…
+信号:</description>
+      <pubDate>Mon, 28 Sep 2026 01:32:24 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
