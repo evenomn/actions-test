@@ -70,6 +70,34 @@ def test_ai_analyze_not_recommended_clears_note(monkeypatch):
     assert items[0]["repro_note"] is None  # 判定为不建议时,复现要点一并隐藏
 
 
+def test_ai_hallucinated_exp_scrubbed(monkeypatch):
+    """无 PoC 证据时,AI 文本里虚构的「公开EXP」要被剔除(反幻觉清洗)。"""
+    canned = ('[{"id":"CVE-2026-1","title":"Netcore认证绕过",'
+              '"summary":"公开EXP可利用缺失认证远程接管设备","action":"升级固件",'
+              '"urgency":"P0 立即处置","repro_worthy":"强烈推荐",'
+              '"repro_note":"公开EXP调用boa_temp接口","impact_scope":"企业路由器"}]')
+    monkeypatch.setattr(llm, "llm_available", lambda: True)
+    monkeypatch.setattr(llm, "_chat", lambda prompt, timeout=180: canned)
+    items = [mk()]  # 无 poc_links / has_exploit_ref / poc_quality
+    ai_analyze(items)
+    for field in ("summary_zh", "repro_note"):
+        assert "公开EXP" not in (items[0][field] or "")
+    assert items[0]["repro_note"] == "调用boa_temp接口"
+
+
+def test_ai_exp_kept_when_poc_exists(monkeypatch):
+    """有 PoC 证据时,「公开EXP」表述保留(不是误杀)。"""
+    canned = ('[{"id":"CVE-2026-1","title":"t","summary":"公开EXP可利用",'
+              '"action":"a","urgency":"P0 立即处置","repro_worthy":"强烈推荐",'
+              '"repro_note":"公开EXP打接口"}]')
+    monkeypatch.setattr(llm, "llm_available", lambda: True)
+    monkeypatch.setattr(llm, "_chat", lambda prompt, timeout=180: canned)
+    items = [mk(poc_links=[("https://github.com/x/y", "x/y 9★ (有源码)")],
+                poc_quality="code")]
+    ai_analyze(items)
+    assert "公开EXP" in items[0]["summary_zh"]
+
+
 def test_ai_analyze_invalid_urgency_falls_back(monkeypatch):
     canned = '[{"id":"CVE-2026-1","title":"t","summary":"s","action":"a","urgency":"随便"}]'
     monkeypatch.setattr(llm, "llm_available", lambda: True)

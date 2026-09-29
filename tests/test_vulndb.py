@@ -79,7 +79,7 @@ def test_build_detail_sections():
                          impact_scope="边界VPN设备,常暴露公网",
                          action_zh="升级到 13.1;临时关闭管理面公网暴露"))
     for section in ("漏洞原理", "影响版本", "PoC 与武器化状态", "复现建议",
-                    "处置建议", "参考", "CVSS 向量解析"):
+                    "处置建议", "参考", "CVSS 向量解析", "源码与资料"):
         assert section in md
     assert "KEV在野利用" in md and "PoC源码可用" in md
     assert "CISA 修复限期" in md and "2026-09-30" in md
@@ -98,3 +98,17 @@ def test_write_details_one_file_per_cve(tmp_path: Path):
     assert (tmp_path / "vulns" / "CVE-2026-2.md").exists()
     md = (tmp_path / "vulns" / "CVE-2026-1.md").read_text(encoding="utf-8")
     assert md.startswith("# CVE-2026-1")
+
+
+def test_detail_source_and_search_links():
+    # 开源产品:给上游仓库直达
+    md = build_detail(mk(products=["nginx nginx"], category=None))
+    assert "nginx/nginx" in md and "https://github.com/nginx/nginx" in md
+    # GHSA 包生态:给包地址
+    md2 = build_detail(mk(products=[], ghsa_ranges=["pip:django <5.0"]))
+    assert "pypi.org/project/django" in md2
+    # 每条都有 CVE 检索入口(代码/通告/文章)
+    for md_x in (md, md2):
+        assert "github.com/search?q=CVE-" in md_x
+        assert "github.com/advisories?query=CVE-" in md_x
+        assert "google.com/search?q=CVE-" in md_x

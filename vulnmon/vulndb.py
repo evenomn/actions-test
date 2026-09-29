@@ -4,6 +4,7 @@
 - 漏洞原理:完整 NVD 描述 + CWE 类型解读 + CVSS 向量逐项解析(攻击路径/权限/影响)
 - 影响版本与修复状态
 - PoC 与武器化状态(源码核验标记/nuclei/KEV 限期)
+- 源码与资料:开源组件的上游仓库/包地址 + CVE 代码搜索/通告/文章检索入口
 - 复现建议与处置建议
 - 参考链接(厂商通告/补丁/GHSA)
 
@@ -13,8 +14,10 @@
 from __future__ import annotations
 
 import re
+import urllib.parse
 from pathlib import Path
 
+from .components import source_repo_url
 from .models import vector_detail
 from .report import affected_line, item_title
 from .text import poc_label
@@ -147,6 +150,17 @@ def build_detail(item: dict) -> str:
         lines.append("暂无公开 PoC。")
     if item.get("nuclei"):
         lines.append("- nuclei 检测模板已收录(projectdiscovery/nuclei-templates),可直接用于资产扫描。")
+    lines.append("")
+
+    # 源码与资料:上游仓库/包地址 + CVE 检索入口(每条都有)
+    lines += ["## 源码与资料", ""]
+    src = source_repo_url(item)
+    if src:
+        lines.append(f"- 源码/包: [{src[0]}]({src[1]})")
+    cid_q = urllib.parse.quote(item["id"])
+    lines.append(f"- [GitHub 代码中搜索此 CVE](https://github.com/search?q={cid_q}&type=code)(找 PoC/利用片段)")
+    lines.append(f"- [GitHub 安全通告检索](https://github.com/advisories?query={cid_q})")
+    lines.append(f"- [分析文章检索](https://www.google.com/search?q={cid_q}+exploit+analysis)")
     lines.append("")
 
     # 复现建议

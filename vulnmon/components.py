@@ -109,6 +109,87 @@ CATEGORY_KEYWORDS: dict[str, list[str]] = {
     ],
 }
 
+# 知名开源产品的上游源码仓库(CPE 厂商/产品 -> GitHub 仓库),
+# 详情页「源码与资料」区用于给出门源码直达地址;未收录的走仓库搜索链接
+SOURCE_REPOS = {
+    "nginx": "nginx/nginx", "httpd": "apache/httpd", "apache": "apache/httpd",
+    "tomcat": "apache/tomcat", "jboss": "wildfly/wildfly", "wildfly": "wildfly/wildfly",
+    "struts": "apache/struts", "spring": "spring-projects/spring-framework",
+    "spring_framework": "spring-projects/spring-framework",
+    "spring_security": "spring-projects/spring-security",
+    "log4j": "apache/logging-log4j2", "jackson": "FasterXML/jackson-databind",
+    "fastjson": "alibaba/fastjson", "openssl": "openssl/openssl",
+    "openssh": "openssh/openssh-portable", "curl": "curl/curl", "libcurl": "curl/curl",
+    "zlib": "madler/zlib", "libpng": "pnggroup/libpng", "linux": "torvalds/linux",
+    "kernel": "torvalds/linux", "sudo": "sudo-project/sudo", "systemd": "systemd/systemd",
+    "docker": "moby/moby", "containerd": "containerd/containerd",
+    "kubernetes": "kubernetes/kubernetes", "k8s": "kubernetes/kubernetes",
+    "rancher": "rancher/rancher", "qemu": "qemu/qemu", "xen": "xen-project/xen",
+    "proxmox": "proxmox/pve-manager", "lxd": "canonical/lxd",
+    "cloud-init": "canonical/cloud-init", "kyverno": "kyverno/kyverno",
+    "gitlab": "gitlabhq/gitlabhq", "gitea": "go-gitea/gitea", "gogs": "gogs/gogs",
+    "jenkins": "jenkinsci/jenkins", "nexus": "sonatype/nexus-public",
+    "harbor": "goharbor/harbor", "sonarqube": "SonarSource/sonarqube",
+    "argocd": "argocd/argo-cd", "grafana": "grafana/grafana",
+    "zabbix": "zabbix/zabbix", "prometheus": "prometheus/prometheus",
+    "nagios": "NagiosEnterprises/nagioscore", "cacti": "Cacti/cacti",
+    "graylog": "Graylog2/graylog2-server", "wordpress": "WordPress/WordPress",
+    "joomla": "joomla/joomla-cms", "drupal": "drupal/drupal",
+    "magento": "magento/magento2", "ghost": "TryGhost/Ghost", "halo": "halo-dev/halo",
+    "django": "django/django", "flask": "pallets/flask", "fastapi": "fastapi/fastapi",
+    "requests": "psf/requests", "python": "python/cpython", "php": "php/php-src",
+    "rails": "rails/rails", "laravel": "laravel/laravel", "thinkphp": "top-think/framework",
+    "redis": "redis/redis", "memcached": "memcached/memcached",
+    "mongodb": "mongodb/mongo", "elasticsearch": "elastic/elasticsearch",
+    "clickhouse": "ClickHouse/ClickHouse", "mysql": "mysql/mysql-server",
+    "mariadb": "mariadb/server", "postgresql": "postgres/postgres",
+    "sqlite": "sqlite/sqlite", "couchdb": "apache/couchdb",
+    "influxdb": "influxdata/influxdb", "imagemagick": "ImageMagick/ImageMagick",
+    "ffmpeg": "FFmpeg/FFmpeg", "keycloak": "keycloak/keycloak", "minio": "minio/minio",
+    "ceph": "ceph/ceph", "gluster": "gluster/glusterfs",
+    "haproxy": "haproxy/haproxy", "envoy": "envoyproxy/envoy",
+    "traefik": "traefik/traefik", "caddy": "caddyserver/caddy",
+    "lighttpd": "lighttpd/lighttpd", "varnish": "varnishcache/varnish-cache",
+    "squid": "squid-cache/squid", "openvpn": "OpenVPN/openvpn",
+    "wireguard": "WireGuard/wireguard", "strongswan": "strongswan/strongswan",
+    "vm2": "patriksimek/vm2", "pyjwt": "jpadilla/pyjwt",
+    "froxlor": "froxlor/Froxlor", "roundcube": "roundcube/roundcubemail",
+    "chromium": "chromium/chromium", "chrome": "chromium/chromium",
+    "firefox": "mozilla/gecko-dev", "webkit": "WebKit/WebKit",
+}
+
+# GHSA 包生态 -> 包注册页(源码入口)
+PACKAGE_PAGES = {
+    "pip": "https://pypi.org/project/{pkg}/",
+    "npm": "https://www.npmjs.com/package/{pkg}",
+    "go": "https://pkg.go.dev/{pkg}",
+    "maven": "https://central.sonatype.com/artifact/{pkg}",
+    "composer": "https://packagist.org/packages/{pkg}",
+    "gem": "https://rubygems.org/gems/{pkg}",
+    "nuget": "https://www.nuget.org/packages/{pkg}",
+    "cargo": "https://crates.io/crates/{pkg}",
+    "pub": "https://pub.dev/packages/{pkg}",
+}
+
+
+def source_repo_url(item: dict) -> tuple[str, str] | None:
+    """返回 (显示名, URL):上游源码仓库或包注册页;识别不出返回 None。"""
+    for r in item.get("ghsa_ranges") or []:
+        head = (r.split(":", 1)[0] or "").lower()
+        rest = r.split(":", 1)[1] if ":" in r else ""
+        pkg = rest.split()[0] if rest.split() else ""
+        tpl = PACKAGE_PAGES.get(head)
+        if tpl and pkg:
+            return f"{head}:{pkg}", tpl.format(pkg=pkg)
+    for p in item.get("products") or []:
+        vendor, _, prod = p.partition(" ")
+        for key in (vendor, prod, prod.replace("_", "")):
+            if key in SOURCE_REPOS:
+                repo = SOURCE_REPOS[key]
+                return repo, f"https://github.com/{repo}"
+    return None
+
+
 # 展开为按关键词长度降序的匹配表,避免宽词抢先命中
 _FLAT: list[tuple[str, str]] = sorted(
     ((kw, cat) for cat, kws in CATEGORY_KEYWORDS.items() for kw in kws),

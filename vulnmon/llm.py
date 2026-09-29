@@ -110,6 +110,9 @@ def _fallback_urgency(item: dict) -> str:
 
 ANALYZE_PROMPT = (
     "你是资深漏洞情报分析师,兼渗透测试主管。根据每个CVE的结构化证据输出中文分析:\n"
+    "【严禁虚构】输入证据中 poc_count=0 表示没有任何公开 PoC/EXP,此时标题/摘要/"
+    "复现要点中不得出现「公开EXP」「已有PoC」「已有利用代码」等说法,只能基于"
+    "漏洞原理描述入口与参数;有 PoC 时才允许提。\n"
     'title: 不超过22字,格式「产品/组件+漏洞类型+核心要点」,不要以CVE编号开头\n'
     'summary: 不超过55字,说清谁能利用、怎么利用、造成什么后果\n'
     'action: 不超过40字,给出处置建议(如「升级到 x.y.z」/「临时禁用xx功能缓解」);'
@@ -137,6 +140,16 @@ ANALYZE_PROMPT = (
     "\n输入:\n")
 
 
+FAKE_EXP_RE = re.compile(r"公开(?:的)?(?:EXP|Exp|exp|PoC|POC|poc|利用代码|漏洞利用)")
+
+
+def _scrub_fake_exp(text: str | None, has_poc: bool) -> str | None:
+    """无任何 PoC 证据时,剔除 AI 文本里虚构的「公开EXP」类说法。"""
+    if not text or has_poc:
+        return text
+    return FAKE_EXP_RE.sub("", text)
+
+
 def _sanitize(item: dict, row: dict):
     item["title_zh"] = (str(row.get("title") or "").strip()[:30]) or None
     item["summary_zh"] = (str(row.get("summary") or "").strip()[:90]) or None
@@ -149,6 +162,11 @@ def _sanitize(item: dict, row: dict):
     item["impact_scope"] = (str(row.get("impact_scope") or "").strip()[:30]) or None
     if item["repro_worthy"] == "不建议":
         item["repro_note"] = None
+    # 反幻觉清洗:无 PoC 证据时,AI 文本不得声称存在公开利用
+    has_poc = bool(item.get("poc_links")) or item.get("has_exploit_ref") \
+        or item.get("poc_quality") == "code"
+    for field in ("title_zh", "summary_zh", "repro_note", "action_zh", "impact_scope"):
+        item[field] = _scrub_fake_exp(item[field], has_poc)
 
 
 def ai_analyze(items: list[dict]):
