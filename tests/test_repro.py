@@ -72,6 +72,7 @@ def test_total_cap_keeps_highest_value():
     existing = [{
         "id": f"CVE-2026-T{i}", "repro_worthy": "值得", "first_seen": "2026-09-10",
         "last_seen": "2026-09-28", "cvss": 7.0 + i * 0.1, "kev": False,
+        "poc": [{"url": f"u{i}", "label": f"x/p{i} ⭐9 [源码✅]"}],   # 过存量复检
         "link": f"https://nvd.nist.gov/vuln/detail/CVE-2026-T{i}",
     } for i in range(10)]
     db = merge_repro(existing, [], NOW, retention_days=21,
@@ -192,6 +193,31 @@ def test_write_repro_tolerates_corrupt_existing(tmp_path: Path):
     (tmp_path / "repro.json").write_text("{broken", encoding="utf-8")
     info = write_repro([mk(_ai_judged=True)], {}, tmp_path, NOW)
     assert info["count"] == 1
+
+
+def test_legacy_entries_revalidated():
+    """存量复检:旧规则放进来的无硬证据条目,下轮合并即清出。"""
+    existing = [
+        {"id": "CVE-2026-A", "repro_worthy": "值得", "kev": True, "cvss": 9.5,
+         "first_seen": "2026-09-20", "last_seen": "2026-09-28",
+         "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-A"},                    # KEV → 留
+        {"id": "CVE-2026-B", "repro_worthy": "值得", "kev": False, "cvss": 9.9,
+         "ai_judged": True,
+         "poc": [{"url": "u", "label": "x/poc ⭐9 [源码✅]"}],
+         "first_seen": "2026-09-20", "last_seen": "2026-09-28",
+         "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-B"},                    # 源码 → 留
+        {"id": "CVE-2026-C", "repro_worthy": "值得", "kev": False, "cvss": 9.9,
+         "ai_judged": True, "poc": [{"url": "u", "label": "x/poc ⭐9 [仅README]"}],
+         "first_seen": "2026-09-20", "last_seen": "2026-09-28",
+         "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-C"},                    # AI高信判值得 → 留
+        {"id": "CVE-2026-D", "repro_worthy": "值得", "kev": False, "cvss": 8.2,
+         "ai_judged": False, "poc": [],
+         "first_seen": "2026-09-20", "last_seen": "2026-09-28",
+         "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-D"},                    # 无证据低分 → 清
+    ]
+    db = merge_repro(existing, [], NOW)
+    ids = {r["id"] for r in db}
+    assert ids == {"CVE-2026-A", "CVE-2026-B", "CVE-2026-C"}
 
 
 def test_write_repro_prunes_stale_details(tmp_path: Path):

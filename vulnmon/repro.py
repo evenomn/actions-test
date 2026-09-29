@@ -102,6 +102,17 @@ def _new_rank(item: dict):
             item.get("repro_worthy") == "强烈推荐", item.get("cvss") or 0)
 
 
+def _record_passes_strict(r: dict) -> bool:
+    """按新硬门槛复检存量记录(用已存储字段,清理旧规则放进来的条目)。"""
+    if r.get("kev") or r.get("repro_worthy") == "强烈推荐":
+        return True
+    if any("源码✅" in (p.get("label") or "") for p in r.get("poc", [])):
+        return True
+    if r.get("ai_judged") and (r.get("cvss") or 0) >= 9.0:
+        return True
+    return False
+
+
 def merge_repro(existing: list[dict], items: list[dict], now: datetime,
                 retention_days: int = 21,
                 max_new_per_day: int = 5, max_total: int = 30) -> list[dict]:
@@ -135,6 +146,8 @@ def merge_repro(existing: list[dict], items: list[dict], now: datetime,
     # 清旧账:第三方扩展且从未经 AI 研判且非在野利用
     db = {cid: r for cid, r in db.items()
           if not (r.get("third_party") and not r.get("ai_judged") and not r.get("kev"))}
+    # 存量复检:旧规则放进来的条目按新硬门槛重新校验
+    db = {cid: r for cid, r in db.items() if _record_passes_strict(r)}
     cutoff = (now - timedelta(days=retention_days)).date().isoformat()
     fresh = [r for r in db.values() if r.get("last_seen", "") >= cutoff]
     ranked = sorted(fresh, key=_sort_key, reverse=True)
