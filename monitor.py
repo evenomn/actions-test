@@ -244,7 +244,8 @@ def main() -> int:
     if cfg.get("repro", True):
         info = write_repro(qualified, cfg, repro_dir, now)
         print(f"  可复现漏洞库: 共 {info['count']} 条(强烈推荐 {info['recommended']}),"
-              f"见 {repro_dir}/repro.md", flush=True)
+              f"详情档案 {info['details']} 份,见 {repro_dir}/repro.md 与 {repro_dir}/vulns/",
+              flush=True)
     if args.dry_run:
         if args.mode == "events":
             md = build_events_markdown(items, now, stats)

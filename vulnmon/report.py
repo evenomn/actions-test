@@ -215,37 +215,40 @@ def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
     return "\n".join(lines)
 
 
+def digest_line(i: dict) -> str:
+    """统一的日报条目行格式:字段顺序固定,所有输出(日报/存档)共用。"""
+    stars = "🔴" if i["tier"] == "critical" else "🟠"
+    bits = [f"{stars} **{item_title(i)}** — [{i['id']}]({item_link(i)})"]
+    bits.append(f"🎯{i.get('urgency') or '未评级'}")
+    bits.append(f"组件 {i.get('category') or '未知'}")
+    bits.append(f"CVSS {i['cvss'] if i['cvss'] is not None else '未知'}")
+    bits.append("类型 " + ("/".join(i["cwe_labels"]) if i["cwe_labels"] else "未知"))
+    bits.append("难度 " + (i["difficulty"] or "未知"))
+    repro = i.get("repro_worthy")
+    if repro and repro != "不建议":
+        bits.append(f"复现{repro}")
+    sig = signals(i)
+    if sig:
+        bits.append(" / ".join(sig))
+    line = " · ".join(bits)
+    poc = poc_links_line(i)
+    if poc:
+        line += f"\nPoC: {poc}"
+    return line
+
+
 def build_archive(qualified: list[dict], now: datetime) -> str:
-    """把当天所有符合条件的漏洞写成完整清单存档。"""
+    """把当天所有符合条件的漏洞写成完整清单存档(统一格式)。"""
     lines = [f"# 漏洞完整清单 {now.strftime('%Y-%m-%d')}",
              "", f"共 {len(qualified)} 条符合条件(按价值降序):", ""]
     for i in qualified:
-        stars = "🔴" if i["tier"] == "critical" else "🟠"
-        sig = signals(i)
-        bits = []
-        if i.get("urgency"):
-            bits.append(i["urgency"])
-        if i.get("category"):
-            bits.append("组件 " + i["category"])
-        bits.append("CVSS " + str(i["cvss"]))
-        bits.append("/".join(i["cwe_labels"]) or "类型未知")
-        bits.append("难度 " + (i["difficulty"] or "未知"))
-        repro = i.get("repro_worthy")
-        if repro and repro != "不建议":
-            bits.append("复现" + repro)
-        if sig:
-            bits.append(" / ".join(sig))
-        lines.append(f"- {stars} **{item_title(i)}** — [{i['id']}]({item_link(i)}) · "
-                     + " · ".join(bits))
-        poc = poc_links_line(i)
-        if poc:
-            lines.append(f"  - PoC: {poc}")
+        lines.append("- " + digest_line(i))
         refs = refs_line(i)
         if refs:
-            lines.append(f"  - 参考: {refs}")
+            lines.append(f"  参考: {refs}")
         affected = affected_line(i)
         if affected:
-            lines.append(f"  - 影响: {affected}")
+            lines.append(f"  影响: {affected}")
     return "\n".join(lines) + "\n"
 
 
@@ -369,8 +372,10 @@ def write_outputs(qualified: list[dict], now: datetime,
     """写存档/feed.json/RSS,清理过期文件。返回 {"archive": 相对路径}。"""
     data_dir.mkdir(parents=True, exist_ok=True)
     date_str = now.date().isoformat()
-    archive_name = f"data/digest-{date_str}.md"
-    (data_dir / f"digest-{date_str}.md").write_text(
+    archive_name = f"data/daily/digest-{date_str}.md"
+    daily_dir = data_dir / "daily"
+    daily_dir.mkdir(exist_ok=True)
+    (daily_dir / f"digest-{date_str}.md").write_text(
         build_archive(qualified, now), encoding="utf-8")
     if cfg["feed_json"]:
         (data_dir / "feed.json").write_text(
@@ -381,7 +386,7 @@ def write_outputs(qualified: list[dict], now: datetime,
             build_rss(qualified, now, lookback_hours, briefing=briefing), encoding="utf-8")
     # 清理过期存档
     cutoff = (now - timedelta(days=cfg["retention_days"])).date()
-    for f in data_dir.glob("digest-*.md"):
+    for f in data_dir.glob("daily/digest-*.md"):
         try:
             if datetime.strptime(f.stem.replace("digest-", ""), "%Y-%m-%d").date() < cutoff:
                 f.unlink()

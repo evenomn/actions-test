@@ -14,7 +14,13 @@ DESC_KEYWORDS = [
 ]
 
 STOPWORDS = {"The", "This", "That", "When", "An", "A", "In", "On", "Under", "If",
-             "It", "Its", "These", "Multiple", "Several", "Users", "Attackers"}
+             "It", "Its", "These", "Multiple", "Several", "Users", "Attackers",
+             # NVD 描述里高频的句首动词/引导词,猜成产品名会产出垃圾标题
+             "Because", "Performing", "Owner", "Inconsistent", "Mutating",
+             "Improper", "Affected", "Impacted", "Using", "Certain", "Some",
+             "All", "Any", "Prior", "After", "Before", "During", "While",
+             "Since", "Note", "Also", "Overview", "Summary", "Details",
+             "Description", "Manipulation", "Manipulating", "Injection"}
 
 # 描述里常见的泛型词/漏洞缩写,猜出来也不能当产品名
 GENERIC_NAMES = {"Vulnerability", "Critical", "Weakness", "Common", "CVSS", "NVD",
@@ -23,7 +29,8 @@ GENERIC_NAMES = {"Vulnerability", "Critical", "Weakness", "Common", "CVSS", "NVD
                  "Exposure", "Injection", "Path", "Privilege", "Access",
                  "XSS", "RCE", "CSRF", "SSRF", "SQL", "XXE", "LFI", "RFI", "IDOR",
                  "HTTP", "HTTPS", "API", "URL", "URI", "DNS", "TLS", "SSL", "SSH",
-                 "TCP", "UDP", "IP", "VPN", "SMB", "JWT", "XML", "JSON", "DoS"}
+                 "TCP", "UDP", "IP", "VPN", "SMB", "JWT", "XML", "JSON", "DoS",
+                 "OAuth2", "MCP", "Eval", "IDNA", "NTFS", "Webhook"}
 
 
 def pick_desc(desc: str, limit: int = 240) -> str:

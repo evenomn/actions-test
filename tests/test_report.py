@@ -111,7 +111,7 @@ def test_chunk_markdown_respects_limit():
 def test_write_outputs(tmp_path: Path):
     cfg = dict(DEFAULTS)
     info = write_outputs([rich_item()], NOW, 48, cfg, tmp_path)
-    assert (tmp_path / "digest-2026-09-27.md").exists()
+    assert (tmp_path / "daily" / "digest-2026-09-27.md").exists()
     assert (tmp_path / "feed.json").exists()
     assert (tmp_path / "feed.xml").exists()
-    assert info["archive"] == "data/digest-2026-09-27.md"
+    assert info["archive"] == "data/daily/digest-2026-09-27.md"

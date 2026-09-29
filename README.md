@@ -152,17 +152,23 @@ PAT 需要 Actions 读写权限(fine-grained,仅授权本仓库即可)。
 
 ## 输出物
 
-| 文件 | 说明 |
-|---|---|
-| `data/repro.md` / `data/repro.json` | **🎯 高价值可复现漏洞库**(内网拉取入口,见下节) |
-| `data/digest-日期.md` | 当日完整清单存档(含未入选的达标漏洞) |
-| `data/feed.json` | 结构化 feed(含 stats 统计块),供看板/程序消费 |
-| `data/feed.xml` | RSS 2.0,可用阅读器订阅 |
-| `data/history.json` | 每日达标漏洞沉淀(60 天),周报数据源 |
-| `data/weekly-YYYY-Www.md` | 周报复盘存档 |
-| `data/state.json` | 去重/推送时间/评分基线(v3,旧版自动迁移) |
+```
+data/
+├── daily/                    # 📰 漏洞日报(每日一份,统一格式,保留 30 天)
+│   └── digest-2026-09-28.md
+├── vulns/                    # 🔬 漏洞详情库(一洞一档,判定值得复现的)
+│   ├── CVE-2026-88771.md     #   原理/攻击路径/影响版本/PoC/复现建议/处置/参考
+│   └── CVE-2026-88772.md
+├── repro.md / repro.json     # 🎯 可复现漏洞清单(总索引,滚动 21 天)
+├── feed.json / feed.xml      # 机器可读 feed(含 stats 统计块)+ RSS
+├── history.json              # 每日沉淀(60 天),周报数据源
+├── weekly-YYYY-Www.md        # 周报复盘
+└── state.json                # 去重/推送时间/评分基线(v3)
+```
 
-RSS/JSON 里的链接基于 `GITHUB_REPOSITORY` 自动生成,指向仓库内 feed 文件。
+**日报条目统一格式**(字段顺序固定):`🔴 标题 — CVE · 🎯优先级 · 组件 · CVSS · 类型 · 难度 · 复现 · 信号 / PoC`
+
+**详情页(vulns/)每份包含**:一句话摘要、漏洞原理(类型解读 + NVD 完整原文 + CVSS 向量逐项解析)、影响版本与修复状态、PoC 与武器化状态(源码核验/nuclei/KEV 限期)、复现建议(入口要点/影响面/门槛)、处置建议、参考链接。文件名即 CVE 号,重复入库自动覆盖刷新,内网按文件名直接检索。
 
 ## 高价值可复现漏洞库(内网拉取)
 

@@ -155,5 +155,30 @@ def exploit_difficulty(vector: str | None) -> str | None:
     return f"{grade}({'·'.join(factors)})" if factors else grade
 
 
+VECTOR_LABELS = {
+    "AV": {"N": "网络(远程可打)", "A": "相邻网络", "L": "本地", "P": "物理接触"},
+    "AC": {"L": "低(无特殊条件)", "H": "高(需竞争/时机)"},
+    "PR": {"N": "无需权限", "L": "低权限", "H": "高权限"},
+    "UI": {"N": "无需用户交互", "R": "需要用户交互"},
+    "S": {"U": "影响自身组件", "C": "可跨越权限边界(Scope Change)"},
+    "C": {"H": "完全信息泄露", "L": "部分信息泄露", "N": "无影响"},
+    "I": {"H": "完全篡改", "L": "部分篡改", "N": "无影响"},
+    "A": {"H": "完全拒绝服务", "L": "部分可用性影响", "N": "无影响"},
+}
+
+
+def vector_detail(vector: str | None) -> dict:
+    """把 CVSS v3.x 向量解析成带中文解读的字段表(详情页用)。"""
+    if not vector or not vector.startswith("CVSS:3"):
+        return {}
+    m = dict(p.split(":", 1) for p in vector.split("/") if ":" in p)
+    out = {}
+    for key, labels in VECTOR_LABELS.items():
+        v = m.get(key)
+        if v and v in labels:
+            out[key] = f"{v} — {labels[v]}"
+    return out
+
+
 def is_cve(item_id: str) -> bool:
     return item_id.startswith("CVE-")

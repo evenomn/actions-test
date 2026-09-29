@@ -195,7 +195,8 @@ def build_repro_md(db: list[dict], now: datetime, retention_days: int) -> str:
 
 
 def write_repro(items: list[dict], cfg: dict, data_dir: Path, now: datetime) -> dict:
-    """维护滚动库并落盘。返回 {"count", "recommended", "updated"(bool)}。"""
+    """维护滚动库并落盘(repro.md/json + 一洞一档详情页)。返回统计。"""
+    from .vulndb import write_details
     path = data_dir / "repro.json"
     existing = []
     if path.exists():
@@ -205,6 +206,9 @@ def write_repro(items: list[dict], cfg: dict, data_dir: Path, now: datetime) -> 
             existing = []
     retention = int(cfg.get("repro_retention_days", 21))
     db = merge_repro(existing, items, now, retention)
+    # 详情页:与库同批(判定值得复现的),文件名即 CVE 号,覆盖刷新
+    detail_items = [i for i in items if qualifies(i)]
+    n_details = write_details(detail_items, data_dir) if cfg.get("repro", True) else 0
     old_ids = [r["id"] for r in existing]
     changed = ([r["id"] for r in db] != old_ids) or any(
         r.get("last_seen") == now.date().isoformat() for r in db)
@@ -214,4 +218,5 @@ def write_repro(items: list[dict], cfg: dict, data_dir: Path, now: datetime) -> 
                                        encoding="utf-8")
     return {"count": len(db),
             "recommended": sum(1 for r in db if r.get("repro_worthy") == "强烈推荐"),
+            "details": n_details,
             "updated": changed}
