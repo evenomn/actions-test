@@ -118,6 +118,8 @@ DEFAULTS = {
     "rss": True,
     "repro": True,
     "repro_retention_days": 21,
+    "repro_max_per_day": 5,
+    "repro_max_total": 30,
     "retention_days": 30,
 }
 
@@ -159,6 +161,10 @@ def load_config(path: Path | None = None) -> dict:
         "repro": bool(cfg.get("report", {}).get("repro", True)),
         "repro_retention_days": int(cfg.get("report", {}).get(
             "repro_retention_days", DEFAULTS["repro_retention_days"])),
+        "repro_max_per_day": int(cfg.get("report", {}).get(
+            "repro_max_per_day", DEFAULTS["repro_max_per_day"])),
+        "repro_max_total": int(cfg.get("report", {}).get(
+            "repro_max_total", DEFAULTS["repro_max_total"])),
         "retention_days": int(cfg.get("state", {}).get("retention_days", 30)),
     })
     return out

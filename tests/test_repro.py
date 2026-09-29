@@ -14,19 +14,26 @@ NOW = datetime(2026, 9, 28, 12, 0, tzinfo=timezone.utc)
 def mk(cve_id="CVE-2026-1", **kw) -> dict:
     item = new_item(cve_id)
     item.update({"cvss": 9.8, "tier": "critical", "repro_worthy": "值得",
+                 "difficulty": "低(远程·免认证)",
                  "desc": "Acme pre-auth RCE.", "published": "2026-09-27T00:00:00.000"})
     item.update(kw)
     return item
 
 
 def test_qualifies_gates():
-    # AI 判定值得,无 PoC 也收(AI 认为常见资产默认配置可打)
-    assert qualifies(mk(_ai_judged=True))
-    # 兜底规则值得,必须有证据
-    assert qualifies(mk(poc_links=[("https://github.com/a/b", "a/b ⭐9 [源码✅]")]))
+    # AI 判「值得」+ 预认证高分(常见资产默认配置可打)→ 收
+    assert qualifies(mk(_ai_judged=True, difficulty="低(远程·免认证)"))
+    # 硬证据:KEV / PoC 源码核验 / NVD exploit 引用
     assert qualifies(mk(kev=True))
-    assert qualifies(mk(nuclei=True))
-    assert not qualifies(mk())  # 仅高分无证据 → 不收
+    assert qualifies(mk(poc_quality="code"))
+    assert qualifies(mk(has_exploit_ref=True, exploit_ref_url="https://x/e"))
+    # 仅「有PoC链接」但无源码核验、无KEV、未过AI → 不收(严格准入)
+    assert not qualifies(mk(poc_links=[("https://github.com/a/b", "a/b ⭐9")]))
+    # 仅高分无证据无AI → 不收
+    assert not qualifies(mk())
+    # AI 判值得但分数不到 9.0 或非预认证 → 不收
+    assert not qualifies(mk(_ai_judged=True, cvss=8.5, difficulty="低(远程·免认证)"))
+    assert not qualifies(mk(_ai_judged=True, difficulty="高(需本地访问)"))
     # 强烈推荐直接收;一般/不建议不收
     assert qualifies(mk(repro_worthy="强烈推荐", _ai_judged=True))
     assert not qualifies(mk(repro_worthy="一般", kev=True))
@@ -40,10 +47,42 @@ def test_qualifies_third_party_extension():
                 poc_links=[("https://github.com/x/y", "x/y ⭐3")],
                 desc="Joomla Extension - lomart.fr - Unauthenticated RCE in UP plugin")
     assert not qualifies(joomla)
-    # AI 研判过 → 信任 AI(AI 觉得值得就收,比如商业组件高影响)
-    assert qualifies(dict(joomla, _ai_judged=True))
+    # AI 研判 + 预认证高分 → 信任 AI
+    assert qualifies(dict(joomla, _ai_judged=True, difficulty="低(远程·免认证)"))
     # 在野利用 → 收
     assert qualifies(dict(joomla, kev=True, repro_worthy="强烈推荐"))
+
+
+def test_daily_cap_on_new_entries():
+    """每日新增限量:8 条合格也只进 5 条,KEV+源码优先。"""
+    items = []
+    for i in range(8):
+        items.append(mk(f"CVE-2026-N{i}", _ai_judged=True,
+                        kev=(i < 2), poc_quality="code" if i < 2 else None,
+                        cvss=9.9 - i * 0.1))
+    db = merge_repro([], items, NOW, retention_days=21, max_new_per_day=5, max_total=30)
+    ids = [r["id"] for r in db]
+    assert len(db) == 5
+    assert "CVE-2026-N0" in ids and "CVE-2026-N1" in ids   # KEV+源码 优先占位
+    assert "CVE-2026-N7" not in ids                          # 低价值被限量挡下
+
+
+def test_total_cap_keeps_highest_value():
+    """库存总量上限:超出时保留价值最高的,淘汰分最低的。"""
+    existing = [{
+        "id": f"CVE-2026-T{i}", "repro_worthy": "值得", "first_seen": "2026-09-10",
+        "last_seen": "2026-09-28", "cvss": 7.0 + i * 0.1, "kev": False,
+        "link": f"https://nvd.nist.gov/vuln/detail/CVE-2026-T{i}",
+    } for i in range(10)]
+    db = merge_repro(existing, [], NOW, retention_days=21,
+                     max_new_per_day=5, max_total=10)
+    assert len(db) == 10
+    # 再进一个 KEV 高价值,总量 11 超上限 10 → 淘汰分最低的 T0
+    db = merge_repro(db, [mk("CVE-2026-KEV", kev=True, repro_worthy="强烈推荐")],
+                     NOW, retention_days=21, max_new_per_day=5, max_total=10)
+    assert len(db) == 10
+    assert any(r["id"] == "CVE-2026-KEV" for r in db)
+    assert not any(r["id"] == "CVE-2026-T0" for r in db)   # 7.0 分最低被淘汰
 
 
 def test_merge_purges_third_party_legacy():

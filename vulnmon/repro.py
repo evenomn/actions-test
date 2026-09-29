@@ -25,10 +25,15 @@ REPRO_KEEP = ("强烈推荐", "值得")
 
 
 def qualifies(item: dict) -> bool:
-    """入选门槛:见模块 docstring。
+    """入选门槛(严格,宁缺毋滥):高价值可复现漏洞每天通常只有零星几条。
 
-    第三方插件/扩展市场的漏洞(无在野利用、未经 AI 研判)不收——
-    AI 可在明确高影响时上调为值得/强烈推荐。
+    硬证据要求 ——「值得」必须至少满足其一:
+    - KEV 在野利用
+    - PoC 仓库核验有真实 exploit 源码
+    - NVD 官方 exploit 引用
+    - AI 判「值得」且 ≥9.0 分预认证(常见资产默认配置可打,暂无 PoC 也值得先研究)
+
+    第三方插件/扩展(无在野利用、未经 AI 研判)一律不收。
     """
     level = item.get("repro_worthy")
     if level not in REPRO_KEEP:
@@ -37,13 +42,16 @@ def qualifies(item: dict) -> bool:
             and not item.get("_ai_judged"):
         return False
     if level == "强烈推荐":
-        return True  # 兜底规则给强烈推荐本身就要求 kev+PoC;AI 给的则信任其判断
-    if item.get("_ai_judged"):
-        return True  # AI 认为「值得」:常见资产/默认配置可打,无 PoC 也值得复现
-    evidence = (item.get("kev") or item.get("poc_links")
-                or item.get("has_exploit_ref") or item.get("nuclei")
-                or item.get("poc_quality") == "code")
-    return bool(evidence)
+        return True
+    hard = (item.get("kev")
+            or item.get("poc_quality") == "code"
+            or item.get("has_exploit_ref"))
+    if hard:
+        return True
+    if item.get("_ai_judged") and (item.get("cvss") or 0) >= 9.0 \
+            and (item.get("difficulty") or "").startswith("低"):
+        return True
+    return False
 
 
 def _record(item: dict, now: datetime) -> dict:
@@ -88,22 +96,37 @@ def _sort_key(r: dict):
             r.get("cvss") or 0, r.get("last_seen") or "")
 
 
+def _new_rank(item: dict):
+    """新增条目的优先级:KEV+源码 > KEV > 源码 > 高分。"""
+    return (bool(item.get("kev")), item.get("poc_quality") == "code",
+            item.get("repro_worthy") == "强烈推荐", item.get("cvss") or 0)
+
+
 def merge_repro(existing: list[dict], items: list[dict], now: datetime,
-                retention_days: int = 21) -> list[dict]:
+                retention_days: int = 21,
+                max_new_per_day: int = 5, max_total: int = 30) -> list[dict]:
     """合并本轮入选条目;同 ID 刷新字段并更新 last_seen,过期淘汰。
 
-    清理规则:
-    - 本轮重新研判后不再合格的(如第三方插件被降级)→ 立即移出
-    - 历史条目里「第三方扩展 + 无 AI 研判 + 无在野利用」的 → 移出(清旧账)
+    严格准入(防灌水):
+    - 当日新增最多 max_new_per_day 条(按价值排序取头部)
+    - 库存总量最多 max_total 条,超出时淘汰价值最低的
+    - 本轮重新研判后不再合格的 → 立即移出
+    - 历史条目里「第三方扩展 + 无 AI 研判 + 无在野利用」的 → 移出
     """
     db = {r["id"]: dict(r) for r in existing if isinstance(r, dict) and r.get("id")}
     # 本轮降级/淘汰:出现过的 CVE 现在不合格 → 移出库
     for item in items:
         if item["id"] in db and not qualifies(item):
             del db[item["id"]]
-    for item in items:
-        if not qualifies(item):
-            continue
+    # 当日新增按价值限量(存量刷新不计入新增额度)
+    new_items = sorted([i for i in items if qualifies(i)], key=_new_rank, reverse=True)
+    slots = max_new_per_day
+    for item in new_items:
+        is_new = item["id"] not in db
+        if is_new:
+            if slots <= 0:
+                continue  # 今日额度用完,明天合格会重新参选(不标 pushed,不丢)
+            slots -= 1
         rec = _record(item, now)
         old = db.get(item["id"])
         if old:
@@ -114,7 +137,8 @@ def merge_repro(existing: list[dict], items: list[dict], now: datetime,
           if not (r.get("third_party") and not r.get("ai_judged") and not r.get("kev"))}
     cutoff = (now - timedelta(days=retention_days)).date().isoformat()
     fresh = [r for r in db.values() if r.get("last_seen", "") >= cutoff]
-    return sorted(fresh, key=_sort_key, reverse=True)
+    ranked = sorted(fresh, key=_sort_key, reverse=True)
+    return ranked[:max_total] if max_total > 0 else ranked
 
 
 def raw_url(filename: str) -> str:
@@ -227,7 +251,9 @@ def write_repro(items: list[dict], cfg: dict, data_dir: Path, now: datetime) -> 
         except (json.JSONDecodeError, OSError):
             existing = []
     retention = int(cfg.get("repro_retention_days", 21))
-    db = merge_repro(existing, items, now, retention)
+    max_new = int(cfg.get("repro_max_per_day", 5))
+    max_total = int(cfg.get("repro_max_total", 30))
+    db = merge_repro(existing, items, now, retention, max_new, max_total)
     # 详情页:与库同批(判定值得复现的),文件名即 CVE 号,覆盖刷新
     detail_items = [i for i in items if qualifies(i)]
     n_details = write_details(detail_items, data_dir) if cfg.get("repro", True) else 0
