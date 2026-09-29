@@ -1,16 +1,16 @@
 {
  "version": 3,
- "generated_at": "2026-09-29T01:15:02+00:00",
+ "generated_at": "2026-09-29T01:23:34+00:00",
  "lookback_hours": 48,
- "count": 60,
+ "count": 59,
  "stats": {
-  "total": 60,
+  "total": 59,
   "by_tier": {
-   "critical": 55,
+   "critical": 54,
    "high": 5
   },
   "by_urgency": {
-   "P1 重点关注": 53,
+   "P1 重点关注": 52,
    "P2 保持关注": 5,
    "P0 立即处置": 2
   },
@@ -18,11 +18,11 @@
    "未知": 44,
    "边界设备/VPN": 6,
    "CMS": 3,
-   "网络设备": 2,
    "容器/虚拟化": 2,
    "邮件系统": 1,
    "OA/协同办公": 1,
-   "安全设备": 1
+   "安全设备": 1,
+   "网络设备": 1
   },
   "kev": 2,
   "with_poc": 3,
@@ -114,7 +114,7 @@
    "poc": [
     {
      "url": "https://github.com/murrez/CVE-2026-88772",
-     "label": "murrez/CVE-2026-88772 ⭐11 [源码✅]"
+     "label": "murrez/CVE-2026-88772 ⭐12 [源码✅]"
     },
     {
      "url": "https://github.com/FollowerSeize/CVE-2026-88772-POC",
@@ -138,7 +138,7 @@
   {
    "id": "CVE-2026-101062",
    "tier": "high",
-   "title": "Because 未授权 授权错误",
+   "title": "未授权 授权错误",
    "title_zh": null,
    "summary_zh": null,
    "published": "2026-09-27T21:17:01.617",
@@ -327,7 +327,7 @@
   {
    "id": "CVE-2026-100741",
    "tier": "critical",
-   "title": "Eval 未授权 代码注入(RCE)",
+   "title": "JScript 未授权 代码注入(RCE)",
    "title_zh": null,
    "summary_zh": null,
    "published": "2026-09-27T08:16:26.813",
@@ -987,42 +987,6 @@
    "description": "A flaw has been found in Netcore NR289-GE 1.4.5102. This impacts the function process_request of the component boa_temp Handler. This manipulation causes missing authentication. The attack is possible to be carried out remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
   },
   {
-   "id": "CVE-2026-100740",
-   "tier": "critical",
-   "title": "D-Link DIR-895L A1_102b07. Performing 内存破坏",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-09-27T01:17:17.810",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "内存破坏",
-    "越界写入"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-100740",
-   "description": "A vulnerability was detected in D-Link DIR-895L A1_102b07. Impacted is the function tunnel_set_params of the file tunnel.c of the component L2TP Control Channel Parser. Performing a manipulation results in out-of-bounds write. The attack may be initiated remotely. The exploit is now public and may be used."
-  },
-  {
    "id": "CVE-2026-100896",
    "tier": "critical",
    "title": "命令注入",
@@ -1061,7 +1025,7 @@
   {
    "id": "CVE-2026-101002",
    "tier": "critical",
-   "title": "Performing 命令注入",
+   "title": "命令注入",
    "title_zh": null,
    "summary_zh": null,
    "published": "2026-09-28T06:16:29.783",
@@ -1274,7 +1238,7 @@
   {
    "id": "CVE-2026-101065",
    "tier": "critical",
-   "title": "Owner 未授权 缺失认证",
+   "title": "Admin 未授权 缺失认证",
    "title_zh": null,
    "summary_zh": null,
    "published": "2026-09-27T21:17:02.027",
@@ -1309,7 +1273,7 @@
   {
    "id": "CVE-2026-101090",
    "tier": "critical",
-   "title": "OAuth2 未授权 开放重定向",
+   "title": "Nezha 未授权 开放重定向",
    "title_zh": null,
    "summary_zh": null,
    "published": "2026-09-27T21:17:03.003",
@@ -1414,7 +1378,7 @@
   {
    "id": "CVE-2026-101084",
    "tier": "critical",
-   "title": "MCP 越权(IDOR)",
+   "title": "OAuth 越权(IDOR)",
    "title_zh": null,
    "summary_zh": null,
    "published": "2026-09-27T21:17:02.163",

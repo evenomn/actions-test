@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-09-29 01:15 UTC · 共 **25** 条(⭐⭐⭐强烈推荐 0 / ⭐⭐值得 25)
+**更新**: 2026-09-29 01:23 UTC · 共 **26** 条(⭐⭐⭐强烈推荐 0 / ⭐⭐值得 26)
 
 ---
 
@@ -21,7 +21,7 @@
 [CVE-2026-88772](https://nvd.nist.gov/vuln/detail/CVE-2026-88772) · 🎯P0 立即处置 · 组件 边界设备/VPN · CVSS 8.1 · 披露 2026-09-27 · 首次入库 2026-09-29
 **信号**: 🔥在野利用,限期 2026-09-30 | 源码✅
 **影响**: citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279
-**PoC**: [murrez/CVE-2026-88772 ⭐11 [源码✅]](https://github.com/murrez/CVE-2026-88772) · [FollowerSeize/CVE-2026-88772-POC ⭐0 [仅README]](https://github.com/FollowerSeize/CVE-2026-88772-POC)
+**PoC**: [murrez/CVE-2026-88772 ⭐12 [源码✅]](https://github.com/murrez/CVE-2026-88772) · [FollowerSeize/CVE-2026-88772-POC ⭐0 [仅README]](https://github.com/FollowerSeize/CVE-2026-88772-POC)
 **参考**: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096&articleTitle=Citrix_NetScaler_ADC_and_Citrix_NetScaler_Gateway_Security_Bulletin_for_CVE_2026_88771_CVE_2026_88772_CVE_2026_88773_CVE_2026_88774_CVE_2026_88775_CVE_2026_88776_CVE_2026_88777_and_CVE_2026_88778)
 
 ### CVE-2026-88773
@@ -69,6 +69,9 @@
 
 ### CVE-2026-101037
 [CVE-2026-101037](https://nvd.nist.gov/vuln/detail/CVE-2026-101037) · 🎯P1 重点关注 · CVSS 9.9 · 披露 2026-09-28 · 首次入库 2026-09-29
+
+### CVE-2026-101038
+[CVE-2026-101038](https://nvd.nist.gov/vuln/detail/CVE-2026-101038) · 🎯P1 重点关注 · CVSS 9.9 · 披露 2026-09-28 · 首次入库 2026-09-29
 
 ### CVE-2026-100741
 [CVE-2026-100741](https://nvd.nist.gov/vuln/detail/CVE-2026-100741) · 🎯P1 重点关注 · 组件 邮件系统 · CVSS 9.8 · 披露 2026-09-27 · 首次入库 2026-09-29
