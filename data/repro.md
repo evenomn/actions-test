@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-09-29 01:36 UTC · 共 **22** 条(⭐⭐⭐强烈推荐 3 / ⭐⭐值得 19)
+**更新**: 2026-09-29 01:50 UTC · 共 **12** 条(⭐⭐⭐强烈推荐 3 / ⭐⭐值得 9)
 
 ---
 
@@ -60,33 +60,6 @@
 **处置**: 联系厂商升级固件，限制设备管理面暴露
 **PoC**: [heapframe/seetong-ts81xxd3x-rce ⭐0 [源码✅]](https://github.com/heapframe/seetong-ts81xxd3x-rce)
 
-### CVE-2026-101000
-[CVE-2026-101000](https://nvd.nist.gov/vuln/detail/CVE-2026-101000) · 🎯P1 重点关注 · CVSS 10.0 · 披露 2026-09-28 · 首次入库 2026-09-29
-
-### Netcore NBR200V2 QUERY_STRING命
-[CVE-2026-101001](https://nvd.nist.gov/vuln/detail/CVE-2026-101001) · 🎯P1 重点关注 · CVSS 10.0 · 披露 2026-09-28 · 首次入库 2026-09-29
-**摘要**: 远程攻击者可操纵QUERY_STRING注入OS命令，以设备权限执行任意代码。
-**复现要点**: 向受影响CGI接口发送恶意QUERY_STRING注入系统命令(影响面: 企业路由器，可能暴露公网/内网)
-**处置**: 联系厂商升级固件，限制管理接口暴露
-
-### FAST FAC1900R devdiscover栈溢出
-[CVE-2026-101039](https://nvd.nist.gov/vuln/detail/CVE-2026-101039) · 🎯P1 重点关注 · CVSS 10.0 · 披露 2026-09-28 · 首次入库 2026-09-29
-**摘要**: 远程攻击者可向devdiscover服务发送畸形消息触发栈溢出，可能导致任意代码执行。
-**复现要点**: 向devdiscover服务发送畸形消息触发copy_msg_element栈溢出(影响面: 家用/企业路由器，可能暴露内网)
-**处置**: 暂无官方修复，禁用devdiscover或限制设备访问
-
-### Netcore NR289-GE /ap_ip.cgi命令注
-[CVE-2026-101072](https://nvd.nist.gov/vuln/detail/CVE-2026-101072) · 🎯P1 重点关注 · CVSS 10.0 · 披露 2026-09-28 · 首次入库 2026-09-29
-**摘要**: 远程攻击者可操纵/ap_ip.cgi的ip参数注入OS命令，以设备权限执行任意代码。
-**复现要点**: 未授权访问/ap_ip.cgi，在ip参数注入系统命令(影响面: 企业路由器，可能暴露公网/内网)
-**处置**: 暂无官方修复，限制CGI访问并关注厂商补丁
-
-### NR289-GE命令注入远程RCE
-[CVE-2026-101076](https://nvd.nist.gov/vuln/detail/CVE-2026-101076) · 🎯P1 重点关注 · CVSS 10.0 · 披露 2026-09-28 · 首次入库 2026-09-29
-**摘要**: 远程攻击者可经/set_ntp_server_ip.cgi的ntp_ip参数注入命令，控制设备；厂商未响应。
-**复现要点**: 访问/set_ntp_server_ip.cgi并向ntp_ip注入命令(影响面: 路由器Web管理面，可能暴露公网)
-**处置**: 厂商未响应，暂无官方修复；限制该CGI接口公网访问
-
 ### D-Link DIR-895L L2TP越界写
 [CVE-2026-100740](https://nvd.nist.gov/vuln/detail/CVE-2026-100740) · 🎯P1 重点关注 · 组件 网络设备 · CVSS 9.9 · 披露 2026-09-27 · 首次入库 2026-09-29
 **信号**: 源码✅
@@ -95,47 +68,31 @@
 **处置**: 暂无官方修复，禁用L2TP或限制访问
 **PoC**: [murrez/CVE-2026-100740 ⭐1 [源码✅]](https://github.com/murrez/CVE-2026-100740)
 
-### TOTOLINK N150RT命令注入RCE
-[CVE-2026-100896](https://nvd.nist.gov/vuln/detail/CVE-2026-100896) · 🎯P1 重点关注 · CVSS 9.9 · 披露 2026-09-28 · 首次入库 2026-09-29
-**摘要**: 远程可经/boafrm/formWlSiteSurvey的wlanif参数注入命令，控制路由器；利用已公开。
-**复现要点**: 访问/boafrm/formWlSiteSurvey并向wlanif注入命令(影响面: SOHO路由器Web管理面，常见设备)
-**处置**: 关注厂商补丁；限制Web管理接口暴露，过滤wlanif参数
+### Roller XML-RPC反序列化RCE
+[CVE-2026-82384](https://nvd.nist.gov/vuln/detail/CVE-2026-82384) · 🎯P1 重点关注 · CVSS 9.8 · 披露 2026-09-28 · 首次入库 2026-09-29
+**信号**: 源码✅
+**摘要**: 未认证远程攻击者向XML-RPC端点发送恶意扩展类型，触发反序列化并执行代码。
+**复现要点**: 未授权调用XML-RPC端点，发送恶意vendor扩展类型(影响面: Web应用/CMS，未认证RCE风险高)
+**处置**: 升级至最新修复版本；临时禁用XML-RPC Blogger接口
+**PoC**: [murrez/CVE-2026-82384 ⭐1 [源码✅]](https://github.com/murrez/CVE-2026-82384)
 
-### FAST FAC1200R栈溢出远程RCE
-[CVE-2026-101037](https://nvd.nist.gov/vuln/detail/CVE-2026-101037) · 🎯P1 重点关注 · CVSS 9.9 · 披露 2026-09-28 · 首次入库 2026-09-29
-**摘要**: 远程攻击者可向devdiscover服务发送恶意通告帧，触发栈溢出，可能导致设备崩溃或远程代码执行。
-**复现要点**: 向devdiscover服务发送畸形帧触发栈溢出(影响面: FAST路由器，发现服务暴露)
-**处置**: 厂商未响应，暂无官方修复；限制devdiscover服务暴露
-
-### CVE-2026-88775
-[CVE-2026-88775](https://nvd.nist.gov/vuln/detail/CVE-2026-88775) · 🎯P1 重点关注 · 组件 边界设备/VPN · CVSS 9.8 · 披露 2026-09-27 · 首次入库 2026-09-29
-**影响**: citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279
-**参考**: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096&articleTitle=Citrix_NetScaler_ADC_and_Citrix_NetScaler_Gateway_Security_Bulletin_for_CVE_2026_88771_CVE_2026_88772_CVE_2026_88773_CVE_2026_88774_CVE_2026_88775_CVE_2026_88776_CVE_2026_88777_and_CVE_2026_88778)
-
-### CVE-2026-88776
-[CVE-2026-88776](https://nvd.nist.gov/vuln/detail/CVE-2026-88776) · 🎯P1 重点关注 · 组件 边界设备/VPN · CVSS 9.8 · 披露 2026-09-27 · 首次入库 2026-09-29
-**影响**: citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279
-**参考**: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096)
-
-### CVE-2026-88777
-[CVE-2026-88777](https://nvd.nist.gov/vuln/detail/CVE-2026-88777) · 🎯P1 重点关注 · 组件 边界设备/VPN · CVSS 9.8 · 披露 2026-09-27 · 首次入库 2026-09-29
-**影响**: citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279
-**参考**: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096&articleTitle=Citrix_NetScaler_ADC_and_Citrix_NetScaler_Gateway_Security_Bulletin_for_CVE_2026_88771_CVE_2026_88772_CVE_2026_88773_CVE_2026_88774_CVE_2026_88775_CVE_2026_88776_CVE_2026_88777_and_CVE_2026_88778)
-
-### CVE-2026-100752
-[CVE-2026-100752](https://nvd.nist.gov/vuln/detail/CVE-2026-100752) · 🎯P1 重点关注 · 组件 CMS · CVSS 9.3 · 披露 2026-09-28 · 首次入库 2026-09-29
-
-### CVE-2026-101108
-[CVE-2026-101108](https://nvd.nist.gov/vuln/detail/CVE-2026-101108) · 🎯P1 重点关注 · 组件 CMS · CVSS 9.3 · 披露 2026-09-28 · 首次入库 2026-09-29
-
-### CVE-2026-101110
-[CVE-2026-101110](https://nvd.nist.gov/vuln/detail/CVE-2026-101110) · 🎯P1 重点关注 · 组件 CMS · CVSS 9.3 · 披露 2026-09-28 · 首次入库 2026-09-29
+### IdentityIQ未认证RCE漏洞
+[CVE-2026-12342](https://nvd.nist.gov/vuln/detail/CVE-2026-12342) · 🎯P1 重点关注 · CVSS 9.6 · 披露 2026-09-28 · 首次入库 2026-09-29
+**摘要**: 未认证攻击者向IdentityIQ Web服务API提交恶意内容，因校验缺失执行远程代码。
+**复现要点**: 未认证向受影响Web服务API提交恶意内容触发RCE(影响面: 身份管理平台，高价值内网系统)
+**处置**: 暂无官方修复，限制Web服务API访问并部署虚拟补丁
 
 ### mall4j更新密码接口未授权重置
 [CVE-2026-102361](https://nvd.nist.gov/vuln/detail/CVE-2026-102361) · 🎯P1 重点关注 · 组件 安全设备 · CVSS 9.1 · 披露 2026-09-29 · 首次入库 2026-09-29
 **摘要**: 未认证攻击者可PUT /user/updatePwd并指定用户名重置任意商城账户密码，接管账号。
 **复现要点**: 未授权PUT /user/updatePwd，body指定username修改密码(影响面: 商城系统用户账户，可批量接管)
 **处置**: 升级至4.0之后修复版本，鉴权并限制重置接口
+
+### PyJWT签名校验错误可伪造HMAC令牌
+[CVE-2026-102268](https://nvd.nist.gov/vuln/detail/CVE-2026-102268) · 🎯P1 重点关注 · CVSS 9.1 · 披露 2026-09-28 · 首次入库 2026-09-29
+**摘要**: 攻击者知悉公钥即可伪造HMAC令牌，绕过JWT认证，冒充任意用户。
+**复现要点**: 构造HS256令牌，用公钥作HMAC密钥，请求受保护接口(影响面: Python JWT库，影响认证服务)
+**处置**: 升级PyJWT至修复版本；显式指定算法并禁用密钥混淆
 
 ### vm2 NodeVM沙箱逃逸致宿主RCE
 [CVE-2026-100721](https://nvd.nist.gov/vuln/detail/CVE-2026-100721) · 🎯P1 重点关注 · CVSS 9.0 · 披露 2026-09-27 · 首次入库 2026-09-29
