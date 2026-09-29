@@ -2,7 +2,8 @@
 
 from vulnmon.config import DEFAULTS
 from vulnmon.models import new_item
-from vulnmon.scoring import (item_haystack, is_wordpress_plugin,
+from vulnmon.scoring import (fallback_repro, is_third_party_extension,
+                             is_wordpress_plugin, item_haystack,
                              match_keywords, priority, vendor_key)
 
 
@@ -10,6 +11,33 @@ def mk(**kw) -> dict:
     item = new_item("CVE-2026-1")
     item.update(kw)
     return item
+
+
+def test_third_party_extension_detection():
+    # Joomla 扩展批量上报句式:「Joomla Extension - lomart.fr - ...」
+    assert is_third_party_extension(mk(
+        desc="Joomla Extension - lomart.fr - Unauthenticated RCE in UP plugin extension"))
+    assert is_third_party_extension(mk(
+        desc="Joomla Extension - acymailing.com - Remote Code Execution in AcyMailing"))
+    assert is_third_party_extension(mk(
+        desc="A Drupal module allows SQL injection via the filter parameter."))
+    # CMS 核心/正常产品不是第三方扩展
+    assert not is_third_party_extension(mk(desc="Joomla core allows SQL injection."))
+    assert not is_third_party_extension(mk(
+        desc="A buffer overflow in Citrix NetScaler ADC allows remote code execution."))
+    # CPE 特征
+    assert is_third_party_extension(mk(products=["youtube_gallery_project youtube_gallery"]))
+
+
+def test_fallback_repro_caps_third_party():
+    # 第三方扩展 + 有 PoC 证据,无 KEV → 最多「一般」,不再给「值得」
+    item = mk(poc_links=[("https://github.com/x/y", "x/y ⭐3")],
+              desc="Joomla Extension - lomart.fr - Unauthenticated RCE in UP plugin")
+    assert fallback_repro(item) == "一般"
+    # 但在野利用优先于第三方降级
+    item2 = mk(kev=True, poc_links=[("https://github.com/x/y", "x/y ⭐3")],
+               desc="Joomla Extension - acymailing.com - RCE")
+    assert fallback_repro(item2) == "强烈推荐"
 
 
 def test_wordpress_plugin_detection():

@@ -91,6 +91,7 @@ def _evidence(item: dict) -> dict:
         "nuclei_template": bool(item.get("nuclei")),
         "patched": item.get("patched"),  # True 有修复 / False 已知受影响但无修复 / None 未知
         "affected": affected_line(item),
+        "third_party_ext": bool(item.get("third_party")),
     }
     return {k: v for k, v in ev.items() if v is not None}
 
@@ -112,10 +113,15 @@ ANALYZE_PROMPT = (
     'patched=false 时明确说暂无官方修复\n'
     'urgency: 从["P0 立即处置","P1 重点关注","P2 保持关注"]三选一。'
     "KEV 在野利用/勒索软件在野利用/PoC广泛流传→P0;有公开PoC或EPSS高或高分无PoC→P1;其余→P2\n"
-    'repro_worthy: 从["强烈推荐","值得","一般","不建议"]四选一,判断安全团队值不值得花时间复现。'
-    "衡量:是否常见 CMS/中间件/边界设备/OA/邮件系统等实战中常见的资产;是否默认配置即可利用;"
-    "利用门槛(免认证>低权限>高权限);有无 PoC/nuclei 模板;在野利用直接拉满。"
-    "小众冷门库、利用条件苛刻、纯信息泄露低危 → 一般或不建议\n"
+    'repro_worthy: 从["强烈推荐","值得","一般","不建议"]四选一。严格按以下评级标准执行:\n'
+    "  强烈推荐 = KEV在野利用且有可用PoC;或边界设备/VPN/Web中间件/邮件系统/OA等高暴露资产的"
+    "未认证RCE或认证绕过(默认配置可打,如NetScaler/Fortinet类边界洞)\n"
+    "  值得 = 常见资产(CMS核心/流行框架/广泛部署的软件)可远程利用且门槛低;"
+    "或有高质量PoC源码的高分漏洞\n"
+    "  一般 = 需特定前置条件(高权限/用户交互/特定配置才触发)、XSS/CSRF/信息泄露/纯DoS、"
+    "冷门组件\n"
+    "  不建议 = 第三方插件市场的插件漏洞(WordPress插件/Joomla扩展/Drupal模块等,"
+    "除非在野利用或影响面极大);需漏洞链组合的低危;纯本地提权\n"
     'repro_note: 不超过40字,复现要点:入口(如「未授权 /api/eval 接口」)、前置条件、关键参数;'
     'repro_worthy 为「不建议」时给 null\n'
     'impact_scope: 不超过20字,影响面画像(如「边界VPN设备,常暴露公网」「内网中间件,横向移动跳板」)\n'

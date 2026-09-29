@@ -19,14 +19,22 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from .report import affected_line, item_link
+from .scoring import is_third_party_extension
 
 REPRO_KEEP = ("强烈推荐", "值得")
 
 
 def qualifies(item: dict) -> bool:
-    """入选门槛:见模块 docstring。"""
+    """入选门槛:见模块 docstring。
+
+    第三方插件/扩展市场的漏洞(无在野利用、未经 AI 研判)不收——
+    AI 可在明确高影响时上调为值得/强烈推荐。
+    """
     level = item.get("repro_worthy")
     if level not in REPRO_KEEP:
+        return False
+    if is_third_party_extension(item) and not item.get("kev") \
+            and not item.get("_ai_judged"):
         return False
     if level == "强烈推荐":
         return True  # 兜底规则给强烈推荐本身就要求 kev+PoC;AI 给的则信任其判断
@@ -49,6 +57,8 @@ def _record(item: dict, now: datetime) -> dict:
         "title": item.get("title_zh") or item.get("kev_name") or item["id"],
         "first_seen": today,
         "last_seen": today,
+        "ai_judged": bool(item.get("_ai_judged")),
+        "third_party": is_third_party_extension(item),
         "published": (item.get("published") or "")[:10],
         "urgency": item.get("urgency"),
         "repro_worthy": item.get("repro_worthy"),
@@ -80,8 +90,17 @@ def _sort_key(r: dict):
 
 def merge_repro(existing: list[dict], items: list[dict], now: datetime,
                 retention_days: int = 21) -> list[dict]:
-    """合并本轮入选条目;同 ID 刷新字段并更新 last_seen,过期淘汰。"""
+    """合并本轮入选条目;同 ID 刷新字段并更新 last_seen,过期淘汰。
+
+    清理规则:
+    - 本轮重新研判后不再合格的(如第三方插件被降级)→ 立即移出
+    - 历史条目里「第三方扩展 + 无 AI 研判 + 无在野利用」的 → 移出(清旧账)
+    """
     db = {r["id"]: dict(r) for r in existing if isinstance(r, dict) and r.get("id")}
+    # 本轮降级/淘汰:出现过的 CVE 现在不合格 → 移出库
+    for item in items:
+        if item["id"] in db and not qualifies(item):
+            del db[item["id"]]
     for item in items:
         if not qualifies(item):
             continue
@@ -90,6 +109,9 @@ def merge_repro(existing: list[dict], items: list[dict], now: datetime,
         if old:
             rec["first_seen"] = old.get("first_seen") or rec["first_seen"]
         db[item["id"]] = rec
+    # 清旧账:第三方扩展且从未经 AI 研判且非在野利用
+    db = {cid: r for cid, r in db.items()
+          if not (r.get("third_party") and not r.get("ai_judged") and not r.get("kev"))}
     cutoff = (now - timedelta(days=retention_days)).date().isoformat()
     fresh = [r for r in db.values() if r.get("last_seen", "") >= cutoff]
     return sorted(fresh, key=_sort_key, reverse=True)

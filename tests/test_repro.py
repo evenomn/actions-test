@@ -34,6 +34,47 @@ def test_qualifies_gates():
     assert not qualifies(mk(repro_worthy=None))
 
 
+def test_qualifies_third_party_extension():
+    # Joomla 第三方扩展:有 PoC 证据,但无 AI 研判且无 KEV → 不收
+    joomla = mk(repro_worthy="值得",
+                poc_links=[("https://github.com/x/y", "x/y ⭐3")],
+                desc="Joomla Extension - lomart.fr - Unauthenticated RCE in UP plugin")
+    assert not qualifies(joomla)
+    # AI 研判过 → 信任 AI(AI 觉得值得就收,比如商业组件高影响)
+    assert qualifies(dict(joomla, _ai_judged=True))
+    # 在野利用 → 收
+    assert qualifies(dict(joomla, kev=True, repro_worthy="强烈推荐"))
+
+
+def test_merge_purges_third_party_legacy():
+    """库里已有的第三方扩展旧条目(无 AI 研判/无 KEV)在下轮合并时清出。"""
+    existing = [{
+        "id": "CVE-2026-J1", "title": "Joomla Extension SQL注入", "repro_worthy": "值得",
+        "first_seen": "2026-09-20", "last_seen": "2026-09-27", "cvss": 9.3,
+        "third_party": True, "ai_judged": False, "kev": False,
+        "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-J1",
+    }, {
+        "id": "CVE-2026-K1", "title": "NetScaler RCE", "repro_worthy": "值得",
+        "first_seen": "2026-09-20", "last_seen": "2026-09-27", "cvss": 9.8, "kev": True,
+        "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-K1",
+    }]
+    db = merge_repro(existing, [], NOW, retention_days=21)
+    ids = [r["id"] for r in db]
+    assert "CVE-2026-J1" not in ids   # 第三方+无AI+无KEV → 清出
+    assert "CVE-2026-K1" in ids
+
+
+def test_merge_removes_downgraded():
+    """本轮重新研判降级的(比如同一 CVE 从值得变一般)→ 立即移出。"""
+    existing = [{
+        "id": "CVE-2026-1", "repro_worthy": "值得", "first_seen": "2026-09-20",
+        "last_seen": "2026-09-27", "cvss": 9.0,
+        "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-1",
+    }]
+    db = merge_repro(existing, [mk(repro_worthy="一般")], NOW)
+    assert db == []
+
+
 def test_merge_repro_new_update_expire():
     existing = [{
         "id": "CVE-2026-1", "title": "旧标题", "first_seen": "2026-09-01",

@@ -11,9 +11,28 @@ REPRO_LEVELS = ("强烈推荐", "值得", "一般", "不建议")
 # 灌水重灾区:每天几十条 9.8 分插件洞,CPE 厂商名又五花八门,黑名单短语拦不住
 WP_PLUGIN_RE = re.compile(r"plugins? for (?:the )?wordpress|wordpress plugins?\b", re.I)
 
+# 第三方插件/扩展市场漏洞(Joomla Extension - xxx.com 这类批量上报句式)。
+# 复现价值有限:小众插件装机量小,除非在野利用
+THIRD_PARTY_RE = re.compile(
+    r"(?:joomla|drupal|magento|prestashop|typo3)\s+(?:extension|plugin|component|module)"
+    r"|extensions?\s+-\s+[a-z0-9 -]+\.[a-z]{2,6}\s+-", re.I)
+
 
 def is_wordpress_plugin(item: dict) -> bool:
     if WP_PLUGIN_RE.search(item.get("desc", "")):
+        return True
+    for p in item.get("products", []):
+        vendor = p.split(" ", 1)[0]
+        if vendor.endswith(("_project", "_plugins", "_themes")):
+            return True
+    return False
+
+
+def is_third_party_extension(item: dict) -> bool:
+    """Joomla/Drupal 等生态的第三方扩展漏洞(批量上报句式或 CPE 特征)。"""
+    if is_wordpress_plugin(item):
+        return True
+    if THIRD_PARTY_RE.search(item.get("desc", "") or ""):
         return True
     for p in item.get("products", []):
         vendor = p.split(" ", 1)[0]
@@ -33,12 +52,20 @@ def fallback_urgency(item: dict) -> str:
 
 
 def fallback_repro(item: dict) -> str:
-    """无 AI 时的确定性复现价值:有武器化迹象的在野利用最值得复现。"""
+    """无 AI 时的确定性复现价值:有武器化迹象的在野利用最值得复现。
+
+    第三方插件/扩展市场的漏洞(无在野利用时)最多「一般」——
+    小众插件装机量小,不值得花复现时间(AI 可在明确高影响时上调)。
+    """
     has_poc = bool(item.get("poc_links")) or item.get("has_exploit_ref") or item.get("nuclei")
     has_source = item.get("poc_quality") == "code"
-    if (item.get("kev") and has_poc) or has_source and item.get("kev"):
+    kev = bool(item.get("kev"))
+    if (kev and has_poc) or has_source and kev:
         return REPRO_LEVELS[0]
-    if has_poc or item.get("kev") or has_source or (item.get("cvss") or 0) >= 9.0:
+    third_party = is_third_party_extension(item)
+    if third_party and not kev:
+        return REPRO_LEVELS[2]
+    if has_poc or kev or has_source or (item.get("cvss") or 0) >= 9.0:
         return REPRO_LEVELS[1]
     return REPRO_LEVELS[2]
 
