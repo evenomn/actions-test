@@ -89,9 +89,9 @@ def test_kev_already_known_not_repushed(monkeypatch):
 
 def test_kev_only_fetch(monkeypatch):
     """不在 NVD 窗口内、新进 KEV 的旧漏洞 → 补抓详情后必推 critical。"""
-    state = {"version": 2, "seen": {}, "kev_ids": []}
+    state = {"version": 3, "seen": {}, "kev_ids": []}
     kev_map = {"CVE-2024-1111": {"cveID": "CVE-2024-1111", "vulnerabilityName": "Old bug",
-                                 "dateAdded": "2026-09-27",
+                                 "dateAdded": (NOW - LOOKBACK + pipeline.timedelta(days=1)).strftime("%Y-%m-%d"),
                                  "shortDescription": "old desc"}}
     fetched = {}
 
@@ -103,6 +103,24 @@ def test_kev_only_fetch(monkeypatch):
                               fetch_missing=fake_fetch)
     assert fetched == {"CVE-2024-1111": True}
     assert len(final) == 1 and final[0]["tier"] == "critical"
+
+
+def test_kev_backfill_looks_back_7_days(monkeypatch):
+    """24h 窗口下,3 天前新进 KEV 的漏洞仍要被捞回来(在野利用不受窗口限制)。"""
+    state = {"version": 3, "seen": {}, "kev_ids": []}
+    added_3d_ago = (NOW - pipeline.timedelta(days=3)).strftime("%Y-%m-%d")
+    kev_map = {"CVE-2026-OLD": {"cveID": "CVE-2026-OLD", "vulnerabilityName": "KEV 3天前",
+                                "dateAdded": added_3d_ago, "shortDescription": "x"}}
+    fetched = {}
+
+    def fake_fetch(cid):
+        fetched[cid] = True
+        return mk(cid, cvss=9.5)
+
+    final, _, _ = run({}, state, kev_map, monkeypatch=monkeypatch,
+                      fetch_missing=fake_fetch)
+    assert fetched == {"CVE-2026-OLD": True}   # 超出 48h 窗口但仍被 KEV 通道捞回
+    assert final and final[0]["kev"] is True
 
 
 def test_kev_only_skipped_if_already_in_kev_state(monkeypatch):

@@ -164,13 +164,16 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
             qualified.append(item)
 
     # 旧漏洞新入选 KEV:不在本次发布窗口内,但 KEV 的 dateAdded 在窗口内
+    # KEV 条目至少回看 7 天:在野利用漏洞不能被回看窗口卡死
+    # (24h 窗口会漏掉两三天前新进 KEV 的活跃漏洞,如 NetScaler 那批)
+    kev_cutoff = min(window_date, (now - timedelta(days=7)).date())
     kev_only = [e for cid, e in kev_map.items()
                 if cid not in candidates
                 and not (dedup and cid in prev_kev)
-                and _kev_date(e) and _kev_date(e) >= window_date]
+                and _kev_date(e) and _kev_date(e) >= kev_cutoff]
     if kev_only:
         print(f"  发现 {len(kev_only)} 个新入选 KEV 的既有漏洞,补抓 NVD 详情", flush=True)
-        for entry in kev_only[:12]:  # 无 key 时 NVD 限速 6.5s/次,设上限防超时
+        for entry in kev_only[:15]:  # 无 key 时 NVD 限速 6.5s/次,设上限防超时
             if fetch_missing is not None:
                 parsed = fetch_missing(entry["cveID"])
             else:
