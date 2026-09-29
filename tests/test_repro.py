@@ -153,3 +153,16 @@ def test_write_repro_tolerates_corrupt_existing(tmp_path: Path):
     (tmp_path / "repro.json").write_text("{broken", encoding="utf-8")
     info = write_repro([mk(_ai_judged=True)], {}, tmp_path, NOW)
     assert info["count"] == 1
+
+
+def test_write_repro_prunes_stale_details(tmp_path: Path):
+    """移出库的 CVE,其 vulns/ 详情页同步删除。"""
+    stale = tmp_path / "vulns" / "CVE-2026-OLD.md"
+    stale.parent.mkdir(parents=True)
+    stale.write_text("# old", encoding="utf-8")
+    keep_file = tmp_path / "vulns" / "CVE-2026-1.md"
+    keep_file.write_text("# keep", encoding="utf-8")
+    write_repro([mk("CVE-2026-1", _ai_judged=True)], {"repro_retention_days": 21},
+                tmp_path, NOW)
+    assert not stale.exists()
+    assert keep_file.exists()

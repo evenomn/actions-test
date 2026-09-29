@@ -231,6 +231,14 @@ def write_repro(items: list[dict], cfg: dict, data_dir: Path, now: datetime) -> 
     # 详情页:与库同批(判定值得复现的),文件名即 CVE 号,覆盖刷新
     detail_items = [i for i in items if qualifies(i)]
     n_details = write_details(detail_items, data_dir) if cfg.get("repro", True) else 0
+    # 同步清理:已移出库的 CVE,其详情页一并删除
+    vulns_dir = data_dir / "vulns"
+    if cfg.get("repro", True) and vulns_dir.is_dir():
+        keep = {r["id"] for r in db}
+        for f in vulns_dir.glob("*.md"):
+            cid = f.stem.replace("_", "-")
+            if cid not in keep:
+                f.unlink()
     old_ids = [r["id"] for r in existing]
     changed = ([r["id"] for r in db] != old_ids) or any(
         r.get("last_seen") == now.date().isoformat() for r in db)
