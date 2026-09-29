@@ -7,38 +7,32 @@ import re
 URGENCY_LEVELS = ("P0 立即处置", "P1 重点关注", "P2 保持关注")
 REPRO_LEVELS = ("强烈推荐", "值得", "一般", "不建议")
 
-# NVD 里 WordPress 插件漏洞的描述几乎都带这个句式(如 "The Foo plugin for WordPress"),
-# 灌水重灾区:每天几十条 9.8 分插件洞,CPE 厂商名又五花八门,黑名单短语拦不住
-WP_PLUGIN_RE = re.compile(r"plugins? for (?:the )?wordpress|wordpress plugins?\b", re.I)
-
-# 第三方插件/扩展市场漏洞(Joomla Extension - xxx.com 这类批量上报句式)。
-# 复现价值有限:小众插件装机量小,除非在野利用
-THIRD_PARTY_RE = re.compile(
-    r"(?:joomla|drupal|magento|prestashop|typo3)\s+(?:extension|plugin|component|module)"
-    r"|extensions?\s+-\s+[a-z0-9 -]+\.[a-z]{2,6}\s+-", re.I)
-
-
-def is_wordpress_plugin(item: dict) -> bool:
-    if WP_PLUGIN_RE.search(item.get("desc", "")):
-        return True
-    for p in item.get("products", []):
-        vendor = p.split(" ", 1)[0]
-        if vendor.endswith(("_project", "_plugins", "_themes")):
-            return True
-    return False
+# NVD 里插件市场漏洞的三类通用特征(不针对任何特定生态/组件):
+# 1) 批量上报句式:「Extension - vendor.example - 描述」——中段带第三方厂商域名
+# 2) CPE 厂商命名惯例:<slug>_project / _plugins / _themes
+# 3) 「plugin/extension/module/theme/addon for <宿主产品>」句式
+MARKETPLACE_BATCH_RE = re.compile(
+    r"\b(?:extensions?|plugins?|modules?|themes?|addons?|components?)\s+-\s+"
+    r"[a-z0-9][a-z0-9 -]{1,40}\.[a-z]{2,6}\s+-", re.I)
+ADDON_FOR_RE = re.compile(
+    r"\b(?:plugins?|extensions?|modules?|themes?|addons?)\s+for\s+(?:the\s+)?[A-Za-z]", re.I)
 
 
 def is_third_party_extension(item: dict) -> bool:
-    """Joomla/Drupal 等生态的第三方扩展漏洞(批量上报句式或 CPE 特征)。"""
-    if is_wordpress_plugin(item):
-        return True
-    if THIRD_PARTY_RE.search(item.get("desc", "") or ""):
+    """第三方插件/扩展市场的漏洞(通用结构判定,不枚举生态名)。"""
+    desc = item.get("desc", "") or ""
+    if MARKETPLACE_BATCH_RE.search(desc) or ADDON_FOR_RE.search(desc):
         return True
     for p in item.get("products", []):
         vendor = p.split(" ", 1)[0]
         if vendor.endswith(("_project", "_plugins", "_themes")):
             return True
     return False
+
+
+def is_wordpress_plugin(item: dict) -> bool:
+    """兼容旧名:自通用化后,任何生态的第三方插件/扩展都走同一判定。"""
+    return is_third_party_extension(item)
 
 
 def fallback_urgency(item: dict) -> str:

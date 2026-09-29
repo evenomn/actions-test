@@ -14,19 +14,24 @@ def mk(**kw) -> dict:
 
 
 def test_third_party_extension_detection():
-    # Joomla 扩展批量上报句式:「Joomla Extension - lomart.fr - ...」
+    # 判定逻辑是通用结构特征,不枚举生态名 —— 测试用例只是实例
+    # 1) 批量上报句式:中段带厂商域名
     assert is_third_party_extension(mk(
-        desc="Joomla Extension - lomart.fr - Unauthenticated RCE in UP plugin extension"))
+        desc="Extension - lomart.fr - Unauthenticated RCE in UP plugin extension 5.0.0"))
     assert is_third_party_extension(mk(
-        desc="Joomla Extension - acymailing.com - Remote Code Execution in AcyMailing"))
+        desc="Extension - acymailing.com - Remote Code Execution in AcyMailing"))
+    # 2) 「addon for 宿主」句式(任意生态)
     assert is_third_party_extension(mk(
-        desc="A Drupal module allows SQL injection via the filter parameter."))
-    # CMS 核心/正常产品不是第三方扩展
+        desc="An issue in the Webform module for Drupal allows SQL injection."))
+    assert is_third_party_extension(mk(
+        desc="The Gallery plugin for some CMS allows arbitrary file upload."))
+    # 3) CPE 厂商命名惯例
+    assert is_third_party_extension(mk(products=["youtube_gallery_project youtube_gallery"]))
+    # 宿主产品核心漏洞/正常产品 → 不命中
     assert not is_third_party_extension(mk(desc="Joomla core allows SQL injection."))
     assert not is_third_party_extension(mk(
         desc="A buffer overflow in Citrix NetScaler ADC allows remote code execution."))
-    # CPE 特征
-    assert is_third_party_extension(mk(products=["youtube_gallery_project youtube_gallery"]))
+    assert not is_third_party_extension(mk(desc="Improper input validation in a library."))
 
 
 def test_fallback_repro_caps_third_party():

@@ -32,10 +32,11 @@ keywords = [
 # 垃圾过滤:标题/描述/组件命中这些词的直接丢弃
 ignore_keywords = ["wordpress plugin"]
 
-# WordPress 插件灌水识别:NVD 描述带「plugin for WordPress」句式或 CPE 厂商为
-# <slug>_project 的插件漏洞直接不推(KEV 在野利用除外)。每天几十条 9.8 分插件洞
-# 的重灾区,建议保持开启;想看就把这里改成 false
-ignore_wordpress_plugins = true
+# 第三方插件/扩展灌水识别(通用,不针对特定生态):命中「Extension - 厂商域名 -」
+# 批量上报句式、「plugin/module for 宿主」句式或 CPE <slug>_project 特征的,
+# 默认不推(KEV 在野利用除外),复现判定最多「一般」且不入复现库。
+# 旧键名 ignore_wordpress_plugins 仍然兼容;想看就把这里改成 false
+ignore_third_party_ext = true
 
 # 暴露面加权:命中这些组件类别的漏洞(见 vulnmon/components.py 的分类表)
 # 在价值排序中 +150。实战里边界设备/中间件/CMS/OA 最常见暴露公网

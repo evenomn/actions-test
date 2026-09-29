@@ -96,6 +96,7 @@ DEFAULTS = {
     "keywords": [],
     "ignore_keywords": ["wordpress plugin"],
     "ignore_wordpress_plugins": True,
+    # (历史上叫 ignore_wordpress_plugins,现已通用化:任何生态的第三方插件/扩展)
     "focus_categories": [
         "边界设备/VPN", "Web中间件", "CMS", "邮件系统",
         "OA/协同办公", "开发运维/CI", "视频监控", "安全设备",
@@ -134,7 +135,8 @@ def load_config(path: Path | None = None) -> dict:
         "max_per_vendor": int(cve.get("max_per_vendor", DEFAULTS["max_per_vendor"])),
         "keywords": [k.lower() for k in cve.get("keywords", [])],
         "ignore_keywords": [k.lower() for k in cve.get("ignore_keywords", DEFAULTS["ignore_keywords"])],
-        "ignore_wordpress_plugins": bool(cve.get("ignore_wordpress_plugins", True)),
+        "ignore_wordpress_plugins": bool(cve.get(
+            "ignore_third_party_ext", cve.get("ignore_wordpress_plugins", True))),
         "track_changes": bool(cve.get("track_changes", True)),
         "events_lookback_hours": int(cve.get("events_lookback_hours", DEFAULTS["events_lookback_hours"])),
         "events_max": int(cve.get("events_max", DEFAULTS["events_max"])),
