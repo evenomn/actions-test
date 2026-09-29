@@ -1,54 +1,83 @@
 {
  "2026-09-29": {
-  "qualified": 59,
-  "critical": 54,
-  "kev": 2,
-  "repro_top": 0,
+  "qualified": 53,
+  "critical": 50,
+  "kev": 1,
+  "repro_top": 3,
   "kev_total": 1728,
   "by_category": {
-   "边界设备/VPN": 6,
-   "未分类": 44,
+   "边界设备/VPN": 2,
    "邮件系统": 1,
-   "OA/协同办公": 1,
+   "未分类": 44,
+   "网络设备": 2,
    "安全设备": 1,
-   "CMS": 3,
    "容器/虚拟化": 2,
-   "网络设备": 1
+   "OA/协同办公": 1
   },
   "items": [
    {
     "id": "CVE-2026-88771",
-    "title": "Citrix NetScaler Improper Input Validation Vulnerability",
+    "title": "NetScaler ADC未授权命令执行",
     "tier": "critical",
     "category": "边界设备/VPN",
     "cvss": 9.8,
     "kev": true,
-    "repro": "值得",
+    "repro": "强烈推荐",
     "urgency": "P0 立即处置"
    },
    {
-    "id": "CVE-2026-88772",
-    "title": "Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability",
+    "id": "CVE-2026-100741",
+    "title": "hMailServer登录口令代码注入RCE",
+    "tier": "critical",
+    "category": "邮件系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "强烈推荐",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-88773",
+    "title": "NetScaler ADC HTTP请求走私",
     "tier": "critical",
     "category": "边界设备/VPN",
-    "cvss": 8.1,
-    "kev": true,
+    "cvss": 10.0,
+    "kev": false,
     "repro": "值得",
-    "urgency": "P0 立即处置"
+    "urgency": "P1 重点关注"
    },
    {
-    "id": "CVE-2026-101062",
-    "title": "CVE-2026-101062",
-    "tier": "high",
+    "id": "CVE-2026-100886",
+    "title": "Seetong T81xx设备认证绕过",
+    "tier": "critical",
     "category": null,
-    "cvss": 8.8,
+    "cvss": 10.0,
     "kev": false,
-    "repro": "一般",
-    "urgency": "P2 保持关注"
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-100740",
+    "title": "D-Link DIR-895L L2TP越界写",
+    "tier": "critical",
+    "category": "网络设备",
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-100721",
+    "title": "vm2 NodeVM沙箱逃逸致宿主RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.0,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
    },
    {
     "id": "CVE-2026-102281",
-    "title": "CVE-2026-102281",
+    "title": "Nest框架畸形消息致服务崩溃",
     "tier": "high",
     "category": null,
     "cvss": 7.5,
@@ -58,7 +87,7 @@
    },
    {
     "id": "CVE-2026-102334",
-    "title": "CVE-2026-102334",
+    "title": "Nginx Proxy Manager认证无限速",
     "tier": "high",
     "category": null,
     "cvss": 7.4,
@@ -68,7 +97,7 @@
    },
    {
     "id": "CVE-2026-102335",
-    "title": "CVE-2026-102335",
+    "title": "Nginx Proxy Manager配置注入",
     "tier": "high",
     "category": null,
     "cvss": 7.1,
@@ -77,68 +106,18 @@
     "urgency": "P2 保持关注"
    },
    {
-    "id": "CVE-2026-88773",
-    "title": "CVE-2026-88773",
+    "id": "CVE-2026-101077",
+    "title": "NR289-GE Handler缺失认证",
     "tier": "critical",
-    "category": "边界设备/VPN",
+    "category": null,
     "cvss": 10.0,
     "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-100741",
-    "title": "CVE-2026-100741",
-    "tier": "critical",
-    "category": "邮件系统",
-    "cvss": 9.8,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-88775",
-    "title": "CVE-2026-88775",
-    "tier": "critical",
-    "category": "边界设备/VPN",
-    "cvss": 9.8,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-88776",
-    "title": "CVE-2026-88776",
-    "tier": "critical",
-    "category": "边界设备/VPN",
-    "cvss": 9.8,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-88777",
-    "title": "CVE-2026-88777",
-    "tier": "critical",
-    "category": "边界设备/VPN",
-    "cvss": 9.8,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101074",
-    "title": "CVE-2026-101074",
-    "tier": "critical",
-    "category": "OA/协同办公",
-    "cvss": 9.8,
-    "kev": false,
-    "repro": "值得",
+    "repro": "强烈推荐",
     "urgency": "P1 重点关注"
    },
    {
     "id": "CVE-2026-102361",
-    "title": "CVE-2026-102361",
+    "title": "mall4j更新密码接口未授权重置",
     "tier": "critical",
     "category": "安全设备",
     "cvss": 9.1,
@@ -147,68 +126,78 @@
     "urgency": "P1 重点关注"
    },
    {
-    "id": "CVE-2026-93302",
-    "title": "CVE-2026-93302",
-    "tier": "high",
+    "id": "CVE-2026-100706",
+    "title": "Kyverno路径穿越致集群提权",
+    "tier": "critical",
     "category": null,
-    "cvss": 8.3,
+    "cvss": 9.9,
     "kev": false,
     "repro": "一般",
-    "urgency": "P2 保持关注"
-   },
-   {
-    "id": "CVE-2026-100752",
-    "title": "CVE-2026-100752",
-    "tier": "critical",
-    "category": "CMS",
-    "cvss": 9.3,
-    "kev": false,
-    "repro": "值得",
     "urgency": "P1 重点关注"
    },
    {
-    "id": "CVE-2026-101108",
-    "title": "CVE-2026-101108",
-    "tier": "critical",
-    "category": "CMS",
-    "cvss": 9.3,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101110",
-    "title": "CVE-2026-101110",
-    "tier": "critical",
-    "category": "CMS",
-    "cvss": 9.3,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-100886",
-    "title": "CVE-2026-100886",
+    "id": "CVE-2026-100716",
+    "title": "Froxlor文件链接绕过漏洞",
     "tier": "critical",
     "category": null,
-    "cvss": 10.0,
+    "cvss": 9.9,
     "kev": false,
-    "repro": "值得",
+    "repro": "一般",
     "urgency": "P1 重点关注"
    },
    {
-    "id": "CVE-2026-101000",
-    "title": "CVE-2026-101000",
+    "id": "CVE-2026-101065",
+    "title": "Obot禁用认证时未授权管理员访问",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101090",
+    "title": "Nezha OAuth2 Host头伪造账号接管",
     "tier": "critical",
     "category": null,
-    "cvss": 10.0,
+    "cvss": 9.8,
     "kev": false,
-    "repro": "值得",
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-100715",
+    "title": "Froxlor FTP删除任务任意文件删除",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101084",
+    "title": "Obot MCP连接接口越权访问",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101074",
+    "title": "OA协同办公系统栈溢出漏洞",
+    "tier": "critical",
+    "category": "OA/协同办公",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
     "urgency": "P1 重点关注"
    },
    {
     "id": "CVE-2026-101001",
-    "title": "CVE-2026-101001",
+    "title": "Netcore NBR200V2 QUERY_STRING命",
     "tier": "critical",
     "category": null,
     "cvss": 10.0,
@@ -218,7 +207,7 @@
    },
    {
     "id": "CVE-2026-101039",
-    "title": "CVE-2026-101039",
+    "title": "FAST FAC1900R devdiscover栈溢出",
     "tier": "critical",
     "category": null,
     "cvss": 10.0,
@@ -228,17 +217,7 @@
    },
    {
     "id": "CVE-2026-101072",
-    "title": "CVE-2026-101072",
-    "tier": "critical",
-    "category": null,
-    "cvss": 10.0,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101075",
-    "title": "CVE-2026-101075",
+    "title": "Netcore NR289-GE /ap_ip.cgi命令注",
     "tier": "critical",
     "category": null,
     "cvss": 10.0,
@@ -248,17 +227,7 @@
    },
    {
     "id": "CVE-2026-101076",
-    "title": "CVE-2026-101076",
-    "tier": "critical",
-    "category": null,
-    "cvss": 10.0,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101077",
-    "title": "CVE-2026-101077",
+    "title": "NR289-GE命令注入远程RCE",
     "tier": "critical",
     "category": null,
     "cvss": 10.0,
@@ -268,27 +237,7 @@
    },
    {
     "id": "CVE-2026-100896",
-    "title": "CVE-2026-100896",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.9,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101002",
-    "title": "CVE-2026-101002",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.9,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-82377",
-    "title": "CVE-2026-82377",
+    "title": "TOTOLINK N150RT命令注入RCE",
     "tier": "critical",
     "category": null,
     "cvss": 9.9,
@@ -298,60 +247,10 @@
    },
    {
     "id": "CVE-2026-101037",
-    "title": "CVE-2026-101037",
+    "title": "FAST FAC1200R栈溢出远程RCE",
     "tier": "critical",
     "category": null,
     "cvss": 9.9,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101038",
-    "title": "CVE-2026-101038",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.9,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-85526",
-    "title": "CVE-2026-85526",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.9,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-87799",
-    "title": "CVE-2026-87799",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.9,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101065",
-    "title": "CVE-2026-101065",
-    "tier": "critical",
-    "category": "容器/虚拟化",
-    "cvss": 9.8,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101090",
-    "title": "CVE-2026-101090",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.8,
     "kev": false,
     "repro": "值得",
     "urgency": "P1 重点关注"
@@ -372,16 +271,6 @@
     "tier": "critical",
     "category": null,
     "cvss": 9.8,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101084",
-    "title": "CVE-2026-101084",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.6,
     "kev": false,
     "repro": "值得",
     "urgency": "P1 重点关注"
@@ -447,8 +336,8 @@
     "urgency": "P1 重点关注"
    },
    {
-    "id": "CVE-2026-100721",
-    "title": "CVE-2026-100721",
+    "id": "CVE-2026-82378",
+    "title": "CVE-2026-82378",
     "tier": "critical",
     "category": null,
     "cvss": 9.0,
@@ -457,13 +346,63 @@
     "urgency": "P1 重点关注"
    },
    {
-    "id": "CVE-2026-82378",
-    "title": "CVE-2026-82378",
+    "id": "CVE-2026-101075",
+    "title": "未知组件命令注入远程RCE",
     "tier": "critical",
     "category": null,
-    "cvss": 9.0,
+    "cvss": 10.0,
     "kev": false,
-    "repro": "值得",
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101002",
+    "title": "未知组件命令注入远程RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-82377",
+    "title": "Apache Roller越权读写博客",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101038",
+    "title": "FAST FAC1200R远程栈溢出",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-85526",
+    "title": "LXD Btrfs路径遍历致主机沦陷",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-87799",
+    "title": "LXD迁移接收链接解析致提权",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
     "urgency": "P1 重点关注"
    },
    {
