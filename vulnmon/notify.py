@@ -138,6 +138,36 @@ def push_slack(md: str) -> None:
             raise RuntimeError(f"Slack 推送失败: {result}")
 
 
+# ---------------------------------------------------------------- 出站 Webhook
+
+def push_outbound_webhook(payload: dict) -> str | None:
+    """通用出站集成:把 feed JSON POST 到自建平台/n8n/工单系统。
+
+    环境变量:OUTBOUND_WEBHOOK_URL(必填)、OUTBOUND_WEBHOOK_SECRET(可选,
+    配了会带 X-Signature: sha256=HMAC(body) 与 X-Timestamp 头,防伪造)。
+    返回错误信息或 None。
+    """
+    import hashlib
+    url = env("OUTBOUND_WEBHOOK_URL")
+    if not url:
+        return None
+    body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    headers = {"Content-Type": "application/json",
+               "User-Agent": "vulnmon/3.0"}
+    secret = env("OUTBOUND_WEBHOOK_SECRET")
+    if secret:
+        ts = str(int(time.time()))
+        sig = hmac.new(secret.encode(), body, hashlib.sha256).hexdigest()
+        headers.update({"X-Signature": f"sha256={sig}", "X-Timestamp": ts})
+    try:
+        req = urllib.request.Request(url, data=body, headers=headers)
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            resp.read()
+        return None
+    except (urllib.error.URLError, OSError) as e:
+        return str(e)
+
+
 # ---------------------------------------------------------------- 分发入口
 
 def push_all(md: str, title: str, cfg: dict, at_all: bool) -> dict[str, str | None]:

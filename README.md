@@ -1,8 +1,18 @@
 # CVE Daily Monitor
 
-每天早上 9 点(北京时间)自动抓取过去 48 小时新披露的高价值漏洞,经**规则引擎 + AI 分析师**双重加工后,推送**少量、高信噪比、可读**的中文漏洞日报到钉钉 / 飞书 / 企业微信 / Telegram / Slack,同时在仓库生成完整存档、结构化 JSON feed 和 RSS。
+企业级漏洞情报平台:多源采集(NVD/GHSA/KEV/EPSS/PoC 数据集/nuclei/RSS)→ 规则引擎 + AI 分析师双重加工 → **即时告警 + 每日日报 + 每周复盘**三级节奏,推送到钉钉 / 飞书 / 企业微信 / Telegram / Slack,并输出 feed.json(带统计)/ RSS / HMAC 签名出站 Webhook。
 
 零第三方依赖(纯 Python 标准库),GitHub Actions 免费跑,零成本运维。
+
+## 三级推送节奏
+
+| 节奏 | 频率 | 内容 | Workflow |
+|---|---|---|---|
+| ⚡ 即时告警 | 每 4 小时 | 只推强信号:KEV 在野利用 / 有 PoC / P0 / 状态变化,单次 ≤3 条 | `cve-events.yml` |
+| 📰 每日日报 | 每天 09:00(北京) | 全量价值排序日报 + AI 今日要点 + 资讯小节 | `cve-monitor.yml` |
+| 📅 每周复盘 | 每周一 09:35 | 本周态势:KEV 净增、组件分布、重点漏洞 Top10、复现优先级统计 | `cve-weekly.yml` |
+
+三级共享 `state.json` 去重:即时告警过的漏洞次日日报仍会复盘展示,不会漏也不会重轰炸。
 
 ## 每条漏洞展示什么
 
@@ -22,6 +32,15 @@ CVE-2026-73453 · 🎯P0 立即处置 · 披露 2026-09-26 · 组件 边界设�
 PoC: attacker/cve-poc ⭐128 · EDB-52311                        ← 真实可点的 PoC 链接
 参考: [厂商通告](...) · [官方补丁](...)                          ← 通告与补丁直达链接
 ```
+
+## 企业级能力(v3)
+
+- **PoC 源码核验**:对入选漏洞的 PoC 仓库查根目录文件,区分「真有 exploit 代码」(`[源码✅]`)和「只有 README 的骗 star 占位仓库」(`[仅README]`)——CVE 上热门时一波空仓库混进来,直接标有 PoC 会误导复现决策。有源码的条目排序加权
+- **变更检测**:已推送过的漏洞被 NVD 升分(±0.7 以上)或新增公开 PoC 引用,次日日报重推「📊 状态变化」条目,微调不刷屏(抄 OpenCVE 的核心思想)
+- **历史沉淀与周报**:`data/history.json` 按天记录达标漏洞关键字段(保留 60 天),每周一自动聚合生成周报:KEV 净增、组件分布、重点 Top10、复现优先级统计
+- **feed.json 统计块**:`stats` 字段直接给出分层/优先级/组件分布、PoC 覆盖率、源码可用数,看板可零加工消费
+- **出站 Webhook**:配 `OUTBOUND_WEBHOOK_URL` 后每次日报会把统计 POST 到你的平台(n8n/工单/看板),配 `OUTBOUND_WEBHOOK_SECRET` 带 HMAC-SHA256 签名(`X-Signature`)防伪造
+- **RSS 资讯源**:`[source] feeds = [...]` 填 RSS/Atom 地址(安全媒体、厂商博客、wewe-rss 转的公众号),命中 CVE 号的资讯自动挂到对应漏洞条目,其余进日报「📡 资讯」小节
 
 ## AI 分析师做什么
 
@@ -105,38 +124,88 @@ Actions → CVE Daily Monitor → Run workflow。勾选 `ignore_dedup`(默认勾
 本地调试:
 
 ```bash
-python3 monitor.py --dry-run                      # 打印日报,存档预览在 /tmp/vulnmon-preview/
-python3 monitor.py --dry-run --lookback-hours 24
-python3 -m pytest tests/ -q                       # 单元测试(无需网络)
+python3 monitor.py --dry-run                      # 每日日报预览
+python3 monitor.py --mode events --dry-run        # 即时告警预览
+python3 monitor.py --mode weekly --dry-run        # 周报预览
+python3 -m pytest tests/ -q                       # 单元测试(无需网络,100 个用例)
 ```
+
+## 推送时间说明
+
+GitHub 免费版的 `schedule` 定时任务会排队,拥堵时段(整点分钟、UTC 0~1 点)实测能压 4 小时以上。本项目的对策:
+
+- 日报 cron 放在 UTC 23:43(北京 07:43)冷门时段,通常 **08:00 前后送达**
+- 即时告警每 4 小时一轮,单轮延迟不影响覆盖(5h 窗口 + 去重兜底)
+- 数据完整性不受影响:48h 回看窗口 + 跨运行去重,晚跑只影响送达时间、不会漏漏洞
+
+**要严格准点(如 09:00 整)**:用外部定时器调 `workflow_dispatch`,dispatch 触发不排队(实测即时):
+
+```bash
+# 在任意有准点 crontab 的机器上(VPS/NAS),或用 cron-job.org:
+curl -X POST -H "Authorization: Bearer <PAT>" \
+  -H "Accept: application/vnd.github+json" \
+  https://api.github.com/repos/<you>/actions-test/actions/workflows/cve-monitor.yml/dispatches \
+  -d '{"ref":"main"}'
+```
+
+PAT 需要 Actions 读写权限(fine-grained,仅授权本仓库即可)。
 
 ## 输出物
 
 | 文件 | 说明 |
 |---|---|
+| `data/repro.md` / `data/repro.json` | **🎯 高价值可复现漏洞库**(内网拉取入口,见下节) |
 | `data/digest-日期.md` | 当日完整清单存档(含未入选的达标漏洞) |
-| `data/feed.json` | 结构化 JSON feed,供看板/程序消费 |
+| `data/feed.json` | 结构化 feed(含 stats 统计块),供看板/程序消费 |
 | `data/feed.xml` | RSS 2.0,可用阅读器订阅 |
-| `data/state.json` | 去重与推送状态(v2:记录 pushed 标记) |
+| `data/history.json` | 每日达标漏洞沉淀(60 天),周报数据源 |
+| `data/weekly-YYYY-Www.md` | 周报复盘存档 |
+| `data/state.json` | 去重/推送时间/评分基线(v3,旧版自动迁移) |
 
 RSS/JSON 里的链接基于 `GITHUB_REPOSITORY` 自动生成,指向仓库内 feed 文件。
+
+## 高价值可复现漏洞库(内网拉取)
+
+`data/repro.md` + `data/repro.json`,**固定路径、滚动维护**,只收录「真正值得复现」的漏洞:
+
+- **入选门槛**:AI 判定「⭐⭐⭐强烈推荐 / ⭐⭐值得」复现(AI 可基于常见资产+默认配置可打判定,暂无 PoC 也收);无 LLM 时退回证据门槛——必须 KEV 在野利用 / 有 PoC / 有 nuclei 模板 / PoC 有源码
+- **滚动保留 21 天**:每日运行合并新条目、刷新老条目(升分/新 PoC 自动更新字段),过期淘汰;`first_seen`/`last_seen` 记录入库时间
+- **每条含**:复现要点(入口/前置条件)、影响面画像、PoC 链接(带源码核验标记)、影响版本、处置建议、厂商通告
+
+内网拉取方式:
+
+```bash
+# 方式一:克隆/拉仓库(CI 每天自动提交)
+git clone https://github.com/<you>/actions-test && cat actions-test/data/repro.md
+
+# 方式二:直接拉 raw(无需 git)
+curl -s https://raw.githubusercontent.com/<you>/actions-test/main/data/repro.json | jq '.items[] | {id, title, repro_worthy, poc}'
+
+# 方式三:接自建平台
+# 配 OUTBOUND_WEBHOOK_URL 后每日推送到你的接收端(见「企业级能力」)
+```
+
+`repro.json` 顶层带 `updated_at` / `count` / `count_recommended`,条目结构见文件本身(schema=1)。
 
 ## 架构
 
 ```
-monitor.py                    CLI 入口:编排 数据源 → 筛选 → 富化 → AI 分析 → 渲染 → 推送 → 状态
+monitor.py                    CLI 入口:daily/events/weekly 三模式编排
 vulnmon/
   sources/                    数据源(可按 config 开关组合)
-    nvd.py kev.py ghsa.py     NVD / CISA KEV / GitHub GHSA
+    nvd.py kev.py ghsa.py     NVD(含变更数据) / CISA KEV / GitHub GHSA
     epss.py exploitdb.py      EPSS / Exploit-DB
-    poc_github.py             PoC-in-GitHub 数据集 + GitHub 搜索兜底
+    poc_github.py             PoC-in-GitHub 数据集 + 搜索兜底 + 源码核验
     nuclei.py                 nuclei-templates 覆盖
-  pipeline.py                 合并、资格判定、去重(v2 语义)、打分、上限截断(确定性规则引擎)
-  scoring.py                  关键词匹配、价值排序、厂商聚合
-  llm.py                      AI 分析师:逐条分析(标题/摘要/处置/优先级) + 今日简报 + 机翻兜底
-  report.py                   Markdown/HTML/mrkdwn 渲染、feed.json、RSS、分块
-  notify.py                   钉钉/飞书/企微/Telegram/Slack 分发
-  state.py                    状态持久化(v1 自动迁移 v2)
+    feeds.py                  RSS/Atom 资讯源(媒体/公众号转 RSS)
+  pipeline.py                 合并、资格判定、变更检测、去重(v3)、打分、上限截断
+  scoring.py                  关键词匹配、价值排序、厂商聚合、兜底判定
+  components.py               组件画像(15 类常用系统)
+  llm.py                      AI 分析师:逐条分析 + 今日简报 + 机翻兜底
+  report.py                   日报/即时告警模板、feed.json(stats)、RSS、分块
+  notify.py                   多渠道分发 + HMAC 出站 Webhook
+  history.py                  历史沉淀 + 周报聚合
+  state.py                    状态持久化(v1/v2 自动迁移 v3)
   config.py                   TOML 配置(3.10 以下用内置兜底解析器)
 tests/                        pytest 单元测试(离线,不依赖网络)
 ```
@@ -149,11 +218,14 @@ tests/                        pytest 单元测试(离线,不依赖网络)
 - 仓库 60 天不活跃会停用定时任务;本工作流每天自动提交 `data/` 保持活跃,提交带 `[skip ci]`。
 - 钉钉单条约 20KB、企微/Telegram 单条 4KB,超长日报会按条目边界自动分块或截断(企微最多 5 条)。
 
-## 相对 v1 的主要变化
+## 相对 v2 的主要变化
 
-- 单文件重构为 `vulnmon` 包,60+ 单元测试覆盖解析/筛选/AI/渲染/通知
-- **AI 分析师**:LLM 基于全量结构化证据逐条产出标题/摘要/处置建议/优先级(P0-P2),并生成今日要点简报;失败自动降级,不影响管道
-- PoC 发现改用 PoC-in-GitHub 数据集为主(原 GitHub 搜索高并发易被限流,失败静默导致大量漏报)
-- 新增 nuclei-templates 覆盖、厂商通告/补丁链接、「暂无官方修复」警示、KEV 修复截止日期
-- 去重语义 v2:被截掉的漏洞次日重排;KEV 升级重推;推送失败不写状态
-- 多渠道推送(钉钉/飞书/企微/Telegram/Slack)+ feed.json + RSS 输出
+- **三级节奏**:每 4h 即时告警(强信号)+ 每日日报 + 每周复盘,共享去重状态
+- **PoC 源码核验**:识别骗 star 的空仓库,PoC 链接标 [源码✅]/[仅README]
+- **变更检测**:已推漏洞升分/新增 PoC 引用 → 重推状态变化(±0.7 分以内微调不刷屏)
+- **history.json + 周报**:数据沉淀与每周态势复盘
+- **feed.json v3**:stats 统计块(分层/组件/优先级/PoC 覆盖/源码可用)
+- **出站 Webhook**(HMAC 签名)+ **RSS 资讯源**(媒体/公众号转 RSS)
+- state v3:记录评分基线与推送时间,支持变更检测与三级节奏协调
+- **高价值可复现漏洞库**:`data/repro.md` + `data/repro.json` 固定路径滚动维护,只收「值得复现」的,详见专节
+- 测试 107 个全绿;真实情报验证: 16 条达标仅 2 条入复现库(Citrix NetScaler KEV 双洞,全带源码 PoC)

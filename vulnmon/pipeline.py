@@ -1,11 +1,12 @@
-"""筛选管线:富化 → 资格判定 → AI 分析 → 排序 → 上限截断。
+"""筛选管线:富化 → 资格判定 → 变更检测 → AI 分析 → 排序 → 上限截断。
 
-去重语义(v2):
-- pushed=True 且非新 KEV:跳过(已推送过)
+去重语义(v3):
+- pushed 且无新事件:按模式决定是否跳过(daily 跳过已推;events 当日已即时告警的跳过)
 - pushed=False(上次符合条件但被上限截掉):重新参选,不丢情报
-- 新入选 KEV(无论推没推过):重推,标「升级提醒」
+- 新入选 KEV:重推,标「升级提醒」
+- 状态变化(升分/新增PoC引用):重推,标「状态变化」(仅 daily 模式,track_changes 开启)
 
-AI 分析在截断之前进行:复现价值/优先级判定会直接影响最终入选与排序;
+AI 分析在截断之前进行:复现判定/优先级会直接影响最终入选与排序;
 无 AI 时用确定性兜底规则(scoring.fallback_urgency/fallback_repro)。
 """
 
@@ -20,6 +21,63 @@ from .scoring import (fallback_repro, fallback_urgency, is_wordpress_plugin,
                       item_haystack, match_keywords, priority, vendor_key)
 from .sources.epss import fetch_epss
 from .sources.kev import apply_kev
+from .sources.nvd import fetch_nvd_modified
+
+# 分数变化超过该幅度才算「实质变化」重推(NVD 常见 ±0.1 的微调不刷屏)
+CVSS_CHANGE_DELTA = 0.7
+
+
+def _material_changes(prev: dict, item: dict) -> list[str]:
+    """对比 seen 基线与当前数据,返回实质变化说明;空列表表示无实质变化。"""
+    notes = []
+    old_cvss, new_cvss = prev.get("cvss"), item.get("cvss")
+    if old_cvss is not None and new_cvss is not None:
+        if abs(new_cvss - old_cvss) >= CVSS_CHANGE_DELTA:
+            arrow = "升分" if new_cvss > old_cvss else "降分"
+            notes.append(f"📈 评分 {old_cvss}→{new_cvss}({arrow})")
+    elif old_cvss is None and new_cvss is not None and new_cvss >= 9.0:
+        notes.append(f"📈 新增评分 {new_cvss}")
+    if not prev.get("exploit_ref") and item.get("has_exploit_ref"):
+        notes.append("💥 新增公开PoC引用")
+    return notes
+
+
+def detect_changes(candidates: dict[str, dict], seen: dict,
+                   start: datetime, end: datetime,
+                   fetch_modified=None) -> list[dict]:
+    """变更检测:窗口内被 NVD 修改、且此前已见过的漏洞,发生实质变化则产出重推条目。
+
+    返回带 change_note 的 item 列表;同时把没有实质变化的更新掉(由调用方写回)。
+    fetch_modified 注入便于测试,签名 (start, end) -> list[item]。
+    """
+    if not seen:
+        return []
+    if fetch_modified is not None:
+        modified = fetch_modified(start, end)
+    else:
+        try:
+            modified = fetch_nvd_modified(start, end)
+        except RuntimeError as e:
+            print(f"  [warn] NVD 变更数据拉取失败(跳过变更检测): {e}", flush=True)
+            return []
+    changed = []
+    n_touched = 0
+    for m in modified:
+        cid = m["id"]
+        if cid not in seen or cid in candidates:
+            continue  # 只追踪已见过的;本窗口新发布的不算变更
+        n_touched += 1
+        prev = seen[cid]
+        notes = _material_changes(prev, m)
+        if not notes:
+            continue
+        m["category"] = classify(m)
+        m["change_note"] = ";".join(notes)
+        m["keyword_hit"] = match_keywords(m, [])  # 关键词由调用方补
+        changed.append(m)
+    if n_touched:
+        print(f"  变更检测: 窗口内 {n_touched} 个已见漏洞被修改,{len(changed)} 个实质变化", flush=True)
+    return changed
 
 
 def _kev_date(entry: dict):
@@ -48,17 +106,19 @@ def _qualifies(item: dict, cfg: dict) -> bool:
 
 def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
                       cfg: dict, now: datetime, lookback: timedelta,
-                      fetch_missing=None, ai_analyze_fn=None, dedup: bool = True):
+                      fetch_missing=None, ai_analyze_fn=None, dedup: bool = True,
+                      mode: str = "daily"):
     """返回 (入选列表, 全部符合条件列表, 统计)。
 
     fetch_missing: KEV-only 条目补抓 NVD 详情的回调(注入便于测试)。
     ai_analyze_fn: AI 分析回调 (items) -> None,就地写入 urgency/repro 等字段;
     传 None 时用确定性兜底规则。
+    mode: "daily" 全量日报 / "events" 只保留强信号即时告警。
     """
     seen = state.get("seen", {})
     prev_kev = set(state.get("kev_ids") or [])
     window_date = (now - lookback).date()
-    stats = {"dedup_suppressed": 0, "kev_upgraded": 0, "requeued": 0}
+    stats = {"dedup_suppressed": 0, "kev_upgraded": 0, "requeued": 0, "changed": 0}
 
     items = list(candidates.values())
     for item in items:
@@ -68,17 +128,32 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
         item["category"] = classify(item)
         item["keyword_hit"] = match_keywords(item, cfg["keywords"])
 
+    # 变更检测(daily 且开启时):已见漏洞升分/新增PoC引用 → 重推
+    if mode == "daily" and cfg.get("track_changes", True) and dedup:
+        changed = detect_changes(candidates, seen, now - lookback, now)
+        for m in changed:
+            m["keyword_hit"] = match_keywords(m, cfg["keywords"])
+            entry = kev_map.get(m["id"])
+            if entry:
+                apply_kev(m, entry)
+            candidates[m["id"]] = m
+            items.append(m)
+        stats["changed"] = len(changed)
+
     qualified = []
     for item in items:
         prev = seen.get(item["id"])
         if dedup and prev:
             is_new_kev = item["kev"] and item["id"] not in prev_kev
-            if prev.get("pushed", True) and not is_new_kev:
+            has_change = bool(item.get("change_note"))
+            if prev.get("pushed", True) and not is_new_kev and not has_change:
                 stats["dedup_suppressed"] += 1
                 continue
             if is_new_kev and prev.get("pushed"):
                 stats["kev_upgraded"] += 1
                 item["upgrade_note"] = "此前已推送,现已确认在野利用(KEV),升级提醒"
+            elif has_change and prev.get("pushed"):
+                pass  # 状态变化条目直接进入资格判定
             elif not prev.get("pushed", True):
                 stats["requeued"] += 1  # 上次被截掉,今日重新参选
         if _qualifies(item, cfg):
@@ -132,6 +207,9 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
     ai_pool = qualified[:int(cfg.get("ai_analyze_limit", 30))]
     if ai_analyze_fn is not None and ai_pool:
         ai_analyze_fn(ai_pool)
+        # 标记送过 AI 的条目:repro 库的入选门槛据此放宽(信任 AI 的「值得」判断)
+        for i in ai_pool:
+            i["_ai_judged"] = True
     # 全量兜底赋值(未进 AI 池的、以及 AI 漏答的),保证排序字段完整
     for i in qualified:
         if not i.get("urgency"):
@@ -141,7 +219,13 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
     # 带 AI 加成重排,决定最终入选
     qualified.sort(key=lambda i: priority(i, cfg), reverse=True)
 
+    if mode == "events":
+        # 即时告警只留强信号:KEV / 有PoC / P0 / 9.8+低难度 / 状态变化
+        qualified = [i for i in qualified if _is_event_worthy(i)]
+
     # 同厂商限量 + 每日总量硬上限(识别不出厂商的归入 _other_,不占厂商限额)
+    cap = cfg.get("events_max" if mode == "events" else "max_push",
+                  cfg["max_push"])
     final, vendor_count = [], {}
     for i in qualified:
         v = vendor_key(i)
@@ -149,7 +233,19 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
             continue
         vendor_count[v] = vendor_count.get(v, 0) + 1
         final.append(i)
-        if len(final) >= cfg["max_push"]:
+        if len(final) >= cap:
             break
 
     return final, qualified, stats
+
+
+def _is_event_worthy(item: dict) -> bool:
+    if item.get("kev") or item.get("change_note") or item.get("upgrade_note"):
+        return True
+    if item.get("poc_links") or item.get("has_exploit_ref") or item.get("nuclei"):
+        return True
+    if item.get("urgency") == "P0 立即处置":
+        return True
+    if (item.get("cvss") or 0) >= 9.8 and (item.get("difficulty") or "").startswith("低"):
+        return True
+    return False

@@ -1,10 +1,12 @@
-"""跨运行去重状态(v2)。
+"""跨运行去重与追踪状态(v3)。
 
-v1 结构: {"seen": {cve_id: "日期"}, "kev_ids": [...]}
-v2 结构: {"version": 2, "seen": {cve_id: {"date": .., "pushed": bool, "kev": bool}}, ...}
+v1: {"seen": {cve_id: "日期"}}
+v2: {"seen": {cve_id: {"date","pushed","kev"}}}
+v3: {"seen": {cve_id: {"date","pushed_at","kev","cvss","last_mod","exploit_ref"}}}
 
-pushed=False 表示该漏洞符合条件但当日未入选(被上限/厂商限量截掉),
-次日仍可再次参选,避免情报被静默吞掉。
+v3 新增字段支撑两个企业级能力:
+- cvss/exploit_ref: 变更检测基线(升分/新增PoC引用 → 重推「状态变化」)
+- pushed_at(ISO 时间): 事件告警与日报的节奏协调(即时告警过的,次日日报复盘仍列出)
 """
 
 from __future__ import annotations
@@ -18,33 +20,60 @@ from .config import STATE_FILE
 def load_state(path=None) -> dict:
     p = path or STATE_FILE
     if not p.exists():
-        return {"version": 2, "seen": {}, "kev_ids": []}
+        return {"version": 3, "seen": {}, "kev_ids": [], "media_seen": {}}
     with open(p, encoding="utf-8") as f:
         raw = json.load(f)
     return migrate(raw)
 
 
 def migrate(raw: dict) -> dict:
-    """v1 -> v2:字符串日期视为「已推送、非 KEV」。"""
     seen = {}
     for cid, entry in (raw.get("seen") or {}).items():
-        if isinstance(entry, str):
-            seen[cid] = {"date": entry, "pushed": True, "kev": False}
-        elif isinstance(entry, dict):
-            seen[cid] = {
-                "date": entry.get("date", ""),
-                "pushed": bool(entry.get("pushed", True)),
-                "kev": bool(entry.get("kev", False)),
-            }
-    return {"version": 2, "seen": seen, "kev_ids": list(raw.get("kev_ids") or [])}
+        if isinstance(entry, str):  # v1
+            entry = {"date": entry, "pushed": True, "kev": False}
+        seen[cid] = {
+            "date": entry.get("date", ""),
+            "pushed": bool(entry.get("pushed", True)),
+            "pushed_at": entry.get("pushed_at") or entry.get("date") or "",
+            "kev": bool(entry.get("kev", False)),
+            "cvss": entry.get("cvss"),
+            "last_mod": entry.get("last_mod", ""),
+            "exploit_ref": bool(entry.get("exploit_ref", False)),
+        }
+    return {"version": 3, "seen": seen, "kev_ids": list(raw.get("kev_ids") or []),
+            "media_seen": dict(raw.get("media_seen") or {})}
 
 
 def save_state(state: dict, retention_days: int, now: datetime, path=None):
     cutoff = (now - timedelta(days=retention_days)).date().isoformat()
     state["seen"] = {k: v for k, v in state.get("seen", {}).items()
                      if isinstance(v, dict) and v.get("date", "") >= cutoff}
-    state["version"] = 2
+    # media_seen 同样按保留期清理(值存日期)
+    state["media_seen"] = {k: v for k, v in state.get("media_seen", {}).items()
+                           if isinstance(v, str) and v >= cutoff}
+    state["version"] = 3
     p = path or STATE_FILE
     p.parent.mkdir(parents=True, exist_ok=True)
     with open(p, "w", encoding="utf-8") as f:
         json.dump(state, f, ensure_ascii=False, indent=1)
+
+
+def mark_seen(state: dict, items: list[dict], now: datetime, pushed_ids: set[str]):
+    """把本次处理的条目写入 seen;保留旧基线字段供后续变更对比。"""
+    state.setdefault("seen", {})
+    ts = now.astimezone(timezone.utc).isoformat(timespec="seconds")
+    today = now.date().isoformat()
+    for i in items:
+        prev = state["seen"].get(i["id"]) or {}
+        was_pushed = bool(prev.get("pushed"))
+        now_pushed = was_pushed or i["id"] in pushed_ids
+        state["seen"][i["id"]] = {
+            "date": today,
+            "pushed": now_pushed,
+            "pushed_at": (ts if (i["id"] in pushed_ids and not prev.get("pushed_at"))
+                          else prev.get("pushed_at") or (ts if now_pushed else "")),
+            "kev": bool(i.get("kev")),
+            "cvss": i.get("cvss"),
+            "last_mod": prev.get("last_mod", ""),
+            "exploit_ref": bool(i.get("has_exploit_ref")),
+        }

@@ -47,9 +47,26 @@ focus_categories = [
 # 分析结果反过来参与最终入选排序。配了 LLM_API_KEY 才生效
 ai_analyze_limit = 30
 
+# 变更检测:已推送过的漏洞若被 NVD 升分(±0.7 以上)或新增公开 PoC 引用,
+# 次日日报会重推一条「📊 状态变化」。微调不刷屏
+track_changes = true
+
+# 即时告警模式(--mode events,每 4h):回看窗口与单次最多条数。
+# 只推强信号:KEV 在野利用 / 有PoC / P0 / 状态变化
+events_lookback_hours = 5
+events_max = 3
+
 [source]
 # GitHub Security Advisories(仅 GitHub 人工审核的公告,自带包生态/影响版本/修复版本)
 ghsa = true
+
+# PoC 源码核验:对入选漏洞的 PoC 仓库查根目录文件,区分「真有 exploit 代码」
+# 和「只有 README 的骗 star 占位仓库」。标签会带在 PoC 链接上([源码✅]/[仅README])
+verify_poc_source = true
+
+# RSS/Atom 资讯源(安全媒体、厂商博客、公众号转 RSS 如 wewe-rss)。
+# 进日报尾部「📡 资讯」小节;标题带 CVE 号的会挂到对应漏洞条目上。留空关闭
+feeds = []
 
 # Exploit-DB 公开 PoC 映射(CVE -> EDB 链接)
 exploitdb = true
@@ -85,6 +102,14 @@ feed_json = true
 
 # data/feed.xml(RSS 2.0,可用 RSS 阅读器订阅)
 rss = true
+
+# 高价值可复现漏洞库:data/repro.md + data/repro.json(固定路径,滚动维护)。
+# 只收录 AI 判定「强烈推荐/值得」复现的;无 AI 时要求有 kev/PoC/nuclei 证据。
+# 内网拉取: git pull 读文件,或 curl raw.githubusercontent.com/<repo>/main/data/repro.json
+repro = true
+
+# 可复现库滚动保留天数(超过未再出现的条目淘汰)
+repro_retention_days = 21
 
 [state]
 # 已见 CVE 记录的保留天数(防 state.json 无限增长)

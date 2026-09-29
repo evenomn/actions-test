@@ -113,17 +113,38 @@ def digest_headline(items: list[dict], total_count: int, lookback_hours: int,
                 msg += f",完整清单见仓库 {archive_name}"
     if stats.get("kev_upgraded"):
         msg += f";{stats['kev_upgraded']} 条旧漏洞新确认在野利用,已升级重推"
+    if stats.get("changed"):
+        msg += f";{stats['changed']} 条已见漏洞发生实质变化(升分/新增PoC),重推"
     if stats.get("dedup_suppressed"):
         msg += f";另有 {stats['dedup_suppressed']} 条已推送过去重"
     return msg
+
+
+def build_events_markdown(items: list[dict], now: datetime,
+                          stats: dict | None = None,
+                          max_bytes: int = 9000) -> str:
+    """即时告警模板:紧凑单块,只放关键信息。"""
+    stats = stats or {}
+    lines = [f"# ⚡ 高优漏洞即时告警 {now.strftime('%m-%d %H:%M')}",
+             f"过去数小时内 {len(items)} 条强信号漏洞(KEV/有PoC/P0/状态变化),详情见每日日报\n", "---"]
+    total_len = sum(len(l.encode()) for l in lines)
+    for i in items:
+        text = item_block_md(i)
+        if total_len + len(text.encode()) > max_bytes:
+            break
+        lines.append(text)
+        total_len += len(text.encode())
+    lines.append("\n---\n*即时告警只推强信号;完整清单与复盘见每日日报*")
+    return "\n".join(lines)
 
 
 def item_block_md(item: dict) -> str:
     """单条漏洞的 Markdown 区块(各渠道共用主干)。"""
     stars = "🔴" if item["tier"] == "critical" else "🟠"
     upgrade = f"\n> 🔁 {item['upgrade_note']}" if item.get("upgrade_note") else ""
+    change = f"\n> 📊 {item['change_note']}" if item.get("change_note") else ""
     block = [f"\n### {stars} {item_title(item)}",
-             f"[{item['id']}]({item_link(item)}) · {fmt_meta(item)}{upgrade}"]
+             f"[{item['id']}]({item_link(item)}) · {fmt_meta(item)}{upgrade}{change}"]
     if item.get("summary_zh"):
         block.append(f"**摘要**: {item['summary_zh']}")
     elif item.get("desc_zh"):
@@ -161,7 +182,8 @@ def item_block_md(item: dict) -> str:
 def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
                    now: datetime, archive_name: str | None, stats: dict | None = None,
                    max_bytes: int = DINGTALK_MAX_BYTES,
-                   briefing: str | None = None) -> str:
+                   briefing: str | None = None,
+                   media: list[dict] | None = None) -> str:
     stats = stats or {}
     today = now.strftime("%Y-%m-%d")
     if not items:
@@ -182,6 +204,12 @@ def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
             break
         lines.append(text)
         total_len += len(text.encode())
+
+    if media:
+        lines.append("\n## 📡 资讯")
+        for m in media[:5]:
+            cve_tag = f"({', '.join(m['cves'])})" if m.get("cves") else ""
+            lines.append(f"- [{m['title'][:60]}]({m['link']}) {cve_tag}")
 
     lines.append("\n---\n*数据源: NVD · GitHub GHSA · CISA KEV · EPSS · Exploit-DB · PoC-in-GitHub · nuclei-templates*")
     return "\n".join(lines)
@@ -228,8 +256,29 @@ def feed_base_url() -> str:
     return "https://example.com/cve-monitor/data/"
 
 
+def build_stats(qualified: list[dict]) -> dict:
+    """feed.json 的统计块:分层/组件/优先级分布,供看板直接消费。"""
+    def counter(field):
+        out: dict[str, int] = {}
+        for i in qualified:
+            v = i.get(field) or "未知"
+            out[v] = out.get(v, 0) + 1
+        return dict(sorted(out.items(), key=lambda t: -t[1]))
+
+    return {
+        "total": len(qualified),
+        "by_tier": counter("tier"),
+        "by_urgency": counter("urgency"),
+        "by_category": counter("category"),
+        "kev": sum(1 for i in qualified if i.get("kev")),
+        "with_poc": sum(1 for i in qualified if i.get("poc_links") or i.get("has_exploit_ref")),
+        "with_poc_source": sum(1 for i in qualified if i.get("poc_quality") == "code"),
+        "repro_recommended": sum(1 for i in qualified if i.get("repro_worthy") == "强烈推荐"),
+    }
+
+
 def build_feed_json(qualified: list[dict], now: datetime, lookback_hours: int,
-                    briefing: str | None = None) -> str:
+                    briefing: str | None = None, media: list[dict] | None = None) -> str:
     """结构化 JSON feed:供程序消费(自建看板/飞书机器人/CI 二次加工)。"""
 
     def clean(item: dict) -> dict:
@@ -268,12 +317,15 @@ def build_feed_json(qualified: list[dict], now: datetime, lookback_hours: int,
         }
 
     doc = {
-        "version": 2,
+        "version": 3,
         "generated_at": now.astimezone(timezone.utc).isoformat(timespec="seconds"),
         "lookback_hours": lookback_hours,
         "count": len(qualified),
+        "stats": build_stats(qualified),
         "briefing": briefing.splitlines() if briefing else [],
         "items": [clean(i) for i in qualified],
+        "media": [{"title": m["title"], "link": m["link"],
+                   "cves": m.get("cves", [])} for m in (media or [])],
     }
     return json.dumps(doc, ensure_ascii=False, indent=1)
 
@@ -313,7 +365,7 @@ def build_rss(qualified: list[dict], now: datetime, lookback_hours: int,
 
 def write_outputs(qualified: list[dict], now: datetime,
                   lookback_hours: int, cfg: dict, data_dir: Path,
-                  briefing: str | None = None) -> dict:
+                  briefing: str | None = None, media: list[dict] | None = None) -> dict:
     """写存档/feed.json/RSS,清理过期文件。返回 {"archive": 相对路径}。"""
     data_dir.mkdir(parents=True, exist_ok=True)
     date_str = now.date().isoformat()
@@ -322,7 +374,8 @@ def write_outputs(qualified: list[dict], now: datetime,
         build_archive(qualified, now), encoding="utf-8")
     if cfg["feed_json"]:
         (data_dir / "feed.json").write_text(
-            build_feed_json(qualified, now, lookback_hours, briefing), encoding="utf-8")
+            build_feed_json(qualified, now, lookback_hours, briefing, media),
+            encoding="utf-8")
     if cfg["rss"]:
         (data_dir / "feed.xml").write_text(
             build_rss(qualified, now, lookback_hours, briefing=briefing), encoding="utf-8")

@@ -21,15 +21,17 @@ def mk(cve_id, cvss=9.5, **kw) -> dict:
 
 
 def run(candidates, state, kev_map=None, cfg=None, dedup=True, fetch_missing=None,
-        ai_analyze_fn=None, monkeypatch=None):
+        ai_analyze_fn=None, monkeypatch=None, mode="daily"):
     kev_map = kev_map or {}
     cfg = cfg or dict(DEFAULTS)
     if monkeypatch:
         monkeypatch.setattr(pipeline, "fetch_epss", lambda ids: {})
         monkeypatch.setattr(pipeline, "nvd_sleep", lambda: None)
+        monkeypatch.setattr(pipeline, "fetch_nvd_modified", lambda s, e: [])
     return pipeline.enrich_and_filter(candidates, kev_map, state, cfg, NOW, LOOKBACK,
                                       fetch_missing=fetch_missing,
-                                      ai_analyze_fn=ai_analyze_fn, dedup=dedup)
+                                      ai_analyze_fn=ai_analyze_fn, dedup=dedup,
+                                      mode=mode)
 
 
 def test_dedup_suppresses_pushed(monkeypatch):

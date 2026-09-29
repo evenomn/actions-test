@@ -35,9 +35,10 @@ def fallback_urgency(item: dict) -> str:
 def fallback_repro(item: dict) -> str:
     """无 AI 时的确定性复现价值:有武器化迹象的在野利用最值得复现。"""
     has_poc = bool(item.get("poc_links")) or item.get("has_exploit_ref") or item.get("nuclei")
-    if item.get("kev") and has_poc:
+    has_source = item.get("poc_quality") == "code"
+    if (item.get("kev") and has_poc) or has_source and item.get("kev"):
         return REPRO_LEVELS[0]
-    if has_poc or item.get("kev") or (item.get("cvss") or 0) >= 9.0:
+    if has_poc or item.get("kev") or has_source or (item.get("cvss") or 0) >= 9.0:
         return REPRO_LEVELS[1]
     return REPRO_LEVELS[2]
 
@@ -134,6 +135,10 @@ def priority(item: dict, cfg: dict) -> float:
         s += 250
     elif repro == REPRO_LEVELS[1]:
         s += 100
+    if item.get("poc_quality") == "code":
+        s += 120  # PoC 仓库有真实 exploit 源码,可直接跑
+    if item.get("change_note"):
+        s += 200  # 已见漏洞发生实质变化(升分等)
     if item.get("category") and item["category"] in cfg.get("focus_categories", []):
         s += 150
     return s

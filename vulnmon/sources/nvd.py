@@ -99,15 +99,18 @@ def fetch_nvd_published(start: datetime, end: datetime) -> list[dict]:
     return out
 
 
-def _fetch_nvd_range(start: datetime, end: datetime) -> list[dict]:
+def _fetch_nvd_range(start: datetime, end: datetime,
+                     by: str = "published") -> list[dict]:
     out, start_index = [], 0
+    params = {"resultsPerPage": 2000, "startIndex": start_index}
+    if by == "modified":
+        params.update({"lastModStartDate": nvd_time(start),
+                       "lastModEndDate": nvd_time(end)})
+    else:
+        params.update({"pubStartDate": nvd_time(start),
+                       "pubEndDate": nvd_time(end)})
     while True:
-        q = urllib.parse.urlencode({
-            "pubStartDate": nvd_time(start),
-            "pubEndDate": nvd_time(end),
-            "resultsPerPage": 2000,
-            "startIndex": start_index,
-        })
+        q = urllib.parse.urlencode(params)
         data = http_get_json(f"{NVD_API}?{q}", headers=nvd_headers(), timeout=90)
         for v in data.get("vulnerabilities", []):
             parsed = parse_cve(v.get("cve", {}))
@@ -115,9 +118,22 @@ def _fetch_nvd_range(start: datetime, end: datetime) -> list[dict]:
                 out.append(parsed)
         total = data.get("totalResults", 0)
         start_index += data.get("resultsPerPage", 0)
+        params["startIndex"] = start_index
         if not start_index or start_index >= total:
             break
         nvd_sleep()
+    return out
+
+
+def fetch_nvd_modified(start: datetime, end: datetime) -> list[dict]:
+    """拉取时间窗内被修改过的 CVE(升分/补引用/重新分析都会触发)。变更检测用。"""
+    out, cur = [], start
+    while cur < end:
+        nxt = min(cur + timedelta(hours=24), end)
+        out.extend(_fetch_nvd_range(cur, nxt, by="modified"))
+        cur = nxt
+        if cur < end:
+            nvd_sleep()
     return out
 
 
