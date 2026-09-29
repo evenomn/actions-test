@@ -20,7 +20,7 @@ def mk(cve_id="CVE-2026-88772", **kw) -> dict:
                 "attacker to execute arbitrary code.",
         "urgency": "P0 立即处置", "repro_worthy": "值得",
         "kev": True, "kev_due": "2026-09-30", "ransomware": False,
-        "poc_links": [("https://github.com/x/poc", "x/poc ⭐4 [源码✅]")],
+        "poc_links": [("https://github.com/x/poc", "x/poc 4★ (有源码)")],
         "poc_quality": "code", "nuclei": False, "patched": None,
         "products": ["citrix netscaler_adc"], "refs": [("厂商通告", "https://x/advisory")],
     })
@@ -45,21 +45,25 @@ def test_junk_words_no_longer_products():
 
 def test_digest_line_uniform():
     line = digest_line(mk())
-    # 字段顺序固定:标题/CVE · 优先级 · 组件 · CVSS · 类型 · 难度 · 复现 · 信号
-    assert line.startswith("🔴 **")
-    i_urg = line.index("🎯P0 立即处置")
-    i_cat = line.index("组件 边界设备/VPN")
-    i_cvss = line.index("CVSS 9.5")
-    i_type = line.index("类型 内存破坏")
-    i_diff = line.index("难度 低(远程·免认证)")
-    i_repro = line.index("复现值得")
-    assert i_urg < i_cat < i_cvss < i_type < i_diff < i_repro
-    assert "PoC: " in line and "源码✅" in line
-    # 无信号字段也保持完整格式(未知不缺位)
+    # 块状结构:主行(严重度+标题+CVE),属性行(|分隔),信号行,子行
+    out_lines = line.split("\n")
+    assert out_lines[0].startswith("🔴 **")
+    assert "[CVE-2026-88772]" in out_lines[0]
+    props = out_lines[1]
+    for field in ("P0 立即处置", "边界设备/VPN", "CVSS 9.5", "内存破坏", "远程·免认证",
+                  "复现:值得"):
+        assert field in props
+    assert props.index("P0 立即处置") < props.index("边界设备/VPN") < props.index("CVSS 9.5")
+    assert "🔥 KEV 在野利用" in line and "CISA 限期 2026-09-30" in line
+    assert "PoC: " in line and "有源码" in line
+    # 字段缺失时整行省略,不输出「未知」占位噪音
     line2 = digest_line(mk(kev=False, poc_links=[], poc_quality=None, cvss=None,
-                           cwe_labels=[], difficulty=None, category=None))
-    assert "组件 未知" in line2 and "CVSS 未知" in line2 and "类型 未知" in line2 \
-           and "难度 未知" in line2
+                           cwe_labels=[], difficulty=None, category=None,
+                           urgency=None))
+    assert "未知" not in line2
+    # emoji 克制:全块只允许 🔴🟠🔥💀
+    banned = "🧪⚠️🎯💥⭐✅📌"
+    assert not any(c in line for c in banned)
 
 
 def test_vector_detail():
@@ -77,10 +81,10 @@ def test_build_detail_sections():
     for section in ("漏洞原理", "影响版本", "PoC 与武器化状态", "复现建议",
                     "处置建议", "参考", "CVSS 向量解析"):
         assert section in md
-    assert "KEV在野利用" in md and "PoC源码✅" in md
+    assert "KEV在野利用" in md and "PoC源码可用" in md
     assert "CISA 修复限期" in md and "2026-09-30" in md
     assert "buffer overflow" in md              # 完整原文描述
-    assert "x/poc ⭐4" in md
+    assert "x/poc 4★ (有源码)" in md
     assert "厂商通告" in md
 
 

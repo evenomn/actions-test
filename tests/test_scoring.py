@@ -2,15 +2,28 @@
 
 from vulnmon.config import DEFAULTS
 from vulnmon.models import new_item
-from vulnmon.scoring import (fallback_repro, is_third_party_extension,
-                             is_wordpress_plugin, item_haystack,
-                             match_keywords, priority, vendor_key)
+from vulnmon.scoring import (fallback_repro, is_open_source,
+                             is_third_party_extension, is_wordpress_plugin,
+                             item_haystack, match_keywords, priority, vendor_key)
 
 
 def mk(**kw) -> dict:
     item = new_item("CVE-2026-1")
     item.update(kw)
     return item
+
+
+def test_open_source_detection():
+    # GHSA 包生态 → 开源
+    assert is_open_source(mk(ghsa_ranges=["pip:django <5.0"]))
+    assert is_open_source(mk(ghsa_ranges=["npm:lodash <4.17"]))
+    # 知名开源产品 CPE
+    assert is_open_source(mk(products=["nginx nginx"]))
+    assert is_open_source(mk(products=["apache tomcat"]))
+    assert is_open_source(mk(products=["canonical lxd"]))
+    # 闭源产品 → 非开源
+    assert not is_open_source(mk(products=["cisco ios"]))
+    assert not is_open_source(mk(desc="A flaw in a proprietary appliance."))
 
 
 def test_third_party_extension_detection():

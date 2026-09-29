@@ -78,17 +78,17 @@ def verify_poc_repos(poc_links: list[tuple[str, str]],
             continue
         q = repo_quality(files)
         if q == "code":
-            tag = " [源码✅]"
+            tag = "(有源码)"
             best = "code"
         elif q == "readme":
-            tag = " [仅README]"
+            tag = "(仅README)"
             if best != "code":
                 best = "readme"
         else:
-            tag = " [空仓库]"
+            tag = "(空仓库)"
             if best not in ("code", "readme"):
                 best = "empty"
-        if tag.strip() not in out[idx][1]:
+        if tag not in out[idx][1]:
             out[idx] = (url, label + tag)
     return out, best
 
@@ -132,7 +132,7 @@ def fetch_poc_dataset(cve_ids: list[str], top: int = 3) -> dict[str, list[tuple[
     result: dict[str, list[tuple[str, str]]] = {}
     with ThreadPoolExecutor(max_workers=4) as pool:
         for cve_id, repos in zip(cve_ids, pool.map(_fetch_one, cve_ids)):
-            links = [(r["url"], f"{r['url'].rsplit('/', 1)[-1]} ⭐{r['stars']}") for r in repos[:top]]
+            links = [(r["url"], f"{r['url'].rsplit('/', 1)[-1]} {r['stars']}★") for r in repos[:top]]
             if links:
                 result[cve_id] = links
     return result
@@ -150,7 +150,7 @@ def search_github_poc(cve_id: str) -> list[tuple[str, str]]:
     for r in data.get("items", []):
         if r.get("fork") or r.get("archived"):
             continue
-        label = f"{r['full_name']} ⭐{r.get('stargazers_count', 0)}"
+        label = f"{r['full_name']} {r.get('stargazers_count', 0)}★"
         out.append((r["html_url"], label))
         if len(out) >= 2:
             break

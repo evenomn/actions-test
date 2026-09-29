@@ -19,7 +19,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from .report import affected_line, item_link
-from .scoring import is_third_party_extension
+from .scoring import is_open_source, is_third_party_extension
 
 REPRO_KEEP = ("强烈推荐", "值得")
 
@@ -27,11 +27,12 @@ REPRO_KEEP = ("强烈推荐", "值得")
 def qualifies(item: dict) -> bool:
     """入选门槛(严格,宁缺毋滥):高价值可复现漏洞每天通常只有零星几条。
 
-    硬证据要求 ——「值得」必须至少满足其一:
+    「值得」必须至少满足其一:
     - KEV 在野利用
     - PoC 仓库核验有真实 exploit 源码
     - NVD 官方 exploit 引用
-    - AI 判「值得」且 ≥9.0 分预认证(常见资产默认配置可打,暂无 PoC 也值得先研究)
+    - 开源组件的高分预认证漏洞(无 PoC 也值得:源码可自行审计复现)
+    - AI 判「值得」且 ≥9.0 分预认证
 
     第三方插件/扩展(无在野利用、未经 AI 研判)一律不收。
     """
@@ -48,8 +49,9 @@ def qualifies(item: dict) -> bool:
             or item.get("has_exploit_ref"))
     if hard:
         return True
-    if item.get("_ai_judged") and (item.get("cvss") or 0) >= 9.0 \
-            and (item.get("difficulty") or "").startswith("低"):
+    if item.get("cvss") is not None and item["cvss"] >= 9.0 \
+            and (item.get("difficulty") or "").startswith("低") \
+            and (is_open_source(item) or item.get("_ai_judged")):
         return True
     return False
 
@@ -67,6 +69,7 @@ def _record(item: dict, now: datetime) -> dict:
         "last_seen": today,
         "ai_judged": bool(item.get("_ai_judged")),
         "third_party": is_third_party_extension(item),
+        "open_source": is_open_source(item),
         "published": (item.get("published") or "")[:10],
         "urgency": item.get("urgency"),
         "repro_worthy": item.get("repro_worthy"),
@@ -106,7 +109,7 @@ def _record_passes_strict(r: dict) -> bool:
     """按新硬门槛复检存量记录(用已存储字段,清理旧规则放进来的条目)。"""
     if r.get("kev") or r.get("repro_worthy") == "强烈推荐":
         return True
-    if any("源码✅" in (p.get("label") or "") for p in r.get("poc", [])):
+    if any("有源码" in (p.get("label") or "") for p in r.get("poc", [])):
         return True
     if r.get("ai_judged") and (r.get("cvss") or 0) >= 9.0:
         return True
@@ -178,51 +181,52 @@ def _fmt_entry(r: dict) -> str:
     flags = []
     if r.get("kev"):
         due = f",限期 {r['kev_due']}" if r.get("kev_due") else ""
-        flags.append(f"🔥在野利用{due}")
+        flags.append(f"🔥 KEV 在野利用{due}")
     if r.get("ransomware"):
-        flags.append("💀勒索软件")
+        flags.append("💀 勒索软件在野利用")
     if r.get("nuclei"):
-        flags.append("🧪nuclei")
+        flags.append("nuclei 模板")
     if r.get("poc_quality") == "code":
-        flags.append("源码✅")
+        flags.append("PoC 源码可用")
     elif r.get("poc"):
         flags.append("有PoC")
+    if r.get("open_source"):
+        flags.append("开源,可源码审计复现")
     if r.get("patched") is False:
-        flags.append("⚠️暂无修复")
+        flags.append("暂无官方修复")
     meta = [f"[{r['id']}]({r['link']})"]
     if r.get("urgency"):
-        meta.append(f"🎯{r['urgency']}")
+        meta.append(r["urgency"])
     if r.get("category"):
-        meta.append(f"组件 {r['category']}")
+        meta.append(r["category"])
     if r.get("cvss") is not None:
         meta.append(f"CVSS {r['cvss']}")
     if r.get("epss") is not None:
         meta.append(f"EPSS {round(r['epss'] * 100, 1)}%")
     if r.get("published"):
         meta.append(f"披露 {r['published']}")
-    meta.append(f"首次入库 {r.get('first_seen', '?')}")
-    lines = [f"### {r['title']}", " · ".join(meta)]
+    meta.append(f"入库 {r.get('first_seen', '?')}")
+    lines = [f"### {r['title']}", " | ".join(meta)]
     if flags:
-        lines.append("**信号**: " + " | ".join(flags))
+        lines.append(" | ".join(flags))
     if r.get("summary_zh"):
-        lines.append(f"**摘要**: {r['summary_zh']}")
-    repro_line = ""
-    if r.get("repro_note"):
-        repro_line = r["repro_note"]
-    if r.get("impact_scope"):
-        repro_line += f"(影响面: {r['impact_scope']})" if repro_line else f"影响面: {r['impact_scope']}"
-    if repro_line:
-        lines.append(f"**复现要点**: {repro_line}")
+        lines.append(r["summary_zh"])
+    repro_bits = [b for b in (r.get("repro_note"), r.get("impact_scope")
+                              and f"影响面: {r['impact_scope']}") if b]
+    if repro_bits:
+        lines.append(f"复现: {r.get('repro_worthy', '')} — " + " · ".join(repro_bits))
+    else:
+        lines.append(f"复现: {r.get('repro_worthy', '')}")
     if r.get("action_zh"):
-        lines.append(f"**处置**: {r['action_zh']}")
+        lines.append(f"处置: {r['action_zh']}")
     if r.get("affected"):
-        prefix = "**影响**" + ("(⚠️暂无官方修复)" if r.get("patched") is False else "")
-        lines.append(f"{prefix}: {r['affected']}")
+        warn = "(暂无官方修复)" if r.get("patched") is False else ""
+        lines.append(f"影响{warn}: {r['affected']}")
     if r.get("poc"):
-        lines.append("**PoC**: " + " · ".join(
+        lines.append("PoC: " + " · ".join(
             f"[{p['label']}]({p['url']})" for p in r["poc"][:4]))
     if r.get("refs"):
-        lines.append("**参考**: " + " · ".join(
+        lines.append("参考: " + " · ".join(
             f"[{x['label']}]({x['url']})" for x in r["refs"][:3]))
     return "\n".join(lines)
 
@@ -230,23 +234,23 @@ def _fmt_entry(r: dict) -> str:
 def build_repro_md(db: list[dict], now: datetime, retention_days: int) -> str:
     n_top = sum(1 for r in db if r.get("repro_worthy") == "强烈推荐")
     head = [
-        "# 🎯 高价值可复现漏洞库", "",
-        f"> 自动维护,仅收录判定为「值得复现」的漏洞,滚动保留 {retention_days} 天。",
+        "# 高价值可复现漏洞库", "",
+        f"> 自动维护,严格准入(每日新增≤5,总量≤30),滚动保留 {retention_days} 天。",
         f"> 机器可读版: [`data/repro.json`]({raw_url('repro.json')})",
         f"> 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl {raw_url('repro.json')}`",
         "",
         f"**更新**: {now.strftime('%Y-%m-%d %H:%M')} UTC · 共 **{len(db)}** 条"
-        f"(⭐⭐⭐强烈推荐 {n_top} / ⭐⭐值得 {len(db) - n_top})", "",
+        f"(强烈推荐 {n_top} / 值得 {len(db) - n_top})", "",
         "---",
     ]
     top = [r for r in db if r.get("repro_worthy") == "强烈推荐"]
     rest = [r for r in db if r.get("repro_worthy") != "强烈推荐"]
     lines = list(head)
     if top:
-        lines.append("\n## ⭐⭐⭐ 强烈推荐复现\n")
+        lines.append("\n## 强烈推荐复现\n")
         lines.extend(_fmt_entry(r) + "\n" for r in top)
     if rest:
-        lines.append("\n## ⭐⭐ 值得复现\n")
+        lines.append("\n## 值得复现\n")
         lines.extend(_fmt_entry(r) + "\n" for r in rest)
     if not db:
         lines.append("\n(当前没有符合条件的高价值可复现漏洞)")

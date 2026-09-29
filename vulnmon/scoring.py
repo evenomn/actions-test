@@ -11,11 +11,52 @@ REPRO_LEVELS = ("强烈推荐", "值得", "一般", "不建议")
 # 1) 批量上报句式:「Extension - vendor.example - 描述」——中段带第三方厂商域名
 # 2) CPE 厂商命名惯例:<slug>_project / _plugins / _themes
 # 3) 「plugin/extension/module/theme/addon for <宿主产品>」句式
+# 常见开源软件的 CPE 厂商/产品标识(小写)。命中即视为「源码可自行审计」,
+# 高分漏洞即使暂无 PoC 也值得复现(自己读源码写利用)
+OPEN_SOURCE_HINTS = {
+    "openssl", "nginx", "apache", "httpd", "caddy", "lighttpd", "haproxy",
+    "envoy", "traefik", "varnish", "squid", "openresty",
+    "linux", "kernel", "openssh", "openvpn", "wireguard", "strongswan",
+    "sudo", "systemd", "curl", "libcurl", "zlib", "libpng", "ffmpeg",
+    "imagemagick", "sqlite", "unbound", "dnsmasq", "bind", "vsftpd",
+    "python", "django", "flask", "fastapi", "requests", "node.js", "nodejs",
+    "php", "ruby", "rails", "laravel", "thinkphp",
+    "tomcat", "jetty", "jboss", "wildfly", "resin", "struts",
+    "spring", "spring_framework", "spring_security", "spring_boot",
+    "log4j", "logback", "jackson", "fastjson", "xstream", "commons",
+    "mysql", "mariadb", "postgresql", "redis", "memcached",
+    "elasticsearch", "clickhouse", "mongodb", "couchdb", "influxdb",
+    "grafana", "zabbix", "prometheus", "nagios", "cacti", "graylog",
+    "wordpress", "joomla", "drupal", "magento", "ghost", "halo",
+    "firefox", "chrome", "chromium", "webkit", "thunderbird",
+    "docker", "containerd", "podman", "kubernetes", "rancher", "k8s",
+    "qemu", "kvm", "xen", "proxmox", "lxd", "cloud-init",
+    "gitlab", "gitea", "gogs", "jenkins", "sonarqube", "nexus",
+    "harbor", "argocd", "keycloak", "minio", "ceph", "gluster",
+    "kyverno", "vm2", "pyjwt", "froxlor", "roundcube", "postfix",
+    "dovecot", "zimbra", "sogo", "kopano",
+}
+OPEN_SOURCE_ECOSYSTEMS = {"pip", "npm", "maven", "go", "composer", "gem",
+                          "nuget", "cargo", "pub", "hex"}
+
+
+def is_open_source(item: dict) -> bool:
+    """受影响组件是否开源(源码可自行审计):GHSA 包生态或知名开源产品 CPE。"""
+    for r in item.get("ghsa_ranges") or []:
+        eco = (r.split(":", 1)[0] or "").lower()
+        if eco in OPEN_SOURCE_ECOSYSTEMS:
+            return True
+    for p in item.get("products") or []:
+        vendor, _, prod = p.partition(" ")
+        if vendor in OPEN_SOURCE_HINTS or prod in OPEN_SOURCE_HINTS \
+                or prod.replace("_", "") in OPEN_SOURCE_HINTS:
+            return True
+    return False
+ADDON_FOR_RE = re.compile(
+    r"\b(?:plugins?|extensions?|modules?|themes?|addons?)\s+for\s+(?:the\s+)?[A-Za-z]", re.I)
 MARKETPLACE_BATCH_RE = re.compile(
     r"\b(?:extensions?|plugins?|modules?|themes?|addons?|components?)\s+-\s+"
     r"[a-z0-9][a-z0-9 -]{1,40}\.[a-z]{2,6}\s+-", re.I)
-ADDON_FOR_RE = re.compile(
-    r"\b(?:plugins?|extensions?|modules?|themes?|addons?)\s+for\s+(?:the\s+)?[A-Za-z]", re.I)
 
 
 def is_third_party_extension(item: dict) -> bool:

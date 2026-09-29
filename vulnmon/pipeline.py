@@ -17,8 +17,10 @@ from datetime import datetime, timedelta
 from .components import classify
 from .http import nvd_sleep
 from .models import is_cve, new_item
-from .scoring import (fallback_repro, fallback_urgency, is_wordpress_plugin,
-                      item_haystack, match_keywords, priority, vendor_key)
+from .scoring import (fallback_repro, fallback_urgency, is_open_source,
+                      is_third_party_extension, item_haystack,
+                      match_keywords, priority, vendor_key)
+from .scoring import is_wordpress_plugin  # 兼容旧名(= is_third_party_extension)
 from .sources.epss import fetch_epss
 from .sources.kev import apply_kev
 from .sources.nvd import fetch_nvd_modified
@@ -92,7 +94,7 @@ def _qualifies(item: dict, cfg: dict) -> bool:
     if any(k in hay for k in cfg["ignore_keywords"]):
         return False
     if cfg.get("ignore_wordpress_plugins", True) and not item["kev"] \
-            and is_wordpress_plugin(item):
+            and is_third_party_extension(item):
         # WP 插件灌水:除非已进 KEV,否则不推(完整清单存档里仍保留)
         return False
     cvss = item["cvss"]
@@ -126,6 +128,7 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
         if entry:
             apply_kev(item, entry)
         item["category"] = classify(item)
+        item["open_source"] = is_open_source(item)
         item["keyword_hit"] = match_keywords(item, cfg["keywords"])
 
     # 变更检测(daily 且开启时):已见漏洞升分/新增PoC引用 → 重推
@@ -182,6 +185,7 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
                 item["desc"] = entry.get("shortDescription", "")
             apply_kev(item, entry)
             item["category"] = classify(item)
+            item["open_source"] = is_open_source(item)
             item["keyword_hit"] = match_keywords(item, cfg["keywords"])
             item["tier"] = "critical"
             qualified.append(item)

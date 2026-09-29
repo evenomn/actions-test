@@ -43,8 +43,8 @@ def test_verify_poc_repos_annotates(monkeypatch):
              ("https://github.com/a/fake", "a/fake ⭐99")]
     out, best = verify_poc_repos(links)
     assert best == "code"
-    assert "[源码✅]" in out[0][1]
-    assert "[仅README]" in out[1][1]
+    assert "(有源码)" in out[0][1]
+    assert "(仅README)" in out[1][1]
     # 原顺序与原始 URL 保留
     assert out[0][0] == links[0][0]
 

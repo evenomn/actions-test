@@ -86,12 +86,15 @@ def _evidence(item: dict) -> dict:
         "ransomware": item["ransomware"],
         "kev_due": item.get("kev_due"),
         "poc_count": len(poc) or (1 if item.get("has_exploit_ref") else 0),
-        "poc_top_stars": max((int(l.rsplit("⭐", 1)[-1]) for _, l in poc
-                              if "⭐" in l and l.rsplit("⭐", 1)[-1].isdigit()), default=0),
+        "poc_top_stars": max((int(l.rsplit(" ", 1)[-1].rstrip("★"))
+                              for _, l in poc
+                              if l.rsplit(" ", 1)[-1].endswith("★")
+                              and l.rsplit(" ", 1)[-1][:-1].isdigit()), default=0),
         "nuclei_template": bool(item.get("nuclei")),
         "patched": item.get("patched"),  # True 有修复 / False 已知受影响但无修复 / None 未知
         "affected": affected_line(item),
         "third_party_ext": bool(item.get("third_party")),
+        "open_source": bool(item.get("open_source")),
     }
     return {k: v for k, v in ev.items() if v is not None}
 
@@ -120,6 +123,7 @@ ANALYZE_PROMPT = (
     "未认证RCE或认证绕过(默认配置可打,如NetScaler/Fortinet类边界洞)\n"
     "  值得 = 少数情况:常见资产(CMS核心/流行框架/广泛部署的软件)上「默认配置即可远程"
     "预认证利用」的 RCE/认证绕过,或 PoC 仓库有可运行源码的高分洞;"
+    "开源软件(open_source=true)的高分预认证漏洞即使暂无PoC也可给值得(可自行源码审计复现);"
     "仅有PoC链接但仓库只有README、需要权限/交互/特定配置才可利用的,一律不给值得\n"
     "  一般 = 需特定前置条件(高权限/用户交互/特定配置才触发)、XSS/CSRF/信息泄露/纯DoS、"
     "冷门组件\n"

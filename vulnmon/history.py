@@ -73,7 +73,7 @@ def build_weekly(now: datetime, history: dict) -> str:
     monday, sunday, label = _week_range(now)
     days = {d: v for d, v in history.items() if monday <= d <= sunday and d <= now.date().isoformat()}
     if not days:
-        return f"# 📅 漏洞周报 {label}\n\n本周暂无运行记录(可能是新部署或本周还没跑过日报)。"
+        return f"# 漏洞周报 {label}\n\n本周暂无运行记录(可能是新部署或本周还没跑过日报)。"
 
     dates = sorted(days)
     total = sum(v["qualified"] for v in days.values())
@@ -105,7 +105,7 @@ def build_weekly(now: datetime, history: dict) -> str:
 
     top = sorted(uniq, key=rank, reverse=True)[:10]
 
-    lines = [f"# 📅 漏洞周报 {label}({monday} ~ {sunday})", "",
+    lines = [f"# 漏洞周报 {label}({monday} ~ {sunday})", "",
              f"本周共 {len(dates)} 天有运行记录:**{total} 条**达标漏洞"
              f"(🔴严重 {critical},KEV 相关 {kev_pushed});"
              f"CISA KEV 目录本周净增 **{kev_added}** 条。", ""]
@@ -121,7 +121,7 @@ def build_weekly(now: datetime, history: dict) -> str:
             if it.get("kev"):
                 flags.append("🔥KEV")
             if it.get("repro") == "强烈推荐":
-                flags.append("⭐⭐⭐复现")
+                flags.append("强烈推荐复现")
             if it.get("urgency") == "P0 立即处置":
                 flags.append("🎯P0")
             if it.get("category"):

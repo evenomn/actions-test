@@ -22,7 +22,7 @@ def rich_item(cve_id="CVE-2026-1", **kw) -> dict:
         "products": ["acme superproxy"], "tier": "critical",
         "kev": True, "kev_name": "Acme SuperProxy RCE", "kev_due": "2026-10-18",
         "ransomware": True, "nuclei": True, "patched": False,
-        "poc_links": [("https://github.com/x/poc", "x/poc ⭐128")],
+        "poc_links": [("https://github.com/x/poc", "x/poc 128★ (有源码)")],
         "refs": [("厂商通告", "https://example.com/advisory")],
         "ghsa_ranges": [], "epss": 0.75, "epss_percentile": 0.97,
     })
@@ -32,13 +32,16 @@ def rich_item(cve_id="CVE-2026-1", **kw) -> dict:
 
 def test_item_block_contains_quality_fields():
     md = item_block_md(rich_item())
-    assert "🔥在野利用(KEV),CISA 限期 2026-10-18" in md
-    assert "💀勒索软件" in md
-    assert "🧪nuclei检测模板" in md
-    assert "⚠️暂无官方修复" in md
-    assert "x/poc ⭐128" in md
+    assert "🔥 KEV 在野利用,CISA 限期 2026-10-18" in md
+    assert "💀 勒索软件在野利用" in md
+    assert "nuclei 模板" in md
+    assert "暂无官方修复" in md
+    assert "x/poc 128★ (有源码)" in md
     assert "[厂商通告](https://example.com/advisory)" in md
-    assert "EPSS 75.0%" in md
+    assert "EPSS 75%" in md
+    # emoji 克制:条目内只允许 🔴🟠🔥💀 四种
+    allowed = {"🔴", "🟠", "🔥", "💀"}
+    assert set(c for c in md if ord(c) > 0x2500 and c in "🧪⚠️🎯💥⭐✅📌") == set()
 
 
 def test_build_markdown_empty_day_with_stats():
@@ -53,9 +56,9 @@ def test_build_markdown_with_briefing_and_urgency():
     item["action_zh"] = "升级到 2.3.1"
     md = build_markdown([item], 1, 48, NOW, None, {},
                         briefing="- 今日 KEV 新增 1 条在野利用")
-    assert "## 📌 今日要点" in md and "在野利用" in md
-    assert "🎯P0 立即处置" in md
-    assert "**处置**: 升级到 2.3.1" in md
+    assert "## 今日要点" in md and "在野利用" in md
+    assert "P0 立即处置" in md
+    assert "处置: 升级到 2.3.1" in md
 
 
 def test_build_markdown_repro_and_category():
@@ -66,10 +69,10 @@ def test_build_markdown_repro_and_category():
     item["impact_scope"] = "边界VPN设备,常暴露公网"
     item["category"] = "边界设备/VPN"
     md = build_markdown([item], 1, 48, NOW, None, {})
-    assert "**复现**: ⭐⭐⭐强烈推荐" in md
+    assert "复现: 强烈推荐" in md
     assert "影响面: 边界VPN设备,常暴露公网" in md
     assert "默认配置可利用" in md
-    assert "组件 边界设备/VPN" in md
+    assert "边界设备/VPN" in md
 
 
 def test_build_markdown_truncates_by_bytes():

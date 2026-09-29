@@ -60,17 +60,19 @@ def build_detail(item: dict) -> str:
     # 徽章行
     badges = []
     if item.get("kev"):
-        badges.append("🔥KEV在野利用")
+        badges.append("🔥 KEV在野利用")
     if item.get("ransomware"):
-        badges.append("💀勒索软件在野利用")
+        badges.append("💀 勒索软件在野利用")
     if item.get("nuclei"):
-        badges.append("🧪nuclei模板")
+        badges.append("nuclei模板")
     if item.get("poc_quality") == "code":
-        badges.append("PoC源码✅")
+        badges.append("PoC源码可用")
     elif item.get("poc_links") or item.get("has_exploit_ref"):
         badges.append("有PoC")
+    if item.get("open_source"):
+        badges.append("开源,可源码审计复现")
     if item.get("patched") is False:
-        badges.append("⚠️暂无官方修复")
+        badges.append("暂无官方修复")
     lines.append("> " + " | ".join(badges) if badges else "> 内部评估条目")
     lines.append("")
 

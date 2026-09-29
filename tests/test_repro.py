@@ -34,6 +34,9 @@ def test_qualifies_gates():
     # AI 判值得但分数不到 9.0 或非预认证 → 不收
     assert not qualifies(mk(_ai_judged=True, cvss=8.5, difficulty="低(远程·免认证)"))
     assert not qualifies(mk(_ai_judged=True, difficulty="高(需本地访问)"))
+    # 开源组件高分预认证漏洞:无 PoC 无 AI 也值得(可自行源码审计复现)
+    assert qualifies(mk(products=["nginx nginx"], difficulty="低(远程·免认证)"))
+    assert not qualifies(mk(products=["cisco ise"], difficulty="低(远程·免认证)"))  # 闭源同条件不收
     # 强烈推荐直接收;一般/不建议不收
     assert qualifies(mk(repro_worthy="强烈推荐", _ai_judged=True))
     assert not qualifies(mk(repro_worthy="一般", kev=True))
@@ -44,7 +47,7 @@ def test_qualifies_gates():
 def test_qualifies_third_party_extension():
     # Joomla 第三方扩展:有 PoC 证据,但无 AI 研判且无 KEV → 不收
     joomla = mk(repro_worthy="值得",
-                poc_links=[("https://github.com/x/y", "x/y ⭐3")],
+                poc_links=[("https://github.com/x/y", "x/y 3★")],
                 desc="Joomla Extension - lomart.fr - Unauthenticated RCE in UP plugin")
     assert not qualifies(joomla)
     # AI 研判 + 预认证高分 → 信任 AI
@@ -72,7 +75,7 @@ def test_total_cap_keeps_highest_value():
     existing = [{
         "id": f"CVE-2026-T{i}", "repro_worthy": "值得", "first_seen": "2026-09-10",
         "last_seen": "2026-09-28", "cvss": 7.0 + i * 0.1, "kev": False,
-        "poc": [{"url": f"u{i}", "label": f"x/p{i} ⭐9 [源码✅]"}],   # 过存量复检
+        "poc": [{"url": f"u{i}", "label": f"x/p{i} 9★ (有源码)"}],   # 过存量复检
         "link": f"https://nvd.nist.gov/vuln/detail/CVE-2026-T{i}",
     } for i in range(10)]
     db = merge_repro(existing, [], NOW, retention_days=21,
@@ -126,7 +129,7 @@ def test_merge_repro_new_update_expire():
     }]
     new_items = [mk("CVE-2026-1", cvss=9.8, _ai_judged=True),   # 升分+新标题刷新
                  mk("CVE-2026-2", repro_worthy="强烈推荐", _ai_judged=True,
-                    kev=True, poc_links=[("https://github.com/x/y", "x/y ⭐3")])]
+                    kev=True, poc_links=[("https://github.com/x/y", "x/y 3★")])]
     db = merge_repro(existing, new_items, NOW, retention_days=21)
     ids = [r["id"] for r in db]
     assert "CVE-2026-OLD" not in ids       # 超过 21 天淘汰
@@ -162,8 +165,8 @@ def test_repro_md_renders(monkeypatch):
            kev_due="2026-10-15", title_zh="Fortinet VPN 预认证 RCE",
            repro_note="未授权 /remote/login,默认配置可利用",
            impact_scope="边界VPN设备,常暴露公网",
-           poc_links=[("https://github.com/x/y", "x/y ⭐3 [源码✅]")]),
-        mk("CVE-2026-1", title_zh="Acme 反序列化"),
+           poc_links=[("https://github.com/x/y", "x/y 3★ (有源码)")]),
+        mk("CVE-2026-1", title_zh="Acme 反序列化", _ai_judged=True),
     ], NOW)
     md = build_repro_md(db, NOW, 21)
     assert "高价值可复现漏洞库" in md
@@ -171,7 +174,7 @@ def test_repro_md_renders(monkeypatch):
     assert "强烈推荐复现" in md and "值得复现" in md
     assert "Fortinet VPN 预认证 RCE" in md
     assert "未授权 /remote/login" in md
-    assert "源码✅" in md and "CISA 限期 2026-10-15".replace("CISA ", "") in md
+    assert "有源码" in md and "CISA 限期 2026-10-15".replace("CISA ", "") in md
 
 
 def test_write_repro_roundtrip(tmp_path: Path):
@@ -203,11 +206,11 @@ def test_legacy_entries_revalidated():
          "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-A"},                    # KEV → 留
         {"id": "CVE-2026-B", "repro_worthy": "值得", "kev": False, "cvss": 9.9,
          "ai_judged": True,
-         "poc": [{"url": "u", "label": "x/poc ⭐9 [源码✅]"}],
+         "poc": [{"url": "u", "label": "x/poc ⭐9 (有源码)"}],
          "first_seen": "2026-09-20", "last_seen": "2026-09-28",
          "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-B"},                    # 源码 → 留
         {"id": "CVE-2026-C", "repro_worthy": "值得", "kev": False, "cvss": 9.9,
-         "ai_judged": True, "poc": [{"url": "u", "label": "x/poc ⭐9 [仅README]"}],
+         "ai_judged": True, "poc": [{"url": "u", "label": "x/poc ⭐9 (仅README)"}],
          "first_seen": "2026-09-20", "last_seen": "2026-09-28",
          "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-C"},                    # AI高信判值得 → 留
         {"id": "CVE-2026-D", "repro_worthy": "值得", "kev": False, "cvss": 8.2,
