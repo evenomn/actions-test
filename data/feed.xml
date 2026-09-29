@@ -5,80 +5,376 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    <lastBuildDate>Tue, 29 Sep 2026 02:07:06 +0000</lastBuildDate>
+    <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    <lastBuildDate>Tue, 29 Sep 2026 02:12:17 +0000</lastBuildDate>
     <item>
-      <title>[critical]LXD迁移接收路径绕过可root任意写文件</title>
+      <title>[high]Nest消息队列拒绝服务漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102281</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102281-2026-09-29</guid>
+      <description>CVE-2026-102281 · 🎯P2 保持关注 · 披露 2026-09-28 · CVSS 7.5 · 类型 CWE-248/CWE-674 · 难度 低(远程·免认证)
+An attacker who can reach the TCP port or publish to the consumed RabbitMQ queue or exchange can crash the service on demand; other transports are not affected …
+信号: 关注词:exchange</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]NPM 登录限速缺失暴力破解</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102334</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102334-2026-09-29</guid>
+      <description>CVE-2026-102334 · 🎯P2 保持关注 · 披露 2026-09-28 · CVSS 7.4 · 类型 CWE-307 · 难度 低(远程·利用条件苛刻·免认证)
+Nginx Proxy Manager through 2.16.0 lacks rate-limiting on authentication endpoints, allowing unauthenticated attackers to make unlimited password guesses agains…
+信号: 关注词:nginx</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]NPM 配置字段越权注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102335</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102335-2026-09-29</guid>
+      <description>CVE-2026-102335 · 🎯P2 保持关注 · 披露 2026-09-28 · CVSS 7.1 · 类型 授权错误 · 难度 低(远程·需低权限)
+Attackers can inject malicious nginx configuration such as alias directives to serve arbitrary files or control routing for their assigned hosts.
+信号: 关注词:nginx</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Netcore NBR200V2 命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101001</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101001-2026-09-29</guid>
+      <description>CVE-2026-101001 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+A vulnerability was identified in Netcore NBR200V2 1.3.241127.071246. Such manipulation of the argument QUERY_STRING leads to os command injection.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Netcore NR289 命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101072</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101072-2026-09-29</guid>
+      <description>CVE-2026-101072 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+A vulnerability was identified in Netcore NR289-GE 1.4.5102. Such manipulation of the argument ip leads to os command injection.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Netcore NR289 NTP命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101076</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101076-2026-09-29</guid>
+      <description>CVE-2026-101076 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+A vulnerability was detected in Netcore NR289-GE 1.4.5102. The manipulation of the argument ntp_ip results in os command injection.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Netcore NR289 认证绕过漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101077</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101077-2026-09-29</guid>
+      <description>CVE-2026-101077 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 10.0 · 类型 认证绕过/缺失认证 · 难度 低(远程·免认证)
+The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OA协同办公 栈溢出远程利用</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101074</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101074-2026-09-29</guid>
+      <description>CVE-2026-101074 · 🎯P1 重点关注 · 披露 2026-09-28 · 组件 OA/协同办公 · CVSS 9.8 · 类型 内存破坏/栈溢出 · 难度 低(远程·免认证)
+The exploit has been made available to the public and could be used for attacks.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]mall4j 未授权密码重置</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102361</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102361-2026-09-29</guid>
+      <description>CVE-2026-102361 · 🎯P1 重点关注 · 披露 2026-09-29 · 组件 安全设备 · CVSS 9.1 · 类型 缺失认证 · 难度 低(远程·免认证)
+mall4j through 4.0 contains a missing authentication vulnerability in the PUT /user/updatePwd endpoint that allows unauthenticated attackers to reset any storef…
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Netcore NBR100V2 越权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101000</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101000-2026-09-29</guid>
+      <description>CVE-2026-101000 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 10.0 · 类型 缺失授权(越权)/授权错误 · 难度 低(远程·免认证)
+A vulnerability was determined in Netcore NBR100V2 1.3.240614.030928. The exploit has been publicly disclosed and may be utilized.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FAST FAC1900R 栈溢出远程利用</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101039</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101039-2026-09-29</guid>
+      <description>CVE-2026-101039 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 10.0 · 类型 内存破坏/栈溢出 · 难度 低(远程·免认证)
+A vulnerability was identified in FAST FAC1900R 20190827_2.0.2. Such manipulation leads to stack-based buffer overflow.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TOTOLINK N150RT 命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100896</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100896-2026-09-29</guid>
+      <description>CVE-2026-100896 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+This manipulation of the argument wlanif causes os command injection. Remote exploitation of the attack is possible.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FAST FAC1200R 栈溢出远程利用</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101037</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101037-2026-09-29</guid>
+      <description>CVE-2026-101037 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.9 · 类型 内存破坏/栈溢出 · 难度 低(远程·需低权限)
+A vulnerability was found in FAST FAC1200R 5.0_20201119_1.0.2. The exploit has been made public and could be used.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Apache Roller 反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-82384</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-82384-2026-09-29</guid>
+      <description>CVE-2026-82384 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data in Apache Roller 6.1.5 allows an unauthenticated remote attacker to cause deserialization of attacker-controlled bytes, becaus…
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]IdentityIQ未认证API远程代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-12342</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-12342-2026-09-29</guid>
+      <description>CVE-2026-12342 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.6 · 类型 输入校验缺失 · 难度 低(需相邻网络·免认证)
+This vulnerability impacts all versions of IdentityIQ and allows an unauthenticated user remote code execution on the IdentityIQ server due to improper input va…
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知网络设备 命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101075</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101075-2026-09-29</guid>
+      <description>CVE-2026-101075 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+The manipulation of the argument mac leads to os command injection. The exploit has been disclosed publicly and may be used.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知系统 命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101002</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101002-2026-09-29</guid>
+      <description>CVE-2026-101002 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+Performing a manipulation of the argument url results in os command injection. The exploit has been released to the public and may be used for attacks.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Roller XML-RPC越权访问</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-82377</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-82377-2026-09-29</guid>
+      <description>CVE-2026-82377 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.9 · 类型 缺失授权(越权) · 难度 低(远程·需低权限)
+Missing Authorization in Apache Roller 6.1.5 allows an authenticated user to read, modify, or delete weblog content belonging to other weblogs through the legac…
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FAST FAC1200R 栈溢出漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101038</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101038-2026-09-29</guid>
+      <description>CVE-2026-101038 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.9 · 类型 内存破坏/栈溢出 · 难度 低(远程·需低权限)
+A vulnerability was determined in FAST FAC1200R 5.0_20201119_1.0.2. The exploit has been publicly disclosed and may be utilized.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD Btrfs 路径遍历漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85526</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85526-2026-09-29</guid>
+      <description>CVE-2026-85526 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+Path traversal in the Btrfs storage driver (unpackVolume) in Canonical LXD on Linux allows an authenticated user with instance creation privileges to delete or …
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD 迁移路径链接绕过</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-87799</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-87799-2026-09-29</guid>
       <description>CVE-2026-87799 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.9 · 类型 文件链接绕过 · 难度 低(远程·需低权限)
 Improper link resolution in the migration receive path in Canonical LXD versions 4.0 and later (fixed in 4.0.14, 5.0.10, 5.21.8 and 6.10) on Linux allows an aut…
 信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Logsign SIEM默认口令可未授权登录</title>
+      <title>[critical]Logsign SIEM 默认凭据登录绕过</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-90924</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-90924-2026-09-29</guid>
       <description>CVE-2026-90924 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.8 · 类型 CWE-1392 · 难度 低(远程·免认证)
 Use of default credentials vulnerability in Innotim Software, Telecommunications and Consultancy Trade Ltd.
 信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]LXD btrfs路径遍历可root删文件</title>
+      <title>[critical]LXD btrfs 驱动路径遍历删宿主文件</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85185</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85185-2026-09-29</guid>
       <description>CVE-2026-85185 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.6 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
 Path traversal in the btrfs storage driver in Canonical LXD versions 4.0.2 and later (fixed in 4.0.14, 5.0.10, 5.21.8 and 6.10) on Linux allows an authenticated…
 信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Rancher未授权设置更新致存储型XSS</title>
+      <title>[critical]Rancher UI 未授权存储型XSS</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88804</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88804-2026-09-29</guid>
       <description>CVE-2026-88804 · 🎯P1 重点关注 · 披露 2026-09-28 · 组件 容器/虚拟化 · CVSS 9.6 · 类型 XSS · 难度 低(远程·免认证·需用户交互)
 An unauthenticated update of public UI settings could be used by remote attackers to execute a stored cross-site scripting attack in the Rancher UI, in SUSE Ran…
 信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]归档解压符号链接链绕过致任意文件读写</title>
+      <title>[critical]Dayforce Payroll 未授权 SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-73640</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-73640-2026-09-29</guid>
+      <description>CVE-2026-73640 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.3 · 类型 SQL注入
+Dayforce Payroll is vulnerable to Time Based-Blind SQL Injection in password recovery functionality.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 访问控制缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101891</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101891-2026-09-29</guid>
+      <description>CVE-2026-101891 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.3 · 类型 访问控制缺失/CWE-923
+An improper access control vulnerability in an internal API service on WatchGuard Access Points allows an unauthenticated attacker with network access to the AP…
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]WatchGuard AP 未授权 命令注入(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-86102</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-86102-2026-09-29</guid>
+      <description>CVE-2026-86102 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.3 · 类型 命令注入(RCE)/授权错误
+An OS command injection vulnerability in the WatchGuard AP internal API service allows an attacker with network access to the AP to execute arbitrary shell comm…
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Dayforce Payroll 未授权 路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-73642</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-73642-2026-09-29</guid>
+      <description>CVE-2026-73642 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.2 · 类型 路径遍历/任意文件读取
+Dayforce Payroll is vulnerable to Path Traversal in file download functionality.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]归档解压符号链接穿越写文件</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101894</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101894-2026-09-29</guid>
       <description>CVE-2026-101894 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 路径遍历/任意文件读取/文件链接绕过 · 难度 低(远程·免认证)
 An attacker can supply a crafted archive containing chained symlink entries so that a later entry resolves outside the output directory.
-信号: 有PoC
-[murrez/CVE-2026-101894 0★(有源码)](https://github.com/murrez/CVE-2026-101894)</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Bluehood仪表盘缺失认证可篡改数据</title>
+      <title>[critical]Bluehood 仪表盘缺失认证可篡改</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-49994</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-49994-2026-09-29</guid>
       <description>CVE-2026-49994 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 缺失认证/缺失授权(越权) · 难度 低(远程·免认证)
 A network attacker reachable on the dashboard port could read Bluetooth tracking data and modify application state — including the heartbeat URL, prune retentio…
 信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Roller OAuth授权错误可劫持管理员</title>
+      <title>[critical]PyJWT 签名校验错误可伪造令牌</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102268</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102268-2026-09-29</guid>
+      <description>CVE-2026-102268 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 签名校验错误 · 难度 低(远程·免认证)
+PyJWT is a Python implementation of JSON Web Token standards. Consequently, an attacker who knows the public key can forge authenticated HMAC tokens.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]BaoTa 注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101008</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101008-2026-09-29</guid>
+      <description>CVE-2026-101008 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
+A vulnerability was found in aaPanel BaoTa up to 11.8.0. Performing a manipulation of the argument split_file_path results in command injection.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Web Administration Service. The 内存破坏</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101081</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101081-2026-09-29</guid>
+      <description>CVE-2026-101081 · 🎯P1 重点关注 · 披露 2026-09-28 · 组件 网络设备 · CVSS 9.1 · 类型 内存破坏/栈溢出 · 难度 中(远程·需高权限)
+This vulnerability affects the function menu_nat_more_asp of the file menu_nat_more.asp of the component Web Administration Service.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101187</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101187-2026-09-29</guid>
+      <description>CVE-2026-101187 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
+This vulnerability affects the function pop_usb_device of the file usr/lib/lua/luci/controller/api/zrUsb.lua of the component USB Device Management API.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Ziroom ZHOME A0101 注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101260</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101260-2026-09-29</guid>
+      <description>CVE-2026-101260 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
+A vulnerability was detected in Ziroom ZHOME A0101 1.0.1.0. Performing a manipulation of the argument firstLogin results in command injection.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Executing 注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101261</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101261-2026-09-29</guid>
+      <description>CVE-2026-101261 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
+Executing a manipulation of the argument login_pwd can lead to command injection. The exploit has been published and may be used.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101262</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101262-2026-09-29</guid>
+      <description>CVE-2026-101262 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
+The manipulation of the argument ip leads to command injection. The exploit has been disclosed to the public and may be used.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Ziroom ZHOME A0101 注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101263</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101263-2026-09-29</guid>
+      <description>CVE-2026-101263 · 🎯P1 重点关注 · 披露 2026-09-29 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
+A vulnerability was found in Ziroom ZHOME A0101 1.0.1.0. The manipulation of the argument mac results in command injection.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Ziroom ZHOME A0101 注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101264</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101264-2026-09-29</guid>
+      <description>CVE-2026-101264 · 🎯P1 重点关注 · 披露 2026-09-29 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
+A vulnerability was determined in Ziroom ZHOME A0101 1.0.1.0. The exploit has been publicly disclosed and may be utilized.
+信号:</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Roller OAuth授权错误账户劫持</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-82378</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-82378-2026-09-29</guid>
       <description>CVE-2026-82378 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.0 · 类型 授权错误 · 难度 低(远程·利用条件苛刻·免认证)
 Incorrect Authorization in the OAuth 1.0a authorization endpoint of Apache Roller 6.1.5 allows an unauthenticated remote attacker who learns an outstanding requ…
 信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]GCP应用集成越权可调用内部RPC</title>
+      <title>[critical]GCP应用集成授权错误越权RPC</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-19759</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-19759-2026-09-29</guid>
       <description>CVE-2026-19759 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.4 · 类型 授权错误
 An Incorrect Authorization vulnerability in the task configuration in Google Cloud Application Integration versions prior to 2026-06-17 on Google Cloud Platform…
 信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
     </item>
     <item>
       <title>[critical]GCP应用集成JS任务反序列化RCE</title>
@@ -87,124 +383,16 @@ An Incorrect Authorization vulnerability in the task configuration in Google Clo
       <description>CVE-2026-81867 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.4 · 类型 反序列化(RCE)
 A Deserialization of Untrusted Data vulnerability in the JavaScript Task in Google Cloud Application Integration versions prior to 2026-06-28 on Google Cloud Pl…
 信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Dayforce密码找回盲注SQL注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-73640</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-73640-2026-09-29</guid>
-      <description>CVE-2026-73640 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.3 · 类型 SQL注入
-Dayforce Payroll is vulnerable to Time Based-Blind SQL Injection in password recovery functionality.
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WatchGuard AP内部API鉴权缺失</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101891</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101891-2026-09-29</guid>
-      <description>CVE-2026-101891 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.3 · 类型 访问控制缺失/CWE-923
-An improper access control vulnerability in an internal API service on WatchGuard Access Points allows an unauthenticated attacker with network access to the AP…
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WatchGuard AP命令注入致RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-86102</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-86102-2026-09-29</guid>
-      <description>CVE-2026-86102 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.3 · 类型 命令注入(RCE)/授权错误
-An OS command injection vulnerability in the WatchGuard AP internal API service allows an attacker with network access to the AP to execute arbitrary shell comm…
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Dayforce文件下载路径遍历任意读文件</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-73642</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-73642-2026-09-29</guid>
-      <description>CVE-2026-73642 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.2 · 类型 路径遍历/任意文件读取
-Dayforce Payroll is vulnerable to Path Traversal in file download functionality.
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]aaPanel面板命令注入可执行任意命令</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101008</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101008-2026-09-29</guid>
-      <description>CVE-2026-101008 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
-A vulnerability was found in aaPanel BaoTa up to 11.8.0. Performing a manipulation of the argument split_file_path results in command injection.
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]D-Link DI-8400 Web服务栈溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101081</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101081-2026-09-29</guid>
-      <description>CVE-2026-101081 · 🎯P1 重点关注 · 披露 2026-09-28 · 组件 网络设备 · CVSS 9.1 · 类型 内存破坏/栈溢出 · 难度 中(远程·需高权限)
-This vulnerability affects the function menu_nat_more_asp of the file menu_nat_more.asp of the component Web Administration Service.
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]ZHOME USB管理API命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101187</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101187-2026-09-29</guid>
-      <description>CVE-2026-101187 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
-This vulnerability affects the function pop_usb_device of the file usr/lib/lua/luci/controller/api/zrUsb.lua of the component USB Device Management API.
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]ZHOME firstLogin参数命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101260</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101260-2026-09-29</guid>
-      <description>CVE-2026-101260 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
-A vulnerability was detected in Ziroom ZHOME A0101 1.0.1.0. Performing a manipulation of the argument firstLogin results in command injection.
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]ZHOME WiFi首次配置参数命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101261</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101261-2026-09-29</guid>
-      <description>CVE-2026-101261 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
-Executing a manipulation of the argument login_pwd can lead to command injection. The exploit has been published and may be used.
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]ZHOME ip参数命令注入可远程执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101262</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101262-2026-09-29</guid>
-      <description>CVE-2026-101262 · 🎯P1 重点关注 · 披露 2026-09-28 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
-The manipulation of the argument ip leads to command injection. The exploit has been disclosed to the public and may be used.
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]ZHOME MAC参数命令注入可远程</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101263</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101263-2026-09-29</guid>
-      <description>CVE-2026-101263 · 🎯P1 重点关注 · 披露 2026-09-29 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
-A vulnerability was found in Ziroom ZHOME A0101 1.0.1.0. The manipulation of the argument mac results in command injection.
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]ZHOME set_passwd远程命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101264</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101264-2026-09-29</guid>
-      <description>CVE-2026-101264 · 🎯P1 重点关注 · 披露 2026-09-29 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
-A vulnerability was determined in Ziroom ZHOME A0101 1.0.1.0. The exploit has been publicly disclosed and may be utilized.
-信号:</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
     </item>
     <item>
       <title>今日要点</title>
-      <description>- 今日未见KEV在野利用或勒索软件标记，但高危批量发布。
-- 批量公告集中在未授权、路径遍历、RCE注入，互联网暴露需优先检查。
-- 最需立即处置：CVE-2026-101894已有POC，路径遍历可任意文件读取。
-- 反序列化、命令注入与SQL注入均≥9.3，应优先补丁并收敛暴露面。
-- 文件读取与链接绕过集中出现，重点核查上传下载和容器虚拟化。</description>
-      <pubDate>Tue, 29 Sep 2026 02:07:06 +0000</pubDate>
+      <description>- 清单未标记在野利用与勒索软件关联，暂勿按已知攻击预警。
+- 批量公告以命令注入、认证绕过和内存破坏为主，多个满分漏洞。
+- 最急：CVE-2026-101077认证绕过满分，疑似可接管，优先修。
+- 次急：CVE-2026-101001系列命令注入RCE满分，应限时修复。
+- 安全设备与OA栈溢出/缺失认证高危，优先排查边界入口。</description>
+      <pubDate>Tue, 29 Sep 2026 02:12:17 +0000</pubDate>
     </item>
   </channel>
 </rss>
