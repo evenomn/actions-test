@@ -1,170 +1,19 @@
 {
  "2026-09-29": {
-  "qualified": 36,
-  "critical": 36,
+  "qualified": 21,
+  "critical": 21,
   "kev": 0,
   "repro_top": 0,
   "kev_total": 1728,
   "by_category": {
-   "OA/协同办公": 1,
-   "未分类": 33,
+   "未分类": 19,
    "容器/虚拟化": 1,
    "网络设备": 1
   },
   "items": [
    {
-    "id": "CVE-2026-101074",
-    "title": "OA组件栈溢出漏洞可公开利用",
-    "tier": "critical",
-    "category": "OA/协同办公",
-    "cvss": 9.8,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-82384",
-    "title": "Roller XML-RPC反序列化RCE",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.8,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-12342",
-    "title": "IdentityIQ未认证RCE漏洞",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.6,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-102268",
-    "title": "PyJWT签名校验错误可伪造HMAC令牌",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.1,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101001",
-    "title": "Netcore路由器命令注入RCE",
-    "tier": "critical",
-    "category": null,
-    "cvss": 10.0,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101039",
-    "title": "FAST路由器devdiscover栈溢出",
-    "tier": "critical",
-    "category": null,
-    "cvss": 10.0,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101072",
-    "title": "Netcore路由器CGI命令注入",
-    "tier": "critical",
-    "category": null,
-    "cvss": 10.0,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101075",
-    "title": "未知组件命令注入漏洞可公开利用",
-    "tier": "critical",
-    "category": null,
-    "cvss": 10.0,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101076",
-    "title": "Netcore路由器NTP CGI命令注入",
-    "tier": "critical",
-    "category": null,
-    "cvss": 10.0,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-100896",
-    "title": "TOTOLINK路由器CGI命令注入",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.9,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101002",
-    "title": "未知组件URL参数命令注入",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.9,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-82377",
-    "title": "Roller XML-RPC越权操作",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.9,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101037",
-    "title": "FAST路由器devdiscover栈溢出",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.9,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101038",
-    "title": "FAST路由器栈溢出漏洞可公开利用",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.9,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-85526",
-    "title": "LXD Btrfs备份路径遍历",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.9,
-    "kev": false,
-    "repro": "一般",
-    "urgency": "P1 重点关注"
-   },
-   {
     "id": "CVE-2026-87799",
-    "title": "LXD迁移接收路径链接绕过",
+    "title": "LXD迁移接收路径绕过可root任意写文件",
     "tier": "critical",
     "category": null,
     "cvss": 9.9,
@@ -174,7 +23,7 @@
    },
    {
     "id": "CVE-2026-90924",
-    "title": "Logsign SIEM默认凭据漏洞",
+    "title": "Logsign SIEM默认口令可未授权登录",
     "tier": "critical",
     "category": null,
     "cvss": 9.8,
@@ -184,7 +33,7 @@
    },
    {
     "id": "CVE-2026-85185",
-    "title": "LXD Btrfs路径遍历删文件",
+    "title": "LXD btrfs路径遍历可root删文件",
     "tier": "critical",
     "category": null,
     "cvss": 9.6,
@@ -194,7 +43,7 @@
    },
    {
     "id": "CVE-2026-88804",
-    "title": "Rancher UI未认证存储型XSS",
+    "title": "Rancher未授权设置更新致存储型XSS",
     "tier": "critical",
     "category": "容器/虚拟化",
     "cvss": 9.6,
@@ -204,7 +53,7 @@
    },
    {
     "id": "CVE-2026-101894",
-    "title": "归档解压链接遍历漏洞",
+    "title": "归档解压符号链接链绕过致任意文件读写",
     "tier": "critical",
     "category": null,
     "cvss": 9.1,
@@ -214,7 +63,7 @@
    },
    {
     "id": "CVE-2026-49994",
-    "title": "Bluehood仪表盘缺失认证",
+    "title": "Bluehood仪表盘缺失认证可篡改数据",
     "tier": "critical",
     "category": null,
     "cvss": 9.1,
@@ -223,68 +72,8 @@
     "urgency": "P1 重点关注"
    },
    {
-    "id": "CVE-2026-101187",
-    "title": "CVE-2026-101187",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.1,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101260",
-    "title": "CVE-2026-101260",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.1,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101261",
-    "title": "CVE-2026-101261",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.1,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101262",
-    "title": "CVE-2026-101262",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.1,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101263",
-    "title": "CVE-2026-101263",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.1,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
-    "id": "CVE-2026-101264",
-    "title": "CVE-2026-101264",
-    "tier": "critical",
-    "category": null,
-    "cvss": 9.1,
-    "kev": false,
-    "repro": "值得",
-    "urgency": "P1 重点关注"
-   },
-   {
     "id": "CVE-2026-82378",
-    "title": "Roller OAuth授权错误可绑任意账户",
+    "title": "Roller OAuth授权错误可劫持管理员",
     "tier": "critical",
     "category": null,
     "cvss": 9.0,
@@ -294,7 +83,7 @@
    },
    {
     "id": "CVE-2026-19759",
-    "title": "GCP应用集成授权错误可执行RPC",
+    "title": "GCP应用集成越权可调用内部RPC",
     "tier": "critical",
     "category": null,
     "cvss": 9.4,
@@ -314,7 +103,7 @@
    },
    {
     "id": "CVE-2026-73640",
-    "title": "Dayforce Payroll盲注SQLi",
+    "title": "Dayforce密码找回盲注SQL注入",
     "tier": "critical",
     "category": null,
     "cvss": 9.3,
@@ -324,7 +113,7 @@
    },
    {
     "id": "CVE-2026-101891",
-    "title": "WatchGuard AP未认证获API会话",
+    "title": "WatchGuard AP内部API鉴权缺失",
     "tier": "critical",
     "category": null,
     "cvss": 9.3,
@@ -334,7 +123,7 @@
    },
    {
     "id": "CVE-2026-86102",
-    "title": "WatchGuard AP命令注入可RCE",
+    "title": "WatchGuard AP命令注入致RCE",
     "tier": "critical",
     "category": null,
     "cvss": 9.3,
@@ -344,7 +133,7 @@
    },
    {
     "id": "CVE-2026-73642",
-    "title": "Dayforce Payroll路径遍历读取",
+    "title": "Dayforce文件下载路径遍历任意读文件",
     "tier": "critical",
     "category": null,
     "cvss": 9.2,
@@ -354,7 +143,7 @@
    },
    {
     "id": "CVE-2026-101008",
-    "title": "aaPanel BaoTa命令注入可RCE",
+    "title": "aaPanel面板命令注入可执行任意命令",
     "tier": "critical",
     "category": null,
     "cvss": 9.1,
@@ -364,9 +153,69 @@
    },
    {
     "id": "CVE-2026-101081",
-    "title": "D-Link DI-8400栈溢出RCE",
+    "title": "D-Link DI-8400 Web服务栈溢出",
     "tier": "critical",
     "category": "网络设备",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101187",
+    "title": "ZHOME USB管理API命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101260",
+    "title": "ZHOME firstLogin参数命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101261",
+    "title": "ZHOME WiFi首次配置参数命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101262",
+    "title": "ZHOME ip参数命令注入可远程执行",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101263",
+    "title": "ZHOME MAC参数命令注入可远程",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101264",
+    "title": "ZHOME set_passwd远程命令注入",
+    "tier": "critical",
+    "category": null,
     "cvss": 9.1,
     "kev": false,
     "repro": "一般",
