@@ -1,28 +1,72 @@
 {
  "schema": 1,
- "updated_at": "2026-09-29T04:29:42+00:00",
- "count": 10,
- "count_recommended": 3,
+ "updated_at": "2026-09-30T02:21:46+00:00",
+ "count": 14,
+ "count_recommended": 4,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
   {
-   "id": "CVE-2026-88771",
-   "title": "NetScaler未认证任意命令执行",
+   "id": "CVE-2026-5430",
+   "title": "WSO2 API控制面JWT认证绕过",
    "first_seen": "2026-09-29",
-   "last_seen": "2026-09-29",
+   "last_seen": "2026-09-30",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-08-06",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "构造alg为不支持算法的JWT访问API控制面，绕过签名校验",
+   "impact_scope": "API管理中间件，横向移动跳板",
+   "action_zh": "升级至4.5.0.58或4.6.0.22及以上",
+   "summary_zh": "攻击者构造不支持算法的JWT绕过签名校验，未授权访问控制面并可能接管管理员账户。",
+   "category": null,
+   "cvss": 10.0,
+   "epss": 0.00588,
+   "kev": true,
+   "kev_due": "2026-09-27",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/abraxas/CVE-2026-5430",
+     "label": "abraxas/CVE-2026-5430 1★(有源码)"
+    },
+    {
+     "url": "https://github.com/HORKimhab/CVE-2026-5430",
+     "label": "HORKimhab/CVE-2026-5430 0★(仅README)"
+    }
+   ],
+   "affected": "wso2 api_control_plane >=4.5.0 <4.5.0.58; wso2 api_control_plane >=4.6.0 <4.6.0.22",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2026-5328/"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-5430",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-88771",
+   "title": "NetScaler未认证命令执行",
+   "first_seen": "2026-09-29",
+   "last_seen": "2026-09-30",
    "ai_judged": true,
    "third_party": false,
    "open_source": false,
    "published": "2026-09-27",
    "urgency": "P0 立即处置",
    "repro_worthy": "强烈推荐",
-   "repro_note": "面向 ADC/Gateway 网络接口构造特制请求触发命令执行",
-   "impact_scope": "边界VPN/负载均衡，暴露公网",
-   "action_zh": "升级到 14.1-73.37 或 13.1-64.23 及以上",
-   "summary_zh": "未认证远程攻击者利用输入校验缺陷在ADC/Gateway上执行任意命令，可完全控制设备。",
+   "repro_note": "未认证访问ADC/Gateway接口，构造畸形输入触发命令执行",
+   "impact_scope": "边界ADC/VPN设备，常暴露公网",
+   "action_zh": "升级至14.1-73.37或13.1-64.23及以上",
+   "summary_zh": "未认证攻击者利用输入校验缺陷向NetScaler ADC/Gateway发送恶意请求，可执行任意命令。",
    "category": "边界设备/VPN",
    "cvss": 9.8,
-   "epss": null,
+   "epss": 0.01063,
    "kev": true,
    "kev_due": "2026-09-30",
    "ransomware": false,
@@ -31,11 +75,11 @@
    "poc": [
     {
      "url": "https://github.com/securekomodo/citrixInspector",
-     "label": "securekomodo/citrixInspector 88★(有源码)"
+     "label": "securekomodo/citrixInspector 91★(有源码)"
     },
     {
      "url": "https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771",
-     "label": "watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771 14★(有源码)"
+     "label": "watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771 20★(有源码)"
     }
    ],
    "affected": "citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279",
@@ -95,22 +139,22 @@
   },
   {
    "id": "CVE-2026-67279",
-   "title": "RouterOS SSH重协商认证绕过",
+   "title": "RouterOS SSH未认证会话执行",
    "first_seen": "2026-09-29",
-   "last_seen": "2026-09-29",
+   "last_seen": "2026-09-30",
    "ai_judged": true,
    "third_party": false,
    "open_source": false,
    "published": "2026-09-05",
    "urgency": "P0 立即处置",
    "repro_worthy": "强烈推荐",
-   "repro_note": "连接SSH端口，客户端主动重协商后未认证打开session通道发exec",
-   "impact_scope": "边界路由器/防火墙，常暴露公网",
-   "action_zh": "升级到 6.49.21 或 7.23.4 及以上版本",
-   "summary_zh": "未认证客户端在SSH重协商后跳过用户认证打开会话通道并发送exec请求，可泄露配置或篡改设备。",
+   "repro_note": "未认证SSH客户端在rekey后开通道并发送exec请求",
+   "impact_scope": "网络设备，SSH管理面常暴露",
+   "action_zh": "升级至6.49.21或7.23.4及以上",
+   "summary_zh": "未认证客户端利用SSH rekey后状态缺陷打开会话并发送exec，可能执行命令。",
    "category": "网络设备",
    "cvss": 6.5,
-   "epss": null,
+   "epss": 0.01027,
    "kev": true,
    "kev_due": "2026-09-28",
    "ransomware": false,
@@ -142,87 +186,91 @@
    "change_note": null
   },
   {
-   "id": "CVE-2026-5430",
-   "title": "WSO2 API控制平面 JWT校验绕过",
-   "first_seen": "2026-09-29",
-   "last_seen": "2026-09-29",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-08-06",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "值得",
-   "repro_note": "向控制平面接口提交算法伪造的 JWT，绕过签名校验获取令牌",
-   "impact_scope": "API 网关控制面，常暴露或内网",
-   "action_zh": "升级到 4.5.0.58 或 4.6.0.22 及以上",
-   "summary_zh": "攻击者构造使用不支持算法的JWT绕过签名校验，未授权访问系统并可能接管管理员账户。",
-   "category": null,
-   "cvss": 10.0,
-   "epss": null,
-   "kev": true,
-   "kev_due": "2026-09-27",
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": "code",
-   "poc": [
-    {
-     "url": "https://github.com/abraxas/CVE-2026-5430",
-     "label": "abraxas/CVE-2026-5430 1★(有源码)"
-    },
-    {
-     "url": "https://github.com/HORKimhab/CVE-2026-5430",
-     "label": "HORKimhab/CVE-2026-5430 0★(仅README)"
-    }
-   ],
-   "affected": "wso2 api_control_plane >=4.5.0 <4.5.0.58; wso2 api_control_plane >=4.6.0 <4.6.0.22",
-   "patched": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2026-5328/"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-5430",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-71362",
-   "title": "Adobe Commerce 授权错误提权",
-   "first_seen": "2026-09-29",
-   "last_seen": "2026-09-29",
+   "id": "CVE-2026-87902",
+   "title": "WordPress未授权模板包含RCE",
+   "first_seen": "2026-09-30",
+   "last_seen": "2026-09-30",
    "ai_judged": true,
    "third_party": false,
    "open_source": true,
-   "published": "2026-08-11",
+   "published": "2026-09-22",
    "urgency": "P0 立即处置",
    "repro_worthy": "值得",
-   "repro_note": "构造越权请求访问受保护资源接口，无需交互即可提升权限",
-   "impact_scope": "电商平台，涉订单与客户数据",
-   "action_zh": "升级到 2.4.4 或 B2B 1.3.3 及以上版本",
-   "summary_zh": "无需用户交互，攻击者利用错误授权访问敏感资源并提升权限，可能导致账户接管。",
+   "repro_note": "未授权请求触发get_page_template解析，需服务器与主题条件满足",
+   "impact_scope": "WordPress站点，广泛部署",
+   "action_zh": "升级至4.7.37或4.8.32及以上",
+   "summary_zh": "未认证攻击者触发模板解析包含主题目录外本地PHP文件，在条件满足时导致RCE。",
    "category": "CMS",
-   "cvss": 9.1,
-   "epss": null,
+   "cvss": 8.1,
+   "epss": 0.19756,
    "kev": true,
-   "kev_due": "2026-09-27",
+   "kev_due": "2026-09-28",
    "ransomware": false,
    "nuclei": false,
    "poc_quality": "code",
    "poc": [
     {
-     "url": "https://github.com/dinosn/cve-2026-71362-magento-lab",
-     "label": "dinosn/cve-2026-71362-magento-lab 5★(有源码)"
+     "url": "https://github.com/ressl/cve-2026-87902-poc",
+     "label": "ressl/cve-2026-87902-poc 38★(有源码)"
+    },
+    {
+     "url": "https://github.com/abraxas/CVE-2026-87902",
+     "label": "abraxas/CVE-2026-87902 33★(有源码)"
     }
    ],
-   "affected": "adobe commerce <2.4.4; adobe commerce_b2b <1.3.3",
+   "affected": "wordpress wordpress <4.7.37; wordpress wordpress >=4.8 <4.8.32",
    "patched": null,
    "refs": [
     {
      "label": "厂商通告",
-     "url": "https://helpx.adobe.com/security/products/magento/apsb26-92.html"
+     "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
     }
    ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-71362",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87902",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-88772",
+   "title": "NetScaler内存破坏RCE/DoS",
+   "first_seen": "2026-09-30",
+   "last_seen": "2026-09-30",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-09-27",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "向ADC/Gateway相关服务发送恶意请求触发内存破坏，观察RCE或崩溃",
+   "impact_scope": "边界ADC/VPN设备，风险影响大",
+   "action_zh": "升级至14.1-73.37或13.1-64.23及以上",
+   "summary_zh": "攻击者利用NetScaler ADC/Gateway内存破坏缺陷，可能导致远程代码执行或服务拒绝。",
+   "category": "边界设备/VPN",
+   "cvss": 8.1,
+   "epss": 0.01301,
+   "kev": true,
+   "kev_due": "2026-09-30",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/murrez/CVE-2026-88772",
+     "label": "murrez/CVE-2026-88772 13★(有源码)"
+    },
+    {
+     "url": "https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88772",
+     "label": "watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88772 2★(有源码)"
+    }
+   ],
+   "affected": "citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096&articleTitle=Citrix_NetScaler_ADC_and_Citrix_NetScaler_Gateway_Security_Bulletin_for_CVE_2026_88771_CVE_2026_88772_CVE_2026_88773_CVE_2026_88774_CVE_2026_88775_CVE_2026_88776_CVE_2026_88777_and_CVE_2026_88778"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88772",
    "change_note": null
   },
   {
@@ -373,6 +421,96 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102240",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-76721",
+   "title": "HPE Instant ON 未认证代码执行",
+   "first_seen": "2026-09-30",
+   "last_seen": "2026-09-30",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-09-29",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "向受影响网络接口发送畸形报文，需 HPE Instant ON 设备",
+   "impact_scope": "无线AP等网络设备，内网高价值",
+   "action_zh": "升级 HPE Instant ON 固件，并将管理接口限制在可信网段",
+   "summary_zh": "未认证远程攻击者向受影响接口发送畸形报文触发缓冲区溢出，可以特权用户身份执行任意代码。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76721",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-76722",
+   "title": "HPE Instant ON 格式串RCE",
+   "first_seen": "2026-09-30",
+   "last_seen": "2026-09-30",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-09-29",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "构造格式串载荷发送至受影响接口，需设备实测",
+   "impact_scope": "无线AP，可致内网横向与DoS",
+   "action_zh": "升级 HPE Instant ON AP 固件，限制管理网段访问",
+   "summary_zh": "未认证远程攻击者利用格式串缺陷向受影响接口发送载荷，可执行任意命令，导致DoS或接管设备。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76722",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-103041",
+   "title": "LightLLM 缓存服务反序列化RCE",
+   "first_seen": "2026-09-30",
+   "last_seen": "2026-09-30",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-09-29",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权连接缓存服务 RPyC 端口发送 pickle 对象",
+   "impact_scope": "多模态推理服务节点，端口对外",
+   "action_zh": "关闭或限制缓存服务端口访问，升级至修复版本",
+   "summary_zh": "多模态部署下缓存服务未授权暴露，攻击者发送恶意序列化对象即可在推理节点执行任意代码。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103041",
    "change_note": null
   }
  ]
