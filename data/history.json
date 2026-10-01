@@ -1506,5 +1506,675 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-10-01": {
+  "qualified": 65,
+  "critical": 62,
+  "kev": 9,
+  "repro_top": 1,
+  "kev_total": 1730,
+  "by_category": {
+   "网络设备": 2,
+   "CMS": 3,
+   "边界设备/VPN": 2,
+   "未分类": 50,
+   "操作系统": 3,
+   "安全设备": 1,
+   "容器/虚拟化": 2,
+   "开发库/依赖": 1,
+   "Web框架": 1
+  },
+  "items": [
+   {
+    "id": "CVE-2026-67279",
+    "title": "Mikrotik RouterOS Improper Enforcement of Behavioral Workflow Vulnerability",
+    "tier": "critical",
+    "category": "网络设备",
+    "cvss": 6.5,
+    "kev": true,
+    "repro": "强烈推荐",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-71362",
+    "title": "Adobe Commerce and Magento Incorrect Authorization Vulnerability ",
+    "tier": "critical",
+    "category": "CMS",
+    "cvss": 9.1,
+    "kev": true,
+    "repro": "值得",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-87902",
+    "title": "WordPress Core Remote File Inclusion Vulnerability",
+    "tier": "critical",
+    "category": "CMS",
+    "cvss": 8.1,
+    "kev": true,
+    "repro": "值得",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-88771",
+    "title": "Citrix NetScaler Improper Input Validation Vulnerability",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 9.8,
+    "kev": true,
+    "repro": "值得",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-88772",
+    "title": "Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 8.1,
+    "kev": true,
+    "repro": "值得",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-5430",
+    "title": "WSO2 Multiple Products Path Traversal Vulnerability ",
+    "tier": "critical",
+    "category": null,
+    "cvss": 10.0,
+    "kev": true,
+    "repro": "值得",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-76504",
+    "title": "Cisco Catalyst SD-WAN Manager Hex Encoding Vulnerability",
+    "tier": "critical",
+    "category": "网络设备",
+    "cvss": 9.8,
+    "kev": true,
+    "repro": "值得",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-65660",
+    "title": "Microsoft SharePoint Code Injection Vulnerability",
+    "tier": "critical",
+    "category": null,
+    "cvss": 8.8,
+    "kev": true,
+    "repro": "值得",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-86950",
+    "title": "Apple Multiple Products Out-of-Bounds Write Vulnerability",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 8.8,
+    "kev": true,
+    "repro": "值得",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-95350",
+    "title": "CVE-2026-95350",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-95357",
+    "title": "CVE-2026-95357",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-74864",
+    "title": "CVE-2026-74864",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-93994",
+    "title": "CVE-2026-93994",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-87819",
+    "title": "CVE-2026-87819",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.5,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-102823",
+    "title": "CVE-2026-102823",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.5,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-75873",
+    "title": "CVE-2026-75873",
+    "tier": "critical",
+    "category": "CMS",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102115",
+    "title": "CVE-2026-102115",
+    "tier": "critical",
+    "category": "安全设备",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-96349",
+    "title": "CVE-2026-96349",
+    "tier": "critical",
+    "category": null,
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-55107",
+    "title": "CVE-2026-55107",
+    "tier": "critical",
+    "category": null,
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102911",
+    "title": "CVE-2026-102911",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-103110",
+    "title": "CVE-2026-103110",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102455",
+    "title": "CVE-2026-102455",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102458",
+    "title": "CVE-2026-102458",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-88920",
+    "title": "CVE-2026-88920",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-96350",
+    "title": "CVE-2026-96350",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-97248",
+    "title": "CVE-2026-97248",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-97274",
+    "title": "CVE-2026-97274",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-82307",
+    "title": "CVE-2026-82307",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-103395",
+    "title": "CVE-2026-103395",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-18782",
+    "title": "CVE-2026-18782",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-55494",
+    "title": "CVE-2026-55494",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-100512",
+    "title": "CVE-2026-100512",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-55181",
+    "title": "CVE-2026-55181",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102149",
+    "title": "CVE-2026-102149",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-96822",
+    "title": "CVE-2026-96822",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102147",
+    "title": "CVE-2026-102147",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-97196",
+    "title": "CVE-2026-97196",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-77185",
+    "title": "CVE-2026-77185",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-94052",
+    "title": "CVE-2026-94052",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-94053",
+    "title": "CVE-2026-94053",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-87830",
+    "title": "CVE-2026-87830",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-89238",
+    "title": "CVE-2026-89238",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-62308",
+    "title": "CVE-2026-62308",
+    "tier": "critical",
+    "category": "开发库/依赖",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-103475",
+    "title": "CVE-2026-103475",
+    "tier": "critical",
+    "category": "Web框架",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102095",
+    "title": "CVE-2026-102095",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102102",
+    "title": "CVE-2026-102102",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102103",
+    "title": "CVE-2026-102103",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102104",
+    "title": "CVE-2026-102104",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102105",
+    "title": "CVE-2026-102105",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102106",
+    "title": "CVE-2026-102106",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-94389",
+    "title": "CVE-2026-94389",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.0,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-93903",
+    "title": "CVE-2026-93903",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102489",
+    "title": "CVE-2026-102489",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102490",
+    "title": "CVE-2026-102490",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-14157",
+    "title": "CVE-2026-14157",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-103470",
+    "title": "CVE-2026-103470",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102508",
+    "title": "CVE-2026-102508",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-74865",
+    "title": "CVE-2026-74865",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-19445",
+    "title": "CVE-2026-19445",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102992",
+    "title": "CVE-2026-102992",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-103547",
+    "title": "CVE-2026-103547",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101276",
+    "title": "CVE-2026-101276",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-101283",
+    "title": "CVE-2026-101283",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-75969",
+    "title": "CVE-2026-75969",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-55176",
+    "title": "CVE-2026-55176",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.0,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }

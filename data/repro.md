@@ -4,31 +4,11 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-09-30 02:21 UTC · 共 **14** 条(强烈推荐 4 / 值得 10)
+**更新**: 2026-10-01 02:23 UTC · 共 **19** 条(强烈推荐 2 / 值得 17)
 
 ---
 
 ## 强烈推荐复现
-
-### WSO2 API控制面JWT认证绕过
-[CVE-2026-5430](https://nvd.nist.gov/vuln/detail/CVE-2026-5430) | P0 立即处置 | CVSS 10.0 | EPSS 0.6% | 披露 2026-08-06 | 入库 2026-09-29
-🔥 KEV 在野利用,限期 2026-09-27 | PoC 源码可用
-攻击者构造不支持算法的JWT绕过签名校验，未授权访问控制面并可能接管管理员账户。
-复现: 强烈推荐 — 构造alg为不支持算法的JWT访问API控制面，绕过签名校验 · 影响面: API管理中间件，横向移动跳板
-处置: 升级至4.5.0.58或4.6.0.22及以上
-影响: wso2 api_control_plane >=4.5.0 <4.5.0.58; wso2 api_control_plane >=4.6.0 <4.6.0.22
-PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026-5430) · [HORKimhab/CVE-2026-5430 0★(仅README)](https://github.com/HORKimhab/CVE-2026-5430)
-参考: [厂商通告](https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2026-5328/)
-
-### NetScaler未认证命令执行
-[CVE-2026-88771](https://nvd.nist.gov/vuln/detail/CVE-2026-88771) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | EPSS 1.1% | 披露 2026-09-27 | 入库 2026-09-29
-🔥 KEV 在野利用,限期 2026-09-30 | PoC 源码可用
-未认证攻击者利用输入校验缺陷向NetScaler ADC/Gateway发送恶意请求，可执行任意命令。
-复现: 强烈推荐 — 未认证访问ADC/Gateway接口，构造畸形输入触发命令执行 · 影响面: 边界ADC/VPN设备，常暴露公网
-处置: 升级至14.1-73.37或13.1-64.23及以上
-影响: citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279
-PoC: [securekomodo/citrixInspector 91★(有源码)](https://github.com/securekomodo/citrixInspector) · [watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771 20★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771)
-参考: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096)
 
 ### BIG-IP APM 堆溢出未认证RCE
 [CVE-2026-94127](https://nvd.nist.gov/vuln/detail/CVE-2026-94127) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | 披露 2026-09-22 | 入库 2026-09-29
@@ -40,38 +20,83 @@ PoC: [securekomodo/citrixInspector 91★(有源码)](https://github.com/secureko
 PoC: [watchtowrlabs/watchTowr-vs-f5-bigip-PreAuth-RCE-CVE-2026-94127 13★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-f5-bigip-PreAuth-RCE-CVE-2026-94127) · [FurkanKAYAPINAR/CVE-2026-94127 0★(有源码)](https://github.com/FurkanKAYAPINAR/CVE-2026-94127)
 参考: [厂商通告](https://my.f5.com/manage/s/article/K000162605)
 
-### RouterOS SSH未认证会话执行
+### Mikrotik RouterOS Improper Enforcement of Behavioral Workflow Vulnerability
 [CVE-2026-67279](https://nvd.nist.gov/vuln/detail/CVE-2026-67279) | P0 立即处置 | 网络设备 | CVSS 6.5 | EPSS 1.0% | 披露 2026-09-05 | 入库 2026-09-29
 🔥 KEV 在野利用,限期 2026-09-28 | PoC 源码可用
-未认证客户端利用SSH rekey后状态缺陷打开会话并发送exec，可能执行命令。
-复现: 强烈推荐 — 未认证SSH客户端在rekey后开通道并发送exec请求 · 影响面: 网络设备，SSH管理面常暴露
-处置: 升级至6.49.21或7.23.4及以上
+复现: 强烈推荐
 影响: mikrotik routeros >=6.0 <6.49.21; mikrotik routeros >=7.0 <7.23.4
-PoC: [HackSpeak/CVE-2026-67279 4★(有源码)](https://github.com/HackSpeak/CVE-2026-67279) · [gagaltotal/CVE-2026-mikrotik-poc 3★(有源码)](https://github.com/gagaltotal/CVE-2026-mikrotik-poc) · [NVD exploit 引用](https://npratley.net/reversing-mikrotiks-silent-patch-the-routeros-7-23-4-fix-they-wouldnt-explain/)
+PoC: [HackSpeak/CVE-2026-67279 5★(有源码)](https://github.com/HackSpeak/CVE-2026-67279) · [gagaltotal/CVE-2026-mikrotik-poc 3★(有源码)](https://github.com/gagaltotal/CVE-2026-mikrotik-poc) · [NVD exploit 引用](https://npratley.net/reversing-mikrotiks-silent-patch-the-routeros-7-23-4-fix-they-wouldnt-explain/)
 参考: [厂商通告](https://mikrotik.com/supportsec/september-2026-vulnerability/)
 
 
 ## 值得复现
 
-### WordPress未授权模板包含RCE
+### WSO2 Multiple Products Path Traversal Vulnerability 
+[CVE-2026-5430](https://nvd.nist.gov/vuln/detail/CVE-2026-5430) | P0 立即处置 | CVSS 10.0 | EPSS 0.6% | 披露 2026-08-06 | 入库 2026-09-29
+🔥 KEV 在野利用,限期 2026-09-27 | PoC 源码可用
+复现: 值得
+影响: wso2 api_control_plane >=4.5.0 <4.5.0.58; wso2 api_control_plane >=4.6.0 <4.6.0.22
+PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026-5430) · [HORKimhab/CVE-2026-5430 0★(仅README)](https://github.com/HORKimhab/CVE-2026-5430)
+参考: [厂商通告](https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2026-5328/)
+
+### Citrix NetScaler Improper Input Validation Vulnerability
+[CVE-2026-88771](https://nvd.nist.gov/vuln/detail/CVE-2026-88771) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | EPSS 1.1% | 披露 2026-09-27 | 入库 2026-09-29
+🔥 KEV 在野利用,限期 2026-09-30 | PoC 源码可用
+复现: 值得
+影响: citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279
+PoC: [securekomodo/citrixInspector 92★(有源码)](https://github.com/securekomodo/citrixInspector) · [watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771 21★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771)
+参考: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096)
+
+### Cisco Catalyst SD-WAN Manager Hex Encoding Vulnerability
+[CVE-2026-76504](https://nvd.nist.gov/vuln/detail/CVE-2026-76504) | P0 立即处置 | 网络设备 | CVSS 9.8 | 披露 2026-09-30 | 入库 2026-10-01
+🔥 KEV 在野利用,限期 2026-10-03 | 有PoC
+复现: 值得
+影响: cisco catalyst_sd-wan_manager <20.9.10.1; cisco catalyst_sd-wan_manager >=20.12 <20.12.8.2
+PoC: [ShadowForge-Cyber/CVE-2026-76504-Proof-of-concept 0★(仅README)](https://github.com/ShadowForge-Cyber/CVE-2026-76504-Proof-of-concept)
+参考: [厂商通告](https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-webauth-xr8beuuU)
+
+### Adobe Commerce and Magento Incorrect Authorization Vulnerability 
+[CVE-2026-71362](https://nvd.nist.gov/vuln/detail/CVE-2026-71362) | P0 立即处置 | CMS | CVSS 9.1 | EPSS 87.5% | 披露 2026-08-11 | 入库 2026-10-01
+🔥 KEV 在野利用,限期 2026-09-27 | PoC 源码可用 | 开源,可源码审计复现
+复现: 值得
+影响: adobe commerce <2.4.4; adobe commerce_b2b <1.3.3
+PoC: [dinosn/cve-2026-71362-magento-lab 5★(有源码)](https://github.com/dinosn/cve-2026-71362-magento-lab)
+参考: [厂商通告](https://helpx.adobe.com/security/products/magento/apsb26-92.html)
+
+### Microsoft SharePoint Code Injection Vulnerability
+[CVE-2026-65660](https://nvd.nist.gov/vuln/detail/CVE-2026-65660) | P0 立即处置 | CVSS 8.8 | EPSS 2.1% | 披露 2026-08-11 | 入库 2026-10-01
+🔥 KEV 在野利用,限期 2026-09-28 | 有PoC
+复现: 值得
+影响: microsoft sharepoint_server <16.0.19725.20522
+PoC: [ShadowForge-Cyber/CVE-2026-65660-Poc 1★(仅README)](https://github.com/ShadowForge-Cyber/CVE-2026-65660-Poc) · [HORKimhab/CVE-2026-65660 0★(仅README)](https://github.com/HORKimhab/CVE-2026-65660)
+参考: [厂商通告](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-65660)
+
+### Apple Multiple Products Out-of-Bounds Write Vulnerability
+[CVE-2026-86950](https://nvd.nist.gov/vuln/detail/CVE-2026-86950) | P0 立即处置 | 操作系统 | CVSS 8.8 | EPSS 0.8% | 披露 2026-09-28 | 入库 2026-10-01
+🔥 KEV 在野利用,限期 2026-10-02
+复现: 值得
+影响: apple ipados <26.7.1; apple iphone_os <26.7.1
+参考: [厂商通告](https://support.apple.com/en-us/149226) · [厂商通告](https://support.apple.com/en-us/149228) · [厂商通告](https://support.apple.com/en-us/149229)
+
+### WordPress Core Remote File Inclusion Vulnerability
 [CVE-2026-87902](https://nvd.nist.gov/vuln/detail/CVE-2026-87902) | P0 立即处置 | CMS | CVSS 8.1 | EPSS 19.8% | 披露 2026-09-22 | 入库 2026-09-30
 🔥 KEV 在野利用,限期 2026-09-28 | PoC 源码可用 | 开源,可源码审计复现
-未认证攻击者触发模板解析包含主题目录外本地PHP文件，在条件满足时导致RCE。
-复现: 值得 — 未授权请求触发get_page_template解析，需服务器与主题条件满足 · 影响面: WordPress站点，广泛部署
-处置: 升级至4.7.37或4.8.32及以上
+复现: 值得
 影响: wordpress wordpress <4.7.37; wordpress wordpress >=4.8 <4.8.32
 PoC: [ressl/cve-2026-87902-poc 38★(有源码)](https://github.com/ressl/cve-2026-87902-poc) · [abraxas/CVE-2026-87902 33★(有源码)](https://github.com/abraxas/CVE-2026-87902)
 参考: [厂商通告](https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp)
 
-### NetScaler内存破坏RCE/DoS
+### Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability
 [CVE-2026-88772](https://nvd.nist.gov/vuln/detail/CVE-2026-88772) | P0 立即处置 | 边界设备/VPN | CVSS 8.1 | EPSS 1.3% | 披露 2026-09-27 | 入库 2026-09-30
 🔥 KEV 在野利用,限期 2026-09-30 | PoC 源码可用
-攻击者利用NetScaler ADC/Gateway内存破坏缺陷，可能导致远程代码执行或服务拒绝。
-复现: 值得 — 向ADC/Gateway相关服务发送恶意请求触发内存破坏，观察RCE或崩溃 · 影响面: 边界ADC/VPN设备，风险影响大
-处置: 升级至14.1-73.37或13.1-64.23及以上
+复现: 值得
 影响: citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279
-PoC: [murrez/CVE-2026-88772 13★(有源码)](https://github.com/murrez/CVE-2026-88772) · [watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88772 2★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88772)
+PoC: [murrez/CVE-2026-88772 13★(有源码)](https://github.com/murrez/CVE-2026-88772) · [watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88772 6★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88772)
 参考: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096&articleTitle=Citrix_NetScaler_ADC_and_Citrix_NetScaler_Gateway_Security_Bulletin_for_CVE_2026_88771_CVE_2026_88772_CVE_2026_88773_CVE_2026_88774_CVE_2026_88775_CVE_2026_88776_CVE_2026_88777_and_CVE_2026_88778)
+
+### CVE-2026-96349
+[CVE-2026-96349](https://nvd.nist.gov/vuln/detail/CVE-2026-96349) | P1 重点关注 | CVSS 10.0 | 披露 2026-09-30 | 入库 2026-10-01
+复现: 值得
 
 ### Netcore NBR200V2 命令注入
 [CVE-2026-101001](https://nvd.nist.gov/vuln/detail/CVE-2026-101001) | P1 重点关注 | CVSS 10.0 | 披露 2026-09-28 | 入库 2026-09-29
