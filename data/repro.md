@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-01 02:23 UTC · 共 **19** 条(强烈推荐 2 / 值得 17)
+**更新**: 2026-10-02 02:33 UTC · 共 **24** 条(强烈推荐 2 / 值得 22)
 
 ---
 
@@ -44,16 +44,22 @@ PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026
 🔥 KEV 在野利用,限期 2026-09-30 | PoC 源码可用
 复现: 值得
 影响: citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279
-PoC: [securekomodo/citrixInspector 92★(有源码)](https://github.com/securekomodo/citrixInspector) · [watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771 21★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771)
+PoC: [securekomodo/citrixInspector 95★(有源码)](https://github.com/securekomodo/citrixInspector) · [watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771 21★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771)
 参考: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096)
 
 ### Cisco Catalyst SD-WAN Manager Hex Encoding Vulnerability
-[CVE-2026-76504](https://nvd.nist.gov/vuln/detail/CVE-2026-76504) | P0 立即处置 | 网络设备 | CVSS 9.8 | 披露 2026-09-30 | 入库 2026-10-01
+[CVE-2026-76504](https://nvd.nist.gov/vuln/detail/CVE-2026-76504) | P0 立即处置 | 网络设备 | CVSS 9.8 | EPSS 1.1% | 披露 2026-09-30 | 入库 2026-10-01
 🔥 KEV 在野利用,限期 2026-10-03 | 有PoC
 复现: 值得
 影响: cisco catalyst_sd-wan_manager <20.9.10.1; cisco catalyst_sd-wan_manager >=20.12 <20.12.8.2
-PoC: [ShadowForge-Cyber/CVE-2026-76504-Proof-of-concept 0★(仅README)](https://github.com/ShadowForge-Cyber/CVE-2026-76504-Proof-of-concept)
+PoC: [ShadowForge-Cyber/CVE-2026-76504-Proof-of-concept 1★(仅README)](https://github.com/ShadowForge-Cyber/CVE-2026-76504-Proof-of-concept)
 参考: [厂商通告](https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-webauth-xr8beuuU)
+
+### Fortinet FortiMail Path Traversal Vulnerability
+[CVE-2026-104286](https://nvd.nist.gov/vuln/detail/CVE-2026-104286) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | 披露 2026-10-01 | 入库 2026-10-02
+🔥 KEV 在野利用,限期 2026-10-04 | 有PoC
+复现: 值得
+PoC: [ShadowForge-Cyber/CVE-2026-104286-POC 0★(仅README)](https://github.com/ShadowForge-Cyber/CVE-2026-104286-POC)
 
 ### Adobe Commerce and Magento Incorrect Authorization Vulnerability 
 [CVE-2026-71362](https://nvd.nist.gov/vuln/detail/CVE-2026-71362) | P0 立即处置 | CMS | CVSS 9.1 | EPSS 87.5% | 披露 2026-08-11 | 入库 2026-10-01
@@ -72,10 +78,11 @@ PoC: [ShadowForge-Cyber/CVE-2026-65660-Poc 1★(仅README)](https://github.com/S
 参考: [厂商通告](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-65660)
 
 ### Apple Multiple Products Out-of-Bounds Write Vulnerability
-[CVE-2026-86950](https://nvd.nist.gov/vuln/detail/CVE-2026-86950) | P0 立即处置 | 操作系统 | CVSS 8.8 | EPSS 0.8% | 披露 2026-09-28 | 入库 2026-10-01
-🔥 KEV 在野利用,限期 2026-10-02
+[CVE-2026-86950](https://nvd.nist.gov/vuln/detail/CVE-2026-86950) | P0 立即处置 | 操作系统 | CVSS 8.8 | EPSS 1.2% | 披露 2026-09-28 | 入库 2026-10-01
+🔥 KEV 在野利用,限期 2026-10-02 | 有PoC
 复现: 值得
 影响: apple ipados <26.7.1; apple iphone_os <26.7.1
+PoC: [msuiche/hotcell 3★(仅README)](https://github.com/msuiche/hotcell) · [DeAurity/CVE-2026-86950-POC 2★(仅README)](https://github.com/DeAurity/CVE-2026-86950-POC)
 参考: [厂商通告](https://support.apple.com/en-us/149226) · [厂商通告](https://support.apple.com/en-us/149228) · [厂商通告](https://support.apple.com/en-us/149229)
 
 ### WordPress Core Remote File Inclusion Vulnerability
@@ -93,6 +100,30 @@ PoC: [ressl/cve-2026-87902-poc 38★(有源码)](https://github.com/ressl/cve-20
 影响: citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279
 PoC: [murrez/CVE-2026-88772 13★(有源码)](https://github.com/murrez/CVE-2026-88772) · [watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88772 6★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88772)
 参考: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096&articleTitle=Citrix_NetScaler_ADC_and_Citrix_NetScaler_Gateway_Security_Bulletin_for_CVE_2026_88771_CVE_2026_88772_CVE_2026_88773_CVE_2026_88774_CVE_2026_88775_CVE_2026_88776_CVE_2026_88777_and_CVE_2026_88778)
+
+### CVE-2026-92940
+[CVE-2026-92940](https://nvd.nist.gov/vuln/detail/CVE-2026-92940) | P1 重点关注 | CVSS 10.0 | EPSS 0.5% | 披露 2026-10-01 | 入库 2026-10-02
+开源,可源码审计复现
+复现: 值得
+影响: npm:vm2 >= 3.11.3, <= 3.11.6(修复: 3.11.7)
+
+### CVE-2026-92941
+[CVE-2026-92941](https://nvd.nist.gov/vuln/detail/CVE-2026-92941) | P1 重点关注 | CVSS 10.0 | EPSS 0.3% | 披露 2026-10-01 | 入库 2026-10-02
+开源,可源码审计复现
+复现: 值得
+影响: npm:vm2 >= 3.11.3, <= 3.11.6(修复: 3.11.7)
+
+### CVE-2026-69085
+[CVE-2026-69085](https://nvd.nist.gov/vuln/detail/CVE-2026-69085) | P1 重点关注 | CVSS 10.0 | EPSS 1.5% | 披露 2026-10-01 | 入库 2026-10-02
+nuclei 模板 | 开源,可源码审计复现
+复现: 值得
+影响: go:github.com/siyuan-note/siyuan/kernel < 0.0.0-20260721043339-eef10568384e(修复: 0.0.0-20260721043339-eef10568384e)
+
+### CVE-2026-92937
+[CVE-2026-92937](https://nvd.nist.gov/vuln/detail/CVE-2026-92937) | P1 重点关注 | CVSS 10.0 | EPSS 1.0% | 披露 2026-10-01 | 入库 2026-10-02
+开源,可源码审计复现
+复现: 值得
+影响: npm:vm2 = 3.11.6(修复: 3.11.7)
 
 ### CVE-2026-96349
 [CVE-2026-96349](https://nvd.nist.gov/vuln/detail/CVE-2026-96349) | P1 重点关注 | CVSS 10.0 | 披露 2026-09-30 | 入库 2026-10-01
