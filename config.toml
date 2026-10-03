@@ -92,15 +92,44 @@ commits = true
 # 每轮最多展示的安全相关提交数(按置信度排序取头部)
 commit_max = 10
 
-# 监控项目清单。刻意不含 torvalds/linux(每天上千提交,任何关键词过滤都会被淹没);
-# 想盯内核可加各 stable 分支仓库,如 gregkh/linux-stable(同样很吵,慎加)
+# 监控项目清单(55 个,按类别分组)。覆盖:
+# - 基础组件:openssl/curl/ffmpeg/qemu 等
+# - Web/Java 高频目标(HVV 常打):若依、芋道、JeecgBoot、积木报表、XXL-JOB、
+#   Nacos、Druid、fastjson2、Dubbo、Shiro、OFBiz、Solr、ActiveMQ、RocketMQ、
+#   Tomcat、httpd、Struts、Spring 全家、GeoServer、禅道
+# - Web/其他语言:ThinkPHP、phpMyAdmin、Django、Laravel、ShowDoc
+# - 平台/运维:Jenkins、Grafana、Harbor、Nexus、Zabbix、EMQX、Elasticsearch
+# - 边缘/网关:Envoy
+# 提交信息中英特征词都识别。想盯自己的组件就往里加 owner/repo;
+# 刻意不含 torvalds/linux(每天上千提交,任何关键词过滤都会被淹没),
+# 想盯内核可加 gregkh/linux-stable(同样很吵,慎加)。
+# 清单较大时建议配置 GITHUB_TOKEN(Actions 自带,免限流)
 commit_repos = [
+  # 基础组件/库
   "openssl/openssl", "curl/curl", "nginx/nginx", "php/php-src",
   "python/cpython", "nodejs/node", "golang/go", "rust-lang/rust",
   "git/git", "sqlite/sqlite", "madler/zlib", "GNOME/libxml2",
   "FFmpeg/FFmpeg", "ImageMagick/ImageMagick", "redis/redis",
   "postgres/postgres", "mysql/mysql-server", "wireshark/wireshark",
   "qemu/qemu", "openbsd/src", "haproxy/haproxy",
+  # Web/Java 高频目标(HVV 常打)
+  "yangzongzhuan/RuoYi-Vue", "YunaiV/ruoyi-vue-pro",
+  "jeecgboot/JeecgBoot", "jeecgboot/JimuReport", "xuxueli/xxl-job",
+  "alibaba/nacos", "alibaba/druid", "alibaba/fastjson2",
+  "apache/dubbo", "apache/shiro", "apache/ofbiz-framework",
+  "apache/solr", "apache/activemq", "apache/rocketmq",
+  "apache/tomcat", "apache/httpd", "apache/struts",
+  "spring-projects/spring-framework", "spring-cloud/spring-cloud-gateway",
+  "geoserver/geoserver", "easysoft/zentaopms",
+  # Web/其他语言高频目标
+  "top-think/framework", "phpmyadmin/phpmyadmin", "django/django",
+  "laravel/framework", "star7th/showdoc",
+  # 平台/运维
+  "jenkinsci/jenkins", "grafana/grafana", "goharbor/harbor",
+  "sonatype/nexus-public", "zabbix/zabbix", "emqx/emqx",
+  "elastic/elasticsearch",
+  # 边缘/网关
+  "envoyproxy/envoy",
 ]
 
 [notify]

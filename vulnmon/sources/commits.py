@@ -27,21 +27,27 @@ THRESHOLD = 2
 
 CVE_RE = re.compile(r"cve[- ]?\d{4}-\d{4,}", re.I)
 
-# 强特征(权重2):内存破坏/提权/认证绕过/明确安全语义
+# 强特征(权重2):内存破坏/提权/认证绕过/明确安全语义。
+# 含中文特征词:国内高频目标(若依/JeecgBoot/禅道等)提交信息多为中文
 STRONG = [
     (re.compile(r"use[- ]after[- ]free|\buaf\b", re.I), "UAF"),
     (re.compile(r"out[- ]of[- ]bounds|\boob\s+(read|write)", re.I), "越界读写"),
     (re.compile(r"(?:heap|stack|global|buffer)\s+(?:buffer\s+)?over(?:flow|read|write)", re.I), "缓冲区溢出"),
     (re.compile(r"memory\s+(corruption|disclosure)|uninitiali[sz]ed\s+(memory|value|pointer|buffer)", re.I), "未初始化/内存破坏"),
     (re.compile(r"type\s+confusion|double\s+free", re.I), "类型混淆/double free"),
-    (re.compile(r"(privilege|permission)\s+escalation|privesc|\broot\s+via\b", re.I), "提权"),
+    (re.compile(r"(privilege|permission)\s+escalation|privesc|\broot\s+via\b|提权|越权", re.I), "提权"),
     (re.compile(r"(?:auth(?:entication|orization)?|access[- ]control|security\s+check|login|session)\s+(?:bypass|flaw|issue|mistake|error)", re.I), "认证/鉴权绕过"),
     (re.compile(r"(?:remote\s+)?(?:code|command)\s+execution|\brce\b|arbitrary\s+(?:code|command)", re.I), "RCE"),
-    (re.compile(r"(command|sql|code|path)\s+injection", re.I), "注入"),
+    (re.compile(r"(command|sql|code|path)\s+injection|(sql|命令|代码|脚本)\s*注入|注入漏洞", re.I), "注入"),
     (re.compile(r"format\s+string", re.I), "格式串"),
     (re.compile(r"cross[- ]site\s+scripting|\bxss\b", re.I), "XSS"),
     (re.compile(r"security\s+(?:fix|issue|vulnerab|bug|flaw|hardening|advisory|regression)", re.I), "安全修复"),
     (re.compile(r"vulnerabilit|insecure\s+(?:by\s+default|deserialization)", re.I), "漏洞相关"),
+    (re.compile(r"deserializ|反序列化", re.I), "反序列化"),
+    (re.compile(r"path\s+traversal|directory\s+traversal|任意(?:文件|命令|代码|上传|下载)|目录(?:穿|遍)历|路径穿越", re.I), "路径遍历/任意文件"),
+    (re.compile(r"\bssrf\b|server[- ]side\s+request\s+forge", re.I), "SSRF"),
+    (re.compile(r"安全漏洞|安全修复|安全隐患|漏洞修复|修复.{0,12}漏洞", re.I), "安全修复(中文)"),
+    (re.compile(r"未授权|越权访问|绕过", re.I), "未授权/绕过"),
 ]
 # 弱特征(权重1):单独不足以入选,与强特征叠加时增加置信度
 WEAK = [
@@ -108,12 +114,21 @@ def fetch_repo_commits(repo: str, since: datetime) -> list[dict]:
 
 
 def scan_commit_signals(repos: list[str], since: datetime) -> list[dict]:
-    """扫描全部监控仓库,返回按分数降序的安全相关提交(含命中特征与 CVE 号)。"""
+    """扫描全部监控仓库,返回按分数降序的安全相关提交(含命中特征与 CVE 号)。
+
+    无 GITHUB_TOKEN 时匿名限额 60/h,清单大了一轮就会撞限额:
+    撞到 rate limit 直接中止本轮(下一轮定时任务再来),不在每个仓库上空耗重试。
+    """
     signals = []
-    for repo in repos:
+    for idx, repo in enumerate(repos):
         try:
             commits = fetch_repo_commits(repo, since)
         except RuntimeError as e:
+            if "rate limit" in str(e).lower():
+                print(f"  [warn] GitHub API 限额用尽,中止本轮提交扫描"
+                      f"(未扫 {len(repos) - idx} 个仓库,下轮再补): {e}",
+                      flush=True)
+                break
             print(f"  [warn] {repo} 提交拉取失败(跳过): {e}", flush=True)
             continue
         for c in commits:

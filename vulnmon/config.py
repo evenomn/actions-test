@@ -113,12 +113,31 @@ DEFAULTS = {
     "use_commits": True,
     "commit_max": 10,
     "commit_repos": [
+        # 基础组件/库
         "openssl/openssl", "curl/curl", "nginx/nginx", "php/php-src",
         "python/cpython", "nodejs/node", "golang/go", "rust-lang/rust",
         "git/git", "sqlite/sqlite", "madler/zlib", "GNOME/libxml2",
         "FFmpeg/FFmpeg", "ImageMagick/ImageMagick", "redis/redis",
         "postgres/postgres", "mysql/mysql-server", "wireshark/wireshark",
         "qemu/qemu", "openbsd/src", "haproxy/haproxy",
+        # Web/Java 高频目标(HVV 常打)
+        "yangzongzhuan/RuoYi-Vue", "YunaiV/ruoyi-vue-pro",
+        "jeecgboot/JeecgBoot", "jeecgboot/JimuReport", "xuxueli/xxl-job",
+        "alibaba/nacos", "alibaba/druid", "alibaba/fastjson2",
+        "apache/dubbo", "apache/shiro", "apache/ofbiz-framework",
+        "apache/solr", "apache/activemq", "apache/rocketmq",
+        "apache/tomcat", "apache/httpd", "apache/struts",
+        "spring-projects/spring-framework", "spring-cloud/spring-cloud-gateway",
+        "geoserver/geoserver", "easysoft/zentaopms",
+        # Web/其他语言高频目标
+        "top-think/framework", "phpmyadmin/phpmyadmin", "django/django",
+        "laravel/framework", "star7th/showdoc",
+        # 平台/运维
+        "jenkinsci/jenkins", "grafana/grafana", "goharbor/harbor",
+        "sonatype/nexus-public", "zabbix/zabbix", "emqx/emqx",
+        "elastic/elasticsearch",
+        # 边缘/网关
+        "envoyproxy/envoy",
     ],
     "feeds": [],
     "at_all": "critical",

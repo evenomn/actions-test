@@ -114,6 +114,25 @@ def test_scan_filters_sorts_and_capped(monkeypatch):
     assert calls == ["acme/lib", "acme/quiet", "acme/gone"]
 
 
+def test_scan_aborts_on_rate_limit(monkeypatch):
+    """无 token 撞限额:立即中止本轮,不在剩余仓库上空耗重试。"""
+    state = {"n": 0}
+
+    def fake_get_json(url, headers=None, **kw):
+        state["n"] += 1
+        if state["n"] == 2:
+            raise RuntimeError("GET x 连续 3 次失败: HTTP Error 403: rate limit exceeded")
+        return [gh_commit(str(state["n"]) * 40, "Fix use-after-free in pool")]
+
+    monkeypatch.setattr(cm, "http_get_json", fake_get_json)
+    monkeypatch.setattr(cm.time, "sleep", lambda s: None)
+    signals = cm.scan_commit_signals(["a/one", "a/two", "a/three"],
+                                     NOW - timedelta(hours=24))
+    # 第 2 个仓库撞限额即停:只拿到第 1 个仓库的提交,第 3 个不再请求
+    assert state["n"] == 2
+    assert len(signals) == 1
+
+
 def test_scan_collapses_backports_of_same_cve(monkeypatch):
     """同一 CVE backport 到多分支(同标题不同 sha)只报一条。"""
     fake_page = [
@@ -159,10 +178,48 @@ def test_save_state_prunes_commit_seen(tmp_path):
     assert reloaded["commit_seen"] == {"acme/lib@" + "e" * 10: "2026-10-02"}
 
 
+def test_classify_chinese_security_commits():
+    """国内高频目标(若依/JeecgBoot/禅道等)提交信息多为中文。"""
+    score, labels, _ = cm.classify_commit("修复前台 SQL 注入漏洞")
+    assert score >= cm.THRESHOLD and any("注入" in l for l in labels)
+    score, labels, _ = cm.classify_commit("修复未授权访问问题")
+    assert score >= cm.THRESHOLD and any("未授权" in l for l in labels)
+    score, _, _ = cm.classify_commit("修复任意文件上传漏洞")
+    assert score >= cm.THRESHOLD
+    score, _, _ = cm.classify_commit("修复一处安全漏洞")
+    assert score >= cm.THRESHOLD
+    score, _, _ = cm.classify_commit("增加鉴权绕过的回归测试覆盖")
+    assert score >= cm.THRESHOLD
+
+
+def test_classify_chinese_and_english_non_security():
+    """依赖注入(DI)不是注入漏洞;中文功能提交不误报。"""
+    assert cm.classify_commit("新增依赖注入支持")[0] < cm.THRESHOLD
+    assert cm.classify_commit("优化登录页面样式")[0] < cm.THRESHOLD
+    assert cm.classify_commit("update installation guide")[0] < cm.THRESHOLD
+
+
+def test_classify_added_english_terms():
+    for msg, label in [
+        ("Fix path traversal in file export", "路径遍历"),
+        ("Block SSRF via webhook callback URL", "SSRF"),
+        ("fix deserialization of untrusted cookie payload", "反序列化"),
+    ]:
+        score, labels, _ = cm.classify_commit(msg)
+        assert score >= cm.THRESHOLD, msg
+        assert any(label in l for l in labels), msg
+
+
 def test_config_defaults_loaded():
     from vulnmon.config import load_config
     cfg = load_config()
     assert cfg["use_commits"] is True
     assert cfg["commit_max"] == 10
     assert "openssl/openssl" in cfg["commit_repos"]
+    # HVV 高频目标已覆盖(Java 系 + Web + 平台)
+    for repo in ["yangzongzhuan/RuoYi-Vue", "jeecgboot/JeecgBoot",
+                 "alibaba/nacos", "apache/shiro", "xuxueli/xxl-job",
+                 "top-think/framework", "jenkinsci/jenkins", "zabbix/zabbix"]:
+        assert repo in cfg["commit_repos"], repo
+    assert len(cfg["commit_repos"]) >= 50
     assert "torvalds/linux" not in cfg["commit_repos"]
