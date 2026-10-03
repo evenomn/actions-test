@@ -3,6 +3,7 @@
 
 数据源: NVD + GitHub GHSA + CISA KEV + FIRST EPSS + Exploit-DB
         + PoC-in-GitHub 数据集(含源码核验) + nuclei-templates + RSS 资讯
+        + 重点项目提交监控(CVE 披露前的早期预警)
 输出:   即时告警(events) / 每日日报(daily) / 每周复盘(weekly)
         + data/ 存档 + feed.json(stats) + RSS + 出站 Webhook(HMAC 签名)
 
@@ -34,6 +35,7 @@ from vulnmon.report import (build_events_markdown, build_markdown, build_stats,
                             write_outputs)
 from vulnmon.repro import write_repro
 from vulnmon.state import load_state, mark_seen, save_state
+from vulnmon.sources.commits import filter_new, scan_commit_signals
 from vulnmon.sources.exploitdb import fetch_exploitdb
 from vulnmon.sources.feeds import fetch_feeds, filter_media
 from vulnmon.sources.ghsa import fetch_ghsa, merge_ghsa
@@ -156,6 +158,29 @@ def load_media(cfg, lookback, state, now, dedup):
     return media, by_cve
 
 
+def load_commit_signals(cfg, lookback, state, now, dedup):
+    """早期预警:扫描重点项目的安全相关提交,按 repo@sha 去重。
+
+    提交多数没有 CVE 编号,不算漏洞条目(不进 seen 台账/复现库),
+    只在日报/即时告警单独成段。窗口加 6h 重叠防边界漏抓,重叠靠去重消化。
+    """
+    if not cfg.get("use_commits") or not cfg["commit_repos"]:
+        return []
+    since = now - lookback - timedelta(hours=6)
+    print(f"扫描 {len(cfg['commit_repos'])} 个重点项目的提交"
+          f"({since.strftime('%m-%d %H:%M')} ~ now) ...", flush=True)
+    try:
+        signals = scan_commit_signals(cfg["commit_repos"], since)
+    except RuntimeError as e:
+        print(f"  [warn] 提交扫描失败(跳过早期预警): {e}", flush=True)
+        return []
+    commit_seen = state.setdefault("commit_seen", {}) if dedup else {}
+    fresh = filter_new(signals, commit_seen, now.date().isoformat())
+    fresh = fresh[:int(cfg.get("commit_max", 10))]
+    print(f"  安全相关提交命中 {len(signals)} 个,新增 {len(fresh)} 条", flush=True)
+    return fresh
+
+
 def run_weekly(cfg, now, args) -> int:
     print("生成周报 ...", flush=True)
     md = build_weekly(now, load_history())
@@ -219,6 +244,8 @@ def main() -> int:
         if hit and hit[1] not in [u for _, u in item["refs"]]:
             item["refs"].append(("媒体分析", hit[1]))
 
+    commits = load_commit_signals(cfg, lookback, state, now, dedup)
+
     # AI:逐条分析已在筛选阶段完成;daily 再生成今日简报
     briefing = None
     if items and llm_available() and args.mode == "daily":
@@ -234,11 +261,11 @@ def main() -> int:
 
     if args.dry_run:
         write_outputs(qualified, now, lookback_hours, cfg,
-                      Path("/tmp/vulnmon-preview"), briefing, media)
+                      Path("/tmp/vulnmon-preview"), briefing, media, commits)
         repro_dir = Path("/tmp/vulnmon-preview")
     else:
         archive = write_outputs(qualified, now, lookback_hours, cfg, ROOT / "data",
-                                briefing, media)
+                                briefing, media, commits)
         repro_dir = ROOT / "data"
     # 高价值可复现漏洞库:daily/events 都滚动维护(用 qualified,被截掉的不丢)
     if cfg.get("repro", True):
@@ -248,10 +275,10 @@ def main() -> int:
               flush=True)
     if args.dry_run:
         if args.mode == "events":
-            md = build_events_markdown(items, now, stats)
+            md = build_events_markdown(items, now, stats, commits=commits)
         else:
             md = build_markdown(items, len(qualified), lookback_hours, now, None,
-                                stats, briefing=briefing, media=media)
+                                stats, briefing=briefing, media=media, commits=commits)
         print("\n" + "=" * 60 + "\n" + md + "\n" + "=" * 60)
         print("(dry-run: 预览在 /tmp/vulnmon-preview/,未推送,未更新状态)", flush=True)
         return 0
@@ -261,11 +288,13 @@ def main() -> int:
         # 出站 Webhook:把 feed.json 推给自建平台(可选)
         err = push_outbound_webhook({"type": "daily", "date": now.date().isoformat(),
                                      "stats": build_stats(qualified),
+                                     "commit_signals": len(commits),
                                      "items": [i["id"] for i in qualified]})
         if err:
             print(f"  [warn] 出站 Webhook 失败: {err}", flush=True)
 
-    if not items:
+    # events 模式:没有漏洞条目但有安全提交信号时,仍推一条「提交预警」
+    if not items and not (commits and args.mode == "events"):
         if args.mode == "events" or not cfg["notify_empty"]:
             print("无符合条件漏洞,跳过推送", flush=True)
             mark_seen(state, qualified, now, set())
@@ -274,12 +303,16 @@ def main() -> int:
 
     n_critical = sum(1 for i in items if i["tier"] == "critical")
     if args.mode == "events":
-        md = build_events_markdown(items, now, stats)
-        title = f"⚡ 高优漏洞告警 {now.strftime('%m-%d %H:%M')} {len(items)}条"
+        md = build_events_markdown(items, now, stats, commits=commits)
+        if items:
+            title = f"⚡ 高优漏洞告警 {now.strftime('%m-%d %H:%M')} {len(items)}条"
+        else:
+            title = f"🔭 项目安全提交预警 {now.strftime('%m-%d %H:%M')} {len(commits)}条"
         at_all = cfg["at_all"] == "always" or (cfg["at_all"] == "critical" and n_critical > 0)
     else:
         md = build_markdown(items, len(qualified), lookback_hours, now,
-                            archive["archive"], stats, briefing=briefing, media=media)
+                            archive["archive"], stats, briefing=briefing,
+                            media=media, commits=commits)
         title = f"漏洞日报 {now.strftime('%Y-%m-%d')} {len(items)}条"
         at_all = cfg["at_all"] == "always" or (cfg["at_all"] == "critical" and n_critical > 0)
 

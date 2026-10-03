@@ -20,7 +20,8 @@ from .config import STATE_FILE
 def load_state(path=None) -> dict:
     p = path or STATE_FILE
     if not p.exists():
-        return {"version": 3, "seen": {}, "kev_ids": [], "media_seen": {}}
+        return {"version": 3, "seen": {}, "kev_ids": [], "media_seen": {},
+                "commit_seen": {}}
     with open(p, encoding="utf-8") as f:
         raw = json.load(f)
     return migrate(raw)
@@ -41,16 +42,19 @@ def migrate(raw: dict) -> dict:
             "exploit_ref": bool(entry.get("exploit_ref", False)),
         }
     return {"version": 3, "seen": seen, "kev_ids": list(raw.get("kev_ids") or []),
-            "media_seen": dict(raw.get("media_seen") or {})}
+            "media_seen": dict(raw.get("media_seen") or {}),
+            "commit_seen": dict(raw.get("commit_seen") or {})}
 
 
 def save_state(state: dict, retention_days: int, now: datetime, path=None):
     cutoff = (now - timedelta(days=retention_days)).date().isoformat()
     state["seen"] = {k: v for k, v in state.get("seen", {}).items()
                      if isinstance(v, dict) and v.get("date", "") >= cutoff}
-    # media_seen 同样按保留期清理(值存日期)
+    # media_seen / commit_seen 同样按保留期清理(值存日期)
     state["media_seen"] = {k: v for k, v in state.get("media_seen", {}).items()
                            if isinstance(v, str) and v >= cutoff}
+    state["commit_seen"] = {k: v for k, v in state.get("commit_seen", {}).items()
+                            if isinstance(v, str) and v >= cutoff}
     state["version"] = 3
     p = path or STATE_FILE
     p.parent.mkdir(parents=True, exist_ok=True)

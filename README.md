@@ -91,6 +91,14 @@ PoC: attacker/cve-poc ⭐128 · EDB-52311                        ← 真实可�
 | [Exploit-DB](https://www.exploit-db.com/) | 公开 exploit 映射 |
 | [PoC-in-GitHub](https://github.com/nomi-sec/PoC-in-GitHub) | 社区维护的 CVE → PoC 仓库数据集(带 star) |
 | [nuclei-templates](https://github.com/projectdiscovery/nuclei-templates) | 公开检测模板覆盖(武器化信号) |
+| GitHub Commits API(重点项目提交监控) | **早期预警**:CVE 披露前的第一波上游修复信号 |
+
+**早期预警(项目提交监控)**:多数高危漏洞在 NVD 收录前几小时到几天,修复
+commit 已合入上游。监控清单内的项目(OpenSSL/curl/nginx/FFmpeg/QEMU 等,
+`config.toml` 的 `commit_repos` 可自行增删)默认分支提交,提交信息命中安全
+特征词(CVE 号/内存破坏/提权/认证绕过等)即进日报「🔭 早期预警」段与即时
+告警,通常比 CVE 通道早半天到几天。去重按 `repo@sha`,同一 CVE 的多分支
+backport 只报一条;merge/bump/测试/CI 类噪声提交直接剔除。
 
 ## 快速开始
 

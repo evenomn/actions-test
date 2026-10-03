@@ -83,6 +83,26 @@ search_github_poc = true
 # projectdiscovery/nuclei-templates:该 CVE 是否已有公开检测模板(武器化信号)
 nuclei_templates = true
 
+# 早期预警:监控大项目的安全相关提交。多数高危漏洞在 CVE 披露前几小时到几天,
+# 修复 commit 已合入上游(有时是静默修复)。命中安全特征词(CVE号/内存破坏/提权/
+# 认证绕过等)的提交会进日报「🔭 早期预警」段和即时告警,通常比 NVD 早半天到几天。
+# 去重按 repo@sha,推过一次不再推。想盯自己的组件就往里加 owner/repo
+commits = true
+
+# 每轮最多展示的安全相关提交数(按置信度排序取头部)
+commit_max = 10
+
+# 监控项目清单。刻意不含 torvalds/linux(每天上千提交,任何关键词过滤都会被淹没);
+# 想盯内核可加各 stable 分支仓库,如 gregkh/linux-stable(同样很吵,慎加)
+commit_repos = [
+  "openssl/openssl", "curl/curl", "nginx/nginx", "php/php-src",
+  "python/cpython", "nodejs/node", "golang/go", "rust-lang/rust",
+  "git/git", "sqlite/sqlite", "madler/zlib", "GNOME/libxml2",
+  "FFmpeg/FFmpeg", "ImageMagick/ImageMagick", "redis/redis",
+  "postgres/postgres", "mysql/mysql-server", "wireshark/wireshark",
+  "qemu/qemu", "openbsd/src", "haproxy/haproxy",
+]
+
 [notify]
 # 推送渠道,可多选: dingtalk / feishu / wecom / telegram / slack。
 # 留空 [] = 按已配置的环境变量自动探测(推荐)

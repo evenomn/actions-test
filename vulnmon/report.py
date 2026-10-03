@@ -140,9 +140,27 @@ def digest_headline(items: list[dict], total_count: int, lookback_hours: int,
     return msg
 
 
+def commit_line(c: dict) -> str:
+    """早期预警单条:仓库 · 标题(链接) · 命中特征。"""
+    cve_tag = f" `{c['cve']}`" if c.get("cve") else ""
+    matched = "/".join(dict.fromkeys(c.get("matched") or [])) or "安全特征"
+    return (f"- **{c['repo']}**{cve_tag} · [{c['title']}]({c['url']}) · "
+            f"命中:{matched}")
+
+
+def _commit_section(commits: list[dict], cap: int = 8) -> str:
+    lines = ["\n## 🔭 早期预警·重点项目安全提交",
+             "*CVE 披露前的第一波信号,多为尚无编号的上游修复,涉及组件建议留意*"]
+    lines.extend(commit_line(c) for c in commits[:cap])
+    if len(commits) > cap:
+        lines.append(f"... 其余 {len(commits) - cap} 条略")
+    return "\n".join(lines)
+
+
 def build_events_markdown(items: list[dict], now: datetime,
                           stats: dict | None = None,
-                          max_bytes: int = 9000) -> str:
+                          max_bytes: int = 9000,
+                          commits: list[dict] | None = None) -> str:
     """即时告警模板:紧凑单块,只放关键信息。"""
     stats = stats or {}
     lines = [f"# 高优漏洞即时告警 {now.strftime('%m-%d %H:%M')}",
@@ -154,6 +172,13 @@ def build_events_markdown(items: list[dict], now: datetime,
             break
         lines.append(text)
         total_len += len(text.encode())
+    # 早期预警:即时告警只带高置信度提交(带 CVE 号或多种特征叠加)
+    strong = [c for c in (commits or []) if c.get("cve") or c.get("score", 0) >= 3]
+    if strong:
+        block = _commit_section(strong, cap=5)
+        if total_len + len(block.encode()) < max_bytes:
+            lines.append(block)
+            total_len += len(block.encode())
     lines.append("\n---\n*即时告警只推强信号;完整清单与复盘见每日日报*")
     return "\n".join(lines)
 
@@ -227,11 +252,14 @@ def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
                    now: datetime, archive_name: str | None, stats: dict | None = None,
                    max_bytes: int = DINGTALK_MAX_BYTES,
                    briefing: str | None = None,
-                   media: list[dict] | None = None) -> str:
+                   media: list[dict] | None = None,
+                   commits: list[dict] | None = None) -> str:
     stats = stats or {}
     today = now.strftime("%Y-%m-%d")
     if not items:
         body = f"# 漏洞日报(无新增) {today}\n\n{digest_headline([], total_count, lookback_hours, archive_name, stats)}"
+        if commits:
+            body += "\n---" + _commit_section(commits)
         return body
 
     lines = [f"# 漏洞日报 {today}\n",
@@ -249,13 +277,21 @@ def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
         lines.append(text)
         total_len += len(text.encode())
 
+    if commits:
+        commit_block = _commit_section(commits)
+        if total_len + len(commit_block.encode()) > max_bytes:
+            lines.append("\n... 早期预警(重点项目安全提交)因篇幅截断,见 feed.json")
+        else:
+            lines.append(commit_block)
+            total_len += len(commit_block.encode())
+
     if media:
         lines.append("\n## 📡 资讯")
         for m in media[:5]:
             cve_tag = f"({', '.join(m['cves'])})" if m.get("cves") else ""
             lines.append(f"- [{m['title'][:60]}]({m['link']}) {cve_tag}")
 
-    lines.append("\n---\n*数据源: NVD · GitHub GHSA · CISA KEV · EPSS · Exploit-DB · PoC-in-GitHub · nuclei-templates*")
+    lines.append("\n---\n*数据源: NVD · GitHub GHSA · CISA KEV · EPSS · Exploit-DB · PoC-in-GitHub · nuclei-templates · 重点项目提交监控*")
     return "\n".join(lines)
 
 
@@ -328,7 +364,8 @@ def build_stats(qualified: list[dict]) -> dict:
 
 
 def build_feed_json(qualified: list[dict], now: datetime, lookback_hours: int,
-                    briefing: str | None = None, media: list[dict] | None = None) -> str:
+                    briefing: str | None = None, media: list[dict] | None = None,
+                    commits: list[dict] | None = None) -> str:
     """结构化 JSON feed:供程序消费(自建看板/飞书机器人/CI 二次加工)。"""
 
     def clean(item: dict) -> dict:
@@ -376,6 +413,10 @@ def build_feed_json(qualified: list[dict], now: datetime, lookback_hours: int,
         "items": [clean(i) for i in qualified],
         "media": [{"title": m["title"], "link": m["link"],
                    "cves": m.get("cves", [])} for m in (media or [])],
+        "commits": [{"repo": c["repo"], "sha": c["sha"], "url": c["url"],
+                     "title": c["title"], "date": c.get("date"),
+                     "score": c.get("score"), "matched": c.get("matched"),
+                     "cve": c.get("cve")} for c in (commits or [])],
     }
     return json.dumps(doc, ensure_ascii=False, indent=1)
 
@@ -415,7 +456,8 @@ def build_rss(qualified: list[dict], now: datetime, lookback_hours: int,
 
 def write_outputs(qualified: list[dict], now: datetime,
                   lookback_hours: int, cfg: dict, data_dir: Path,
-                  briefing: str | None = None, media: list[dict] | None = None) -> dict:
+                  briefing: str | None = None, media: list[dict] | None = None,
+                  commits: list[dict] | None = None) -> dict:
     """写存档/feed.json/RSS,清理过期文件。返回 {"archive": 相对路径}。"""
     data_dir.mkdir(parents=True, exist_ok=True)
     date_str = now.date().isoformat()
@@ -426,7 +468,7 @@ def write_outputs(qualified: list[dict], now: datetime,
         build_archive(qualified, now), encoding="utf-8")
     if cfg["feed_json"]:
         (data_dir / "feed.json").write_text(
-            build_feed_json(qualified, now, lookback_hours, briefing, media),
+            build_feed_json(qualified, now, lookback_hours, briefing, media, commits),
             encoding="utf-8")
     if cfg["rss"]:
         (data_dir / "feed.xml").write_text(

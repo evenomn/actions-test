@@ -109,6 +109,17 @@ DEFAULTS = {
     "search_github_poc": True,
     "use_poc_dataset": True,
     "use_nuclei": True,
+    # 早期预警:监控大项目安全相关提交(CVE 披露前的第一波信号)
+    "use_commits": True,
+    "commit_max": 10,
+    "commit_repos": [
+        "openssl/openssl", "curl/curl", "nginx/nginx", "php/php-src",
+        "python/cpython", "nodejs/node", "golang/go", "rust-lang/rust",
+        "git/git", "sqlite/sqlite", "madler/zlib", "GNOME/libxml2",
+        "FFmpeg/FFmpeg", "ImageMagick/ImageMagick", "redis/redis",
+        "postgres/postgres", "mysql/mysql-server", "wireshark/wireshark",
+        "qemu/qemu", "openbsd/src", "haproxy/haproxy",
+    ],
     "feeds": [],
     "at_all": "critical",
     "channels": [],           # 空 = 自动探测环境变量
@@ -150,6 +161,10 @@ def load_config(path: Path | None = None) -> dict:
         "search_github_poc": bool(source.get("search_github_poc", True)),
         "use_poc_dataset": bool(source.get("poc_dataset", True)),
         "use_nuclei": bool(source.get("nuclei_templates", True)),
+        "use_commits": bool(source.get("commits", True)),
+        "commit_max": int(source.get("commit_max", DEFAULTS["commit_max"])),
+        "commit_repos": [str(r).strip() for r in source.get(
+            "commit_repos", DEFAULTS["commit_repos"]) if str(r).strip()],
         "verify_poc_source": bool(source.get("verify_poc_source", True)),
         "feeds": [str(u).strip() for u in source.get("feeds", []) if str(u).strip()],
         "at_all": cfg.get("dingtalk", {}).get("at_all", "critical"),
