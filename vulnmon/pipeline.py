@@ -1,10 +1,13 @@
 """筛选管线:富化 → 资格判定 → 变更检测 → AI 分析 → 排序 → 上限截断。
 
 去重语义(v3):
+- 一律以 CVE 编号为身份,seen 台账(state.json)记录每个编号是否推送过、是否 KEV
 - pushed 且无新事件:按模式决定是否跳过(daily 跳过已推;events 当日已即时告警的跳过)
 - pushed=False(上次符合条件但被上限截掉):重新参选,不丢情报
-- 新入选 KEV:重推,标「升级提醒」
+- 新入选 KEV:重推,标「升级提醒」(含补抓通道里的旧漏洞)
 - 状态变化(升分/新增PoC引用):重推,标「状态变化」(仅 daily 模式,track_changes 开启)
+- KEV 补抓通道同样对账 seen:已按 KEV 推送过的不再重复进日报,
+  详细档案沉淀在复现库(data/repro.md + data/vulns/ 一洞一档)
 
 AI 分析在截断之前进行:复现判定/优先级会直接影响最终入选与排序;
 无 AI 时用确定性兜底规则(scoring.fallback_urgency/fallback_repro)。
@@ -118,7 +121,6 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
     mode: "daily" 全量日报 / "events" 只保留强信号即时告警。
     """
     seen = state.get("seen", {})
-    prev_kev = set(state.get("kev_ids") or [])
     window_date = (now - lookback).date()
     stats = {"dedup_suppressed": 0, "kev_upgraded": 0, "requeued": 0, "changed": 0}
 
@@ -147,7 +149,7 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
     for item in items:
         prev = seen.get(item["id"])
         if dedup and prev:
-            is_new_kev = item["kev"] and item["id"] not in prev_kev
+            is_new_kev = item["kev"] and not prev.get("kev")
             has_change = bool(item.get("change_note"))
             if prev.get("pushed", True) and not is_new_kev and not has_change:
                 stats["dedup_suppressed"] += 1
@@ -166,11 +168,24 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
     # 旧漏洞新入选 KEV:不在本次发布窗口内,但 KEV 的 dateAdded 在窗口内
     # KEV 条目至少回看 7 天:在野利用漏洞不能被回看窗口卡死
     # (24h 窗口会漏掉两三天前新进 KEV 的活跃漏洞,如 NetScaler 那批)
+    # 去重按 CVE 编号对账 seen:已按 KEV 推送过的不再重复进日报(档案在复现库),
+    # 曾以非 KEV 身份推送过的新进 KEV → 升级提醒重推一次,上次被截掉的 → 重新参选
     kev_cutoff = min(window_date, (now - timedelta(days=7)).date())
-    kev_only = [e for cid, e in kev_map.items()
-                if cid not in candidates
-                and not (dedup and cid in prev_kev)
-                and _kev_date(e) and _kev_date(e) >= kev_cutoff]
+    kev_only, upgrade_ids = [], set()
+    for cid, e in kev_map.items():
+        if cid in candidates:
+            continue
+        added = _kev_date(e)
+        if not added or added < kev_cutoff:
+            continue
+        if dedup:
+            prev = seen.get(cid)
+            if prev and prev.get("pushed"):
+                if prev.get("kev"):
+                    stats["dedup_suppressed"] += 1
+                    continue
+                upgrade_ids.add(cid)
+        kev_only.append(e)
     if kev_only:
         print(f"  发现 {len(kev_only)} 个新入选 KEV 的既有漏洞,补抓 NVD 详情", flush=True)
         for entry in kev_only[:15]:  # 无 key 时 NVD 限速 6.5s/次,设上限防超时
@@ -191,6 +206,9 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
             item["open_source"] = is_open_source(item)
             item["keyword_hit"] = match_keywords(item, cfg["keywords"])
             item["tier"] = "critical"
+            if item["id"] in upgrade_ids:
+                stats["kev_upgraded"] += 1
+                item["upgrade_note"] = "此前已推送,现已确认在野利用(KEV),升级提醒"
             qualified.append(item)
             nvd_sleep()
 

@@ -123,12 +123,39 @@ def test_kev_backfill_looks_back_7_days(monkeypatch):
     assert final and final[0]["kev"] is True
 
 
-def test_kev_only_skipped_if_already_in_kev_state(monkeypatch):
-    state = {"version": 2, "seen": {}, "kev_ids": ["CVE-2024-1111"]}
+def test_kev_only_not_repushed_once_pushed_as_kev(monkeypatch):
+    """NetScaler 回归:补抓通道已按 KEV 推送过的条目,按 CVE 编号对账 seen,
+    次日不再重复进日报(详细档案已在复现库,无需天天推)。"""
+    state = {"version": 3,
+             "seen": {"CVE-2024-1111": {"date": "2026-09-26", "pushed": True,
+                                        "pushed_at": "2026-09-26T04:00:00+00:00",
+                                        "kev": True, "cvss": 9.8,
+                                        "last_mod": "", "exploit_ref": False}},
+             "kev_ids": []}
     kev_map = {"CVE-2024-1111": {"cveID": "CVE-2024-1111", "dateAdded": "2026-09-27"}}
-    final, qualified, _ = run({}, state, kev_map, monkeypatch=monkeypatch,
-                              fetch_missing=lambda cid: None)
-    assert final == []
+    fetched = {}
+    final, qualified, stats = run({}, state, kev_map, monkeypatch=monkeypatch,
+                                  fetch_missing=lambda cid: fetched.setdefault(cid, True))
+    assert final == [] and qualified == []
+    assert fetched == {}  # 连 NVD 详情都不再补抓,省限速额度
+    assert stats["dedup_suppressed"] == 1
+
+
+def test_kev_only_upgrade_note_for_previously_pushed(monkeypatch):
+    """旧漏洞曾以非 KEV 身份推送过,现新进 KEV → 补抓通道升级提醒重推一次。"""
+    state = {"version": 3,
+             "seen": {"CVE-2026-9": {"date": "2026-09-20", "pushed": True,
+                                     "pushed_at": "2026-09-20T04:00:00+00:00",
+                                     "kev": False, "cvss": 7.5,
+                                     "last_mod": "", "exploit_ref": False}},
+             "kev_ids": []}
+    kev_map = {"CVE-2026-9": {"cveID": "CVE-2026-9", "vulnerabilityName": "Acme RCE",
+                              "dateAdded": "2026-09-26", "dueDate": "2026-10-18"}}
+    final, _, stats = run({}, state, kev_map, monkeypatch=monkeypatch,
+                          fetch_missing=lambda cid: mk(cid, cvss=7.5))
+    assert len(final) == 1 and final[0]["kev"] is True
+    assert "升级" in final[0]["upgrade_note"]
+    assert stats["kev_upgraded"] == 1
 
 
 def test_ignore_keywords_and_gating(monkeypatch):
