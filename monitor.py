@@ -307,7 +307,8 @@ def main() -> int:
         if items:
             title = f"⚡ 高优漏洞告警 {now.strftime('%m-%d %H:%M')} {len(items)}条"
         else:
-            title = f"🔭 项目安全提交预警 {now.strftime('%m-%d %H:%M')} {len(commits)}条"
+            # 标题带「漏洞」:钉钉自定义关键词按标题匹配,保证各标题共享同一关键词即可全通
+            title = f"🔭 漏洞早期预警·项目安全提交 {now.strftime('%m-%d %H:%M')} {len(commits)}条"
         at_all = cfg["at_all"] == "always" or (cfg["at_all"] == "critical" and n_critical > 0)
     else:
         md = build_markdown(items, len(qualified), lookback_hours, now,
