@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-03 02:18 UTC · 共 **29** 条(强烈推荐 2 / 值得 27)
+**更新**: 2026-10-04 02:52 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
 
 ---
 
@@ -44,7 +44,7 @@ PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026
 🔥 KEV 在野利用,限期 2026-09-30 | PoC 源码可用
 复现: 值得
 影响: citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279
-PoC: [securekomodo/citrixInspector 95★(有源码)](https://github.com/securekomodo/citrixInspector) · [watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771 22★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771)
+PoC: [securekomodo/citrixInspector 96★(有源码)](https://github.com/securekomodo/citrixInspector) · [watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771 23★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771)
 参考: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096)
 
 ### Cisco Catalyst SD-WAN Manager Hex Encoding Vulnerability
@@ -56,7 +56,7 @@ PoC: [ShadowForge-Cyber/CVE-2026-76504-Proof-of-concept 2★(仅README)](https:/
 参考: [厂商通告](https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-webauth-xr8beuuU)
 
 ### Fortinet FortiMail Path Traversal Vulnerability
-[CVE-2026-104286](https://nvd.nist.gov/vuln/detail/CVE-2026-104286) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | EPSS 1.8% | 披露 2026-10-01 | 入库 2026-10-02
+[CVE-2026-104286](https://nvd.nist.gov/vuln/detail/CVE-2026-104286) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | EPSS 2.2% | 披露 2026-10-01 | 入库 2026-10-02
 🔥 KEV 在野利用,限期 2026-10-04 | 有PoC
 复现: 值得
 影响: fortinet fortimail >=7.2.0 <=7.4.8; fortinet fortimail >=7.6.0 <=7.6.6
@@ -64,13 +64,13 @@ PoC: [ShadowForge-Cyber/CVE-2026-104286-POC 0★(仅README)](https://github.com/
 参考: [厂商通告](https://fortiguard.fortinet.com/psirt/FG-IR-26-175)
 
 ### Zammad GmbH Zammad Session Fixation Vulnerability
-[CVE-2026-102489](https://nvd.nist.gov/vuln/detail/CVE-2026-102489) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | EPSS 0.6% | 披露 2026-09-30 | 入库 2026-10-03
+[CVE-2026-102489](https://nvd.nist.gov/vuln/detail/CVE-2026-102489) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | EPSS 1.4% | 披露 2026-09-30 | 入库 2026-10-03
 🔥 KEV 在野利用,限期 2026-10-05 | 开源,可源码审计复现
 复现: 值得
 影响: zammad zammad >=6.3.0 <6.5.4; zammad zammad >=7.0.0 <=7.1.3
 
 ### Zammad GmbH Zammad Improper Privilege Management Vulnerability
-[CVE-2026-102490](https://nvd.nist.gov/vuln/detail/CVE-2026-102490) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | EPSS 0.3% | 披露 2026-09-30 | 入库 2026-10-03
+[CVE-2026-102490](https://nvd.nist.gov/vuln/detail/CVE-2026-102490) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | EPSS 0.6% | 披露 2026-09-30 | 入库 2026-10-03
 🔥 KEV 在野利用,限期 2026-10-05 | 开源,可源码审计复现
 复现: 值得
 影响: zammad zammad >=1.5.0 <7.1.0
@@ -88,7 +88,7 @@ PoC: [dinosn/cve-2026-71362-magento-lab 5★(有源码)](https://github.com/dino
 🔥 KEV 在野利用,限期 2026-10-02 | PoC 源码可用
 复现: 值得
 影响: apple ipados <26.7.1; apple iphone_os <26.7.1
-PoC: [msuiche/hotcell 4★(有源码)](https://github.com/msuiche/hotcell) · [DeAurity/CVE-2026-86950-POC 2★(仅README)](https://github.com/DeAurity/CVE-2026-86950-POC)
+PoC: [msuiche/hotcell 5★(有源码)](https://github.com/msuiche/hotcell) · [DeAurity/CVE-2026-86950-POC 2★(仅README)](https://github.com/DeAurity/CVE-2026-86950-POC)
 参考: [厂商通告](https://support.apple.com/en-us/149226) · [厂商通告](https://support.apple.com/en-us/149228) · [厂商通告](https://support.apple.com/en-us/149229)
 
 ### Microsoft SharePoint Code Injection Vulnerability
@@ -104,7 +104,7 @@ PoC: [ShadowForge-Cyber/CVE-2026-65660-Poc 1★(仅README)](https://github.com/S
 🔥 KEV 在野利用,限期 2026-09-30 | PoC 源码可用
 复现: 值得
 影响: citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279
-PoC: [murrez/CVE-2026-88772 13★(有源码)](https://github.com/murrez/CVE-2026-88772) · [ThomasPoppelgaard/netscaler-ctx697096-checker 9★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker)
+PoC: [murrez/CVE-2026-88772 13★(有源码)](https://github.com/murrez/CVE-2026-88772) · [ThomasPoppelgaard/netscaler-ctx697096-checker 12★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker)
 参考: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096&articleTitle=Citrix_NetScaler_ADC_and_Citrix_NetScaler_Gateway_Security_Bulletin_for_CVE_2026_88771_CVE_2026_88772_CVE_2026_88773_CVE_2026_88774_CVE_2026_88775_CVE_2026_88776_CVE_2026_88777_and_CVE_2026_88778)
 
 ### WordPress Core Remote File Inclusion Vulnerability
@@ -186,6 +186,10 @@ nuclei 模板 | 开源,可源码审计复现
 远程攻击者可操纵sid参数注入系统命令，可能完全控制NAP930设备。
 复现: 值得 — 远程向受影响 CGI 的 sid 参数注入 shell 命令。 · 影响面: 边界网络设备，常暴露公网
 处置: 联系厂商获取修复；无法修复则隔离设备或限制访问。
+
+### CVE-2026-105105
+[CVE-2026-105105](https://nvd.nist.gov/vuln/detail/CVE-2026-105105) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-03 | 入库 2026-10-04
+复现: 值得
 
 ### HPE Instant ON 未认证代码执行
 [CVE-2026-76721](https://nvd.nist.gov/vuln/detail/CVE-2026-76721) | P1 重点关注 | CVSS 9.8 | 披露 2026-09-29 | 入库 2026-09-30
