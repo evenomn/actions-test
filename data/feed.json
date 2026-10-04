@@ -1,386 +1,41 @@
 {
  "version": 3,
- "generated_at": "2026-10-04T02:52:17+00:00",
+ "generated_at": "2026-10-04T09:04:18+00:00",
  "lookback_hours": 24,
- "count": 9,
+ "count": 2,
  "stats": {
-  "total": 9,
+  "total": 2,
   "by_tier": {
-   "critical": 9
+   "critical": 2
   },
   "by_urgency": {
-   "P0 立即处置": 7,
    "P1 重点关注": 2
   },
   "by_category": {
-   "边界设备/VPN": 3,
-   "容器/虚拟化": 2,
-   "未知": 2,
-   "网络设备": 1,
-   "操作系统": 1
+   "未知": 2
   },
-  "kev": 7,
-  "with_poc": 5,
-  "with_poc_source": 3,
+  "kev": 0,
+  "with_poc": 0,
+  "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-104286",
+   "id": "CVE-2026-105134",
    "tier": "critical",
-   "title": "Fortinet FortiMail Path Traversal Vulnerability",
+   "title": "UpdateReceivers.do 未授权 命令注入",
    "title_zh": null,
    "summary_zh": null,
-   "published": "2026-10-01T20:17:24.010",
-   "cvss": 9.8,
+   "published": "2026-10-04T07:16:33.480",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.02201,
-   "epss_percentile": 0.81912,
-   "cwe_labels": [
-    "路径遍历/任意文件读取"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [
-    "fortinet fortimail"
-   ],
-   "affected": "fortinet fortimail >=7.2.0 <=7.4.8; fortinet fortimail >=7.6.0 <=7.6.6",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-175"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/ShadowForge-Cyber/CVE-2026-104286-POC",
-     "label": "ShadowForge-Cyber/CVE-2026-104286-POC 0★(仅README)"
-    },
-    {
-     "url": "https://github.com/techupdate24/fortimail-zero-day-cve-2026-104286",
-     "label": "techupdate24/fortimail-zero-day-cve-2026-104286 0★(仅README)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-10-04",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104286",
-   "description": "An improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2.0 through 7.2.9 may allow an unauthenticated attacker to write arbitrary files on the underlying system via crafted HTTP or HTTPS requests."
-  },
-  {
-   "id": "CVE-2026-88771",
-   "tier": "critical",
-   "title": "Citrix NetScaler Improper Input Validation Vulnerability",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-09-27T17:16:56.260",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.01063,
-   "epss_percentile": 0.63459,
-   "cwe_labels": [
-    "输入校验缺失"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [
-    "citrix netscaler_application_delivery_controller",
-    "citrix netscaler_gateway"
-   ],
-   "affected": "citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/securekomodo/citrixInspector",
-     "label": "securekomodo/citrixInspector 96★(有源码)"
-    },
-    {
-     "url": "https://github.com/watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771",
-     "label": "watchtowrlabs/watchTowr-vs-Citrix-Netscaler-CVE-2026-88771 23★(有源码)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-09-30",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88771",
-   "description": "Improper input validation vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway. This issue affects ADC: before 14.1-73.37, before 13.1-64.23, before 14.1-73.37 FIPS, and before 13.1.37.279 FIPS and NDcPP; Gateway: before 14.1-73.37 and before 13.1-64.23 leading to an unauthenticated attacker to execute arbitrary commands."
-  },
-  {
-   "id": "CVE-2026-88772",
-   "tier": "critical",
-   "title": "netscaler application delivery controller 在野利用 未授权",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-09-27T17:16:56.390",
-   "cvss": 8.1,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.01301,
-   "epss_percentile": 0.6947,
-   "cwe_labels": [
-    "内存破坏"
-   ],
-   "difficulty": "低(远程·利用条件苛刻·免认证)",
-   "products": [
-    "citrix netscaler_application_delivery_controller",
-    "citrix netscaler_gateway"
-   ],
-   "affected": "citrix netscaler_application_delivery_controller >=13.1 <13.1-64.23; citrix netscaler_application_delivery_controller >=13.1 <13.1.37.279",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697096&articleTitle=Citrix_NetScaler_ADC_and_Citrix_NetScaler_Gateway_Security_Bulletin_for_CVE_2026_88771_CVE_2026_88772_CVE_2026_88773_CVE_2026_88774_CVE_2026_88775_CVE_2026_88776_CVE_2026_88777_and_CVE_2026_88778"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/murrez/CVE-2026-88772",
-     "label": "murrez/CVE-2026-88772 13★(有源码)"
-    },
-    {
-     "url": "https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker",
-     "label": "ThomasPoppelgaard/netscaler-ctx697096-checker 12★(有源码)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-09-30",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88772",
-   "description": "Vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway. This issue affects ADC: before 14.1-73.37, before 13.1-64.23, before 14.1-73.37 FIPS, and before 13.1.37.279 FIPS and NDcPP; Gateway: before 14.1-73.37 and before 13.1-64.23 leading to Remote Code Execution or Denial of Service"
-  },
-  {
-   "id": "CVE-2026-76504",
-   "tier": "critical",
-   "title": "Cisco Catalyst SD-WAN Manager Hex Encoding Vulnerability",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-09-30T13:17:20.247",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.01575,
-   "epss_percentile": 0.74593,
-   "cwe_labels": [
-    "CWE-177"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [
-    "cisco catalyst_sd-wan_manager"
-   ],
-   "affected": "cisco catalyst_sd-wan_manager <20.9.10.1; cisco catalyst_sd-wan_manager >=20.12 <20.12.8.2",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-webauth-xr8beuuU"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/ShadowForge-Cyber/CVE-2026-76504-Proof-of-concept",
-     "label": "ShadowForge-Cyber/CVE-2026-76504-Proof-of-concept 2★(仅README)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-10-03",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76504",
-   "description": "A vulnerability in the API session-based authentication management of Cisco Catalyst SD-WAN Manager could allow an unauthenticated, remote attacker to access an affected system with privileges of the admin user. This vulnerability is due to improper handling of URI encoding in an HTTP request, which allows the request to bypass an authentication rule that is intended to restrict access to a specific API endpoint."
-  },
-  {
-   "id": "CVE-2026-102489",
-   "tier": "critical",
-   "title": "Zammad GmbH Zammad Session Fixation Vulnerability",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-09-30T17:16:40.550",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.01396,
-   "epss_percentile": 0.71464,
-   "cwe_labels": [
-    "CWE-384"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [
-    "zammad zammad",
-    "docker docker",
-    "linux linux_kernel"
-   ],
-   "affected": "zammad zammad >=6.3.0 <6.5.4; zammad zammad >=7.0.0 <=7.1.3",
-   "ghsa_url": null,
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-10-05",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102489",
-   "description": "Zammad versions 6.3.0 to 6.5.4 are vulnerable a session hijack vulnerability that leads to remote code execution as the zammad user. The vulnerability is also present in version 7.0.0 to version 7.1.3, but not exploitable due to environment conditions."
-  },
-  {
-   "id": "CVE-2026-102490",
-   "tier": "critical",
-   "title": "zammad 在野利用 未授权 权限提升",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-09-30T17:16:40.707",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.00629,
-   "epss_percentile": 0.48335,
-   "cwe_labels": [
-    "权限提升"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [
-    "zammad zammad",
-    "docker docker",
-    "linux linux_kernel"
-   ],
-   "affected": "zammad zammad >=1.5.0 <7.1.0",
-   "ghsa_url": null,
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-10-05",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102490",
-   "description": "All versions of Zammad including the latest alpha enable the local zammad user to escalate privileges to root."
-  },
-  {
-   "id": "CVE-2026-86950",
-   "tier": "critical",
-   "title": "Apple Multiple Products Out-of-Bounds Write Vulnerability",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-09-28T20:17:11.193",
-   "cvss": 8.8,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-   "epss": 0.01242,
-   "epss_percentile": 0.68155,
-   "cwe_labels": [
-    "越界写入"
-   ],
-   "difficulty": "低(远程·免认证·需用户交互)",
-   "products": [
-    "apple ipados",
-    "apple iphone_os",
-    "apple macos"
-   ],
-   "affected": "apple ipados <26.7.1; apple iphone_os <26.7.1",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://support.apple.com/en-us/149226"
-    },
-    {
-     "label": "厂商通告",
-     "url": "https://support.apple.com/en-us/149228"
-    },
-    {
-     "label": "厂商通告",
-     "url": "https://support.apple.com/en-us/149229"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/msuiche/hotcell",
-     "label": "msuiche/hotcell 5★(有源码)"
-    },
-    {
-     "url": "https://github.com/DeAurity/CVE-2026-86950-POC",
-     "label": "DeAurity/CVE-2026-86950-POC 2★(仅README)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-10-02",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86950",
-   "description": "An out-of-bounds write issue was addressed with improved bounds checking. This issue is fixed in iOS 26.7.1 and iPadOS 26.7.1, macOS Sequoia 15.8.1, macOS Tahoe 26.7.1. Processing a maliciously crafted file may lead to arbitrary code execution. Apple is aware of a report that this issue may have been exploited in an extremely sophisticated attack against specific targeted individuals on versions of iOS before iOS 27."
-  },
-  {
-   "id": "CVE-2026-105105",
-   "tier": "critical",
-   "title": "NASA-AMMOS AIT-Core 未授权 缺失认证",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-03T12:16:57.183",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "缺失认证"
+    "命令注入",
+    "命令注入(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -399,26 +54,26 @@
    "repro_worthy": "值得",
    "repro_note": null,
    "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105105",
-   "description": "CWE-306: Missing Authentication for Critical Function in the ait.core.server telemetry and command broker (ait-server) in NASA-AMMOS AIT-Core through 3.1.1 allows an unauthenticated remote attacker with network access to the ZeroMQ message bus to inject spacecraft command data, exfiltrate command and telemetry traffic, inject forged telemetry, or disrupt the command and telemetry bus."
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105134",
+   "description": "A flaw has been found in Ahsay AhsayCBS up to 10.3.2. This vulnerability affects unknown code of the file /rps/api/json/UpdateReceivers.do of the component Replication Receiver. Executing a manipulation of the argument random can lead to os command injection. It is possible to launch the attack remotely. The exploit has been published and may be used. Upgrading to version 10.3.4 is able to resolve this issue. Upgrading the affected component is advised."
   },
   {
-   "id": "CVE-2026-71885",
+   "id": "CVE-2026-105135",
    "tier": "critical",
-   "title": "X.509 未授权 认证绕过",
+   "title": "未授权 注入",
    "title_zh": null,
    "summary_zh": null,
-   "published": "2026-10-03T09:17:04.730",
-   "cvss": 9.2,
+   "published": "2026-10-04T07:16:33.693",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:Amber",
-   "epss": 0.00188,
-   "epss_percentile": 0.07555,
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
    "cwe_labels": [
-    "认证绕过",
-    "证书校验缺陷"
+    "注入",
+    "代码注入(RCE)"
    ],
-   "difficulty": null,
+   "difficulty": "低(远程·免认证)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
@@ -435,9 +90,84 @@
    "repro_worthy": "值得",
    "repro_note": null,
    "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-71885",
-   "description": "In a deployment that admits external commits without an independent credential-admission check, an unauthenticated attacker could be admitted under a victim's X.509 identity, evict the victim (resynchronization compares whole credentials rather than signing keys), derive the current epoch, decrypt subsequent group messages, and send messages accepted as the victim."
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+   "description": "A vulnerability has been found in InternLM MindSearch 0.1.0. This issue affects the function ExecutionAction.run of the file mindsearch/agent/graph.py of the component Planner Agent. The manipulation of the argument inputs leads to code injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
   }
  ],
- "media": []
+ "media": [],
+ "commits": [
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "4be0bdb101776b4e4fe7cf212c2b88e7304f68ff",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/4be0bdb101776b4e4fe7cf212c2b88e7304f68ff",
+   "title": "fate/filter: add xfade endpoint regression tests",
+   "date": "2026-10-03T18:02:09",
+   "score": 3,
+   "matched": [
+    "越界读写",
+    "回合/回归"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "python/cpython",
+   "sha": "9d22a5334bd5273962adceeb697a1337e9a0ca21",
+   "url": "https://github.com/python/cpython/commit/9d22a5334bd5273962adceeb697a1337e9a0ca21",
+   "title": "gh-158583: Fix uninitialized memory read in bytes.fromhex() (#158584)",
+   "date": "2026-10-03T23:51:37",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "b0a76ded815f1911b4a3f9467c73811fc666dc40",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/b0a76ded815f1911b4a3f9467c73811fc666dc40",
+   "title": "avformat/vivo: fail on a short read of a text header packet",
+   "date": "2026-10-03T21:04:31",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "50d206a75b5e60261d71b25657ae04891eb60290",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/50d206a75b5e60261d71b25657ae04891eb60290",
+   "title": "avcodec/flashsv: reject blocks whose inflate output is shorter than the block",
+   "date": "2026-10-03T19:02:42",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "fd1e21e06e8c4e4bda7917f64af8cb3f4c1cb21d",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/fd1e21e06e8c4e4bda7917f64af8cb3f4c1cb21d",
+   "title": "avfilter/vf_xfade: fix out of bounds reads at the transition endpoints",
+   "date": "2026-10-03T18:02:09",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/ofbiz-framework",
+   "sha": "5beebac638868c4c676776f692c6191674de11f0",
+   "url": "https://github.com/apache/ofbiz-framework/commit/5beebac638868c4c676776f692c6191674de11f0",
+   "title": "Improved: SafeObjectInputStream allowList matches class names as substrings and ships with unescaped dots (OFBIZ-13637)",
+   "date": "2026-10-03T15:42:33",
+   "score": 2,
+   "matched": [
+    "反序列化"
+   ],
+   "cve": null
+  }
+ ]
 }

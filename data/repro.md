@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-04 02:52 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
+**更新**: 2026-10-04 09:04 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
 
 ---
 
@@ -115,6 +115,14 @@ PoC: [murrez/CVE-2026-88772 13★(有源码)](https://github.com/murrez/CVE-2026
 PoC: [ressl/cve-2026-87902-poc 38★(有源码)](https://github.com/ressl/cve-2026-87902-poc) · [abraxas/CVE-2026-87902 33★(有源码)](https://github.com/abraxas/CVE-2026-87902)
 参考: [厂商通告](https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp)
 
+### CVE-2026-105134
+[CVE-2026-105134](https://nvd.nist.gov/vuln/detail/CVE-2026-105134) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
+复现: 值得
+
+### CVE-2026-105135
+[CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
+复现: 值得
+
 ### CVE-2026-104610
 [CVE-2026-104610](https://nvd.nist.gov/vuln/detail/CVE-2026-104610) | P1 重点关注 | OA/协同办公 | CVSS 10.0 | 披露 2026-10-02 | 入库 2026-10-03
 复现: 值得
@@ -196,15 +204,3 @@ nuclei 模板 | 开源,可源码审计复现
 未认证远程攻击者向受影响接口发送畸形报文触发缓冲区溢出，可以特权用户身份执行任意代码。
 复现: 值得 — 向受影响网络接口发送畸形报文，需 HPE Instant ON 设备 · 影响面: 无线AP等网络设备，内网高价值
 处置: 升级 HPE Instant ON 固件，并将管理接口限制在可信网段
-
-### HPE Instant ON 格式串RCE
-[CVE-2026-76722](https://nvd.nist.gov/vuln/detail/CVE-2026-76722) | P1 重点关注 | CVSS 9.8 | 披露 2026-09-29 | 入库 2026-09-30
-未认证远程攻击者利用格式串缺陷向受影响接口发送载荷，可执行任意命令，导致DoS或接管设备。
-复现: 值得 — 构造格式串载荷发送至受影响接口，需设备实测 · 影响面: 无线AP，可致内网横向与DoS
-处置: 升级 HPE Instant ON AP 固件，限制管理网段访问
-
-### LightLLM 缓存服务反序列化RCE
-[CVE-2026-103041](https://nvd.nist.gov/vuln/detail/CVE-2026-103041) | P1 重点关注 | CVSS 9.8 | 披露 2026-09-29 | 入库 2026-09-30
-多模态部署下缓存服务未授权暴露，攻击者发送恶意序列化对象即可在推理节点执行任意代码。
-复现: 值得 — 未授权连接缓存服务 RPyC 端口发送 pickle 对象 · 影响面: 多模态推理服务节点，端口对外
-处置: 关闭或限制缓存服务端口访问，升级至修复版本
