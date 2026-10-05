@@ -5,25 +5,54 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 04 Oct 2026 09:04:18 +0000</pubDate>
-    <lastBuildDate>Sun, 04 Oct 2026 09:04:18 +0000</lastBuildDate>
+    <pubDate>Mon, 05 Oct 2026 02:23:10 +0000</pubDate>
+    <lastBuildDate>Mon, 05 Oct 2026 02:23:10 +0000</lastBuildDate>
     <item>
-      <title>[critical]UpdateReceivers.do 未授权 命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105134</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105134-2026-10-04</guid>
-      <description>CVE-2026-105134 · 🎯P1 重点关注 · 披露 2026-10-04 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
-This vulnerability affects unknown code of the file /rps/api/json/UpdateReceivers.do of the component Replication Receiver.
-信号:</description>
-      <pubDate>Sun, 04 Oct 2026 09:04:18 +0000</pubDate>
+      <title>[critical]NetScaler ADC 在野利用 未授权 内存破坏</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88779</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88779-2026-10-05</guid>
+      <description>CVE-2026-88779 · 🎯P0 立即处置 · 披露 2026-10-04 · 组件 边界设备/VPN · CVSS 8.7 · EPSS 0.3%,前 18% · 类型 内存破坏
+Vulnerability in NetScaler ADC and NetScaler Gateway.
+信号: 🔥 KEV 在野利用,CISA 限期 2026-10-07 | 有PoC
+[ThomasPoppelgaard/netscaler-ctx697096-checker 14★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker) · [orjanj/netscaler_threat_hunt_helper 0★(有源码)](https://github.com/orjanj/netscaler_threat_hunt_helper)</description>
+      <pubDate>Mon, 05 Oct 2026 02:23:10 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]未授权 注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105135</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105135-2026-10-04</guid>
-      <description>CVE-2026-105135 · 🎯P1 重点关注 · 披露 2026-10-04 · CVSS 10.0 · 类型 注入/代码注入(RCE) · 难度 低(远程·免认证)
-The manipulation of the argument inputs leads to code injection. The exploit has been disclosed to the public and may be used.
+      <title>[critical]IdP 未授权 缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105207</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105207-2026-10-05</guid>
+      <description>CVE-2026-105207 · 🎯P1 重点关注 · 披露 2026-10-04 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+An unauthenticated attacker knowing a victim's login name can bind their own external IdP identity to the victim's account and then sign in as the victim.
 信号:</description>
-      <pubDate>Sun, 04 Oct 2026 09:04:18 +0000</pubDate>
+      <pubDate>Mon, 05 Oct 2026 02:23:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ZITADEL 缺失授权(越权)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105209</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105209-2026-10-05</guid>
+      <description>CVE-2026-105209 · 🎯P1 重点关注 · 披露 2026-10-04 · CVSS 9.6 · 类型 缺失授权(越权) · 难度 低(远程·需低权限)
+ZITADEL 3.x before 3.4.15 and 4.x before 4.17.1 contains an improper authorization vulnerability: when issuing passkey or passwordless enrollment codes, it chec…
+信号:</description>
+      <pubDate>Mon, 05 Oct 2026 02:23:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Special Elements 未授权 SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-103355</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-103355-2026-10-05</guid>
+      <description>CVE-2026-103355 · 🎯P1 重点关注 · 披露 2026-10-04 · CVSS 9.3 · EPSS 0.2%,前 15% · 类型 SQL注入 · 难度 低(远程·免认证)
+Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Unlimited Elements Unlimited Elements For Elementor (Free …
+信号: 有PoC
+[Hassham1/CVE-2026-103355-unlimited-elements-sqli-poc 0★(有源码)](https://github.com/Hassham1/CVE-2026-103355-unlimited-elements-sqli-poc)</description>
+      <pubDate>Mon, 05 Oct 2026 02:23:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Unauthenticated 未授权 认证欺骗</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105215</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105215-2026-10-05</guid>
+      <description>CVE-2026-105215 · 🎯P1 重点关注 · 披露 2026-10-04 · CVSS 9.1 · 类型 认证欺骗 · 难度 低(远程·免认证)
+Unauthenticated attackers can submit forged IDPConfigID and ExternalUserID values to pre-create an account bound to a victim's external IdP identity, which the …
+信号:</description>
+      <pubDate>Mon, 05 Oct 2026 02:23:10 +0000</pubDate>
     </item>
   </channel>
 </rss>

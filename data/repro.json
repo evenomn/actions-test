@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated_at": "2026-10-04T09:04:18+00:00",
+ "updated_at": "2026-10-05T02:23:10+00:00",
  "count": 30,
  "count_recommended": 2,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -463,6 +463,45 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65660",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-88779",
+   "title": "Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability",
+   "first_seen": "2026-10-05",
+   "last_seen": "2026-10-05",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-04",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "action_zh": null,
+   "summary_zh": null,
+   "category": "边界设备/VPN",
+   "cvss": 8.7,
+   "epss": 0.00276,
+   "kev": true,
+   "kev_due": "2026-10-07",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker",
+     "label": "ThomasPoppelgaard/netscaler-ctx697096-checker 14★(有源码)"
+    },
+    {
+     "url": "https://github.com/orjanj/netscaler_threat_hunt_helper",
+     "label": "orjanj/netscaler_threat_hunt_helper 0★(有源码)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88779",
    "change_note": null
   },
   {
@@ -1004,14 +1043,14 @@
    "change_note": null
   },
   {
-   "id": "CVE-2026-105105",
-   "title": "CVE-2026-105105",
-   "first_seen": "2026-10-04",
-   "last_seen": "2026-10-04",
+   "id": "CVE-2026-105207",
+   "title": "CVE-2026-105207",
+   "first_seen": "2026-10-05",
+   "last_seen": "2026-10-05",
    "ai_judged": true,
    "third_party": false,
    "open_source": false,
-   "published": "2026-10-03",
+   "published": "2026-10-04",
    "urgency": "P1 重点关注",
    "repro_worthy": "值得",
    "repro_note": null,
@@ -1030,37 +1069,7 @@
    "affected": null,
    "patched": null,
    "refs": [],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105105",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-76721",
-   "title": "HPE Instant ON 未认证代码执行",
-   "first_seen": "2026-09-30",
-   "last_seen": "2026-09-30",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-09-29",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "向受影响网络接口发送畸形报文，需 HPE Instant ON 设备",
-   "impact_scope": "无线AP等网络设备，内网高价值",
-   "action_zh": "升级 HPE Instant ON 固件，并将管理接口限制在可信网段",
-   "summary_zh": "未认证远程攻击者向受影响接口发送畸形报文触发缓冲区溢出，可以特权用户身份执行任意代码。",
-   "category": null,
-   "cvss": 9.8,
-   "epss": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76721",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105207",
    "change_note": null
   }
  ]

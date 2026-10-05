@@ -1,77 +1,86 @@
 {
  "version": 3,
- "generated_at": "2026-10-04T09:04:18+00:00",
+ "generated_at": "2026-10-05T02:23:10+00:00",
  "lookback_hours": 24,
- "count": 2,
+ "count": 5,
  "stats": {
-  "total": 2,
+  "total": 5,
   "by_tier": {
-   "critical": 2
+   "critical": 5
   },
   "by_urgency": {
-   "P1 重点关注": 2
+   "P1 重点关注": 4,
+   "P0 立即处置": 1
   },
   "by_category": {
-   "未知": 2
+   "未知": 4,
+   "边界设备/VPN": 1
   },
-  "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
+  "kev": 1,
+  "with_poc": 2,
+  "with_poc_source": 2,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-105134",
+   "id": "CVE-2026-88779",
    "tier": "critical",
-   "title": "UpdateReceivers.do 未授权 命令注入",
+   "title": "NetScaler ADC 在野利用 未授权 内存破坏",
    "title_zh": null,
    "summary_zh": null,
-   "published": "2026-10-04T07:16:33.480",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
+   "published": "2026-10-04T04:16:43.680",
+   "cvss": 8.7,
+   "severity": "HIGH",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00276,
+   "epss_percentile": 0.18203,
    "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
+    "内存破坏"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": null,
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [],
-   "poc": [],
+   "poc": [
+    {
+     "url": "https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker",
+     "label": "ThomasPoppelgaard/netscaler-ctx697096-checker 14★(有源码)"
+    },
+    {
+     "url": "https://github.com/orjanj/netscaler_threat_hunt_helper",
+     "label": "orjanj/netscaler_threat_hunt_helper 0★(有源码)"
+    }
+   ],
    "nuclei": false,
    "patched": null,
-   "kev": false,
-   "kev_due": null,
+   "kev": true,
+   "kev_due": "2026-10-07",
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
+   "urgency": "P0 立即处置",
    "action_zh": null,
    "repro_worthy": "值得",
    "repro_note": null,
    "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105134",
-   "description": "A flaw has been found in Ahsay AhsayCBS up to 10.3.2. This vulnerability affects unknown code of the file /rps/api/json/UpdateReceivers.do of the component Replication Receiver. Executing a manipulation of the argument random can lead to os command injection. It is possible to launch the attack remotely. The exploit has been published and may be used. Upgrading to version 10.3.4 is able to resolve this issue. Upgrading the affected component is advised."
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88779",
+   "description": "Vulnerability in NetScaler ADC and NetScaler Gateway. This issue affects ADC: before 14.1-73.41, before 13.1-64.28, before 14.1-73.41 FIPS, and before 13.1-37.282; Gateway: before 14.1-73.41 and before 13.1-64.28."
   },
   {
-   "id": "CVE-2026-105135",
+   "id": "CVE-2026-105207",
    "tier": "critical",
-   "title": "未授权 注入",
+   "title": "IdP 未授权 缺失认证",
    "title_zh": null,
    "summary_zh": null,
-   "published": "2026-10-04T07:16:33.693",
-   "cvss": 10.0,
+   "published": "2026-10-04T15:16:31.677",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "注入",
-    "代码注入(RCE)"
+    "缺失认证"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -90,31 +99,128 @@
    "repro_worthy": "值得",
    "repro_note": null,
    "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
-   "description": "A vulnerability has been found in InternLM MindSearch 0.1.0. This issue affects the function ExecutionAction.run of the file mindsearch/agent/graph.py of the component Planner Agent. The manipulation of the argument inputs leads to code injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105207",
+   "description": "ZITADEL 3.0.0 through 3.4.15 and 4.0.0 before 4.17.3 creates links between user accounts and external identity providers without verifying a primary factor or the caller's permission, including on identify-only Login V2 sessions and via the User Service V2 AddIDPLink endpoint. An unauthenticated attacker knowing a victim's login name can bind their own external IdP identity to the victim's account and then sign in as the victim."
+  },
+  {
+   "id": "CVE-2026-105209",
+   "tier": "critical",
+   "title": "ZITADEL 缺失授权(越权)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-04T15:16:32.007",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失授权(越权)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105209",
+   "description": "ZITADEL 3.x before 3.4.15 and 4.x before 4.17.1 contains an improper authorization vulnerability: when issuing passkey or passwordless enrollment codes, it checks only the organization in the x-zitadel-orgid header, not the target user's organization. Attackers with user-write permission in one organization can obtain an enrollment code for a user in another organization on the same instance and register their own authenticator to take over that account."
+  },
+  {
+   "id": "CVE-2026-103355",
+   "tier": "critical",
+   "title": "Special Elements 未授权 SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-04T09:16:38.820",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
+   "epss": 0.0025,
+   "epss_percentile": 0.14812,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [],
+   "poc": [
+    {
+     "url": "https://github.com/Hassham1/CVE-2026-103355-unlimited-elements-sqli-poc",
+     "label": "Hassham1/CVE-2026-103355-unlimited-elements-sqli-poc 0★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103355",
+   "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Unlimited Elements Unlimited Elements For Elementor (Free Widgets, Addons, Templates) unlimited-elements-for-elementor allows Blind SQL Injection.This issue affects Unlimited Elements For Elementor (Free Widgets, Addons, Templates): from n/a through 2.0.20."
+  },
+  {
+   "id": "CVE-2026-105215",
+   "tier": "critical",
+   "title": "Unauthenticated 未授权 认证欺骗",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-04T15:16:32.993",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证欺骗"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105215",
+   "description": "ZITADEL before 3.4.14 and 4.x before 4.16.2 contains an authentication bypass in the hosted Login V1 UI because the 'external account not found' registration endpoint trusts client-supplied external identity fields without a completed IdP callback. Unauthenticated attackers can submit forged IDPConfigID and ExternalUserID values to pre-create an account bound to a victim's external IdP identity, which the victim's later genuine external login then signs into."
   }
  ],
  "media": [],
  "commits": [
   {
    "repo": "FFmpeg/FFmpeg",
-   "sha": "4be0bdb101776b4e4fe7cf212c2b88e7304f68ff",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/4be0bdb101776b4e4fe7cf212c2b88e7304f68ff",
-   "title": "fate/filter: add xfade endpoint regression tests",
-   "date": "2026-10-03T18:02:09",
-   "score": 3,
-   "matched": [
-    "越界读写",
-    "回合/回归"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "python/cpython",
-   "sha": "9d22a5334bd5273962adceeb697a1337e9a0ca21",
-   "url": "https://github.com/python/cpython/commit/9d22a5334bd5273962adceeb697a1337e9a0ca21",
-   "title": "gh-158583: Fix uninitialized memory read in bytes.fromhex() (#158584)",
-   "date": "2026-10-03T23:51:37",
+   "sha": "16d0f7f408ba47b4091a22109d4f22f5fd57820a",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/16d0f7f408ba47b4091a22109d4f22f5fd57820a",
+   "title": "avcodec/flashsv: require two bytes for a 15-bit pixel in decode_hybrid",
+   "date": "2026-10-04T21:14:43",
    "score": 2,
    "matched": [
     "未初始化/内存破坏"
@@ -123,22 +229,10 @@
   },
   {
    "repo": "FFmpeg/FFmpeg",
-   "sha": "b0a76ded815f1911b4a3f9467c73811fc666dc40",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/b0a76ded815f1911b4a3f9467c73811fc666dc40",
-   "title": "avformat/vivo: fail on a short read of a text header packet",
-   "date": "2026-10-03T21:04:31",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "50d206a75b5e60261d71b25657ae04891eb60290",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/50d206a75b5e60261d71b25657ae04891eb60290",
-   "title": "avcodec/flashsv: reject blocks whose inflate output is shorter than the block",
-   "date": "2026-10-03T19:02:42",
+   "sha": "2c2f6e96e31795ae95a8f8323a493ffbc493111f",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/2c2f6e96e31795ae95a8f8323a493ffbc493111f",
+   "title": "avutil/hdr_dynamic_metadata: fix uninitialized bytes when color saturation is set without tone mapping",
+   "date": "2026-10-04T13:31:36",
    "score": 2,
    "matched": [
     "未初始化/内存破坏"
@@ -146,26 +240,14 @@
    "cve": null
   },
   {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "fd1e21e06e8c4e4bda7917f64af8cb3f4c1cb21d",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/fd1e21e06e8c4e4bda7917f64af8cb3f4c1cb21d",
-   "title": "avfilter/vf_xfade: fix out of bounds reads at the transition endpoints",
-   "date": "2026-10-03T18:02:09",
+   "repo": "alibaba/fastjson2",
+   "sha": "df2bcf545b6df9ae8646fa21b97e2160afb69410",
+   "url": "https://github.com/alibaba/fastjson2/commit/df2bcf545b6df9ae8646fa21b97e2160afb69410",
+   "title": "give surefire forks explicit stack headroom (-Xss) to stabilize depth-guard tests",
+   "date": "2026-10-04T09:14:16",
    "score": 2,
    "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/ofbiz-framework",
-   "sha": "5beebac638868c4c676776f692c6191674de11f0",
-   "url": "https://github.com/apache/ofbiz-framework/commit/5beebac638868c4c676776f692c6191674de11f0",
-   "title": "Improved: SafeObjectInputStream allowList matches class names as substrings and ships with unescaped dots (OFBIZ-13637)",
-   "date": "2026-10-03T15:42:33",
-   "score": 2,
-   "matched": [
-    "反序列化"
+    "XSS"
    ],
    "cve": null
   }

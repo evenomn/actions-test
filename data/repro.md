@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-04 09:04 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
+**更新**: 2026-10-05 02:23 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
 
 ---
 
@@ -98,6 +98,12 @@ PoC: [msuiche/hotcell 5★(有源码)](https://github.com/msuiche/hotcell) · [D
 影响: microsoft sharepoint_server <16.0.19725.20522
 PoC: [ShadowForge-Cyber/CVE-2026-65660-Poc 1★(仅README)](https://github.com/ShadowForge-Cyber/CVE-2026-65660-Poc) · [HORKimhab/CVE-2026-65660 0★(仅README)](https://github.com/HORKimhab/CVE-2026-65660)
 参考: [厂商通告](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-65660)
+
+### Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability
+[CVE-2026-88779](https://nvd.nist.gov/vuln/detail/CVE-2026-88779) | P0 立即处置 | 边界设备/VPN | CVSS 8.7 | EPSS 0.3% | 披露 2026-10-04 | 入库 2026-10-05
+🔥 KEV 在野利用,限期 2026-10-07 | PoC 源码可用
+复现: 值得
+PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 14★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker) · [orjanj/netscaler_threat_hunt_helper 0★(有源码)](https://github.com/orjanj/netscaler_threat_hunt_helper)
 
 ### Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability
 [CVE-2026-88772](https://nvd.nist.gov/vuln/detail/CVE-2026-88772) | P0 立即处置 | 边界设备/VPN | CVSS 8.1 | EPSS 1.3% | 披露 2026-09-27 | 入库 2026-09-30
@@ -195,12 +201,6 @@ nuclei 模板 | 开源,可源码审计复现
 复现: 值得 — 远程向受影响 CGI 的 sid 参数注入 shell 命令。 · 影响面: 边界网络设备，常暴露公网
 处置: 联系厂商获取修复；无法修复则隔离设备或限制访问。
 
-### CVE-2026-105105
-[CVE-2026-105105](https://nvd.nist.gov/vuln/detail/CVE-2026-105105) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-03 | 入库 2026-10-04
+### CVE-2026-105207
+[CVE-2026-105207](https://nvd.nist.gov/vuln/detail/CVE-2026-105207) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-04 | 入库 2026-10-05
 复现: 值得
-
-### HPE Instant ON 未认证代码执行
-[CVE-2026-76721](https://nvd.nist.gov/vuln/detail/CVE-2026-76721) | P1 重点关注 | CVSS 9.8 | 披露 2026-09-29 | 入库 2026-09-30
-未认证远程攻击者向受影响接口发送畸形报文触发缓冲区溢出，可以特权用户身份执行任意代码。
-复现: 值得 — 向受影响网络接口发送畸形报文，需 HPE Instant ON 设备 · 影响面: 无线AP等网络设备，内网高价值
-处置: 升级 HPE Instant ON 固件，并将管理接口限制在可信网段
