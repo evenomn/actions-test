@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-07 02:41 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
+**更新**: 2026-10-07 07:21 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
 
 ---
 
