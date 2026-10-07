@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-06 03:19 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
+**更新**: 2026-10-07 02:41 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
 
 ---
 
@@ -123,6 +123,26 @@ PoC: [ressl/cve-2026-87902-poc 38★(有源码)](https://github.com/ressl/cve-20
 PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 15★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker) · [orjanj/netscaler_threat_hunt_helper 0★(有源码)](https://github.com/orjanj/netscaler_threat_hunt_helper)
 参考: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697174) · [厂商通告](https://community.citrix.com/techzone-blogs/110_security-updates/understanding-and-addressing-cve-2026-88779-in-citrix-netscaler-adc-and-citrix-netscaler-gateway/)
 
+### CVE-2026-32579
+[CVE-2026-32579](https://nvd.nist.gov/vuln/detail/CVE-2026-32579) | P1 重点关注 | CMS | CVSS 10.0 | EPSS 0.5% | 披露 2026-10-06 | 入库 2026-10-07
+复现: 值得
+
+### CVE-2026-39770
+[CVE-2026-39770](https://nvd.nist.gov/vuln/detail/CVE-2026-39770) | P1 重点关注 | CVSS 10.0 | EPSS 0.4% | 披露 2026-10-06 | 入库 2026-10-07
+复现: 值得
+
+### CVE-2026-39773
+[CVE-2026-39773](https://nvd.nist.gov/vuln/detail/CVE-2026-39773) | P1 重点关注 | CVSS 10.0 | EPSS 0.3% | 披露 2026-10-06 | 入库 2026-10-07
+复现: 值得
+
+### CVE-2026-63688
+[CVE-2026-63688](https://nvd.nist.gov/vuln/detail/CVE-2026-63688) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-06 | 入库 2026-10-07
+复现: 值得
+
+### CVE-2026-63692
+[CVE-2026-63692](https://nvd.nist.gov/vuln/detail/CVE-2026-63692) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-06 | 入库 2026-10-07
+复现: 值得
+
 ### CVE-2026-100721
 [CVE-2026-100721](https://nvd.nist.gov/vuln/detail/CVE-2026-100721) | P1 重点关注 | 边界设备/VPN | CVSS 10.0 | EPSS 0.4% | 披露 2026-10-05 | 入库 2026-10-06
 PoC 源码可用 | 开源,可源码审计复现
@@ -177,31 +197,3 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 开源,可源码审计复现
 复现: 值得
 影响: npm:vm2 >= 3.11.3, <= 3.11.6(修复: 3.11.7)
-
-### CVE-2026-92941
-[CVE-2026-92941](https://nvd.nist.gov/vuln/detail/CVE-2026-92941) | P1 重点关注 | CVSS 10.0 | EPSS 0.3% | 披露 2026-10-01 | 入库 2026-10-02
-开源,可源码审计复现
-复现: 值得
-影响: npm:vm2 >= 3.11.3, <= 3.11.6(修复: 3.11.7)
-
-### CVE-2026-69085
-[CVE-2026-69085](https://nvd.nist.gov/vuln/detail/CVE-2026-69085) | P1 重点关注 | CVSS 10.0 | EPSS 1.5% | 披露 2026-10-01 | 入库 2026-10-02
-nuclei 模板 | 开源,可源码审计复现
-复现: 值得
-影响: go:github.com/siyuan-note/siyuan/kernel < 0.0.0-20260721043339-eef10568384e(修复: 0.0.0-20260721043339-eef10568384e)
-
-### CVE-2026-92937
-[CVE-2026-92937](https://nvd.nist.gov/vuln/detail/CVE-2026-92937) | P1 重点关注 | CVSS 10.0 | EPSS 1.0% | 披露 2026-10-01 | 入库 2026-10-02
-开源,可源码审计复现
-复现: 值得
-影响: npm:vm2 = 3.11.6(修复: 3.11.7)
-
-### CVE-2026-96349
-[CVE-2026-96349](https://nvd.nist.gov/vuln/detail/CVE-2026-96349) | P1 重点关注 | CVSS 10.0 | 披露 2026-09-30 | 入库 2026-10-01
-复现: 值得
-
-### Netcore NBR200V2 命令注入
-[CVE-2026-101001](https://nvd.nist.gov/vuln/detail/CVE-2026-101001) | P1 重点关注 | CVSS 10.0 | 披露 2026-09-28 | 入库 2026-09-29
-远程攻击者可操纵QUERY_STRING参数注入系统命令，可能完全控制路由器。
-复现: 值得 — 远程向 CGI 的 QUERY_STRING 参数注入 shell 命令。 · 影响面: 边界路由器，常暴露公网
-处置: 联系厂商获取固件修复；无法修复则隔离设备。
