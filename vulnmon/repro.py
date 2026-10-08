@@ -184,9 +184,10 @@ def merge_repro(existing: list[dict], items: list[dict], now: datetime,
         rec = _record(item, now)
         rec["queued"] = now.date().isoformat()
         pending_out.append(rec)
-    cutoff = (now - timedelta(days=retention_days)).date().isoformat()
-    fresh_db = [r for r in db.values() if r.get("last_seen", "") >= cutoff]
-    ranked = sorted(fresh_db, key=_sort_key, reverse=True)
+    if retention_days > 0:  # 0 = 永久保留,不按时间清库
+        cutoff = (now - timedelta(days=retention_days)).date().isoformat()
+        db = {cid: r for cid, r in db.items() if r.get("last_seen", "") >= cutoff}
+    ranked = sorted(db.values(), key=_sort_key, reverse=True)
     return (ranked[:max_total] if max_total > 0 else ranked), pending_out
 
 
@@ -295,7 +296,8 @@ def build_repro_md(db: list[dict], now: datetime, retention_days: int,
     n_top = sum(1 for r in db if r.get("repro_worthy") == "强烈推荐")
     head = [
         "# 高价值可复现漏洞库", "",
-        f"> 自动维护,严格准入(每日新增≤5,总量≤{max_total}),滚动保留 {retention_days} 天。",
+        f"> 自动维护,严格准入(每日新增限量,{'总量≤' + str(max_total) if max_total > 0 else '总量不限'},"
+        f"{'滚动保留 ' + str(retention_days) + ' 天' if retention_days > 0 else '永久保留'})。",
         f"> 机器可读版: [`data/repro.json`]({raw_url('repro.json')})",
         f"> 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl {raw_url('repro.json')}`",
         "",

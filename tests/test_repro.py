@@ -288,3 +288,22 @@ def test_write_repro_persists_pending(tmp_path: Path):
     doc = json.loads((tmp_path / "repro.json").read_text(encoding="utf-8"))
     assert doc["count"] == 5 and doc["pending_count"] == 2
     assert {p["id"] for p in doc["pending"]} == {"CVE-2026-P5", "CVE-2026-P6"}
+
+
+def test_retention_zero_keeps_forever():
+    """repro_retention_days = 0 → 永久保留,老条目不按时间清库。"""
+    ancient = [{
+        "id": "CVE-2025-ANCIENT", "repro_worthy": "值得", "kev": True, "cvss": 9.5,
+        "ai_judged": True, "first_seen": "2025-01-01", "last_seen": "2025-01-01",
+        "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-ANCIENT",
+    }]
+    db, pending = merge_repro(ancient, [], NOW, retention_days=0)
+    assert len(db) == 1 and db[0]["id"] == "CVE-2025-ANCIENT"
+
+
+def test_max_total_zero_unlimited():
+    """repro_max_total = 0 → 总量不限。"""
+    items = [mk(f"CVE-2026-U{i}", _ai_judged=True, cvss=9.0 + i * 0.01)
+             for i in range(12)]
+    db, pending = merge_repro([], items, NOW, max_new_per_day=10, max_total=0)
+    assert len(db) == 10 and len(pending) == 2   # 10 条/日配额,余 2 条候补

@@ -147,9 +147,9 @@ DEFAULTS = {
     "feed_json": True,
     "rss": True,
     "repro": True,
-    "repro_retention_days": 21,
-    "repro_max_per_day": 5,
-    "repro_max_total": 100,
+    "repro_retention_days": 0,   # 0 = 永久保留
+    "repro_max_per_day": 10,
+    "repro_max_total": 0,        # 0 = 总量不限
     "retention_days": 30,
 }
 

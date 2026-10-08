@@ -160,15 +160,14 @@ rss = true
 # 内网拉取: git pull 读文件,或 curl raw.githubusercontent.com/<repo>/main/data/repro.json
 repro = true
 
-# 可复现库滚动保留天数(超过未再出现的条目淘汰)
-repro_retention_days = 21
+# 保留天数:超过未再出现的条目淘汰;0 = 永久保留,不按时间清库
+repro_retention_days = 0
 
-# 严格准入:每日新增上限与库存总量上限。高价值可复现漏洞通常一天只有零星几条,
-# 超出说明标准松了。每日新增按价值排序取头部,超出者进候补队列次日再战(7 天淘汰)。
-# 总量上限要容得下稳态:每日 5 条 × 保留 21 天 ≈ 100,设小了每天都在裁库、
-# 详情页也跟着被删(之前 30 的上限就是这个病的根源)
-repro_max_per_day = 5
-repro_max_total = 100
+# 严格准入:每日新增按价值排序取头部,超出者进候补队列次日再战(7 天没排上才淘汰)
+repro_max_per_day = 10
+
+# 库存总量上限;0 = 不限
+repro_max_total = 0
 
 [state]
 # 已见 CVE 记录的保留天数(防 state.json 无限增长)
