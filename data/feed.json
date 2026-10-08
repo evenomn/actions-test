@@ -1,42 +1,296 @@
 {
  "version": 3,
- "generated_at": "2026-10-08T16:39:12+00:00",
+ "generated_at": "2026-10-08T22:13:58+00:00",
  "lookback_hours": 5,
- "count": 8,
+ "count": 19,
  "stats": {
-  "total": 8,
+  "total": 19,
   "by_tier": {
-   "critical": 8
+   "critical": 19
   },
   "by_urgency": {
-   "P1 重点关注": 6,
-   "P0 立即处置": 2
+   "P1 重点关注": 12,
+   "P0 立即处置": 7
   },
   "by_category": {
-   "未知": 7,
-   "ERP/业务系统": 1
+   "未知": 16,
+   "Web框架": 1,
+   "OA/协同办公": 1,
+   "CMS": 1
   },
-  "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
-  "repro_recommended": 1
+  "kev": 5,
+  "with_poc": 4,
+  "with_poc_source": 1,
+  "repro_recommended": 6
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-14269",
+   "id": "CVE-2015-3306",
    "tier": "critical",
-   "title": "DataPower堆溢出未认证RCE",
-   "title_zh": "DataPower堆溢出未认证RCE",
-   "summary_zh": "未认证远程攻击者可利用边界检查不当触发堆溢出，在DataPower上执行任意代码。",
-   "published": "2026-10-08T15:17:48.600",
+   "title": "ProFTPD mod_copy任意文件读写",
+   "title_zh": "ProFTPD mod_copy任意文件读写",
+   "summary_zh": "远程攻击者可经SITE CPFR/CPTO命令读写任意文件，常导致服务器被控。",
+   "published": "2015-05-18T15:59:10.743",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.96752,
+   "epss_percentile": 0.99887,
+   "cwe_labels": [
+    "访问控制缺失"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "proftpd proftpd"
+   ],
+   "affected": "proftpd proftpd",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157053.html"
+    },
+    {
+     "label": "参考",
+     "url": "http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157054.html"
+    },
+    {
+     "label": "参考",
+     "url": "http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157581.html"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/t0kx/exploit-CVE-2015-3306",
+     "label": "t0kx/exploit-CVE-2015-3306 152★(有源码)"
+    },
+    {
+     "url": "https://github.com/nootropics/propane",
+     "label": "nootropics/propane 2★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-11",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级到1.3.5a或更高；禁用mod_copy并限制FTP访问。",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权FTP连接，执行SITE CPFR/CPTO读写文件",
+   "impact_scope": "FTP服务，常暴露公网或内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2015-3306",
+   "description": "The mod_copy module in ProFTPD 1.3.5 allows remote attackers to read and write to arbitrary files via the site cpfr and site cpto commands."
+  },
+  {
+   "id": "CVE-2016-3081",
+   "tier": "critical",
+   "title": "Struts2 DMI命令注入RCE",
+   "title_zh": "Struts2 DMI命令注入RCE",
+   "summary_zh": "远程攻击者在开启DMI时经method:前缀注入OGNL，导致任意代码执行。",
+   "published": "2016-04-26T14:59:02.207",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.93352,
+   "epss_percentile": 0.99838,
+   "cwe_labels": [
+    "命令注入"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [
+    "apache struts",
+    "oracle siebel_e-billing"
+   ],
+   "affected": "apache struts、oracle siebel_e-billing",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20160527-01-struts2-en"
+    },
+    {
+     "label": "官方补丁",
+     "url": "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html"
+    },
+    {
+     "label": "厂商通告",
+     "url": "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-11",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至2.3.28.1以上并关闭DMI。",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "访问带method:前缀的Action注入OGNL；需开DMI",
+   "impact_scope": "Java Web框架，广泛部署于内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2016-3081",
+   "description": "Apache Struts 2.3.19 to 2.3.20.2, 2.3.21 to 2.3.24.1, and 2.3.25 to 2.3.28, when Dynamic Method Invocation is enabled, allow remote attackers to execute arbitrary code via method: prefix, related to chained expressions."
+  },
+  {
+   "id": "CVE-2021-3199",
+   "tier": "critical",
+   "title": "ONLYOFFICE文档服务器路径遍历RCE",
+   "title_zh": "ONLYOFFICE文档服务器路径遍历RCE",
+   "summary_zh": "远程攻击者经/upload图片参数/..遍历写入文件，在JWT场景可RCE。",
+   "published": "2021-01-26T18:16:28.507",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.08215,
+   "epss_percentile": 0.9475,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "onlyoffice document_server"
+   ],
+   "affected": "onlyoffice document_server <5.6.3",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/ONLYOFFICE/DocumentServer/blob/903fe5ab7a275bd69c3c3346af2d21cf87ebeabf/CHANGELOG.md#563"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2021-3199"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-11",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级Document Server到5.6.3以上。",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权或JWT场景访问/upload，图片参数含/..序列",
+   "impact_scope": "OA协同办公，常暴露内网或公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2021-3199",
+   "description": "Directory traversal with remote code execution can occur in /upload in ONLYOFFICE Document Server before 5.6.3, when JWT is used, via a /.. sequence in an image upload parameter."
+  },
+  {
+   "id": "CVE-2023-22894",
+   "tier": "critical",
+   "title": "Strapi后台查询过滤器信息泄露",
+   "title_zh": "Strapi后台查询过滤器信息泄露",
+   "summary_zh": "拥有管理面板权限的攻击者利用查询过滤器，可发现敏感用户详情。",
+   "published": "2023-04-19T16:15:07.303",
+   "cvss": 4.9,
+   "severity": "MEDIUM",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+   "epss": 0.01658,
+   "epss_percentile": 0.7591,
+   "cwe_labels": [
+    "CWE-312"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [
+    "strapi strapi"
+   ],
+   "affected": "strapi strapi >=3.2.1 <4.8.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/strapi/strapi/releases"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-22894"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-11",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级Strapi到4.8.0以上并审计后台权限。",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "登录后台，构造带filter的查询请求读取用户敏感字段",
+   "impact_scope": "CMS后台，管理员权限滥用",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2023-22894",
+   "description": "Strapi through 4.5.5 allows attackers (with access to the admin panel) to discover sensitive user details by exploiting the query filter. If the attacker has admin panel access to an account with permission to access the username and email of API users with a lower privileged role (e.g., Editor or Author), then this can be exploited to discover sensitive information for all API users but not other admin accounts."
+  },
+  {
+   "id": "CVE-2015-5477",
+   "tier": "critical",
+   "title": "BIND TKEY查询拒绝服务",
+   "title_zh": "BIND TKEY查询拒绝服务",
+   "summary_zh": "远程攻击者发送特制TKEY查询触发REQUIRE断言失败，导致named退出。",
+   "published": "2015-07-29T14:59:05.397",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+   "epss": 0.91284,
+   "epss_percentile": 0.9981,
+   "cwe_labels": [
+    "CWE-19"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "isc bind"
+   ],
+   "affected": "isc bind <=9.9.7; isc bind <=9.10.2",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "http://kb.juniper.net/InfoCenter/index?page=content&id=JSA10718"
+    },
+    {
+     "label": "参考",
+     "url": "http://lists.fedoraproject.org/pipermail/package-announce/2015-August/163006.html"
+    },
+    {
+     "label": "参考",
+     "url": "http://lists.fedoraproject.org/pipermail/package-announce/2015-August/163007.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-11",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级到9.9.7-P2/9.10.2-P3或更高。",
+   "repro_worthy": "一般",
+   "repro_note": "向named发送特制TKEY查询触发断言",
+   "impact_scope": "DNS基础设施，关停影响解析",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2015-5477",
+   "description": "named in ISC BIND 9.x before 9.9.7-P2 and 9.10.x before 9.10.2-P3 allows remote attackers to cause a denial of service (REQUIRE assertion failure and daemon exit) via TKEY queries."
+  },
+  {
+   "id": "CVE-2026-78401",
+   "tier": "critical",
+   "title": "IBM Verify反序列化RCE",
+   "title_zh": "IBM Verify反序列化RCE",
+   "summary_zh": "远程未认证攻击者利用反序列化漏洞，在系统上执行任意代码。",
+   "published": "2026-10-08T21:18:03.043",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "堆溢出"
+    "反序列化(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -45,7 +299,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7289775"
+     "url": "https://www.ibm.com/support/pages/node/7291628"
     }
    ],
    "poc": [],
@@ -56,20 +310,447 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P0 立即处置",
-   "action_zh": "立即升级至修复版本；限制网关服务公网暴露",
+   "action_zh": "升级到IBM修复版本；限制认证接口暴露。",
    "repro_worthy": "强烈推荐",
-   "repro_note": "未认证向网关服务发送恶意请求触发堆溢出",
-   "impact_scope": "边界网关设备，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14269",
-   "description": "IBM DataPower Gateway 10.5.0.0 through 10.5.0.22, 10.6.1 through 10.6.6, 10.6.0.0 through 10.6.0.10, and 11.0.0.0 through 11.0.0.2 is vulnerable to a heap-based buffer overflow, caused by improper bounds checking. An unauthenticated remote attacker could overflow the buffer and execute arbitrary code on the system."
+   "repro_note": "未认证访问反序列化入口，提交恶意序列化数据",
+   "impact_scope": "IAM/身份认证系统，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-78401",
+   "description": "IBM Security Verify Access 10.0 through 10.0.9.2 and IBM Verify Identity Access 11.0 through 11.0.3 could allow a remote unauthenticated attacker to execute arbitrary code on the system due to the deserialization of untrusted data."
   },
   {
-   "id": "CVE-2026-14502",
+   "id": "CVE-2026-78406",
    "tier": "critical",
-   "title": "DataPower LDAP空密码认证绕过",
-   "title_zh": "DataPower LDAP空密码认证绕过",
-   "summary_zh": "远程攻击者利用LDAP认证未拒绝空密码，可能获取DataPower管理权限。",
-   "published": "2026-10-08T15:17:49.150",
+   "title": "IBM Verify反序列化RCE",
+   "title_zh": "IBM Verify反序列化RCE",
+   "summary_zh": "远程未认证攻击者利用反序列化漏洞，在系统上执行任意代码。",
+   "published": "2026-10-08T21:18:03.190",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7291628"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级到IBM修复版本；限制认证接口暴露。",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未认证访问反序列化入口，提交恶意序列化数据",
+   "impact_scope": "IAM/身份认证系统，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-78406",
+   "description": "IBM Security Verify Access 10.0 through 10.0.9.2 and IBM Verify Identity Access 11.0 through 11.0.3 could allow a remote unauthenticated attacker to execute arbitrary code on the system due to the deserialization of untrusted data."
+  },
+  {
+   "id": "CVE-2026-107779",
+   "tier": "critical",
+   "title": "任务调度平台缺失认证RCE",
+   "title_zh": "任务调度平台缺失认证RCE",
+   "summary_zh": "未认证攻击者向/jobinfo/addAndStart提交GLUE_SHELL作业，执行命令。",
+   "published": "2026-10-08T21:17:52.790",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/dromara/skyeye"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/dromara/skyeye/blob/003549ae5615bd114ba5bb8ddf6a8e8ead97c321/xxl-job-2.3.0/xxl-job-admin/src/main/java/com/xxl/job/admin/controller/JobInfoController.java#L183-L231"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/dromara/skyeye/issues/29"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复；临时禁用/addAndStart或加认证。",
+   "repro_worthy": "值得",
+   "repro_note": "未授权调用/jobinfo/addAndStart，提交GLUE_SHELL作业",
+   "impact_scope": "内网任务调度，常暴露管理端口",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107779",
+   "description": "Dromara Skyeye through commit 003549ae5615bd114ba5bb8ddf6a8e8ead97c321 contains a missing authentication vulnerability in bundled xxl-job-admin JobInfoController endpoints annotated with @PermissionLimit(limit = false). Unauthenticated attackers can POST GLUE_SHELL, GLUE_PYTHON, or GLUE_POWERSHELL jobs with attacker-supplied glueSource to /jobinfo/addAndStart, executing commands on the executor host or stopping and deleting jobs."
+  },
+  {
+   "id": "CVE-2026-107722",
+   "tier": "critical",
+   "title": "fast-jwt 算法混淆签名绕过",
+   "title_zh": "fast-jwt 算法混淆签名绕过",
+   "summary_zh": "远程攻击者伪造 JWT 签名绕过校验，可越权访问受保护资源。",
+   "published": "2026-10-08T22:02:07Z",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": null,
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "签名校验错误"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "npm:fast-jwt >= 6.2.0, <= 6.2.4(修复: 6.3.0)",
+   "ghsa_url": "https://github.com/advisories/GHSA-ww5h-9m49-7xx4",
+   "refs": [],
+   "poc": [],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 6.3.0，并显式配置 algorithms 白名单",
+   "repro_worthy": "值得",
+   "repro_note": "createVerifier 未设算法白名单时可用 HS256 伪造签名",
+   "impact_scope": "npm JWT 认证库，影响令牌校验服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107722",
+   "description": "| |---|:-:| | `createVerifier({ key })` (no `algorithms` allowlist) | ✗ VULNERABLE | | `createVerifier({ key: asyncCallback })` | ✗ VULNERABLE | | `createVerifier({ key, algorithms: ['RS256'] })` | ✓ protected | | `createVerifier({ key, algorithms: ['HS256'] })` | ✗ VULNERABLE (attacker matches) | ### Impact 1."
+  },
+  {
+   "id": "CVE-2026-61445",
+   "tier": "critical",
+   "title": "PraisonAI文件写入路径遍历RCE",
+   "title_zh": "PraisonAI文件写入路径遍历RCE",
+   "summary_zh": "攻击者经AI Coder组件未校验路径写入文件，可能执行任意命令。",
+   "published": "2026-10-08T22:00:40Z",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": null,
+   "epss": 0.00881,
+   "epss_percentile": 0.57891,
+   "cwe_labels": [
+    "路径遍历/任意文件读取",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "pip:praisonai <= 4.6.77(修复: 4.6.78)",
+   "ghsa_url": "https://github.com/advisories/GHSA-9mp3-24cc-77mg",
+   "refs": [],
+   "poc": [],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级PraisonAI到4.6.78；限制文件写入目录。",
+   "repro_worthy": "一般",
+   "repro_note": "调用aicoder write_to_file，传入../路径写入恶意文件",
+   "impact_scope": "AI应用/Agent组件，内网服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61445",
+   "description": "### Details #### Path Traversal in write_to_file `src/praisonai/praisonai/ui/components/aicoder.py` (lines 122-131): ```python async def write_to_file(self, file_path, content, existing=False): if not existing: await self.create_directories(file_path) try: with open(file_path, 'w') as file: # No path validation file.write(content) return True except Exception as e: return False ``` The `apply_llm_response` method at line 269 uses `os.path.join` which does not prevent absolute paths: ```python fi…"
+  },
+  {
+   "id": "CVE-2026-106126",
+   "tier": "critical",
+   "title": "Tenable身份暴露监听器命令注入",
+   "title_zh": "Tenable身份暴露监听器命令注入",
+   "summary_zh": "低权认证攻击者可经AD事件监听器注入命令，以SYSTEM权限执行。",
+   "published": "2026-10-08T20:17:29.950",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.tenable.com/security/tns-2026-27"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "联系厂商升级/打补丁；限制低权账户与PDCe访问。",
+   "repro_worthy": "一般",
+   "repro_note": "低权账户向AD事件监听器提交恶意事件，触发命令注入",
+   "impact_scope": "身份安全平台，可控制PDCe",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106126",
+   "description": "A command injection vulnerability in the Active Directory Events Listener of Tenable Identity Exposure (SaaS) allows an authenticated, low-privileged attacker to execute arbitrary commands as SYSTEM on the PDCe."
+  },
+  {
+   "id": "CVE-2026-106446",
+   "tier": "critical",
+   "title": "Handlebars模板代码注入RCE",
+   "title_zh": "Handlebars模板代码注入RCE",
+   "summary_zh": "攻击者可控模板经compile()绕过AST校验，执行任意JS代码。",
+   "published": "2026-10-08T17:52:32Z",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": null,
+   "epss": 0.0064,
+   "epss_percentile": 0.49078,
+   "cwe_labels": [
+    "代码注入(RCE)",
+    "CWE-843"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "npm:handlebars >= 4.0.0, <= 4.7.9(修复: 4.7.10)",
+   "ghsa_url": "https://github.com/advisories/GHSA-8r5x-fm3f-whwj",
+   "refs": [],
+   "poc": [],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级handlebars到4.7.10；勿编译不可信模板。",
+   "repro_worthy": "一般",
+   "repro_note": "调用compile()传入恶意模板，绕过AST校验执行JS",
+   "impact_scope": "Node.js模板库，影响使用方",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106446",
+   "description": "This bypasses the AST validation added in 4.7.9 for GHSA-2w6w-674q-4c4q, GHSA-xhpv-hc6g-r9c6 and GHSA-3mfm-83xf-c92r. - **`compile()`**: arbitrary JavaScript runs in the Node.js process with the application's privileges (remote code execution)."
+  },
+  {
+   "id": "CVE-2026-107699",
+   "tier": "critical",
+   "title": "ppt2png文件路径命令注入",
+   "title_zh": "ppt2png文件路径命令注入",
+   "summary_zh": "攻击者经文件名/路径参数注入shell元字符，以Node权限执行命令。",
+   "published": "2026-10-08T19:17:01.853",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/R3tro16/2daadc08b282c48d41203d1125d7632a"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/tzwm/ppt2png"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/tzwm/ppt2png/blob/8c68eba7af943de27422b12c6e224d28587af7ae/ppt2png.js#L5-L35"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本；临时校验过滤文件路径参数。",
+   "repro_worthy": "一般",
+   "repro_note": "调用ppt2png处理含;等元字符的文件路径",
+   "impact_scope": "Node工具库，依赖调用的服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107699",
+   "description": "ppt2png through 0.0.6 contains an OS command injection vulnerability that allows attackers to execute operating system commands by supplying unsanitized input or output path arguments. Attackers can append shell metacharacters such as ';' to file names passed to child_process.exec() in ppt2png.js, running commands with Node.js process privileges."
+  },
+  {
+   "id": "CVE-2026-107700",
+   "tier": "critical",
+   "title": "dot-access路径参数代码注入",
+   "title_zh": "dot-access路径参数代码注入",
+   "summary_zh": "攻击者向get()传入恶意路径，拼接进Function执行JS命令。",
+   "published": "2026-10-08T19:17:02.213",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/R3tro16/e094e4318a040f189fd5d2d33e8c3ec2"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ntharim/dot-access"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ntharim/dot-access/blob/v1.0.0/index.js#L1-L7"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本；禁止将用户输入作路径表达式。",
+   "repro_worthy": "一般",
+   "repro_note": "调用get()并传入含constructor.constructor的路径",
+   "impact_scope": "Node库，依赖调用的应用",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107700",
+   "description": "dot-access 0.0.3 through 1.0.0 contains a code injection vulnerability that allows remote attackers to execute JavaScript by supplying crafted paths to get(). The path is concatenated into a new Function body in index.js, so attackers can reach constructor.constructor to load child_process and run operating system commands in the Node.js process."
+  },
+  {
+   "id": "CVE-2026-107703",
+   "tier": "critical",
+   "title": "node-convert命令注入RCE",
+   "title_zh": "node-convert命令注入RCE",
+   "summary_zh": "攻击者经filepath/convertTo参数注入shell元字符，执行系统命令。",
+   "published": "2026-10-08T19:17:02.720",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/R3tro16/5a508fcfddfb0dfe66a0a53437ede74c"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/enmaso/node-convert"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/enmaso/node-convert/blob/143e4d76244e2daac57eef59d8ed5983e33ee4fb/convert.js#L4-L15"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本；临时校验过滤转换参数。",
+   "repro_worthy": "一般",
+   "repro_note": "调用convert传入含单引号/元字符的文件路径",
+   "impact_scope": "Node转换库，依赖调用的服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107703",
+   "description": "@enmaso/node-convert through 1.0.0 contains an OS command injection vulnerability in convert.js that allows attackers to execute shell commands via unsanitized filepath and convertTo arguments. Attackers can inject shell metacharacters or a single quote into the ImageMagick command run by child_process.exec() to execute operating system commands with Node.js process privileges."
+  },
+  {
+   "id": "CVE-2026-107704",
+   "tier": "critical",
+   "title": "image_optimizer命令注入RCE",
+   "title_zh": "image_optimizer命令注入RCE",
+   "summary_zh": "启用identify时，攻击者经恶意图像路径注入命令并执行。",
+   "published": "2026-10-08T19:17:02.897",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/R3tro16/a99a058d24a06692721a6a3fade9649d"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/jtescher/image_optimizer"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/jtescher/image_optimizer/blob/v1.9.0/lib/image_optimizer.rb#L37-L47"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本；关闭identify或过滤图像路径。",
+   "repro_worthy": "一般",
+   "repro_note": "启用identify选项，传入含shell元字符的图像路径",
+   "impact_scope": "Ruby图像处理库，依赖调用服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107704",
+   "description": "The image_optimizer Ruby gem 1.3.0 through 1.9.0 contains an OS command injection vulnerability in ImageOptimizer#identify_format that allows attackers to execute commands by supplying a crafted image path when the identify option is enabled. Attackers controlling the path, such as an uploaded file name, can append shell metacharacters like ';' that are executed via Ruby backticks with the Ruby process privileges."
+  },
+  {
+   "id": "CVE-2026-104075",
+   "tier": "critical",
+   "title": "TVU设备登录认证绕过",
+   "title_zh": "TVU设备登录认证绕过",
+   "summary_zh": "远程未认证攻击者提交空UserName到/tvu/Login，获取管理员会话。",
+   "published": "2026-10-08T20:17:29.377",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -85,47 +766,11 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7289775"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级修复版本；禁用LDAP空密码并限制认证来源",
-   "repro_worthy": "一般",
-   "repro_note": "LDAP认证时提交空密码尝试登录管理接口",
-   "impact_scope": "DataPower管理面，可获管理权限",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14502",
-   "description": "IBM DataPower Gateway 10.5.0.0 through 10.5.0.22, 10.6.1 through 10.6.6, 10.6.0.0 through 10.6.0.10, and 11.0.0.0 through 11.0.0.2 could allow a remote attacker to obtain administrative access due to failure to reject empty passwords during LDAP authentication."
-  },
-  {
-   "id": "CVE-2026-92555",
-   "tier": "critical",
-   "title": "WOLVOX控制面板敏感信息泄露",
-   "title_zh": "WOLVOX控制面板敏感信息泄露",
-   "summary_zh": "控制面板用户可拉取系统资源敏感数据，导致配置或凭据泄露，影响ERP业务。",
-   "published": "2026-10-08T12:17:18.787",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-201"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
+     "url": "https://code-white.com/public-vulnerability-list/#authentication-bypass-in-tvu-receiver-transceiver-web-management-interface"
+    },
     {
      "label": "参考",
-     "url": "https://siberguvenlik.gov.tr/guvenlik-bildirimleri/detay/tr-26-1273"
+     "url": "https://www.vulncheck.com/advisories/tvu-networks-receiver-transceiver-authentication-bypass-via-tvu-login"
     }
    ],
    "poc": [],
@@ -136,187 +781,26 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到26.02.26或更高版本，限制控制面板访问",
+   "action_zh": "升级固件到7.9以上；临时限制管理端访问。",
    "repro_worthy": "一般",
-   "repro_note": "触发控制面板数据拉取功能，检查响应中的系统敏感信息",
-   "impact_scope": "ERP控制面板，内网业务系统",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92555",
-   "description": "Insertion of sensitive information into sent data vulnerability in AKIN Software Computer Import-Export Industry and Trade Co. Ltd. AKINSOFT WOLVOX Control Panel allows Pull Data from System Resources. This issue affects AKINSOFT WOLVOX Control Panel: from 26.02.25 before 26.02.26."
+   "repro_note": "向POST /tvu/Login提交空或缺失UserName参数",
+   "impact_scope": "网络视频设备，管理口暴露风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104075",
+   "description": "TVU Networks Receiver/Transceiver devices running firmware before version 7.9 contain an authentication bypass vulnerability in the web management login endpoint POST /tvu/Login that allows remote unauthenticated attackers to obtain an administrative session by submitting an empty or absent UserName parameter."
   },
   {
-   "id": "CVE-2026-16340",
+   "id": "CVE-2026-84272",
    "tier": "critical",
-   "title": "DataPower RFC2047解析越界写",
-   "title_zh": "DataPower RFC2047解析越界写",
-   "summary_zh": "远程攻击者可通过RFC2047编码字解析触发越界写，在DataPower上执行任意代码。",
-   "published": "2026-10-08T13:17:16.610",
+   "title": "IBM Guardium边缘控制器缺失认证",
+   "title_zh": "IBM Guardium边缘控制器缺失认证",
+   "summary_zh": "未认证远程攻击者调用edge-controller，执行任意容器并控制边缘集群。",
+   "published": "2026-10-08T20:17:37.753",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "越界写入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7289775"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级DataPower至修复版本；限制服务端口暴露",
-   "repro_worthy": "一般",
-   "repro_note": "构造含恶意RFC2047编码字的请求触发解析器越界写",
-   "impact_scope": "IBM网关设备，可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16340",
-   "description": "IBM DataPower Gateway 10.5.0.0 through 10.5.0.22, 10.6.1 through 10.6.6, 10.6.0.0 through 10.6.0.10, and 11.0.0.0 through 11.0.0.2 could allow a remote attacker to execute arbitrary code due to an out-of-bounds write in the RFC2047 encoded-word parser."
-  },
-  {
-   "id": "CVE-2026-14991",
-   "tier": "critical",
-   "title": "DataPower本地缓冲区溢出提权",
-   "title_zh": "DataPower本地缓冲区溢出提权",
-   "summary_zh": "本地用户可利用边界检查不当溢出缓冲区，在DataPower系统上执行任意代码。",
-   "published": "2026-10-08T14:16:51.740",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "越界写入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7289775"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复版本；限制本地低权账户访问",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "本地低权用户，影响网关主机",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14991",
-   "description": "IBM DataPower Gateway 10.5.0.0 through 10.5.0.22, 10.6.1 through 10.6.6, 10.6.0.0 through 10.6.0.10, and 11.0.0.0 through 11.0.0.2 is vulnerable to a buffer overflow, caused by improper bounds checking. A local user could overflow the buffer and execute arbitrary code on the system."
-  },
-  {
-   "id": "CVE-2026-15762",
-   "tier": "critical",
-   "title": "DataPower越界写远程代码执行",
-   "title_zh": "DataPower越界写远程代码执行",
-   "summary_zh": "远程攻击者可触发越界写，在DataPower网关上执行任意代码，导致系统失陷。",
-   "published": "2026-10-08T14:16:51.880",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "越界写入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7289775"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复版本；限制服务端口暴露",
-   "repro_worthy": "一般",
-   "repro_note": "向受影响服务发送特制请求触发越界写",
-   "impact_scope": "IBM网关设备，可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-15762",
-   "description": "IBM DataPower Gateway 10.5.0.0 through 10.5.0.22, 10.6.1 through 10.6.6, 10.6.0.0 through 10.6.0.10, and 11.0.0.0 through 11.0.0.2 could allow a remote attacker to execute arbitrary code due to an out-of-bounds write."
-  },
-  {
-   "id": "CVE-2026-14992",
-   "tier": "critical",
-   "title": "DataPower缓冲区溢出高危",
-   "title_zh": "DataPower缓冲区溢出高危",
-   "summary_zh": "DataPower网关存在缓冲区溢出，可能被利用导致任意代码执行。",
-   "published": "2026-10-08T15:17:50.210",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "越界写入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7289775"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复版本；关注厂商安全补丁",
-   "repro_worthy": "一般",
-   "repro_note": "向受影响组件输入超长数据触发缓冲区溢出",
-   "impact_scope": "IBM网关设备，内外部部署",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14992",
-   "description": "IBM DataPower Gateway 10.5.0.0 through 10.5.0.22, 10.6.1 through 10.6.6, 10.6.0.0 through 10.6.0.10, and 11.0.0.0 through 11.0.0.2 vulnerable to buffer overflow."
-  },
-  {
-   "id": "CVE-2026-9209",
-   "tier": "critical",
-   "title": "mJobTime登录面板未授权SQL执行",
-   "title_zh": "mJobTime登录面板未授权SQL执行",
-   "summary_zh": "未授权攻击者可调用Login.aspx回发方法执行任意SQL，以DBA权限操作Sybase数据库。",
-   "published": "2026-10-08T15:17:57.677",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-250",
     "缺失认证"
    ],
    "difficulty": "低(远程·免认证)",
@@ -326,15 +810,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://mjobtime.com/"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.sprocketsecurity.com/blog/cve-2026-9209-pre-authentication-sql-injection-to-remote-code-execution-in-mjobtime"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/mjobtime-unauthenticated-sql-execution-rce-via-login-aspx"
+     "url": "https://www.ibm.com/support/pages/node/7288832"
     }
    ],
    "poc": [],
@@ -345,39 +821,185 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至15.7.3.32之后修复版本；限制管理面板访问",
+   "action_zh": "升级/应用IBM补丁；限制edge-controller访问。",
    "repro_worthy": "一般",
-   "repro_note": "未授权调用Login.aspx的runQueryButton提交任意SQL",
-   "impact_scope": "业务管理面板，可控制数据库",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-9209",
-   "description": "mJobTime through build 15.7.3.32 contains an unauthenticated SQL execution vulnerability in the Login.aspx admin panel handlers, where the runQueryButton postback and exportSqlQuery_Server PageMethod execute caller-supplied SQL against the backing Sybase SQL Anywhere database using DBA/sysadmin privileges with no server-side authentication enforced beyond a client-side sessionStorage flag."
+   "repro_note": "未认证请求edge-controller接口，提交恶意容器镜像",
+   "impact_scope": "数据安全平台，边缘集群控制",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84272",
+   "description": "IBM Guardium Data Protection 12.1 and 12.2.2 are vulnerable to missing authentication in the edge-controller component. An unauthenticated remote attacker could exploit this vulnerability to execute arbitrary container images and gain control of managed edge clusters."
+  },
+  {
+   "id": "CVE-2026-107780",
+   "tier": "critical",
+   "title": "Skyeye TTS接口命令注入RCE",
+   "title_zh": "Skyeye TTS接口命令注入RCE",
+   "summary_zh": "未认证攻击者经textToSpeech的format参数注入单引号，执行系统命令。",
+   "published": "2026-10-08T21:17:52.940",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/dromara/skyeye"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/dromara/skyeye/blob/003549ae5615bd114ba5bb8ddf6a8e8ead97c321/skyeye-promote/skyeye-common/src/main/java/com/skyeye/common/service/impl/TtsServiceImpl.java#L105-L166"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/dromara/skyeye/issues/29"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复；临时禁用TTS接口或过滤format。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问textToSpeech接口，format参数注入单引号",
+   "impact_scope": "APM监控系统，内网服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107780",
+   "description": "Dromara Skyeye through commit 003549ae5615bd114ba5bb8ddf6a8e8ead97c321 contains an OS command injection vulnerability in the unauthenticated /post/TtsController/textToSpeech endpoint via the format parameter. Attackers can inject a single quote into format to break out of the PowerShell string and execute commands as the Skyeye service account on Windows."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "curl/curl",
-   "sha": "2874cc647b0b46686c1b5b36bb927a5cb70d13fc",
-   "url": "https://github.com/curl/curl/commit/2874cc647b0b46686c1b5b36bb927a5cb70d13fc",
-   "title": "mqttd: work around bogus VS2019 32-bit compiler warning",
-   "date": "2026-10-08T15:36:30",
-   "score": 2,
+   "repo": "golang/go",
+   "sha": "ba8f5c9adecf4546e95cbeacb816f39ec88be183",
+   "url": "https://github.com/golang/go/commit/ba8f5c9adecf4546e95cbeacb816f39ec88be183",
+   "title": "net/http/internal/http2: prevent crash due to HPACK encoder race",
+   "date": "2026-10-08T18:55:31",
+   "score": 4,
    "matched": [
-    "格式串"
+    "CVE",
+    "崩溃"
+   ],
+   "cve": "CVE-2026-97032"
+  },
+  {
+   "repo": "envoyproxy/envoy",
+   "sha": "5ff3cab9fd709edc4c52b6f72adbdba9a7498fdc",
+   "url": "https://github.com/envoyproxy/envoy/commit/5ff3cab9fd709edc4c52b6f72adbdba9a7498fdc",
+   "title": "deps: Update QUICHE to 9e60ac2 (#48104)",
+   "date": "2026-10-08T17:55:37",
+   "score": 4,
+   "matched": [
+    "未初始化/内存破坏",
+    "认证/鉴权绕过"
    ],
    "cve": null
   },
   {
-   "repo": "php/php-src",
-   "sha": "303e6aa82f2834a3c0d49a23824611d88f1e88c3",
-   "url": "https://github.com/php/php-src/commit/303e6aa82f2834a3c0d49a23824611d88f1e88c3",
-   "title": "ext/zip: Fix use-after-free in the archive destructor path (#23779)",
-   "date": "2026-10-08T09:34:33",
-   "score": 2,
+   "repo": "golang/go",
+   "sha": "2557edd671b4ec84af8a5841a621a6abab39774b",
+   "url": "https://github.com/golang/go/commit/2557edd671b4ec84af8a5841a621a6abab39774b",
+   "title": "net/http: apply header limits to Trailer headers too",
+   "date": "2026-10-08T18:55:37",
+   "score": 3,
    "matched": [
-    "UAF"
+    "CVE"
    ],
-   "cve": null
+   "cve": "CVE-2026-78659"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "3ccab6349dc124b90244b0f6f0e385ec3d70abd3",
+   "url": "https://github.com/golang/go/commit/3ccab6349dc124b90244b0f6f0e385ec3d70abd3",
+   "title": "crypto/tls: validate ECH outer extension references",
+   "date": "2026-10-08T18:55:25",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-97031"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "c8ef343b2b7dd5c1deadb92dd57f1e4c9405d233",
+   "url": "https://github.com/golang/go/commit/c8ef343b2b7dd5c1deadb92dd57f1e4c9405d233",
+   "title": "net/http: avoid server reuse of connection after CONNECT",
+   "date": "2026-10-08T18:55:20",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-94439"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "eb7cc21e71e8661683c292684525f3cb0eff60f9",
+   "url": "https://github.com/golang/go/commit/eb7cc21e71e8661683c292684525f3cb0eff60f9",
+   "title": "net/http/internal/http2: avoid 2x refund on stream close with buffered data",
+   "date": "2026-10-08T18:55:14",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-78663"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "61a325b83866710c828ec003bf627d6e52783650",
+   "url": "https://github.com/golang/go/commit/61a325b83866710c828ec003bf627d6e52783650",
+   "title": "net/http: limit the size of range headers parsed in ServeContent",
+   "date": "2026-10-08T18:55:09",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-78667"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "345f9967fc343cb8c00ba0bf6c0c0b51ec03f261",
+   "url": "https://github.com/golang/go/commit/345f9967fc343cb8c00ba0bf6c0c0b51ec03f261",
+   "title": "net/http/internal/http2: avoid excessive work on initial window changes",
+   "date": "2026-10-08T18:55:03",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-78669"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "7b536ca2f2ba5c4798990b9eb653d602bad508b8",
+   "url": "https://github.com/golang/go/commit/7b536ca2f2ba5c4798990b9eb653d602bad508b8",
+   "title": "net/textproto: enforce MIME memory limit on first line",
+   "date": "2026-10-08T18:38:03",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-94440"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "587fb2646e02a7304b845c352048312557f3bc94",
+   "url": "https://github.com/golang/go/commit/587fb2646e02a7304b845c352048312557f3bc94",
+   "title": "net/http, net/http/httputil: avoid post-CONNECT pool corruption",
+   "date": "2026-10-08T18:37:58",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-56866"
   }
  ]
 }
