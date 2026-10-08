@@ -70,6 +70,11 @@ def push_dingtalk(md: str, title: str, at_all: bool) -> None:
     webhook = env("DINGTALK_WEBHOOK")
     if not webhook:
         raise RuntimeError("未配置 DINGTALK_WEBHOOK")
+    # 自定义关键词按 markdown 标题匹配:配了 DINGTALK_KEYWORD 就保证标题含它,
+    # 永绝 errcode 310000(关键词不匹配)导致整渠道失联
+    keyword = env("DINGTALK_KEYWORD")
+    if keyword and keyword not in title:
+        title = f"【{keyword}】{title}"
     result = _post_json(_dingtalk_sign(webhook), {
         "msgtype": "markdown",
         "markdown": {"title": title, "text": md},

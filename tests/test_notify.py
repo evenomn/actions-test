@@ -91,3 +91,20 @@ def test_md_to_html_escapes():
 def test_md_to_mrkdwn():
     out = notify._md_to_mrkdwn("### H\n**b** [l](https://a)")
     assert "*H*" in out and "*b*" in out and "<https://a|l>" in out
+
+
+def test_dingtalk_title_guarantees_keyword(monkeypatch):
+    """配了 DINGTALK_KEYWORD 时标题必含关键词,防 310000 关键词不匹配。"""
+    import vulnmon.notify as notify
+
+    sent = {}
+    monkeypatch.setenv("DINGTALK_WEBHOOK", "https://oapi.dingtalk.com/robot/send?access_token=x")
+    monkeypatch.setenv("DINGTALK_KEYWORD", "安全日报")
+    monkeypatch.setattr(notify, "_dingtalk_sign", lambda u: u)
+    monkeypatch.setattr(notify, "_post_json",
+                        lambda url, payload: sent.update(payload) or {"errcode": 0})
+    notify.push_dingtalk("# 漏洞日报", "⚡ 高优漏洞告警 10-08 12:00 2条", True)
+    assert sent["markdown"]["title"].startswith("【安全日报】")
+    # 标题已含关键词时不重复添加
+    notify.push_dingtalk("# 漏洞日报", "安全日报 漏洞日报 2026-10-08", False)
+    assert sent["markdown"]["title"] == "安全日报 漏洞日报 2026-10-08"

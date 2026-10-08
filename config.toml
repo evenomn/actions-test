@@ -184,6 +184,8 @@ retention_days = 30
 #
 # 渠道(配置任意一个即启用该渠道;channels 留空时自动探测):
 #   DINGTALK_WEBHOOK / DINGTALK_SECRET
+#   DINGTALK_KEYWORD             钉钉机器人自定义关键词(强烈建议配:
+#                                 标题自动带关键词,防 310000 不匹配导致告警失联)
 #   FEISHU_WEBHOOK                 飞书自定义机器人
 #   WECOM_WEBHOOK                  企业微信群机器人
 #   TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID
