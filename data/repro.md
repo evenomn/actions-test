@@ -1,10 +1,10 @@
 # 高价值可复现漏洞库
 
-> 自动维护,严格准入(每日新增≤5,总量≤100),滚动保留 21 天。
-> 机器可读版: [`data/repro.json`](data/repro.json)
-> 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl data/repro.json`
+> 自动维护,严格准入(每日新增限量,总量不限,永久保留)。
+> 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
+> 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-08 12:30 UTC · 共 **80** 条(强烈推荐 2 / 值得 78)
+**更新**: 2026-10-08 16:39 UTC · 共 **81** 条(强烈推荐 3 / 值得 78)
 
 ---
 
@@ -27,6 +27,13 @@ PoC: [watchtowrlabs/watchTowr-vs-f5-bigip-PreAuth-RCE-CVE-2026-94127 13★(有�
 影响: mikrotik routeros >=6.0 <6.49.21; mikrotik routeros >=7.0 <7.23.4
 PoC: [HackSpeak/CVE-2026-67279 5★(有源码)](https://github.com/HackSpeak/CVE-2026-67279) · [gagaltotal/CVE-2026-mikrotik-poc 3★(有源码)](https://github.com/gagaltotal/CVE-2026-mikrotik-poc) · [NVD exploit 引用](https://npratley.net/reversing-mikrotiks-silent-patch-the-routeros-7-23-4-fix-they-wouldnt-explain/)
 参考: [厂商通告](https://mikrotik.com/supportsec/september-2026-vulnerability/)
+
+### DataPower堆溢出未认证RCE
+[CVE-2026-14269](https://nvd.nist.gov/vuln/detail/CVE-2026-14269) | P0 立即处置 | CVSS 9.8 | 披露 2026-10-08 | 入库 2026-10-08
+未认证远程攻击者可利用边界检查不当触发堆溢出，在DataPower上执行任意代码。
+复现: 强烈推荐 — 未认证向网关服务发送恶意请求触发堆溢出 · 影响面: 边界网关设备，常暴露公网
+处置: 立即升级至修复版本；限制网关服务公网暴露
+参考: [参考](https://www.ibm.com/support/pages/node/7289775)
 
 
 ## 值得复现
