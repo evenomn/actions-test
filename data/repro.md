@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-07 07:21 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
+**更新**: 2026-10-08 02:53 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
 
 ---
 
@@ -123,6 +123,24 @@ PoC: [ressl/cve-2026-87902-poc 38★(有源码)](https://github.com/ressl/cve-20
 PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 15★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker) · [orjanj/netscaler_threat_hunt_helper 0★(有源码)](https://github.com/orjanj/netscaler_threat_hunt_helper)
 参考: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697174) · [厂商通告](https://community.citrix.com/techzone-blogs/110_security-updates/understanding-and-addressing-cve-2026-88779-in-citrix-netscaler-adc-and-citrix-netscaler-gateway/)
 
+### CVE-2026-93605
+[CVE-2026-93605](https://nvd.nist.gov/vuln/detail/CVE-2026-93605) | P1 重点关注 | CVSS 10.0 | EPSS 0.7% | 披露 2026-10-07 | 入库 2026-10-08
+开源,可源码审计复现
+复现: 值得
+影响: npm:vm2 <= 3.12.0(修复: 3.12.1)
+
+### CVE-2026-102255
+[CVE-2026-102255](https://nvd.nist.gov/vuln/detail/CVE-2026-102255) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+
+### CVE-2025-70518
+[CVE-2025-70518](https://nvd.nist.gov/vuln/detail/CVE-2025-70518) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+
+### CVE-2026-76482
+[CVE-2026-76482](https://nvd.nist.gov/vuln/detail/CVE-2026-76482) | P1 重点关注 | 网络设备 | CVSS 10.0 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+
 ### CVE-2026-32579
 [CVE-2026-32579](https://nvd.nist.gov/vuln/detail/CVE-2026-32579) | P1 重点关注 | CMS | CVSS 10.0 | EPSS 0.5% | 披露 2026-10-06 | 入库 2026-10-07
 复现: 值得
@@ -177,23 +195,3 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
-
-### CVE-2026-104610
-[CVE-2026-104610](https://nvd.nist.gov/vuln/detail/CVE-2026-104610) | P1 重点关注 | OA/协同办公 | CVSS 10.0 | 披露 2026-10-02 | 入库 2026-10-03
-复现: 值得
-
-### CVE-2026-103956
-[CVE-2026-103956](https://nvd.nist.gov/vuln/detail/CVE-2026-103956) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-02 | 入库 2026-10-03
-复现: 值得
-
-### GHSA-v2f8-6655-7grj
-[GHSA-v2f8-6655-7grj](https://github.com/advisories/GHSA-v2f8-6655-7grj) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-02 | 入库 2026-10-03
-开源,可源码审计复现
-复现: 值得
-影响: pip:vibe-trading-ai >= 0.1.0, < 0.1.7(修复: 0.1.7)
-
-### CVE-2026-92940
-[CVE-2026-92940](https://nvd.nist.gov/vuln/detail/CVE-2026-92940) | P1 重点关注 | CVSS 10.0 | EPSS 0.5% | 披露 2026-10-01 | 入库 2026-10-02
-开源,可源码审计复现
-复现: 值得
-影响: npm:vm2 >= 3.11.3, <= 3.11.6(修复: 3.11.7)
