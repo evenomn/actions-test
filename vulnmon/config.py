@@ -149,7 +149,7 @@ DEFAULTS = {
     "repro": True,
     "repro_retention_days": 21,
     "repro_max_per_day": 5,
-    "repro_max_total": 30,
+    "repro_max_total": 100,
     "retention_days": 30,
 }
 

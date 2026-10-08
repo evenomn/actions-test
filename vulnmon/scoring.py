@@ -3,9 +3,48 @@
 from __future__ import annotations
 
 import re
+import urllib.parse
 
 URGENCY_LEVELS = ("P0 立即处置", "P1 重点关注", "P2 保持关注")
 REPRO_LEVELS = ("强烈推荐", "值得", "一般", "不建议")
+
+# 参考链接域名 → 厂商:NVD「Awaiting Analysis」条目没有 CPE,但厂商通告/
+# 工单链接的域名就是可靠的厂商信号(如 jira.atlassian.com → Atlassian)。
+# 注意:不放 github.com(GHSA/PoC 链接常指向它,不代表受影响产品是 GitHub)
+REF_VENDOR_MAP = {
+    "atlassian.com": "Atlassian", "microsoft.com": "Microsoft",
+    "redhat.com": "Red Hat", "canonical.com": "Canonical", "ubuntu.com": "Ubuntu",
+    "debian.org": "Debian", "oracle.com": "Oracle", "apple.com": "Apple",
+    "gitlab.com": "GitLab", "cisco.com": "Cisco", "fortinet.com": "Fortinet",
+    "paloaltonetworks.com": "Palo Alto", "juniper.net": "Juniper",
+    "huawei.com": "Huawei", "zte.com.cn": "ZTE", "dlink.com": "D-Link",
+    "tp-link.com": "TP-Link", "netgear.com": "NETGEAR", "tenda.cn": "Tenda",
+    "hikvision.com": "Hikvision", "dahuatech.com": "Dahua",
+    "zabbix.com": "Zabbix", "grafana.com": "Grafana", "citrix.com": "Citrix",
+    "f5.com": "F5", "vmware.com": "VMware", "broadcom.com": "Broadcom",
+    "apache.org": "Apache", "spring.io": "Spring", "jenkins.io": "Jenkins",
+    "mozilla.org": "Mozilla", "chromium.org": "Google Chrome",
+    "php.net": "PHP", "nodejs.org": "Node.js", "python.org": "Python",
+    "openssl.org": "OpenSSL", "wordpress.org": "WordPress", "drupal.org": "Drupal",
+    "adobe.com": "Adobe", "samsung.com": "Samsung", "qnap.com": "QNAP",
+    "synology.com": "Synology", "ivanti.com": "Ivanti", "progress.com": "Progress",
+    "zscaler.com": "Zscaler", "sophos.com": "Sophos", "trendmicro.com": "Trend Micro",
+    "puppet.com": "Puppet", "ansible.com": "Ansible", "splunk.com": "Splunk",
+    "zohocorp.com": "Zoho", "manageengine.com": "ManageEngine",
+}
+
+
+def vendor_from_refs(refs) -> str | None:
+    """从参考链接域名推断厂商;取第一个命中的(厂商通告通常排在参考前面)。"""
+    for _, url in refs or []:
+        host = urllib.parse.urlparse(url).netloc.lower()
+        if not host:
+            continue
+        for domain, vendor in sorted(REF_VENDOR_MAP.items(),
+                                     key=lambda kv: -len(kv[0])):
+            if host == domain or host.endswith("." + domain):
+                return vendor
+    return None
 
 # NVD 里插件市场漏洞的三类通用特征(不针对任何特定生态/组件):
 # 1) 批量上报句式:「Extension - vendor.example - 描述」——中段带第三方厂商域名
@@ -156,6 +195,8 @@ def vendor_key(item: dict) -> str:
         return item["ghsa_ranges"][0].split()[0].split(":")[-1].split("/")[0]
     if item.get("kev_name"):
         return item["kev_name"].split()[0].lower()
+    if item.get("vendor_hint"):
+        return item["vendor_hint"].lower()
     if item["keyword_hit"]:
         # 无厂商信息时按关注词聚合(如 Jenkins 插件批量公告)
         return f"kw:{item['keyword_hit']}"

@@ -22,7 +22,7 @@ from .http import nvd_sleep
 from .models import is_cve, new_item
 from .scoring import (fallback_repro, fallback_urgency, is_open_source,
                       is_third_party_extension, item_haystack,
-                      match_keywords, priority, vendor_key)
+                      match_keywords, priority, vendor_from_refs, vendor_key)
 from .scoring import is_wordpress_plugin  # 兼容旧名(= is_third_party_extension)
 from .sources.epss import fetch_epss
 from .sources.kev import apply_kev
@@ -132,6 +132,9 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
         item["category"] = classify(item)
         item["open_source"] = is_open_source(item)
         item["keyword_hit"] = match_keywords(item, cfg["keywords"])
+        if not item["products"]:
+            # NVD「Awaiting Analysis」条目没有 CPE,用参考链接域名兜底识别厂商
+            item["vendor_hint"] = vendor_from_refs(item.get("refs"))
 
     # 变更检测(daily 且开启时):已见漏洞升分/新增PoC引用 → 重推
     if mode == "daily" and cfg.get("track_changes", True) and dedup:
@@ -205,6 +208,8 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
             item["category"] = classify(item)
             item["open_source"] = is_open_source(item)
             item["keyword_hit"] = match_keywords(item, cfg["keywords"])
+            if not item["products"]:
+                item["vendor_hint"] = vendor_from_refs(item.get("refs"))
             item["tier"] = "critical"
             if item["id"] in upgrade_ids:
                 stats["kev_upgraded"] += 1

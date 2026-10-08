@@ -89,7 +89,8 @@ def prefix_unauth(unauth: bool) -> str:
 
 def heuristic_title(item: dict) -> str:
     """无 LLM 时的可读标题:产品 + (未授权) + 漏洞类型,一眼能看出是什么洞。"""
-    name = product_name(item) or guess_product_from_desc(item["desc"])
+    name = (product_name(item) or guess_product_from_desc(item["desc"])
+            or (item.get("vendor_hint") or ""))
     ttype = item["cwe_labels"][0] if item["cwe_labels"] else (item.get("severity") or "").title() or "漏洞"
     m = dict(p.split(":", 1) for p in (item.get("vector") or "").split("/") if ":" in p)
     unauth = m.get("AV") == "N" and m.get("PR") == "N"

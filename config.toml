@@ -27,6 +27,7 @@ max_per_vendor = 3
 keywords = [
   "nginx", "openssh", "openssl", "exchange",
   "spring", "tomcat", "vmware", "jenkins", "gitlab",
+  "atlassian", "jira", "confluence", "bitbucket",
 ]
 
 # 垃圾过滤:标题/描述/组件命中这些词的直接丢弃
@@ -163,9 +164,11 @@ repro = true
 repro_retention_days = 21
 
 # 严格准入:每日新增上限与库存总量上限。高价值可复现漏洞通常一天只有零星几条,
-# 超出说明标准松了。每日新增按价值排序取头部,超出者次日重新参选不丢失
+# 超出说明标准松了。每日新增按价值排序取头部,超出者进候补队列次日再战(7 天淘汰)。
+# 总量上限要容得下稳态:每日 5 条 × 保留 21 天 ≈ 100,设小了每天都在裁库、
+# 详情页也跟着被删(之前 30 的上限就是这个病的根源)
 repro_max_per_day = 5
-repro_max_total = 30
+repro_max_total = 100
 
 [state]
 # 已见 CVE 记录的保留天数(防 state.json 无限增长)

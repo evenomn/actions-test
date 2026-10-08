@@ -63,7 +63,7 @@ def test_daily_cap_on_new_entries():
         items.append(mk(f"CVE-2026-N{i}", _ai_judged=True,
                         kev=(i < 2), poc_quality="code" if i < 2 else None,
                         cvss=9.9 - i * 0.1))
-    db = merge_repro([], items, NOW, retention_days=21, max_new_per_day=5, max_total=30)
+    db, _ = merge_repro([], items, NOW, retention_days=21, max_new_per_day=5, max_total=30)
     ids = [r["id"] for r in db]
     assert len(db) == 5
     assert "CVE-2026-N0" in ids and "CVE-2026-N1" in ids   # KEV+源码 优先占位
@@ -78,11 +78,11 @@ def test_total_cap_keeps_highest_value():
         "poc": [{"url": f"u{i}", "label": f"x/p{i} 9★ (有源码)"}],   # 过存量复检
         "link": f"https://nvd.nist.gov/vuln/detail/CVE-2026-T{i}",
     } for i in range(10)]
-    db = merge_repro(existing, [], NOW, retention_days=21,
+    db, _ = merge_repro(existing, [], NOW, retention_days=21,
                      max_new_per_day=5, max_total=10)
     assert len(db) == 10
     # 再进一个 KEV 高价值,总量 11 超上限 10 → 淘汰分最低的 T0
-    db = merge_repro(db, [mk("CVE-2026-KEV", kev=True, repro_worthy="强烈推荐")],
+    db, _ = merge_repro(db, [mk("CVE-2026-KEV", kev=True, repro_worthy="强烈推荐")],
                      NOW, retention_days=21, max_new_per_day=5, max_total=10)
     assert len(db) == 10
     assert any(r["id"] == "CVE-2026-KEV" for r in db)
@@ -101,7 +101,7 @@ def test_merge_purges_third_party_legacy():
         "first_seen": "2026-09-20", "last_seen": "2026-09-27", "cvss": 9.8, "kev": True,
         "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-K1",
     }]
-    db = merge_repro(existing, [], NOW, retention_days=21)
+    db, _ = merge_repro(existing, [], NOW, retention_days=21)
     ids = [r["id"] for r in db]
     assert "CVE-2026-J1" not in ids   # 第三方+无AI+无KEV → 清出
     assert "CVE-2026-K1" in ids
@@ -114,7 +114,7 @@ def test_merge_removes_downgraded():
         "last_seen": "2026-09-27", "cvss": 9.0,
         "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-1",
     }]
-    db = merge_repro(existing, [mk(repro_worthy="一般")], NOW)
+    db, _ = merge_repro(existing, [mk(repro_worthy="一般")], NOW)
     assert db == []
 
 
@@ -130,7 +130,7 @@ def test_merge_repro_new_update_expire():
     new_items = [mk("CVE-2026-1", cvss=9.8, _ai_judged=True),   # 升分+新标题刷新
                  mk("CVE-2026-2", repro_worthy="强烈推荐", _ai_judged=True,
                     kev=True, poc_links=[("https://github.com/x/y", "x/y 3★")])]
-    db = merge_repro(existing, new_items, NOW, retention_days=21)
+    db, _ = merge_repro(existing, new_items, NOW, retention_days=21)
     ids = [r["id"] for r in db]
     assert "CVE-2026-OLD" not in ids       # 超过 21 天淘汰
     assert set(ids) == {"CVE-2026-2", "CVE-2026-1"}
@@ -143,12 +143,12 @@ def test_merge_repro_new_update_expire():
 
 
 def test_merge_skips_non_qualified():
-    db = merge_repro([], [mk(repro_worthy="一般")], NOW)
+    db, _ = merge_repro([], [mk(repro_worthy="一般")], NOW)
     assert db == []
 
 
 def test_repro_json_structure():
-    db = merge_repro([], [mk("CVE-2026-2", repro_worthy="强烈推荐",
+    db, _ = merge_repro([], [mk("CVE-2026-2", repro_worthy="强烈推荐",
                             _ai_judged=True, kev=True)], NOW)
     doc = json.loads(build_repro_json(db, NOW))
     assert doc["count"] == 1 and doc["count_recommended"] == 1
@@ -160,7 +160,7 @@ def test_repro_json_structure():
 
 def test_repro_md_renders(monkeypatch):
     monkeypatch.setenv("GITHUB_REPOSITORY", "evenomn/actions-test")
-    db = merge_repro([], [
+    db, _ = merge_repro([], [
         mk("CVE-2026-2", repro_worthy="强烈推荐", _ai_judged=True, kev=True,
            kev_due="2026-10-15", title_zh="Fortinet VPN 预认证 RCE",
            repro_note="未授权 /remote/login,默认配置可利用",
@@ -218,7 +218,7 @@ def test_legacy_entries_revalidated():
          "first_seen": "2026-09-20", "last_seen": "2026-09-28",
          "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-D"},                    # 无证据低分 → 清
     ]
-    db = merge_repro(existing, [], NOW)
+    db, _ = merge_repro(existing, [], NOW)
     ids = {r["id"] for r in db}
     assert ids == {"CVE-2026-A", "CVE-2026-B", "CVE-2026-C"}
 
@@ -234,3 +234,57 @@ def test_write_repro_prunes_stale_details(tmp_path: Path):
                 tmp_path, NOW)
     assert not stale.exists()
     assert keep_file.exists()
+
+
+def test_quota_deferred_enters_pending_and_admitted_next_day():
+    """当日配额用完 → 进候补队列;次日有剩余额度时转正,不再永久丢失。"""
+    items = [mk(f"CVE-2026-Q{i}", _ai_judged=True, cvss=9.9 - i * 0.1)
+             for i in range(7)]  # 7 条合格,配额 5
+    db, pending = merge_repro([], items, NOW, max_new_per_day=5)
+    assert len(db) == 5 and len(pending) == 2
+    assert {p["id"] for p in pending} == {"CVE-2026-Q5", "CVE-2026-Q6"}
+    assert all(p.get("queued") == NOW.date().isoformat() for p in pending)
+    # 次日:窗口里没有新条目,候补用剩余额度转正
+    nxt = NOW + timedelta(days=1)
+    db2, pending2 = merge_repro(db, [], nxt, max_new_per_day=5, pending=pending)
+    assert len(db2) == 7 and pending2 == []
+    admitted = next(r for r in db2 if r["id"] == "CVE-2026-Q5")
+    assert admitted["last_seen"] == nxt.date().isoformat()
+    assert "queued" not in admitted
+    # 记录完整:候补转正的条目字段不丢
+    assert admitted["cvss"] == 9.4 and admitted["repro_worthy"] == "值得"
+
+
+def test_pending_expires_after_keep_days():
+    """候补排队超过保留期(7 天)还没排上 → 淘汰,不无限积压。"""
+    old = [{"id": "CVE-2026-OLD", "repro_worthy": "值得", "cvss": 9.5,
+            "first_seen": "2026-09-01", "last_seen": "2026-09-01",
+            "queued": "2026-09-01", "ai_judged": True,
+            "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-OLD"}]
+    db, pending = merge_repro([], [], NOW, pending=old)
+    assert db == [] and pending == []   # NOW = 09-28,排队 27 天 → 淘汰
+
+
+def test_pending_item_reappearing_today_uses_fresh_data():
+    """候补条目次日重新出现在窗口里:按新数据参选,旧候补记录作废。"""
+    items = [mk(f"CVE-2026-R{i}", _ai_judged=True, cvss=9.9 - i * 0.1)
+             for i in range(6)]
+    db, pending = merge_repro([], items, NOW, max_new_per_day=5)
+    assert len(pending) == 1 and pending[0]["id"] == "CVE-2026-R5"
+    # 次日 R5 升分后重新出现:直接按新条目参选(占当日额度),旧 pending 不重复计
+    nxt = NOW + timedelta(days=1)
+    r5_new = dict(items[5], cvss=10.0)
+    db2, pending2 = merge_repro(db, [r5_new], nxt, max_new_per_day=5, pending=pending)
+    ids = [r["id"] for r in db2]
+    assert "CVE-2026-R5" in ids and pending2 == []
+    assert next(r for r in db2 if r["id"] == "CVE-2026-R5")["cvss"] == 10.0
+
+
+def test_write_repro_persists_pending(tmp_path: Path):
+    """候补队列持久化到 repro.json,跨运行不丢。"""
+    items = [mk(f"CVE-2026-P{i}", _ai_judged=True, cvss=9.9 - i * 0.1)
+             for i in range(7)]
+    write_repro(items, {"repro_retention_days": 21}, tmp_path, NOW)
+    doc = json.loads((tmp_path / "repro.json").read_text(encoding="utf-8"))
+    assert doc["count"] == 5 and doc["pending_count"] == 2
+    assert {p["id"] for p in doc["pending"]} == {"CVE-2026-P5", "CVE-2026-P6"}

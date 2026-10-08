@@ -72,18 +72,25 @@ def parse_cve(cve: dict) -> dict | None:
 
     item["difficulty"] = exploit_difficulty(item["vector"])
 
-    for ref in cve.get("references", []):
-        tags = ref.get("tags") or []
-        url = ref.get("url") or ""
-        if not url:
-            continue
+    raw_refs = [(ref.get("url") or "", ref.get("tags") or [])
+                for ref in cve.get("references", []) if ref.get("url")]
+    for url, tags in raw_refs:
         if "Exploit" in tags:
             item["has_exploit_ref"] = True
             item["exploit_ref_url"] = url
-        elif "Vendor Advisory" in tags or "Patch" in tags:
-            label = "厂商通告" if "Vendor Advisory" in tags else "官方补丁"
-            if url not in [u for _, u in item["refs"]] and len(item["refs"]) < 3:
-                item["refs"].append((label, url))
+    # 厂商通告/补丁标签优先;「Awaiting Analysis」的参考链接没有标签,
+    # 也收进「参考」(厂商域名兜底识别 + 日报参考行都靠它)
+    for url, tags in raw_refs:
+        if "Exploit" in tags:
+            continue
+        if "Vendor Advisory" in tags:
+            label = "厂商通告"
+        elif "Patch" in tags:
+            label = "官方补丁"
+        else:
+            label = "参考"
+        if url not in [u for _, u in item["refs"]] and len(item["refs"]) < 3:
+            item["refs"].append((label, url))
     return item
 
 

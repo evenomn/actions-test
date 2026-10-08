@@ -69,6 +69,9 @@ CWE_LABELS = {
     "CWE-862": "缺失授权(越权)",
     "CWE-863": "授权错误",
     "CWE-918": "SSRF",
+    "CWE-1392": "默认凭据",
+    "CWE-552": "任意文件读取",
+    "CWE-913": "沙箱逃逸",
 }
 
 
@@ -103,6 +106,7 @@ def new_item(cve_id: str) -> dict:
         "epss": None,
         "epss_percentile": None,
         "tier": None,
+        "vendor_hint": None,      # 参考链接域名推断的厂商(NVD 无 CPE 时的兜底)
     }
 
 
@@ -119,10 +123,11 @@ def map_cwes(raw_cwes: list) -> list[str]:
 
 
 def exploit_difficulty(vector: str | None) -> str | None:
-    """从 CVSS v3.x 向量推导利用难度:低/中/高 + 关键因素。"""
-    if not vector or not vector.startswith("CVSS:3"):
+    """从 CVSS v3.x / v4.0 向量推导利用难度:低/中/高 + 关键因素。"""
+    if not vector or not (vector.startswith("CVSS:3") or vector.startswith("CVSS:4")):
         return None
     m = dict(p.split(":", 1) for p in vector.split("/") if ":" in p)
+    is_v4 = vector.startswith("CVSS:4")
     factors, hardship = [], 0
     av, ac = m.get("AV"), m.get("AC")
     pr, ui = m.get("PR"), m.get("UI")
@@ -140,6 +145,9 @@ def exploit_difficulty(vector: str | None) -> str | None:
     if ac == "H":
         factors.append("利用条件苛刻")
         hardship += 1
+    if is_v4 and m.get("AT") == "P":  # v4 攻击前提(需特定部署/配置条件)
+        factors.append("利用条件苛刻")
+        hardship += 1
     if pr == "N":
         factors.append("免认证")
     elif pr == "L":
@@ -148,7 +156,9 @@ def exploit_difficulty(vector: str | None) -> str | None:
     elif pr == "H":
         factors.append("需高权限")
         hardship += 2
-    if ui == "R":
+    # v3: UI:R 需交互;v4: UI:P(被动)/A(主动)都算需交互
+    interact = ui in ("P", "A") if is_v4 else ui == "R"
+    if interact:
         factors.append("需用户交互")
         hardship += 1
     grade = "低" if hardship <= 1 else ("中" if hardship == 2 else "高")
@@ -166,17 +176,33 @@ VECTOR_LABELS = {
     "A": {"H": "完全拒绝服务", "L": "部分可用性影响", "N": "无影响"},
 }
 
+# CVSS 4.0:同名指标含义一致;新增 AT(攻击前提)与 VC/VI/VA/SC/SI/SA(分维度影响)
+VECTOR_LABELS_V4 = {
+    "AV": VECTOR_LABELS["AV"],
+    "AC": VECTOR_LABELS["AC"],
+    "AT": {"N": "无攻击前提", "P": "存在攻击前提(需特定部署/配置条件)"},
+    "PR": VECTOR_LABELS["PR"],
+    "UI": {"N": "无需用户交互", "P": "被动交互(需受害者访问)", "A": "主动交互(需受害者操作)"},
+    "VC": {"H": "完全机密性影响", "L": "部分机密性影响", "N": "无影响"},
+    "VI": {"H": "完全完整性影响", "L": "部分完整性影响", "N": "无影响"},
+    "VA": {"H": "完全可用性影响", "L": "部分可用性影响", "N": "无影响"},
+    "SC": {"H": "严重后续系统机密性影响", "L": "部分影响", "N": "无影响"},
+    "SI": {"H": "严重后续系统完整性影响", "L": "部分影响", "N": "无影响"},
+    "SA": {"H": "严重后续系统可用性影响", "L": "部分影响", "N": "无影响"},
+}
+
 
 def vector_detail(vector: str | None) -> dict:
-    """把 CVSS v3.x 向量解析成带中文解读的字段表(详情页用)。"""
-    if not vector or not vector.startswith("CVSS:3"):
+    """把 CVSS v3.x / v4.0 向量解析成带中文解读的字段表(详情页用)。"""
+    if not vector or not (vector.startswith("CVSS:3") or vector.startswith("CVSS:4")):
         return {}
+    labels = VECTOR_LABELS_V4 if vector.startswith("CVSS:4") else VECTOR_LABELS
     m = dict(p.split(":", 1) for p in vector.split("/") if ":" in p)
     out = {}
-    for key, labels in VECTOR_LABELS.items():
+    for key, table in labels.items():
         v = m.get(key)
-        if v and v in labels:
-            out[key] = f"{v} — {labels[v]}"
+        if v and v in table:
+            out[key] = f"{v} — {table[v]}"
     return out
 
 

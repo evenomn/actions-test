@@ -22,6 +22,8 @@ from .report import affected_line, item_link
 from .scoring import is_open_source, is_third_party_extension
 
 REPRO_KEEP = ("强烈推荐", "值得")
+# 候补队列保留天数:当日没抢到新增额度的条目,最多排队这么多天
+PENDING_KEEP_DAYS = 7
 
 
 def qualifies(item: dict) -> bool:
@@ -80,6 +82,7 @@ def _record(item: dict, now: datetime) -> dict:
         "category": item.get("category"),
         "cvss": item.get("cvss"),
         "epss": item.get("epss"),
+        "difficulty": item.get("difficulty"),
         "kev": bool(item.get("kev")),
         "kev_due": item.get("kev_due"),
         "ransomware": bool(item.get("ransomware")),
@@ -118,7 +121,8 @@ def _record_passes_strict(r: dict) -> bool:
 
 def merge_repro(existing: list[dict], items: list[dict], now: datetime,
                 retention_days: int = 21,
-                max_new_per_day: int = 5, max_total: int = 30) -> list[dict]:
+                max_new_per_day: int = 5, max_total: int = 30,
+                pending: list[dict] | None = None) -> tuple[list[dict], list[dict]]:
     """合并本轮入选条目;同 ID 刷新字段并更新 last_seen,过期淘汰。
 
     严格准入(防灌水):
@@ -126,6 +130,10 @@ def merge_repro(existing: list[dict], items: list[dict], now: datetime,
     - 库存总量最多 max_total 条,超出时淘汰价值最低的
     - 本轮重新研判后不再合格的 → 立即移出
     - 历史条目里「第三方扩展 + 无 AI 研判 + 无在野利用」的 → 移出
+
+    配额顺延:当日没抢到新增额度的合格条目连同记录进入候补队列(pending),
+    次日用剩余额度继续竞争;排队超过 PENDING_KEEP_DAYS 天的淘汰。
+    返回 (排序后的库, 候补队列)。
     """
     db = {r["id"]: dict(r) for r in existing if isinstance(r, dict) and r.get("id")}
     # 本轮降级/淘汰:出现过的 CVE 现在不合格 → 移出库
@@ -135,11 +143,13 @@ def merge_repro(existing: list[dict], items: list[dict], now: datetime,
     # 当日新增按价值限量(存量刷新不计入新增额度)
     new_items = sorted([i for i in items if qualifies(i)], key=_new_rank, reverse=True)
     slots = max_new_per_day
+    deferred = []
     for item in new_items:
         is_new = item["id"] not in db
         if is_new:
             if slots <= 0:
-                continue  # 今日额度用完,明天合格会重新参选(不标 pushed,不丢)
+                deferred.append(item)  # 今日额度用完,进候补队列次日再战
+                continue
             slots -= 1
         rec = _record(item, now)
         old = db.get(item["id"])
@@ -151,10 +161,33 @@ def merge_repro(existing: list[dict], items: list[dict], now: datetime,
           if not (r.get("third_party") and not r.get("ai_judged") and not r.get("kev"))}
     # 存量复检:旧规则放进来的条目按新硬门槛重新校验
     db = {cid: r for cid, r in db.items() if _record_passes_strict(r)}
+    # 候补队列:先处理上轮顺延的(按价值排序抢剩余额度);
+    # 今日在 items 里重新出现的以新数据为准(结果已在上面的 defer/入库逻辑里)
+    today_ids = {i["id"] for i in new_items}
+    pending_cutoff = (now - timedelta(days=PENDING_KEEP_DAYS)).date().isoformat()
+    pending_out = []
+    for rec in sorted(pending or [], key=_sort_key, reverse=True):
+        cid = rec.get("id")
+        if cid in db or cid in today_ids:
+            continue  # 已入库,或今日已重新参选
+        if (rec.get("queued") or "") < pending_cutoff:
+            continue  # 排队超期,淘汰
+        if slots > 0:
+            slots -= 1
+            fresh = dict(rec)
+            fresh["last_seen"] = now.date().isoformat()
+            fresh.pop("queued", None)
+            db[cid] = fresh
+        else:
+            pending_out.append(rec)
+    for item in deferred:
+        rec = _record(item, now)
+        rec["queued"] = now.date().isoformat()
+        pending_out.append(rec)
     cutoff = (now - timedelta(days=retention_days)).date().isoformat()
-    fresh = [r for r in db.values() if r.get("last_seen", "") >= cutoff]
-    ranked = sorted(fresh, key=_sort_key, reverse=True)
-    return ranked[:max_total] if max_total > 0 else ranked
+    fresh_db = [r for r in db.values() if r.get("last_seen", "") >= cutoff]
+    ranked = sorted(fresh_db, key=_sort_key, reverse=True)
+    return (ranked[:max_total] if max_total > 0 else ranked), pending_out
 
 
 def raw_url(filename: str) -> str:
@@ -164,17 +197,43 @@ def raw_url(filename: str) -> str:
     return f"data/{filename}"
 
 
-def build_repro_json(db: list[dict], now: datetime) -> str:
+def build_repro_json(db: list[dict], now: datetime,
+                     pending: list[dict] | None = None) -> str:
     n_top = sum(1 for r in db if r.get("repro_worthy") == "强烈推荐")
     doc = {
-        "schema": 1,
+        "schema": 2,
         "updated_at": now.astimezone(timezone.utc).isoformat(timespec="seconds"),
         "count": len(db),
         "count_recommended": n_top,
+        "pending_count": len(pending or []),
         "raw_md": raw_url("repro.md"),
         "items": db,
+        "pending": pending or [],
     }
     return json.dumps(doc, ensure_ascii=False, indent=1)
+
+
+def _record_to_item(r: dict) -> dict:
+    """把库内记录反构造为条目,供详情页渲染(候补转正的条目当日不在 items 里)。"""
+    from .models import new_item
+    item = new_item(r["id"])
+    item.update({
+        "title_zh": r.get("title"), "published": r.get("published") or "",
+        "urgency": r.get("urgency"), "repro_worthy": r.get("repro_worthy"),
+        "repro_note": r.get("repro_note"), "impact_scope": r.get("impact_scope"),
+        "action_zh": r.get("action_zh"), "summary_zh": r.get("summary_zh"),
+        "category": r.get("category"), "cvss": r.get("cvss"), "epss": r.get("epss"),
+        "difficulty": r.get("difficulty"),
+        "kev": bool(r.get("kev")), "kev_due": r.get("kev_due"),
+        "ransomware": bool(r.get("ransomware")), "nuclei": bool(r.get("nuclei")),
+        "poc_quality": r.get("poc_quality"),
+        "poc_links": [(p["url"], p["label"]) for p in r.get("poc", [])],
+        "patched": r.get("patched"),
+        "refs": [(x["label"], x["url"]) for x in r.get("refs", [])],
+        # affected 字符串走 version_ranges 通道渲染回「影响」行
+        "version_ranges": [r["affected"]] if r.get("affected") else [],
+    })
+    return item
 
 
 def _fmt_entry(r: dict) -> str:
@@ -231,11 +290,12 @@ def _fmt_entry(r: dict) -> str:
     return "\n".join(lines)
 
 
-def build_repro_md(db: list[dict], now: datetime, retention_days: int) -> str:
+def build_repro_md(db: list[dict], now: datetime, retention_days: int,
+                     max_total: int = 100) -> str:
     n_top = sum(1 for r in db if r.get("repro_worthy") == "强烈推荐")
     head = [
         "# 高价值可复现漏洞库", "",
-        f"> 自动维护,严格准入(每日新增≤5,总量≤30),滚动保留 {retention_days} 天。",
+        f"> 自动维护,严格准入(每日新增≤5,总量≤{max_total}),滚动保留 {retention_days} 天。",
         f"> 机器可读版: [`data/repro.json`]({raw_url('repro.json')})",
         f"> 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl {raw_url('repro.json')}`",
         "",
@@ -261,18 +321,24 @@ def write_repro(items: list[dict], cfg: dict, data_dir: Path, now: datetime) -> 
     """维护滚动库并落盘(repro.md/json + 一洞一档详情页)。返回统计。"""
     from .vulndb import write_details
     path = data_dir / "repro.json"
-    existing = []
+    existing, pending_in = [], []
     if path.exists():
         try:
-            existing = json.loads(path.read_text(encoding="utf-8")).get("items", [])
+            doc = json.loads(path.read_text(encoding="utf-8"))
+            existing = doc.get("items", [])
+            pending_in = doc.get("pending", [])
         except (json.JSONDecodeError, OSError):
             existing = []
     retention = int(cfg.get("repro_retention_days", 21))
     max_new = int(cfg.get("repro_max_per_day", 5))
     max_total = int(cfg.get("repro_max_total", 30))
-    db = merge_repro(existing, items, now, retention, max_new, max_total)
-    # 详情页:与库同批(判定值得复现的),文件名即 CVE 号,覆盖刷新
-    detail_items = [i for i in items if qualifies(i)]
+    db, pending_out = merge_repro(existing, items, now, retention, max_new,
+                                  max_total, pending=pending_in)
+    # 详情页:本轮合格条目 + 从候补转正的(记录反构造,保住已有档案信息)
+    item_ids = {i["id"] for i in items}
+    pending_ids = {p.get("id") for p in pending_in}
+    admitted = [r for r in db if r["id"] not in item_ids and r["id"] in pending_ids]
+    detail_items = [i for i in items if qualifies(i)] + [_record_to_item(r) for r in admitted]
     n_details = write_details(detail_items, data_dir) if cfg.get("repro", True) else 0
     # 同步清理:已移出库的 CVE,其详情页一并删除
     vulns_dir = data_dir / "vulns"
@@ -286,10 +352,11 @@ def write_repro(items: list[dict], cfg: dict, data_dir: Path, now: datetime) -> 
     changed = ([r["id"] for r in db] != old_ids) or any(
         r.get("last_seen") == now.date().isoformat() for r in db)
     data_dir.mkdir(parents=True, exist_ok=True)
-    path.write_text(build_repro_json(db, now), encoding="utf-8")
-    (data_dir / "repro.md").write_text(build_repro_md(db, now, retention),
-                                       encoding="utf-8")
+    path.write_text(build_repro_json(db, now, pending_out), encoding="utf-8")
+    (data_dir / "repro.md").write_text(
+        build_repro_md(db, now, retention, max_total), encoding="utf-8")
     return {"count": len(db),
             "recommended": sum(1 for r in db if r.get("repro_worthy") == "强烈推荐"),
+            "pending": len(pending_out),
             "details": n_details,
             "updated": changed}

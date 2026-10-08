@@ -1,10 +1,10 @@
 # 高价值可复现漏洞库
 
-> 自动维护,严格准入(每日新增≤5,总量≤30),滚动保留 21 天。
-> 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
-> 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
+> 自动维护,严格准入(每日新增≤5,总量≤100),滚动保留 21 天。
+> 机器可读版: [`data/repro.json`](data/repro.json)
+> 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl data/repro.json`
 
-**更新**: 2026-10-08 02:53 UTC · 共 **30** 条(强烈推荐 2 / 值得 28)
+**更新**: 2026-10-08 12:30 UTC · 共 **80** 条(强烈推荐 2 / 值得 78)
 
 ---
 
@@ -141,6 +141,16 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 15★(有源码)](https://gi
 [CVE-2026-76482](https://nvd.nist.gov/vuln/detail/CVE-2026-76482) | P1 重点关注 | 网络设备 | CVSS 10.0 | 披露 2026-10-07 | 入库 2026-10-08
 复现: 值得
 
+### CVE-2026-55393
+[CVE-2026-55393](https://nvd.nist.gov/vuln/detail/CVE-2026-55393) | CVSS 10.0 | 披露 2026-10-01 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0029.md)
+
+### CVE-2026-100103
+[CVE-2026-100103](https://nvd.nist.gov/vuln/detail/CVE-2026-100103) | 安全设备 | CVSS 10.0 | 披露 2026-10-05 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://portal.perforce.com/s/cve/a91Qi000003FE8zIAG/authentication-bypass-via-default-auth-token-in-p4search)
+
 ### CVE-2026-32579
 [CVE-2026-32579](https://nvd.nist.gov/vuln/detail/CVE-2026-32579) | P1 重点关注 | CMS | CVSS 10.0 | EPSS 0.5% | 披露 2026-10-06 | 入库 2026-10-07
 复现: 值得
@@ -195,3 +205,248 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### CVE-2026-86131
+[CVE-2026-86131](https://nvd.nist.gov/vuln/detail/CVE-2026-86131) | CVSS 9.8 | 披露 2026-09-30 | 入库 2026-10-08
+复现: 值得
+影响: watchguard fireware >=12.0 <12.5.21; watchguard fireware >=12.12 <12.12.3
+参考: [厂商通告](https://psirt.watchguard.com/CVE-2026-86131)
+
+### CVE-2026-104848
+[CVE-2026-104848](https://nvd.nist.gov/vuln/detail/CVE-2026-104848) | CVSS 9.5 | 披露 2026-10-02 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://github.com/tinylibs/tinypool/commit/24df4e730e7d0857a6d226c9b58f8924227404fd) · [参考](https://github.com/tinylibs/tinypool/pull/134) · [参考](https://github.com/tinylibs/tinypool/releases/tag/v2.1.1)
+
+### CVE-2026-104849
+[CVE-2026-104849](https://nvd.nist.gov/vuln/detail/CVE-2026-104849) | CVSS 9.5 | 披露 2026-10-02 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://github.com/tinylibs/tinypool/commit/f41411a3e23324c674f35a19a3240f7a7c40ffbf) · [参考](https://github.com/tinylibs/tinypool/pull/135) · [参考](https://github.com/tinylibs/tinypool/releases/tag/v2.1.2)
+
+### CVE-2026-100102
+[CVE-2026-100102](https://nvd.nist.gov/vuln/detail/CVE-2026-100102) | CVSS 9.5 | 披露 2026-10-05 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://portal.perforce.com/s/cve/a91Qi000003FE7NIAW/rce-via-exposed-jdwp-debug-agent-in-p4search)
+
+### CVE-2026-103510
+[CVE-2026-103510](https://nvd.nist.gov/vuln/detail/CVE-2026-103510) | CVSS 9.5 | 披露 2026-10-05 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://portal.perforce.com/s/cve/a91Qi000003FDw5IAG/authentication-bypass-via-blank-auth-token-in-p4search)
+
+### CVE-2026-19759
+[CVE-2026-19759](https://nvd.nist.gov/vuln/detail/CVE-2026-19759) | CVSS 9.4 | 披露 2026-09-28 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://docs.cloud.google.com/application-integration/docs/security-bulletins#gcp-2026-064) · [参考](https://docs.cloud.google.com/support/bulletins#gcp-2026-064)
+
+### CVE-2026-81867
+[CVE-2026-81867](https://nvd.nist.gov/vuln/detail/CVE-2026-81867) | CVSS 9.4 | 披露 2026-09-28 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://docs.cloud.google.com/application-integration/docs/security-bulletins#gcp-2026-065) · [参考](https://docs.cloud.google.com/support/bulletins#gcp-2026-065)
+
+### CVE-2026-93903
+[CVE-2026-93903](https://nvd.nist.gov/vuln/detail/CVE-2026-93903) | CVSS 9.4 | 披露 2026-09-30 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://docs.litespeedtech.com/lsws/changelog/#v6-3-7-build-1) · [参考](https://www.litespeedtech.com/products/litespeed-web-server/release-log)
+
+### CVE-2026-94620
+[CVE-2026-94620](https://nvd.nist.gov/vuln/detail/CVE-2026-94620) | CVSS 9.4 | 披露 2026-10-01 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://github.com/foundation50/classroom50/commit/79112f33932d1b5c398a8801d97a8813d52d55ce) · [参考](https://github.com/foundation50/classroom50/security/advisories/GHSA-qx2g-vpwq-466c)
+
+### CVE-2026-14984
+[CVE-2026-14984](https://nvd.nist.gov/vuln/detail/CVE-2026-14984) | CVSS 9.4 | 披露 2026-10-01 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0028.md)
+
+### CVE-2026-55395
+[CVE-2026-55395](https://nvd.nist.gov/vuln/detail/CVE-2026-55395) | CVSS 9.4 | 披露 2026-10-01 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0031.md)
+
+### CVE-2026-18397
+[CVE-2026-18397](https://nvd.nist.gov/vuln/detail/CVE-2026-18397) | CVSS 9.4 | 披露 2026-10-01 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://www.thalesgroup.com/en/product-security-incident-response)
+
+### CVE-2026-104480
+[CVE-2026-104480](https://nvd.nist.gov/vuln/detail/CVE-2026-104480) | CVSS 9.4 | 披露 2026-10-02 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://daveprotocol.com/) · [参考](https://github.com/discord/libdave) · [参考](https://github.com/discord/libdave/commit/9686fbaea864aa19f0675e486672b6a77811b6a1)
+
+### CVE-2026-86325
+[CVE-2026-86325](https://nvd.nist.gov/vuln/detail/CVE-2026-86325) | CVSS 9.4 | 披露 2026-10-02 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://www.moxa.com/en/support/product-support/security-advisory/mpsa-269540-cve-2026-86325,-cve-2026-86326-two-vulnerabilities-in-protocol-gateways)
+
+### CVE-2026-75937
+[CVE-2026-75937](https://nvd.nist.gov/vuln/detail/CVE-2026-75937) | CVSS 9.4 | 披露 2026-10-02 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://www.digi.com/resources/security)
+
+### CVE-2025-64393
+[CVE-2025-64393](https://nvd.nist.gov/vuln/detail/CVE-2025-64393) | CVSS 9.4 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://www.veeam.com/KB4934)
+
+### CVE-2026-73640
+[CVE-2026-73640](https://nvd.nist.gov/vuln/detail/CVE-2026-73640) | CVSS 9.3 | 披露 2026-09-28 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://cert.pl/en/posts/2026/09/CVE-2026-73640) · [参考](https://www.dayforce.com/how-we-help/dayforce/payroll-solutions)
+
+### CVE-2026-101891
+[CVE-2026-101891](https://nvd.nist.gov/vuln/detail/CVE-2026-101891) | CVSS 9.3 | 披露 2026-09-28 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://psirt.watchguard.com/CVE-2026-101891)
+
+### CVE-2026-86102
+[CVE-2026-86102](https://nvd.nist.gov/vuln/detail/CVE-2026-86102) | CVSS 9.3 | 披露 2026-09-28 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://psirt.watchguard.com/CVE-2026-86102)
+
+### CVE-2026-96428
+[CVE-2026-96428](https://nvd.nist.gov/vuln/detail/CVE-2026-96428) | CVSS 9.3 | 披露 2026-09-29 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://zuso.ai/cve-advisory/advisory)
+
+### CVE-2026-96429
+[CVE-2026-96429](https://nvd.nist.gov/vuln/detail/CVE-2026-96429) | CVSS 9.3 | 披露 2026-09-29 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://zuso.ai/cve-advisory/advisory)
+
+### CVE-2026-96431
+[CVE-2026-96431](https://nvd.nist.gov/vuln/detail/CVE-2026-96431) | CVSS 9.3 | 披露 2026-09-29 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://zuso.ai/cve-advisory/advisory)
+
+### CVE-2026-7192
+[CVE-2026-7192](https://nvd.nist.gov/vuln/detail/CVE-2026-7192) | CVSS 9.3 | 披露 2026-09-29 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://www.incibe.es/en/incibe-cert/notices/aviso/multiple-vulnerabilities-t-cpe301k-4g-mini-wifi-router-shenzhen-dbit)
+
+### CVE-2026-22094
+[CVE-2026-22094](https://nvd.nist.gov/vuln/detail/CVE-2026-22094) | CVSS 9.3 | 披露 2026-09-29 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://csirt.divd.nl/DIVD-2026-00001/)
+
+### CVE-2026-74864
+[CVE-2026-74864](https://nvd.nist.gov/vuln/detail/CVE-2026-74864) | CVSS 9.3 | 披露 2026-09-30 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://cert.pl/en/posts/2026/09/CVE-2026-74864) · [参考](https://forum.yunohost.org/t/sogo-critical-vulnerability-fixed-in-5-8-0-ynh9/42699)
+
+### CVE-2026-76142
+[CVE-2026-76142](https://nvd.nist.gov/vuln/detail/CVE-2026-76142) | CVSS 9.3 | 披露 2026-10-01 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://docs.genians.com/release/ko/advisories/GN-SA-2026-002.html) · [参考](https://github.com/genians/security-research/security/advisories/GHSA-qf3p-2jpg-3h95)
+
+### CVE-2026-103655
+[CVE-2026-103655](https://nvd.nist.gov/vuln/detail/CVE-2026-103655) | CVSS 9.3 | 披露 2026-10-01 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://github.com/MISP/MISP/commit/a020fa47b)
+
+### CVE-2026-71449
+[CVE-2026-71449](https://nvd.nist.gov/vuln/detail/CVE-2026-71449) | CVSS 9.3 | 披露 2026-10-01 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories)
+
+### CVE-2026-21589
+[CVE-2026-21589](https://nvd.nist.gov/vuln/detail/CVE-2026-21589) | OA/协同办公 | CVSS 9.3 | 披露 2026-10-05 | 入库 2026-10-08
+复现: 值得
+影响: Atlassian(产品与版本待 NVD/厂商补充)
+参考: [参考](https://jira.atlassian.com/browse/BAM-26567) · [参考](https://jira.atlassian.com/browse/BSERV-20604) · [参考](https://jira.atlassian.com/browse/CONFSERVER-104488)
+
+### CVE-2026-91107
+[CVE-2026-91107](https://nvd.nist.gov/vuln/detail/CVE-2026-91107) | ERP/业务系统 | CVSS 9.3 | 披露 2026-10-05 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://fluidattacks.com/advisories/hearts) · [参考](https://github.com/OS4ED/openSIS-Classic) · [参考](https://github.com/OS4ED/openSIS-Classic/commit/24bb530391a67c114cd4fe3dff65da7e070f5ed1)
+
+### CVE-2026-107104
+[CVE-2026-107104](https://nvd.nist.gov/vuln/detail/CVE-2026-107104) | CVSS 9.3 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01&VLCODE=CIVN-2026-0430)
+
+### CVE-2026-19572
+[CVE-2026-19572](https://nvd.nist.gov/vuln/detail/CVE-2026-19572) | CVSS 9.3 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://community.revenera.com/s/article/CVE202619572-FlexNet-Publisher-lmadmin-SOAP-Authentication-Bypass-Vulnerability)
+
+### CVE-2026-107103
+[CVE-2026-107103](https://nvd.nist.gov/vuln/detail/CVE-2026-107103) | CVSS 9.3 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01&VLCODE=CIVN-2026-0430)
+
+### CVE-2026-14911
+[CVE-2026-14911](https://nvd.nist.gov/vuln/detail/CVE-2026-14911) | ERP/业务系统 | CVSS 9.3 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://www.asus.com/security-advisory/)
+
+### CVE-2026-107102
+[CVE-2026-107102](https://nvd.nist.gov/vuln/detail/CVE-2026-107102) | CVSS 9.3 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01&VLCODE=CIVN-2026-0430)
+
+### CVE-2026-103416
+[CVE-2026-103416](https://nvd.nist.gov/vuln/detail/CVE-2026-103416) | CVSS 9.3 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-4x76-j955-qhq2) · [参考](https://gitlab.eclipse.org/security/cve-assignment/-/work_items/356)
+
+### CVE-2026-96408
+[CVE-2026-96408](https://nvd.nist.gov/vuln/detail/CVE-2026-96408) | CVSS 9.3 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://jvn.jp/en/jp/JVN91153973/) · [参考](https://movabletype.org/news/2026/10/mt-930-released.html) · [参考](https://www.sixapart.jp/movabletype/news/2026/10/07-1100.html)
+
+### CVE-2026-92414
+[CVE-2026-92414](https://nvd.nist.gov/vuln/detail/CVE-2026-92414) | CVSS 9.3 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+影响: Apache(产品与版本待 NVD/厂商补充)
+参考: [参考](https://lists.apache.org/thread.html/gmbsmrs2lycl9nld7rd0h1r1fc4t75qr) · [参考](http://www.openwall.com/lists/oss-security/2026/10/07/27)
+
+### CVE-2026-73642
+[CVE-2026-73642](https://nvd.nist.gov/vuln/detail/CVE-2026-73642) | CVSS 9.2 | 披露 2026-09-28 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://cert.pl/en/posts/2026/08/CVE-2026-73640) · [参考](https://www.dayforce.com/how-we-help/dayforce/payroll-solutions)
+
+### CVE-2026-102508
+[CVE-2026-102508](https://nvd.nist.gov/vuln/detail/CVE-2026-102508) | CVSS 9.2 | 披露 2026-09-30 | 入库 2026-10-08
+复现: 值得
+影响: Apache(产品与版本待 NVD/厂商补充)
+参考: [参考](https://lists.apache.org/thread.html/o076mcnsx6wnqpdy780m7s6hddbbnjfw) · [参考](http://www.openwall.com/lists/oss-security/2026/09/30/4)
+
+### CVE-2026-74865
+[CVE-2026-74865](https://nvd.nist.gov/vuln/detail/CVE-2026-74865) | CVSS 9.2 | 披露 2026-09-30 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://cert.pl/en/posts/2026/09/CVE-2026-74864) · [参考](https://forum.yunohost.org/t/sogo-critical-vulnerability-fixed-in-5-8-0-ynh9/42699)
+
+### CVE-2026-101276
+[CVE-2026-101276](https://nvd.nist.gov/vuln/detail/CVE-2026-101276) | CVSS 9.2 | 披露 2026-09-30 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://newreleases.io/project/github/esnet/iperf/release/3.22)
+
+### CVE-2026-101283
+[CVE-2026-101283](https://nvd.nist.gov/vuln/detail/CVE-2026-101283) | CVSS 9.2 | 披露 2026-09-30 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://newreleases.io/project/github/esnet/iperf/release/3.22)
+
+### CVE-2026-91135
+[CVE-2026-91135](https://nvd.nist.gov/vuln/detail/CVE-2026-91135) | 开发库/依赖 | CVSS 9.2 | 披露 2026-10-02 | 入库 2026-10-08
+复现: 值得
+影响: Apache(产品与版本待 NVD/厂商补充)
+参考: [参考](https://lists.apache.org/thread/33otcgbqd27wf6qq810q56znzbomnhg1) · [参考](https://lists.apache.org/thread/rbpwlhlxnv2qgyk8cfscp2d2fd3p0ojb)
+
+### CVE-2026-107194
+[CVE-2026-107194](https://nvd.nist.gov/vuln/detail/CVE-2026-107194) | CVSS 9.2 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://jakkaru.de/articles/sungrow-vulnerability-exposes-gigawatts-worldwide) · [参考](https://www.sungrowpower.com/en/products/cloud-software/isolarcloud)
+
+### CVE-2026-75969
+[CVE-2026-75969](https://nvd.nist.gov/vuln/detail/CVE-2026-75969) | CVSS 9.1 | 披露 2026-09-30 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://psirt.havsys.com/)
+
+### CVE-2026-63569
+[CVE-2026-63569](https://nvd.nist.gov/vuln/detail/CVE-2026-63569) | CVSS 9.1 | 披露 2026-10-02 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://github.com/bcgit/bc-csharp/commit/fe236ad207c5960eeae1ebb6560c783a3bb5b692) · [参考](https://github.com/bcgit/bc-csharp/wiki/CVE-2026-63569)
+
+### CVE-2026-16516
+[CVE-2026-16516](https://nvd.nist.gov/vuln/detail/CVE-2026-16516) | CVSS 9.0 | 披露 2026-10-07 | 入库 2026-10-08
+复现: 值得
+参考: [参考](https://github.com/wolfSSL/wolfssh/commit/31d13697a608fa1bf9eec11aa6eff1503ade836f) · [参考](https://github.com/wolfSSL/wolfssh/issues/1012)

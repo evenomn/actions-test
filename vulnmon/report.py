@@ -62,6 +62,10 @@ def affected_line(item: dict) -> str | None:
         return "; ".join(versions[:2])
     if item["products"]:
         return "、".join(item["products"][:3])
+    # 无 CPE/GHSA:NVD「Awaiting Analysis」积压常态,至少把参考链接推断的
+    # 厂商亮出来,别让影响面整行空白
+    if item.get("vendor_hint"):
+        return f"{item['vendor_hint']}(产品与版本待 NVD/厂商补充)"
     return None
 
 

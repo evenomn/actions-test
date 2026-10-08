@@ -270,9 +270,9 @@ def main() -> int:
     # 高价值可复现漏洞库:daily/events 都滚动维护(用 qualified,被截掉的不丢)
     if cfg.get("repro", True):
         info = write_repro(qualified, cfg, repro_dir, now)
-        print(f"  可复现漏洞库: 共 {info['count']} 条(强烈推荐 {info['recommended']}),"
-              f"详情档案 {info['details']} 份,见 {repro_dir}/repro.md 与 {repro_dir}/vulns/",
-              flush=True)
+        print(f"  可复现漏洞库: 共 {info['count']} 条(强烈推荐 {info['recommended']},"
+              f"候补 {info['pending']}),详情档案 {info['details']} 份,"
+              f"见 {repro_dir}/repro.md 与 {repro_dir}/vulns/", flush=True)
     if args.dry_run:
         if args.mode == "events":
             md = build_events_markdown(items, now, stats, commits=commits)

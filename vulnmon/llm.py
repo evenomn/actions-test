@@ -77,6 +77,7 @@ def _evidence(item: dict) -> dict:
     ev = {
         "id": item["id"],
         "product": product_name(item) or "、".join(item.get("products", [])[:2]) or None,
+        "vendor": item.get("vendor_hint"),
         "category": item.get("category"),
         "type": "/".join(item["cwe_labels"]) or None,
         "desc": pick_desc(item["desc"], 400) or None,
@@ -118,12 +119,16 @@ ANALYZE_PROMPT = (
     'action: 不超过40字,给出处置建议(如「升级到 x.y.z」/「临时禁用xx功能缓解」);'
     'patched=false 时明确说暂无官方修复\n'
     'urgency: 从["P0 立即处置","P1 重点关注","P2 保持关注"]三选一。'
-    "KEV 在野利用/勒索软件在野利用/PoC广泛流传→P0;有公开PoC或EPSS高或高分无PoC→P1;其余→P2\n"
+    "KEV 在野利用/勒索软件在野利用/PoC广泛流传→P0;"
+    "厂商影响面极大(如 vendor 字段是大厂且描述列出一整条产品线受影响)的预认证高危也应升P0;"
+    "有公开PoC或EPSS高或高分无PoC→P1;其余→P2\n"
     'repro_worthy: 从["强烈推荐","值得","一般","不建议"]四选一。严格按以下评级标准执行,\n'
     "要有配额意识:每天全球新增漏洞里真正值得安全团队花时间复现的通常不超过个位数,"
     "宁缺毋滥,拿不准一律降级。评级标准:\n"
     "  强烈推荐 = KEV在野利用且有可用PoC;或边界设备/VPN/Web中间件/邮件系统/OA等高暴露资产的"
-    "未认证RCE或认证绕过(默认配置可打,如NetScaler/Fortinet类边界洞)\n"
+    "未认证RCE或认证绕过(默认配置可打,如NetScaler/Fortinet类边界洞);"
+    "或大厂全线产品批量受影响的预认证高危(如 Atlassian/Jira/Confluence 类,"
+    "描述里列一串产品名的,内网遍地都是)\n"
     "  值得 = 少数情况:常见资产(CMS核心/流行框架/广泛部署的软件)上「默认配置即可远程"
     "预认证利用」的 RCE/认证绕过,或 PoC 仓库有可运行源码的高分洞;"
     "开源软件(open_source=true)的高分预认证漏洞即使暂无PoC也可给值得(可自行源码审计复现);"
