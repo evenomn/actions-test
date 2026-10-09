@@ -5,61 +5,16 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 09 Oct 2026 16:23:00 +0000</pubDate>
-    <lastBuildDate>Fri, 09 Oct 2026 16:23:00 +0000</lastBuildDate>
+    <pubDate>Fri, 09 Oct 2026 21:47:25 +0000</pubDate>
+    <lastBuildDate>Fri, 09 Oct 2026 21:47:25 +0000</lastBuildDate>
     <item>
-      <title>[critical]OpenCart虚拟POS模块签名可伪造</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85531</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85531-2026-10-09</guid>
-      <description>CVE-2026-85531 · 🎯P1 重点关注 · 披露 2026-10-09 · 组件 CMS · CVSS 9.8 · 类型 签名校验错误 · 难度 低(远程·免认证)
-Improper verification of cryptographic signature vulnerability in Sipay Electronic Money and Payment Services Inc.
+      <title>[critical]Astron Agent低权租户RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108263</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108263-2026-10-09</guid>
+      <description>CVE-2026-108263 · 🎯P1 重点关注 · 披露 2026-10-09 · CVSS 9.9 · 类型 代码注入(RCE)/缺失认证 · 难度 低(远程·需低权限)
+An authenticated low-privilege tenant can execute code as root in the core-workflow container and use shared service and database credentials to bypass applicat…
 信号:</description>
-      <pubDate>Fri, 09 Oct 2026 16:23:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]PrestaShop虚拟POS模块签名绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-86405</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-86405-2026-10-09</guid>
-      <description>CVE-2026-86405 · 🎯P1 重点关注 · 披露 2026-10-09 · 组件 CMS · CVSS 9.8 · 类型 签名校验错误 · 难度 低(远程·免认证)
-Improper verification of cryptographic signature vulnerability in Sipay Electronic Money and Payment Services Inc.
-信号:</description>
-      <pubDate>Fri, 09 Oct 2026 16:23:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]网络服务反序列化RCE未认证可达</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100730</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100730-2026-10-09</guid>
-      <description>CVE-2026-100730 · 🎯P1 重点关注 · 披露 2026-10-09 · 组件 操作系统 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-This allows an attacker to trigger deserialization of an arbitrary object graph, which could allow remote code execution under the privileges of the affected se…
-信号:</description>
-      <pubDate>Fri, 09 Oct 2026 16:23:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]openPDC 镜像内置管理员口令</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105278</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105278-2026-10-09</guid>
-      <description>CVE-2026-105278 · 🎯P1 重点关注 · 披露 2026-10-09 · 组件 容器/虚拟化 · CVSS 9.8 · 类型 硬编码凭据 · 难度 低(远程·免认证)
-An attacker with network access to the management interface can authenticate using this credential and gain full administrative control of the application.
-信号:</description>
-      <pubDate>Fri, 09 Oct 2026 16:23:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]PHPNuxBill 接口未认证SQL注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108107</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108107-2026-10-09</guid>
-      <description>CVE-2026-108107 · 🎯P1 重点关注 · 披露 2026-10-09 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
-PHPNuxBill through 2025.3.20 contains an unauthenticated SQL injection vulnerability in the radius.php FreeRADIUS REST endpoint that interpolates request parame…
-信号:</description>
-      <pubDate>Fri, 09 Oct 2026 16:23:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]lwIP SMTP客户端缓冲区溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-15340</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-15340-2026-10-09</guid>
-      <description>CVE-2026-15340 · 🎯P1 重点关注 · 披露 2026-10-09 · CVSS 9.8 · 类型 缓冲区溢出 · 难度 低(远程·免认证)
-lwIP SMTP client does not check the size of inputs, potentially allowing a buffer overflow.
-信号:</description>
-      <pubDate>Fri, 09 Oct 2026 16:23:00 +0000</pubDate>
+      <pubDate>Fri, 09 Oct 2026 21:47:25 +0000</pubDate>
     </item>
   </channel>
 </rss>
