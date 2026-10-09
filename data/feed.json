@@ -1,18 +1,21 @@
 {
  "version": 3,
- "generated_at": "2026-10-09T07:32:14+00:00",
+ "generated_at": "2026-10-09T16:23:00+00:00",
  "lookback_hours": 5,
- "count": 2,
+ "count": 6,
  "stats": {
-  "total": 2,
+  "total": 6,
   "by_tier": {
-   "critical": 2
+   "critical": 6
   },
   "by_urgency": {
-   "P1 重点关注": 2
+   "P1 重点关注": 6
   },
   "by_category": {
-   "未知": 2
+   "CMS": 2,
+   "未知": 2,
+   "操作系统": 1,
+   "容器/虚拟化": 1
   },
   "kev": 0,
   "with_poc": 0,
@@ -22,20 +25,19 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-5759",
+   "id": "CVE-2026-85531",
    "tier": "critical",
-   "title": "FalkorDB RDB解码UAF漏洞",
-   "title_zh": "FalkorDB RDB解码UAF漏洞",
-   "summary_zh": "能发Redis复制命令或未设密码者可触发UAF，致DoS或代码执行。",
-   "published": "2026-10-09T05:16:44.920",
+   "title": "OpenCart虚拟POS模块签名可伪造",
+   "title_zh": "OpenCart虚拟POS模块签名可伪造",
+   "summary_zh": "攻击者可伪造支付回调签名冒充合法支付结果，篡改订单状态造成资金与账务损失。",
+   "published": "2026-10-09T13:17:10.957",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-415",
-    "释放后重用(UAF)"
+    "签名校验错误"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -44,15 +46,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/FalkorDB/FalkorDB/commit/523d98ac7ffe99f11a9c95c258025c235f0dff4c"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/FalkorDB/FalkorDB/pull/1843"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/FalkorDB/FalkorDB/releases/tag/v4.18.1"
+     "url": "https://siberguvenlik.gov.tr/guvenlik-bildirimleri/detay/tr-26-1286"
     }
    ],
    "poc": [],
@@ -63,27 +57,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到4.18.1；限制Redis复制权限并设置强密码。",
-   "repro_worthy": "一般",
-   "repro_note": "入口：Redis复制/RDB加载；需可发复制命令或空密码；构造恶意RDB。",
-   "impact_scope": "内网图数据库，可能横向跳板",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-5759",
-   "description": "A double free and use-after-free vulnerability in the RdbLoadDeletedNodes function of the RDB graph decoders (src/serializers/decoders/*/decode_graph_entities.c) in FalkorDB before 4.18.1 allows a remote attacker who can issue Redis replication commands (for example, against an instance with no password configured) to cause a denial of service or execute arbitrary code in the redis-server process by supplying a crafted RDB stream whose deleted-nodes buffer length is not a multiple of sizeof(Node…"
+   "action_zh": "升级至 26.9.1，核对签名校验与密钥管理逻辑。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "OpenCart电商支付,涉资金安全",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85531",
+   "description": "Improper verification of cryptographic signature vulnerability in Sipay Electronic Money and Payment Services Inc. OpenCart Virtual POS Module allows Signature Spoofing by Improper Validation. This issue affects OpenCart Virtual POS Module: from 26.8.2 before 26.9.1."
   },
   {
-   "id": "CVE-2026-107908",
+   "id": "CVE-2026-86405",
    "tier": "critical",
-   "title": "FalkorDB Bolt越界写入漏洞",
-   "title_zh": "FalkorDB Bolt越界写入漏洞",
-   "summary_zh": "远程未认证攻击者向Bolt端口发特制RESET消息可越界写，致DoS或代码执行。",
-   "published": "2026-10-09T06:17:10.777",
+   "title": "PrestaShop虚拟POS模块签名绕过",
+   "title_zh": "PrestaShop虚拟POS模块签名绕过",
+   "summary_zh": "攻击者可伪造支付通知签名，冒充合法交易结果篡改订单状态，造成资金损失。",
+   "published": "2026-10-09T13:17:11.100",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "越界写入"
+    "签名校验错误"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -92,15 +86,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/FalkorDB/FalkorDB/commit/0b11a00b34b25c4d4fdfe55f0a35c8a00593bd7d"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/FalkorDB/FalkorDB/pull/2170"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/FalkorDB/FalkorDB/releases/tag/v4.20.0"
+     "url": "https://siberguvenlik.gov.tr/guvenlik-bildirimleri/detay/tr-26-1287"
     }
    ],
    "poc": [],
@@ -111,14 +97,255 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到4.20.0；限制Bolt端口暴露并加强访问控制。",
+   "action_zh": "升级至 26.9.1，修正签名验证逻辑并轮换密钥。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "PrestaShop电商支付,涉资金安全",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86405",
+   "description": "Improper verification of cryptographic signature vulnerability in Sipay Electronic Money and Payment Services Inc. PrestaShop Virtual POS Module allows Signature Spoofing by Improper Validation. This issue affects PrestaShop Virtual POS Module: from 26.8.1 before 26.9.1."
+  },
+  {
+   "id": "CVE-2026-100730",
+   "tier": "critical",
+   "title": "网络服务反序列化RCE未认证可达",
+   "title_zh": "网络服务反序列化RCE未认证可达",
+   "summary_zh": "未启用Windows认证时，未认证网络攻击者可触发任意对象反序列化，以服务账号权限执行代码。",
+   "published": "2026-10-09T14:17:09.607",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-281-02.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-281-02"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "按厂商指引升级；未修复前限制该服务网络访问。",
    "repro_worthy": "一般",
-   "repro_note": "入口：Bolt端口RESET；未认证；构造恶意chunk size触发越界写。",
-   "impact_scope": "图数据库Bolt服务，常内网暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107908",
-   "description": "A heap-based out-of-bounds write in the BoltReadHandler function (src/bolt/bolt_api.c) in FalkorDB before 4.20.0 allows a remote unauthenticated attacker to cause a denial of service and possibly execute arbitrary code by sending a Bolt RESET message with an attacker-chosen chunk size to the Bolt port."
+   "repro_note": "向该服务暴露接口发送恶意序列化对象，无需认证即触发。",
+   "impact_scope": "网络服务组件,可致服务账号RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-100730",
+   "description": "A service console interface on openPDC and openHistorian deserializes a client-supplied data structure. On systems using Windows Authentication, an attacker must already be authenticated to reach this function; on systems without Windows Authentication, this is reachable by an unauthenticated network attacker. This allows an attacker to trigger deserialization of an arbitrary object graph, which could allow remote code execution under the privileges of the affected service account."
+  },
+  {
+   "id": "CVE-2026-105278",
+   "tier": "critical",
+   "title": "openPDC 镜像内置管理员口令",
+   "title_zh": "openPDC 镜像内置管理员口令",
+   "summary_zh": "公开Docker镜像内置固定管理员凭据且首次使用不强制修改，能访问管理界面的攻击者可完全接管。",
+   "published": "2026-10-09T15:17:08.197",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "硬编码凭据"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-281-02.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-281-02"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复镜像，首次部署强制改密并限制管理端口。",
+   "repro_worthy": "一般",
+   "repro_note": "拉取官方镜像提取内置凭据，登录管理接口获管理员权限。",
+   "impact_scope": "电力/工业监控系统,多在内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105278",
+   "description": "The published Docker image for openPDC includes a fixed administrative credential with no forced change on first use. An attacker with network access to the management interface can authenticate using this credential and gain full administrative control of the application."
+  },
+  {
+   "id": "CVE-2026-108107",
+   "tier": "critical",
+   "title": "PHPNuxBill 接口未认证SQL注入",
+   "title_zh": "PHPNuxBill 接口未认证SQL注入",
+   "summary_zh": "未认证攻击者向半径接口注入username等参数，经时间盲注窃取客户记录与凭据。",
+   "published": "2026-10-09T15:17:11.713",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/hotspotbilling/phpnuxbill"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/hotspotbilling/phpnuxbill/blob/2025.3.13/radius.php#L277"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/hotspotbilling/phpnuxbill/security/advisories/GHSA-q8ch-r8cv-q579"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2025.3.20之后版本，改为参数化查询。",
+   "repro_worthy": "一般",
+   "repro_note": "radius.php 接口 username 参数时间盲注探测。",
+   "impact_scope": "ISP计费RADIUS系统,存客户凭据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108107",
+   "description": "PHPNuxBill through 2025.3.20 contains an unauthenticated SQL injection vulnerability in the radius.php FreeRADIUS REST endpoint that interpolates request parameters into whereRaw() queries. Attackers can send crafted username, macAddr or nasid parameters to the accounting or authenticate actions to extract customer records and credentials via time-based blind SQL injection."
+  },
+  {
+   "id": "CVE-2026-15340",
+   "tier": "critical",
+   "title": "lwIP SMTP客户端缓冲区溢出",
+   "title_zh": "lwIP SMTP客户端缓冲区溢出",
+   "summary_zh": "使用lwIP SMTP客户端的设备解析邮件服务器响应时未校验输入长度，可致缓冲区溢出。",
+   "published": "2026-10-09T15:17:13.510",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缓冲区溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-279-02.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-279-02"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至修复版本，限制设备连接可信SMTP服务器。",
+   "repro_worthy": "一般",
+   "repro_note": "由恶意SMTP服务器返回超长响应，触发客户端缓冲区溢出。",
+   "impact_scope": "嵌入式IoT设备,可致内存破坏",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-15340",
+   "description": "lwIP SMTP client does not check the size of inputs, potentially allowing a buffer overflow."
   }
  ],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "django/django",
+   "sha": "137b77706e8780764a831ecf246c10a56f800ac2",
+   "url": "https://github.com/django/django/commit/137b77706e8780764a831ecf246c10a56f800ac2",
+   "title": "Refs CVE-2026-15830 -- Increased coverage for WKT depth check in GEOS limiter.",
+   "date": "2026-10-09T11:37:08",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-15830"
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "b5db88d9c6092d459c6eaacbb3606c3d6ae514e2",
+   "url": "https://github.com/haproxy/haproxy/commit/b5db88d9c6092d459c6eaacbb3606c3d6ae514e2",
+   "title": "BUG/MEDIUM: spoe: Let an agent outlive its applets during a backend deletion",
+   "date": "2026-10-09T14:17:36",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "python/cpython",
+   "sha": "53be7d47b7712e642e6992a2896682884632b15e",
+   "url": "https://github.com/python/cpython/commit/53be7d47b7712e642e6992a2896682884632b15e",
+   "title": "gh-158918: Reduce C stack usage of `_PyModule_IsPossiblyShadowing`. (GH-158919)",
+   "date": "2026-10-09T11:59:27",
+   "score": 2,
+   "matched": [
+    "缓冲区溢出"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "envoyproxy/envoy",
+   "sha": "189f1988cff19241b038d0075e8ba29ba7eb0984",
+   "url": "https://github.com/envoyproxy/envoy/commit/189f1988cff19241b038d0075e8ba29ba7eb0984",
+   "title": "redis_proxy: reject transaction command without a key argument (#48007)",
+   "date": "2026-10-09T10:51:18",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "envoyproxy/envoy",
+   "sha": "f8f17686edcd69b98e43369229750769f62261cc",
+   "url": "https://github.com/envoyproxy/envoy/commit/f8f17686edcd69b98e43369229750769f62261cc",
+   "title": "redis: bounds-check inline quoted hex escape in the decoder (#48008)",
+   "date": "2026-10-09T10:24:09",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  }
+ ]
 }
