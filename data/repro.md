@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-08 22:13 UTC · 共 **89** 条(强烈推荐 9 / 值得 80)
+**更新**: 2026-10-09 03:04 UTC · 共 **86** 条(强烈推荐 8 / 值得 78)
 
 ---
 
@@ -58,14 +58,14 @@ PoC: [NVD exploit 引用](http://packetstormsecurity.com/files/136856/Apache-Str
 PoC: [HackSpeak/CVE-2026-67279 5★(有源码)](https://github.com/HackSpeak/CVE-2026-67279) · [gagaltotal/CVE-2026-mikrotik-poc 3★(有源码)](https://github.com/gagaltotal/CVE-2026-mikrotik-poc) · [NVD exploit 引用](https://npratley.net/reversing-mikrotiks-silent-patch-the-routeros-7-23-4-fix-they-wouldnt-explain/)
 参考: [厂商通告](https://mikrotik.com/supportsec/september-2026-vulnerability/)
 
-### Strapi后台查询过滤器信息泄露
+### Strapi 管理员面板信息泄露
 [CVE-2023-22894](https://nvd.nist.gov/vuln/detail/CVE-2023-22894) | P0 立即处置 | CMS | CVSS 4.9 | EPSS 1.7% | 披露 2023-04-19 | 入库 2026-10-08
-🔥 KEV 在野利用,限期 2026-10-11 | 有PoC
-拥有管理面板权限的攻击者利用查询过滤器，可发现敏感用户详情。
-复现: 强烈推荐 — 登录后台，构造带filter的查询请求读取用户敏感字段 · 影响面: CMS后台，管理员权限滥用
-处置: 升级Strapi到4.8.0以上并审计后台权限。
+🔥 KEV 在野利用,限期 2026-10-11 | PoC 源码可用
+拥有管理面板权限的攻击者可滥用查询过滤器，获取敏感用户信息。
+复现: 强烈推荐 — 入口：管理面板用户查询；需管理员权限；滥用 filters 过滤参数 · 影响面: CMS 后台，管理员权限利用
+处置: 升级到 4.8.0 或更高版本
 影响: strapi strapi >=3.2.1 <4.8.0
-PoC: [NVD exploit 引用](https://www.ghostccamm.com/blog/multi_strapi_vulns/)
+PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-Hakimi/CVE-2023-22894) · [maxntv/CVE-2023-22894-PoC 0★(有源码)](https://github.com/maxntv/CVE-2023-22894-PoC) · [NVD exploit 引用](https://www.ghostccamm.com/blog/multi_strapi_vulns/)
 参考: [参考](https://github.com/strapi/strapi/releases) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-22894)
 
 ### DataPower堆溢出未认证RCE
@@ -75,19 +75,15 @@ PoC: [NVD exploit 引用](https://www.ghostccamm.com/blog/multi_strapi_vulns/)
 处置: 立即升级至修复版本；限制网关服务公网暴露
 参考: [参考](https://www.ibm.com/support/pages/node/7289775)
 
-### IBM Verify反序列化RCE
-[CVE-2026-78401](https://nvd.nist.gov/vuln/detail/CVE-2026-78401) | P0 立即处置 | CVSS 9.8 | 披露 2026-10-08 | 入库 2026-10-08
-远程未认证攻击者利用反序列化漏洞，在系统上执行任意代码。
-复现: 强烈推荐 — 未认证访问反序列化入口，提交恶意序列化数据 · 影响面: IAM/身份认证系统，常暴露公网
-处置: 升级到IBM修复版本；限制认证接口暴露。
-参考: [参考](https://www.ibm.com/support/pages/node/7291628)
-
-### IBM Verify反序列化RCE
-[CVE-2026-78406](https://nvd.nist.gov/vuln/detail/CVE-2026-78406) | P0 立即处置 | CVSS 9.8 | 披露 2026-10-08 | 入库 2026-10-08
-远程未认证攻击者利用反序列化漏洞，在系统上执行任意代码。
-复现: 强烈推荐 — 未认证访问反序列化入口，提交恶意序列化数据 · 影响面: IAM/身份认证系统，常暴露公网
-处置: 升级到IBM修复版本；限制认证接口暴露。
-参考: [参考](https://www.ibm.com/support/pages/node/7291628)
+### NetScaler ADC 内存溢出 RCE
+[CVE-2026-107406](https://nvd.nist.gov/vuln/detail/CVE-2026-107406) | P1 重点关注 | 边界设备/VPN | CVSS 9.5 | 披露 2026-10-08 | 入库 2026-10-09
+PoC 源码可用
+远程攻击者可利用 NetScaler ADC 内存溢出，执行任意代码或造成拒绝服务。
+复现: 强烈推荐 — 入口：NetScaler ADC 网络服务；触发内存溢出；需确认暴露端口 · 影响面: 边界设备，公网高暴露
+处置: 关注 Citrix 补丁，升级至厂商修复版本
+影响: Citrix(产品与版本待 NVD/厂商补充)
+PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker)
+参考: [参考](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697191)
 
 
 ## 值得复现
@@ -272,21 +268,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得
 影响: watchguard fireware >=12.0 <12.5.21; watchguard fireware >=12.12 <12.12.3
 参考: [厂商通告](https://psirt.watchguard.com/CVE-2026-86131)
-
-### 任务调度平台缺失认证RCE
-[CVE-2026-107779](https://nvd.nist.gov/vuln/detail/CVE-2026-107779) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-08 | 入库 2026-10-08
-未认证攻击者向/jobinfo/addAndStart提交GLUE_SHELL作业，执行命令。
-复现: 值得 — 未授权调用/jobinfo/addAndStart，提交GLUE_SHELL作业 · 影响面: 内网任务调度，常暴露管理端口
-处置: 升级修复；临时禁用/addAndStart或加认证。
-参考: [参考](https://github.com/dromara/skyeye) · [参考](https://github.com/dromara/skyeye/blob/003549ae5615bd114ba5bb8ddf6a8e8ead97c321/xxl-job-2.3.0/xxl-job-admin/src/main/java/com/xxl/job/admin/controller/JobInfoController.java#L183-L231) · [参考](https://github.com/dromara/skyeye/issues/29)
-
-### fast-jwt 算法混淆签名绕过
-[CVE-2026-107722](https://nvd.nist.gov/vuln/detail/CVE-2026-107722) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-08 | 入库 2026-10-08
-开源,可源码审计复现
-远程攻击者伪造 JWT 签名绕过校验，可越权访问受保护资源。
-复现: 值得 — createVerifier 未设算法白名单时可用 HS256 伪造签名 · 影响面: npm JWT 认证库，影响令牌校验服务
-处置: 升级到 6.3.0，并显式配置 algorithms 白名单
-影响: npm:fast-jwt >= 6.2.0, <= 6.2.4(修复: 6.3.0)
 
 ### CVE-2026-104848
 [CVE-2026-104848](https://nvd.nist.gov/vuln/detail/CVE-2026-104848) | CVSS 9.5 | 披露 2026-10-02 | 入库 2026-10-08
