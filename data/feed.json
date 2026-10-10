@@ -1,20 +1,75 @@
 {
  "version": 3,
- "generated_at": "2026-10-10T07:19:31+00:00",
+ "generated_at": "2026-10-10T15:28:39+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 1,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 1,
+  "by_tier": {
+   "critical": 1
+  },
+  "by_urgency": {
+   "P1 重点关注": 1
+  },
+  "by_category": {
+   "未知": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2026-108551",
+   "tier": "critical",
+   "title": "OpenAPI代码生成器代码注入RCE",
+   "title_zh": "OpenAPI代码生成器代码注入RCE",
+   "summary_zh": "可控 OpenAPI 文档者可借未转义字段注入 JS 到生成代码，执行后导致 RCE。",
+   "published": "2026-10-10T15:16:58.273",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/ferdikoomen/openapi-typescript-codegen"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ferdikoomen/openapi-typescript-codegen/blob/v0.31.0/src/templates/core/OpenAPI.hbs#L20-L23"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ferdikoomen/openapi-typescript-codegen/blob/v0.31.0/src/templates/exportService.hbs#L89-L110"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至0.31.0后修复版；临时仅用可信OpenAPI文档生成代码。",
+   "repro_worthy": "一般",
+   "repro_note": "入口：代码生成读取 OpenAPI 文档；前置：文档可控；关键：未转义字段插值。",
+   "impact_scope": "开发/构建工具链，非直接公网暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108551",
+   "description": "openapi-typescript-codegen through 0.31.0 contains a code injection vulnerability that allows attackers controlling an OpenAPI document to inject JavaScript by supplying unescaped values interpolated into single-quoted string literals. Attackers can embed a single quote in path keys, parameter names, servers[0].url, or info.version to execute arbitrary JavaScript when generated clients are imported or service methods called."
+  }
+ ],
  "media": [],
  "commits": []
 }
