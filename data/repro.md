@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-09 21:47 UTC · 共 **86** 条(强烈推荐 8 / 值得 78)
+**更新**: 2026-10-10 02:43 UTC · 共 **86** 条(强烈推荐 9 / 值得 77)
 
 ---
 
@@ -49,6 +49,16 @@ PoC: [watchtowrlabs/watchTowr-vs-f5-bigip-PreAuth-RCE-CVE-2026-94127 13★(有�
 影响: apache struts、oracle siebel_e-billing
 PoC: [NVD exploit 引用](http://packetstormsecurity.com/files/136856/Apache-Struts-2.3.28-Dynamic-Method-Invocation-Remote-Code-Execution.html)
 参考: [参考](http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20160527-01-struts2-en) · [官方补丁](http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html) · [厂商通告](http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html)
+
+### Junos BIND TKEY查询拒绝服务
+[CVE-2015-5477](https://nvd.nist.gov/vuln/detail/CVE-2015-5477) | P0 立即处置 | 网络设备 | CVSS 7.5 | EPSS 91.8% | 披露 2015-07-29 | 入库 2026-10-10
+🔥 KEV 在野利用,限期 2026-10-11 | PoC 源码可用
+远程攻击者发送TKEY查询触发断言失败，导致named退出，DNS服务中断
+复现: 强烈推荐 — 向DNS服务端口发送构造TKEY查询，无需认证，观察named退出 · 影响面: 边界/内网DNS设备，常暴露
+处置: 升级到含BIND修复的Junos版本，临时限制TKEY查询
+影响: juniper junos <12.1; juniper junos >=13.1 <13.2
+PoC: [tintinweb/pub 265★(仅README)](https://github.com/tintinweb/pub) · [robertdavidgraham/cve-2015-5477 64★(有源码)](https://github.com/robertdavidgraham/cve-2015-5477) · [NVD exploit 引用](https://www.exploit-db.com/exploits/37721/)
+参考: [参考](http://kb.juniper.net/InfoCenter/index?page=content&id=JSA10718) · [参考](http://lists.fedoraproject.org/pipermail/package-announce/2015-August/163006.html) · [参考](http://lists.fedoraproject.org/pipermail/package-announce/2015-August/163007.html)
 
 ### Mikrotik RouterOS Improper Enforcement of Behavioral Workflow Vulnerability
 [CVE-2026-67279](https://nvd.nist.gov/vuln/detail/CVE-2026-67279) | P0 立即处置 | 网络设备 | CVSS 6.5 | EPSS 1.0% | 披露 2026-09-05 | 入库 2026-09-29
@@ -125,12 +135,6 @@ PoC: [ShadowForge-Cyber/CVE-2026-104286-POC 0★(仅README)](https://github.com/
 🔥 KEV 在野利用,限期 2026-10-05 | 开源,可源码审计复现
 复现: 值得
 影响: zammad zammad >=6.3.0 <6.5.4; zammad zammad >=7.0.0 <=7.1.3
-
-### Zammad GmbH Zammad Improper Privilege Management Vulnerability
-[CVE-2026-102490](https://nvd.nist.gov/vuln/detail/CVE-2026-102490) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | EPSS 0.6% | 披露 2026-09-30 | 入库 2026-10-03
-🔥 KEV 在野利用,限期 2026-10-05 | 开源,可源码审计复现
-复现: 值得
-影响: zammad zammad >=1.5.0 <7.1.0
 
 ### Adobe Commerce and Magento Incorrect Authorization Vulnerability 
 [CVE-2026-71362](https://nvd.nist.gov/vuln/detail/CVE-2026-71362) | P0 立即处置 | CMS | CVSS 9.1 | EPSS 87.5% | 披露 2026-08-11 | 入库 2026-10-01

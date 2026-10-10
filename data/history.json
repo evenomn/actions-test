@@ -5551,5 +5551,373 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-10-10": {
+  "qualified": 35,
+  "critical": 26,
+  "kev": 2,
+  "repro_top": 1,
+  "kev_total": 1739,
+  "by_category": {
+   "网络设备": 1,
+   "容器/虚拟化": 2,
+   "边界设备/VPN": 1,
+   "未分类": 28,
+   "安全设备": 1,
+   "开发库/依赖": 1,
+   "数据库": 1
+  },
+  "items": [
+   {
+    "id": "CVE-2015-5477",
+    "title": "Junos BIND TKEY查询拒绝服务",
+    "tier": "critical",
+    "category": "网络设备",
+    "cvss": 7.5,
+    "kev": true,
+    "repro": "强烈推荐",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-102490",
+    "title": "Zammad 本地权限提升至root",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 7.8,
+    "kev": true,
+    "repro": "不建议",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-107806",
+    "title": "Nginx-UI 备份恢复代码注入RCE",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107807",
+    "title": "Nginx-UI 密钥泄露致认证绕过",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107809",
+    "title": "Nginx-UI 管理接口CSRF",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107811",
+    "title": "Nginx-UI 跨节点认证绕过",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107813",
+    "title": "Nginx-UI 集群接口缺失授权",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107808",
+    "title": "Nginx-UI 密码登录绕过Passkey",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107810",
+    "title": "Nginx-UI 符号链接绕过写文件",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-57458",
+    "title": "Vikunja API令牌权限提升",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107805",
+    "title": "Nginx-UI 节点签名路径资源耗尽",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.5,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-107812",
+    "title": "Nginx-UI 升级包完整性校验缺陷",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.5,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-108109",
+    "title": "PHPNuxBill 密码重置OTP暴力破解",
+    "tier": "critical",
+    "category": "安全设备",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-94503",
+    "title": "Zombify 任意文件上传致RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-105278",
+    "title": "openPDC镜像硬编码管理员凭据",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-108107",
+    "title": "PHPNuxBill 未授权SQL注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-15340",
+    "title": "lwIP SMTP客户端缓冲区溢出",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-108474",
+    "title": "Exposed SQL函数注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107935",
+    "title": "gvproxy 未授权路径遍历删文件",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-93947",
+    "title": "Traveler 主题盲SQL注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-96327",
+    "title": "WPLMS插件盲SQL注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-96328",
+    "title": "JNews Pay Writer盲SQL注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-96330",
+    "title": "tagDiv订阅插件盲SQL注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-96331",
+    "title": "Ajax Search Pro盲SQL注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-96809",
+    "title": "EduAdmin Booking盲SQL注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107845",
+    "title": "Contao评论组件存储型XSS",
+    "tier": "critical",
+    "category": "开发库/依赖",
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-108261",
+    "title": "TinaCMS预览源校验缺陷",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107909",
+    "title": "FalkorDB Bolt越界写入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-7826",
+    "title": "FalkorDB RDB越界读取",
+    "tier": "critical",
+    "category": "数据库",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-108265",
+    "title": "CVE-2026-108265",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-108266",
+    "title": "CVE-2026-108266",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-108267",
+    "title": "CVE-2026-108267",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-108268",
+    "title": "CVE-2026-108268",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-108269",
+    "title": "CVE-2026-108269",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-108264",
+    "title": "Flask应用模板注入致RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }

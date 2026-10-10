@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-10-09T21:47:25+00:00",
+ "updated_at": "2026-10-10T02:43:33+00:00",
  "count": 86,
- "count_recommended": 8,
+ "count_recommended": 9,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -200,6 +200,63 @@
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2016-3081",
    "change_note": null
+  },
+  {
+   "id": "CVE-2015-5477",
+   "title": "Junos BIND TKEY查询拒绝服务",
+   "first_seen": "2026-10-10",
+   "last_seen": "2026-10-10",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2015-07-29",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "向DNS服务端口发送构造TKEY查询，无需认证，观察named退出",
+   "impact_scope": "边界/内网DNS设备，常暴露",
+   "action_zh": "升级到含BIND修复的Junos版本，临时限制TKEY查询",
+   "summary_zh": "远程攻击者发送TKEY查询触发断言失败，导致named退出，DNS服务中断",
+   "category": "网络设备",
+   "cvss": 7.5,
+   "epss": 0.91807,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-10-11",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/tintinweb/pub",
+     "label": "tintinweb/pub 265★(仅README)"
+    },
+    {
+     "url": "https://github.com/robertdavidgraham/cve-2015-5477",
+     "label": "robertdavidgraham/cve-2015-5477 64★(有源码)"
+    },
+    {
+     "url": "https://www.exploit-db.com/exploits/37721/",
+     "label": "NVD exploit 引用"
+    }
+   ],
+   "affected": "juniper junos <12.1; juniper junos >=13.1 <13.2",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "http://kb.juniper.net/InfoCenter/index?page=content&id=JSA10718"
+    },
+    {
+     "label": "参考",
+     "url": "http://lists.fedoraproject.org/pipermail/package-announce/2015-August/163006.html"
+    },
+    {
+     "label": "参考",
+     "url": "http://lists.fedoraproject.org/pipermail/package-announce/2015-August/163007.html"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2015-5477",
+   "change_note": "💥 新增公开PoC引用"
   },
   {
    "id": "CVE-2026-67279",
@@ -579,36 +636,6 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102489",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-102490",
-   "title": "Zammad GmbH Zammad Improper Privilege Management Vulnerability",
-   "first_seen": "2026-10-03",
-   "last_seen": "2026-10-04",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": true,
-   "published": "2026-09-30",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "action_zh": null,
-   "summary_zh": null,
-   "category": "容器/虚拟化",
-   "cvss": 9.8,
-   "epss": 0.00629,
-   "kev": true,
-   "kev_due": "2026-10-05",
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "zammad zammad >=1.5.0 <7.1.0",
-   "patched": null,
-   "refs": [],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102490",
    "change_note": null
   },
   {
