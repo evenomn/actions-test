@@ -3,36 +3,189 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
-    <lastBuildDate>Sun, 11 Oct 2026 00:16:28 +0000</lastBuildDate>
+    <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    <lastBuildDate>Sun, 11 Oct 2026 02:09:48 +0000</lastBuildDate>
     <item>
-      <title>[critical]Anesta 未授权 反序列化(RCE)</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66567</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66567-2026-10-11</guid>
-      <description>CVE-2026-66567 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Anesta &lt;= 1.5.3 versions.
+      <title>[critical]Tonda Membership 未授权 CWE-266</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62022</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62022-2026-10-11</guid>
+      <description>CVE-2026-62022 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
+Unauthenticated Privilege Escalation in Tonda Membership &lt;= 1.0.1 versions.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Original 未授权 反序列化(RCE)</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66568</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66568-2026-10-11</guid>
-      <description>CVE-2026-66568 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Original &lt;= 1.9.0 versions.
+      <title>[critical]DirectoryPress 未授权 SSRF(文件包含)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62032</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62032-2026-10-11</guid>
+      <description>CVE-2026-62032 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 SSRF(文件包含) · 难度 低(远程·免认证)
+Unauthenticated Local File Inclusion in DirectoryPress &lt;= 3.6.27 versions.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Kicker 未授权 反序列化(RCE)</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66569</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66569-2026-10-11</guid>
-      <description>CVE-2026-66569 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Kicker &lt;= 2.2.1 versions.
+      <title>[critical]Splendour 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62050</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62050-2026-10-11</guid>
+      <description>CVE-2026-62050 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Splendour &lt;= 1.23 versions.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Stargaze 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62051</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62051-2026-10-11</guid>
+      <description>CVE-2026-62051 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Stargaze &lt;= 1.10 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Tipsy 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62052</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62052-2026-10-11</guid>
+      <description>CVE-2026-62052 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Tipsy &lt;= 1.6 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Wine House 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62053</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62053-2026-10-11</guid>
+      <description>CVE-2026-62053 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Wine House &lt;= 3.20 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Yacht Rental 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62054</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62054-2026-10-11</guid>
+      <description>CVE-2026-62054 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Yacht Rental &lt;= 2.6 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Kalles 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62076</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62076-2026-10-11</guid>
+      <description>CVE-2026-62076 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Kalles &lt;= 1.1.7.1 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Avala 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62077</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62077-2026-10-11</guid>
+      <description>CVE-2026-62077 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Avala &lt;= 1.1.4 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Juno 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62086</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62086-2026-10-11</guid>
+      <description>CVE-2026-62086 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Juno &lt;= 2.25 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Equadio 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62087</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62087-2026-10-11</guid>
+      <description>CVE-2026-62087 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Equadio &lt;= 1.1.4 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]WineShop 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62090</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62090-2026-10-11</guid>
+      <description>CVE-2026-62090 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in WineShop &lt;= 3.20 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Law Office 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62120</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62120-2026-10-11</guid>
+      <description>CVE-2026-62120 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Law Office &lt;= 3.20 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Invetex 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62123</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62123-2026-10-11</guid>
+      <description>CVE-2026-62123 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Invetex &lt;= 2.18 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Golf Club Sports 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62124</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62124-2026-10-11</guid>
+      <description>CVE-2026-62124 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in N7 | Golf Club Sports &amp; Events &lt;= 2.21 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Asia Garden 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62125</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62125-2026-10-11</guid>
+      <description>CVE-2026-62125 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Asia Garden &lt;= 1.3.1 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Education Center 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66483</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66483-2026-10-11</guid>
+      <description>CVE-2026-66483 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Education Center &lt;= 3.6.12 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Windsor 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66563</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66563-2026-10-11</guid>
+      <description>CVE-2026-66563 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Windsor &lt;= 2.10 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ShiftCV 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66564</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66564-2026-10-11</guid>
+      <description>CVE-2026-66564 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in ShiftCV &lt;= 3.0.14 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FC United 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66565</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66565-2026-10-11</guid>
+      <description>CVE-2026-66565 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in FC United &lt;= 1.1.1 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
       <title>[critical]Alliance 未授权 反序列化(RCE)</title>
@@ -41,7 +194,7 @@ Unauthenticated PHP Object Injection in Kicker &lt;= 2.2.1 versions.
       <description>CVE-2026-78529 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
 Unauthenticated PHP Object Injection in Alliance &lt;= 3.11 versions.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
       <title>[critical]Jacqueline 未授权 反序列化(RCE)</title>
@@ -50,7 +203,7 @@ Unauthenticated PHP Object Injection in Alliance &lt;= 3.11 versions.
       <description>CVE-2026-78531 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
 Unauthenticated PHP Object Injection in Jacqueline &lt;= 2.22 versions.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
       <title>[critical]Qwery 未授权 反序列化(RCE)</title>
@@ -59,7 +212,7 @@ Unauthenticated PHP Object Injection in Jacqueline &lt;= 2.22 versions.
       <description>CVE-2026-78533 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
 Unauthenticated PHP Object Injection in Qwery &lt;= 3.6.1 versions.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
       <title>[critical]Photolia 未授权 反序列化(RCE)</title>
@@ -68,25 +221,61 @@ Unauthenticated PHP Object Injection in Qwery &lt;= 3.6.1 versions.
       <description>CVE-2026-78535 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
 Unauthenticated PHP Object Injection in Photolia &lt;= 1.0.3 versions.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]SiteVault备份插件未授权RCE</title>
+      <title>[critical]Special Elements 未授权 SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105889</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105889-2026-10-11</guid>
+      <description>CVE-2026-105889 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.3 · 类型 SQL注入 · 难度 低(远程·免认证)
+Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Tickera Tickera tickera-event-ticketing-system allows Blin…
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ELEX WooCommerce Advanced Bulk 未授权 SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-40800</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-40800-2026-10-11</guid>
+      <description>CVE-2026-40800 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.3 · 类型 SQL注入 · 难度 低(远程·免认证)
+Subscriber SQL Injection in ELEX WooCommerce Advanced Bulk Edit Products, Prices &amp; Attributes &lt;= 1.5.3 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62031</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62031-2026-10-11</guid>
+      <description>CVE-2026-62031 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.3 · 类型 SQL注入 · 难度 低(远程·免认证)
+Unauthenticated SQL Injection in uListing &lt;= 2.2.0 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Unauthenticated Arbitrary File Upload 未授权 任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62025</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62025-2026-10-11</guid>
+      <description>CVE-2026-62025 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.0 · 类型 任意文件上传 · 难度 低(远程·利用条件苛刻·免认证)
+Unauthenticated Arbitrary File Upload in Tailored Tools &lt;= 3.0.3 versions.
+信号:</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]SiteVault备份插件未认证RCE</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-42696</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-42696-2026-10-11</guid>
       <description>CVE-2026-42696 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 10.0 · 类型 代码注入(RCE) · 难度 低(远程·免认证)
 Unauthenticated Remote Code Execution (RCE) in SiteVault – Backup, Restore, Migration &amp;amp; Cloning &lt;= 1.5.19 versions.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]CodeBard帮助台任意文件上传</title>
+      <title>[critical]CodeBard帮助台插件任意文件上传</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62024</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62024-2026-10-11</guid>
       <description>CVE-2026-62024 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.9 · 类型 任意文件上传 · 难度 低(远程·需低权限)
 Subscriber Arbitrary File Upload in CodeBard Help Desk &lt;= 1.1.2 versions.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
       <title>[critical]Creator LMS贡献者任意文件上传</title>
@@ -95,250 +284,187 @@ Subscriber Arbitrary File Upload in CodeBard Help Desk &lt;= 1.1.2 versions.
       <description>CVE-2026-62129 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.9 · 类型 任意文件上传 · 难度 低(远程·需低权限)
 Contributor Arbitrary File Upload in Creator LMS &lt;= 1.2.21 versions.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]miniOrange OTP插件权限提升</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-106610</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-106610-2026-10-11</guid>
-      <description>CVE-2026-106610 · 🎯P1 重点关注 · 披露 2026-10-10 · 组件 NAS/存储 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
-Incorrect Privilege Assignment vulnerability in miniOrange miniorange otp verification miniorange-otp-verification allows Privilege Escalation.This issue affect…
+      <title>[critical]IPharm主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93936</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93936-2026-10-11</guid>
+      <description>CVE-2026-93936 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 24% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group IPharm ipharm allows Object Injection.This issue affects IPharm: from n/a through 1.2.4.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Floci模板引擎未授权代码注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108598</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108598-2026-10-11</guid>
-      <description>CVE-2026-108598 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 代码注入(RCE) · 难度 低(远程·免认证)
-Floci 1.1.0 before 2.2.0 contains a code injection vulnerability in VtlTemplateEngine that allows unauthenticated attackers to execute commands via unrestricted…
+      <title>[critical]Hygia主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93937</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93937-2026-10-11</guid>
+      <description>CVE-2026-93937 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 24% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Hygia hygia allows Object Injection.This issue affects Hygia: from n/a through 1.21.0.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]AIWU订阅者权限提升</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-39801</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-39801-2026-10-11</guid>
-      <description>CVE-2026-39801 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
-Subscriber Privilege Escalation in AIWU &lt;= 1.5.9 versions.
+      <title>[critical]Hogwords主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93938</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93938-2026-10-11</guid>
+      <description>CVE-2026-93938 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 24% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Hogwords hogwords allows Object Injection.This issue affects Hogwords: from n/a through 1.2.7.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Payever网关未授权PHP反序列化</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-42716</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-42716-2026-10-11</guid>
-      <description>CVE-2026-42716 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Payever - WooCommerce Gateway &lt;= 4.8.2 versions.
+      <title>[critical]Greeny主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93940</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93940-2026-10-11</guid>
+      <description>CVE-2026-93940 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 24% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Greeny greeny allows Object Injection.This issue affects Greeny: from n/a through 2.10.0.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Booster电商插件未授权反序列化</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-42718</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-42718-2026-10-11</guid>
-      <description>CVE-2026-42718 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Booster for WooCommerce &lt;= 8.4.0 versions.
+      <title>[critical]Edema主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93941</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93941-2026-10-11</guid>
+      <description>CVE-2026-93941 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 24% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Edema edema allows Object Injection.This issue affects Edema: from n/a through 1.2.2.2.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Dynamic目录插件订阅者对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-42719</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-42719-2026-10-11</guid>
-      <description>CVE-2026-42719 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Subscriber PHP Object Injection in Dynamic User Directory &lt;= 2.4 versions.
+      <title>[critical]Balance主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93945</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93945-2026-10-11</guid>
+      <description>CVE-2026-93945 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 24% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in Axiomthemes Balance balance allows Object Injection.This issue affects Balance: from n/a through 1.12.0.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]CleanSkin主题未授权PHP对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-42723</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-42723-2026-10-11</guid>
-      <description>CVE-2026-42723 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in CleanSkin &lt;= 1.5.0 versions.
+      <title>[critical]Booklovers主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62045</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62045-2026-10-11</guid>
+      <description>CVE-2026-62045 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 23% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Booklovers booklovers allows Object Injection.This issue affects Booklovers: from n/a through …
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Tonda会员插件未授权权限提升</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62022</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62022-2026-10-11</guid>
-      <description>CVE-2026-62022 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
-Unauthenticated Privilege Escalation in Tonda Membership &lt;= 1.0.1 versions.
+      <title>[critical]Gutentype主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62046</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62046-2026-10-11</guid>
+      <description>CVE-2026-62046 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 23% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Gutentype gutentype allows Object Injection.This issue affects Gutentype: from n/a through 2.1…
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]DirectoryPress未授权文件包含</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62032</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62032-2026-10-11</guid>
-      <description>CVE-2026-62032 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 SSRF(文件包含) · 难度 低(远程·免认证)
-Unauthenticated Local File Inclusion in DirectoryPress &lt;= 3.6.27 versions.
+      <title>[critical]Veto主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93927</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93927-2026-10-11</guid>
+      <description>CVE-2026-93927 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 23% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in Axiomthemes Veto veto allows Object Injection.This issue affects Veto: from n/a through 1.6.0.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Splendour主题未授权对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62050</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62050-2026-10-11</guid>
-      <description>CVE-2026-62050 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Splendour &lt;= 1.23 versions.
+      <title>[critical]Travesia主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93929</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93929-2026-10-11</guid>
+      <description>CVE-2026-93929 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 23% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Travesia travesia allows Object Injection.This issue affects Travesia: from n/a through 1.1.16…
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Stargaze主题未授权对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62051</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62051-2026-10-11</guid>
-      <description>CVE-2026-62051 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Stargaze &lt;= 1.10 versions.
+      <title>[critical]Tantra主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93930</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93930-2026-10-11</guid>
+      <description>CVE-2026-93930 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 22% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Tantra tantra allows Object Injection.This issue affects Tantra: from n/a through 2.9.0.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Tipsy主题未授权PHP对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62052</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62052-2026-10-11</guid>
-      <description>CVE-2026-62052 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Tipsy &lt;= 1.6 versions.
+      <title>[critical]Smash主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93931</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93931-2026-10-11</guid>
+      <description>CVE-2026-93931 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 22% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Smash smash allows Object Injection.This issue affects Smash: from n/a through 1.12.0.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Wine House主题未授权对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62053</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62053-2026-10-11</guid>
-      <description>CVE-2026-62053 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Wine House &lt;= 3.20 versions.
+      <title>[critical]Smart Casa主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93932</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93932-2026-10-11</guid>
+      <description>CVE-2026-93932 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 22% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Smart Casa smart-casa allows Object Injection.This issue affects Smart Casa: from n/a through …
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Yacht Rental主题未授权对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62054</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62054-2026-10-11</guid>
-      <description>CVE-2026-62054 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Yacht Rental &lt;= 2.6 versions.
+      <title>[critical]Rosalinda主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93933</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93933-2026-10-11</guid>
+      <description>CVE-2026-93933 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 22% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Rosalinda rosalinda allows Object Injection.This issue affects Rosalinda: from n/a through 1.2…
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Kalles主题未授权PHP对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62076</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62076-2026-10-11</guid>
-      <description>CVE-2026-62076 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Kalles &lt;= 1.1.7.1 versions.
+      <title>[critical]Partiso主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93934</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93934-2026-10-11</guid>
+      <description>CVE-2026-93934 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 22% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Partiso partiso allows Object Injection.This issue affects Partiso: from n/a through 1.1.13.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Avala主题未授权PHP对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62077</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62077-2026-10-11</guid>
-      <description>CVE-2026-62077 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Avala &lt;= 1.1.4 versions.
+      <title>[critical]Let's Play主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93935</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93935-2026-10-11</guid>
+      <description>CVE-2026-93935 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 22% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Let's Play playhockey allows Object Injection.This issue affects Let's Play: from n/a through …
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Juno主题未授权PHP对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62086</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62086-2026-10-11</guid>
-      <description>CVE-2026-62086 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Juno &lt;= 2.25 versions.
+      <title>[critical]Dwell主题反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93942</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93942-2026-10-11</guid>
+      <description>CVE-2026-93942 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 22% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Dwell dwell allows Object Injection.This issue affects Dwell: from n/a through 1.16.0.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Equadio主题未授权对象注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62087</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62087-2026-10-11</guid>
-      <description>CVE-2026-62087 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Equadio &lt;= 1.1.4 versions.
+      <title>[critical]Convex主题反序列化致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93943</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93943-2026-10-11</guid>
+      <description>CVE-2026-93943 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 22% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Convex convex allows Object Injection.This issue affects Convex: from n/a through 1.16.0.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WineShop主题未授权对象注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62090</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62090-2026-10-11</guid>
-      <description>CVE-2026-62090 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in WineShop &lt;= 3.20 versions.
+      <title>[critical]Camelia主题反序列化致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93944</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93944-2026-10-11</guid>
+      <description>CVE-2026-93944 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · EPSS 0.3%,前 22% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in ThemeREX Group Camelia camelia allows Object Injection.This issue affects Camelia: from n/a through 1.2.15.
 信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Law Office主题未授权对象注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62120</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62120-2026-10-11</guid>
-      <description>CVE-2026-62120 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Law Office &lt;= 3.20 versions.
-信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Invetex主题未授权对象注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62123</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62123-2026-10-11</guid>
-      <description>CVE-2026-62123 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Invetex &lt;= 2.18 versions.
-信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]N7 Golf主题未授权对象注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62124</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62124-2026-10-11</guid>
-      <description>CVE-2026-62124 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in N7 | Golf Club Sports &amp; Events &lt;= 2.21 versions.
-信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Asia Garden主题未授权对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62125</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62125-2026-10-11</guid>
-      <description>CVE-2026-62125 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Asia Garden &lt;= 1.3.1 versions.
-信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Education Center未授权注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66483</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66483-2026-10-11</guid>
-      <description>CVE-2026-66483 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Education Center &lt;= 3.6.12 versions.
-信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Windsor主题未授权对象注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66563</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66563-2026-10-11</guid>
-      <description>CVE-2026-66563 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in Windsor &lt;= 2.10 versions.
-信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]ShiftCV主题未授权对象注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66564</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66564-2026-10-11</guid>
-      <description>CVE-2026-66564 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in ShiftCV &lt;= 3.0.14 versions.
-信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]FC United主题未授权对象注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66565</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66565-2026-10-11</guid>
-      <description>CVE-2026-66565 · 🎯P1 重点关注 · 披露 2026-10-10 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Unauthenticated PHP Object Injection in FC United &lt;= 1.1.1 versions.
-信号:</description>
-      <pubDate>Sun, 11 Oct 2026 00:16:28 +0000</pubDate>
+      <title>今日要点</title>
+      <description>- 今日15条高危漏洞集中公告，CVSS均为9.8，呈批量爆发趋势。
+- 暂无在野利用与勒索软件标记，但高危RCE仍需按紧急处置。
+- 反序列化RCE占多数，最需立即修复相关中间件与框架。
+- 同时存在SSRF文件包含与权限缺陷，需一并排查。
+- 公开PoC/Nuclei模板暂缺，应抢先修补降低暴露窗口。</description>
+      <pubDate>Sun, 11 Oct 2026 02:09:48 +0000</pubDate>
     </item>
   </channel>
 </rss>
