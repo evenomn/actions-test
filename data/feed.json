@@ -1,125 +1,20 @@
 {
  "version": 3,
- "generated_at": "2026-10-11T15:49:56+00:00",
+ "generated_at": "2026-10-11T21:00:23+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 0,
  "stats": {
-  "total": 1,
-  "by_tier": {
-   "critical": 1
-  },
-  "by_urgency": {
-   "P1 重点关注": 1
-  },
-  "by_category": {
-   "未知": 1
-  },
+  "total": 0,
+  "by_tier": {},
+  "by_urgency": {},
+  "by_category": {},
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [
-  {
-   "id": "CVE-2026-108576",
-   "tier": "critical",
-   "title": "TOZED X300命令注入RCE",
-   "title_zh": "TOZED X300命令注入RCE",
-   "summary_zh": "远程攻击者可操纵IPPing诊断Host参数注入系统命令，获取设备控制权。",
-   "published": "2026-10-11T13:17:13.067",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/danish1162/CVE-2026-2035703-x300/security/advisories/GHSA-qcpp-vfr2-v242"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108576"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/956290"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复；限制管理接口访问，禁用或过滤IPPing Host参数。",
-   "repro_worthy": "一般",
-   "repro_note": "process_ping的Host参数注入命令，需管理面可达。",
-   "impact_scope": "CPE/网关设备，管理面或暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108576",
-   "description": "A vulnerability was found in TOZED X300 up to 6.01.3. This vulnerability affects the function process_ping of the component IPPingDiagnostics Handler. The manipulation of the argument Host results in os command injection. The attack can be launched remotely. The vendor was contacted early about this disclosure but did not respond in any way."
-  }
- ],
+ "items": [],
  "media": [],
- "commits": [
-  {
-   "repo": "wireshark/wireshark",
-   "sha": "4c0455a50f6b3b8d4d46b969b00df07bced554bc",
-   "url": "https://github.com/wireshark/wireshark/commit/4c0455a50f6b3b8d4d46b969b00df07bced554bc",
-   "title": "logcat text: Don't match an unread line buffer when opening",
-   "date": "2026-10-11T13:39:51",
-   "score": 2,
-   "matched": [
-    "未初始化/内存破坏"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/tomcat",
-   "sha": "22416d32befac2229f2b33b2bf74761755245fc3",
-   "url": "https://github.com/apache/tomcat/commit/22416d32befac2229f2b33b2bf74761755245fc3",
-   "title": "Deserialize the key of a backup request with the loaders of the map",
-   "date": "2026-10-11T12:53:49",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/tomcat",
-   "sha": "87c5bf8ff0ec94ec787f1f3d5aa77f99d8707154",
-   "url": "https://github.com/apache/tomcat/commit/87c5bf8ff0ec94ec787f1f3d5aa77f99d8707154",
-   "title": "Scope the map member and state locks of AbstractReplicatedMap to the map operations",
-   "date": "2026-10-11T11:36:44",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/tomcat",
-   "sha": "22f2fbefc78b28efe0a0e34e6cb8b4ba07fb1edc",
-   "url": "https://github.com/apache/tomcat/commit/22f2fbefc78b28efe0a0e34e6cb8b4ba07fb1edc",
-   "title": "Clamp the backup index to the member snapshot in publishEntryInfo",
-   "date": "2026-10-11T11:09:09",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  }
- ]
+ "commits": []
 }
