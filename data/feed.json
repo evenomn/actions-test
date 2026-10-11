@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-10-11T07:22:53+00:00",
+ "generated_at": "2026-10-11T15:49:56+00:00",
  "lookback_hours": 5,
  "count": 1,
  "stats": {
@@ -22,37 +22,37 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-108540",
+   "id": "CVE-2026-108576",
    "tier": "critical",
-   "title": "OpenSpug Spug文件传输命令注入",
-   "title_zh": "OpenSpug Spug文件传输命令注入",
-   "summary_zh": "可访问文件传输功能的远程攻击者可通过 /exec/transfer 注入系统命令，完全控制服务器。",
-   "published": "2026-10-11T07:17:23.303",
-   "cvss": 9.9,
+   "title": "TOZED X300命令注入RCE",
+   "title_zh": "TOZED X300命令注入RCE",
+   "summary_zh": "远程攻击者可操纵IPPing诊断Host参数注入系统命令，获取设备控制权。",
+   "published": "2026-10-11T13:17:13.067",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
     "命令注入",
     "命令注入(RCE)"
    ],
-   "difficulty": "低(远程·需低权限)",
+   "difficulty": "低(远程·免认证)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/SECWG/CVE/issues/10"
+     "url": "https://github.com/danish1162/CVE-2026-2035703-x300/security/advisories/GHSA-qcpp-vfr2-v242"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108540"
+     "url": "https://vuldb.com/cve/CVE-2026-108576"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/948328"
+     "url": "https://vuldb.com/submit/956290"
     }
    ],
    "poc": [],
@@ -63,37 +63,61 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "厂商未回应，暂无官方修复；限制 /exec/transfer 访问并加强鉴权",
+   "action_zh": "暂无官方修复；限制管理接口访问，禁用或过滤IPPing Host参数。",
    "repro_worthy": "一般",
-   "repro_note": "入口 /exec/transfer；需能调用文件传输功能，构造恶意参数触发命令拼接",
-   "impact_scope": "内网运维管理平台，横向移动跳板",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108540",
-   "description": "A flaw has been found in OpenSpug Spug up to 3.4.0/4.0.1. This impacts an unknown function of the file /exec/transfer of the component File Transfer. Executing a manipulation can lead to os command injection. The attack may be launched remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
+   "repro_note": "process_ping的Host参数注入命令，需管理面可达。",
+   "impact_scope": "CPE/网关设备，管理面或暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108576",
+   "description": "A vulnerability was found in TOZED X300 up to 6.01.3. This vulnerability affects the function process_ping of the component IPPingDiagnostics Handler. The manipulation of the argument Host results in os command injection. The attack can be launched remotely. The vendor was contacted early about this disclosure but did not respond in any way."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "301a611370a0ba81f4a71d3b7ccd064623606c1b",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/301a611370a0ba81f4a71d3b7ccd064623606c1b",
-   "title": "avformat/imf_cpl: Do not free the marker label on scope allocation failure",
-   "date": "2026-10-11T02:37:58",
+   "repo": "wireshark/wireshark",
+   "sha": "4c0455a50f6b3b8d4d46b969b00df07bced554bc",
+   "url": "https://github.com/wireshark/wireshark/commit/4c0455a50f6b3b8d4d46b969b00df07bced554bc",
+   "title": "logcat text: Don't match an unread line buffer when opening",
+   "date": "2026-10-11T13:39:51",
    "score": 2,
    "matched": [
-    "类型混淆/double free"
+    "未初始化/内存破坏"
    ],
    "cve": null
   },
   {
-   "repo": "wireshark/wireshark",
-   "sha": "861e629ad195ad2beb33ad1243a4c3cde6ec4ce8",
-   "url": "https://github.com/wireshark/wireshark/commit/861e629ad195ad2beb33ad1243a4c3cde6ec4ce8",
-   "title": "procmon: fix a use-after-free reported by the Clang static analyzer.",
-   "date": "2026-10-11T01:31:53",
+   "repo": "apache/tomcat",
+   "sha": "22416d32befac2229f2b33b2bf74761755245fc3",
+   "url": "https://github.com/apache/tomcat/commit/22416d32befac2229f2b33b2bf74761755245fc3",
+   "title": "Deserialize the key of a backup request with the loaders of the map",
+   "date": "2026-10-11T12:53:49",
    "score": 2,
    "matched": [
-    "UAF"
+    "反序列化"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/tomcat",
+   "sha": "87c5bf8ff0ec94ec787f1f3d5aa77f99d8707154",
+   "url": "https://github.com/apache/tomcat/commit/87c5bf8ff0ec94ec787f1f3d5aa77f99d8707154",
+   "title": "Scope the map member and state locks of AbstractReplicatedMap to the map operations",
+   "date": "2026-10-11T11:36:44",
+   "score": 2,
+   "matched": [
+    "反序列化"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/tomcat",
+   "sha": "22f2fbefc78b28efe0a0e34e6cb8b4ba07fb1edc",
+   "url": "https://github.com/apache/tomcat/commit/22f2fbefc78b28efe0a0e34e6cb8b4ba07fb1edc",
+   "title": "Clamp the backup index to the member snapshot in publishEntryInfo",
+   "date": "2026-10-11T11:09:09",
+   "score": 2,
+   "matched": [
+    "越界读写"
    ],
    "cve": null
   }
