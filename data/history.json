@@ -6512,5 +6512,59 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-10-12": {
+  "qualified": 4,
+  "critical": 3,
+  "kev": 0,
+  "repro_top": 0,
+  "kev_total": 1739,
+  "by_category": {
+   "未分类": 2,
+   "ERP/业务系统": 1,
+   "容器/虚拟化": 1
+  },
+  "items": [
+   {
+    "id": "CVE-2026-108865",
+    "title": "Unla OAuth2认证绕过可获取令牌",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-66086",
+    "title": "Modem OTA SIB1 解析栈溢出",
+    "tier": "critical",
+    "category": "ERP/业务系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-108753",
+    "title": "agnai 硬编码管理员凭据与JWT密钥",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-108860",
+    "title": "BotSharp 硬编码JWT密钥致令牌伪造",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }

@@ -1,20 +1,244 @@
 {
  "version": 3,
- "generated_at": "2026-10-12T00:39:00+00:00",
- "lookback_hours": 5,
- "count": 0,
+ "generated_at": "2026-10-12T02:38:26+00:00",
+ "lookback_hours": 24,
+ "count": 4,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 4,
+  "by_tier": {
+   "critical": 3,
+   "high": 1
+  },
+  "by_urgency": {
+   "P1 重点关注": 4
+  },
+  "by_category": {
+   "未知": 2,
+   "ERP/业务系统": 1,
+   "容器/虚拟化": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [],
- "items": [],
+ "briefing": [
+  "- 今日清单未观测到在野利用与勒索软件关联。",
+  "- 集中披露4个漏洞，其中3个CVSS≥9，属批量高危。",
+  "- 最需立即处置：CVE-2026-66086，ERP栈溢出，CVSS 9.8。",
+  "- 容器/虚拟化硬编码凭据CVSS 9.4，优先轮换凭据。"
+ ],
+ "items": [
+  {
+   "id": "CVE-2026-108865",
+   "tier": "high",
+   "title": "Unla OAuth2认证绕过可获取令牌",
+   "title_zh": "Unla OAuth2认证绕过可获取令牌",
+   "summary_zh": "未认证者可注册客户端,经 /authorize 换码、/token 兑换令牌,访问受保护 MCP 与上游 API 凭据。",
+   "published": "2026-10-11T14:17:06.640",
+   "cvss": 8.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/AmoyLab/Unla"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/AmoyLab/Unla/blob/v0.10.0/internal/auth/oauth.go#L86-L147"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/AmoyLab/Unla/blob/v0.10.0/internal/core/server.go#L229-L261"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商修复;临时限制 /authorize、/token 公网访问并轮换上游凭据。",
+   "repro_worthy": "一般",
+   "repro_note": "注册客户端→/authorize取code→/token换令牌,无需资源所有者认证",
+   "impact_scope": "AI/MCP 网关,可代理上游 API 凭据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108865",
+   "description": "AmoyLab Unla through 0.10.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to obtain valid access tokens because the OAuth2 server never authenticates a resource owner. Attackers can register a client, request a code from /authorize, and exchange it at /token to access OAuth2-protected MCP prefixes, proxied upstream APIs and injected credentials."
+  },
+  {
+   "id": "CVE-2026-66086",
+   "tier": "critical",
+   "title": "Modem OTA SIB1 解析栈溢出",
+   "title_zh": "Modem OTA SIB1 解析栈溢出",
+   "summary_zh": "恶意基站广播含畸形调度信息的 SIB1,无需权限即可触发栈溢出,导致远程代码执行或拒绝服务。",
+   "published": "2026-10-12T02:16:57.600",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.unisoc.com/en/support/product-security-bulletin/2109454821805424641"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪基带/芯片厂商 OTA 补丁并及时升级;避免驻留不可信网络。",
+   "repro_worthy": "一般",
+   "repro_note": "需伪基站射频环境广播构造 SIB1,无法纯软件本地复现",
+   "impact_scope": "手机/物联网基带,可被伪基站远程触发",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-66086",
+   "description": "In the modem OTA stack, there is a possible stack-based buffer overflow due to improper validation of scheduling information in SIB1 messages. This could lead to remote code execution or denial of service with no additional execution privileges needed."
+  },
+  {
+   "id": "CVE-2026-108753",
+   "tier": "critical",
+   "title": "agnai 硬编码管理员凭据与JWT密钥",
+   "title_zh": "agnai 硬编码管理员凭据与JWT密钥",
+   "summary_zh": "自托管部署使用固定管理员口令与公开JWT密钥,未认证者可登录管理员或伪造 admin 令牌接管实例。",
+   "published": "2026-10-11T13:17:20.237",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "硬编码凭据"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/agnaistic/agnai"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/agnaistic/agnai/blob/6c3de258cb33999c3f292c71aa031d2352681186/README.md#L75-L82"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/agnaistic/agnai/blob/6c3de258cb33999c3f292c71aa031d2352681186/self-host.docker-compose.yml#L18-L26"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "更换 compose 中管理员口令与 JWT 密钥并重建实例,关注官方修复。",
+   "repro_worthy": "一般",
+   "repro_note": "用compose内置口令登录,或用公开JWT密钥自签admin令牌",
+   "impact_scope": "自托管 AI 对话服务,常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108753",
+   "description": "Agnaistic agnai through 1.0.555 contains a hard-coded credentials vulnerability in self-host.docker-compose.yml, which sets a fixed admin password and public JWT secret. Unauthenticated attackers can log in as admin or sign their own JWT with admin: true to impersonate users, reset passwords, and change server configuration."
+  },
+  {
+   "id": "CVE-2026-108860",
+   "tier": "critical",
+   "title": "BotSharp 硬编码JWT密钥致令牌伪造",
+   "title_zh": "BotSharp 硬编码JWT密钥致令牌伪造",
+   "summary_zh": "WebStarter 配置中JWT密钥硬编码,未认证者可用其签发 admin 令牌,冒充任意用户访问受保护 API。",
+   "published": "2026-10-11T14:17:05.933",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-321"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/SciSharp/BotSharp"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/SciSharp/BotSharp/blob/a11ee0317cab5c619df1cb5d0c4fc39d1b6e30b4/src/Infrastructure/BotSharp.OpenAPI/BotSharpOpenApiExtensions.cs#L46-L57"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/SciSharp/BotSharp/blob/a11ee0317cab5c619df1cb5d0c4fc39d1b6e30b4/src/WebStarter/appsettings.json#L16-L20"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "轮换 Jwt:Key 并外部化管理,升级至 5.2.0 之后版本。",
+   "repro_worthy": "一般",
+   "repro_note": "以appsettings.json中硬编码Jwt:Key自签admin令牌",
+   "impact_scope": "内网 .NET AI 应用,API 横向访问",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108860",
+   "description": "BotSharp through 5.2.0 contains an authentication bypass vulnerability that allows unauthenticated remote attackers to forge bearer tokens using the hard-coded Jwt:Key in WebStarter appsettings.json. Attackers can sign tokens with the committed HMAC secret and fixed botsharp issuer and audience to impersonate any known user, including administrators, on Authorize-protected API routes."
+  }
+ ],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "openbsd/src",
+   "sha": "a641ebf8ae1e78634451315b4ceefa92dcd07aa8",
+   "url": "https://github.com/openbsd/src/commit/a641ebf8ae1e78634451315b4ceefa92dcd07aa8",
+   "title": "drm/amd/powerplay: fix VoltageObjectInfo zero-stride loop and OOB read",
+   "date": "2026-10-12T01:51:20",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openbsd/src",
+   "sha": "eeb58f550b92bf21011a87847ffb0eb4370e1a30",
+   "url": "https://github.com/openbsd/src/commit/eeb58f550b92bf21011a87847ffb0eb4370e1a30",
+   "title": "Fix an off-by-one in bsd_decompress()",
+   "date": "2026-10-11T03:02:17",
+   "score": 2,
+   "matched": [
+    "缓冲区溢出"
+   ],
+   "cve": null
+  }
+ ]
 }
