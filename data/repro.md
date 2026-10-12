@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-12 07:31 UTC · 共 **86** 条(强烈推荐 9 / 值得 77)
+**更新**: 2026-10-12 19:10 UTC · 共 **87** 条(强烈推荐 9 / 值得 78)
 
 ---
 
@@ -266,6 +266,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### AnyDesk 未认证堆溢出RCE
+[CVE-2026-109390](https://nvd.nist.gov/vuln/detail/CVE-2026-109390) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-12 | 入库 2026-10-12
+未认证远程攻击者向 mode 5 流包发送畸形长度，可在 Linux 以 root 执行代码。
+复现: 值得 — 构造 mode 5 流包，长度字段未校验触发堆溢出；Linux root。 · 影响面: 远程桌面软件，常暴露公网/内网
+处置: 升级 AnyDesk 至 8.0.3；限制公网暴露并禁用不必要远控
+参考: [参考](https://anydesk.com/en/changelog/linux) · [参考](https://github.com/v12-security/pocs/tree/main/anydesk)
 
 ### CVE-2026-86131
 [CVE-2026-86131](https://nvd.nist.gov/vuln/detail/CVE-2026-86131) | CVSS 9.8 | 披露 2026-09-30 | 入库 2026-10-08

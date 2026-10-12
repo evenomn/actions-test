@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-12T07:31:47+00:00",
- "count": 86,
+ "updated_at": "2026-10-12T19:10:09+00:00",
+ "count": 87,
  "count_recommended": 9,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -1465,6 +1465,46 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-109390",
+   "title": "AnyDesk 未认证堆溢出RCE",
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-12",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "构造 mode 5 流包，长度字段未校验触发堆溢出；Linux root。",
+   "impact_scope": "远程桌面软件，常暴露公网/内网",
+   "action_zh": "升级 AnyDesk 至 8.0.3；限制公网暴露并禁用不必要远控",
+   "summary_zh": "未认证远程攻击者向 mode 5 流包发送畸形长度，可在 Linux 以 root 执行代码。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://anydesk.com/en/changelog/linux"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/v12-security/pocs/tree/main/anydesk"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109390",
    "change_note": null
   },
   {

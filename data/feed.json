@@ -1,18 +1,18 @@
 {
  "version": 3,
- "generated_at": "2026-10-12T07:31:47+00:00",
+ "generated_at": "2026-10-12T19:10:09+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 15,
  "stats": {
-  "total": 1,
+  "total": 15,
   "by_tier": {
-   "critical": 1
+   "critical": 15
   },
   "by_urgency": {
-   "P1 重点关注": 1
+   "P1 重点关注": 15
   },
   "by_category": {
-   "未知": 1
+   "未知": 15
   },
   "kev": 0,
   "with_poc": 0,
@@ -22,20 +22,19 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-108804",
+   "id": "CVE-2026-109390",
    "tier": "critical",
-   "title": "TRENDnet多款路由器命令注入RCE",
-   "title_zh": "TRENDnet多款路由器命令注入RCE",
-   "summary_zh": "远程攻击者通过管理接口构造service参数注入系统命令，以root权限执行任意指令，完全控制设备。",
-   "published": "2026-10-12T06:16:59.457",
-   "cvss": 10.0,
+   "title": "AnyDesk 未认证堆溢出RCE",
+   "title_zh": "AnyDesk 未认证堆溢出RCE",
+   "summary_zh": "未认证远程攻击者向 mode 5 流包发送畸形长度，可在 Linux 以 root 执行代码。",
+   "published": "2026-10-12T15:17:07.980",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
+    "CWE-130"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -44,15 +43,11 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/dacj4n/TRENDNetExploits"
+     "url": "https://anydesk.com/en/changelog/linux"
     },
     {
      "label": "参考",
-     "url": "https://github.com/dacj4n/TRENDNetExploits/tree/main/exploit"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108804"
+     "url": "https://github.com/v12-security/pocs/tree/main/anydesk"
     }
    ],
    "poc": [],
@@ -63,14 +58,709 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复固件；若设备已停更，停用远程管理并限制管理面访问源。",
+   "action_zh": "升级 AnyDesk 至 8.0.3；限制公网暴露并禁用不必要远控",
+   "repro_worthy": "值得",
+   "repro_note": "构造 mode 5 流包，长度字段未校验触发堆溢出；Linux root。",
+   "impact_scope": "远程桌面软件，常暴露公网/内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109390",
+   "description": "AnyDesk before 8.0.3 allows unauthenticated remote attackers to execute arbitrary code via a heap-based buffer overflow, as demonstrated on Linux for command execution as root without the victim approving desktop control. In the stream packet handler for mode 5 in the session protocol, a payload length value is not validated."
+  },
+  {
+   "id": "CVE-2026-108892",
+   "tier": "critical",
+   "title": "Linksys E1700 栈溢出漏洞",
+   "title_zh": "Linksys E1700 栈溢出漏洞",
+   "summary_zh": "远程攻击者可能触发 Linksys E1700 栈溢出，导致设备崩溃或执行代码。",
+   "published": "2026-10-12T14:17:09.530",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏",
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/wudipjq/my_vuln/blob/main/Linksys3/vuln_66/66.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-108892"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/973111"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商固件更新；限制路由器管理面公网暴露",
    "repro_worthy": "一般",
-   "repro_note": "访问管理Web接口，在service参数中拼接命令注入符，观察回显或带外结果。",
-   "impact_scope": "SOHO路由器管理面，可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108804",
-   "description": "A vulnerability was detected in TRENDnet TEW-751DR, TEW-752DRU and TEW733GR 1.03B01/1.03B03. The manipulation of the argument service results in os command injection."
+   "repro_note": "远程向受影响服务发送超长输入触发栈溢出；入口未明。",
+   "impact_scope": "SOHO路由器，常暴露于公网边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108892",
+   "description": "A vulnerability was determined in Linksys E1700 1.0.0.4.003. This vulnerability affects the function ssid1MACFilter of the file /goform/ssid1MACFilter of the component Mac Filter. This manipulation of the argument newap_text_%d causes stack-based buffer overflow. The attack may be initiated remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-108907",
+   "tier": "critical",
+   "title": "Netcore NR268 认证绕过",
+   "title_zh": "Netcore NR268 认证绕过",
+   "summary_zh": "远程攻击者可操纵 CGI 的 user_ok 认证函数绕过认证，获得设备管理权限。",
+   "published": "2026-10-12T17:17:13.373",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/draw-ctf/report/blob/main/NR268/2026.09.14-netcore-nr268-boa-auth-fail-open.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-108907"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/977173"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "厂商未回应，暂无官方修复；限制管理接口公网访问",
+   "repro_worthy": "一般",
+   "repro_note": "访问 CGI 执行路径并操纵 user_ok 认证逻辑，构造绕过请求。",
+   "impact_scope": "SOHO路由器，公网管理面风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108907",
+   "description": "A vulnerability was determined in Netcore NR268 1.7.121109. Affected is the function user_ok of the component CGI Execution. This manipulation causes improper authentication. The attack can be initiated remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-108917",
+   "tier": "critical",
+   "title": "Edimax BR-6208AC 命令注入",
+   "title_zh": "Edimax BR-6208AC 命令注入",
+   "summary_zh": "远程攻击者可通过 Web 接口注入系统命令，控制 Edimax BR-6208AC。",
+   "published": "2026-10-12T18:17:22.163",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "注入",
+    "命令注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/fizz-is-on-the-way/Iot_vuls/tree/main/BR-6208AC/RCE_formAutoFWupgrade"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-108917"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/977199"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商固件更新；关闭公网管理或限制访问来源",
+   "repro_worthy": "一般",
+   "repro_note": "向路由器 Web 管理接口注入 shell 元字符；具体端点未明。",
+   "impact_scope": "SOHO路由器，可能被远程控制",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108917",
+   "description": "A vulnerability was determined in Edimax BR-6208AC 1.32. This issue affects some unknown processing of the file /goform/formAutoFWupgrade. Executing a manipulation of the argument tftpsIP can lead to command injection. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer."
+  },
+  {
+   "id": "CVE-2026-108918",
+   "tier": "critical",
+   "title": "Edimax路由器readE2P命令注入",
+   "title_zh": "Edimax路由器readE2P命令注入",
+   "summary_zh": "远程攻击者操纵 readE2P 参数注入系统命令，可控制 Edimax BR-6208AC。",
+   "published": "2026-10-12T18:17:22.353",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "注入",
+    "命令注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/fizz-is-on-the-way/Iot_vuls/tree/main/BR-6208AC/RCE_formWlanMP"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-108918"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/977200"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商固件更新；关闭公网管理并过滤 readE2P 参数",
+   "repro_worthy": "一般",
+   "repro_note": "向 Web 接口传入 readE2P 参数并注入 shell 元字符；端点待定位。",
+   "impact_scope": "SOHO路由器，公网管理面风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108918",
+   "description": "A vulnerability was identified in Edimax BR-6208AC 1.32. Impacted is an unknown function of the file /goform/formWlanMP. The manipulation of the argument readE2P leads to command injection. It is possible to initiate the attack remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer."
+  },
+  {
+   "id": "CVE-2026-108893",
+   "tier": "critical",
+   "title": "Linksys E1700 vlan栈溢出",
+   "title_zh": "Linksys E1700 vlan栈溢出",
+   "summary_zh": "远程攻击者向 /goform/setVlan 的 vlan_set 参数发送超长值，触发栈溢出。",
+   "published": "2026-10-12T14:17:09.710",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏",
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/wudipjq/my_vuln/blob/main/Linksys3/vuln_67/67.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-108893"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/973112"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商固件更新；限制管理面公网暴露并校验 vlan_set",
+   "repro_worthy": "一般",
+   "repro_note": "POST /goform/setVlan，vlan_set 参数超长导致栈溢出。",
+   "impact_scope": "SOHO路由器，可能远程击穿",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108893",
+   "description": "A vulnerability was identified in Linksys E1700 up to 1.0.0.4.003. This issue affects the function setVlan of the file /goform/setVlan. Such manipulation of the argument vlan_set leads to stack-based buffer overflow. The attack may be launched remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-108894",
+   "tier": "critical",
+   "title": "静态路由参数命令注入漏洞",
+   "title_zh": "静态路由参数命令注入漏洞",
+   "summary_zh": "远程攻击者操纵 staticRoute_* 参数可注入系统命令，导致任意代码执行。",
+   "published": "2026-10-12T14:17:09.897",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/wudipjq/my_vuln/blob/main/Linksys3/vuln_68/68.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-108894"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/973113"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商修复；限制管理接口暴露并过滤静态路由参数",
+   "repro_worthy": "一般",
+   "repro_note": "向静态路由接口提交 staticRoute_* 参数注入 shell 命令。",
+   "impact_scope": "疑似路由器管理面，可远程命令执行",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108894",
+   "description": "Performing a manipulation of the argument staticRoute_IP_setting/staticRoute_Netmask_setting/staticRoute_Gateway_setting/staticRoute_Metric_setting results in os command injection. Remote exploitation of the attack is possible."
+  },
+  {
+   "id": "CVE-2026-108895",
+   "tier": "critical",
+   "title": "MAC_addr参数命令注入",
+   "title_zh": "MAC_addr参数命令注入",
+   "summary_zh": "远程攻击者操纵 MAC_addr 参数可注入系统命令，导致任意代码执行。",
+   "published": "2026-10-12T15:17:07.227",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/wudipjq/my_vuln/blob/main/Linksys3/vuln_69/69.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-108895"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/973114"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商修复；限制管理接口暴露并过滤 MAC_addr 输入",
+   "repro_worthy": "一般",
+   "repro_note": "向涉及 MAC_addr 的管理接口提交恶意值，注入 OS 命令。",
+   "impact_scope": "疑似网络设备管理面，可远程命令执行",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108895",
+   "description": "A weakness has been identified in Linksys E1700 1.0.0.4.003. The affected element is the function setDMZ of the file /goform/setDMZ. Executing a manipulation of the argument MAC_addr can lead to os command injection. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-108896",
+   "tier": "critical",
+   "title": "Linksys E1700 IPv6命令注入",
+   "title_zh": "Linksys E1700 IPv6命令注入",
+   "summary_zh": "远程攻击者操纵 setLinksysIpv6 的 _6rd_prefix 参数注入系统命令。",
+   "published": "2026-10-12T15:17:07.423",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/wudipjq/my_vuln/blob/main/Linksys3/vuln_70/70.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-108896"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/973115"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商固件更新；限制管理面并校验 _6rd_prefix",
+   "repro_worthy": "一般",
+   "repro_note": "setLinksysIpv6 的 _6rd_prefix 参数注入命令。",
+   "impact_scope": "SOHO路由器，管理面暴露可被控",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108896",
+   "description": "A vulnerability was found in Linksys E1700 1.0.0.4.003. This affects the function setLinksysIpv6 of the file /goform/setLinksysIpv6. The manipulation of the argument _6rd_prefix/_6rd_prefix_len results in os command injection. The attack can be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-85947",
+   "tier": "critical",
+   "title": "MarkLogic 森林管理提权漏洞",
+   "title_zh": "MarkLogic 森林管理提权漏洞",
+   "summary_zh": "拥有森林管理权限的远程攻击者可创建管理员账户，完全控制 MarkLogic Server。",
+   "published": "2026-10-12T16:17:06.040",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Progress(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://community.progress.com/s/article/Marklogic-Critical-Security-Alert-Bulletin-October-2026"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 12.1.0 或 11.3.7；审计森林管理权限账户",
+   "repro_worthy": "一般",
+   "repro_note": "以森林管理权限调用受影响的森林管理操作，创建管理员账户。",
+   "impact_scope": "企业级数据库，权限提升后失陷",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85947",
+   "description": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 contain an authorization flaw in certain forest-management operations. A remote attacker with forest-management privileges could exploit this flaw to create a persistent unauthorized administrator account, potentially resulting in complete unauthorized administrative control of the server."
+  },
+  {
+   "id": "CVE-2026-85948",
+   "tier": "critical",
+   "title": "MarkLogic XQuery注入提权",
+   "title_zh": "MarkLogic XQuery注入提权",
+   "summary_zh": "拥有 manage-user 权限的远程攻击者可利用 XQuery 注入获得持久管理员控制。",
+   "published": "2026-10-12T16:17:06.173",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Progress(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://community.progress.com/s/article/Marklogic-Critical-Security-Alert-Bulletin-October-2026"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 12.1.0/11.3.7；禁用弃用 Management API 路径",
+   "repro_worthy": "一般",
+   "repro_note": "manage-user 权限访问弃用 API 路径注入 XQuery。",
+   "impact_scope": "企业级数据库，管理权限可被提升",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85948",
+   "description": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 contain an XQuery injection flaw in a deprecated Management API package path. A remote attacker with manage-user-level privileges could exploit this flaw to obtain persistent unauthorized administrative control."
+  },
+  {
+   "id": "CVE-2026-85955",
+   "tier": "critical",
+   "title": "MarkLogic XQuery越权执行漏洞",
+   "title_zh": "MarkLogic XQuery越权执行漏洞",
+   "summary_zh": "拥有查询执行权限的远程攻击者可越权调用 XQuery 求值，执行服务端代码。",
+   "published": "2026-10-12T16:17:07.070",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Progress(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://community.progress.com/s/article/Marklogic-Critical-Security-Alert-Bulletin-October-2026"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 12.1.0 或 11.3.7；限制查询执行与求值权限",
+   "repro_worthy": "一般",
+   "repro_note": "以查询执行权限调用 XQuery 求值函数，缺少求值权限校验。",
+   "impact_scope": "企业级数据库，可能服务端代码执行",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85955",
+   "description": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 allow a remote attacker with query-execution access to invoke an XQuery evaluation function without the additional required evaluation privilege, which could result in server-side code execution with elevated permissions."
+  },
+  {
+   "id": "CVE-2026-108914",
+   "tier": "critical",
+   "title": "未知组件远程缓冲区溢出",
+   "title_zh": "未知组件远程缓冲区溢出",
+   "summary_zh": "远程攻击者可触发缓冲区溢出，可能导致组件崩溃或执行任意代码。",
+   "published": "2026-10-12T17:17:13.890",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏",
+    "缓冲区溢出"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/fizz-is-on-the-way/Iot_vuls/tree/main/BR-6208AC/BufferOverflow_formWlSiteSurvey"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-108914"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/977194"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复信息；限制暴露面并关注厂商补丁",
+   "repro_worthy": "一般",
+   "repro_note": "远程向受影响服务发送超长输入触发溢出；具体组件未明。",
+   "impact_scope": "未知网络组件，远程可利用",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108914",
+   "description": "A flaw has been found in Edimax BR-6208AC 1.32. Affected by this issue is some unknown functionality of the file /goform/formWlSiteSurvey. This manipulation of the argument ifname causes buffer overflow. Remote exploitation of the attack is possible. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer."
+  },
+  {
+   "id": "CVE-2026-108915",
+   "tier": "critical",
+   "title": "Edimax BR6208AC 缓冲区溢出",
+   "title_zh": "Edimax BR6208AC 缓冲区溢出",
+   "summary_zh": "远程攻击者可触发 Edimax BR6208AC 缓冲区溢出，可能导致代码执行。",
+   "published": "2026-10-12T18:17:21.770",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏",
+    "缓冲区溢出"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/fizz-is-on-the-way/Iot_vuls/tree/main/BR-6208AC/BufferOverflow_formWlanMP"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-108915"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/977196"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商固件更新；限制路由器管理面公网暴露",
+   "repro_worthy": "一般",
+   "repro_note": "向路由器远程服务发送超长输入触发溢出；入口未明。",
+   "impact_scope": "SOHO路由器，可能被远程击穿",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108915",
+   "description": "A vulnerability has been found in Edimax BR-6208AC 1.32. This affects an unknown part of the file /goform/formWlanMP. Such manipulation of the argument ateBW leads to buffer overflow. The attack can be executed remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer."
+  },
+  {
+   "id": "CVE-2026-77366",
+   "tier": "critical",
+   "title": "obsidian-tc 越权访问漏洞",
+   "title_zh": "obsidian-tc 越权访问漏洞",
+   "summary_zh": "攻击者可传入不匹配的 input.vault，绕过授权越权访问其他 Obsidian 库。",
+   "published": "2026-10-12T18:17:23.830",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)",
+    "授权错误"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/The-40-Thieves/obsidian-tc/commit/38b4992e87dc2715564236e1a42d005ab05a0194"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/The-40-Thieves/obsidian-tc/pull/72"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/The-40-Thieves/obsidian-tc/releases/tag/v1.3.1"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 1.3.1，确保令牌与 vault 绑定后再做范围检查",
+   "repro_worthy": "一般",
+   "repro_note": "调用 MCP 接口时传入与令牌不匹配的 input.vault 值。",
+   "impact_scope": "Obsidian 知识库，可能跨库越权",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77366",
+   "description": "obsidian-tc is a governed, agent-ready Model Context Protocol server for Obsidian vaults. Version 1.3.1 fixes the vulnerability by binding tokens and request context to a vault and rejecting mismatched input.vault values before scope checks."
   }
  ],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "4c085bd9fc343425fc3de491a60a901b1f428234",
+   "url": "https://github.com/haproxy/haproxy/commit/4c085bd9fc343425fc3de491a60a901b1f428234",
+   "title": "BUG/MEDIUM: mux-h2: report a dead rhttp connection in h2_wake()",
+   "date": "2026-10-12T12:31:04",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "263ffb9aacb52913c1b3dee455acdaeee1c1ff02",
+   "url": "https://github.com/haproxy/haproxy/commit/263ffb9aacb52913c1b3dee455acdaeee1c1ff02",
+   "title": "BUG/MEDIUM: mux-fcgi: don't return a freed tasklet from fcgi_deferred_shut()",
+   "date": "2026-10-12T12:31:04",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "91d1152beff92d62a8e535b09bd17099f1f0fb9c",
+   "url": "https://github.com/haproxy/haproxy/commit/91d1152beff92d62a8e535b09bd17099f1f0fb9c",
+   "title": "BUG/MEDIUM: mux-h2: don't return a freed tasklet from h2_deferred_shut()",
+   "date": "2026-10-12T12:31:04",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  }
+ ]
 }
