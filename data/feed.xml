@@ -5,142 +5,70 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
-    <lastBuildDate>Mon, 12 Oct 2026 19:10:09 +0000</lastBuildDate>
+    <pubDate>Tue, 13 Oct 2026 02:38:09 +0000</pubDate>
+    <lastBuildDate>Tue, 13 Oct 2026 02:38:09 +0000</lastBuildDate>
     <item>
-      <title>[critical]AnyDesk 未认证堆溢出RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109390</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109390-2026-10-12</guid>
-      <description>CVE-2026-109390 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.8 · 类型 CWE-130 · 难度 低(远程·免认证)
-AnyDesk before 8.0.3 allows unauthenticated remote attackers to execute arbitrary code via a heap-based buffer overflow, as demonstrated on Linux for command ex…
-信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
+      <title>[critical]GitLab 未认证CI正则RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97229</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97229-2026-10-13</guid>
+      <description>CVE-2026-97229 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 开发运维/CI · CVSS 10.0 · 类型 整数溢出 · 难度 低(远程·免认证)
+GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain co…
+信号: 关注词:gitlab</description>
+      <pubDate>Tue, 13 Oct 2026 02:38:09 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Linksys E1700 栈溢出漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108892</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108892-2026-10-12</guid>
-      <description>CVE-2026-108892 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 10.0 · 类型 内存破坏/栈溢出 · 难度 低(远程·免认证)
-A vulnerability was determined in Linksys E1700 1.0.0.4.003. The exploit has been publicly disclosed and may be utilized.
+      <title>[critical]SAP SDK OAuth2 SSRF泄密</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-89111</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-89111-2026-10-13</guid>
+      <description>CVE-2026-89111 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 开发库/依赖 · CVSS 10.0 · 类型 SSRF · 难度 低(远程·免认证)
+The SAP Cloud SDK for Python contains an OAuth2 SSRF vulnerability affecting multi-tenant BTP applications.
 信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
+      <pubDate>Tue, 13 Oct 2026 02:38:09 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Netcore NR268 认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108907</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108907-2026-10-12</guid>
-      <description>CVE-2026-108907 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 10.0 · 类型 认证绕过 · 难度 低(远程·免认证)
-A vulnerability was determined in Netcore NR268 1.7.121109. The exploit has been publicly disclosed and may be utilized.
+      <title>[critical]IBM i HTTP管理端代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96119</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96119-2026-10-13</guid>
+      <description>CVE-2026-96119 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 ERP/业务系统 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+IBM i 7.3, 7.4, 7.5, and 7.6 could allow a remote authenticated attacker to obtain sensitive information or execute arbitrary code on the system due to improper…
 信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
+      <pubDate>Tue, 13 Oct 2026 02:38:09 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Edimax BR-6208AC 命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108917</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108917-2026-10-12</guid>
-      <description>CVE-2026-108917 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 10.0 · 类型 注入/命令注入 · 难度 低(远程·免认证)
-A vulnerability was determined in Edimax BR-6208AC 1.32. The exploit has been publicly disclosed and may be utilized.
+      <title>[critical]SAP ABAP规则处理代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-89107</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-89107-2026-10-13</guid>
+      <description>CVE-2026-89107 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 ERP/业务系统 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+Successful exploitation could allow the attacker to execute ABAP arbitrary code into the system, resulting in full compromise of the affected system and high im…
 信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
+      <pubDate>Tue, 13 Oct 2026 02:38:09 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Edimax路由器readE2P命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108918</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108918-2026-10-12</guid>
-      <description>CVE-2026-108918 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 10.0 · 类型 注入/命令注入 · 难度 低(远程·免认证)
-A vulnerability was identified in Edimax BR-6208AC 1.32. The manipulation of the argument readE2P leads to command injection.
+      <title>[critical]SAP NetWeaver VC越权操作</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-89110</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-89110-2026-10-13</guid>
+      <description>CVE-2026-89110 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 开发库/依赖 · CVSS 9.9 · 类型 CWE-749 · 难度 低(远程·需低权限)
+An attacker with low privileges could invoke internal operations on a preconfigured remote system.
 信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
+      <pubDate>Tue, 13 Oct 2026 02:38:09 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Linksys E1700 vlan栈溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108893</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108893-2026-10-12</guid>
-      <description>CVE-2026-108893 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.9 · 类型 内存破坏/栈溢出 · 难度 低(远程·需低权限)
-A vulnerability was identified in Linksys E1700 up to 1.0.0.4.003. Such manipulation of the argument vlan_set leads to stack-based buffer overflow.
+      <title>[critical]IBM Maximo AI服务远程代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-90920</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-90920-2026-10-13</guid>
+      <description>CVE-2026-90920 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.8 · 类型 代码注入(RCE) · 难度 低(远程·免认证)
+IBM Maximo AI Service 9.1.0, and 9.2.0 could allow a remote attacker to execute arbitrary code due to improper control of code generation.
 信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
+      <pubDate>Tue, 13 Oct 2026 02:38:09 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]静态路由参数命令注入漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108894</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108894-2026-10-12</guid>
-      <description>CVE-2026-108894 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-Performing a manipulation of the argument staticRoute_IP_setting/staticRoute_Netmask_setting/staticRoute_Gateway_setting/staticRoute_Metric_setting results in o…
+      <title>[critical]Metasploit API缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-87689</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-87689-2026-10-13</guid>
+      <description>CVE-2026-87689 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+The Metasploit Framework Web Service REST API (msf-ws) exposes the credential store through Msf::WebServices::CredentialServlet.
 信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]MAC_addr参数命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108895</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108895-2026-10-12</guid>
-      <description>CVE-2026-108895 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-Executing a manipulation of the argument MAC_addr can lead to os command injection. The attack can be executed remotely.
-信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Linksys E1700 IPv6命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108896</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108896-2026-10-12</guid>
-      <description>CVE-2026-108896 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-A vulnerability was found in Linksys E1700 1.0.0.4.003. The manipulation of the argument _6rd_prefix/_6rd_prefix_len results in os command injection.
-信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]MarkLogic 森林管理提权漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85947</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85947-2026-10-12</guid>
-      <description>CVE-2026-85947 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.9 · 类型 权限提升 · 难度 低(远程·需低权限)
-A remote attacker with forest-management privileges could exploit this flaw to create a persistent unauthorized administrator account, potentially resulting in …
-信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]MarkLogic XQuery注入提权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85948</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85948-2026-10-12</guid>
-      <description>CVE-2026-85948 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.9 · 类型 权限提升 · 难度 低(远程·需低权限)
-A remote attacker with manage-user-level privileges could exploit this flaw to obtain persistent unauthorized administrative control.
-信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]MarkLogic XQuery越权执行漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85955</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85955-2026-10-12</guid>
-      <description>CVE-2026-85955 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.9 · 类型 权限提升 · 难度 低(远程·需低权限)
-Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 allow a remote attacker with query-execution access to invoke an XQuery ev…
-信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]未知组件远程缓冲区溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108914</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108914-2026-10-12</guid>
-      <description>CVE-2026-108914 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.9 · 类型 内存破坏/缓冲区溢出 · 难度 低(远程·需低权限)
-Remote exploitation of the attack is possible. The exploit has been published and may be used.
-信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Edimax BR6208AC 缓冲区溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108915</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108915-2026-10-12</guid>
-      <description>CVE-2026-108915 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.9 · 类型 内存破坏/缓冲区溢出 · 难度 低(远程·需低权限)
-A vulnerability has been found in Edimax BR-6208AC 1.32. The exploit has been disclosed to the public and may be used.
-信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]obsidian-tc 越权访问漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-77366</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-77366-2026-10-12</guid>
-      <description>CVE-2026-77366 · 🎯P1 重点关注 · 披露 2026-10-12 · CVSS 9.9 · 类型 越权(IDOR)/授权错误 · 难度 低(远程·需低权限)
-Version 1.3.1 fixes the vulnerability by binding tokens and request context to a vault and rejecting mismatched input.vault values before scope checks.
-信号:</description>
-      <pubDate>Mon, 12 Oct 2026 19:10:09 +0000</pubDate>
+      <pubDate>Tue, 13 Oct 2026 02:38:09 +0000</pubDate>
     </item>
   </channel>
 </rss>

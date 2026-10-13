@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-12 19:10 UTC · 共 **87** 条(强烈推荐 9 / 值得 78)
+**更新**: 2026-10-13 02:38 UTC · 共 **88** 条(强烈推荐 10 / 值得 78)
 
 ---
 
@@ -77,6 +77,14 @@ PoC: [HackSpeak/CVE-2026-67279 5★(有源码)](https://github.com/HackSpeak/CVE
 影响: strapi strapi >=3.2.1 <4.8.0
 PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-Hakimi/CVE-2023-22894) · [maxntv/CVE-2023-22894-PoC 0★(有源码)](https://github.com/maxntv/CVE-2023-22894-PoC) · [NVD exploit 引用](https://www.ghostccamm.com/blog/multi_strapi_vulns/)
 参考: [参考](https://github.com/strapi/strapi/releases) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-22894)
+
+### GitLab 未认证CI正则RCE
+[CVE-2026-97229](https://nvd.nist.gov/vuln/detail/CVE-2026-97229) | P1 重点关注 | 开发运维/CI | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-13
+未认证攻击者在CI/CD配置中提交特制正则触发校验缺陷，可在GitLab服务器执行任意代码。
+复现: 强烈推荐 — 未授权提交含特制正则的CI/CD配置并触发流水线 · 影响面: 自托管DevOps平台，多暴露公网
+处置: 升级至 19.2.8、19.3.5 或 19.4.2 及以上版本
+影响: GitLab(产品与版本待 NVD/厂商补充)
+参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/630686) · [参考](https://hackerone.com/reports/4055749)
 
 ### DataPower堆溢出未认证RCE
 [CVE-2026-14269](https://nvd.nist.gov/vuln/detail/CVE-2026-14269) | P0 立即处置 | CVSS 9.8 | 披露 2026-10-08 | 入库 2026-10-08

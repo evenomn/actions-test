@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-10-12T19:10:09+00:00",
- "count": 87,
- "count_recommended": 9,
+ "updated_at": "2026-10-13T02:38:09+00:00",
+ "count": 88,
+ "count_recommended": 10,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -357,6 +357,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2023-22894",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-97229",
+   "title": "GitLab 未认证CI正则RCE",
+   "first_seen": "2026-10-13",
+   "last_seen": "2026-10-13",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-13",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权提交含特制正则的CI/CD配置并触发流水线",
+   "impact_scope": "自托管DevOps平台，多暴露公网",
+   "action_zh": "升级至 19.2.8、19.3.5 或 19.4.2 及以上版本",
+   "summary_zh": "未认证攻击者在CI/CD配置中提交特制正则触发校验缺陷，可在GitLab服务器执行任意代码。",
+   "category": "开发运维/CI",
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "GitLab(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.com/gitlab-org/gitlab/-/work_items/630686"
+    },
+    {
+     "label": "参考",
+     "url": "https://hackerone.com/reports/4055749"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97229",
    "change_note": null
   },
   {
