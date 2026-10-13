@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-10-13T12:48:48+00:00",
- "count": 89,
- "count_recommended": 11,
+ "updated_at": "2026-10-13T19:54:19+00:00",
+ "count": 93,
+ "count_recommended": 12,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -150,6 +150,51 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94127",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-104935",
+   "title": "Ivanti ICS 认证欺骗致远程RCE",
+   "first_seen": "2026-10-13",
+   "last_seen": "2026-10-13",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-13",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问ICS认证入口,构造伪造身份请求绕过认证并执行命令",
+   "impact_scope": "边界VPN设备,常暴露公网,可作跳板",
+   "action_zh": "升级至25.1.3.0;22.7R2.14及更早版本不受影响",
+   "summary_zh": "远程未认证攻击者可伪造身份绕过ICS认证,执行任意命令,完全接管VPN设备。",
+   "category": "边界设备/VPN",
+   "cvss": 8.6,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-10-16",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "readme",
+   "poc": [
+    {
+     "url": "https://github.com/ApexBreach/CVE-2026-104935-Proof-of-concept",
+     "label": "ApexBreach/CVE-2026-104935-Proof-of-concept 0★(仅README)"
+    }
+   ],
+   "affected": "ivanti connect_secure >=25.1.0.0 <25.1.1.2; ivanti connect_secure >=25.1.2.0 <25.1.3.0",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-104935"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104935",
    "change_note": null
   },
   {
@@ -764,6 +809,42 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-71362",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-96951",
+   "title": "微软Windows Shell命令注入漏洞",
+   "first_seen": "2026-10-13",
+   "last_seen": "2026-10-13",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-13",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "通过网络触发Windows Shell命令解析入口,注入特殊字符绕过安全机制",
+   "impact_scope": "Windows终端与服务器,面广",
+   "action_zh": "尽快安装微软官方安全更新,核查受影响版本",
+   "summary_zh": "未授权攻击者可经网络向Windows Shell注入命令,绕过安全机制,风险面广。",
+   "category": "操作系统",
+   "cvss": 8.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "kev": true,
+   "kev_due": "2026-10-16",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96951"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96951",
    "change_note": null
   },
   {
@@ -1553,6 +1634,78 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-97816",
+   "title": "微软OpenSSH UAF远程RCE",
+   "first_seen": "2026-10-13",
+   "last_seen": "2026-10-13",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-13",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权连接Windows OpenSSH服务端口,构造特制报文触发UAF",
+   "impact_scope": "Windows SSH服务,内网广泛部署",
+   "action_zh": "更新Windows OpenSSH至最新补丁版本",
+   "summary_zh": "未授权攻击者可经网络向Windows OpenSSH发送特制报文触发UAF并执行代码。",
+   "category": "操作系统",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-97816"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97816",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-106173",
+   "title": "FortiSIEM 路径遍历致命令执行",
+   "first_seen": "2026-10-13",
+   "last_seen": "2026-10-13",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-13",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "向FortiSIEM 7.5.0接口发送含../的特制报文读取文件并执行命令",
+   "impact_scope": "安全运维平台,内网横向跳板",
+   "action_zh": "升级FortiSIEM至厂商修复版本,限制管理面访问",
+   "summary_zh": "攻击者可向FortiSIEM发送特制报文,利用路径遍历执行未授权代码或命令。",
+   "category": "边界设备/VPN",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-180"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106173",
    "change_note": null
   },
   {

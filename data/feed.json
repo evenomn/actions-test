@@ -1,41 +1,2302 @@
 {
  "version": 3,
- "generated_at": "2026-10-13T12:48:48+00:00",
+ "generated_at": "2026-10-13T19:54:19+00:00",
  "lookback_hours": 5,
- "count": 4,
+ "count": 68,
  "stats": {
-  "total": 4,
+  "total": 68,
   "by_tier": {
-   "critical": 4
+   "critical": 68
   },
   "by_urgency": {
-   "P1 重点关注": 4
+   "P1 重点关注": 66,
+   "P0 立即处置": 2
   },
   "by_category": {
-   "未知": 4
+   "操作系统": 36,
+   "未知": 25,
+   "边界设备/VPN": 3,
+   "容器/虚拟化": 2,
+   "ERP/业务系统": 1,
+   "开发库/依赖": 1
   },
-  "kev": 0,
-  "with_poc": 0,
+  "kev": 2,
+  "with_poc": 1,
   "with_poc_source": 0,
-  "repro_recommended": 0
+  "repro_recommended": 1
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-109109",
+   "id": "CVE-2026-104935",
    "tier": "critical",
-   "title": "Wavlink路由器 栈溢出 设置导出CGI",
-   "title_zh": "Wavlink路由器 栈溢出 设置导出CGI",
-   "summary_zh": "可访问设置导出CGI的攻击者可操纵strcpy参数触发栈溢出，导致设备崩溃或代码执行。",
-   "published": "2026-10-13T08:17:00.110",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "title": "Ivanti ICS 认证欺骗致远程RCE",
+   "title_zh": "Ivanti ICS 认证欺骗致远程RCE",
+   "summary_zh": "远程未认证攻击者可伪造身份绕过ICS认证,执行任意命令,完全接管VPN设备。",
+   "published": "2026-10-13T16:17:11.640",
+   "cvss": 8.6,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "内存破坏",
+    "认证欺骗"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "ivanti connect_secure"
+   ],
+   "affected": "ivanti connect_secure >=25.1.0.0 <25.1.1.2; ivanti connect_secure >=25.1.2.0 <25.1.3.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-104935"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/ApexBreach/CVE-2026-104935-Proof-of-concept",
+     "label": "ApexBreach/CVE-2026-104935-Proof-of-concept 0★(仅README)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-16",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至25.1.3.0;22.7R2.14及更早版本不受影响",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问ICS认证入口,构造伪造身份请求绕过认证并执行命令",
+   "impact_scope": "边界VPN设备,常暴露公网,可作跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104935",
+   "description": "Authentication bypass by spoofing in ICS before version 25.1.3.0 allows a remote unauthenticated attacker to execute arbitrary commands. This does not impact ICS version 22.7R2.14 or prior."
+  },
+  {
+   "id": "CVE-2026-96951",
+   "tier": "critical",
+   "title": "微软Windows Shell命令注入漏洞",
+   "title_zh": "微软Windows Shell命令注入漏洞",
+   "summary_zh": "未授权攻击者可经网络向Windows Shell注入命令,绕过安全机制,风险面广。",
+   "published": "2026-10-13T19:22:07.760",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96951"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-16",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "尽快安装微软官方安全更新,核查受影响版本",
+   "repro_worthy": "值得",
+   "repro_note": "通过网络触发Windows Shell命令解析入口,注入特殊字符绕过安全机制",
+   "impact_scope": "Windows终端与服务器,面广",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96951",
+   "description": "Improper neutralization of special elements used in a command ('command injection') in Windows Shell allows an unauthorized attacker to bypass a security feature over a network."
+  },
+  {
+   "id": "CVE-2026-97816",
+   "tier": "critical",
+   "title": "微软OpenSSH UAF远程RCE",
+   "title_zh": "微软OpenSSH UAF远程RCE",
+   "summary_zh": "未授权攻击者可经网络向Windows OpenSSH发送特制报文触发UAF并执行代码。",
+   "published": "2026-10-13T19:22:20.110",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-97816"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "openssh",
+   "urgency": "P1 重点关注",
+   "action_zh": "更新Windows OpenSSH至最新补丁版本",
+   "repro_worthy": "值得",
+   "repro_note": "未授权连接Windows OpenSSH服务端口,构造特制报文触发UAF",
+   "impact_scope": "Windows SSH服务,内网广泛部署",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97816",
+   "description": "Use after free in OpenSSH for Windows allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-106173",
+   "tier": "critical",
+   "title": "FortiSIEM 路径遍历致命令执行",
+   "title_zh": "FortiSIEM 路径遍历致命令执行",
+   "summary_zh": "攻击者可向FortiSIEM发送特制报文,利用路径遍历执行未授权代码或命令。",
+   "published": "2026-10-13T18:17:14.697",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-180"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级FortiSIEM至厂商修复版本,限制管理面访问",
+   "repro_worthy": "值得",
+   "repro_note": "向FortiSIEM 7.5.0接口发送含../的特制报文读取文件并执行命令",
+   "impact_scope": "安全运维平台,内网横向跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106173",
+   "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiSIEM 7.5.0 may allow attacker to execute unauthorized code or commands via specially crafted packets."
+  },
+  {
+   "id": "CVE-2026-109412",
+   "tier": "critical",
+   "title": "Ivanti Neurons 认证信息泄露",
+   "title_zh": "Ivanti Neurons 认证信息泄露",
+   "summary_zh": "远程已认证攻击者可访问暴露的危险接口,窃取敏感认证信息并横向利用。",
+   "published": "2026-10-13T17:17:28.267",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-749"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Ivanti(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Neurons-Patch-for-Intune-October-2026"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "更新至厂商修复版本,限制该危险接口访问来源",
+   "repro_worthy": "一般",
+   "repro_note": "以已认证身份请求暴露的危险端点,读取响应中的认证信息",
+   "impact_scope": "内网IT运维组件,凭证泄露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109412",
+   "description": "An exposed dangerous endpoint in Ivanti Neurons Patch for Intune allows a remote authenticated attacker to leak sensitive authentication information."
+  },
+  {
+   "id": "CVE-2026-102210",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:17:46.520",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-102210"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102210",
+   "description": "Heap-based buffer overflow in Windows Text Shaping allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-105010",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:17:57.433",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-105010"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105010",
+   "description": "Use after free in Microsoft Windows Search Component allows an unauthorized attacker to elevate privileges over a network."
+  },
+  {
+   "id": "CVE-2026-105016",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:17:57.750",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-105016"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105016",
+   "description": "Heap-based buffer overflow in Microsoft QUIC allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-69634",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:18:56.343",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69634"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-69634",
+   "description": "Heap-based buffer overflow in Windows iSCSI allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-69639",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:18:56.713",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69639"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-69639",
+   "description": "Heap-based buffer overflow in Windows Libarchive allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-69705",
+   "tier": "critical",
+   "title": "Out-of-bounds 未授权 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:18:57.820",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69705"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-69705",
+   "description": "Out-of-bounds write in Windows iSCSI allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-69883",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:01.150",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69883"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-69883",
+   "description": "Use after free in Windows iSCSI allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-69886",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:01.503",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69886"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-69886",
+   "description": "Heap-based buffer overflow in Windows Imaging Component allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-70024",
+   "tier": "critical",
+   "title": "Stack-based 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:13.487",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失",
     "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70024"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-70024",
+   "description": "Stack-based buffer overflow in Windows Internet Information Services allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-70096",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:21.420",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70096"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-70096",
+   "description": "Heap-based buffer overflow in Windows Rich Text Edit Control allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-70147",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:27.683",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70147"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-70147",
+   "description": "Heap-based buffer overflow in Microsoft PostScript Printer Driver allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-70153",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:28.537",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70153"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-70153",
+   "description": "Heap-based buffer overflow in Microsoft PostScript Printer Driver allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-70157",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:29.030",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70157"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-70157",
+   "description": "Heap-based buffer overflow in Windows System Information Console allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-70242",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:40.990",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70242"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-70242",
+   "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-70291",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:48.817",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70291"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-70291",
+   "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-70300",
+   "tier": "critical",
+   "title": "Untrusted 未授权 CWE-822",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:50.007",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-822"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70300"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-70300",
+   "description": "Untrusted pointer dereference in Microsoft Office Word allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83517",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:57.447",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83517"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83517",
+   "description": "Heap-based buffer overflow in Microsoft Windows Media Foundation allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83519",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:19:57.757",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83519"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83519",
+   "description": "Heap-based buffer overflow in Windows Error Reporting allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83578",
+   "tier": "critical",
+   "title": "Integer 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:20:00.457",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出",
+    "整数溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83578"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83578",
+   "description": "Integer underflow (wrap or wraparound) in Windows PowerShell allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83693",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:20:12.390",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83693"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83693",
+   "description": "Heap-based buffer overflow in Windows Error Reporting allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83748",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:20:20.500",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83748"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83748",
+   "description": "Heap-based buffer overflow in Windows Error Reporting allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83770",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:20:25.433",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83770"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83770",
+   "description": "Heap-based buffer overflow in Windows Text Shaping allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83780",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:20:26.917",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83780"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83780",
+   "description": "Use after free in Windows CCFFilter Driver allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83782",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:20:27.183",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83782"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83782",
+   "description": "Heap-based buffer overflow in Windows Shell allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83862",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:20:35.520",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83862"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83862",
+   "description": "Use after free in Windows Network Load Balancing allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83869",
+   "tier": "critical",
+   "title": "Integer 未授权 CWE-191",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:20:36.677",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-191"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83869"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83869",
+   "description": "Integer underflow (wrap or wraparound) in DNS Server allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83910",
+   "tier": "critical",
+   "title": "Out-of-bounds 未授权 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:20:46.063",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83910"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83910",
+   "description": "Out-of-bounds write in RPC Runtime allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-83935",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:20:50.337",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83935"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83935",
+   "description": "Heap-based buffer overflow in Microsoft XML allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-84015",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:20:51.720",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-84015"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84015",
+   "description": "Heap-based buffer overflow in Remote Access Point-to-Point Protocol (PPP) EAP-TLS allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-85792",
+   "tier": "critical",
+   "title": "Windows Routing 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:02.570",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85792"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85792",
+   "description": "Remote Code Execution in Windows Routing and Remote Access Service (RRAS) allows attacker to gain an unauthorized access to victim's machine"
+  },
+  {
+   "id": "CVE-2026-85806",
+   "tier": "critical",
+   "title": "Integer 未授权 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:04.770",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出",
+    "CWE-191"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85806"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85806",
+   "description": "Integer underflow (wrap or wraparound) in Network Policy Server (NPS) allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-85809",
+   "tier": "critical",
+   "title": "Windows Routing 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:05.287",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85809"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85809",
+   "description": "Remote Code Execution in Windows Routing and Remote Access Service (RRAS) allows attacker to gain an unauthorized access to victim's machine"
+  },
+  {
+   "id": "CVE-2026-85814",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:05.980",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85814"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85814",
+   "description": "Heap-based buffer overflow in Microsoft Windows Media Foundation allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-85928",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:18.917",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85928"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85928",
+   "description": "Heap-based buffer overflow in Windows Volume Manager Extension Driver allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-88102",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:28.217",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-88102"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88102",
+   "description": "Use after free in Windows Failover Cluster allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-88156",
+   "tier": "critical",
+   "title": "Stack-based 未授权 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:35.710",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-88156"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88156",
+   "description": "Stack-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-88178",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:38.557",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-88178"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88178",
+   "description": "Use after free in Microsoft Office PowerPoint allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-92909",
+   "tier": "critical",
+   "title": "Adobe Commerce 未授权 授权错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:43.613",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/commerce/apsb26-153.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92909",
+   "description": "Adobe Commerce is affected by an Incorrect Authorization vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction."
+  },
+  {
+   "id": "CVE-2026-96096",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:45.403",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96096"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96096",
+   "description": "Heap-based buffer overflow in Windows Media Player allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-96113",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:45.733",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出",
+    "CWE-197"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96113"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96113",
+   "description": "Heap-based buffer overflow in DNS Server allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-96219",
+   "tier": "critical",
+   "title": "Out-of-bounds 未授权 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:47.737",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96219"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96219",
+   "description": "Out-of-bounds write in Windows Local Security Authority Subsystem Service (LSASS) allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-96320",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:21:55.017",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96320"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96320",
+   "description": "Heap-based buffer overflow in Windows DHCP Server allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-96864",
+   "tier": "critical",
+   "title": "Double 未授权 CWE-415",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:22:00.717",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-415"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96864"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96864",
+   "description": "Double free in Microsoft Failover Cluster Virtual Driver allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-96909",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:22:01.520",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96909"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96909",
+   "description": "Heap-based buffer overflow in Windows BitLocker allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-96924",
+   "tier": "critical",
+   "title": "Untrusted 未授权 CWE-822",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:22:03.867",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-822"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96924"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96924",
+   "description": "Untrusted pointer dereference in Windows OLE allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-96934",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:22:05.590",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96934"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96934",
+   "description": "Use after free in Windows DHCP Server allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-97016",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:22:10.530",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-97016"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97016",
+   "description": "Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-97749",
+   "tier": "critical",
+   "title": "Double 未授权 CWE-415",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:22:12.340",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-415"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-97749"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97749",
+   "description": "Double free in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-97805",
+   "tier": "critical",
+   "title": "Out-of-bounds 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:22:18.440",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失",
+    "越界读取"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-97805"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97805",
+   "description": "Out-of-bounds read in Windows Partition Management Driver allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-97814",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:22:19.753",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-97814"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97814",
+   "description": "Heap-based buffer overflow in Windows Text Shaping allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-97815",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-13T19:22:19.930",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-97815"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97815",
+   "description": "Heap-based buffer overflow in Windows Error Reporting allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2024-34323",
+   "tier": "critical",
+   "title": "ProPhoenix RMS 越权读取信息",
+   "title_zh": "ProPhoenix RMS 越权读取信息",
+   "summary_zh": "攻击者篡改HTTP请求中的PFID参数即可越权读取他人敏感记录。",
+   "published": "2026-10-13T16:17:08.210",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -44,15 +2305,11 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://gist.github.com/Rauzk/9ef4fe7574e5689386cc43139f4cf9e1"
+     "url": "https://prophoenix.com/law-rms/"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-109109"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/909191"
+     "url": "https://sedriclouissaint.com/blog/prophoenix-law-rms-authentication-bypass-cve-2024-34323/#cve-details"
     }
    ],
    "poc": [],
@@ -63,28 +2320,28 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到厂商修复版本；限制该CGI访问，关闭公网管理。",
+   "action_zh": "升级至厂商修复版本,服务端校验PFID归属权限",
    "repro_worthy": "一般",
-   "repro_note": "入口/cgi-bin/ExportAllSettings.cgi，超长字段溢出",
-   "impact_scope": "路由器Web管理，通常内网/LAN暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109109",
-   "description": "A vulnerability was detected in Wavlink WL-WN530BE1-A 251117. This vulnerability affects the function strcpy of the file /cgi-bin/ExportAllSettings.cgi of the component Settings Export CGI. Performing a manipulation of the argument HTTP_COOKIE/X-Cmd results in stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure."
+   "repro_note": "构造HTTP请求修改usrLogin$hdnPFID参数,遍历读取他人数据",
+   "impact_scope": "执法记录系统,敏感数据泄露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2024-34323",
+   "description": "ProPhoenix Law RMS v2022.2403.3.101 was discovered to contain an Insecure Direct Object Reference (IDOR) via the usrLogin$hdnPFID parameter. This vulnerability allows attackers to access sensitive information via a crafted HTTP request."
   },
   {
-   "id": "CVE-2026-109110",
+   "id": "CVE-2026-55675",
    "tier": "critical",
-   "title": "Wavlink路由器 wmapd命令注入",
-   "title_zh": "Wavlink路由器 wmapd命令注入",
-   "summary_zh": "远程攻击者可操纵wmapd守护进程system函数参数注入系统命令，造成远程命令执行。",
-   "published": "2026-10-13T09:17:15.370",
+   "title": "CI/CD 构建流程代码注入泄密钥",
+   "title_zh": "CI/CD 构建流程代码注入泄密钥",
+   "summary_zh": "攻击者提交fork PR植入恶意构建钩子,在特权工作流中窃取令牌与密钥。",
+   "published": "2026-10-13T16:17:21.890",
    "cvss": 10.0,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
+    "代码注入(RCE)",
+    "CWE-829"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -93,15 +2350,11 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://drive.google.com/file/d/1KtZZ7kjVswRgP2VLEx7M7gEafyY8Wp2Q/view?usp=drive_link"
+     "url": "https://github.com/saltyorg/docs/commit/649c9aea2daef1168eeb0415b44e65dbbde9f220"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-109110"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/913573"
+     "url": "https://github.com/saltyorg/docs/security/advisories/GHSA-wr2h-fpxm-ff4x"
     }
    ],
    "poc": [],
@@ -112,28 +2365,199 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级厂商修复版本；限制wmapd服务访问，勿暴露管理口。",
+   "action_zh": "禁止fork PR触发特权工作流,隔离密钥与构建环境",
    "repro_worthy": "一般",
-   "repro_note": "需可达wmapd服务，操纵system函数参数注入命令",
-   "impact_scope": "路由器daemon，网络可达可远程攻击",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109110",
-   "description": "A flaw has been found in Wavlink WL-WN592AX6 250422. This issue affects the function system of the component wmapd Daemon. Executing a manipulation can lead to os command injection. It is possible to launch the attack remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure."
+   "repro_note": "向目标仓库提交fork PR,借setup.py/PEP517钩子读取环境密钥",
+   "impact_scope": "CI/CD流水线,可致供应链投毒",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55675",
+   "description": "A fork pull request can therefore supply attacker-authored setup.py or PEP 517 build hooks whose installation code executes in the privileged base-repository workflow with CF_API_TOKEN, GH_TOKEN, MKDOCS_GIT_COMMITTERS_APIKEY, and a write-capable GITHUB_TOKEN, allowing secret disclosure and follow-on compromise. The vulnerability is not caused by the repository-fork guard, and the demonstrated path requires attacker control of fork content rather than merely the artifact metadata."
   },
   {
-   "id": "CVE-2026-109108",
+   "id": "CVE-2026-94603",
    "tier": "critical",
-   "title": "Wavlink路由器 VPN上传命令注入",
-   "title_zh": "Wavlink路由器 VPN上传命令注入",
-   "summary_zh": "远程攻击者可操纵uploadVpn.cgi的Type参数注入系统命令，可能导致远程命令执行。",
-   "published": "2026-10-13T08:16:59.917",
+   "title": "Podman镜像注解绕过容器沙箱限制",
+   "title_zh": "Podman镜像注解绕过容器沙箱限制",
+   "summary_zh": "攻击者通过恶意镜像注解使podman run忽略--cap-drop=ALL等限制，容器获更强能力。",
+   "published": "2026-10-13T17:17:49.123",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-693"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/podman-container-tools/podman/commit/24706290d5c974f078d8ca284026802515f28e92"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/podman-container-tools/podman/commit/3721ff82ffb44a4ceeaecc5abd3808e924a6b669"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/podman-container-tools/podman/commit/450c64426dbcff1097d3c7911d791101e3d16f4c"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 Podman 5.8.8 或 6.1.3 及以上版本。",
+   "repro_worthy": "一般",
+   "repro_note": "入口为podman run加载带checkpoint.runtime.name注解的镜像，观察限制是否失效。",
+   "impact_scope": "本地容器运行时，可致主机权限提升",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94603",
+   "description": "Podman is a tool for managing OCI containers and pods. From 4.4.0 until 5.8.8 and 6.1.3, podman run treats an image carrying the io.podman.annotations.checkpoint.runtime.name annotation as a checkpoint and silently ignores user-supplied container creation restrictions such as --cap-drop=ALL, allowing image-controlled checkpoint state to select weaker sandbox settings and capabilities."
+  },
+  {
+   "id": "CVE-2026-103849",
+   "tier": "critical",
+   "title": "Adobe Commerce模板注入RCE",
+   "title_zh": "Adobe Commerce模板注入RCE",
+   "summary_zh": "无需用户交互，攻击者利用模板引擎注入缺陷在当前用户上下文执行任意代码，可能接管账户或会话。",
+   "published": "2026-10-13T19:17:53.997",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-1336"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/commerce/apsb26-153.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注Adobe官方公告，升级Commerce至修复版本。",
+   "repro_worthy": "一般",
+   "repro_note": "入口为模板渲染功能，向可控模板字段注入引擎表达式验证代码执行。",
+   "impact_scope": "电商平台核心，多暴露于公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103849",
+   "description": "Adobe Commerce is affected by an Improper Neutralization of Special Elements Used in a Template Engine vulnerability that could result in arbitrary code execution in the context of the current user, potentially gaining elevated access or control over the victim's account or session. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-110130",
+   "tier": "critical",
+   "title": "Dockhand静态资源路径认证绕过",
+   "title_zh": "Dockhand静态资源路径认证绕过",
+   "summary_zh": "远程未认证攻击者可用.js结尾的API路径绕过全局认证钩子，未授权调用用户变更等接口。",
+   "published": "2026-10-13T19:18:43.397",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Finsys/dockhand/security/advisories/GHSA-r3mg-r5vm-3v6w"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/dockhand-before-1.0.45-authentication-bypass-via-static-asset-check"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 Dockhand 1.0.45 及以上版本。",
+   "repro_worthy": "一般",
+   "repro_note": "请求 /api/*.js 路径绕过认证钩子，再调用用户变更接口验证未授权。",
+   "impact_scope": "容器管理平台，暴露公网风险高",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110130",
+   "description": "Dockhand before 1.0.45 contains an authentication bypass in which the global auth hook skips authentication for any path ending in a static-asset extension such as .js, including /api/* routes, and the user-mutation handlers fail open for unauthenticated callers. Unauthenticated remote attackers can send a PUT request to /api/users/<id>.js to reset the admin's or any user's password and take over the account."
+  },
+  {
+   "id": "CVE-2026-106042",
+   "tier": "critical",
+   "title": "Ivanti Xtraction凭据泄露",
+   "title_zh": "Ivanti Xtraction凭据泄露",
+   "summary_zh": "已认证远程攻击者可控制应用生成请求的路径指向其端点，窃取应用发送的EPMM连接器凭据。",
+   "published": "2026-10-13T17:17:16.273",
    "cvss": 9.9,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
+    "CWE-73"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Ivanti(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Xtraction-Multiple-CVEs"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 Ivanti Xtraction 2026.4 及以上版本。",
+   "repro_worthy": "一般",
+   "repro_note": "需已认证；在文件/路径参数填入外部地址，监听回连获取EPMM凭据。",
+   "impact_scope": "ITSM集成组件，泄露连接器凭据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106042",
+   "description": "An External Control of File Name or Path vulnerability in Ivanti Xtraction before version 2026.4 allows a remote authenticated attacker to redirect application-generated requests to an attacker-controlled endpoint and obtain EPMM connector credentials transmitted by the application."
+  },
+  {
+   "id": "CVE-2026-77459",
+   "tier": "critical",
+   "title": "容器控制器授权校验缺失致越权",
+   "title_zh": "容器控制器授权校验缺失致越权",
+   "summary_zh": "攻击者可利用缺失的命名空间与集群资源允许/拒绝校验，创建被禁资源及持久化Hook对象。",
+   "published": "2026-10-13T17:17:46.050",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
    ],
    "difficulty": "低(远程·需低权限)",
    "products": [],
@@ -142,15 +2566,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://gist.github.com/Rauzk/0a61823f0033441142dc1c3f4a776e7c"
+     "url": "https://github.com/argoproj/argo-cd/commit/1149cdc6e932208c4402183cc3d7b7485239940c"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-109108"
+     "url": "https://github.com/argoproj/argo-cd/commit/4bc8085b0a6d2296b849539d3d09fc7be7a4a511"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/909182"
+     "url": "https://github.com/argoproj/argo-cd/commit/7f0a05834b05103d69d7c150e1ee36541b314696"
     }
    ],
    "poc": [],
@@ -161,45 +2585,45 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级厂商修复版本；限制该CGI访问并过滤Type参数。",
+   "action_zh": "升级至厂商修复版本，并收紧控制器RBAC与准入校验。",
    "repro_worthy": "一般",
-   "repro_note": "入口/cgi-bin/uploadVpn.cgi，Type参数注入命令",
-   "impact_scope": "路由器Web CGI，管理面暴露可打",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109108",
-   "description": "A security vulnerability has been detected in Wavlink WL-WN530BE1-A 251117. This affects the function popen of the file /cgi-bin/uploadVpn.cgi. Such manipulation of the argument Type leads to os command injection. The attack may be performed from remote. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure."
+   "repro_note": "集群内创建引用Hook的CR，检查是否绕过命名空间与资源允许列表。",
+   "impact_scope": "集群控制器，横向移动与持久化跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77459",
+   "description": "The omitted checks include cluster-scoped and namespaced resource allow/deny lists. The reachable impact is bounded by the controller's cluster access but can include cluster-scoped resources, disallowed namespaces, persistent hook objects, and secondary objects created by a hook Job."
   },
   {
-   "id": "CVE-2026-109157",
+   "id": "CVE-2026-53709",
    "tier": "critical",
-   "title": "TRENDnet路由器 栈溢出 表单设置",
-   "title_zh": "TRENDnet路由器 栈溢出 表单设置",
-   "summary_zh": "可访问formTcpipSetup的攻击者可提交超长字段触发栈溢出，导致设备崩溃或代码执行。",
-   "published": "2026-10-13T11:17:14.873",
-   "cvss": 9.9,
+   "title": "静态签名密钥致管理员令牌伪造",
+   "title_zh": "静态签名密钥致管理员令牌伪造",
+   "summary_zh": "远程未认证攻击者可利用固定签名密钥伪造管理员令牌，其访问不受改密与吊销影响。",
+   "published": "2026-10-13T15:17:44.873",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "内存破坏",
-    "栈溢出"
+    "认证绕过",
+    "CWE-321"
    ],
-   "difficulty": "低(远程·需低权限)",
+   "difficulty": "低(远程·免认证)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_21/21.md"
+     "url": "https://github.com/IBM/mcp-context-forge/commit/2af690f894b6e35f5f21190fdab1505f023a5272"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-109157"
+     "url": "https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.2"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/979590"
+     "url": "https://github.com/IBM/mcp-context-forge/security/advisories/GHSA-m8rv-5m6m-32ff"
     }
    ],
    "poc": [],
@@ -210,46 +2634,198 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级厂商修复版本；限制管理界面访问，关闭公网管理。",
+   "action_zh": "更换签名密钥并升级修复版本，关闭平台管理员引导。",
    "repro_worthy": "一般",
-   "repro_note": "入口/goform/formTcpipSetup，向TCP/IP配置字段传超长值",
-   "impact_scope": "老旧路由器Web管理，暴露面有限",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109157",
-   "description": "A vulnerability was found in TRENDnet TEW-432BRP 3.10B20. Affected by this vulnerability is the function formTcpipSetup of the file /goform/formTcpipSetup."
+   "repro_note": "用固定密钥自签管理员JWT，请求管理接口验证是否被接受。",
+   "impact_scope": "平台认证组件，可被完全接管",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-53709",
+   "description": "A remote unauthenticated attacker can therefore mint accepted administrator tokens without a database account. While the vulnerable signing key remains configured and the platform-admin bootstrap remains enabled, forged access survives password rotation, account deletion, and session revocation, allowing administrative disclosure, modification, and service disruption."
+  },
+  {
+   "id": "CVE-2026-69227",
+   "tier": "critical",
+   "title": "ArcGIS Portal管理接口未授权访问",
+   "title_zh": "ArcGIS Portal管理接口未授权访问",
+   "summary_zh": "特定条件下远程未认证攻击者可访问/portaladmin/local接口，调用本应鉴权的管理功能。",
+   "published": "2026-10-13T17:17:45.130",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.esri.com/arcgis-blog/products/trust-arcgis/administration/september-2026-arcgis-security-bulletin"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "按Esri公告升级修复版本，限制/portaladmin访问来源。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权直接请求 /portaladmin/local 下接口，观察是否返回管理数据。",
+   "impact_scope": "企业GIS门户，内网管理面暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-69227",
+   "description": "A flaw in Portal for ArcGIS allows unauthenticated access to certain /portaladmin/local API endpoints under specific conditions. This could enable an attacker to access administrative functionality that should require authentication."
+  },
+  {
+   "id": "CVE-2026-100202",
+   "tier": "critical",
+   "title": "MSMQ队列管理器UAF远程代码执行",
+   "title_zh": "MSMQ队列管理器UAF远程代码执行",
+   "summary_zh": "未授权攻击者可通过网络向消息队列服务发送构造请求，触发释放后重用并以服务权限执行代码。",
+   "published": "2026-10-13T19:17:40.143",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-100202"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "安装微软官方补丁；未修复前限制MSMQ端口对外暴露。",
+   "repro_worthy": "一般",
+   "repro_note": "前置需启用MSMQ；向队列管理器网络端口发送构造报文触发UAF。",
+   "impact_scope": "Windows消息队列组件，内网横向目标",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-100202",
+   "description": "Use after free in Windows Message Queuing Queue Manager allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-100219",
+   "tier": "critical",
+   "title": "MsQuic UAF远程代码执行漏洞",
+   "title_zh": "MsQuic UAF远程代码执行漏洞",
+   "summary_zh": "未授权攻击者可通过网络向QUIC实现发送恶意数据包，触发释放后重用并以服务权限执行代码。",
+   "published": "2026-10-13T19:17:42.163",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-100219"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "安装微软官方对应安全更新，升级受影响QUIC组件。",
+   "repro_worthy": "一般",
+   "repro_note": "前置为可访问的QUIC服务端；发送构造的握手或帧报文触发UAF。",
+   "impact_scope": "Windows HTTP/3等网络栈组件",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-100219",
+   "description": "Use after free in Microsoft QUIC allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-100222",
+   "tier": "critical",
+   "title": "Windows NPS堆溢出远程代码执行",
+   "title_zh": "Windows NPS堆溢出远程代码执行",
+   "summary_zh": "未授权攻击者可向网络策略服务器发送构造请求触发堆溢出，以服务权限远程执行代码。",
+   "published": "2026-10-13T19:17:42.587",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出",
+    "CWE-191"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-100222"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "安装微软官方补丁；限制NPS/RADIUS端口对外暴露。",
+   "repro_worthy": "一般",
+   "repro_note": "前置为启用NPS角色；向RADIUS端口发送构造报文触发堆溢出。",
+   "impact_scope": "内网RADIUS准入服务，基础设施",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-100222",
+   "description": "Heap-based buffer overflow in Network Policy Server (NPS) allows an unauthorized attacker to execute code over a network."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "jeecgboot/JeecgBoot",
-   "sha": "2fc1ccb05971d91a7988ef331901891d4dec060e",
-   "url": "https://github.com/jeecgboot/JeecgBoot/commit/2fc1ccb05971d91a7988ef331901891d4dec060e",
-   "title": "--author:scott--date:20261013--for:【安全 GHSA-5qr3-c98m-9767】短信接口增加按手机号限流，防止伪造X-Forwarded-For绕过IP限流进行短信轰炸",
-   "date": "2026-10-13T11:24:49",
-   "score": 2,
+   "repo": "envoyproxy/envoy",
+   "sha": "9e5580933739775e8bce696a57a2e1bc99368f23",
+   "url": "https://github.com/envoyproxy/envoy/commit/9e5580933739775e8bce696a57a2e1bc99368f23",
+   "title": "repo: Release v1.40.0",
+   "date": "2026-10-13T19:13:21",
+   "score": 9,
    "matched": [
-    "未授权/绕过"
+    "CVE",
+    "UAF",
+    "安全修复",
+    "路径遍历/任意文件"
    ],
-   "cve": null
-  },
-  {
-   "repo": "goharbor/harbor",
-   "sha": "5c885152b9730cc242ff851f34587f4351bcb908",
-   "url": "https://github.com/goharbor/harbor/commit/5c885152b9730cc242ff851f34587f4351bcb908",
-   "title": "fix(scan): scope scan stop lookup to caller artifact (#23948)",
-   "date": "2026-10-13T09:41:33",
-   "score": 2,
-   "matched": [
-    "漏洞相关"
-   ],
-   "cve": null
+   "cve": "CVE-2026-73511"
   },
   {
    "repo": "jeecgboot/JeecgBoot",
-   "sha": "7187cf3e8d4b90b8a0c80fc47c9d86e7a4646d16",
-   "url": "https://github.com/jeecgboot/JeecgBoot/commit/7187cf3e8d4b90b8a0c80fc47c9d86e7a4646d16",
-   "title": "--author:scott--date:20261013--for:【安全 GHSA-g9pv-58jx-2grf/GHSA-85m5-jf95-q532/GHSA-rhrv-jv29-rmmq】AI语音/视频记录查询与删除接口移除use",
-   "date": "2026-10-13T09:06:58",
+   "sha": "98681e17ff3a892f21d7b95546dfcba438eaf5ed",
+   "url": "https://github.com/jeecgboot/JeecgBoot/commit/98681e17ff3a892f21d7b95546dfcba438eaf5ed",
+   "title": "fix(security): 表字典查询ds自定义数据源旁路白/黑名单校验 GHSA-8j27/GHSA-x8p6",
+   "date": "2026-10-13T16:02:50",
    "score": 2,
    "matched": [
     "提权"
@@ -258,10 +2834,10 @@
   },
   {
    "repo": "jeecgboot/JeecgBoot",
-   "sha": "8acf00ef10cd5271b05550cf42bff3e667421556",
-   "url": "https://github.com/jeecgboot/JeecgBoot/commit/8acf00ef10cd5271b05550cf42bff3e667421556",
-   "title": "--author:scott--date:20261013--for:【安全 GHSA-ff3p-3558-8mcg/GHSA-44m8-8jjq-cfvw/GHSA-3gv3-wc5w-9qp2/GHSA-4w9p-7gw3-q7v4】部",
-   "date": "2026-10-13T08:05:15",
+   "sha": "e5828a194b64ced184ba7285b49bd6ed5013265c",
+   "url": "https://github.com/jeecgboot/JeecgBoot/commit/e5828a194b64ced184ba7285b49bd6ed5013265c",
+   "title": "--author:scott--date:20261013--for:【安全 GHSA-63v7-3c98-c3mj】消息发送记录接口越权修复：未使用的list/add/queryById注释停用，edit/getOne校验记录归属",
+   "date": "2026-10-13T15:00:51",
    "score": 2,
    "matched": [
     "提权"
@@ -269,26 +2845,14 @@
    "cve": null
   },
   {
-   "repo": "wireshark/wireshark",
-   "sha": "c76246df188d90d735b589486088edf52ed40a1c",
-   "url": "https://github.com/wireshark/wireshark/commit/c76246df188d90d735b589486088edf52ed40a1c",
-   "title": "x11: fix OOB read in X_SetModifierMapping",
-   "date": "2026-10-13T07:42:16",
+   "repo": "openssl/openssl",
+   "sha": "b86b1098fd7ec47e1c9d43a7566bf4e287b1d390",
+   "url": "https://github.com/openssl/openssl/commit/b86b1098fd7ec47e1c9d43a7566bf4e287b1d390",
+   "title": "crypto/x509/x509_lu.c: avoid freeing X509_OBJECTs in X509_STORE_get0_objects()",
+   "date": "2026-10-13T13:45:08",
    "score": 2,
    "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "wireshark/wireshark",
-   "sha": "f1c00f80182d6ea20793736a83e9569282df985d",
-   "url": "https://github.com/wireshark/wireshark/commit/f1c00f80182d6ea20793736a83e9569282df985d",
-   "title": "Aethra: Discard the data of skipped records on the first pass",
-   "date": "2026-10-13T07:39:15",
-   "score": 2,
-   "matched": [
-    "安全修复"
+    "UAF"
    ],
    "cve": null
   }

@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-13 12:48 UTC · 共 **89** 条(强烈推荐 11 / 值得 78)
+**更新**: 2026-10-13 19:54 UTC · 共 **93** 条(强烈推荐 12 / 值得 81)
 
 ---
 
@@ -39,6 +39,16 @@ PoC: [NVD exploit 引用](https://github.com/nola-milkin/poc_exploits/blob/maste
 影响: f5 big-ip_access_policy_manager >=17.0.0 <=17.1.3; f5 big-ip_access_policy_manager >=17.5.0 <=17.5.1
 PoC: [watchtowrlabs/watchTowr-vs-f5-bigip-PreAuth-RCE-CVE-2026-94127 13★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-f5-bigip-PreAuth-RCE-CVE-2026-94127) · [FurkanKAYAPINAR/CVE-2026-94127 0★(有源码)](https://github.com/FurkanKAYAPINAR/CVE-2026-94127)
 参考: [厂商通告](https://my.f5.com/manage/s/article/K000162605)
+
+### Ivanti ICS 认证欺骗致远程RCE
+[CVE-2026-104935](https://nvd.nist.gov/vuln/detail/CVE-2026-104935) | P0 立即处置 | 边界设备/VPN | CVSS 8.6 | 披露 2026-10-13 | 入库 2026-10-13
+🔥 KEV 在野利用,限期 2026-10-16 | 有PoC
+远程未认证攻击者可伪造身份绕过ICS认证,执行任意命令,完全接管VPN设备。
+复现: 强烈推荐 — 未授权访问ICS认证入口,构造伪造身份请求绕过认证并执行命令 · 影响面: 边界VPN设备,常暴露公网,可作跳板
+处置: 升级至25.1.3.0;22.7R2.14及更早版本不受影响
+影响: ivanti connect_secure >=25.1.0.0 <25.1.1.2; ivanti connect_secure >=25.1.2.0 <25.1.3.0
+PoC: [ApexBreach/CVE-2026-104935-Proof-of-concept 0★(仅README)](https://github.com/ApexBreach/CVE-2026-104935-Proof-of-concept)
+参考: [厂商通告](https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-104935)
 
 ### Struts2 DMI命令注入RCE
 [CVE-2016-3081](https://nvd.nist.gov/vuln/detail/CVE-2016-3081) | P0 立即处置 | Web框架 | CVSS 8.1 | EPSS 93.4% | 披露 2016-04-26 | 入库 2026-10-08
@@ -158,6 +168,15 @@ PoC: [ShadowForge-Cyber/CVE-2026-104286-POC 0★(仅README)](https://github.com/
 影响: adobe commerce <2.4.4; adobe commerce_b2b <1.3.3
 PoC: [dinosn/cve-2026-71362-magento-lab 5★(有源码)](https://github.com/dinosn/cve-2026-71362-magento-lab)
 参考: [厂商通告](https://helpx.adobe.com/security/products/magento/apsb26-92.html)
+
+### 微软Windows Shell命令注入漏洞
+[CVE-2026-96951](https://nvd.nist.gov/vuln/detail/CVE-2026-96951) | P0 立即处置 | 操作系统 | CVSS 8.8 | 披露 2026-10-13 | 入库 2026-10-13
+🔥 KEV 在野利用,限期 2026-10-16
+未授权攻击者可经网络向Windows Shell注入命令,绕过安全机制,风险面广。
+复现: 值得 — 通过网络触发Windows Shell命令解析入口,注入特殊字符绕过安全机制 · 影响面: Windows终端与服务器,面广
+处置: 尽快安装微软官方安全更新,核查受影响版本
+影响: Microsoft(产品与版本待 NVD/厂商补充)
+参考: [参考](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96951)
 
 ### Apple Multiple Products Out-of-Bounds Write Vulnerability
 [CVE-2026-86950](https://nvd.nist.gov/vuln/detail/CVE-2026-86950) | P0 立即处置 | 操作系统 | CVSS 8.8 | EPSS 1.2% | 披露 2026-09-28 | 入库 2026-10-01
@@ -281,6 +300,22 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### 微软OpenSSH UAF远程RCE
+[CVE-2026-97816](https://nvd.nist.gov/vuln/detail/CVE-2026-97816) | P1 重点关注 | 操作系统 | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-13
+未授权攻击者可经网络向Windows OpenSSH发送特制报文触发UAF并执行代码。
+复现: 值得 — 未授权连接Windows OpenSSH服务端口,构造特制报文触发UAF · 影响面: Windows SSH服务,内网广泛部署
+处置: 更新Windows OpenSSH至最新补丁版本
+影响: Microsoft(产品与版本待 NVD/厂商补充)
+参考: [参考](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-97816)
+
+### FortiSIEM 路径遍历致命令执行
+[CVE-2026-106173](https://nvd.nist.gov/vuln/detail/CVE-2026-106173) | P1 重点关注 | 边界设备/VPN | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-13
+攻击者可向FortiSIEM发送特制报文,利用路径遍历执行未授权代码或命令。
+复现: 值得 — 向FortiSIEM 7.5.0接口发送含../的特制报文读取文件并执行命令 · 影响面: 安全运维平台,内网横向跳板
+处置: 升级FortiSIEM至厂商修复版本,限制管理面访问
+影响: Fortinet(产品与版本待 NVD/厂商补充)
+参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-180)
 
 ### AnyDesk 未认证堆溢出RCE
 [CVE-2026-109390](https://nvd.nist.gov/vuln/detail/CVE-2026-109390) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-12 | 入库 2026-10-12
