@@ -1,197 +1,41 @@
 {
  "version": 3,
- "generated_at": "2026-10-13T03:51:00+00:00",
- "lookback_hours": 24,
- "count": 50,
+ "generated_at": "2026-10-13T12:48:48+00:00",
+ "lookback_hours": 5,
+ "count": 4,
  "stats": {
-  "total": 50,
+  "total": 4,
   "by_tier": {
-   "critical": 35,
-   "high": 15
+   "critical": 4
   },
   "by_urgency": {
-   "P1 重点关注": 46,
-   "P2 保持关注": 4
+   "P1 重点关注": 4
   },
   "by_category": {
-   "未知": 38,
-   "开发运维/CI": 5,
-   "ERP/业务系统": 3,
-   "Web中间件": 2,
-   "开发库/依赖": 1,
-   "Web框架": 1
+   "未知": 4
   },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
-  "repro_recommended": 1
+  "repro_recommended": 0
  },
- "briefing": [
-  "- 本批无KEV、勒索或公开PoC，暂未见可证实在野利用。",
-  "- 公告集中开发运维、Web中间件、ERP与依赖，多未标版本。",
-  "- 最紧急：9.9分ERP代码注入、9.8分Web缺失认证，立即修补。",
-  "- GitLab授权错误、XSS与CWE-625需关注，CVSS 8.2-8.7。",
-  "- 优先处置RCE、缺失认证、硬编码凭据，均需限时修复。"
- ],
+ "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-16301",
-   "tier": "high",
-   "title": "GitLab 保护分支CI执行授权绕过",
-   "title_zh": "GitLab 保护分支CI执行授权绕过",
-   "summary_zh": "已认证的Developer角色用户可绕过授权检查，在受保护分支上执行CI/CD流水线，可能篡改代码或窃取凭据。",
-   "published": "2026-10-13T02:16:58.583",
-   "cvss": 8.5,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:H/A:N",
+   "id": "CVE-2026-109109",
+   "tier": "critical",
+   "title": "Wavlink路由器 栈溢出 设置导出CGI",
+   "title_zh": "Wavlink路由器 栈溢出 设置导出CGI",
+   "summary_zh": "可访问设置导出CGI的攻击者可操纵strcpy参数触发栈溢出，导致设备崩溃或代码执行。",
+   "published": "2026-10-13T08:17:00.110",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "授权错误"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "GitLab(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/"
-    },
-    {
-     "label": "参考",
-     "url": "https://gitlab.com/gitlab-org/gitlab/-/work_items/606501"
-    },
-    {
-     "label": "参考",
-     "url": "https://hackerone.com/reports/3853866"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "gitlab",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至19.2.8、19.3.5或19.4.2及以上版本",
-   "repro_worthy": "一般",
-   "repro_note": "需Developer角色账号；在保护分支上触发下游流水线创建流程",
-   "impact_scope": "内网代码托管与CI平台，凭据集中",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16301",
-   "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.7 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain conditions, could have allowed an authenticated user with Developer role to execute CI/CD pipelines on protected branches without authorization due to improper authorization checks in the downstream pipeline creation service."
-  },
-  {
-   "id": "CVE-2026-92883",
-   "tier": "high",
-   "title": "GitLab 语法高亮属性注入XSS",
-   "title_zh": "GitLab 语法高亮属性注入XSS",
-   "summary_zh": "已认证用户可构造恶意仓库内容，在其他用户浏览器会话中执行任意JavaScript，窃取会话或令牌。",
-   "published": "2026-10-13T02:17:00.570",
-   "cvss": 8.7,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "XSS"
-   ],
-   "difficulty": "中(远程·需低权限·需用户交互)",
-   "products": [],
-   "affected": "GitLab(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/"
-    },
-    {
-     "label": "参考",
-     "url": "https://gitlab.com/gitlab-org/gitlab/-/work_items/629523"
-    },
-    {
-     "label": "参考",
-     "url": "https://hackerone.com/reports/3936831"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "gitlab",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至19.2.8、19.3.5或19.4.2及以上版本",
-   "repro_worthy": "一般",
-   "repro_note": "认证用户上传含特制HTML属性的文件，受害者查看高亮页面触发",
-   "impact_scope": "内网DevOps平台，用户会话集中",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92883",
-   "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.1 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain conditions, could have allowed an authenticated user to execute arbitrary JavaScript in the context of other users' browser sessions via a specially crafted repository, due to improper sanitization of HTML attributes in syntax-highlighted output."
-  },
-  {
-   "id": "CVE-2026-14814",
-   "tier": "high",
-   "title": "GitLab 原始文件缓存投毒劫持CI",
-   "title_zh": "GitLab 原始文件缓存投毒劫持CI",
-   "summary_zh": "攻击者可污染原始仓库文件缓存，使目标用户的CI/CD流水线执行恶意内容，泄露受保护环境变量。",
-   "published": "2026-10-13T02:16:58.330",
-   "cvss": 8.2,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-625"
-   ],
-   "difficulty": "中(远程·利用条件苛刻·需低权限)",
-   "products": [],
-   "affected": "GitLab(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/"
-    },
-    {
-     "label": "参考",
-     "url": "https://gitlab.com/gitlab-org/gitlab/-/work_items/604950"
-    },
-    {
-     "label": "参考",
-     "url": "https://hackerone.com/reports/3832707"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "gitlab",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至19.2.8、19.3.5或19.4.2及以上版本",
-   "repro_worthy": "一般",
-   "repro_note": "认证用户请求原始文件路径污染缓存，等待目标流水线拉取执行",
-   "impact_scope": "内网CI/CD平台，持有生产凭据",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14814",
-   "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain conditions, could have allowed a user to poison cached responses for raw repository files, causing targeted users' CI/CD pipelines to execute specially crafted content and potentially exposing protected environment variables, due to improper validation of repository references."
-  },
-  {
-   "id": "CVE-2026-109326",
-   "tier": "high",
-   "title": "Grav 嵌套.git目录信息泄露",
-   "title_zh": "Grav 嵌套.git目录信息泄露",
-   "summary_zh": "未认证攻击者可请求user/.git等嵌套路径，读取Git配置、refs与对象，重建未公开历史或泄露密钥。",
-   "published": "2026-10-12T17:17:28.017",
-   "cvss": 7.5,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-527"
+    "内存破坏",
+    "栈溢出"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -200,59 +44,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/getgrav/grav/security/advisories/GHSA-5vx9-x8f2-f55w"
+     "url": "https://gist.github.com/Rauzk/9ef4fe7574e5689386cc43139f4cf9e1"
     },
     {
      "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/grav-before-2.1.7-information-disclosure-via-nested-git-directories"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "nginx",
-   "urgency": "P2 保持关注",
-   "action_zh": "升级到2.1.7；或在Web服务器屏蔽所有.git路径",
-   "repro_worthy": "一般",
-   "repro_note": "未授权请求 /user/.git/config 等嵌套路径并读取配置与对象",
-   "impact_scope": "开源CMS站点，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109326",
-   "description": "Grav before 2.1.7 contains an information disclosure vulnerability because bundled nginx, lighttpd, IIS, and Caddy 2 configurations block .git only at document root. Unauthenticated attackers can request nested repositories such as user/.git to retrieve Git config, refs, and objects, reconstructing unpublished history or committed secrets."
-  },
-  {
-   "id": "CVE-2026-109575",
-   "tier": "critical",
-   "title": "HAProxy 管理端点缺失认证越权",
-   "title_zh": "HAProxy 管理端点缺失认证越权",
-   "summary_zh": "未认证攻击者只要可达HTTP或UNIX管理端点即可绕过凭据获得完整API管理权限，读取或替换HAProxy配置。",
-   "published": "2026-10-12T20:17:09.443",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失认证"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/haproxytech/dataplaneapi/commit/c3ae4e3ccff5490d44650565e445c4b15e8aff8c"
+     "url": "https://vuldb.com/cve/CVE-2026-109109"
     },
     {
      "label": "参考",
-     "url": "https://github.com/haproxytech/dataplaneapi/releases/tag/v3.4.4"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.haproxy.com/documentation/haproxy-data-plane-api/"
+     "url": "https://vuldb.com/submit/909191"
     }
    ],
    "poc": [],
@@ -263,690 +63,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "限制管理端点暴露并加认证；关注厂商补丁",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "直接请求暴露的HTTP或UNIX管理端点，无需凭据调用管理API",
-   "impact_scope": "边界负载均衡管理面，可致接管",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109575",
-   "description": "Consequently, an unauthenticated attacker capable of reaching an affected HTTP or UNIX management endpoint can completely bypass credentials to gain full API administrative access. This allows unauthorized remote or local actors to read sensitive, cleartext HAProxy configuration data or replace the managed configuration entirely via the raw configuration endpoint."
-  },
-  {
-   "id": "CVE-2026-84313",
-   "tier": "high",
-   "title": "Nginx UI 窃取JWT绑定双因子",
-   "title_zh": "Nginx UI 窃取JWT绑定双因子",
-   "summary_zh": "持有被盗JWT者可在受害者未启用TOTP时绑定自己的TOTP密钥，或注册通行密钥，实现账户接管。",
-   "published": "2026-10-12T21:17:21.597",
-   "cvss": 8.8,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过",
-    "缺失认证"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/commit/23d1934099b05b2a01589b48129dc3d3159d91c2"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.4.1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-gfrc-g87h-7h5w"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "nginx",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至2.4.1或更高版本；限制管理面板公网访问",
+   "action_zh": "升级到厂商修复版本；限制该CGI访问，关闭公网管理。",
    "repro_worthy": "一般",
-   "repro_note": "持有效JWT调用TOTP绑定或通行密钥注册接口，利用缺失注册校验",
-   "impact_scope": "Nginx管理面板，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84313",
-   "description": "Nginx UI is a web user interface for the Nginx web server. An attacker with a stolen JWT can bind an attacker-controlled TOTP secret when the victim has not already enabled TOTP, or can register an attacker-controlled passkey because that path has no equivalent existing-enrollment guard."
+   "repro_note": "入口/cgi-bin/ExportAllSettings.cgi，超长字段溢出",
+   "impact_scope": "路由器Web管理，通常内网/LAN暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109109",
+   "description": "A vulnerability was detected in Wavlink WL-WN530BE1-A 251117. This vulnerability affects the function strcpy of the file /cgi-bin/ExportAllSettings.cgi of the component Settings Export CGI. Performing a manipulation of the argument HTTP_COOKIE/X-Cmd results in stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure."
   },
   {
-   "id": "CVE-2026-84316",
-   "tier": "high",
-   "title": "Nginx UI 配置注入致nginx代码执行",
-   "title_zh": "Nginx UI 配置注入致nginx代码执行",
-   "summary_zh": "已认证用户可绕过REST与配置写入路径校验注入指令，在加载可执行模块时于Nginx工作进程执行代码。",
-   "published": "2026-10-12T21:17:22.067",
-   "cvss": 8.8,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "输入校验缺失",
-    "CWE-184"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/commit/23d1934099b05b2a01589b48129dc3d3159d91c2"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.4.1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-cf23-7qxj-xmhr"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "nginx",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至2.4.1或更高版本；限制管理面板公网访问",
-   "repro_worthy": "一般",
-   "repro_note": "认证后向REST、站点或stream配置写入路径注入指令并重载",
-   "impact_scope": "Nginx管理面板，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84316",
-   "description": "Nginx UI is a web user interface for the Nginx web server. These mechanisms bypass validation on REST, nginx_config_modify, site, and stream write paths; when an executable module is available, the injected configuration can execute code in the Nginx worker context."
-  },
-  {
-   "id": "CVE-2026-84317",
-   "tier": "high",
-   "title": "Nginx UI MCP指令注入致代码执行",
-   "title_zh": "Nginx UI MCP指令注入致代码执行",
-   "summary_zh": "已认证MCP调用者或被提示注入诱导的Agent可注入被拦截指令，在启用njs/perl模块时执行代码。",
-   "published": "2026-10-12T21:17:22.213",
-   "cvss": 8.8,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "输入校验缺失",
-    "CWE-693"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/commit/23d1934099b05b2a01589b48129dc3d3159d91c2"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.4.1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-76pm-mq2q-9gcr"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "nginx",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至2.4.1或更高版本；限制管理面板公网访问",
-   "repro_worthy": "一般",
-   "repro_note": "以MCP调用者身份提交含受限指令的配置并重载Nginx",
-   "impact_scope": "Nginx管理面板，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84317",
-   "description": "Nginx UI is a web user interface for the Nginx web server. An authenticated MCP caller (or an MCP agent induced via prompt injection) can therefore inject exactly the directives the control is meant to block, leading to nginx code execution on deployments where the njs/perl module is available (e.g."
-  },
-  {
-   "id": "CVE-2026-84318",
-   "tier": "high",
-   "title": "Nginx UI 配置写入绕过致RCE",
-   "title_zh": "Nginx UI 配置写入绕过致RCE",
-   "summary_zh": "已认证用户可写入含被禁指令的配置绕过安全层，在加载Perl/njs/Lua模块的服务器上实现远程代码执行。",
-   "published": "2026-10-12T21:17:22.360",
-   "cvss": 8.8,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-693"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/commit/23d1934099b05b2a01589b48129dc3d3159d91c2"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.4.1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-9jww-cxg5-rj9m"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "nginx",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至2.4.1或更高版本；限制管理面板公网访问",
-   "repro_worthy": "一般",
-   "repro_note": "认证后写入含perl、js_import等被禁指令的配置并应用",
-   "impact_scope": "Nginx管理面板，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84318",
-   "description": "An authenticated attacker can exploit this gap to write config files containing any blocked directive (perl, js_import, load_module, user root, etc.), bypassing nginx-ui's entire security layer. On a server with the nginx Perl, njs, or Lua module loaded, this is post-authentication Remote Code Execution."
-  },
-  {
-   "id": "CVE-2026-84314",
-   "tier": "high",
-   "title": "Nginx UI 越权重置管理员密码",
-   "title_zh": "Nginx UI 越权重置管理员密码",
-   "summary_zh": "已认证普通账户可修改初始管理员密码并使其令牌失效，随后以管理员身份登录，完全控制面板。",
-   "published": "2026-10-12T21:17:21.753",
-   "cvss": 8.7,
-   "severity": "HIGH",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-285",
-    "缺失授权(越权)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/commit/23d1934099b05b2a01589b48129dc3d3159d91c2"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.4.1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-2gc7-j998-5xx6"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "nginx",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至2.4.1或更高版本；限制管理面板公网访问",
-   "repro_worthy": "一般",
-   "repro_note": "普通认证账户调用管理员密码修改接口，再以新密码登录",
-   "impact_scope": "Nginx管理面板，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84314",
-   "description": "Nginx UI is a web user interface for the Nginx web server. An attacker with an authenticated account can change the initial administrator's password, invalidate existing administrator tokens, and then authenticate as the administrator."
-  },
-  {
-   "id": "CVE-2026-84315",
-   "tier": "high",
-   "title": "Nginx UI 敏感操作绕过OTP校验",
-   "title_zh": "Nginx UI 敏感操作绕过OTP校验",
-   "summary_zh": "启用OTP的用户仅凭普通JWT即可在敏感变更接口绕过安全会话校验，无需提交X-Secure-Session-ID。",
-   "published": "2026-10-12T21:17:21.900",
-   "cvss": 8.3,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失授权(越权)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/commit/23d1934099b05b2a01589b48129dc3d3159d91c2"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.4.1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-5v7c-xpfp-p65m"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "nginx",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至2.4.1或更高版本；限制管理面板公网访问",
-   "repro_worthy": "一般",
-   "repro_note": "持普通JWT直接调用变更接口，不带有效X-Secure-Session-ID",
-   "impact_scope": "Nginx管理面板，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84315",
-   "description": "Nginx UI is a web user interface for the Nginx web server. Prior to 2.4.1, Nginx UI does not apply RequireSecureSession to multiple authenticated mutation routes even though OTP-enabled users are expected to present a fresh X-Secure-Session-ID for sensitive actions."
-  },
-  {
-   "id": "CVE-2026-84319",
-   "tier": "high",
-   "title": "Nginx UI MCP配置越权致RCE",
-   "title_zh": "Nginx UI MCP配置越权致RCE",
-   "summary_zh": "次级已认证用户可通过MCP配置接口写入受限配置，加载js模块并重载Nginx，执行任意代码。",
-   "published": "2026-10-12T21:17:22.517",
-   "cvss": 8.3,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-693"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/commit/23d1934099b05b2a01589b48129dc3d3159d91c2"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.4.1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-5r62-gj48-897x"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "nginx",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至2.4.1或更高版本；限制管理面板公网访问",
-   "repro_worthy": "一般",
-   "repro_note": "次级认证用户经MCP配置接口写入js_import并重载Nginx",
-   "impact_scope": "Nginx管理面板，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84319",
-   "description": "However, the MCP configuration interface allows a secondary authenticated user to write and apply equivalent restricted configuration content. This allows the user to load ngx_http_js_module.so, import attacker-controlled JavaScript, reload Nginx, and execute NJS in the Nginx worker context."
-  },
-  {
-   "id": "CVE-2026-84360",
-   "tier": "high",
-   "title": "Nginx UI MCP绕过安全会话校验",
-   "title_zh": "Nginx UI MCP绕过安全会话校验",
-   "summary_zh": "启用OTP的用户持普通JWT且无有效X-Secure-Session-ID，仍可经MCP修改并重载Nginx配置。",
-   "published": "2026-10-12T21:17:22.960",
-   "cvss": 8.1,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/commit/23d1934099b05b2a01589b48129dc3d3159d91c2"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.4.1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-vc32-4gwf-77xp"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "nginx",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至2.4.1或更高版本；限制管理面板公网访问",
-   "repro_worthy": "一般",
-   "repro_note": "启用OTP的账号持普通JWT，经MCP修改配置并触发reload",
-   "impact_scope": "Nginx管理面板，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84360",
-   "description": "Nginx UI is a web user interface for the Nginx web server. An OTP-enabled user with a normal JWT but no valid X-Secure-Session-ID can therefore create or modify Nginx configuration and trigger reload behavior through MCP, bypassing the intended step-up control."
-  },
-  {
-   "id": "CVE-2026-81839",
-   "tier": "high",
-   "title": "GitLab 项目转移CI策略权限残留",
-   "title_zh": "GitLab 项目转移CI策略权限残留",
-   "summary_zh": "已认证用户在项目转移后可沿用原调度策略，以新组权限执行任意CI/CD流水线，越权访问资源。",
-   "published": "2026-10-13T02:16:59.927",
-   "cvss": 7.7,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "授权错误"
-   ],
-   "difficulty": "高(远程·利用条件苛刻·需低权限·需用户交互)",
-   "products": [],
-   "affected": "GitLab(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/"
-    },
-    {
-     "label": "参考",
-     "url": "https://gitlab.com/gitlab-org/gitlab/-/work_items/624150"
-    },
-    {
-     "label": "参考",
-     "url": "https://hackerone.com/reports/3925062"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "gitlab",
-   "urgency": "P2 保持关注",
-   "action_zh": "升级至19.2.8、19.3.5或19.4.2及以上版本",
-   "repro_worthy": "一般",
-   "repro_note": "认证用户转移项目后触发原调度策略，观察以新组权限执行",
-   "impact_scope": "内网GitLab，项目权限边界",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-81839",
-   "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 18.1 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain conditions, could have allowed an authenticated user to execute arbitrary CI/CD pipelines in a transferred project with the new group's privileges due to improper cleanup of scheduled pipeline execution policy records."
-  },
-  {
-   "id": "CVE-2026-96893",
-   "tier": "high",
-   "title": "GitLab AI代理指令注入命令执行",
-   "title_zh": "GitLab AI代理指令注入命令执行",
-   "summary_zh": "已认证用户可向AI代理指令注入恶意内容，诱导以其他用户身份执行非预期命令，造成越权操作。",
-   "published": "2026-10-13T02:17:00.720",
-   "cvss": 7.3,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [],
-   "difficulty": "中(远程·需低权限·需用户交互)",
-   "products": [],
-   "affected": "GitLab(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/"
-    },
-    {
-     "label": "参考",
-     "url": "https://gitlab.com/gitlab-org/gitlab/-/work_items/607968"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "gitlab",
-   "urgency": "P2 保持关注",
-   "action_zh": "升级至19.2.8、19.3.5或19.4.2及以上版本",
-   "repro_worthy": "一般",
-   "repro_note": "认证用户投递含注入指令的内容，观察AI代理以他人身份执行",
-   "impact_scope": "内网GitLab AI功能，可横向越权",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96893",
-   "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.1 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain conditions, could have allowed an authenticated user to inject specially crafted content into AI agent instructions, potentially causing unintended command execution attributed to other users, due to improper neutralization of special elements in AI conversation context construction."
-  },
-  {
-   "id": "CVE-2026-84312",
-   "tier": "high",
-   "title": "Nginx UI Casdoor回调CSRF会话伪造",
-   "title_zh": "Nginx UI Casdoor回调CSRF会话伪造",
-   "summary_zh": "未认证攻击者可诱导受害者浏览器完成其控制的Casdoor授权流程，回调后为攻击者身份签发面板会话。",
-   "published": "2026-10-12T22:17:05.263",
-   "cvss": 7.1,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:L/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过",
-    "CSRF"
-   ],
-   "difficulty": "低(远程·免认证·需用户交互)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/commit/23d1934099b05b2a01589b48129dc3d3159d91c2"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.4.1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-44xr-mrhh-qm78"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": "nginx",
-   "urgency": "P2 保持关注",
-   "action_zh": "升级至2.4.1或更高版本；限制管理面板公网访问",
-   "repro_worthy": "一般",
-   "repro_note": "诱导受害者访问特制链接，完成攻击者Casdoor授权后回调登录",
-   "impact_scope": "Nginx UI面板，可被钓鱼利用",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84312",
-   "description": "Nginx UI is a web user interface for the Nginx web server. An unauthenticated attacker can cause a victim's browser to complete an attacker-controlled Casdoor authorization flow, and the callback can mint a Nginx UI session for the identity returned by that authorization code."
-  },
-  {
-   "id": "CVE-2026-89107",
+   "id": "CVE-2026-109110",
    "tier": "critical",
-   "title": "Successful 代码注入(RCE)",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-13T01:16:47.507",
-   "cvss": 9.9,
+   "title": "Wavlink路由器 wmapd命令注入",
+   "title_zh": "Wavlink路由器 wmapd命令注入",
+   "summary_zh": "远程攻击者可操纵wmapd守护进程system函数参数注入系统命令，造成远程命令执行。",
+   "published": "2026-10-13T09:17:15.370",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "代码注入(RCE)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://me.sap.com/notes/3805589"
-    },
-    {
-     "label": "参考",
-     "url": "https://url.sap/sapsecuritypatchday"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-89107",
-   "description": "An authenticated attacker with specific business privileges could submit specially crafted input, which is interpreted as executable ABAP code by the rule processing logic. Successful exploitation could allow the attacker to execute ABAP arbitrary code into the system, resulting in full compromise of the affected system and high impact on confidentiality, integrity, and availability of the system."
-  },
-  {
-   "id": "CVE-2026-89110",
-   "tier": "critical",
-   "title": "Depending CWE-749",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-13T01:16:47.767",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-749"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://me.sap.com/notes/3797111"
-    },
-    {
-     "label": "参考",
-     "url": "https://url.sap/sapsecuritypatchday"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-89110",
-   "description": "SAP NetWeaver Visual Composer does not perform sufficient authorization checks in certain portal functionality. An attacker with low privileges could invoke internal operations on a preconfigured remote system. Depending on the remote connection configuration, this could lead to a full compromise of the remote system. This results in a high impact on confidentiality, integrity and availability."
-  },
-  {
-   "id": "CVE-2026-57118",
-   "tier": "critical",
-   "title": "未授权 缺失认证",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T19:16:38.940",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失认证",
-    "缺失授权(越权)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/MervinPraison/PraisonAI/commit/b4270173d4123fb1ee8910588f0896668ee21b59"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/MervinPraison/PraisonAI/releases/tag/v4.6.59"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-x8cv-xmq7-p8xp"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-57118",
-   "description": "A remotely exposed server can therefore let unauthenticated clients enumerate agents, consume model resources, access connected private context, and trigger agent tools or workflow side effects. This vulnerability is fixed in praisonaiagents 1.6.59."
-  },
-  {
-   "id": "CVE-2025-71429",
-   "tier": "critical",
-   "title": "GPT-SoVITS 未授权 命令注入(RCE)",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T21:17:07.817",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
+    "命令注入",
     "命令注入(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
@@ -956,15 +93,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/RVC-Boss/GPT-SoVITS"
+     "url": "https://drive.google.com/file/d/1KtZZ7kjVswRgP2VLEx7M7gEafyY8Wp2Q/view?usp=drive_link"
     },
     {
      "label": "参考",
-     "url": "https://github.com/RVC-Boss/GPT-SoVITS/blob/d7c2210da8c013e81a94bfc7b811a477c99fd506/tools/uvr5/vr.py#L143"
+     "url": "https://vuldb.com/cve/CVE-2026-109110"
     },
     {
      "label": "参考",
-     "url": "https://github.com/RVC-Boss/GPT-SoVITS/issues/2319"
+     "url": "https://vuldb.com/submit/913573"
     }
    ],
    "poc": [],
@@ -975,690 +112,45 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-71429",
-   "description": "GPT-SoVITS through 20250606v2pro contains an OS command injection vulnerability in tools/uvr5/vr.py that allows unauthenticated attackers to execute commands via output folder paths. Attackers can enter shell substitutions like $(...) in the UVR5 WebUI output folder textboxes with mp3 or m4a export to run commands as the server user."
-  },
-  {
-   "id": "CVE-2026-109566",
-   "tier": "critical",
-   "title": "Rapyd Admin 未授权 硬编码凭据",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T21:17:13.190",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "硬编码凭据"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/zofe/rapyd-admin"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/zofe/rapyd-admin/blob/v9.19.0/src/Modules/Auth/Database/Seeders/AuthSeeder.php#L29-L34"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/zofe/rapyd-admin/commit/acd6ee85f9e5ccec67199673b039c605d161406a"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109566",
-   "description": "Rapyd Admin from 9.0.0 before 9.20.0 contains a hard-coded credentials vulnerability that allows remote unauthenticated attackers to gain super-admin access through an AuthSeeder-created admin@laravel account with password admin. The account is seeded by the setup installer and silently re-created on every rpd:make run, letting attackers log in as a global super admin bypassing per-record authorization and tenant scoping."
-  },
-  {
-   "id": "CVE-2026-90920",
-   "tier": "critical",
-   "title": "IBM Maximo AI Service 未授权 代码注入(RCE)",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T22:17:05.683",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "代码注入(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7290833"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-90920",
-   "description": "IBM Maximo AI Service 9.1.0, and 9.2.0 could allow a remote attacker to execute arbitrary code due to improper control of code generation."
-  },
-  {
-   "id": "CVE-2026-87689",
-   "tier": "critical",
-   "title": "Msf 未授权 缺失认证",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-13T01:16:47.110",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失认证"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/rapid7/metasploit-framework"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/rapid7/metasploit-framework/releases/tag/6.5.5"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87689",
-   "description": "The Metasploit Framework Web Service REST API (msf-ws) exposes the credential store through Msf::WebServices::CredentialServlet. Every mutating and read route in this servlet calls warden.authenticate!"
-  },
-  {
-   "id": "CVE-2026-85956",
-   "tier": "critical",
-   "title": "Progress MarkLogic Server 权限提升",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T16:17:07.193",
-   "cvss": 9.6,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "权限提升"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "Progress(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://community.progress.com/s/article/Marklogic-Critical-Security-Alert-Bulletin-October-2026"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85956",
-   "description": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 allow a remote attacker with delegated database-administrator privileges to perform backup or restore operations on forests outside the authorized database scope, which could result in unauthorized access to or modification of security-critical data."
-  },
-  {
-   "id": "CVE-2026-9191",
-   "tier": "critical",
-   "title": "Progress 未授权 源校验错误(SSRF类)",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T16:17:08.223",
-   "cvss": 9.6,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "源校验错误(SSRF类)"
-   ],
-   "difficulty": "低(远程·免认证·需用户交互)",
-   "products": [],
-   "affected": "Progress(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://community.progress.com/s/article/Marklogic-Critical-Security-Alert-Bulletin-October-2026"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-9191",
-   "description": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 do not sufficiently isolate user-supplied code executed through certain REST and XDBC evaluation paths from HTTP request, response, and session state. An attacker able to execute code through an affected path could perform unauthorized actions or compromise an authenticated session."
-  },
-  {
-   "id": "CVE-2026-82101",
-   "tier": "critical",
-   "title": "IBM DataStage 路径遍历/任意文件读取",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T23:17:41.897",
-   "cvss": 9.6,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "路径遍历/任意文件读取"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7288649"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82101",
-   "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to cause a denial of service due to a path traversal vulnerability."
-  },
-  {
-   "id": "CVE-2026-82103",
-   "tier": "critical",
-   "title": "IBM DataStage 信息泄露",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T23:17:42.110",
-   "cvss": 9.6,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "信息泄露"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7288649"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82103",
-   "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to obtain sensitive information due to an exposure of sensitive information to an unauthorized actor."
-  },
-  {
-   "id": "CVE-2026-82110",
-   "tier": "critical",
-   "title": "IBM DataStage 路径遍历/任意文件读取",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T23:17:42.533",
-   "cvss": 9.6,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "路径遍历/任意文件读取"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7288649"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82110",
-   "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to execute arbitrary code due to improper validation of pathname during a path traversal."
-  },
-  {
-   "id": "CVE-2026-93582",
-   "tier": "critical",
-   "title": "Remote-User 未授权 认证欺骗",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T07:16:37.717",
-   "cvss": 9.4,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
-   "epss": 0.00392,
-   "epss_percentile": 0.31323,
-   "cwe_labels": [
-    "认证欺骗"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://otrs.com/release-notes/otrs-security-advisory-2026-18/"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-93582",
-   "description": "As a result, an unauthenticated remote attacker can supply a crafted Remote-User request header which is exposed to the application as HTTP_REMOTE_USER. Successful exploitation may allow access to confidential information and modification of data or configuration with the permissions of the affected user."
-  },
-  {
-   "id": "CVE-2026-92681",
-   "tier": "critical",
-   "title": "Cypher 未授权 缺失认证",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T16:17:07.323",
-   "cvss": 9.3,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失认证"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/neo4j/graphql/commit/ef69cc69ff5e97c60d64aa524005f939c5ba3633"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/neo4j/graphql/releases/tag/%40neo4j%2Fgraphql%407.6.4"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/neo4j/graphql/security/advisories/GHSA-8xj4-8gg9-fx9h"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92681",
-   "description": "An application that exposes a top-level @cypher field and relies on schema-level or type-level @authentication to protect it allows unauthenticated callers to invoke the field and run the configured Cypher statement with the privileges of the GraphQL service account, which may permit reading and modifying data."
-  },
-  {
-   "id": "CVE-2026-44828",
-   "tier": "critical",
-   "title": "Qexo 未授权 CWE-538",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T22:17:04.160",
-   "cvss": 9.3,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-538"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/Qexo/Qexo/commit/3782750c2d90bf145b88edab443e82f5545a2d33"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/Qexo/Qexo/releases/tag/4.2.0"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/Qexo/Qexo/security/advisories/GHSA-qfv8-hj33-4232"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-44828",
-   "description": "Qexo is an open source online editor for static blogs. An unauthenticated requester with a valid CSRF token obtained from a public page can submit the first initialization step and reset the INIT setting, causing the instance to re-enter the setup flow."
-  },
-  {
-   "id": "CVE-2026-78357",
-   "tier": "critical",
-   "title": "未授权 CWE-613",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T07:16:37.073",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-   "epss": 0.00304,
-   "epss_percentile": 0.21413,
-   "cwe_labels": [
-    "CWE-613"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://otrs.com/release-notes/otrs-security-advisory-2026-14/"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-78357",
-   "description": "An attacker who has previously obtained a valid authentication token can therefore continue to access OTRS with the privileges of the affected agent or customer user even after the corresponding account has been deactivated or the user's password has been changed. The vulnerability does not allow an attacker to obtain authentication tokens by itself."
-  },
-  {
-   "id": "CVE-2026-109321",
-   "tier": "critical",
-   "title": "Unauthenticated 未授权 CWE-1391",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T17:17:27.247",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-1391"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/getgrav/grav/security/advisories/GHSA-mj8v-hvf6-73gm"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/grav-login-oauth-plugin-before-1.4.3-predictable-local-credentials-authentication-bypass"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109321",
-   "description": "Grav Login OAuth plugin (grav-plugin-login-oauth) before 1.4.3 provisions OAuth accounts as ordinary Grav users with a deterministic <provider>.<id> username and an unsalted MD5 hash of the provider identifier as the password, without disabling password login. Unauthenticated remote attackers who learn or guess a provider identifier can reproduce these credentials and log in, gaining administrative control of privileged accounts."
-  },
-  {
-   "id": "CVE-2026-87744",
-   "tier": "critical",
-   "title": "Red Hat 未授权 直接访问(越权)",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T19:16:40.277",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "直接访问(越权)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://access.redhat.com/security/cve/CVE-2026-87744"
-    },
-    {
-     "label": "参考",
-     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2530524"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87744",
-   "description": "This vulnerability allows unauthenticated attackers to bypass security controls on generated endpoints. This results in the affected endpoint defaulting to permissive, unauthenticated access, potentially leading to unauthorized information disclosure or data modification."
-  },
-  {
-   "id": "CVE-2026-108917",
-   "tier": "critical",
-   "title": "Edimax BR-6208AC 命令注入",
-   "title_zh": "Edimax BR-6208AC 命令注入",
-   "summary_zh": "远程攻击者可向受影响接口注入系统命令，以设备权限执行任意指令，完全控制该路由器。",
-   "published": "2026-10-12T18:17:22.163",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "注入",
-    "命令注入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/fizz-is-on-the-way/Iot_vuls/tree/main/BR-6208AC/RCE_formAutoFWupgrade"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108917"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/977199"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复，建议停用或隔离该设备",
+   "action_zh": "升级厂商修复版本；限制wmapd服务访问，勿暴露管理口。",
    "repro_worthy": "一般",
-   "repro_note": "未授权访问路由器管理接口，构造命令注入payload",
-   "impact_scope": "家用/小型办公出口路由器",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108917",
-   "description": "A vulnerability was determined in Edimax BR-6208AC 1.32. This issue affects some unknown processing of the file /goform/formAutoFWupgrade. Executing a manipulation of the argument tftpsIP can lead to command injection. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer."
+   "repro_note": "需可达wmapd服务，操纵system函数参数注入命令",
+   "impact_scope": "路由器daemon，网络可达可远程攻击",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109110",
+   "description": "A flaw has been found in Wavlink WL-WN592AX6 250422. This issue affects the function system of the component wmapd Daemon. Executing a manipulation can lead to os command injection. It is possible to launch the attack remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure."
   },
   {
-   "id": "CVE-2026-108918",
+   "id": "CVE-2026-109108",
    "tier": "critical",
-   "title": "Edimax 路由器readE2P命令注入",
-   "title_zh": "Edimax 路由器readE2P命令注入",
-   "summary_zh": "远程攻击者可通过readE2P参数注入系统命令，在路由器上以高权限执行任意指令。",
-   "published": "2026-10-12T18:17:22.353",
-   "cvss": 10.0,
+   "title": "Wavlink路由器 VPN上传命令注入",
+   "title_zh": "Wavlink路由器 VPN上传命令注入",
+   "summary_zh": "远程攻击者可操纵uploadVpn.cgi的Type参数注入系统命令，可能导致远程命令执行。",
+   "published": "2026-10-13T08:16:59.917",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "注入",
-    "命令注入"
+    "命令注入",
+    "命令注入(RCE)"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/fizz-is-on-the-way/Iot_vuls/tree/main/BR-6208AC/RCE_formWlanMP"
+     "url": "https://gist.github.com/Rauzk/0a61823f0033441142dc1c3f4a776e7c"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108918"
+     "url": "https://vuldb.com/cve/CVE-2026-109108"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/977200"
+     "url": "https://vuldb.com/submit/909182"
     }
    ],
    "poc": [],
@@ -1669,20 +161,20 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复，建议停用或隔离该设备",
+   "action_zh": "升级厂商修复版本；限制该CGI访问并过滤Type参数。",
    "repro_worthy": "一般",
-   "repro_note": "调用含readE2P参数的接口，注入系统命令分隔符",
-   "impact_scope": "家用/小型办公出口路由器",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108918",
-   "description": "A vulnerability was identified in Edimax BR-6208AC 1.32. Impacted is an unknown function of the file /goform/formWlanMP. The manipulation of the argument readE2P leads to command injection. It is possible to initiate the attack remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer."
+   "repro_note": "入口/cgi-bin/uploadVpn.cgi，Type参数注入命令",
+   "impact_scope": "路由器Web CGI，管理面暴露可打",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109108",
+   "description": "A security vulnerability has been detected in Wavlink WL-WN530BE1-A 251117. This affects the function popen of the file /cgi-bin/uploadVpn.cgi. Such manipulation of the argument Type leads to os command injection. The attack may be performed from remote. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure."
   },
   {
-   "id": "CVE-2026-108893",
+   "id": "CVE-2026-109157",
    "tier": "critical",
-   "title": "Linksys E1700 setVlan栈溢出",
-   "title_zh": "Linksys E1700 setVlan栈溢出",
-   "summary_zh": "远程攻击者可向/goform/setVlan的vlan_set参数发送超长数据触发栈溢出，导致拒绝服务或控制设备。",
-   "published": "2026-10-12T14:17:09.710",
+   "title": "TRENDnet路由器 栈溢出 表单设置",
+   "title_zh": "TRENDnet路由器 栈溢出 表单设置",
+   "summary_zh": "可访问formTcpipSetup的攻击者可提交超长字段触发栈溢出，导致设备崩溃或代码执行。",
+   "published": "2026-10-13T11:17:14.873",
    "cvss": 9.9,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
@@ -1699,15 +191,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/wudipjq/my_vuln/blob/main/Linksys3/vuln_67/67.md"
+     "url": "https://github.com/wudipjq/my_vuln/blob/main/TRENDnet/vuln_21/21.md"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108893"
+     "url": "https://vuldb.com/cve/CVE-2026-109157"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/973112"
+     "url": "https://vuldb.com/submit/979590"
     }
    ],
    "poc": [],
@@ -1718,621 +210,85 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复，建议停用或隔离该设备",
+   "action_zh": "升级厂商修复版本；限制管理界面访问，关闭公网管理。",
    "repro_worthy": "一般",
-   "repro_note": "向 /goform/setVlan 提交超长 vlan_set 参数触发栈溢出",
-   "impact_scope": "家用路由器，边界暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108893",
-   "description": "A vulnerability was identified in Linksys E1700 up to 1.0.0.4.003. This issue affects the function setVlan of the file /goform/setVlan. Such manipulation of the argument vlan_set leads to stack-based buffer overflow. The attack may be launched remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way."
-  },
-  {
-   "id": "CVE-2026-108894",
-   "tier": "critical",
-   "title": "路由器静态路由参数命令注入",
-   "title_zh": "路由器静态路由参数命令注入",
-   "summary_zh": "远程攻击者可通过静态路由IP、掩码、网关、跳数等参数注入系统命令，获取设备控制权。",
-   "published": "2026-10-12T14:17:09.897",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/wudipjq/my_vuln/blob/main/Linksys3/vuln_68/68.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108894"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/973113"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复，建议停用或隔离该设备",
-   "repro_worthy": "一般",
-   "repro_note": "向静态路由设置接口注入 staticRoute_* 参数中的命令分隔符",
-   "impact_scope": "家用路由器，边界暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108894",
-   "description": "Performing a manipulation of the argument staticRoute_IP_setting/staticRoute_Netmask_setting/staticRoute_Gateway_setting/staticRoute_Metric_setting results in os command injection. Remote exploitation of the attack is possible."
-  },
-  {
-   "id": "CVE-2026-108895",
-   "tier": "critical",
-   "title": "未知组件 MAC_addr 命令注入",
-   "title_zh": "未知组件 MAC_addr 命令注入",
-   "summary_zh": "远程攻击者可操纵 MAC_addr 参数触发 OS 命令注入，导致任意命令执行。",
-   "published": "2026-10-12T15:17:07.227",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/wudipjq/my_vuln/blob/main/Linksys3/vuln_69/69.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108895"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/973114"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "联系厂商确认受影响产品，限制接口访问并过滤 MAC_addr 参数。",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "未知组件，暴露面不明",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108895",
-   "description": "A weakness has been identified in Linksys E1700 1.0.0.4.003. The affected element is the function setDMZ of the file /goform/setDMZ. Executing a manipulation of the argument MAC_addr can lead to os command injection. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way."
-  },
-  {
-   "id": "CVE-2026-108896",
-   "tier": "critical",
-   "title": "Linksys E1700 命令注入 RCE",
-   "title_zh": "Linksys E1700 命令注入 RCE",
-   "summary_zh": "远程攻击者可操纵 setLinksysIpv6 的 _6rd_prefix 参数触发命令注入，执行任意命令。",
-   "published": "2026-10-12T15:17:07.423",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/wudipjq/my_vuln/blob/main/Linksys3/vuln_70/70.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108896"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/973115"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "厂商未响应暂无官方修复，限制管理接口访问并过滤相关参数。",
-   "repro_worthy": "一般",
-   "repro_note": "向 setLinksysIpv6 接口提交恶意 _6rd_prefix 参数。",
-   "impact_scope": "家用路由器,管理面暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108896",
-   "description": "A vulnerability was found in Linksys E1700 1.0.0.4.003. This affects the function setLinksysIpv6 of the file /goform/setLinksysIpv6. The manipulation of the argument _6rd_prefix/_6rd_prefix_len results in os command injection. The attack can be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way."
-  },
-  {
-   "id": "CVE-2026-85947",
-   "tier": "critical",
-   "title": "MarkLogic 森林管理越权提权",
-   "title_zh": "MarkLogic 森林管理越权提权",
-   "summary_zh": "具森林管理权限的远程攻击者可创建未授权管理员账户，完全控制 MarkLogic 服务器。",
-   "published": "2026-10-12T16:17:06.040",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "权限提升"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "Progress(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://community.progress.com/s/article/Marklogic-Critical-Security-Alert-Bulletin-October-2026"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 12.1.0 或 11.3.7，限制森林管理权限并审计账户创建。",
-   "repro_worthy": "一般",
-   "repro_note": "以森林管理权限调用相关管理操作，尝试创建持久管理员账户。",
-   "impact_scope": "企业数据平台,内网高权限",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85947",
-   "description": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 contain an authorization flaw in certain forest-management operations. A remote attacker with forest-management privileges could exploit this flaw to create a persistent unauthorized administrator account, potentially resulting in complete unauthorized administrative control of the server."
-  },
-  {
-   "id": "CVE-2026-85948",
-   "tier": "critical",
-   "title": "MarkLogic XQuery注入提权",
-   "title_zh": "MarkLogic XQuery注入提权",
-   "summary_zh": "具 manage-user 权限的远程攻击者可通过弃用管理 API 的 XQuery 注入获得持久管理员控制。",
-   "published": "2026-10-12T16:17:06.173",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "权限提升"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "Progress(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://community.progress.com/s/article/Marklogic-Critical-Security-Alert-Bulletin-October-2026"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至 12.1.0/11.3.7，限制管理 API 与高权限账户。",
-   "repro_worthy": "一般",
-   "repro_note": "以 manage-user 权限访问弃用 API 路径注入 XQuery。",
-   "impact_scope": "企业数据平台,内网高权限",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85948",
-   "description": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 contain an XQuery injection flaw in a deprecated Management API package path. A remote attacker with manage-user-level privileges could exploit this flaw to obtain persistent unauthorized administrative control."
-  },
-  {
-   "id": "CVE-2026-85955",
-   "tier": "critical",
-   "title": "MarkLogic XQuery越权执行",
-   "title_zh": "MarkLogic XQuery越权执行",
-   "summary_zh": "具查询执行权限的远程攻击者可越权调用 XQuery 求值函数，以更高权限执行服务端代码。",
-   "published": "2026-10-12T16:17:07.070",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "权限提升"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "Progress(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://community.progress.com/s/article/Marklogic-Critical-Security-Alert-Bulletin-October-2026"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至 12.1.0/11.3.7，限制查询权限并审计 XQuery 调用。",
-   "repro_worthy": "一般",
-   "repro_note": "以查询执行权限调用 XQuery 求值函数，检查是否缺少额外评估权限。",
-   "impact_scope": "企业数据平台,服务端代码执行",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85955",
-   "description": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 allow a remote attacker with query-execution access to invoke an XQuery evaluation function without the additional required evaluation privilege, which could result in server-side code execution with elevated permissions."
-  },
-  {
-   "id": "CVE-2026-108914",
-   "tier": "critical",
-   "title": "未知组件 缓冲区溢出 RCE",
-   "title_zh": "未知组件 缓冲区溢出 RCE",
-   "summary_zh": "远程攻击者可触发缓冲区溢出，造成内存破坏，并可能进一步执行任意代码。",
-   "published": "2026-10-12T17:17:13.890",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "内存破坏",
-    "缓冲区溢出"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/fizz-is-on-the-way/Iot_vuls/tree/main/BR-6208AC/BufferOverflow_formWlSiteSurvey"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108914"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/977194"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "联系厂商确认受影响组件，限制网络暴露并部署内存缓解措施。",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "未知组件，暴露面不明",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108914",
-   "description": "A flaw has been found in Edimax BR-6208AC 1.32. Affected by this issue is some unknown functionality of the file /goform/formWlSiteSurvey. This manipulation of the argument ifname causes buffer overflow. Remote exploitation of the attack is possible. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer."
-  },
-  {
-   "id": "CVE-2026-108915",
-   "tier": "critical",
-   "title": "Edimax BR-6208AC 缓冲区溢出",
-   "title_zh": "Edimax BR-6208AC 缓冲区溢出",
-   "summary_zh": "远程攻击者可利用 Edimax BR-6208AC 1.32 的缓冲区溢出，造成内存破坏甚至代码执行。",
-   "published": "2026-10-12T18:17:21.770",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "内存破坏",
-    "缓冲区溢出"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/fizz-is-on-the-way/Iot_vuls/tree/main/BR-6208AC/BufferOverflow_formWlanMP"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108915"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/977196"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "联系厂商获取修复，限制管理接口访问，必要时更换设备。",
-   "repro_worthy": "一般",
-   "repro_note": "远程向设备相关服务发送畸形输入触发溢出，需确认入口与版本。",
-   "impact_scope": "家用路由器,可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108915",
-   "description": "A vulnerability has been found in Edimax BR-6208AC 1.32. This affects an unknown part of the file /goform/formWlanMP. Such manipulation of the argument ateBW leads to buffer overflow. The attack can be executed remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer."
-  },
-  {
-   "id": "CVE-2026-77366",
-   "tier": "critical",
-   "title": "obsidian-tc 越权访问 vault",
-   "title_zh": "obsidian-tc 越权访问 vault",
-   "summary_zh": "持有令牌者可传入不匹配的 input.vault，绕过检查越权访问其他 vault 数据。",
-   "published": "2026-10-12T18:17:23.830",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "越权(IDOR)",
-    "授权错误"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/The-40-Thieves/obsidian-tc/commit/38b4992e87dc2715564236e1a42d005ab05a0194"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/The-40-Thieves/obsidian-tc/pull/72"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/The-40-Thieves/obsidian-tc/releases/tag/v1.3.1"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 1.3.1，确保令牌和请求上下文绑定到 vault。",
-   "repro_worthy": "一般",
-   "repro_note": "携带有效令牌构造 input.vault 不匹配值，观察是否拒绝及越权访问。",
-   "impact_scope": "本地/内网 Obsidian MCP 服务",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77366",
-   "description": "obsidian-tc is a governed, agent-ready Model Context Protocol server for Obsidian vaults. Version 1.3.1 fixes the vulnerability by binding tokens and request context to a vault and rejecting mismatched input.vault values before scope checks."
-  },
-  {
-   "id": "CVE-2026-96012",
-   "tier": "critical",
-   "title": "IBM Db2 Mirror 权限提升",
-   "title_zh": "IBM Db2 Mirror 权限提升",
-   "summary_zh": "认证攻击者可构造恶意请求绕过授权与输入校验，执行恶意代码并获取系统高权限。",
-   "published": "2026-10-12T20:17:10.723",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-264"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7290193"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "安装 IBM 官方补丁，最小化账户权限并审计异常请求。",
-   "repro_worthy": "一般",
-   "repro_note": "认证后向 Db2 Mirror 相关接口发送恶意请求，绕过授权校验。",
-   "impact_scope": "IBM i 数据库,内网高权限",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96012",
-   "description": "IBM Db2 Mirror for i 7.4, 7.5, and 7.6 is vulnerable to privilege escalation. An authenticated attacker could craft a malicious request that bypasses additional authorization and input validation checks to execute malicious code. An attacker could exploit this vulnerability to obtain elevated privileges on the system."
-  },
-  {
-   "id": "CVE-2026-108929",
-   "tier": "critical",
-   "title": "Netcore NR268 DDNS 注入",
-   "title_zh": "Netcore NR268 DDNS 注入",
-   "summary_zh": "远程攻击者可操纵 DDNS 配置的 Hostname 参数，触发参数注入并可能执行任意命令。",
-   "published": "2026-10-12T21:17:09.410",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "注入",
-    "参数拼接注入"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/draw-ctf/report/blob/main/NR268/2026.09.14-netcore-nr268-ddns-argument-injection.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-108929"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/977178"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "联系厂商获取修复，限制管理接口访问并过滤 Hostname 参数。",
-   "repro_worthy": "一般",
-   "repro_note": "向 /router/DDNSset.cgi 提交恶意 Hostname 参数。",
-   "impact_scope": "路由器管理面,可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108929",
-   "description": "A flaw has been found in Netcore NR268 1.7.121109. The affected element is the function execvp of the file /router/DDNSset.cgi of the component DDNS. Executing a manipulation of the argument Hostname can lead to argument injection. The attack can be launched remotely."
-  },
-  {
-   "id": "CVE-2026-108362",
-   "tier": "critical",
-   "title": "TEE 未授权 源校验错误(SSRF类)",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-12T20:17:08.073",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "源校验错误(SSRF类)"
-   ],
-   "difficulty": "中(远程·利用条件苛刻·利用条件苛刻·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/Privasys/ra-tls-clients/commit/1179ed097fdcb8519a85973a8a6c6ccbd0f50b03"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/Privasys/ra-tls-clients/releases/tag/v0.11.0"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/Privasys/ra-tls-clients/security/advisories/GHSA-pj2x-5wqv-fh57"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108362",
-   "description": "When a network attacker can forge evidence or extract attestation secrets from a compromised unrevoked platform, the verifier accepts valid measurements from a different unrevoked TEE platform as though they came from the intended Attester. The attacker can impersonate the attested TLS endpoint."
-  },
-  {
-   "id": "CVE-2026-89108",
-   "tier": "critical",
-   "title": "Successful 缺失授权(越权)",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-10-13T01:16:47.637",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失授权(越权)"
-   ],
-   "difficulty": "中(远程·需高权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://me.sap.com/notes/3798788"
-    },
-    {
-     "label": "参考",
-     "url": "https://url.sap/sapsecuritypatchday"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-89108",
-   "description": "An attacker with MII administrator privileges could submit a specially crafted request to provision an account with elevated privileges on the underlying Java application server. Successful exploitation could allow the attacker to gain administrative control over the underlying system, extending the impact beyond the vulnerable application."
+   "repro_note": "入口/goform/formTcpipSetup，向TCP/IP配置字段传超长值",
+   "impact_scope": "老旧路由器Web管理，暴露面有限",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109157",
+   "description": "A vulnerability was found in TRENDnet TEW-432BRP 3.10B20. Affected by this vulnerability is the function formTcpipSetup of the file /goform/formTcpipSetup."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "php/php-src",
-   "sha": "1e8a51d545d92084e1d354d81030e30cc8a3e3a0",
-   "url": "https://github.com/php/php-src/commit/1e8a51d545d92084e1d354d81030e30cc8a3e3a0",
-   "title": "Backport PCRE2 security fixes to bundled 10.40",
-   "date": "2026-10-12T07:37:31",
-   "score": 3,
+   "repo": "jeecgboot/JeecgBoot",
+   "sha": "2fc1ccb05971d91a7988ef331901891d4dec060e",
+   "url": "https://github.com/jeecgboot/JeecgBoot/commit/2fc1ccb05971d91a7988ef331901891d4dec060e",
+   "title": "--author:scott--date:20261013--for:【安全 GHSA-5qr3-c98m-9767】短信接口增加按手机号限流，防止伪造X-Forwarded-For绕过IP限流进行短信轰炸",
+   "date": "2026-10-13T11:24:49",
+   "score": 2,
    "matched": [
-    "安全修复",
-    "回合/回归"
+    "未授权/绕过"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "goharbor/harbor",
+   "sha": "5c885152b9730cc242ff851f34587f4351bcb908",
+   "url": "https://github.com/goharbor/harbor/commit/5c885152b9730cc242ff851f34587f4351bcb908",
+   "title": "fix(scan): scope scan stop lookup to caller artifact (#23948)",
+   "date": "2026-10-13T09:41:33",
+   "score": 2,
+   "matched": [
+    "漏洞相关"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "jeecgboot/JeecgBoot",
+   "sha": "7187cf3e8d4b90b8a0c80fc47c9d86e7a4646d16",
+   "url": "https://github.com/jeecgboot/JeecgBoot/commit/7187cf3e8d4b90b8a0c80fc47c9d86e7a4646d16",
+   "title": "--author:scott--date:20261013--for:【安全 GHSA-g9pv-58jx-2grf/GHSA-85m5-jf95-q532/GHSA-rhrv-jv29-rmmq】AI语音/视频记录查询与删除接口移除use",
+   "date": "2026-10-13T09:06:58",
+   "score": 2,
+   "matched": [
+    "提权"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "jeecgboot/JeecgBoot",
+   "sha": "8acf00ef10cd5271b05550cf42bff3e667421556",
+   "url": "https://github.com/jeecgboot/JeecgBoot/commit/8acf00ef10cd5271b05550cf42bff3e667421556",
+   "title": "--author:scott--date:20261013--for:【安全 GHSA-ff3p-3558-8mcg/GHSA-44m8-8jjq-cfvw/GHSA-3gv3-wc5w-9qp2/GHSA-4w9p-7gw3-q7v4】部",
+   "date": "2026-10-13T08:05:15",
+   "score": 2,
+   "matched": [
+    "提权"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "wireshark/wireshark",
+   "sha": "c76246df188d90d735b589486088edf52ed40a1c",
+   "url": "https://github.com/wireshark/wireshark/commit/c76246df188d90d735b589486088edf52ed40a1c",
+   "title": "x11: fix OOB read in X_SetModifierMapping",
+   "date": "2026-10-13T07:42:16",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "wireshark/wireshark",
+   "sha": "f1c00f80182d6ea20793736a83e9569282df985d",
+   "url": "https://github.com/wireshark/wireshark/commit/f1c00f80182d6ea20793736a83e9569282df985d",
+   "title": "Aethra: Discard the data of skipped records on the first pass",
+   "date": "2026-10-13T07:39:15",
+   "score": 2,
+   "matched": [
+    "安全修复"
    ],
    "cve": null
   }
