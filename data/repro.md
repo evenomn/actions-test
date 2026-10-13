@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-13 02:38 UTC · 共 **88** 条(强烈推荐 10 / 值得 78)
+**更新**: 2026-10-13 03:51 UTC · 共 **89** 条(强烈推荐 11 / 值得 78)
 
 ---
 
@@ -85,6 +85,13 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 处置: 升级至 19.2.8、19.3.5 或 19.4.2 及以上版本
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/630686) · [参考](https://hackerone.com/reports/4055749)
+
+### HAProxy 管理端点缺失认证越权
+[CVE-2026-109575](https://nvd.nist.gov/vuln/detail/CVE-2026-109575) | P1 重点关注 | Web中间件 | CVSS 9.8 | 披露 2026-10-12 | 入库 2026-10-13
+未认证攻击者只要可达HTTP或UNIX管理端点即可绕过凭据获得完整API管理权限，读取或替换HAProxy配置。
+复现: 强烈推荐 — 直接请求暴露的HTTP或UNIX管理端点，无需凭据调用管理API · 影响面: 边界负载均衡管理面，可致接管
+处置: 限制管理端点暴露并加认证；关注厂商补丁
+参考: [参考](https://github.com/haproxytech/dataplaneapi/commit/c3ae4e3ccff5490d44650565e445c4b15e8aff8c) · [参考](https://github.com/haproxytech/dataplaneapi/releases/tag/v3.4.4) · [参考](https://www.haproxy.com/documentation/haproxy-data-plane-api/)
 
 ### DataPower堆溢出未认证RCE
 [CVE-2026-14269](https://nvd.nist.gov/vuln/detail/CVE-2026-14269) | P0 立即处置 | CVSS 9.8 | 披露 2026-10-08 | 入库 2026-10-08
