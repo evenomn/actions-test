@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-14 02:08 UTC · 共 **96** 条(强烈推荐 13 / 值得 83)
+**更新**: 2026-10-14 06:17 UTC · 共 **97** 条(强烈推荐 13 / 值得 84)
 
 ---
 
@@ -540,6 +540,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得
 影响: Apache(产品与版本待 NVD/厂商补充)
 参考: [参考](https://lists.apache.org/thread.html/gmbsmrs2lycl9nld7rd0h1r1fc4t75qr) · [参考](http://www.openwall.com/lists/oss-security/2026/10/07/27)
+
+### Collabora CODE 命令注入RCE
+[CVE-2026-110447](https://nvd.nist.gov/vuln/detail/CVE-2026-110447) | P0 立即处置 | CVSS 9.2 | 披露 2026-10-14 | 入库 2026-10-14
+攻击者可在CODE服务未运行时通过proxy.php注入OS命令远程执行代码，已在野利用
+复现: 值得 — 在CODE服务停止或刚重启窗口请求proxy.php注入命令 · 影响面: Nextcloud文档服务，常暴露内网/公网
+处置: 升级到26.4.303及以上；无法升级时先禁用CODE组件
+参考: [参考](https://github.com/CollaboraOnline/richdocumentscode/issues/354) · [参考](https://help.nextcloud.com/t/to-collabora-built-in-user-update-asap/250516)
 
 ### CVE-2026-73642
 [CVE-2026-73642](https://nvd.nist.gov/vuln/detail/CVE-2026-73642) | CVSS 9.2 | 披露 2026-09-28 | 入库 2026-10-08
