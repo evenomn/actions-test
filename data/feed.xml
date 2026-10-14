@@ -5,458 +5,151 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    <lastBuildDate>Tue, 13 Oct 2026 19:54:19 +0000</lastBuildDate>
+    <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
+    <lastBuildDate>Wed, 14 Oct 2026 00:24:35 +0000</lastBuildDate>
     <item>
-      <title>[critical]Ivanti ICS 认证欺骗致远程RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-104935</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-104935-2026-10-13</guid>
-      <description>CVE-2026-104935 · 🎯P0 立即处置 · 披露 2026-10-13 · 组件 边界设备/VPN · CVSS 8.6 · 类型 认证欺骗 · 难度 低(远程·免认证)
-Authentication bypass by spoofing in ICS before version 25.1.3.0 allows a remote unauthenticated attacker to execute arbitrary commands.
-信号: 🔥 KEV 在野利用,CISA 限期 2026-10-16 | 有PoC
-[ApexBreach/CVE-2026-104935-Proof-of-concept 0★(仅README)](https://github.com/ApexBreach/CVE-2026-104935-Proof-of-concept)</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]微软Windows Shell命令注入漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96951</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96951-2026-10-13</guid>
-      <description>CVE-2026-96951 · 🎯P0 立即处置 · 披露 2026-10-13 · 组件 操作系统 · CVSS 8.8 · 类型 命令注入 · 难度 低(远程·免认证·需用户交互)
-Improper neutralization of special elements used in a command ('command injection') in Windows Shell allows an unauthorized attacker to bypass a security featur…
-信号: 🔥 KEV 在野利用,CISA 限期 2026-10-16</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]微软OpenSSH UAF远程RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97816</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97816-2026-10-13</guid>
-      <description>CVE-2026-97816 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
-Use after free in OpenSSH for Windows allows an unauthorized attacker to execute code over a network.
-信号: 关注词:openssh</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]FortiSIEM 路径遍历致命令执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-106173</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-106173-2026-10-13</guid>
-      <description>CVE-2026-106173 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 边界设备/VPN · CVSS 9.8 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
-A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiSIEM 7.5.0 may allow attacker to execute unautho…
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Ivanti Neurons 认证信息泄露</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109412</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109412-2026-10-13</guid>
-      <description>CVE-2026-109412 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 边界设备/VPN · CVSS 9.9 · 类型 CWE-749 · 难度 低(远程·需低权限)
-An exposed dangerous endpoint in Ivanti Neurons Patch for Intune allows a remote authenticated attacker to leak sensitive authentication information.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102210</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102210-2026-10-13</guid>
-      <description>CVE-2026-102210 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows Text Shaping allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Use 未授权 释放后重用(UAF)</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105010</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105010-2026-10-13</guid>
-      <description>CVE-2026-105010 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
-Use after free in Microsoft Windows Search Component allows an unauthorized attacker to elevate privileges over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
+      <title>[critical]MSQUIC IPv6包堆溢出远程代码执行</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105016</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105016-2026-10-13</guid>
-      <description>CVE-2026-105016 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Microsoft QUIC allows an unauthorized attacker to execute code over a network.
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105016-2026-10-14</guid>
+      <description>CVE-2026-105016 · 🎯P0 立即处置 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
+A crafted IPv6 QUIC packet can reach the Microsoft QUIC HTTP/3 path without authentication or user interaction and trigger remote code execution.
 信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-69634</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-69634-2026-10-13</guid>
-      <description>CVE-2026-69634 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows iSCSI allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-69639</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-69639-2026-10-13</guid>
-      <description>CVE-2026-69639 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows Libarchive allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Out-of-bounds 未授权 越界写入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-69705</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-69705-2026-10-13</guid>
-      <description>CVE-2026-69705 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 越界写入 · 难度 低(远程·免认证)
-Out-of-bounds write in Windows iSCSI allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Use 未授权 释放后重用(UAF)</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-69883</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-69883-2026-10-13</guid>
-      <description>CVE-2026-69883 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
-Use after free in Windows iSCSI allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-69886</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-69886-2026-10-13</guid>
-      <description>CVE-2026-69886 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows Imaging Component allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Stack-based 未授权 输入校验缺失</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-70024</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-70024-2026-10-13</guid>
-      <description>CVE-2026-70024 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 输入校验缺失/栈溢出 · 难度 低(远程·免认证)
-Stack-based buffer overflow in Windows Internet Information Services allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-70096</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-70096-2026-10-13</guid>
-      <description>CVE-2026-70096 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows Rich Text Edit Control allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-70147</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-70147-2026-10-13</guid>
-      <description>CVE-2026-70147 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Microsoft PostScript Printer Driver allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-70153</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-70153-2026-10-13</guid>
-      <description>CVE-2026-70153 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Microsoft PostScript Printer Driver allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-70157</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-70157-2026-10-13</guid>
-      <description>CVE-2026-70157 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows System Information Console allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-70242</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-70242-2026-10-13</guid>
-      <description>CVE-2026-70242 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-70291</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-70291-2026-10-13</guid>
-      <description>CVE-2026-70291 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Untrusted 未授权 CWE-822</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-70300</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-70300-2026-10-13</guid>
-      <description>CVE-2026-70300 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 CWE-822 · 难度 低(远程·免认证)
-Untrusted pointer dereference in Microsoft Office Word allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83517</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83517-2026-10-13</guid>
-      <description>CVE-2026-83517 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Microsoft Windows Media Foundation allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83519</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83519-2026-10-13</guid>
-      <description>CVE-2026-83519 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows Error Reporting allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Integer 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83578</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83578-2026-10-13</guid>
-      <description>CVE-2026-83578 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出/整数溢出 · 难度 低(远程·免认证)
-Integer underflow (wrap or wraparound) in Windows PowerShell allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83693</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83693-2026-10-13</guid>
-      <description>CVE-2026-83693 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows Error Reporting allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83748</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83748-2026-10-13</guid>
-      <description>CVE-2026-83748 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows Error Reporting allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83770</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83770-2026-10-13</guid>
-      <description>CVE-2026-83770 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows Text Shaping allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Use 未授权 释放后重用(UAF)</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83780</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83780-2026-10-13</guid>
-      <description>CVE-2026-83780 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
-Use after free in Windows CCFFilter Driver allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83782</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83782-2026-10-13</guid>
-      <description>CVE-2026-83782 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows Shell allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Use 未授权 释放后重用(UAF)</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83862</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83862-2026-10-13</guid>
-      <description>CVE-2026-83862 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
-Use after free in Windows Network Load Balancing allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Integer 未授权 CWE-191</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83869</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83869-2026-10-13</guid>
-      <description>CVE-2026-83869 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 CWE-191 · 难度 低(远程·免认证)
-Integer underflow (wrap or wraparound) in DNS Server allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Out-of-bounds 未授权 越界写入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83910</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83910-2026-10-13</guid>
-      <description>CVE-2026-83910 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 越界写入 · 难度 低(远程·免认证)
-Out-of-bounds write in RPC Runtime allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83935</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83935-2026-10-13</guid>
-      <description>CVE-2026-83935 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Microsoft XML allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-84015</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-84015-2026-10-13</guid>
-      <description>CVE-2026-84015 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Remote Access Point-to-Point Protocol (PPP) EAP-TLS allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Windows Routing 未授权 释放后重用(UAF)</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85792</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85792-2026-10-13</guid>
-      <description>CVE-2026-85792 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
-Remote Code Execution in Windows Routing and Remote Access Service (RRAS) allows attacker to gain an unauthorized access to victim's machine
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Integer 未授权 栈溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85806</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85806-2026-10-13</guid>
-      <description>CVE-2026-85806 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 栈溢出/CWE-191 · 难度 低(远程·免认证)
-Integer underflow (wrap or wraparound) in Network Policy Server (NPS) allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Windows Routing 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85809</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85809-2026-10-13</guid>
-      <description>CVE-2026-85809 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Remote Code Execution in Windows Routing and Remote Access Service (RRAS) allows attacker to gain an unauthorized access to victim's machine
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85814</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85814-2026-10-13</guid>
-      <description>CVE-2026-85814 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Microsoft Windows Media Foundation allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85928</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85928-2026-10-13</guid>
-      <description>CVE-2026-85928 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows Volume Manager Extension Driver allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Use 未授权 释放后重用(UAF)</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88102</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88102-2026-10-13</guid>
-      <description>CVE-2026-88102 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
-Use after free in Windows Failover Cluster allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Stack-based 未授权 栈溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88156</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88156-2026-10-13</guid>
-      <description>CVE-2026-88156 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
-Stack-based buffer overflow in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Use 未授权 释放后重用(UAF)</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88178</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88178-2026-10-13</guid>
-      <description>CVE-2026-88178 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
-Use after free in Microsoft Office PowerPoint allows an unauthorized attacker to execute code over a network.
-信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Adobe Commerce 未授权 授权错误</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-92909</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-92909-2026-10-13</guid>
-      <description>CVE-2026-92909 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 授权错误 · 难度 低(远程·免认证)
+      <title>[critical]ColdFusion任意文件上传RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105899</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105899-2026-10-14</guid>
+      <description>CVE-2026-105899 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 Web中间件 · CVSS 10.0 · 类型 任意文件上传 · 难度 低(远程·免认证)
 An attacker could exploit this vulnerability to execute arbitrary code.
 信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96096</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96096-2026-10-13</guid>
-      <description>CVE-2026-96096 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows Media Player allows an unauthorized attacker to execute code over a network.
+      <title>[critical]ColdFusion代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-106624</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-106624-2026-10-14</guid>
+      <description>CVE-2026-106624 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 Web中间件 · CVSS 10.0 · 类型 代码注入(RCE) · 难度 低(远程·免认证)
+An attacker could exploit this vulnerability to execute arbitrary code.
 信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96113</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96113-2026-10-13</guid>
-      <description>CVE-2026-96113 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 堆溢出/CWE-197 · 难度 低(远程·免认证)
-Heap-based buffer overflow in DNS Server allows an unauthorized attacker to execute code over a network.
+      <title>[critical]ColdFusion SSRF提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-106622</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-106622-2026-10-14</guid>
+      <description>CVE-2026-106622 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 Web中间件 · CVSS 10.0 · 类型 SSRF · 难度 低(远程·免认证)
+ColdFusion is affected by a Server-Side Request Forgery (SSRF) vulnerability that could result in privilege escalation.
 信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Out-of-bounds 未授权 越界写入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96219</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96219-2026-10-13</guid>
-      <description>CVE-2026-96219 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 越界写入 · 难度 低(远程·免认证)
-Out-of-bounds write in Windows Local Security Authority Subsystem Service (LSASS) allows an unauthorized attacker to execute code over a network.
+      <title>[critical]ColdFusion低权代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105903</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105903-2026-10-14</guid>
+      <description>CVE-2026-105903 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 Web中间件 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
 信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96320</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96320-2026-10-13</guid>
-      <description>CVE-2026-96320 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows DHCP Server allows an unauthorized attacker to execute code over a network.
+      <title>[critical]ColdFusion授权错误RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-106612</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-106612-2026-10-14</guid>
+      <description>CVE-2026-106612 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 Web中间件 · CVSS 9.9 · 类型 授权错误 · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
 信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Double 未授权 CWE-415</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96864</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96864-2026-10-13</guid>
-      <description>CVE-2026-96864 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 CWE-415 · 难度 低(远程·免认证)
-Double free in Microsoft Failover Cluster Virtual Driver allows an unauthorized attacker to execute code over a network.
+      <title>[critical]AEM授权错误致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-48382</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-48382-2026-10-14</guid>
+      <description>CVE-2026-48382 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 10.0 · 类型 授权错误 · 难度 低(远程·免认证)
+Adobe Experience Manager is affected by an Incorrect Authorization vulnerability that could result in arbitrary code execution in the context of the current use…
 信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Heap-based 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96909</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96909-2026-10-13</guid>
-      <description>CVE-2026-96909 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-Heap-based buffer overflow in Windows BitLocker allows an unauthorized attacker to execute code over a network.
+      <title>[critical]AEM授权错误致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-48383</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-48383-2026-10-14</guid>
+      <description>CVE-2026-48383 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 10.0 · 类型 授权错误 · 难度 低(远程·免认证)
+Adobe Experience Manager is affected by an Incorrect Authorization vulnerability that could result in arbitrary code execution in the context of the current use…
 信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Untrusted 未授权 CWE-822</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96924</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96924-2026-10-13</guid>
-      <description>CVE-2026-96924 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.8 · 类型 CWE-822 · 难度 低(远程·免认证)
-Untrusted pointer dereference in Windows OLE allows an unauthorized attacker to execute code over a network.
+      <title>[critical]AEM授权错误致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-90532</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-90532-2026-10-14</guid>
+      <description>CVE-2026-90532 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 10.0 · 类型 授权错误 · 难度 低(远程·免认证)
+Adobe Experience Manager is affected by an Incorrect Authorization vulnerability that could result in arbitrary code execution in the context of the current use…
 信号:</description>
-      <pubDate>Tue, 13 Oct 2026 19:54:19 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AEM输入校验致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105895</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105895-2026-10-14</guid>
+      <description>CVE-2026-105895 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.9 · 类型 输入校验缺失 · 难度 低(远程·需低权限)
+Adobe Experience Manager is affected by an Improper Input Validation vulnerability that could result in arbitrary code execution in the context of the current u…
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AEM授权错误致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-75732</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-75732-2026-10-14</guid>
+      <description>CVE-2026-75732 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.9 · 类型 授权错误 · 难度 低(远程·需低权限)
+Adobe Experience Manager is affected by an Incorrect Authorization vulnerability that could result in arbitrary code execution in the context of the current use…
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AEM命令注入低权RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-103848</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-103848-2026-10-14</guid>
+      <description>CVE-2026-103848 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.9 · 类型 命令注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Legacy Update网页控件滥用</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97381</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97381-2026-10-14</guid>
+      <description>CVE-2026-97381 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 操作系统 · CVSS 9.9 · 类型 源校验错误(SSRF类)/CWE-393 · 难度 低(远程·需低权限)
+An attacker who induces a user to visit a malicious webpage in Internet Explorer can invoke the control to enumerate update and system information, install upda…
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Vitess默认ACL跨站脚本</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-104252</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-104252-2026-10-14</guid>
+      <description>CVE-2026-104252 · 🎯P1 重点关注 · 披露 2026-10-13 · 组件 数据库 · CVSS 9.8 · 类型 XSS · 难度 低(远程·免认证)
+Under the default allow-all ACL policy, a remote unauthenticated attacker can send an operator a crafted request that executes script in the operator's browser …
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]PHP应用SQL注入导致未授权RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-63146</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-63146-2026-10-14</guid>
+      <description>CVE-2026-63146 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 代码注入(RCE) · 难度 低(远程·免认证)
+Attackers can exploit the SQL injection to re-trigger the installer and inject arbitrary PHP code into config.inc.php, achieving unauthenticated remote code exe…
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Xoscar反序列化未授权远程代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-49950</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-49950-2026-10-14</guid>
+      <description>CVE-2026-49950 · 🎯P1 重点关注 · 披露 2026-10-13 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Xorbits Xoscar through 0.11.2 contains an unauthenticated deserialization vulnerability that allows remote attackers to execute arbitrary code by sending crafte…
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 00:24:35 +0000</pubDate>
     </item>
   </channel>
 </rss>

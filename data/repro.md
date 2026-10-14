@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-13 19:54 UTC · 共 **93** 条(强烈推荐 12 / 值得 81)
+**更新**: 2026-10-14 00:24 UTC · 共 **101** 条(强烈推荐 12 / 值得 89)
 
 ---
 
@@ -218,6 +218,46 @@ PoC: [ressl/cve-2026-87902-poc 38★(有源码)](https://github.com/ressl/cve-20
 PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 15★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker) · [orjanj/netscaler_threat_hunt_helper 0★(有源码)](https://github.com/orjanj/netscaler_threat_hunt_helper)
 参考: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697174) · [厂商通告](https://community.citrix.com/techzone-blogs/110_security-updates/understanding-and-addressing-cve-2026-88779-in-citrix-netscaler-adc-and-citrix-netscaler-gateway/)
 
+### ColdFusion任意文件上传RCE
+[CVE-2026-105899](https://nvd.nist.gov/vuln/detail/CVE-2026-105899) | P1 重点关注 | Web中间件 | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-14
+攻击者可上传危险类型文件，无需用户交互即可执行任意代码，CVSS 10。
+复现: 值得 — 定位上传接口，构造危险类型文件验证代码执行 · 影响面: ColdFusion服务，常暴露公网
+处置: 升级ColdFusion至厂商修复版本，限制上传与公网暴露
+影响: Adobe(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.adobe.com/trust/security/products/coldfusion/apsb26-144.html)
+
+### ColdFusion代码注入RCE
+[CVE-2026-106624](https://nvd.nist.gov/vuln/detail/CVE-2026-106624) | P1 重点关注 | Web中间件 | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-14
+攻击者可通过代码生成缺陷注入代码执行任意命令，无需用户交互，CVSS 10。
+复现: 值得 — 代码生成入口，注入表达式验证RCE · 影响面: ColdFusion服务，常暴露公网
+处置: 升级至修复版本，限制ColdFusion接口访问
+影响: Adobe(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.adobe.com/trust/security/products/coldfusion/apsb26-144.html)
+
+### AEM授权错误致RCE
+[CVE-2026-48382](https://nvd.nist.gov/vuln/detail/CVE-2026-48382) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-14
+攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 10。
+复现: 值得 — AEM越权接口，构造请求触发代码执行 · 影响面: AEM CMS，内网广泛部署
+处置: 升级AEM至修复版本，收紧接口授权
+影响: Adobe(产品与版本待 NVD/厂商补充)
+参考: [参考](https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html)
+
+### AEM授权错误致RCE
+[CVE-2026-48383](https://nvd.nist.gov/vuln/detail/CVE-2026-48383) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-14
+攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 10。
+复现: 值得 — AEM越权接口，构造请求触发代码执行 · 影响面: AEM CMS，内网广泛部署
+处置: 升级AEM至修复版本，收紧接口授权
+影响: Adobe(产品与版本待 NVD/厂商补充)
+参考: [参考](https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html)
+
+### AEM授权错误致RCE
+[CVE-2026-90532](https://nvd.nist.gov/vuln/detail/CVE-2026-90532) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-14
+攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 10。
+复现: 值得 — AEM越权接口，构造请求触发代码执行 · 影响面: AEM CMS，内网广泛部署
+处置: 升级AEM至修复版本，收紧接口授权
+影响: Adobe(产品与版本待 NVD/厂商补充)
+参考: [参考](https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html)
+
 ### CVE-2026-93605
 [CVE-2026-93605](https://nvd.nist.gov/vuln/detail/CVE-2026-93605) | P1 重点关注 | CVSS 10.0 | EPSS 0.7% | 披露 2026-10-07 | 入库 2026-10-08
 开源,可源码审计复现
@@ -300,6 +340,30 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### AEM输入校验致RCE
+[CVE-2026-105895](https://nvd.nist.gov/vuln/detail/CVE-2026-105895) | P1 重点关注 | CVSS 9.9 | 披露 2026-10-13 | 入库 2026-10-14
+攻击者可利用输入校验缺陷执行任意代码，无需用户交互，CVSS 9.9。
+复现: 值得 — 构造畸形输入触发代码执行 · 影响面: AEM CMS，内网广泛部署
+处置: 升级AEM至修复版本，加强输入过滤
+影响: Adobe(产品与版本待 NVD/厂商补充)
+参考: [参考](https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html)
+
+### AEM授权错误致RCE
+[CVE-2026-75732](https://nvd.nist.gov/vuln/detail/CVE-2026-75732) | P1 重点关注 | CVSS 9.9 | 披露 2026-10-13 | 入库 2026-10-14
+攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 9.9。
+复现: 值得 — AEM越权接口，构造请求触发代码执行 · 影响面: AEM CMS，内网广泛部署
+处置: 升级AEM至修复版本，收紧接口授权
+影响: Adobe(产品与版本待 NVD/厂商补充)
+参考: [参考](https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html)
+
+### MSQUIC IPv6包堆溢出远程代码执行
+[CVE-2026-105016](https://nvd.nist.gov/vuln/detail/CVE-2026-105016) | P0 立即处置 | 操作系统 | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-14
+开源,可源码审计复现
+未认证攻击者向Windows上.NET服务的HTTP/3路径发送特制IPv6 QUIC包，触发堆溢出实现远程代码执行。
+复现: 值得 — 向HTTP/3端口发送构造的IPv6 QUIC包，目标需启用QUIC，无需认证 · 影响面: Windows .NET HTTP/3服务，可能暴露公网
+处置: 升级到修复版本2.5.11-ci.159417053并同步更新.NET运行时
+影响: nuget:Microsoft.Native.Quic.MsQuic.Schannel = 2.5.11-ci.156755675(修复: 2.5.11-ci.159417053)
 
 ### 微软OpenSSH UAF远程RCE
 [CVE-2026-97816](https://nvd.nist.gov/vuln/detail/CVE-2026-97816) | P1 重点关注 | 操作系统 | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-13
