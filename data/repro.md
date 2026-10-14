@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-14 14:34 UTC · 共 **97** 条(强烈推荐 13 / 值得 84)
+**更新**: 2026-10-14 20:48 UTC · 共 **99** 条(强烈推荐 15 / 值得 84)
 
 ---
 
@@ -19,6 +19,16 @@
 影响: proftpd proftpd
 PoC: [t0kx/exploit-CVE-2015-3306 152★(有源码)](https://github.com/t0kx/exploit-CVE-2015-3306) · [nootropics/propane 2★(有源码)](https://github.com/nootropics/propane) · [NVD exploit 引用](https://www.exploit-db.com/exploits/36803/)
 参考: [参考](http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157053.html) · [参考](http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157054.html) · [参考](http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157581.html)
+
+### Cisco邮件网关路径遍历RCE
+[CVE-2026-76519](https://nvd.nist.gov/vuln/detail/CVE-2026-76519) | P0 立即处置 | 网络设备 | CVSS 9.8 | 披露 2026-10-14 | 入库 2026-10-14
+🔥 KEV 在野利用,限期 2026-10-17 | 有PoC
+未认证远程攻击者可利用AMP路径遍历写入任意文件，以root执行命令。
+复现: 强烈推荐 — 入口AMP功能，未授权远程构造路径遍历请求写文件；默认配置可打。 · 影响面: 邮件安全网关，常暴露公网/邮件边界
+处置: 升级至Cisco修复版本；无法升级则禁用AMP或限制邮件/管理接口访问。
+影响: Cisco(产品与版本待 NVD/厂商补充)
+PoC: [Mickysalivan/CVE-2026-76519-POC 0★(仅README)](https://github.com/Mickysalivan/CVE-2026-76519-POC)
+参考: [参考](https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-esa-afw-zqYJkjxp) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-76519)
 
 ### ONLYOFFICE文档服务器路径遍历RCE
 [CVE-2021-3199](https://nvd.nist.gov/vuln/detail/CVE-2021-3199) | P0 立即处置 | OA/协同办公 | CVSS 9.8 | EPSS 8.2% | 披露 2021-01-26 | 入库 2026-10-08
@@ -103,6 +113,14 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 处置: 升级FortiSIEM至厂商修复版本（受影响7.5.0）
 影响: Fortinet(产品与版本待 NVD/厂商补充)
 参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-180)
+
+### Juniper J-Web认证绕过致接管
+[CVE-2026-101954](https://nvd.nist.gov/vuln/detail/CVE-2026-101954) | P0 立即处置 | 网络设备 | CVSS 9.8 | 披露 2026-10-14 | 入库 2026-10-14
+未认证攻击者访问已启用的J-Web HTTP/HTTPS，绕过认证获root配置权限并接管设备。
+复现: 强烈推荐 — 未授权访问J-Web HTTP/HTTPS或NETCONF，需Web管理已启用 · 影响面: Junos管理面，常暴露内网或公网
+处置: 升级至厂商修复版本；禁用J-Web或限制管理面访问
+影响: Juniper(产品与版本待 NVD/厂商补充)
+参考: [参考](https://supportportal.juniper.net/JSA112187)
 
 ### HAProxy 管理端点缺失认证越权
 [CVE-2026-109575](https://nvd.nist.gov/vuln/detail/CVE-2026-109575) | P1 重点关注 | Web中间件 | CVSS 9.8 | 披露 2026-10-12 | 入库 2026-10-13
@@ -317,10 +335,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得
 影响: npm:vm2 <= 3.11.7(修复: 3.11.8)
 
-### CVE-2026-105134
-[CVE-2026-105134](https://nvd.nist.gov/vuln/detail/CVE-2026-105134) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
-复现: 值得
-
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
@@ -332,6 +346,14 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — 向HTTP/3端口发送构造的IPv6 QUIC包，目标需启用QUIC，无需认证 · 影响面: Windows .NET HTTP/3服务，可能暴露公网
 处置: 升级到修复版本2.5.11-ci.159417053并同步更新.NET运行时
 影响: nuget:Microsoft.Native.Quic.MsQuic.Schannel = 2.5.11-ci.156755675(修复: 2.5.11-ci.159417053)
+
+### Juniper httpd栈溢出RCE
+[CVE-2026-101983](https://nvd.nist.gov/vuln/detail/CVE-2026-101983) | P0 立即处置 | 网络设备 | CVSS 9.8 | 披露 2026-10-14 | 入库 2026-10-14
+未认证攻击者访问配置J-Web虚拟域的设备，向httpd发特制请求触发栈溢出，可RCE或DoS。
+复现: 值得 — 未授权访问J-Web httpd；需已配置J-Web虚拟域 · 影响面: Junos J-Web管理面，可暴露公网
+处置: 升级至厂商修复版本；禁用J-Web虚拟域并限制管理面
+影响: Juniper(产品与版本待 NVD/厂商补充)
+参考: [参考](https://supportportal.juniper.net/JSA112187)
 
 ### 微软OpenSSH UAF远程RCE
 [CVE-2026-97816](https://nvd.nist.gov/vuln/detail/CVE-2026-97816) | P1 重点关注 | 操作系统 | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-13

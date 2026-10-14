@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-10-14T14:34:41+00:00",
- "count": 97,
- "count_recommended": 13,
+ "updated_at": "2026-10-14T20:48:11+00:00",
+ "count": 99,
+ "count_recommended": 15,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -61,6 +61,51 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2015-3306",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-76519",
+   "title": "Cisco邮件网关路径遍历RCE",
+   "first_seen": "2026-10-14",
+   "last_seen": "2026-10-14",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-14",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "入口AMP功能，未授权远程构造路径遍历请求写文件；默认配置可打。",
+   "impact_scope": "邮件安全网关，常暴露公网/邮件边界",
+   "action_zh": "升级至Cisco修复版本；无法升级则禁用AMP或限制邮件/管理接口访问。",
+   "summary_zh": "未认证远程攻击者可利用AMP路径遍历写入任意文件，以root执行命令。",
+   "category": "网络设备",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-10-17",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "readme",
+   "poc": [
+    {
+     "url": "https://github.com/Mickysalivan/CVE-2026-76519-POC",
+     "label": "Mickysalivan/CVE-2026-76519-POC 0★(仅README)"
+    }
+   ],
+   "affected": "Cisco(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-esa-afw-zqYJkjxp"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-76519"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76519",
    "change_note": null
   },
   {
@@ -482,6 +527,42 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106173",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-101954",
+   "title": "Juniper J-Web认证绕过致接管",
+   "first_seen": "2026-10-14",
+   "last_seen": "2026-10-14",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-14",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问J-Web HTTP/HTTPS或NETCONF，需Web管理已启用",
+   "impact_scope": "Junos管理面，常暴露内网或公网",
+   "action_zh": "升级至厂商修复版本；禁用J-Web或限制管理面访问",
+   "summary_zh": "未认证攻击者访问已启用的J-Web HTTP/HTTPS，绕过认证获root配置权限并接管设备。",
+   "category": "网络设备",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112187"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101954",
    "change_note": null
   },
   {
@@ -1685,36 +1766,6 @@
    "change_note": null
   },
   {
-   "id": "CVE-2026-105134",
-   "title": "CVE-2026-105134",
-   "first_seen": "2026-10-04",
-   "last_seen": "2026-10-04",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-10-04",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "action_zh": null,
-   "summary_zh": null,
-   "category": null,
-   "cvss": 10.0,
-   "epss": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105134",
-   "change_note": null
-  },
-  {
    "id": "CVE-2026-105135",
    "title": "CVE-2026-105135",
    "first_seen": "2026-10-04",
@@ -1773,6 +1824,42 @@
    "patched": true,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105016",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-101983",
+   "title": "Juniper httpd栈溢出RCE",
+   "first_seen": "2026-10-14",
+   "last_seen": "2026-10-14",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-14",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问J-Web httpd；需已配置J-Web虚拟域",
+   "impact_scope": "Junos J-Web管理面，可暴露公网",
+   "action_zh": "升级至厂商修复版本；禁用J-Web虚拟域并限制管理面",
+   "summary_zh": "未认证攻击者访问配置J-Web虚拟域的设备，向httpd发特制请求触发栈溢出，可RCE或DoS。",
+   "category": "网络设备",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112187"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101983",
    "change_note": null
   },
   {

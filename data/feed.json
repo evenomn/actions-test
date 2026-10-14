@@ -1,159 +1,138 @@
 {
  "version": 3,
- "generated_at": "2026-10-14T14:34:41+00:00",
+ "generated_at": "2026-10-14T20:48:11+00:00",
  "lookback_hours": 5,
- "count": 5,
+ "count": 28,
  "stats": {
-  "total": 5,
+  "total": 28,
   "by_tier": {
-   "critical": 5
+   "critical": 28
   },
   "by_urgency": {
-   "P1 重点关注": 5
+   "P1 重点关注": 19,
+   "P0 立即处置": 9
   },
   "by_category": {
-   "未知": 5
+   "网络设备": 17,
+   "未知": 8,
+   "边界设备/VPN": 1,
+   "容器/虚拟化": 1,
+   "开发库/依赖": 1
   },
-  "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
-  "repro_recommended": 0
+  "kev": 4,
+  "with_poc": 2,
+  "with_poc_source": 1,
+  "repro_recommended": 2
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-107424",
+   "id": "CVE-2026-76519",
    "tier": "critical",
-   "title": "Frontend Dashboard权限提升",
-   "title_zh": "Frontend Dashboard权限提升",
-   "summary_zh": "低权限注册用户可利用该插件权限分配错误提升为管理员，进而完全接管WordPress站点。",
-   "published": "2026-10-14T13:17:23.453",
+   "title": "Cisco邮件网关路径遍历RCE",
+   "title_zh": "Cisco邮件网关路径遍历RCE",
+   "summary_zh": "未认证远程攻击者可利用AMP路径遍历写入任意文件，以root执行命令。",
+   "published": "2026-10-14T17:19:10.747",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-266"
+    "路径遍历"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": null,
+   "affected": "Cisco(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/plugin/frontend-dashboard/vulnerability/wordpress-frontend-dashboard-plugin-3-0-7-privilege-escalation-vulnerability?_s_id=cve"
+     "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-esa-afw-zqYJkjxp"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-76519"
     }
    ],
-   "poc": [],
+   "poc": [
+    {
+     "url": "https://github.com/Mickysalivan/CVE-2026-76519-POC",
+     "label": "Mickysalivan/CVE-2026-76519-POC 0★(仅README)"
+    }
+   ],
    "nuclei": false,
    "patched": null,
-   "kev": false,
-   "kev_due": null,
+   "kev": true,
+   "kev_due": "2026-10-17",
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级插件至3.0.7之后版本；无法升级时停用该插件并限制用户注册。",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress站点，插件用户可提权",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107424",
-   "description": "Incorrect Privilege Assignment vulnerability in M A Vinoth Kumar Frontend Dashboard frontend-dashboard allows Privilege Escalation.This issue affects Frontend Dashboard: from n/a through 3.0.7."
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至Cisco修复版本；无法升级则禁用AMP或限制邮件/管理接口访问。",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "入口AMP功能，未授权远程构造路径遍历请求写文件；默认配置可打。",
+   "impact_scope": "邮件安全网关，常暴露公网/邮件边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76519",
+   "description": "A vulnerability in the Advanced Malware Protection (AMP) feature of Cisco Secure Email Gateway could allow an unauthenticated, remote attacker to write arbitrary files on the underlying operating system. A successful exploit could allow the attacker to write arbitrary files and execute commands with&nbsp;root privileges on the underlying operating system."
   },
   {
-   "id": "CVE-2026-108291",
+   "id": "CVE-2026-0322",
    "tier": "critical",
-   "title": "Affiliates插件反序列化对象注入",
-   "title_zh": "Affiliates插件反序列化对象注入",
-   "summary_zh": "攻击者可向插件传入恶意序列化数据触发对象注入，可能进一步实现远程代码执行。",
-   "published": "2026-10-14T13:17:24.633",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "title": "Palo Alto PAN-OS管理口RCE",
+   "title_zh": "Palo Alto PAN-OS管理口RCE",
+   "summary_zh": "已认证且可访问管理口的攻击者可以root权限在防火墙上执行任意代码。",
+   "published": "2026-10-14T18:17:07.743",
+   "cvss": 8.6,
+   "severity": "HIGH",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:A/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:U/V:D/RE:M/U:Red",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "反序列化(RCE)"
+    "代码注入(RCE)"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "中(远程·需高权限)",
    "products": [],
-   "affected": null,
+   "affected": "Palo Alto(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/plugin/affiliates/vulnerability/wordpress-affiliates-plugin-7-0-1-php-object-injection-vulnerability?_s_id=cve"
+     "url": "https://security.paloaltonetworks.com/CVE-2026-0322"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-0322"
     }
    ],
    "poc": [],
    "nuclei": false,
    "patched": null,
-   "kev": false,
-   "kev_due": null,
+   "kev": true,
+   "kev_due": "2026-10-17",
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级Affiliates插件至7.0.1以上；无法升级时先停用该插件。",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress站点，插件实例",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108291",
-   "description": "Deserialization of Untrusted Data vulnerability in itthinx Affiliates affiliates allows Object Injection.This issue affects Affiliates: from n/a through 7.0.1."
-  },
-  {
-   "id": "CVE-2026-16740",
-   "tier": "critical",
-   "title": "TR7 ASP缺失认证致命令注入",
-   "title_zh": "TR7 ASP缺失认证致命令注入",
-   "summary_zh": "未授权远程攻击者可调用关键功能接口注入OS命令，以设备权限执行任意系统指令。",
-   "published": "2026-10-14T13:17:27.977",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失认证"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://siberguvenlik.gov.tr/guvenlik-bildirimleri/detay/tr-26-1327"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至1.0.1554.2331或1.6.1554.2331及以上版本。",
+   "urgency": "P0 立即处置",
+   "action_zh": "升级PAN-OS修复版本；限制管理接口访问并启用多因素。",
    "repro_worthy": "一般",
-   "repro_note": "未授权访问关键功能接口，构造命令注入载荷，前置条件为受影响版本。",
-   "impact_scope": "内网安全设备，管理口暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16740",
-   "description": "Missing authentication for critical function vulnerability in TR7 Cyber ​​Defense Inc. TR7 ASP on virtual appliance and TR7 Cyber ​​Defense Inc. TR7 ASP on physical appliance allows OS Command Injection. This issue affects TR7 ASP: from 1.0.40.236 before 1.0.1554.2331; TR7 ASP: from 1.6.42.239 before 1.6.1554.2331."
+   "repro_note": "入口PAN-OS管理界面；前置已认证网络访问；利用后以root执行代码。",
+   "impact_scope": "边界防火墙管理面，横向跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-0322",
+   "description": "A remote code execution (RCE) vulnerability in the management interface of Palo Alto Networks PAN-OS® software enables an authenticated attacker with network access to execute arbitrary code with root privileges on the firewall. Cloud NGFW and Prisma® Access are not impacted by this vulnerability."
   },
   {
-   "id": "CVE-2026-16741",
+   "id": "CVE-2026-105134",
    "tier": "critical",
-   "title": "TR7 ASP OS命令注入漏洞",
-   "title_zh": "TR7 ASP OS命令注入漏洞",
-   "summary_zh": "未认证攻击者可向受影响功能传入特制参数注入OS命令，以设备权限执行任意指令。",
-   "published": "2026-10-14T13:17:28.103",
-   "cvss": 9.8,
+   "title": "复制接收器命令注入",
+   "title_zh": "复制接收器命令注入",
+   "summary_zh": "远程攻击者可操纵UpdateReceivers.do的random参数注入系统命令，可能获取服务器权限。",
+   "published": "2026-10-04T07:16:33.480",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.01843,
+   "epss_percentile": 0.78594,
    "cwe_labels": [
+    "命令注入",
     "命令注入(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
@@ -163,7 +142,112 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://siberguvenlik.gov.tr/guvenlik-bildirimleri/detay/tr-26-1327"
+     "url": "https://vuldb.com/cve/CVE-2026-105134"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/942743"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/vuln/413351"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/horizon3ai/AhsayCBS-Auth-Bypass-RCE",
+     "label": "horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)"
+    },
+    {
+     "url": "https://github.com/RayanAlmulhim/CVE-2026-105134-lab",
+     "label": "RayanAlmulhim/CVE-2026-105134-lab 0★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-17",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级修复版本；临时限制该接口访问并过滤random参数。",
+   "repro_worthy": "一般",
+   "repro_note": "入口/rps/api/json/UpdateReceivers.do；操纵random参数触发命令注入。",
+   "impact_scope": "未知复制接收组件，暴露服务需关注",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105134",
+   "description": "A flaw has been found in Ahsay AhsayCBS up to 10.3.2. This vulnerability affects unknown code of the file /rps/api/json/UpdateReceivers.do of the component Replication Receiver. Executing a manipulation of the argument random can lead to os command injection. It is possible to launch the attack remotely. The exploit has been published and may be used. Upgrading to version 10.3.4 is able to resolve this issue. Upgrading the affected component is advised."
+  },
+  {
+   "id": "CVE-2026-105133",
+   "tier": "critical",
+   "title": "AhsayCBS认证绕过漏洞",
+   "title_zh": "AhsayCBS认证绕过漏洞",
+   "summary_zh": "远程攻击者可操纵random参数绕过认证，访问备份管理功能并可能接管系统。",
+   "published": "2026-10-04T07:16:33.087",
+   "cvss": 7.3,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+   "epss": 0.00383,
+   "epss_percentile": 0.30672,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-105133"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/942688"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/vuln/413350"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-17",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商修复版本；临时限制管理端口公网访问。",
+   "repro_worthy": "一般",
+   "repro_note": "入口AhsayCBS认证接口；操纵random参数触发 improper auth，无需登录。",
+   "impact_scope": "备份管理服务器，暴露后风险高",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
+   "description": "A vulnerability was detected in Ahsay AhsayCBS up to 10.3.2. This affects the function checkSysPwd of the file com/ahsay/obs/api/ApiStructsAction.java of the component API. Performing a manipulation of the argument random results in improper authentication. It is possible to initiate the attack remotely. The exploit is now public and may be used. Upgrading to version 10.3.4 is able to mitigate this issue. It is recommended to upgrade the affected component."
+  },
+  {
+   "id": "CVE-2026-101954",
+   "tier": "critical",
+   "title": "Juniper J-Web认证绕过致接管",
+   "title_zh": "Juniper J-Web认证绕过致接管",
+   "summary_zh": "未认证攻击者访问已启用的J-Web HTTP/HTTPS，绕过认证获root配置权限并接管设备。",
+   "published": "2026-10-14T18:17:11.277",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112187"
     }
    ],
    "poc": [],
@@ -173,21 +257,181 @@
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至1.0.1554.2331或1.6.1554.2331及以上版本。",
-   "repro_worthy": "一般",
-   "repro_note": "未授权请求受影响接口，在参数中拼接OS命令并观察回显或延时。",
-   "impact_scope": "内网安全设备，管理口暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16741",
-   "description": "Improper neutralization of special elements used in an OS command ('OS command injection') vulnerability in TR7 Cyber ​​Defense Inc. TR7 ASP on virtual appliance and TR7 Cyber ​​Defense Inc. TR7 ASP on physical appliance allows OS Command Injection. This issue affects TR7 ASP: from 1.0.40.236 before 1.0.1554.2331; TR7 ASP: from 1.6.42.239 before 1.6.1554.2331."
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商修复版本；禁用J-Web或限制管理面访问",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问J-Web HTTP/HTTPS或NETCONF，需Web管理已启用",
+   "impact_scope": "Junos管理面，常暴露内网或公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101954",
+   "description": "An Improper Authentication vulnerability in the J-Web management interface and its NETCONF session handling of Juniper Networks Junos OS and Junos OS Evolved allows an unauthenticated network attacker to obtain root-level device configuration access and take over the device via a reachable J-Web HTTP or HTTPS service when web management is enabled."
   },
   {
-   "id": "CVE-2026-108065",
+   "id": "CVE-2026-101983",
    "tier": "critical",
-   "title": "WebAlliance SOAP接口SQL注入",
-   "title_zh": "WebAlliance SOAP接口SQL注入",
-   "summary_zh": "未授权攻击者可向preapproval.asmx的sUserID注入SQL，读写库并可能执行系统命令。",
-   "published": "2026-10-14T14:17:33.813",
+   "title": "Juniper httpd栈溢出RCE",
+   "title_zh": "Juniper httpd栈溢出RCE",
+   "summary_zh": "未认证攻击者访问配置J-Web虚拟域的设备，向httpd发特制请求触发栈溢出，可RCE或DoS。",
+   "published": "2026-10-14T18:17:13.293",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112187"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商修复版本；禁用J-Web虚拟域并限制管理面",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问J-Web httpd；需已配置J-Web虚拟域",
+   "impact_scope": "Junos J-Web管理面，可暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101983",
+   "description": "A Stack-based Buffer Overflow vulnerability in the httpd process of Juniper Networks Junos OS and Junos OS Evolved allows an unauthenticated network attacker to cause remote code execution and denial of service via a J-Web virtual-domain configured."
+  },
+  {
+   "id": "CVE-2026-102182",
+   "tier": "critical",
+   "title": "Juniper MX kmd栈溢出RCE",
+   "title_zh": "Juniper MX kmd栈溢出RCE",
+   "summary_zh": "未认证网络攻击者向MX的kmd发送特制IKE证书包，触发栈溢出并以root执行代码。",
+   "published": "2026-10-14T17:18:06.080",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112196"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商修复版本；限制IKE流量并关闭非必要IPsec",
+   "repro_worthy": "一般",
+   "repro_note": "向MX设备kmd发送特制IKE证书包；需IKE/IPsec服务可达",
+   "impact_scope": "运营商/企业边界MX路由器，公网暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102182",
+   "description": "A Stack-based Buffer Overflow vulnerability in the kmd component of Juniper Networks Junos OS on MX Series allows an unauthenticated network attacker to execute code as root via specific IKE certificate-based packets. This issue affects Junos OS on MX Series: * All versions before 21.2R3-S11; * from 21.4 before 21.4R3-S12; * from 22.2 before 22.2R3-S8; * from 22.3 before 22.3R3-S5; * from 22.4 before 22.4R3-S9;"
+  },
+  {
+   "id": "CVE-2026-33789",
+   "tier": "critical",
+   "title": "Juniper rpd BGP栈溢出RCE",
+   "title_zh": "Juniper rpd BGP栈溢出RCE",
+   "summary_zh": "未认证BGP对等体在BMP启用时发特制路由更新，触发rpd栈溢出，可DoS或root执行。",
+   "published": "2026-10-14T17:18:27.763",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112187"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商修复版本；临时禁用BMP或限制BGP邻居",
+   "repro_worthy": "一般",
+   "repro_note": "BMP启用时由BGP对等体发送特制路由更新，触发rpd溢出",
+   "impact_scope": "运营商/企业边界及核心BGP路由器",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-33789",
+   "description": "A Stack-based Buffer Overflow vulnerability in the routing protocol daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows an unauthenticated BGP peer to cause a denial of service and potential root-level command execution via crafted BGP route updates when the BGP Monitoring Protocol (BMP) is enabled."
+  },
+  {
+   "id": "CVE-2026-33792",
+   "tier": "critical",
+   "title": "Juniper SRX栈溢出致RCE",
+   "title_zh": "Juniper SRX栈溢出致RCE",
+   "summary_zh": "未认证攻击者向SRX已配置GRE隧道发送特制包，触发srxpfe栈溢出，可root执行或DoS。",
+   "published": "2026-10-14T17:18:27.933",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112186"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商修复版本；限制GRE来源并监控隧道流量",
+   "repro_worthy": "一般",
+   "repro_note": "向SRX已配置GRE隧道发送特制包，触发srxpfe栈溢出",
+   "impact_scope": "企业/运营商边界SRX防火墙",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-33792",
+   "description": "A Stack-based Buffer Overflow vulnerability in the srxpfe process of Juniper Networks Junos OS on SRX Series allows an unauthenticated network attacker to execute code as root or cause a denial of service via a crafted packet received on a configured GRE tunnel."
+  },
+  {
+   "id": "CVE-2026-55683",
+   "tier": "critical",
+   "title": "WeGIA 未授权 SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-14T20:17:50.640",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -203,7 +447,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.rapid7.com/blog/post/ve-unauthenticated-sql-injection-in-channel-software-weballiance-ecommerce/"
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/commit/f819be361f984592c4b5a35db830495b4e2263fa"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/issues/184"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/pull/1705"
     }
    ],
    "poc": [],
@@ -214,22 +466,817 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "限制该接口外网访问并过滤参数，联系厂商获取修复版本。",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55683",
+   "description": "Prior to 3.8.6, the unauthenticated web/html/socio/sistema/cadastro_cobranca.php endpoint accepts POST input through extract($_REQUEST) and directly incorporates valor, valor_pago, id_pessoa, id_socio, and id_sociotipo into UPDATE, INSERT, and SELECT statements without prepared statements. A remote attacker can use the affected parameters to execute arbitrary SQL that reads or modifies WeGIA database content, including billing records and credential data."
+  },
+  {
+   "id": "CVE-2026-55684",
+   "tier": "critical",
+   "title": "未授权 SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-14T20:17:50.783",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/commit/38cb19baeee90b334817fb9b40f967996c9ee36b"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/issues/183"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/pull/1705"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55684",
+   "description": "A remote attacker can execute arbitrary SQL to read or modify billing, member, employee, permission, and credential data or to delete database tables."
+  },
+  {
+   "id": "CVE-2026-55572",
+   "tier": "critical",
+   "title": "login方法SQL注入漏洞",
+   "title_zh": "login方法SQL注入漏洞",
+   "summary_zh": "未认证用户在安装alt_auth且配置外部数据库时可注入SQL，读取或篡改数据。",
+   "published": "2026-10-14T18:17:37.863",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/e107inc/e107/commit/120bd4bdbe18c8690c60a007ad6716e52e6ee965"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/e107inc/e107/releases/tag/v2.3.7"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/e107inc/e107/security/advisories/GHSA-5f75-c25x-59wx"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本；临时禁用alt_auth外部数据库连接。",
    "repro_worthy": "一般",
-   "repro_note": "未授权POST /preapproval.asmx调用GetUser，sUserID传单引号与堆叠语句。",
-   "impact_scope": "电商Web应用，可暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108065",
-   "description": "SQL Injection (CWE-89) in the SOAP GetUser method of the /preapproval.asmx endpoint in Channel Software WebAlliance eCommerce [VERSION — missing] allows an unauthenticated remote attacker to read, write, and potentially execute commands on the backend Microsoft SQL Server via a crafted sUserID parameter value containing a single quote and stacked SQL query."
+   "repro_note": "入口login()；前置alt_auth已装且后端启用真实外部数据库。",
+   "impact_scope": "认证登录组件，影响后端数据库",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55572",
+   "description": "The login() methods execute those strings with PDO::query() before effective sanitization, so an unauthenticated user can inject SQL when alt_auth is installed and either backend is configured with a live external database connection. The injection can expose or modify data available to the configured database account, and query failures can additionally disclose the generated query through the debug-message path."
+  },
+  {
+   "id": "CVE-2026-110536",
+   "tier": "critical",
+   "title": "D-Link DIR-868L命令注入",
+   "title_zh": "D-Link DIR-868L命令注入",
+   "summary_zh": "远程攻击者可操纵HNAP SOAPACTION参数在cgibin中注入系统命令，获取设备控制权。",
+   "published": "2026-10-14T19:17:10.610",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Walnut1337/Command-Injection-DIR-868L/blob/main/ADVISORY.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Walnut1337/Command-Injection-DIR-868L/tree/main/poc"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-110536"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级/更换设备；临时禁用HNAP或限制管理接口访问。",
+   "repro_worthy": "一般",
+   "repro_note": "入口/htdocs/cgibin HNAP处理；构造SOAPACTION参数命令注入。",
+   "impact_scope": "家用/小型办公路由器，边界设备",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110536",
+   "description": "A vulnerability was determined in D-Link DIR-868L 2.01b05. This impacts the function system of the file /htdocs/cgibin of the component HNAP CGI Handler. Executing a manipulation of the argument SOAPACTION can lead to os command injection. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized."
+  },
+  {
+   "id": "CVE-2026-77524",
+   "tier": "critical",
+   "title": "K8s Operator JWT认证绕过",
+   "title_zh": "K8s Operator JWT认证绕过",
+   "summary_zh": "攻击者利用ServiceAccount主题通过JWT过滤，获取Operator集群权限并读取Secret。",
+   "published": "2026-10-14T17:19:11.147",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升",
+    "SSRF"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/kedacore/keda/commit/1e21cc798dedd079e696cdb45388eddc5e18365d"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/kedacore/keda/releases/tag/v2.21.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/kedacore/keda/security/advisories/GHSA-637c-6jxx-4rwm"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2.21.0；审计ServiceAccount令牌与RBAC权限。",
+   "repro_worthy": "一般",
+   "repro_note": "前置：获取/伪造ServiceAccount JWT；绕过JWT-shape过滤。",
+   "impact_scope": "K8s运维组件，可读Secret",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77524",
+   "description": "The JWT-shape filter from the prior CVE-2025-68476 remediation accepts the operator token because its subject is a Kubernetes ServiceAccount, so the attacker can obtain the operator's cluster-wide permissions, including broad Secret reads and workload or admission-related operations. This vulnerability is fixed in 2.21.0."
+  },
+  {
+   "id": "CVE-2026-108390",
+   "tier": "critical",
+   "title": "面板web.conf参数注入致提权RCE",
+   "title_zh": "面板web.conf参数注入致提权RCE",
+   "summary_zh": "低权限面板用户创建Web域名，经未转义文档根注入PATH，以root执行任意代码。",
+   "published": "2026-10-14T18:17:27.180",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "参数拼接注入",
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/hestiacp/hestiacp/commit/4d86018660f35a1d64a0ae819bc5ee700949a287"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/hestiacp/hestiacp/security/advisories/GHSA-r9q4-pmcm-5qqf"
+    },
+    {
+     "label": "参考",
+     "url": "https://ravindulakmina.pages.dev/advisories/cve-2026-108390-hestiacp-apostrophe-to-root"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.10.4以上修复版本；临时限制低权限用户Web域名配置。",
+   "repro_worthy": "一般",
+   "repro_note": "入口用户文档根配置；前置低权限面板用户+Web域名；注入PATH字段。",
+   "impact_scope": "主机控制面板，低权用户可提权root",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108390",
+   "description": "From version 1.9.7 through 1.10.4, update_object_value() in func/main.sh does not escape single quotes when writing a custom document-root value to a user's web.conf file, allowing a low-privileged authenticated panel user with a web domain to inject an additional PATH field. By placing a malicious column executable in the injected search path, the user can execute arbitrary code as root."
+  },
+  {
+   "id": "CVE-2026-101950",
+   "tier": "critical",
+   "title": "Juniper SRX SVR堆溢出漏洞",
+   "title_zh": "Juniper SRX SVR堆溢出漏洞",
+   "summary_zh": "未认证网络攻击者向启用SVR接口发畸形IPv4包，可致DoS并可能破坏机密完整性。",
+   "published": "2026-10-14T17:17:47.877",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112186"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Junos修复版本；临时禁用SVR或限制接口。",
+   "repro_worthy": "一般",
+   "repro_note": "入口启用SVR的接口；发送畸形IPv4包触发堆溢出。",
+   "impact_scope": "SRX边界防火墙，需启用SVR",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101950",
+   "description": "A Heap-based Buffer Overflow vulnerability in the SVR component of Juniper Networks Junos OS on SRX Series allows an unauthenticated network attacker to cause a denial of service and potentially compromise confidentiality and integrity via malformed IPv4 packets reaching an interface configured for Secure Vector Routing."
+  },
+  {
+   "id": "CVE-2026-101956",
+   "tier": "critical",
+   "title": "Juniper J-Web未认证RCE",
+   "title_zh": "Juniper J-Web未认证RCE",
+   "summary_zh": "未认证远程攻击者可通过暴露的J-Web界面以root权限执行任意Junos命令。",
+   "published": "2026-10-14T17:17:48.353",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112188"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Junos修复版本；临时禁用J-Web或限制管理网访问。",
+   "repro_worthy": "一般",
+   "repro_note": "入口J-Web界面；无需认证，构造请求执行Junos命令，需J-Web暴露。",
+   "impact_scope": "Junos设备Web管理面，暴露即高危",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101956",
+   "description": "An Improper Authentication vulnerability in the J-Web web management component of Juniper Networks Junos OS allows an unauthenticated remote attacker to execute arbitrary Junos commands with root privileges via the exposed J-Web web interface."
+  },
+  {
+   "id": "CVE-2026-101980",
+   "tier": "critical",
+   "title": "Juniper内核整数下溢DoS",
+   "title_zh": "Juniper内核整数下溢DoS",
+   "summary_zh": "未认证网络攻击者向启用Extended Echo的设备发包，触发内核崩溃导致DoS。",
+   "published": "2026-10-14T17:17:50.503",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-191"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112188"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Junos修复版本；临时禁用Extended Echo功能。",
+   "repro_worthy": "一般",
+   "repro_note": "入口启用Extended Echo；构造触发整数下溢的网络包。",
+   "impact_scope": "Junos设备，需启用扩展回显",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101980",
+   "description": "An Integer Underflow vulnerability in the kernel of Juniper Networks Junos OS with Extended Echo configured allows an unauthenticated, network-based attacker to cause a denial of service by a kernel crash."
+  },
+  {
+   "id": "CVE-2026-101986",
+   "tier": "critical",
+   "title": "Juniper J-Web认证绕过",
+   "title_zh": "Juniper J-Web认证绕过",
+   "summary_zh": "未认证网络攻击者可构造HTTP请求绕过J-Web认证，以提升权限执行CGI内容。",
+   "published": "2026-10-14T17:17:50.953",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112187"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Junos修复版本；临时禁用J-Web或限制管理网访问。",
+   "repro_worthy": "一般",
+   "repro_note": "入口J-Web HTTP请求；构造请求绕过认证执行CGI，需J-Web暴露。",
+   "impact_scope": "Junos设备Web管理面，暴露即高危",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101986",
+   "description": "An Improper Authentication vulnerability in J-Web of Juniper Networks Junos OS and Junos OS Evolved allows an unauthenticated network attacker to bypass J-Web authentication and execute CGI content with elevated privileges via a crafted HTTP request."
+  },
+  {
+   "id": "CVE-2026-101990",
+   "tier": "critical",
+   "title": "Juniper rpd BGP栈溢出",
+   "title_zh": "Juniper rpd BGP栈溢出",
+   "summary_zh": "已配置BGP对等体发送被重通告的flowspec更新，可致rpd崩溃或远程代码执行。",
+   "published": "2026-10-14T17:17:51.587",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112187"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Junos修复版本；限制BGP邻居并禁用flowspec重通告。",
+   "repro_worthy": "一般",
+   "repro_note": "入口BGP flowspec更新；前置为已配置BGP peer且更新被重通告。",
+   "impact_scope": "运营商/企业边界路由器，BGP面",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101990",
+   "description": "A Stack-based Buffer Overflow vulnerability in the routing protocol daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows a remote configured BGP peer to cause an rpd crash, or on Junos OS remote code-execution, via sending a flow-spec update which is selected for re-advertisement."
+  },
+  {
+   "id": "CVE-2026-102031",
+   "tier": "critical",
+   "title": "Juniper TACACS命令注入提权",
+   "title_zh": "Juniper TACACS命令注入提权",
+   "summary_zh": "低权限TACACS+认证用户可在启用周期授权刷新时以root执行命令。",
+   "published": "2026-10-14T17:17:56.617",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112250"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Junos Evolved修复版本；临时关闭TACACS+授权刷新。",
+   "repro_worthy": "一般",
+   "repro_note": "入口TACACS+；前置低权账户且periodic authorization-refresh开启。",
+   "impact_scope": "Junos Evolved设备，可提权",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102031",
+   "description": "An OS Command Injection vulnerability in TACACS of Juniper Networks Junos OS Evolved allows a low-privileged TACACS+-authenticated user to execute commands with root privileges when periodic TACACS+ authorization-refresh is enabled."
+  },
+  {
+   "id": "CVE-2026-102175",
+   "tier": "critical",
+   "title": "Juniper sdxd堆溢出RCE",
+   "title_zh": "Juniper sdxd堆溢出RCE",
+   "summary_zh": "能控制/拦截SDX/SRC服务器连接者发送畸形帧，可root执行代码或DoS。",
+   "published": "2026-10-14T17:18:05.147",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112187"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Junos修复版本；限制SDX/SRC连接并加强链路保护。",
+   "repro_worthy": "一般",
+   "repro_note": "入口service-deployment TCP；前置能控制/拦截SDX/SRC服务器连接。",
+   "impact_scope": "Junos设备服务部署通道，需中间人",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102175",
+   "description": "A Heap-based Buffer Overflow vulnerability in the sdxd service-deployment daemon of Juniper Networks Junos OS and Junos OS Evolved allows a remote unauthenticated attacker who can control or intercept the configured SDX/SRC server connection to execute code as root or cause denial of service via a crafted frame received over the service-deployment TCP connection."
+  },
+  {
+   "id": "CVE-2026-102178",
+   "tier": "critical",
+   "title": "Juniper BGP栈溢出RCE",
+   "title_zh": "Juniper BGP栈溢出RCE",
+   "summary_zh": "已配置flowspec对等体在更新线程启用时发送更新，可致路由引擎被入侵或rpd DoS。",
+   "published": "2026-10-14T17:18:05.610",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112187"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Junos修复版本；临时禁用更新线程或限制邻居。",
+   "repro_worthy": "一般",
+   "repro_note": "入口BGP flowspec重通告；前置flowspec peer且update-threading启用。",
+   "impact_scope": "Junos边界/核心路由器，BGP面",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102178",
+   "description": "A Stack-based Buffer Overflow vulnerability in the BGP routing daemon of Juniper Networks Junos OS and Junos OS Evolved allows a configured BGP flowspec peer to cause routing-engine compromise or a routing-daemon denial of service via flowspec route re-advertisement when BGP update-threading is enabled."
+  },
+  {
+   "id": "CVE-2026-109439",
+   "tier": "critical",
+   "title": "Lantronix串口服务器认证缺失",
+   "title_zh": "Lantronix串口服务器认证缺失",
+   "summary_zh": "远程攻击者向UDP/30718配置协议发特制帧，未认证读取并持久改写设备配置。",
+   "published": "2026-10-14T17:18:23.253",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cdn.lantronix.com/wp-content/uploads/pdf/PCN-753-Rev-B-EOL-Notice-XPRESS.pdf?xnotes__c=I%20am%20interested%20in%20the%20XPress%20DR%20/%20XPress%20DR-IAP."
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/lantronix-xpress-dr-unauthenticated-configuration-write-via-udp-30718"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级固件至修复版本；封禁UDP/30718或限制访问",
+   "repro_worthy": "一般",
+   "repro_note": "向UDP/30718发送特制配置帧，无需认证即可读写配置",
+   "impact_scope": "工业/串口设备服务器，可能暴露内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109439",
+   "description": "Lantronix XPress-DR and XPress-DR-I (CoBos-family) firmware through 8.1.0.0 contains a missing authentication vulnerability that allows remote attackers to read and persistently overwrite device configuration by sending crafted frames to the unauthenticated UDP configuration protocol on port 30718."
+  },
+  {
+   "id": "CVE-2026-33796",
+   "tier": "critical",
+   "title": "Juniper rpd BMP栈溢出RCE",
+   "title_zh": "Juniper rpd BMP栈溢出RCE",
+   "summary_zh": "已配置外部BGP邻居经BMP路由监控发送特制数据，触发rpd栈溢出，以root执行任意命令。",
+   "published": "2026-10-14T17:18:28.320",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112187"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版本；限制外部BGP邻居并禁用BMP",
+   "repro_worthy": "一般",
+   "repro_note": "从已配置外部BGP邻居经BMP发送特制路由监控数据",
+   "impact_scope": "具备外部BGP/BMP的边界路由器",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-33796",
+   "description": "A Stack-based Buffer Overflow vulnerability in the routing protocol daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows a configured external BGP neighbor to execute arbitrary commands with root privileges via BMP route monitoring."
+  },
+  {
+   "id": "CVE-2026-101982",
+   "tier": "critical",
+   "title": "Juniper rpd EVPN栈溢出RCE",
+   "title_zh": "Juniper rpd EVPN栈溢出RCE",
+   "summary_zh": "已配置BGP/EVPN对等体发送EVPN-VPWS有效路由，触发rpd栈溢出，Junos可root执行。",
+   "published": "2026-10-14T18:17:13.120",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.juniper.net/JSA112187"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版本；限制BGP/EVPN邻居并审计EVPN-VPWS",
+   "repro_worthy": "一般",
+   "repro_note": "由已配置BGP/EVPN对等体发送EVPN-VPWS有效路由通告",
+   "impact_scope": "承载EVPN-VPWS的运营商/企业边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101982",
+   "description": "A Stack-based Buffer Overflow vulnerability in the routing protocol daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows a configured BGP/EVPN peer to cause root code execution on Junos OS or an rpd crash on Junos OS Evolved via protocol-valid route advertisements for an EVPN-VPWS service."
+  },
+  {
+   "id": "CVE-2026-55573",
+   "tier": "critical",
+   "title": "PHP install.php反序列化RCE",
+   "title_zh": "PHP install.php反序列化RCE",
+   "summary_zh": "未认证访问install.php，向previous_steps POST传序列化数据，触发反序列化RCE。",
+   "published": "2026-10-14T18:17:38.013",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/e107inc/e107/commit/5d6d649e8cf01854d6024d07997c2449fdd75f24"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/e107inc/e107/commit/6c404295213952aedb9b3689be19dd4c7ba550b0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/e107inc/e107/releases/tag/v2.3.7"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到2.3.7；删除或限制install.php访问",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问install.php，previous_steps参数触发反序列化",
+   "impact_scope": "暴露install.php的PHP服务器",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55573",
+   "description": "Prior to 2.3.7, install.php decodes the attacker-controlled previous_steps POST parameter and passes it to unserialize() at file scope and again in the e_install constructor without restricting allowed classes. An unauthenticated attacker who can reach install.php can therefore execute arbitrary PHP functions with the web server process's privileges, leading to full server compromise."
+  },
+  {
+   "id": "CVE-2026-55680",
+   "tier": "critical",
+   "title": "PHP应用codigo参数SQL注入",
+   "title_zh": "PHP应用codigo参数SQL注入",
+   "summary_zh": "未认证攻击者向cadastro_cobranca.php的codigo参数注入SQL，可篡改数据库。",
+   "published": "2026-10-14T20:17:50.193",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/commit/f819be361f984592c4b5a35db830495b4e2263fa"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/issues/184"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/pull/1705"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到3.8.6；过滤codigo参数并限制接口访问",
+   "repro_worthy": "一般",
+   "repro_note": "未授权POST cadastro_cobranca.php的codigo参数",
+   "impact_scope": "使用该PHP系统的业务服务器",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55680",
+   "description": "Prior to 3.8.6, unauthenticated POST requests to web/html/socio/sistema/cadastro_cobranca.php can place a quoted SQL expression in the codigo parameter, which extract($_REQUEST) passes into the WHERE codigo= clause of an UPDATE statement without validation or parameter binding. Quoting the value bypasses MariaDB type conversion for the VARCHAR column and permits arbitrary SQL execution without a session."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "5514ed6d57fad4513cdba99387dcef772b38ebc9",
-   "url": "https://github.com/envoyproxy/envoy/commit/5514ed6d57fad4513cdba99387dcef772b38ebc9",
-   "title": "mcp: remove the 10MB cap on max_request_body_size (#48320)",
-   "date": "2026-10-14T14:30:36",
+   "repo": "grafana/grafana",
+   "sha": "2cdf5debff000e6ee9dfe6bfb83824cba10e949c",
+   "url": "https://github.com/grafana/grafana/commit/2cdf5debff000e6ee9dfe6bfb83824cba10e949c",
+   "title": "Alerting: reduce rules API TTFB for large rule sets (#133996)",
+   "date": "2026-10-14T19:12:54",
+   "score": 2,
+   "matched": [
+    "反序列化"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "2b99c068db09fb149330421d88999486fce83ed8",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/2b99c068db09fb149330421d88999486fce83ed8",
+   "title": "avfilter/yadif: propagate errorsl",
+   "date": "2026-10-14T17:59:13",
    "score": 2,
    "matched": [
     "安全修复"
@@ -237,26 +1284,26 @@
    "cve": null
   },
   {
-   "repo": "openbsd/src",
-   "sha": "240809b9eec70a35f4fa8788304f8336e1b6f11c",
-   "url": "https://github.com/openbsd/src/commit/240809b9eec70a35f4fa8788304f8336e1b6f11c",
-   "title": "rpki-client: accept indefinite lengths in filemode",
-   "date": "2026-10-14T06:48:24",
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "546d1a737c4b89aab7b09e5faaad450343142015",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/546d1a737c4b89aab7b09e5faaad450343142015",
+   "title": "avformat/rmenc: Do not write a byte past odd sized AC-3 packets",
+   "date": "2026-10-14T17:46:27",
    "score": 2,
    "matched": [
-    "反序列化"
+    "安全修复"
    ],
    "cve": null
   },
   {
-   "repo": "openbsd/src",
-   "sha": "662782962efe8ef1787ffb4388a8663ce26e260d",
-   "url": "https://github.com/openbsd/src/commit/662782962efe8ef1787ffb4388a8663ce26e260d",
-   "title": "rpki-client: implement a CBS-based RFC 6488 parser",
-   "date": "2026-10-14T06:41:29",
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "af6d20f30cf0377142a127b4fe352d64e318b18e",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/af6d20f30cf0377142a127b4fe352d64e318b18e",
+   "title": "avutil/hwcontext: Fail with ENOSYS when a transfer callback is missing",
+   "date": "2026-10-14T17:45:20",
    "score": 2,
    "matched": [
-    "反序列化"
+    "安全修复"
    ],
    "cve": null
   }
