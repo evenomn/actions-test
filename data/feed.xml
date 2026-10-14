@@ -5,25 +5,52 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 14 Oct 2026 06:17:24 +0000</pubDate>
-    <lastBuildDate>Wed, 14 Oct 2026 06:17:24 +0000</lastBuildDate>
+    <pubDate>Wed, 14 Oct 2026 14:34:41 +0000</pubDate>
+    <lastBuildDate>Wed, 14 Oct 2026 14:34:41 +0000</lastBuildDate>
     <item>
-      <title>[critical]Collabora CODE 命令注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110447</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110447-2026-10-14</guid>
-      <description>CVE-2026-110447 · 🎯P0 立即处置 · 披露 2026-10-14 · CVSS 9.2 · 类型 命令注入(RCE) · 难度 低(远程·利用条件苛刻·免认证)
-Collabora Online Built-in CODE Server before 26.4.303 (richdocumentscode), a Nextcloud app, allows remote code execution, as exploited in the wild in September …
+      <title>[critical]Frontend Dashboard权限提升</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107424</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107424-2026-10-14</guid>
+      <description>CVE-2026-107424 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
+Incorrect Privilege Assignment vulnerability in M A Vinoth Kumar Frontend Dashboard frontend-dashboard allows Privilege Escalation.This issue affects Frontend D…
 信号:</description>
-      <pubDate>Wed, 14 Oct 2026 06:17:24 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 14:34:41 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Samsung QA-Board OS命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110392</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110392-2026-10-14</guid>
-      <description>CVE-2026-110392 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
-Improper neutralization of special elements used in an OS command ('OS command injection') vulnerability in Samsung Open Source QA-Board allows : OS Command Inj…
+      <title>[critical]Affiliates插件反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108291</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108291-2026-10-14</guid>
+      <description>CVE-2026-108291 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in itthinx Affiliates affiliates allows Object Injection.This issue affects Affiliates: from n/a through 7.0.1.
 信号:</description>
-      <pubDate>Wed, 14 Oct 2026 06:17:24 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 14:34:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TR7 ASP缺失认证致命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-16740</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-16740-2026-10-14</guid>
+      <description>CVE-2026-16740 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+Missing authentication for critical function vulnerability in TR7 Cyber ​​Defense Inc. TR7 ASP on physical appliance allows OS Command Injection.
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 14:34:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TR7 ASP OS命令注入漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-16741</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-16741-2026-10-14</guid>
+      <description>CVE-2026-16741 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+Improper neutralization of special elements used in an OS command ('OS command injection') vulnerability in TR7 Cyber ​​Defense Inc.
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 14:34:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]WebAlliance SOAP接口SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108065</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108065-2026-10-14</guid>
+      <description>CVE-2026-108065 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
+SQL Injection (CWE-89) in the SOAP GetUser method of the /preapproval.asmx endpoint in Channel Software WebAlliance eCommerce [VERSION — missing] allows an unau…
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 14:34:41 +0000</pubDate>
     </item>
   </channel>
 </rss>
