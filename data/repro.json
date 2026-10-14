@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-10-14T00:24:35+00:00",
- "count": 101,
- "count_recommended": 12,
+ "updated_at": "2026-10-14T02:08:57+00:00",
+ "count": 96,
+ "count_recommended": 13,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -446,6 +446,42 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97229",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-106173",
+   "title": "FortiSIEM 路径遍历未认证RCE",
+   "first_seen": "2026-10-13",
+   "last_seen": "2026-10-14",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-13",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未认证向FortiSIEM服务端口发送含遍历路径的特制数据包",
+   "impact_scope": "安全运维平台，内网部署暴露",
+   "action_zh": "升级FortiSIEM至厂商修复版本（受影响7.5.0）",
+   "summary_zh": "未认证攻击者向FortiSIEM发送特制数据包，经路径遍历执行未授权代码或命令。",
+   "category": "边界设备/VPN",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-180"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106173",
    "change_note": null
   },
   {
@@ -1152,114 +1188,6 @@
    "change_note": null
   },
   {
-   "id": "CVE-2026-48382",
-   "title": "AEM授权错误致RCE",
-   "first_seen": "2026-10-14",
-   "last_seen": "2026-10-14",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-10-13",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "AEM越权接口，构造请求触发代码执行",
-   "impact_scope": "AEM CMS，内网广泛部署",
-   "action_zh": "升级AEM至修复版本，收紧接口授权",
-   "summary_zh": "攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 10。",
-   "category": null,
-   "cvss": 10.0,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-48382",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-48383",
-   "title": "AEM授权错误致RCE",
-   "first_seen": "2026-10-14",
-   "last_seen": "2026-10-14",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-10-13",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "AEM越权接口，构造请求触发代码执行",
-   "impact_scope": "AEM CMS，内网广泛部署",
-   "action_zh": "升级AEM至修复版本，收紧接口授权",
-   "summary_zh": "攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 10。",
-   "category": null,
-   "cvss": 10.0,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-48383",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-90532",
-   "title": "AEM授权错误致RCE",
-   "first_seen": "2026-10-14",
-   "last_seen": "2026-10-14",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-10-13",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "AEM越权接口，构造请求触发代码执行",
-   "impact_scope": "AEM CMS，内网广泛部署",
-   "action_zh": "升级AEM至修复版本，收紧接口授权",
-   "summary_zh": "攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 10。",
-   "category": null,
-   "cvss": 10.0,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-90532",
-   "change_note": null
-  },
-  {
    "id": "CVE-2026-93605",
    "title": "CVE-2026-93605",
    "first_seen": "2026-10-08",
@@ -1817,78 +1745,6 @@
    "change_note": null
   },
   {
-   "id": "CVE-2026-105895",
-   "title": "AEM输入校验致RCE",
-   "first_seen": "2026-10-14",
-   "last_seen": "2026-10-14",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-10-13",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "构造畸形输入触发代码执行",
-   "impact_scope": "AEM CMS，内网广泛部署",
-   "action_zh": "升级AEM至修复版本，加强输入过滤",
-   "summary_zh": "攻击者可利用输入校验缺陷执行任意代码，无需用户交互，CVSS 9.9。",
-   "category": null,
-   "cvss": 9.9,
-   "epss": null,
-   "difficulty": "低(远程·需低权限)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105895",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-75732",
-   "title": "AEM授权错误致RCE",
-   "first_seen": "2026-10-14",
-   "last_seen": "2026-10-14",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-10-13",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "AEM越权接口，构造请求触发代码执行",
-   "impact_scope": "AEM CMS，内网广泛部署",
-   "action_zh": "升级AEM至修复版本，收紧接口授权",
-   "summary_zh": "攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 9.9。",
-   "category": null,
-   "cvss": 9.9,
-   "epss": null,
-   "difficulty": "低(远程·需低权限)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-75732",
-   "change_note": null
-  },
-  {
    "id": "CVE-2026-105016",
    "title": "MSQUIC IPv6包堆溢出远程代码执行",
    "first_seen": "2026-10-14",
@@ -1953,42 +1809,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97816",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-106173",
-   "title": "FortiSIEM 路径遍历致命令执行",
-   "first_seen": "2026-10-13",
-   "last_seen": "2026-10-13",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-10-13",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "向FortiSIEM 7.5.0接口发送含../的特制报文读取文件并执行命令",
-   "impact_scope": "安全运维平台,内网横向跳板",
-   "action_zh": "升级FortiSIEM至厂商修复版本,限制管理面访问",
-   "summary_zh": "攻击者可向FortiSIEM发送特制报文,利用路径遍历执行未授权代码或命令。",
-   "category": "边界设备/VPN",
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-180"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106173",
    "change_note": null
   },
   {

@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-14 00:24 UTC · 共 **101** 条(强烈推荐 12 / 值得 89)
+**更新**: 2026-10-14 02:08 UTC · 共 **96** 条(强烈推荐 13 / 值得 83)
 
 ---
 
@@ -95,6 +95,14 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 处置: 升级至 19.2.8、19.3.5 或 19.4.2 及以上版本
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/630686) · [参考](https://hackerone.com/reports/4055749)
+
+### FortiSIEM 路径遍历未认证RCE
+[CVE-2026-106173](https://nvd.nist.gov/vuln/detail/CVE-2026-106173) | P1 重点关注 | 边界设备/VPN | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-13
+未认证攻击者向FortiSIEM发送特制数据包，经路径遍历执行未授权代码或命令。
+复现: 强烈推荐 — 未认证向FortiSIEM服务端口发送含遍历路径的特制数据包 · 影响面: 安全运维平台，内网部署暴露
+处置: 升级FortiSIEM至厂商修复版本（受影响7.5.0）
+影响: Fortinet(产品与版本待 NVD/厂商补充)
+参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-180)
 
 ### HAProxy 管理端点缺失认证越权
 [CVE-2026-109575](https://nvd.nist.gov/vuln/detail/CVE-2026-109575) | P1 重点关注 | Web中间件 | CVSS 9.8 | 披露 2026-10-12 | 入库 2026-10-13
@@ -234,30 +242,6 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 15★(有源码)](https://gi
 影响: Adobe(产品与版本待 NVD/厂商补充)
 参考: [参考](https://www.adobe.com/trust/security/products/coldfusion/apsb26-144.html)
 
-### AEM授权错误致RCE
-[CVE-2026-48382](https://nvd.nist.gov/vuln/detail/CVE-2026-48382) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-14
-攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 10。
-复现: 值得 — AEM越权接口，构造请求触发代码执行 · 影响面: AEM CMS，内网广泛部署
-处置: 升级AEM至修复版本，收紧接口授权
-影响: Adobe(产品与版本待 NVD/厂商补充)
-参考: [参考](https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html)
-
-### AEM授权错误致RCE
-[CVE-2026-48383](https://nvd.nist.gov/vuln/detail/CVE-2026-48383) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-14
-攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 10。
-复现: 值得 — AEM越权接口，构造请求触发代码执行 · 影响面: AEM CMS，内网广泛部署
-处置: 升级AEM至修复版本，收紧接口授权
-影响: Adobe(产品与版本待 NVD/厂商补充)
-参考: [参考](https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html)
-
-### AEM授权错误致RCE
-[CVE-2026-90532](https://nvd.nist.gov/vuln/detail/CVE-2026-90532) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-14
-攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 10。
-复现: 值得 — AEM越权接口，构造请求触发代码执行 · 影响面: AEM CMS，内网广泛部署
-处置: 升级AEM至修复版本，收紧接口授权
-影响: Adobe(产品与版本待 NVD/厂商补充)
-参考: [参考](https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html)
-
 ### CVE-2026-93605
 [CVE-2026-93605](https://nvd.nist.gov/vuln/detail/CVE-2026-93605) | P1 重点关注 | CVSS 10.0 | EPSS 0.7% | 披露 2026-10-07 | 入库 2026-10-08
 开源,可源码审计复现
@@ -341,22 +325,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
 
-### AEM输入校验致RCE
-[CVE-2026-105895](https://nvd.nist.gov/vuln/detail/CVE-2026-105895) | P1 重点关注 | CVSS 9.9 | 披露 2026-10-13 | 入库 2026-10-14
-攻击者可利用输入校验缺陷执行任意代码，无需用户交互，CVSS 9.9。
-复现: 值得 — 构造畸形输入触发代码执行 · 影响面: AEM CMS，内网广泛部署
-处置: 升级AEM至修复版本，加强输入过滤
-影响: Adobe(产品与版本待 NVD/厂商补充)
-参考: [参考](https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html)
-
-### AEM授权错误致RCE
-[CVE-2026-75732](https://nvd.nist.gov/vuln/detail/CVE-2026-75732) | P1 重点关注 | CVSS 9.9 | 披露 2026-10-13 | 入库 2026-10-14
-攻击者可利用授权缺陷执行任意代码，无需用户交互，CVSS 9.9。
-复现: 值得 — AEM越权接口，构造请求触发代码执行 · 影响面: AEM CMS，内网广泛部署
-处置: 升级AEM至修复版本，收紧接口授权
-影响: Adobe(产品与版本待 NVD/厂商补充)
-参考: [参考](https://helpx.adobe.com/security/products/experience-manager/apsb26-152.html)
-
 ### MSQUIC IPv6包堆溢出远程代码执行
 [CVE-2026-105016](https://nvd.nist.gov/vuln/detail/CVE-2026-105016) | P0 立即处置 | 操作系统 | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-14
 开源,可源码审计复现
@@ -372,14 +340,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 更新Windows OpenSSH至最新补丁版本
 影响: Microsoft(产品与版本待 NVD/厂商补充)
 参考: [参考](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-97816)
-
-### FortiSIEM 路径遍历致命令执行
-[CVE-2026-106173](https://nvd.nist.gov/vuln/detail/CVE-2026-106173) | P1 重点关注 | 边界设备/VPN | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-13
-攻击者可向FortiSIEM发送特制报文,利用路径遍历执行未授权代码或命令。
-复现: 值得 — 向FortiSIEM 7.5.0接口发送含../的特制报文读取文件并执行命令 · 影响面: 安全运维平台,内网横向跳板
-处置: 升级FortiSIEM至厂商修复版本,限制管理面访问
-影响: Fortinet(产品与版本待 NVD/厂商补充)
-参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-180)
 
 ### AnyDesk 未认证堆溢出RCE
 [CVE-2026-109390](https://nvd.nist.gov/vuln/detail/CVE-2026-109390) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-12 | 入库 2026-10-12
