@@ -1,138 +1,33 @@
 {
  "version": 3,
- "generated_at": "2026-10-14T23:59:14+00:00",
+ "generated_at": "2026-10-15T05:59:03+00:00",
  "lookback_hours": 5,
- "count": 5,
+ "count": 1,
  "stats": {
-  "total": 5,
+  "total": 1,
   "by_tier": {
-   "critical": 5
+   "critical": 1
   },
   "by_urgency": {
-   "P1 重点关注": 4,
-   "P0 立即处置": 1
+   "P1 重点关注": 1
   },
   "by_category": {
-   "未知": 3,
-   "网络设备": 1,
-   "开发库/依赖": 1
+   "未知": 1
   },
-  "kev": 1,
-  "with_poc": 1,
-  "with_poc_source": 1,
+  "kev": 0,
+  "with_poc": 0,
+  "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-105133",
+   "id": "CVE-2026-110911",
    "tier": "critical",
-   "title": "AhsayCBS random参数认证绕过",
-   "title_zh": "AhsayCBS random参数认证绕过",
-   "summary_zh": "攻击者操纵random参数即可绕过认证获取AhsayCBS管理权限,该漏洞已在野利用。",
-   "published": "2026-10-04T07:16:33.087",
-   "cvss": 7.3,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-   "epss": 0.00383,
-   "epss_percentile": 0.30672,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-105133"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/942688"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/vuln/413350"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/horizon3ai/AhsayCBS-Auth-Bypass-RCE",
-     "label": "horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-10-17",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至10.3.2之后版本,限制管理端口公网暴露并排查入侵痕迹",
-   "repro_worthy": "值得",
-   "repro_note": "认证接口传入random参数,构造特定取值绕过校验",
-   "impact_scope": "备份服务器,管理面常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
-   "description": "A vulnerability was detected in Ahsay AhsayCBS up to 10.3.2. This affects the function checkSysPwd of the file com/ahsay/obs/api/ApiStructsAction.java of the component API. Performing a manipulation of the argument random results in improper authentication. It is possible to initiate the attack remotely. The exploit is now public and may be used. Upgrading to version 10.3.4 is able to mitigate this issue. It is recommended to upgrade the affected component."
-  },
-  {
-   "id": "CVE-2026-110536",
-   "tier": "critical",
-   "title": "D-Link路由器HNAP未认证命令注入",
-   "title_zh": "D-Link路由器HNAP未认证命令注入",
-   "summary_zh": "远程未认证攻击者向HNAP CGI接口SOAPACTION参数注入命令,可完全控制设备。",
-   "published": "2026-10-14T19:17:10.610",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/Walnut1337/Command-Injection-DIR-868L/blob/main/ADVISORY.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/Walnut1337/Command-Injection-DIR-868L/tree/main/poc"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-110536"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "该型号已停止支持,建议停用或更换设备,勿将HNAP接口暴露公网",
-   "repro_worthy": "值得",
-   "repro_note": "未授权请求/htdocs/cgibin,SOAPACTION头注入系统命令",
-   "impact_scope": "消费级路由器,HNAP接口易暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110536",
-   "description": "A vulnerability was determined in D-Link DIR-868L 2.01b05. This impacts the function system of the file /htdocs/cgibin of the component HNAP CGI Handler. Executing a manipulation of the argument SOAPACTION can lead to os command injection. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized."
-  },
-  {
-   "id": "CVE-2026-55680",
-   "tier": "critical",
-   "title": "WeGIA计费接口未授权SQL注入",
-   "title_zh": "WeGIA计费接口未授权SQL注入",
-   "summary_zh": "未认证攻击者向codigo参数注入SQL,可读取或篡改计费与凭据数据。",
-   "published": "2026-10-14T20:17:50.193",
+   "title": "Wheels动态查询SQL注入",
+   "title_zh": "Wheels动态查询SQL注入",
+   "summary_zh": "攻击者可通过动态查询与按键查找接口注入恶意值，导致SQL注入，窃取或篡改数据库。",
+   "published": "2026-10-15T04:18:22.813",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -148,15 +43,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/LabRedesCefetRJ/WeGIA/commit/f819be361f984592c4b5a35db830495b4e2263fa"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/LabRedesCefetRJ/WeGIA/issues/184"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/LabRedesCefetRJ/WeGIA/pull/1705"
+     "url": "https://github.com/wheels-dev/wheels/security/advisories/GHSA-96rm-h22v-925x"
     }
    ],
    "poc": [],
@@ -167,118 +54,22 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至3.8.6或更高版本,并对codigo参数使用参数化查询",
-   "repro_worthy": "值得",
-   "repro_note": "未授权POST cadastro_cobranca.php,codigo参数注入SQL",
-   "impact_scope": "WeGIA Web系统,数据库敏感数据",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55680",
-   "description": "Prior to 3.8.6, unauthenticated POST requests to web/html/socio/sistema/cadastro_cobranca.php can place a quoted SQL expression in the codigo parameter, which extract($_REQUEST) passes into the WHERE codigo= clause of an UPDATE statement without validation or parameter binding. Quoting the value bypasses MariaDB type conversion for the VARCHAR column and permits arbitrary SQL execution without a session."
-  },
-  {
-   "id": "CVE-2026-55683",
-   "tier": "critical",
-   "title": "WeGIA未授权SQL注入可篡改数据",
-   "title_zh": "WeGIA未授权SQL注入可篡改数据",
-   "summary_zh": "远程攻击者利用受影响参数执行任意SQL,读取或修改计费与凭据数据。",
-   "published": "2026-10-14T20:17:50.640",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/LabRedesCefetRJ/WeGIA/commit/f819be361f984592c4b5a35db830495b4e2263fa"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/LabRedesCefetRJ/WeGIA/issues/184"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/LabRedesCefetRJ/WeGIA/pull/1705"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级WeGIA至修复版本,并限制数据库账号最小权限",
+   "action_zh": "关注官方补丁；限制动态查询与按键查找接收外部输入并参数化",
    "repro_worthy": "一般",
-   "repro_note": "未认证请求受影响参数,拼接执行任意SQL语句",
-   "impact_scope": "WeGIA业务数据库,计费与凭据",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55683",
-   "description": "Prior to 3.8.6, the unauthenticated web/html/socio/sistema/cadastro_cobranca.php endpoint accepts POST input through extract($_REQUEST) and directly incorporates valor, valor_pago, id_pessoa, id_socio, and id_sociotipo into UPDATE, INSERT, and SELECT statements without prepared statements. A remote attacker can use the affected parameters to execute arbitrary SQL that reads or modifies WeGIA database content, including billing records and credential data."
-  },
-  {
-   "id": "CVE-2026-55684",
-   "tier": "critical",
-   "title": "WeGIA未授权SQL注入可删库表",
-   "title_zh": "WeGIA未授权SQL注入可删库表",
-   "summary_zh": "远程攻击者执行任意SQL,篡改计费、成员、权限与凭据数据甚至删除数据表。",
-   "published": "2026-10-14T20:17:50.783",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/LabRedesCefetRJ/WeGIA/commit/38cb19baeee90b334817fb9b40f967996c9ee36b"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/LabRedesCefetRJ/WeGIA/issues/183"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/LabRedesCefetRJ/WeGIA/pull/1705"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级WeGIA至修复版本,并限制数据库账号最小权限",
-   "repro_worthy": "一般",
-   "repro_note": "未认证请求受影响参数,注入可删表的高危SQL语句",
-   "impact_scope": "WeGIA核心数据库,数据破坏风险高",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55684",
-   "description": "A remote attacker can execute arbitrary SQL to read or modify billing, member, employee, permission, and credential data or to delete database tables."
+   "repro_note": "入口：findOneByEmail/where/findByKey等，传入外部值",
+   "impact_scope": "Web应用框架，SQL注入可窃取数据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110911",
+   "description": "Wheels 1.1.8 through 4.1.1 allows SQL injection when caller-supplied quoted values are parsed again as SQL by dynamic finders (such as findOneByEmail), the query builder's where(property, value) and where(property, operator, value), string/UUID-key lookup paths (findByKey, updateByKey, deleteByKey and findOrCreateBy...), and validatesUniquenessOf. The parser incorrectly treats a doubled single quote as the end of a literal."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "2ed024169c24e4f6adc401f696756325a40f9765",
-   "url": "https://github.com/envoyproxy/envoy/commit/2ed024169c24e4f6adc401f696756325a40f9765",
-   "title": "network: preserve SocketInterface in Utility::getAddressWithPort (#48297)",
-   "date": "2026-10-14T21:47:59",
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "b192fc29d662c2ada3fc9d9a944a20486ba4eff5",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/b192fc29d662c2ada3fc9d9a944a20486ba4eff5",
+   "title": "avformat/rtpdec_rfc4175: Return the recovered frame with its own timestamp",
+   "date": "2026-10-15T00:58:38",
    "score": 2,
    "matched": [
     "安全修复"
@@ -286,14 +77,38 @@
    "cve": null
   },
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "41433a0ff4f4510b120fab782d7e1e50f44bc1b7",
-   "url": "https://github.com/envoyproxy/envoy/commit/41433a0ff4f4510b120fab782d7e1e50f44bc1b7",
-   "title": "deps: Update QUICHE to 132bfd9 (#48288)",
-   "date": "2026-10-14T21:17:37",
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "cdfad4aed8b8e3ddcaddee3f8f2a9398f9db9c34",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/cdfad4aed8b8e3ddcaddee3f8f2a9398f9db9c34",
+   "title": "avformat/rtpdec_rfc4175: Return no packet when the first field ends",
+   "date": "2026-10-15T00:58:38",
    "score": 2,
    "matched": [
     "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "0c058a08554af2ae962497e7453c9595bc12f998",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/0c058a08554af2ae962497e7453c9595bc12f998",
+   "title": "avformat/rtpenc_mpv: Do not read a picture header past the end of the packet",
+   "date": "2026-10-15T00:58:38",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openbsd/src",
+   "sha": "422e5b9a59c2b57cb6edeee845eef85e32c124f3",
+   "url": "https://github.com/openbsd/src/commit/422e5b9a59c2b57cb6edeee845eef85e32c124f3",
+   "title": "uhidev: the report size when doing USB_GET_REPORT could exceed the size",
+   "date": "2026-10-15T00:41:41",
+   "score": 2,
+   "matched": [
+    "缓冲区溢出"
    ],
    "cve": null
   }

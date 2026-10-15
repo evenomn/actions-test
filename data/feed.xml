@@ -5,53 +5,16 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
-    <lastBuildDate>Wed, 14 Oct 2026 23:59:14 +0000</lastBuildDate>
+    <pubDate>Thu, 15 Oct 2026 05:59:03 +0000</pubDate>
+    <lastBuildDate>Thu, 15 Oct 2026 05:59:03 +0000</lastBuildDate>
     <item>
-      <title>[critical]AhsayCBS random参数认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105133</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105133-2026-10-14</guid>
-      <description>CVE-2026-105133 · 🎯P0 立即处置 · 披露 2026-10-04 · CVSS 7.3 · EPSS 0.4%,前 31% · 类型 认证绕过 · 难度 低(远程·免认证)
-A vulnerability was detected in Ahsay AhsayCBS up to 10.3.2. Performing a manipulation of the argument random results in improper authentication.
-信号: 🔥 KEV 在野利用,CISA 限期 2026-10-17 | 有PoC
-[horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/horizon3ai/AhsayCBS-Auth-Bypass-RCE)</description>
-      <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]D-Link路由器HNAP未认证命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110536</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110536-2026-10-14</guid>
-      <description>CVE-2026-110536 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
-A vulnerability was determined in D-Link DIR-868L 2.01b05. The exploit has been publicly disclosed and may be utilized.
+      <title>[critical]Wheels动态查询SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110911</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110911-2026-10-15</guid>
+      <description>CVE-2026-110911 · 🎯P1 重点关注 · 披露 2026-10-15 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
+Wheels 1.1.8 through 4.1.1 allows SQL injection when caller-supplied quoted values are parsed again as SQL by dynamic finders (such as findOneByEmail), the quer…
 信号:</description>
-      <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WeGIA计费接口未授权SQL注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-55680</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-55680-2026-10-14</guid>
-      <description>CVE-2026-55680 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 开发库/依赖 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
-Prior to 3.8.6, unauthenticated POST requests to web/html/socio/sistema/cadastro_cobranca.php can place a quoted SQL expression in the codigo parameter, which e…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WeGIA未授权SQL注入可篡改数据</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-55683</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-55683-2026-10-14</guid>
-      <description>CVE-2026-55683 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
-A remote attacker can use the affected parameters to execute arbitrary SQL that reads or modifies WeGIA database content, including billing records and credenti…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WeGIA未授权SQL注入可删库表</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-55684</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-55684-2026-10-14</guid>
-      <description>CVE-2026-55684 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
-A remote attacker can execute arbitrary SQL to read or modify billing, member, employee, permission, and credential data or to delete database tables.
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
+      <pubDate>Thu, 15 Oct 2026 05:59:03 +0000</pubDate>
     </item>
   </channel>
 </rss>
