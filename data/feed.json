@@ -1,18 +1,18 @@
 {
  "version": 3,
- "generated_at": "2026-10-15T05:59:03+00:00",
+ "generated_at": "2026-10-15T14:14:58+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 3,
  "stats": {
-  "total": 1,
+  "total": 3,
   "by_tier": {
-   "critical": 1
+   "critical": 3
   },
   "by_urgency": {
-   "P1 重点关注": 1
+   "P1 重点关注": 3
   },
   "by_category": {
-   "未知": 1
+   "未知": 3
   },
   "kev": 0,
   "with_poc": 0,
@@ -22,19 +22,19 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-110911",
+   "id": "CVE-2026-109694",
    "tier": "critical",
-   "title": "Wheels动态查询SQL注入",
-   "title_zh": "Wheels动态查询SQL注入",
-   "summary_zh": "攻击者可通过动态查询与按键查找接口注入恶意值，导致SQL注入，窃取或篡改数据库。",
-   "published": "2026-10-15T04:18:22.813",
+   "title": "Fluent CRM权限分配提权",
+   "title_zh": "Fluent CRM权限分配提权",
+   "summary_zh": "攻击者可利用权限分配错误提升权限，进而控制WordPress站点。",
+   "published": "2026-10-15T11:17:24.537",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "SQL注入"
+    "CWE-266"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -43,7 +43,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/wheels-dev/wheels/security/advisories/GHSA-96rm-h22v-925x"
+     "url": "https://patchstack.com/database/wordpress/plugin/fluent-crm/vulnerability/wordpress-fluent-crm-plugin-3-2-5-privilege-escalation-vulnerability?_s_id=cve"
     }
    ],
    "poc": [],
@@ -54,58 +54,102 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "关注官方补丁；限制动态查询与按键查找接收外部输入并参数化",
-   "repro_worthy": "一般",
-   "repro_note": "入口：findOneByEmail/where/findByKey等，传入外部值",
-   "impact_scope": "Web应用框架，SQL注入可窃取数据",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110911",
-   "description": "Wheels 1.1.8 through 4.1.1 allows SQL injection when caller-supplied quoted values are parsed again as SQL by dynamic finders (such as findOneByEmail), the query builder's where(property, value) and where(property, operator, value), string/UUID-key lookup paths (findByKey, updateByKey, deleteByKey and findOrCreateBy...), and validatesUniquenessOf. The parser incorrectly treats a doubled single quote as the end of a literal."
+   "action_zh": "升级Fluent CRM至修复版本，无法升级则停用",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件，站点后台提权风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109694",
+   "description": "Incorrect Privilege Assignment vulnerability in WP ManageNinja LLC Fluent CRM fluent-crm allows Privilege Escalation.This issue affects Fluent CRM: from n/a through 3.2.5."
+  },
+  {
+   "id": "CVE-2026-109686",
+   "tier": "critical",
+   "title": "Link Whisper反序列化对象注入",
+   "title_zh": "Link Whisper反序列化对象注入",
+   "summary_zh": "攻击者可触发不可信数据反序列化，造成对象注入并控制站点。",
+   "published": "2026-10-15T13:17:11.540",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/link-whisper/vulnerability/wordpress-link-whisper-free-plugin-0-9-7-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Link Whisper Free至修复版本或停用",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件，站点代码执行风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109686",
+   "description": "Deserialization of Untrusted Data vulnerability in Link Whisper INC Link Whisper Free link-whisper allows Object Injection.This issue affects Link Whisper Free: from n/a through 0.9.7."
+  },
+  {
+   "id": "CVE-2026-109892",
+   "tier": "critical",
+   "title": "Frontend Admin权限分配提权",
+   "title_zh": "Frontend Admin权限分配提权",
+   "summary_zh": "攻击者可利用权限分配错误提升权限，可能控制站点后台。",
+   "published": "2026-10-15T13:17:12.697",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-266"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/acf-frontend-form-element/vulnerability/wordpress-frontend-admin-by-dynamiapps-plugin-3-29-13-privilege-escalation-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Frontend Admin至修复版本或停用",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress表单插件，后台提权风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109892",
+   "description": "Incorrect Privilege Assignment vulnerability in Shabti Kaplan Frontend Admin by DynamiApps acf-frontend-form-element allows Privilege Escalation.This issue affects Frontend Admin by DynamiApps: from n/a through 3.29.13."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "b192fc29d662c2ada3fc9d9a944a20486ba4eff5",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/b192fc29d662c2ada3fc9d9a944a20486ba4eff5",
-   "title": "avformat/rtpdec_rfc4175: Return the recovered frame with its own timestamp",
-   "date": "2026-10-15T00:58:38",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "cdfad4aed8b8e3ddcaddee3f8f2a9398f9db9c34",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/cdfad4aed8b8e3ddcaddee3f8f2a9398f9db9c34",
-   "title": "avformat/rtpdec_rfc4175: Return no packet when the first field ends",
-   "date": "2026-10-15T00:58:38",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "0c058a08554af2ae962497e7453c9595bc12f998",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/0c058a08554af2ae962497e7453c9595bc12f998",
-   "title": "avformat/rtpenc_mpv: Do not read a picture header past the end of the packet",
-   "date": "2026-10-15T00:58:38",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "openbsd/src",
-   "sha": "422e5b9a59c2b57cb6edeee845eef85e32c124f3",
-   "url": "https://github.com/openbsd/src/commit/422e5b9a59c2b57cb6edeee845eef85e32c124f3",
-   "title": "uhidev: the report size when doing USB_GET_REPORT could exceed the size",
-   "date": "2026-10-15T00:41:41",
+   "repo": "qemu/qemu",
+   "sha": "1ce27ff81adc64288846a98310236fc86d2f7a58",
+   "url": "https://github.com/qemu/qemu/commit/1ce27ff81adc64288846a98310236fc86d2f7a58",
+   "title": "pr-manager-helper: fix sense buffer overflow",
+   "date": "2026-10-15T08:55:17",
    "score": 2,
    "matched": [
     "缓冲区溢出"
