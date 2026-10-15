@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-15T14:14:58+00:00",
- "count": 102,
+ "updated_at": "2026-10-15T20:25:25+00:00",
+ "count": 104,
  "count_recommended": 15,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -1149,6 +1149,59 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-21589",
+   "title": "Bitbucket DC 未授权任意文件读取",
+   "first_seen": "2026-10-08",
+   "last_seen": "2026-10-15",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-05",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权请求访问应用根目录文件的接口，需预知精确文件名与路径",
+   "impact_scope": "企业代码托管平台，内网高价值目标",
+   "action_zh": "升级到 9.4.26 或 10.2.8 及以上版本",
+   "summary_zh": "未认证攻击者可直接读取应用根目录下特定文件，需预知文件名与路径，导致源码、配置等敏感信息泄露。",
+   "category": "OA/协同办公",
+   "cvss": 7.5,
+   "epss": 0.02777,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-10-18",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/watchtowrlabs/watchTowr-vs-Atlassian-CVE-2026-21589",
+     "label": "watchtowrlabs/watchTowr-vs-Atlassian-CVE-2026-21589 14★(有源码)"
+    },
+    {
+     "url": "https://github.com/MarcusProgram/CVE-2026-21589",
+     "label": "MarcusProgram/CVE-2026-21589 10★(有源码)"
+    }
+   ],
+   "affected": "atlassian bitbucket_data_center >=7.17.0 <9.4.26; atlassian bitbucket_data_center >=9.5.0 <10.2.8",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://jira.atlassian.com/browse/BAM-26567"
+    },
+    {
+     "label": "厂商通告",
+     "url": "https://jira.atlassian.com/browse/BSERV-20604"
+    },
+    {
+     "label": "厂商通告",
+     "url": "https://jira.atlassian.com/browse/CONFSERVER-104488"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-21589",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-88779",
    "title": "Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability",
    "first_seen": "2026-10-05",
@@ -1243,6 +1296,55 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-110958",
+   "title": "Wavlink路由器堆溢出 未认证远程",
+   "first_seen": "2026-10-15",
+   "last_seen": "2026-10-15",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-15",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "向设备HTTP管理接口发送构造请求，触发堆溢出",
+   "impact_scope": "SOHO路由器，公网边界设备",
+   "action_zh": "暂无官方修复，建议关闭WAN侧管理并限制访问",
+   "summary_zh": "未认证攻击者可向WN530HG4B管理接口发送构造请求触发堆溢出，导致设备崩溃或被远程控制。",
+   "category": null,
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/shlln/CVE-2026-110958",
+     "label": "shlln/CVE-2026-110958 0★(有源码)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://dl.wavlink.com/firmware/RD/WN530BE2_WAVLINK-WO-2026-09-24-841a51c6d5_tclinux.bin"
+    },
+    {
+     "label": "参考",
+     "url": "https://drive.google.com/file/d/12OOh8g9YDCbD-Q4cc52J6TH9KuOoD44A/view?usp=drive_link"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-110958"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110958",
    "change_note": null
   },
   {
@@ -1886,6 +1988,50 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-84731",
+   "title": "Nutanix Prism 伪造头认证绕过",
+   "first_seen": "2026-10-15",
+   "last_seen": "2026-10-15",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-15",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权请求管理API并添加伪造内部管理HTTP头绕过认证",
+   "impact_scope": "超融合管理平台，控制整个集群",
+   "action_zh": "升级至官方修复版本，临时限制管理接口访问来源",
+   "summary_zh": "未认证攻击者在请求中加入伪造的内部管理HTTP头即可绕过认证，完全控制Prism Element管理API。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://download.nutanix.com/alerts/Security_Advisory_0058.pdf"
+    },
+    {
+     "label": "参考",
+     "url": "https://portal.nutanix.com/page/documents/list?type=software&filterKey=software&filterVal=AOS"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.nutanix.com/support"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84731",
    "change_note": null
   },
   {
@@ -3133,50 +3279,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-71449",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-21589",
-   "title": "CVE-2026-21589",
-   "first_seen": "2026-10-08",
-   "last_seen": "2026-10-08",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-10-05",
-   "urgency": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "action_zh": null,
-   "summary_zh": null,
-   "category": "OA/协同办公",
-   "cvss": 9.3,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "Atlassian(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://jira.atlassian.com/browse/BAM-26567"
-    },
-    {
-     "label": "参考",
-     "url": "https://jira.atlassian.com/browse/BSERV-20604"
-    },
-    {
-     "label": "参考",
-     "url": "https://jira.atlassian.com/browse/CONFSERVER-104488"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-21589",
    "change_note": null
   },
   {

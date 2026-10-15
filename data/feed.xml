@@ -5,34 +5,90 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 15 Oct 2026 14:14:58 +0000</pubDate>
-    <lastBuildDate>Thu, 15 Oct 2026 14:14:58 +0000</lastBuildDate>
+    <pubDate>Thu, 15 Oct 2026 20:25:25 +0000</pubDate>
+    <lastBuildDate>Thu, 15 Oct 2026 20:25:25 +0000</lastBuildDate>
     <item>
-      <title>[critical]Fluent CRM权限分配提权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109694</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109694-2026-10-15</guid>
-      <description>CVE-2026-109694 · 🎯P1 重点关注 · 披露 2026-10-15 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
-Incorrect Privilege Assignment vulnerability in WP ManageNinja LLC Fluent CRM fluent-crm allows Privilege Escalation.This issue affects Fluent CRM: from n/a thr…
-信号:</description>
-      <pubDate>Thu, 15 Oct 2026 14:14:58 +0000</pubDate>
+      <title>[critical]Bitbucket DC 未授权任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21589</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21589-2026-10-15</guid>
+      <description>CVE-2026-21589 · 🎯P0 立即处置 · 披露 2026-10-05 · 组件 OA/协同办公 · CVSS 7.5 · EPSS 2.8%,前 86% · 类型 任意文件读取 · 难度 低(远程·免认证)
+This Arbitrary File Access vulnerability allows an unauthenticated attacker to access specific files within the web application root directory in affected versi…
+信号: 🔥 KEV 在野利用,CISA 限期 2026-10-18 | 有PoC | 关注词:atlassian
+[watchtowrlabs/watchTowr-vs-Atlassian-CVE-2026-21589 14★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-Atlassian-CVE-2026-21589) · [MarcusProgram/CVE-2026-21589 10★(有源码)](https://github.com/MarcusProgram/CVE-2026-21589)</description>
+      <pubDate>Thu, 15 Oct 2026 20:25:25 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Link Whisper反序列化对象注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109686</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109686-2026-10-15</guid>
-      <description>CVE-2026-109686 · 🎯P1 重点关注 · 披露 2026-10-15 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Deserialization of Untrusted Data vulnerability in Link Whisper INC Link Whisper Free link-whisper allows Object Injection.This issue affects Link Whisper Free:…
-信号:</description>
-      <pubDate>Thu, 15 Oct 2026 14:14:58 +0000</pubDate>
+      <title>[critical]Vitess 反射型XSS 需诱导点击</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-104252</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-104252-2026-10-15</guid>
+      <description>CVE-2026-104252 · 🎯P1 重点关注 · 披露 2026-10-15 · 组件 Web框架 · CVSS 9.8 · EPSS 0.9%,前 58% · 类型 XSS/CWE-80 · 难度 低(远程·免认证)
+ Impact | Field | Value | |-------|-------| | Type | Reflected Cross-Site Scripting (XSS) | | CVSS 3.1 | AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:N = 7.7…
+信号: 关注词:nginx</description>
+      <pubDate>Thu, 15 Oct 2026 20:25:25 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Frontend Admin权限分配提权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109892</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109892-2026-10-15</guid>
-      <description>CVE-2026-109892 · 🎯P1 重点关注 · 披露 2026-10-15 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
-Incorrect Privilege Assignment vulnerability in Shabti Kaplan Frontend Admin by DynamiApps acf-frontend-form-element allows Privilege Escalation.This issue affe…
+      <title>[critical]Wavlink路由器堆溢出 未认证远程</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110958</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110958-2026-10-15</guid>
+      <description>CVE-2026-110958 · 🎯P1 重点关注 · 披露 2026-10-15 · CVSS 10.0 · 类型 内存破坏/堆溢出 · 难度 低(远程·免认证)
+A vulnerability was found in Wavlink WN530HG4B M30HG4B_V260724. The exploit has been made public and could be used.
+信号: 有PoC
+[shlln/CVE-2026-110958 0★(有源码)](https://github.com/shlln/CVE-2026-110958)</description>
+      <pubDate>Thu, 15 Oct 2026 20:25:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Nutanix Prism 伪造头认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-84731</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-84731-2026-10-15</guid>
+      <description>CVE-2026-84731 · 🎯P1 重点关注 · 披露 2026-10-15 · CVSS 9.8 · 类型 认证欺骗/CWE-302 · 难度 低(远程·免认证)
+An unauthenticated remote attacker can bypass authentication and gain full access to administrative API endpoints in Nutanix Prism Element by including a crafte…
 信号:</description>
-      <pubDate>Thu, 15 Oct 2026 14:14:58 +0000</pubDate>
+      <pubDate>Thu, 15 Oct 2026 20:25:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Podman 镜像与检查点混淆 不安全执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-94603</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-94603-2026-10-15</guid>
+      <description>CVE-2026-94603 · 🎯P1 重点关注 · 披露 2026-10-15 · 组件 容器/虚拟化 · CVSS 10.0 · EPSS 0.9%,前 59% · 类型 CWE-693 · 难度 低(远程·免认证)
+Conflating container images and checkpoints in podman run allows inherently insecure behavior as the image can now control how it is executed.
+信号:</description>
+      <pubDate>Thu, 15 Oct 2026 20:25:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Argo CD 授权校验错误 越权操作</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-77459</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-77459-2026-10-15</guid>
+      <description>CVE-2026-77459 · 🎯P1 重点关注 · 披露 2026-10-15 · CVSS 9.9 · EPSS 0.7%,前 53% · 类型 授权错误 · 难度 低(远程·需低权限)
+ Credits The Argo CD team would like to thank @RealFakeAccount, @AdamKorcz, @0xshylines, @thevilledev, @HenriWilliams, @cherez0ff, @ARSB1, and @zwindler for …
+信号:</description>
+      <pubDate>Thu, 15 Oct 2026 20:25:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]KEDA 命名空间管理员提权至集群管理员</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-77524</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-77524-2026-10-15</guid>
+      <description>CVE-2026-77524 · 🎯P1 重点关注 · 披露 2026-10-15 · CVSS 9.9 · EPSS 0.6%,前 49% · 类型 权限提升/SSRF · 难度 低(远程·需低权限)
+This is effectively privilege escalation from namespace admin to cluster admin in real environments: a cluster-wide Secret read alone is enough to find a token …
+信号:</description>
+      <pubDate>Thu, 15 Oct 2026 20:25:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]防火墙GeoIP路径遍历 root写文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-57155</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-57155-2026-10-15</guid>
+      <description>CVE-2026-57155 · 🎯P1 重点关注 · 披露 2026-10-15 · CVSS 9.9 · 类型 路径遍历/任意文件读取/CWE-73 · 难度 低(远程·需低权限)
+A user with Firewall Alias Edit privilege can configure an attacker-controlled GeoIP source URL and supply an archive whose country code traverses into another …
+信号:</description>
+      <pubDate>Thu, 15 Oct 2026 20:25:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Neptune Gremlin反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110812</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110812-2026-10-15</guid>
+      <description>CVE-2026-110812 · 🎯P1 重点关注 · 披露 2026-10-15 · CVSS 9.9 · 类型 反序列化(RCE)/SSRF · 难度 低(远程·需低权限)
+Deserialization of untrusted data in the Gremlin graph data import component in Amazon Neptune engine might allow an authenticated remote actor with standard da…
+信号:</description>
+      <pubDate>Thu, 15 Oct 2026 20:25:25 +0000</pubDate>
     </item>
   </channel>
 </rss>

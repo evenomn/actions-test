@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-15 14:14 UTC · 共 **102** 条(强烈推荐 15 / 值得 87)
+**更新**: 2026-10-15 20:25 UTC · 共 **104** 条(强烈推荐 15 / 值得 89)
 
 ---
 
@@ -236,6 +236,16 @@ PoC: [murrez/CVE-2026-88772 13★(有源码)](https://github.com/murrez/CVE-2026
 PoC: [ressl/cve-2026-87902-poc 38★(有源码)](https://github.com/ressl/cve-2026-87902-poc) · [abraxas/CVE-2026-87902 33★(有源码)](https://github.com/abraxas/CVE-2026-87902)
 参考: [厂商通告](https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp)
 
+### Bitbucket DC 未授权任意文件读取
+[CVE-2026-21589](https://nvd.nist.gov/vuln/detail/CVE-2026-21589) | P0 立即处置 | OA/协同办公 | CVSS 7.5 | EPSS 2.8% | 披露 2026-10-05 | 入库 2026-10-08
+🔥 KEV 在野利用,限期 2026-10-18 | PoC 源码可用
+未认证攻击者可直接读取应用根目录下特定文件，需预知文件名与路径，导致源码、配置等敏感信息泄露。
+复现: 值得 — 未授权请求访问应用根目录文件的接口，需预知精确文件名与路径 · 影响面: 企业代码托管平台，内网高价值目标
+处置: 升级到 9.4.26 或 10.2.8 及以上版本
+影响: atlassian bitbucket_data_center >=7.17.0 <9.4.26; atlassian bitbucket_data_center >=9.5.0 <10.2.8
+PoC: [watchtowrlabs/watchTowr-vs-Atlassian-CVE-2026-21589 14★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-Atlassian-CVE-2026-21589) · [MarcusProgram/CVE-2026-21589 10★(有源码)](https://github.com/MarcusProgram/CVE-2026-21589)
+参考: [厂商通告](https://jira.atlassian.com/browse/BAM-26567) · [厂商通告](https://jira.atlassian.com/browse/BSERV-20604) · [厂商通告](https://jira.atlassian.com/browse/CONFSERVER-104488)
+
 ### Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability
 [CVE-2026-88779](https://nvd.nist.gov/vuln/detail/CVE-2026-88779) | P0 立即处置 | 边界设备/VPN | CVSS 7.5 | EPSS 0.5% | 披露 2026-10-04 | 入库 2026-10-05
 🔥 KEV 在野利用,限期 2026-10-07 | PoC 源码可用
@@ -252,6 +262,15 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 15★(有源码)](https://gi
 处置: 升级至10.3.2之后版本,限制管理端口公网暴露并排查入侵痕迹
 PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/horizon3ai/AhsayCBS-Auth-Bypass-RCE)
 参考: [参考](https://vuldb.com/cve/CVE-2026-105133) · [参考](https://vuldb.com/submit/942688) · [参考](https://vuldb.com/vuln/413350)
+
+### Wavlink路由器堆溢出 未认证远程
+[CVE-2026-110958](https://nvd.nist.gov/vuln/detail/CVE-2026-110958) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-15 | 入库 2026-10-15
+PoC 源码可用
+未认证攻击者可向WN530HG4B管理接口发送构造请求触发堆溢出，导致设备崩溃或被远程控制。
+复现: 值得 — 向设备HTTP管理接口发送构造请求，触发堆溢出 · 影响面: SOHO路由器，公网边界设备
+处置: 暂无官方修复，建议关闭WAN侧管理并限制访问
+PoC: [shlln/CVE-2026-110958 0★(有源码)](https://github.com/shlln/CVE-2026-110958)
+参考: [参考](https://dl.wavlink.com/firmware/RD/WN530BE2_WAVLINK-WO-2026-09-24-841a51c6d5_tclinux.bin) · [参考](https://drive.google.com/file/d/12OOh8g9YDCbD-Q4cc52J6TH9KuOoD44A/view?usp=drive_link) · [参考](https://vuldb.com/cve/CVE-2026-110958)
 
 ### ColdFusion任意文件上传RCE
 [CVE-2026-105899](https://nvd.nist.gov/vuln/detail/CVE-2026-105899) | P1 重点关注 | Web中间件 | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-14
@@ -354,6 +373,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### Nutanix Prism 伪造头认证绕过
+[CVE-2026-84731](https://nvd.nist.gov/vuln/detail/CVE-2026-84731) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-15 | 入库 2026-10-15
+未认证攻击者在请求中加入伪造的内部管理HTTP头即可绕过认证，完全控制Prism Element管理API。
+复现: 值得 — 未授权请求管理API并添加伪造内部管理HTTP头绕过认证 · 影响面: 超融合管理平台，控制整个集群
+处置: 升级至官方修复版本，临时限制管理接口访问来源
+参考: [参考](https://download.nutanix.com/alerts/Security_Advisory_0058.pdf) · [参考](https://portal.nutanix.com/page/documents/list?type=software&filterKey=software&filterVal=AOS) · [参考](https://www.nutanix.com/support)
 
 ### MSQUIC IPv6包堆溢出远程代码执行
 [CVE-2026-105016](https://nvd.nist.gov/vuln/detail/CVE-2026-105016) | P0 立即处置 | 操作系统 | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-14
@@ -533,12 +559,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 [CVE-2026-71449](https://nvd.nist.gov/vuln/detail/CVE-2026-71449) | CVSS 9.3 | 披露 2026-10-01 | 入库 2026-10-08
 复现: 值得
 参考: [参考](https://www.johnsoncontrols.com/trust-center/cybersecurity/security-advisories)
-
-### CVE-2026-21589
-[CVE-2026-21589](https://nvd.nist.gov/vuln/detail/CVE-2026-21589) | OA/协同办公 | CVSS 9.3 | 披露 2026-10-05 | 入库 2026-10-08
-复现: 值得
-影响: Atlassian(产品与版本待 NVD/厂商补充)
-参考: [参考](https://jira.atlassian.com/browse/BAM-26567) · [参考](https://jira.atlassian.com/browse/BSERV-20604) · [参考](https://jira.atlassian.com/browse/CONFSERVER-104488)
 
 ### CVE-2026-91107
 [CVE-2026-91107](https://nvd.nist.gov/vuln/detail/CVE-2026-91107) | ERP/业务系统 | CVSS 9.3 | 披露 2026-10-05 | 入库 2026-10-08
