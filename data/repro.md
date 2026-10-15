@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-14 20:48 UTC · 共 **99** 条(强烈推荐 15 / 值得 84)
+**更新**: 2026-10-14 23:59 UTC · 共 **102** 条(强烈推荐 15 / 值得 87)
 
 ---
 
@@ -244,6 +244,15 @@ PoC: [ressl/cve-2026-87902-poc 38★(有源码)](https://github.com/ressl/cve-20
 PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 15★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker) · [orjanj/netscaler_threat_hunt_helper 0★(有源码)](https://github.com/orjanj/netscaler_threat_hunt_helper)
 参考: [厂商通告](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697174) · [厂商通告](https://community.citrix.com/techzone-blogs/110_security-updates/understanding-and-addressing-cve-2026-88779-in-citrix-netscaler-adc-and-citrix-netscaler-gateway/)
 
+### AhsayCBS random参数认证绕过
+[CVE-2026-105133](https://nvd.nist.gov/vuln/detail/CVE-2026-105133) | P0 立即处置 | CVSS 7.3 | EPSS 0.4% | 披露 2026-10-04 | 入库 2026-10-14
+🔥 KEV 在野利用,限期 2026-10-17 | PoC 源码可用
+攻击者操纵random参数即可绕过认证获取AhsayCBS管理权限,该漏洞已在野利用。
+复现: 值得 — 认证接口传入random参数,构造特定取值绕过校验 · 影响面: 备份服务器,管理面常暴露公网
+处置: 升级至10.3.2之后版本,限制管理端口公网暴露并排查入侵痕迹
+PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/horizon3ai/AhsayCBS-Auth-Bypass-RCE)
+参考: [参考](https://vuldb.com/cve/CVE-2026-105133) · [参考](https://vuldb.com/submit/942688) · [参考](https://vuldb.com/vuln/413350)
+
 ### ColdFusion任意文件上传RCE
 [CVE-2026-105899](https://nvd.nist.gov/vuln/detail/CVE-2026-105899) | P1 重点关注 | Web中间件 | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-14
 攻击者可上传危险类型文件，无需用户交互即可执行任意代码，CVSS 10。
@@ -259,6 +268,13 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 15★(有源码)](https://gi
 处置: 升级至修复版本，限制ColdFusion接口访问
 影响: Adobe(产品与版本待 NVD/厂商补充)
 参考: [参考](https://www.adobe.com/trust/security/products/coldfusion/apsb26-144.html)
+
+### D-Link路由器HNAP未认证命令注入
+[CVE-2026-110536](https://nvd.nist.gov/vuln/detail/CVE-2026-110536) | P1 重点关注 | 网络设备 | CVSS 10.0 | 披露 2026-10-14 | 入库 2026-10-14
+远程未认证攻击者向HNAP CGI接口SOAPACTION参数注入命令,可完全控制设备。
+复现: 值得 — 未授权请求/htdocs/cgibin,SOAPACTION头注入系统命令 · 影响面: 消费级路由器,HNAP接口易暴露公网
+处置: 该型号已停止支持,建议停用或更换设备,勿将HNAP接口暴露公网
+参考: [参考](https://github.com/Walnut1337/Command-Injection-DIR-868L/blob/main/ADVISORY.md) · [参考](https://github.com/Walnut1337/Command-Injection-DIR-868L/tree/main/poc) · [参考](https://vuldb.com/cve/CVE-2026-110536)
 
 ### CVE-2026-93605
 [CVE-2026-93605](https://nvd.nist.gov/vuln/detail/CVE-2026-93605) | P1 重点关注 | CVSS 10.0 | EPSS 0.7% | 披露 2026-10-07 | 入库 2026-10-08
@@ -354,6 +370,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级至厂商修复版本；禁用J-Web虚拟域并限制管理面
 影响: Juniper(产品与版本待 NVD/厂商补充)
 参考: [参考](https://supportportal.juniper.net/JSA112187)
+
+### WeGIA计费接口未授权SQL注入
+[CVE-2026-55680](https://nvd.nist.gov/vuln/detail/CVE-2026-55680) | P1 重点关注 | 开发库/依赖 | CVSS 9.8 | 披露 2026-10-14 | 入库 2026-10-14
+未认证攻击者向codigo参数注入SQL,可读取或篡改计费与凭据数据。
+复现: 值得 — 未授权POST cadastro_cobranca.php,codigo参数注入SQL · 影响面: WeGIA Web系统,数据库敏感数据
+处置: 升级至3.8.6或更高版本,并对codigo参数使用参数化查询
+参考: [参考](https://github.com/LabRedesCefetRJ/WeGIA/commit/f819be361f984592c4b5a35db830495b4e2263fa) · [参考](https://github.com/LabRedesCefetRJ/WeGIA/issues/184) · [参考](https://github.com/LabRedesCefetRJ/WeGIA/pull/1705)
 
 ### 微软OpenSSH UAF远程RCE
 [CVE-2026-97816](https://nvd.nist.gov/vuln/detail/CVE-2026-97816) | P1 重点关注 | 操作系统 | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-13

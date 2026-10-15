@@ -5,261 +5,53 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    <lastBuildDate>Wed, 14 Oct 2026 20:48:11 +0000</lastBuildDate>
+    <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
+    <lastBuildDate>Wed, 14 Oct 2026 23:59:14 +0000</lastBuildDate>
     <item>
-      <title>[critical]Cisco邮件网关路径遍历RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-76519</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-76519-2026-10-14</guid>
-      <description>CVE-2026-76519 · 🎯P0 立即处置 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 路径遍历 · 难度 低(远程·免认证)
-A successful exploit could allow the attacker to write arbitrary files and execute commands with&amp;nbsp;root privileges on the underlying operating system.
-信号: 🔥 KEV 在野利用,CISA 限期 2026-10-17 | 有PoC
-[Mickysalivan/CVE-2026-76519-POC 0★(仅README)](https://github.com/Mickysalivan/CVE-2026-76519-POC)</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Palo Alto PAN-OS管理口RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-0322</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-0322-2026-10-14</guid>
-      <description>CVE-2026-0322 · 🎯P0 立即处置 · 披露 2026-10-14 · 组件 边界设备/VPN · CVSS 8.6 · 类型 代码注入(RCE) · 难度 中(远程·需高权限)
-A remote code execution (RCE) vulnerability in the management interface of Palo Alto Networks PAN-OS® software enables an authenticated attacker with network ac…
-信号: 🔥 KEV 在野利用,CISA 限期 2026-10-17</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]复制接收器命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105134</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105134-2026-10-14</guid>
-      <description>CVE-2026-105134 · 🎯P0 立即处置 · 披露 2026-10-04 · CVSS 10.0 · EPSS 1.8%,前 79% · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
-This vulnerability affects unknown code of the file /rps/api/json/UpdateReceivers.do of the component Replication Receiver.
-信号: 🔥 KEV 在野利用,CISA 限期 2026-10-17 | 有PoC
-[horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/horizon3ai/AhsayCBS-Auth-Bypass-RCE) · [RayanAlmulhim/CVE-2026-105134-lab 0★(有源码)](https://github.com/RayanAlmulhim/CVE-2026-105134-lab)</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]AhsayCBS认证绕过漏洞</title>
+      <title>[critical]AhsayCBS random参数认证绕过</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105133</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105133-2026-10-14</guid>
       <description>CVE-2026-105133 · 🎯P0 立即处置 · 披露 2026-10-04 · CVSS 7.3 · EPSS 0.4%,前 31% · 类型 认证绕过 · 难度 低(远程·免认证)
 A vulnerability was detected in Ahsay AhsayCBS up to 10.3.2. Performing a manipulation of the argument random results in improper authentication.
-信号: 🔥 KEV 在野利用,CISA 限期 2026-10-17</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
+信号: 🔥 KEV 在野利用,CISA 限期 2026-10-17 | 有PoC
+[horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/horizon3ai/AhsayCBS-Auth-Bypass-RCE)</description>
+      <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Juniper J-Web认证绕过致接管</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101954</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101954-2026-10-14</guid>
-      <description>CVE-2026-101954 · 🎯P0 立即处置 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
-An Improper Authentication vulnerability in the J-Web management interface and its NETCONF session handling of Juniper Networks Junos OS and Junos OS Evolved al…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper httpd栈溢出RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101983</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101983-2026-10-14</guid>
-      <description>CVE-2026-101983 · 🎯P0 立即处置 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
-A Stack-based Buffer Overflow vulnerability in the httpd process of Juniper Networks Junos OS and Junos OS Evolved allows an unauthenticated network attacker to…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper MX kmd栈溢出RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102182</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102182-2026-10-14</guid>
-      <description>CVE-2026-102182 · 🎯P0 立即处置 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
-A Stack-based Buffer Overflow vulnerability in the kmd component of Juniper Networks Junos OS on MX Series allows an unauthenticated network attacker to execute…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper rpd BGP栈溢出RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-33789</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-33789-2026-10-14</guid>
-      <description>CVE-2026-33789 · 🎯P0 立即处置 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
-A Stack-based Buffer Overflow vulnerability in the routing protocol daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows an unauthenticated BGP…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper SRX栈溢出致RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-33792</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-33792-2026-10-14</guid>
-      <description>CVE-2026-33792 · 🎯P0 立即处置 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
-A Stack-based Buffer Overflow vulnerability in the srxpfe process of Juniper Networks Junos OS on SRX Series allows an unauthenticated network attacker to execu…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WeGIA 未授权 SQL注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-55683</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-55683-2026-10-14</guid>
-      <description>CVE-2026-55683 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
-A remote attacker can use the affected parameters to execute arbitrary SQL that reads or modifies WeGIA database content, including billing records and credenti…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]未授权 SQL注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-55684</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-55684-2026-10-14</guid>
-      <description>CVE-2026-55684 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
-A remote attacker can execute arbitrary SQL to read or modify billing, member, employee, permission, and credential data or to delete database tables.
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]login方法SQL注入漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-55572</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-55572-2026-10-14</guid>
-      <description>CVE-2026-55572 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 10.0 · 类型 SQL注入 · 难度 低(远程·免认证)
-The login() methods execute those strings with PDO::query() before effective sanitization, so an unauthenticated user can inject SQL when alt_auth is installed …
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]D-Link DIR-868L命令注入</title>
+      <title>[critical]D-Link路由器HNAP未认证命令注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110536</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110536-2026-10-14</guid>
       <description>CVE-2026-110536 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
 A vulnerability was determined in D-Link DIR-868L 2.01b05. The exploit has been publicly disclosed and may be utilized.
 信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]K8s Operator JWT认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-77524</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-77524-2026-10-14</guid>
-      <description>CVE-2026-77524 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 权限提升/SSRF · 难度 低(远程·需低权限)
-The JWT-shape filter from the prior CVE-2025-68476 remediation accepts the operator token because its subject is a Kubernetes ServiceAccount, so the attacker ca…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]面板web.conf参数注入致提权RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108390</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108390-2026-10-14</guid>
-      <description>CVE-2026-108390 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.9 · 类型 参数拼接注入/代码注入(RCE) · 难度 低(远程·需低权限)
-By placing a malicious column executable in the injected search path, the user can execute arbitrary code as root.
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper SRX SVR堆溢出漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101950</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101950-2026-10-14</guid>
-      <description>CVE-2026-101950 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-A Heap-based Buffer Overflow vulnerability in the SVR component of Juniper Networks Junos OS on SRX Series allows an unauthenticated network attacker to cause a…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper J-Web未认证RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101956</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101956-2026-10-14</guid>
-      <description>CVE-2026-101956 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
-An Improper Authentication vulnerability in the J-Web web management component of Juniper Networks Junos OS allows an unauthenticated remote attacker to execute…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper内核整数下溢DoS</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101980</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101980-2026-10-14</guid>
-      <description>CVE-2026-101980 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 CWE-191 · 难度 低(远程·免认证)
-An Integer Underflow vulnerability in the kernel of Juniper Networks Junos OS with Extended Echo configured allows an unauthenticated, network-based attacker to…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper J-Web认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101986</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101986-2026-10-14</guid>
-      <description>CVE-2026-101986 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
-An Improper Authentication vulnerability in J-Web of Juniper Networks Junos OS and Junos OS Evolved allows an unauthenticated network attacker to bypass J-Web a…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper rpd BGP栈溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101990</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101990-2026-10-14</guid>
-      <description>CVE-2026-101990 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
-A Stack-based Buffer Overflow vulnerability in the routing protocol daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows a remote configured BG…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper TACACS命令注入提权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102031</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102031-2026-10-14</guid>
-      <description>CVE-2026-102031 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
-An OS Command Injection vulnerability in TACACS of Juniper Networks Junos OS Evolved allows a low-privileged TACACS+-authenticated user to execute commands with…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper sdxd堆溢出RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102175</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102175-2026-10-14</guid>
-      <description>CVE-2026-102175 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-A Heap-based Buffer Overflow vulnerability in the sdxd service-deployment daemon of Juniper Networks Junos OS and Junos OS Evolved allows a remote unauthenticat…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper BGP栈溢出RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102178</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102178-2026-10-14</guid>
-      <description>CVE-2026-102178 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
-A Stack-based Buffer Overflow vulnerability in the BGP routing daemon of Juniper Networks Junos OS and Junos OS Evolved allows a configured BGP flowspec peer to…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Lantronix串口服务器认证缺失</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109439</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109439-2026-10-14</guid>
-      <description>CVE-2026-109439 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
-Lantronix XPress-DR and XPress-DR-I (CoBos-family) firmware through 8.1.0.0 contains a missing authentication vulnerability that allows remote attackers to read…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper rpd BMP栈溢出RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-33796</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-33796-2026-10-14</guid>
-      <description>CVE-2026-33796 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
-A Stack-based Buffer Overflow vulnerability in the routing protocol daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows a configured external …
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juniper rpd EVPN栈溢出RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101982</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101982-2026-10-14</guid>
-      <description>CVE-2026-101982 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 网络设备 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
-A Stack-based Buffer Overflow vulnerability in the routing protocol daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows a configured BGP/EVPN …
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]PHP install.php反序列化RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-55573</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-55573-2026-10-14</guid>
-      <description>CVE-2026-55573 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-An unauthenticated attacker who can reach install.php can therefore execute arbitrary PHP functions with the web server process's privileges, leading to full se…
-信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]PHP应用codigo参数SQL注入</title>
+      <title>[critical]WeGIA计费接口未授权SQL注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-55680</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-55680-2026-10-14</guid>
       <description>CVE-2026-55680 · 🎯P1 重点关注 · 披露 2026-10-14 · 组件 开发库/依赖 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
 Prior to 3.8.6, unauthenticated POST requests to web/html/socio/sistema/cadastro_cobranca.php can place a quoted SQL expression in the codigo parameter, which e…
 信号:</description>
-      <pubDate>Wed, 14 Oct 2026 20:48:11 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]WeGIA未授权SQL注入可篡改数据</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-55683</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-55683-2026-10-14</guid>
+      <description>CVE-2026-55683 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
+A remote attacker can use the affected parameters to execute arbitrary SQL that reads or modifies WeGIA database content, including billing records and credenti…
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]WeGIA未授权SQL注入可删库表</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-55684</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-55684-2026-10-14</guid>
+      <description>CVE-2026-55684 · 🎯P1 重点关注 · 披露 2026-10-14 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
+A remote attacker can execute arbitrary SQL to read or modify billing, member, employee, permission, and credential data or to delete database tables.
+信号:</description>
+      <pubDate>Wed, 14 Oct 2026 23:59:14 +0000</pubDate>
     </item>
   </channel>
 </rss>

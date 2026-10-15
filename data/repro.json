@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-14T20:48:11+00:00",
- "count": 99,
+ "updated_at": "2026-10-14T23:59:14+00:00",
+ "count": 102,
  "count_recommended": 15,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -1197,6 +1197,55 @@
    "change_note": "📈 评分 8.7→7.5(降分)"
   },
   {
+   "id": "CVE-2026-105133",
+   "title": "AhsayCBS random参数认证绕过",
+   "first_seen": "2026-10-14",
+   "last_seen": "2026-10-14",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-04",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "认证接口传入random参数,构造特定取值绕过校验",
+   "impact_scope": "备份服务器,管理面常暴露公网",
+   "action_zh": "升级至10.3.2之后版本,限制管理端口公网暴露并排查入侵痕迹",
+   "summary_zh": "攻击者操纵random参数即可绕过认证获取AhsayCBS管理权限,该漏洞已在野利用。",
+   "category": null,
+   "cvss": 7.3,
+   "epss": 0.00383,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-10-17",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/horizon3ai/AhsayCBS-Auth-Bypass-RCE",
+     "label": "horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-105133"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/942688"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/vuln/413350"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-105899",
    "title": "ColdFusion任意文件上传RCE",
    "first_seen": "2026-10-14",
@@ -1266,6 +1315,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106624",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-110536",
+   "title": "D-Link路由器HNAP未认证命令注入",
+   "first_seen": "2026-10-14",
+   "last_seen": "2026-10-14",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-14",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权请求/htdocs/cgibin,SOAPACTION头注入系统命令",
+   "impact_scope": "消费级路由器,HNAP接口易暴露公网",
+   "action_zh": "该型号已停止支持,建议停用或更换设备,勿将HNAP接口暴露公网",
+   "summary_zh": "远程未认证攻击者向HNAP CGI接口SOAPACTION参数注入命令,可完全控制设备。",
+   "category": "网络设备",
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Walnut1337/Command-Injection-DIR-868L/blob/main/ADVISORY.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Walnut1337/Command-Injection-DIR-868L/tree/main/poc"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-110536"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110536",
    "change_note": null
   },
   {
@@ -1860,6 +1953,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101983",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-55680",
+   "title": "WeGIA计费接口未授权SQL注入",
+   "first_seen": "2026-10-14",
+   "last_seen": "2026-10-14",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-14",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权POST cadastro_cobranca.php,codigo参数注入SQL",
+   "impact_scope": "WeGIA Web系统,数据库敏感数据",
+   "action_zh": "升级至3.8.6或更高版本,并对codigo参数使用参数化查询",
+   "summary_zh": "未认证攻击者向codigo参数注入SQL,可读取或篡改计费与凭据数据。",
+   "category": "开发库/依赖",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/commit/f819be361f984592c4b5a35db830495b4e2263fa"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/issues/184"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/LabRedesCefetRJ/WeGIA/pull/1705"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55680",
    "change_note": null
   },
   {
