@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-15 23:43 UTC · 共 **104** 条(强烈推荐 15 / 值得 89)
+**更新**: 2026-10-16 01:38 UTC · 共 **105** 条(强烈推荐 15 / 值得 90)
 
 ---
 
@@ -374,11 +374,11 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
 
-### Nutanix Prism 伪造头认证绕过
+### Nutanix Prism 认证绕过
 [CVE-2026-84731](https://nvd.nist.gov/vuln/detail/CVE-2026-84731) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-15 | 入库 2026-10-15
-未认证攻击者在请求中加入伪造的内部管理HTTP头即可绕过认证，完全控制Prism Element管理API。
-复现: 值得 — 未授权请求管理API并添加伪造内部管理HTTP头绕过认证 · 影响面: 超融合管理平台，控制整个集群
-处置: 升级至官方修复版本，临时限制管理接口访问来源
+未授权远程攻击者通过特制内部管理HTTP头绕过认证，完全访问Prism管理API。
+复现: 值得 — 未授权向Prism管理API添加内部管理HTTP头绕过认证 · 影响面: 超融合管理面，控集群虚拟机
+处置: 升级修复版本，限制Prism管理接口并校验内部头
 参考: [参考](https://download.nutanix.com/alerts/Security_Advisory_0058.pdf) · [参考](https://portal.nutanix.com/page/documents/list?type=software&filterKey=software&filterVal=AOS) · [参考](https://www.nutanix.com/support)
 
 ### MSQUIC IPv6包堆溢出远程代码执行
@@ -649,6 +649,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 [CVE-2026-107194](https://nvd.nist.gov/vuln/detail/CVE-2026-107194) | CVSS 9.2 | 披露 2026-10-07 | 入库 2026-10-08
 复现: 值得
 参考: [参考](https://jakkaru.de/articles/sungrow-vulnerability-exposes-gigawatts-worldwide) · [参考](https://www.sungrowpower.com/en/products/cloud-software/isolarcloud)
+
+### OpenNMS REST API未授权访问
+[CVE-2026-111235](https://nvd.nist.gov/vuln/detail/CVE-2026-111235) | P1 重点关注 | Web框架 | CVSS 9.1 | 披露 2026-10-15 | 入库 2026-10-16
+未授权远程攻击者可访问REST API，读取监控资产并增删改资源、伪造或抑制告警。
+复现: 值得 — 未授权调用REST接口读取inventory，或增删改资源注入事件 · 影响面: 内网监控平台，管理资产与告警
+处置: 升级至官方修复版本，限制REST API公网访问
+参考: [参考](https://github.com/OpenNMS/opennms/pull/8934)
 
 ### CVE-2026-75969
 [CVE-2026-75969](https://nvd.nist.gov/vuln/detail/CVE-2026-75969) | CVSS 9.1 | 披露 2026-09-30 | 入库 2026-10-08
