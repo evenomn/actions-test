@@ -1,93 +1,40 @@
 {
  "version": 3,
- "generated_at": "2026-10-16T05:57:51+00:00",
+ "generated_at": "2026-10-16T14:04:01+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 0,
  "stats": {
-  "total": 1,
-  "by_tier": {
-   "critical": 1
-  },
-  "by_urgency": {
-   "P1 重点关注": 1
-  },
-  "by_category": {
-   "数据库": 1
-  },
+  "total": 0,
+  "by_tier": {},
+  "by_urgency": {},
+  "by_category": {},
   "kev": 0,
-  "with_poc": 1,
-  "with_poc_source": 1,
+  "with_poc": 0,
+  "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [
-  {
-   "id": "CVE-2026-111444",
-   "tier": "critical",
-   "title": "Wheels框架SQL注入可绕过转义",
-   "title_zh": "Wheels框架SQL注入可绕过转义",
-   "summary_zh": "MySQL/MariaDB反斜杠转义下，请求数据进入内联字面量时，攻击者可注入SQL并篡改查询，窃取或篡改数据。",
-   "published": "2026-10-16T04:18:30.353",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/wheels-dev/wheels/security/advisories/GHSA-mvr9-2h5x-w6cq"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/Syscallh00k/CVE-2026-111444",
-     "label": "Syscallh00k/CVE-2026-111444 0★(有源码)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到厂商修复版本；临时避免内联字面量，改用参数化查询",
-   "repro_worthy": "一般",
-   "repro_note": "请求数据进入内联字面量；MySQL/MariaDB默认转义下测试引号与反斜杠组合",
-   "impact_scope": "Wheels框架Web应用，数据库层暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111444",
-   "description": "Wheels through 4.1.2 allows SQL injection on MySQL/MariaDB with backslash escaping enabled (NO_BACKSLASH_ESCAPES absent) when an application supplies request data to inline-literal paths. Doubling single quotes without accounting for backslash escapes allows a value to alter the query."
-  }
- ],
+ "items": [],
  "media": [],
  "commits": [
   {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "3e6cd5e7603cb81b028b9c17530697b8986bf69a",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/3e6cd5e7603cb81b028b9c17530697b8986bf69a",
-   "title": "avfilter/dnn_io_proc: fix stack overflow in NCHW<->frame sws_scale calls",
-   "date": "2026-10-16T01:49:26",
-   "score": 4,
+   "repo": "php/php-src",
+   "sha": "0d780377e5b031179c4744bb0ddc73addd253db4",
+   "url": "https://github.com/php/php-src/commit/0d780377e5b031179c4744bb0ddc73addd253db4",
+   "title": "Fix double free in ext/ftp data_accept() on accept failure",
+   "date": "2026-10-16T08:35:27",
+   "score": 2,
    "matched": [
-    "越界读写",
-    "缓冲区溢出"
+    "类型混淆/double free"
    ],
    "cve": null
   },
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "bc3dc71cdc6745df0f0e4df6f5c02d68e19a09a8",
-   "url": "https://github.com/envoyproxy/envoy/commit/bc3dc71cdc6745df0f0e4df6f5c02d68e19a09a8",
-   "title": "overload_manager: fix cross-thread use-after-free in AcceptedSocketImpl on exact_balance shutdown (#47455)",
-   "date": "2026-10-16T02:10:12",
+   "repo": "haproxy/haproxy",
+   "sha": "af8d79f2a6dad02ade9584a1190fbef1f771675a",
+   "url": "https://github.com/haproxy/haproxy/commit/af8d79f2a6dad02ade9584a1190fbef1f771675a",
+   "title": "BUG/MEDIUM: mux_quic: prevent uaf on fctl frame after send error",
+   "date": "2026-10-16T08:01:41",
    "score": 2,
    "matched": [
     "UAF"
