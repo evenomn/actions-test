@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-16 14:04 UTC · 共 **105** 条(强烈推荐 15 / 值得 90)
+**更新**: 2026-10-16 19:59 UTC · 共 **107** 条(强烈推荐 15 / 值得 92)
 
 ---
 
@@ -157,6 +157,16 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://gi
 PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026-5430) · [HORKimhab/CVE-2026-5430 0★(仅README)](https://github.com/HORKimhab/CVE-2026-5430)
 参考: [厂商通告](https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2026-5328/)
 
+### BeyondTrust 认证欺骗致文件操作
+[CVE-2026-102764](https://nvd.nist.gov/vuln/detail/CVE-2026-102764) | P0 立即处置 | CVSS 9.8 | EPSS 0.6% | 披露 2026-10-15 | 入库 2026-10-16
+🔥 KEV 在野利用,限期 2026-10-19 | 有PoC
+未授权攻击者可伪造内部组件消息来源，在远程支持设备上执行文件操作，已被在野利用。
+复现: 值得 — 伪造内部组件消息来源，触发设备上的文件操作 · 影响面: 远程支持管理设备，常暴露公网
+处置: 升级至 26.2.3 之后的官方修复版本，并限制设备公网暴露
+影响: beyondtrust remote_support <=26.2.3
+PoC: [Worthes/CVE-2026-102764-Proof-of-concept 0★(仅README)](https://github.com/Worthes/CVE-2026-102764-Proof-of-concept)
+参考: [参考](https://beyondtrustcorp.service-now.com/csm?id=csm_kb_article&sysparm_article=KB0024066) · [参考](https://nvd.nist.gov/vuln/detail/CVE-2026-102764) · [厂商通告](https://www.beyondtrust.com/blog/entry/bt26-05)
+
 ### Citrix NetScaler Improper Input Validation Vulnerability
 [CVE-2026-88771](https://nvd.nist.gov/vuln/detail/CVE-2026-88771) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | EPSS 1.1% | 披露 2026-09-27 | 入库 2026-09-29
 🔥 KEV 在野利用,限期 2026-09-30 | PoC 源码可用
@@ -262,6 +272,15 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 15★(有源码)](https://gi
 处置: 升级至10.3.2之后版本,限制管理端口公网暴露并排查入侵痕迹
 PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/horizon3ai/AhsayCBS-Auth-Bypass-RCE)
 参考: [参考](https://vuldb.com/cve/CVE-2026-105133) · [参考](https://vuldb.com/submit/942688) · [参考](https://vuldb.com/vuln/413350)
+
+### FortiOS 路径遍历任意文件读取
+[CVE-2025-61624](https://nvd.nist.gov/vuln/detail/CVE-2025-61624) | P0 立即处置 | 边界设备/VPN | CVSS 6.5 | EPSS 0.6% | 披露 2026-04-14 | 入库 2026-10-16
+🔥 KEV 在野利用,限期 2026-10-19
+攻击者可构造路径遍历读取设备受限目录外文件，影响6.4至7.6.4全线版本，已在野利用。
+复现: 值得 — 构造含 ../ 的路径参数遍历读取设备受限目录外文件 · 影响面: 边界防火墙/VPN设备，常暴露公网
+处置: 升级至 FortiOS 7.6.5 或 7.4.10 及以上版本，并排查入侵痕迹
+影响: fortinet fortios >=6.4.0 <7.4.10; fortinet fortios >=7.6.0 <7.6.5
+参考: [厂商通告](https://fortiguard.fortinet.com/psirt/FG-IR-26-122) · [参考](https://cert-portal.siemens.com/productcert/html/ssa-975644.html) · [参考](https://unit42.paloaltonetworks.com/fortimanager-cve-2024-47575-peerstitch-malware/#post-188095-_guyq53ar8k05)
 
 ### Wavlink路由器堆溢出 未认证远程
 [CVE-2026-110958](https://nvd.nist.gov/vuln/detail/CVE-2026-110958) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-15 | 入库 2026-10-15

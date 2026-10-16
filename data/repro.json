@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-16T14:04:01+00:00",
- "count": 105,
+ "updated_at": "2026-10-16T19:59:38+00:00",
+ "count": 107,
  "count_recommended": 15,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -731,6 +731,55 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-102764",
+   "title": "BeyondTrust 认证欺骗致文件操作",
+   "first_seen": "2026-10-16",
+   "last_seen": "2026-10-16",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-15",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "伪造内部组件消息来源，触发设备上的文件操作",
+   "impact_scope": "远程支持管理设备，常暴露公网",
+   "action_zh": "升级至 26.2.3 之后的官方修复版本，并限制设备公网暴露",
+   "summary_zh": "未授权攻击者可伪造内部组件消息来源，在远程支持设备上执行文件操作，已被在野利用。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": 0.00601,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-10-19",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "readme",
+   "poc": [
+    {
+     "url": "https://github.com/Worthes/CVE-2026-102764-Proof-of-concept",
+     "label": "Worthes/CVE-2026-102764-Proof-of-concept 0★(仅README)"
+    }
+   ],
+   "affected": "beyondtrust remote_support <=26.2.3",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://beyondtrustcorp.service-now.com/csm?id=csm_kb_article&sysparm_article=KB0024066"
+    },
+    {
+     "label": "参考",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102764"
+    },
+    {
+     "label": "厂商通告",
+     "url": "https://www.beyondtrust.com/blog/entry/bt26-05"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102764",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-88771",
    "title": "Citrix NetScaler Improper Input Validation Vulnerability",
    "first_seen": "2026-09-29",
@@ -1296,6 +1345,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2025-61624",
+   "title": "FortiOS 路径遍历任意文件读取",
+   "first_seen": "2026-10-16",
+   "last_seen": "2026-10-16",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-04-14",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "构造含 ../ 的路径参数遍历读取设备受限目录外文件",
+   "impact_scope": "边界防火墙/VPN设备，常暴露公网",
+   "action_zh": "升级至 FortiOS 7.6.5 或 7.4.10 及以上版本，并排查入侵痕迹",
+   "summary_zh": "攻击者可构造路径遍历读取设备受限目录外文件，影响6.4至7.6.4全线版本，已在野利用。",
+   "category": "边界设备/VPN",
+   "cvss": 6.5,
+   "epss": 0.0058,
+   "difficulty": "中(远程·需高权限)",
+   "kev": true,
+   "kev_due": "2026-10-19",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "fortinet fortios >=6.4.0 <7.4.10; fortinet fortios >=7.6.0 <7.6.5",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-122"
+    },
+    {
+     "label": "参考",
+     "url": "https://cert-portal.siemens.com/productcert/html/ssa-975644.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://unit42.paloaltonetworks.com/fortimanager-cve-2024-47575-peerstitch-malware/#post-188095-_guyq53ar8k05"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-61624",
    "change_note": null
   },
   {
