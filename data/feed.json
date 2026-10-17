@@ -1,75 +1,20 @@
 {
  "version": 3,
- "generated_at": "2026-10-17T05:44:14+00:00",
+ "generated_at": "2026-10-17T13:03:45+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 0,
  "stats": {
-  "total": 1,
-  "by_tier": {
-   "critical": 1
-  },
-  "by_urgency": {
-   "P1 重点关注": 1
-  },
-  "by_category": {
-   "未知": 1
-  },
+  "total": 0,
+  "by_tier": {},
+  "by_urgency": {},
+  "by_category": {},
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [
-  {
-   "id": "CVE-2026-111823",
-   "tier": "critical",
-   "title": "Mage OSS OAuth未知方认证绕过",
-   "title_zh": "Mage OSS OAuth未知方认证绕过",
-   "summary_zh": "未授权攻击者经OAuth流程使用未知提供方可创建会话，造成认证绕过。",
-   "published": "2026-10-17T02:17:18.470",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-390"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/mage-ai/mage-ai/pull/6204"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/mage-ai/mage-ai/pull/6204/changes/76c4f467f3654041d8899b1c4447a985710d26c0"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/mage-ai/mage-ai/pull/6205"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至包含提交76c4f46的版本，或临时禁用OAuth登录。",
-   "repro_worthy": "一般",
-   "repro_note": "OAuth登录/回调入口，配置或指定未知provider触发会话；需启用OAuth。",
-   "impact_scope": "身份认证组件，或致未授权会话",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111823",
-   "description": "Mage OSS through 0.9.80 before 76c4f46 can proceed with session creation upon encountering an unknown OAuth provider."
-  }
- ],
+ "items": [],
  "media": [],
  "commits": []
 }
