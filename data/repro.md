@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-16 23:42 UTC · 共 **107** 条(强烈推荐 15 / 值得 92)
+**更新**: 2026-10-17 01:31 UTC · 共 **111** 条(强烈推荐 15 / 值得 96)
 
 ---
 
@@ -392,6 +392,32 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### Netcore NR256CN预认证栈溢出
+[CVE-2026-111711](https://nvd.nist.gov/vuln/detail/CVE-2026-111711) | P1 重点关注 | OA/协同办公 | CVSS 9.8 | 披露 2026-10-16 | 入库 2026-10-17
+未认证攻击者向任意/router/*.cgi发送超长Basic用户名触发栈溢出，可致进程崩溃或执行代码。
+复现: 值得 — 请求任意/router/*.cgi并带Basic头，用户名超63字节触发栈溢出 · 影响面: 网络路由器,常暴露于公网边界
+处置: 关注厂商补丁；临时限制/router/*.cgi对外访问，避免设备暴露公网
+参考: [参考](https://github.com/lukadqq/netcore-router-public-refs/blob/a44d562736b41c944223297e9144d2ad7fa2aff1/2026.10.15-netcore-nr256cn-basic-auth-stack-overflow.md) · [参考](https://www.vulncheck.com/advisories/netcore-nr256cn-through-1.5.140116-pre-auth-stack-overflow-via-boa-user-ok)
+
+### EseeCloud设备硬编码凭据登录
+[CVE-2026-107617](https://nvd.nist.gov/vuln/detail/CVE-2026-107617) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-16 | 入库 2026-10-17
+攻击者使用内置硬编码凭据即可登录EseeCloud设备，未授权获取摄像头视频与管理权限。
+复现: 值得 — 用已知硬编码账号密码连接设备管理端口或登录接口验证 · 影响面: 物联网摄像头,大量暴露公网
+处置: 联系厂商升级固件；无法升级时移出公网、限制访问并修改默认口令
+参考: [参考](https://eseecloud.app/) · [参考](https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-288-02.json) · [参考](https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-02)
+
+### WeRSS 模板注入未授权RCE
+[CVE-2026-111687](https://nvd.nist.gov/vuln/detail/CVE-2026-111687) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-16 | 入库 2026-10-17
+未认证攻击者通过GET /rss/{feed_id}的template参数注入表达式，绕过过滤执行系统命令。
+复现: 值得 — 未授权 GET /rss/{feed_id}，template 参数注入表达式 · 影响面: 公众号RSS服务,常暴露公网
+处置: 升级至 1.5.3 之后版本；暂无补丁前禁止外网访问并过滤 template 参数
+参考: [参考](https://github.com/rachelos/we-mp-rss/blob/v1.5.3/apis/rss.py#L185-L198) · [参考](https://github.com/rachelos/we-mp-rss/blob/v1.5.3/core/lax/template_parser.py#L1150-L1166) · [参考](https://hackmd.io/@hieuPenguinnn/werss-rss-template-unauth-ssti-rce)
+
+### CVE-2026-111708
+[CVE-2026-111708](https://nvd.nist.gov/vuln/detail/CVE-2026-111708) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-16 | 入库 2026-10-17
+复现: 值得
+参考: [参考](https://github.com/canove/whaticket-community) · [参考](https://github.com/canove/whaticket-community/blob/cf047955a6f0d07002ed89c67d765c28d06f8d52/backend/src/controllers/UserController.ts#L29-L48) · [参考](https://github.com/canove/whaticket-community/blob/cf047955a6f0d07002ed89c67d765c28d06f8d52/backend/src/services/UserServices/CreateUserService.ts#L23-L65)
 
 ### Nutanix Prism 认证绕过
 [CVE-2026-84731](https://nvd.nist.gov/vuln/detail/CVE-2026-84731) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-15 | 入库 2026-10-15

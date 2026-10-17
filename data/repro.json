@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-16T23:42:54+00:00",
- "count": 107,
+ "updated_at": "2026-10-17T01:31:40+00:00",
+ "count": 111,
  "count_recommended": 15,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -2081,6 +2081,178 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-111711",
+   "title": "Netcore NR256CN预认证栈溢出",
+   "first_seen": "2026-10-17",
+   "last_seen": "2026-10-17",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-16",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "请求任意/router/*.cgi并带Basic头，用户名超63字节触发栈溢出",
+   "impact_scope": "网络路由器,常暴露于公网边界",
+   "action_zh": "关注厂商补丁；临时限制/router/*.cgi对外访问，避免设备暴露公网",
+   "summary_zh": "未认证攻击者向任意/router/*.cgi发送超长Basic用户名触发栈溢出，可致进程崩溃或执行代码。",
+   "category": "OA/协同办公",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/lukadqq/netcore-router-public-refs/blob/a44d562736b41c944223297e9144d2ad7fa2aff1/2026.10.15-netcore-nr256cn-basic-auth-stack-overflow.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/netcore-nr256cn-through-1.5.140116-pre-auth-stack-overflow-via-boa-user-ok"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111711",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-107617",
+   "title": "EseeCloud设备硬编码凭据登录",
+   "first_seen": "2026-10-17",
+   "last_seen": "2026-10-17",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-16",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "用已知硬编码账号密码连接设备管理端口或登录接口验证",
+   "impact_scope": "物联网摄像头,大量暴露公网",
+   "action_zh": "联系厂商升级固件；无法升级时移出公网、限制访问并修改默认口令",
+   "summary_zh": "攻击者使用内置硬编码凭据即可登录EseeCloud设备，未授权获取摄像头视频与管理权限。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://eseecloud.app/"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-288-02.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-02"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107617",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-111687",
+   "title": "WeRSS 模板注入未授权RCE",
+   "first_seen": "2026-10-17",
+   "last_seen": "2026-10-17",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-16",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权 GET /rss/{feed_id}，template 参数注入表达式",
+   "impact_scope": "公众号RSS服务,常暴露公网",
+   "action_zh": "升级至 1.5.3 之后版本；暂无补丁前禁止外网访问并过滤 template 参数",
+   "summary_zh": "未认证攻击者通过GET /rss/{feed_id}的template参数注入表达式，绕过过滤执行系统命令。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/rachelos/we-mp-rss/blob/v1.5.3/apis/rss.py#L185-L198"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/rachelos/we-mp-rss/blob/v1.5.3/core/lax/template_parser.py#L1150-L1166"
+    },
+    {
+     "label": "参考",
+     "url": "https://hackmd.io/@hieuPenguinnn/werss-rss-template-unauth-ssti-rce"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111687",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-111708",
+   "title": "CVE-2026-111708",
+   "first_seen": "2026-10-17",
+   "last_seen": "2026-10-17",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-16",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "action_zh": null,
+   "summary_zh": null,
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/canove/whaticket-community"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/canove/whaticket-community/blob/cf047955a6f0d07002ed89c67d765c28d06f8d52/backend/src/controllers/UserController.ts#L29-L48"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/canove/whaticket-community/blob/cf047955a6f0d07002ed89c67d765c28d06f8d52/backend/src/services/UserServices/CreateUserService.ts#L23-L65"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111708",
    "change_note": null
   },
   {
