@@ -1,20 +1,75 @@
 {
  "version": 3,
- "generated_at": "2026-10-17T16:31:49+00:00",
+ "generated_at": "2026-10-17T19:33:05+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 1,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 1,
+  "by_tier": {
+   "critical": 1
+  },
+  "by_urgency": {
+   "P1 重点关注": 1
+  },
+  "by_category": {
+   "未知": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2026-111911",
+   "tier": "critical",
+   "title": "phpMyFAQ WebAuthn认证绕过",
+   "title_zh": "phpMyFAQ WebAuthn认证绕过",
+   "summary_zh": "未认证攻击者可伪造WebAuthn注册请求绑定受害者账户，绕过密码与TOTP登录并接管账户。",
+   "published": "2026-10-17T19:16:33.500",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/thorsten/phpMyFAQ/security/advisories/GHSA-g6cq-6rqg-6c9p"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/thorsten/phpMyFAQ/security/advisories/GHSA-rg9h-f29v-xhxr"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/phpmyfaq-4.0.0-before-4.1.9-authentication-bypass-via-webauthn-credential-injection"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到4.1.9或更高版本，审计异常WebAuthn凭据。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问WebAuthn注册接口，提交受害者用户名及fmt=none伪造证明",
+   "impact_scope": "FAQ Web应用，账户接管风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111911",
+   "description": "phpMyFAQ 4.0.0 before 4.1.9 contains an authentication bypass vulnerability where WebAuthn registration endpoints attach credentials to any account without authentication or challenge validation. Attackers can stage a victim username, submit a forged fmt=none attestation to register a passkey, then log in bypassing passwords and TOTP for account takeover."
+  }
+ ],
  "media": [],
  "commits": []
 }
