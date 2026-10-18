@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-10-18T16:40:41+00:00",
+ "generated_at": "2026-10-18T19:29:50+00:00",
  "lookback_hours": 5,
  "count": 0,
  "stats": {
@@ -16,42 +16,5 @@
  "briefing": [],
  "items": [],
  "media": [],
- "commits": [
-  {
-   "repo": "openssl/openssl",
-   "sha": "4c49f3f1103fc731cf1ec64fec5b744fa031241e",
-   "url": "https://github.com/openssl/openssl/commit/4c49f3f1103fc731cf1ec64fec5b744fa031241e",
-   "title": "Fix use-after-free in EC_GROUP_get_ecpkparameters()",
-   "date": "2026-10-18T15:22:02",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/tomcat",
-   "sha": "4c133c17c5a3508ea4f4a5fe12d348672033a379",
-   "url": "https://github.com/apache/tomcat/commit/4c133c17c5a3508ea4f4a5fe12d348672033a379",
-   "title": "Accept zero varargs elements in EL method expression calls",
-   "date": "2026-10-18T13:40:28",
-   "score": 2,
-   "matched": [
-    "格式串"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/tomcat",
-   "sha": "4f7b589c865cc73e9b178cbffdfc4a9553997048",
-   "url": "https://github.com/apache/tomcat/commit/4f7b589c865cc73e9b178cbffdfc4a9553997048",
-   "title": "Pin serialVersionUID in EL expression classes",
-   "date": "2026-10-18T11:00:33",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  }
- ]
+ "commits": []
 }
