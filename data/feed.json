@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-10-18T19:29:50+00:00",
+ "generated_at": "2026-10-18T23:24:01+00:00",
  "lookback_hours": 5,
  "count": 0,
  "stats": {
@@ -16,5 +16,126 @@
  "briefing": [],
  "items": [],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "c2bbf2b83d064313ca3739f81c651553cfbb26fb",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/c2bbf2b83d064313ca3739f81c651553cfbb26fb",
+   "title": "avcodec/nvdec: attach the hw_frames_ctx before the unmap buffer owns the mapped frame",
+   "date": "2026-10-18T22:47:35",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "5a2f87c1903237166785adb560acc02461fe9be0",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/5a2f87c1903237166785adb560acc02461fe9be0",
+   "title": "avfilter/vf_libvmaf: reject a feature config without a name",
+   "date": "2026-10-18T22:47:35",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "ebd451b62f28111e3d88770d304a56bea9a736cc",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/ebd451b62f28111e3d88770d304a56bea9a736cc",
+   "title": "avcodec/mediacodecdec: escape a 00 00 0x sequence ending on the last byte of a parameter set",
+   "date": "2026-10-18T22:47:35",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "f29e8dd79eed86a73f6fce67e1d9776633c1db07",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/f29e8dd79eed86a73f6fce67e1d9776633c1db07",
+   "title": "avformat/rtmpdh: fail bn_hex2bn() when bn_new() fails with GMP and mbedTLS",
+   "date": "2026-10-18T22:47:35",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "8d6ad744c6262f8df1c4a233970ba5910f95c1c2",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/8d6ad744c6262f8df1c4a233970ba5910f95c1c2",
+   "title": "avformat/rtmpproto: reject a llnw authentication challenge without a nonce",
+   "date": "2026-10-18T22:47:35",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "a3bfdd7318929fea85872db37aa37f28dddc04d2",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/a3bfdd7318929fea85872db37aa37f28dddc04d2",
+   "title": "avcodec/decode: use avcodec_get_hw_config() in avcodec_default_get_format()",
+   "date": "2026-10-18T22:47:35",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "65ca8b1f50b850b063bed514330884c74794eeef",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/65ca8b1f50b850b063bed514330884c74794eeef",
+   "title": "avfilter/vf_crop: keep the x/y expressions when the new ones fail to parse",
+   "date": "2026-10-18T22:47:35",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "ad89cd9d072a252d197e9174c7e53e7945d30083",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/ad89cd9d072a252d197e9174c7e53e7945d30083",
+   "title": "avcodec/tiff: clear the separated intermediate buffer",
+   "date": "2026-10-18T22:45:57",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "5ed22b254c266873602e5e7773741ba576b0c29a",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/5ed22b254c266873602e5e7773741ba576b0c29a",
+   "title": "avcodec/tdsc: clear newly allocated reference frames",
+   "date": "2026-10-18T22:45:57",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "98dd1b354b434ff137db3b16cddfc03062453fd0",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/98dd1b354b434ff137db3b16cddfc03062453fd0",
+   "title": "avformat/file: release the JNI references when fstat() fails in android_content_open()",
+   "date": "2026-10-18T22:43:31",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  }
+ ]
 }
