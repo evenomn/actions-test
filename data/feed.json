@@ -1,20 +1,168 @@
 {
  "version": 3,
- "generated_at": "2026-10-18T06:06:56+00:00",
+ "generated_at": "2026-10-18T13:23:20+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 3,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 3,
+  "by_tier": {
+   "critical": 3
+  },
+  "by_urgency": {
+   "P1 重点关注": 3
+  },
+  "by_category": {
+   "未知": 3
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2026-110372",
+   "tier": "critical",
+   "title": "OttoKit权限分配错误致提权",
+   "title_zh": "OttoKit权限分配错误致提权",
+   "summary_zh": "低权限用户可利用错误权限分配提升为管理员，进而接管站点。",
+   "published": "2026-10-18T11:16:36.580",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-266"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/suretriggers/vulnerability/wordpress-ottokit-plugin-1-1-40-privilege-escalation-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商最新版；无修复前收紧插件角色权限",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件,站点权限提升",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110372",
+   "description": "Incorrect Privilege Assignment vulnerability in Brainstorm Force OttoKit suretriggers allows Privilege Escalation.This issue affects OttoKit: from n/a through 1.1.40."
+  },
+  {
+   "id": "CVE-2026-110886",
+   "tier": "critical",
+   "title": "ChatBot表单反序列化对象注入",
+   "title_zh": "ChatBot表单反序列化对象注入",
+   "summary_zh": "攻击者提交不可信序列化数据可触发对象注入，进而可能导致远程代码执行。",
+   "published": "2026-10-18T11:16:37.450",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/conversational-forms/vulnerability/wordpress-conversational-forms-for-chatbot-plugin-1-5-1-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商最新版；临时过滤或禁用序列化输入",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress表单插件,站点失陷风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110886",
+   "description": "Deserialization of Untrusted Data vulnerability in QuantumCloud Conversational Forms for ChatBot conversational-forms allows Object Injection.This issue affects Conversational Forms for ChatBot: from n/a through 1.5.1."
+  },
+  {
+   "id": "CVE-2026-111998",
+   "tier": "critical",
+   "title": "Vanus默认令牌致集群管理员接管",
+   "title_zh": "Vanus默认令牌致集群管理员接管",
+   "summary_zh": "未授权攻击者使用硬编码管理员令牌访问gRPC网关，可接管集群。",
+   "published": "2026-10-18T12:17:11.730",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "默认凭据"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/vanus-labs/vanus/blob/v0.9.0/internal/controller/tenant/controller.go#L449-L500"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/vanus-labs/vanus/blob/v0.9.0/internal/primitive/constants.go#L37"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/vanus-labs/vanus/issues/647"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版；更换硬编码令牌并限制gRPC网关",
+   "repro_worthy": "一般",
+   "repro_note": "向gRPC代理端口发送固定Bearer令牌，验证集群管理权限",
+   "impact_scope": "事件流集群网关,可完全接管",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111998",
+   "description": "Vanus 0.8.0 through 0.9.0 contains a default credentials vulnerability that allows unauthenticated remote attackers to gain cluster-admin access by using the hardcoded admin token. Attackers can send the fixed Bearer token to the gateway gRPC proxy port to manage namespaces, eventbuses, users, tokens, and role bindings, and read or publish events."
+  }
+ ],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "php/php-src",
+   "sha": "5587c3265c4d4dcffceecb61d8b9e621ed7dbac3",
+   "url": "https://github.com/php/php-src/commit/5587c3265c4d4dcffceecb61d8b9e621ed7dbac3",
+   "title": "Fix GH-23334: ext/dom: php_dom_free_templated_content() use-after-free",
+   "date": "2026-10-18T09:36:34",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  }
+ ]
 }
