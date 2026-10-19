@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-19T06:21:40+00:00",
- "count": 111,
+ "updated_at": "2026-10-19T16:33:08+00:00",
+ "count": 112,
  "count_recommended": 15,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -2081,6 +2081,50 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-111058",
+   "title": "Mercury默认无令牌致未授权RCE",
+   "first_seen": "2026-10-19",
+   "last_seen": "2026-10-19",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-19",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权创建kernel并发送execute_request执行Python",
+   "impact_scope": "Notebook应用框架，或暴露公网",
+   "action_zh": "升级至3.2.6及以上",
+   "summary_zh": "默认无令牌部署下，未授权攻击者可创建Jupyter内核并发送execute_request执行任意Python",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mljar/mercury/commit/73a40ceb0becf057f495a5738ad7f5a5222a53e1"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mljar/mercury/releases/tag/3.2.6"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mljar/mercury/security/advisories/GHSA-rv4m-xm3f-3ccq"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111058",
    "change_note": null
   },
   {

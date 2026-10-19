@@ -5,16 +5,52 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 19 Oct 2026 06:21:40 +0000</pubDate>
-    <lastBuildDate>Mon, 19 Oct 2026 06:21:40 +0000</lastBuildDate>
+    <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
+    <lastBuildDate>Mon, 19 Oct 2026 16:33:08 +0000</lastBuildDate>
     <item>
-      <title>[critical]GeoWebServer 默认端口命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108983</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108983-2026-10-19</guid>
-      <description>CVE-2026-108983 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
-A vulnerability is in Web Server default connection ports under the process name GeoWebServer.exe .
+      <title>[critical]Mercury默认无令牌致未授权RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111058</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111058-2026-10-19</guid>
+      <description>CVE-2026-111058 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 缺失授权(越权) · 难度 低(远程·免认证)
+Prior to 3.2.6, default tokenless deployments allow anonymous clients to create Jupyter kernels and send execute_request messages containing arbitrary Python.
 信号:</description>
-      <pubDate>Mon, 19 Oct 2026 06:21:40 +0000</pubDate>
+      <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Mercury终端API绕过致未授权RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111057</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111057-2026-10-19</guid>
+      <description>CVE-2026-111057 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 10.0 · 类型 CWE-185/访问控制缺失 · 难度 低(远程·免认证)
+An unauthenticated attacker can use the resulting interactive operating-system shell to execute commands and access data available to the Mercury process.
+信号:</description>
+      <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]CheckCle缺失授权可读写删记录</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112292</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112292-2026-10-19</guid>
+      <description>CVE-2026-112292 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 缺失授权(越权) · 难度 低(远程·免认证)
+CheckCle through 1.6.0 contains a missing authorization vulnerability that allows unauthenticated attackers to read, modify and delete records because shipped P…
+信号:</description>
+      <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FlyCms默认凭据致超管接管</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112296</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112296-2026-10-19</guid>
+      <description>CVE-2026-112296 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 默认凭据 · 难度 低(远程·免认证)
+FlyCms through commit edfdf724 contains a default credentials vulnerability that allows unauthenticated remote attackers to gain super administrator access via …
+信号:</description>
+      <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Camunda表达式注入可绕过限制</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109432</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109432-2026-10-19</guid>
+      <description>CVE-2026-109432 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 命令注入(RCE)/CWE-917 · 难度 低(远程·免认证)
+Camunda 7.24.0 before 7.24.14 and 7.23.0 before 7.23.17 contains an expression injection vulnerability where AdhocQueryValidator.validate() fails to check sub-q…
+信号:</description>
+      <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
     </item>
   </channel>
 </rss>

@@ -1,18 +1,18 @@
 {
  "version": 3,
- "generated_at": "2026-10-19T06:21:40+00:00",
+ "generated_at": "2026-10-19T16:33:08+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 5,
  "stats": {
-  "total": 1,
+  "total": 5,
   "by_tier": {
-   "critical": 1
+   "critical": 5
   },
   "by_urgency": {
-   "P1 重点关注": 1
+   "P1 重点关注": 5
   },
   "by_category": {
-   "未知": 1
+   "未知": 5
   },
   "kev": 0,
   "with_poc": 0,
@@ -22,19 +22,19 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-108983",
+   "id": "CVE-2026-111058",
    "tier": "critical",
-   "title": "GeoWebServer 默认端口命令注入",
-   "title_zh": "GeoWebServer 默认端口命令注入",
-   "summary_zh": "远程攻击者可通过默认连接端口向服务注入系统命令，进而获取服务器控制权",
-   "published": "2026-10-19T02:17:05.853",
+   "title": "Mercury默认无令牌致未授权RCE",
+   "title_zh": "Mercury默认无令牌致未授权RCE",
+   "summary_zh": "默认无令牌部署下，未授权攻击者可创建Jupyter内核并发送execute_request执行任意Python",
+   "published": "2026-10-19T16:17:03.957",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入(RCE)"
+    "缺失授权(越权)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -43,7 +43,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.geovision.com.tw/cyber_security.php"
+     "url": "https://github.com/mljar/mercury/commit/73a40ceb0becf057f495a5738ad7f5a5222a53e1"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mljar/mercury/releases/tag/3.2.6"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mljar/mercury/security/advisories/GHSA-rv4m-xm3f-3ccq"
     }
    ],
    "poc": [],
@@ -54,35 +62,216 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "关注厂商补丁；默认端口禁止对公网开放，限制访问来源",
+   "action_zh": "升级至3.2.6及以上",
+   "repro_worthy": "值得",
+   "repro_note": "未授权创建kernel并发送execute_request执行Python",
+   "impact_scope": "Notebook应用框架，或暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111058",
+   "description": "Mercury is a Python framework for sharing Jupyter notebooks as web applications and dashboards. Prior to 3.2.6, default tokenless deployments allow anonymous clients to create Jupyter kernels and send execute_request messages containing arbitrary Python. The endpoint blocklist does not cover /api/kernels, and the websocket wrapper previously tracked idle activity without authorizing executable messages. This issue is fixed in version 3.2.6."
+  },
+  {
+   "id": "CVE-2026-111057",
+   "tier": "critical",
+   "title": "Mercury终端API绕过致未授权RCE",
+   "title_zh": "Mercury终端API绕过致未授权RCE",
+   "summary_zh": "未授权攻击者经/api/terminals绕过匿名黑名单，获得Jupyter交互式系统shell",
+   "published": "2026-10-19T16:17:03.810",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-185",
+    "访问控制缺失"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mljar/mercury/commit/8c467129037ee9df269d543ac217ffd33b97bf3f"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mljar/mercury/releases/tag/v3.2.4"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mljar/mercury/security/advisories/GHSA-f8c7-rwf9-fmgm"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复信息；禁用匿名终端并限制/api/terminals",
    "repro_worthy": "一般",
-   "repro_note": "入口为默认端口Web服务命令接口，构造注入参数，需确认端口暴露",
-   "impact_scope": "对外Web服务，暴露公网风险高",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108983",
-   "description": "A vulnerability is in Web Server default connection ports under the process name GeoWebServer.exe ."
+   "repro_note": "未授权请求/api/terminals进入Jupyter终端API；需目标可达",
+   "impact_scope": "Notebook应用框架，可能暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111057",
+   "description": "Requests to /api/terminals therefore bypass the anonymous endpoint blocklist and reach Jupyter Server's terminal API. An unauthenticated attacker can use the resulting interactive operating-system shell to execute commands and access data available to the Mercury process."
+  },
+  {
+   "id": "CVE-2026-112292",
+   "tier": "critical",
+   "title": "CheckCle缺失授权可读写删记录",
+   "title_zh": "CheckCle缺失授权可读写删记录",
+   "summary_zh": "未授权攻击者查询PocketBase记录接口，窃取密钥、篡改状态页并删除监控数据",
+   "published": "2026-10-19T14:17:07.903",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失授权(越权)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/operacle/checkcle/blob/v1.6.0/application/public/upload/data/pb_schema_latest.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/operacle/checkcle/commit/f2c338ced9162b7820b2495e298d5578df92bf75"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/operacle/checkcle/issues/214"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复信息；配置集合API规则并限制访问",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问/api/collections/*/records；API规则为空",
+   "impact_scope": "监控平台，常暴露内网或公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112292",
+   "description": "CheckCle through 1.6.0 contains a missing authorization vulnerability that allows unauthenticated attackers to read, modify and delete records because shipped PocketBase collections use empty API rules. Attackers can query /api/collections/<name>/records endpoints to steal server_token values and alert_configurations secrets, disable alerting, alter status pages, or delete monitoring data."
+  },
+  {
+   "id": "CVE-2026-112296",
+   "tier": "critical",
+   "title": "FlyCms默认凭据致超管接管",
+   "title_zh": "FlyCms默认凭据致超管接管",
+   "summary_zh": "未授权攻击者用默认flycms/admin123登录，仅需验证码即可接管站点",
+   "published": "2026-10-19T14:17:08.510",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "默认凭据"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/sunkaifei/FlyCms/blob/edfdf724c3b944310f60c29aa755d03a00a75837/README.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/sunkaifei/FlyCms/blob/edfdf724c3b944310f60c29aa755d03a00a75837/sql/flycms_20260928_093335.sql"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/sunkaifei/FlyCms/issues/19"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复信息；修改默认密码并限制登录",
+   "repro_worthy": "一般",
+   "repro_note": "POST /api/auth/login；flycms/admin123登录",
+   "impact_scope": "CMS站点，可能暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112296",
+   "description": "FlyCms through commit edfdf724 contains a default credentials vulnerability that allows unauthenticated remote attackers to gain super administrator access via the flycms account with password admin123. Attackers can log in through POST /api/auth/login, solving only the image captcha, to obtain full control of site content, users and configuration."
+  },
+  {
+   "id": "CVE-2026-109432",
+   "tier": "critical",
+   "title": "Camunda表达式注入可绕过限制",
+   "title_zh": "Camunda表达式注入可绕过限制",
+   "summary_zh": "已认证用户通过TaskQueryDto的orQueries子查询注入表达式，可能造成命令执行",
+   "published": "2026-10-19T16:17:02.487",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)",
+    "CWE-917"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://codeant.ai/security-research/camunda-adhoc-query-expression-rce-cve-2026-109432"
+    },
+    {
+     "label": "参考",
+     "url": "https://docs.camunda.org/enterprise/download/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/camunda-expression-injection-via-orqueries-rce"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到7.24.14或7.23.17",
+   "repro_worthy": "一般",
+   "repro_note": "认证后向TaskQueryDto.orQueries注入子查询表达式",
+   "impact_scope": "工作流引擎，内网核心业务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109432",
+   "description": "Camunda 7.24.0 before 7.24.14 and 7.23.0 before 7.23.17 contains an expression injection vulnerability where AdhocQueryValidator.validate() fails to check sub-query expression maps within the orQueries field exposed by TaskQueryDto, allowing authenticated users to bypass the enableExpressionsInAdhocQueries restriction."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "d7b74bd6248f423ada59377de62c5d7986f559b6",
-   "url": "https://github.com/envoyproxy/envoy/commit/d7b74bd6248f423ada59377de62c5d7986f559b6",
-   "title": "wasm: fix a regression for remote code (#48415)",
-   "date": "2026-10-19T03:25:59",
-   "score": 3,
-   "matched": [
-    "安全修复",
-    "回合/回归"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "python/cpython",
-   "sha": "999855b07f9b795ca88ac3349060a06c116a1037",
-   "url": "https://github.com/python/cpython/commit/999855b07f9b795ca88ac3349060a06c116a1037",
-   "title": "gh-159041: Fix use-after-free in asyncio task tracking during thread state cleanup (#159073)",
-   "date": "2026-10-19T04:46:36",
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "d522eb22c275f0564a2ea48c44b19460ed1c5f3e",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/d522eb22c275f0564a2ea48c44b19460ed1c5f3e",
+   "title": "avformat/iamf_parse: free the context when reading the descriptors fails",
+   "date": "2026-10-19T14:57:27",
    "score": 2,
    "matched": [
     "UAF"
@@ -90,14 +279,26 @@
    "cve": null
   },
   {
-   "repo": "postgres/postgres",
-   "sha": "e355089a57d6f480cffc2820c46fcf0b5e371cf6",
-   "url": "https://github.com/postgres/postgres/commit/e355089a57d6f480cffc2820c46fcf0b5e371cf6",
-   "title": "Fix use-after-free in jsonb_set_lax for Const NULL new_value",
-   "date": "2026-10-19T04:34:06",
+   "repo": "haproxy/haproxy",
+   "sha": "612b87e75f399b928903141d9bf8ecf59d4f4f6b",
+   "url": "https://github.com/haproxy/haproxy/commit/612b87e75f399b928903141d9bf8ecf59d4f4f6b",
+   "title": "BUG/MEDIUM: resolvers: reject too long labels when encoding a name",
+   "date": "2026-10-19T13:39:00",
    "score": 2,
    "matched": [
-    "UAF"
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/ofbiz-framework",
+   "sha": "f1faa87638176720302ec5ab8a63644ceeaa670d",
+   "url": "https://github.com/apache/ofbiz-framework/commit/f1faa87638176720302ec5ab8a63644ceeaa670d",
+   "title": "Upgrade Redoc to 3.0.1 and remove the npm overrides",
+   "date": "2026-10-19T13:18:36",
+   "score": 2,
+   "matched": [
+    "漏洞相关"
    ],
    "cve": null
   }

@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-19 06:21 UTC · 共 **111** 条(强烈推荐 15 / 值得 96)
+**更新**: 2026-10-19 16:33 UTC · 共 **112** 条(强烈推荐 15 / 值得 97)
 
 ---
 
@@ -392,6 +392,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### Mercury默认无令牌致未授权RCE
+[CVE-2026-111058](https://nvd.nist.gov/vuln/detail/CVE-2026-111058) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-19 | 入库 2026-10-19
+默认无令牌部署下，未授权攻击者可创建Jupyter内核并发送execute_request执行任意Python
+复现: 值得 — 未授权创建kernel并发送execute_request执行Python · 影响面: Notebook应用框架，或暴露公网
+处置: 升级至3.2.6及以上
+参考: [参考](https://github.com/mljar/mercury/commit/73a40ceb0becf057f495a5738ad7f5a5222a53e1) · [参考](https://github.com/mljar/mercury/releases/tag/3.2.6) · [参考](https://github.com/mljar/mercury/security/advisories/GHSA-rv4m-xm3f-3ccq)
 
 ### Netcore NR256CN预认证栈溢出
 [CVE-2026-111711](https://nvd.nist.gov/vuln/detail/CVE-2026-111711) | P1 重点关注 | OA/协同办公 | CVSS 9.8 | 披露 2026-10-16 | 入库 2026-10-17
