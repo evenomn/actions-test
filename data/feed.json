@@ -1,7 +1,7 @@
 {
  "version": 3,
- "generated_at": "2026-10-19T01:39:12+00:00",
- "lookback_hours": 24,
+ "generated_at": "2026-10-19T06:21:40+00:00",
+ "lookback_hours": 5,
  "count": 1,
  "stats": {
   "total": 1,
@@ -19,28 +19,22 @@
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [
-  "- 今日仅1条高危SQL注入，CVSS 9.3，应优先处置。",
-  "- 未发现在野利用、勒索软件关联及公开PoC。",
-  "- 无Nuclei模板与第三方扩展，需自建检测规则。",
-  "- 批量公告趋势不明显，暂为单条漏洞公告。",
-  "- 立即排查并修复CVE-2026-109894涉及的SQL接口。"
- ],
+ "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-109894",
+   "id": "CVE-2026-108983",
    "tier": "critical",
-   "title": "Booktics SQL注入致数据泄露",
-   "title_zh": "Booktics SQL注入致数据泄露",
-   "summary_zh": "可访问Booktics功能的攻击者可通过可控参数注入SQL，窃取或篡改预约及站点数据。",
-   "published": "2026-10-18T11:16:36.190",
-   "cvss": 9.3,
+   "title": "GeoWebServer 默认端口命令注入",
+   "title_zh": "GeoWebServer 默认端口命令注入",
+   "summary_zh": "远程攻击者可通过默认连接端口向服务注入系统命令，进而获取服务器控制权",
+   "published": "2026-10-19T02:17:05.853",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "SQL注入"
+    "命令注入(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -49,7 +43,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/plugin/booktics/vulnerability/wordpress-booktics-plugin-1-0-29-sql-injection-vulnerability?_s_id=cve"
+     "url": "https://www.geovision.com.tw/cyber_security.php"
     }
    ],
    "poc": [],
@@ -60,25 +54,50 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商最新版；无法升级时临时禁用Booktics插件",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress预约插件，网站常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109894",
-   "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Arraytics Booktics booktics allows SQL Injection.This issue affects Booktics: from n/a through 1.0.29."
+   "action_zh": "关注厂商补丁；默认端口禁止对公网开放，限制访问来源",
+   "repro_worthy": "一般",
+   "repro_note": "入口为默认端口Web服务命令接口，构造注入参数，需确认端口暴露",
+   "impact_scope": "对外Web服务，暴露公网风险高",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108983",
+   "description": "A vulnerability is in Web Server default connection ports under the process name GeoWebServer.exe ."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "14e27afd94e6e6596ed874ad90a14fe4e55fb9bc",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/14e27afd94e6e6596ed874ad90a14fe4e55fb9bc",
-   "title": "avcodec/pngdec: unpack sub-8-bit APNG frames before applying the offset",
-   "date": "2026-10-18T23:23:22",
+   "repo": "envoyproxy/envoy",
+   "sha": "d7b74bd6248f423ada59377de62c5d7986f559b6",
+   "url": "https://github.com/envoyproxy/envoy/commit/d7b74bd6248f423ada59377de62c5d7986f559b6",
+   "title": "wasm: fix a regression for remote code (#48415)",
+   "date": "2026-10-19T03:25:59",
+   "score": 3,
+   "matched": [
+    "安全修复",
+    "回合/回归"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "python/cpython",
+   "sha": "999855b07f9b795ca88ac3349060a06c116a1037",
+   "url": "https://github.com/python/cpython/commit/999855b07f9b795ca88ac3349060a06c116a1037",
+   "title": "gh-159041: Fix use-after-free in asyncio task tracking during thread state cleanup (#159073)",
+   "date": "2026-10-19T04:46:36",
    "score": 2,
    "matched": [
-    "未初始化/内存破坏"
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "postgres/postgres",
+   "sha": "e355089a57d6f480cffc2820c46fcf0b5e371cf6",
+   "url": "https://github.com/postgres/postgres/commit/e355089a57d6f480cffc2820c46fcf0b5e371cf6",
+   "title": "Fix use-after-free in jsonb_set_lax for Const NULL new_value",
+   "date": "2026-10-19T04:34:06",
+   "score": 2,
+   "matched": [
+    "UAF"
    ],
    "cve": null
   }
