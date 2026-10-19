@@ -1,139 +1,84 @@
 {
  "version": 3,
- "generated_at": "2026-10-18T23:24:01+00:00",
- "lookback_hours": 5,
- "count": 0,
+ "generated_at": "2026-10-19T01:39:12+00:00",
+ "lookback_hours": 24,
+ "count": 1,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 1,
+  "by_tier": {
+   "critical": 1
+  },
+  "by_urgency": {
+   "P1 重点关注": 1
+  },
+  "by_category": {
+   "未知": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [],
- "items": [],
+ "briefing": [
+  "- 今日仅1条高危SQL注入，CVSS 9.3，应优先处置。",
+  "- 未发现在野利用、勒索软件关联及公开PoC。",
+  "- 无Nuclei模板与第三方扩展，需自建检测规则。",
+  "- 批量公告趋势不明显，暂为单条漏洞公告。",
+  "- 立即排查并修复CVE-2026-109894涉及的SQL接口。"
+ ],
+ "items": [
+  {
+   "id": "CVE-2026-109894",
+   "tier": "critical",
+   "title": "Booktics SQL注入致数据泄露",
+   "title_zh": "Booktics SQL注入致数据泄露",
+   "summary_zh": "可访问Booktics功能的攻击者可通过可控参数注入SQL，窃取或篡改预约及站点数据。",
+   "published": "2026-10-18T11:16:36.190",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/booktics/vulnerability/wordpress-booktics-plugin-1-0-29-sql-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商最新版；无法升级时临时禁用Booktics插件",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress预约插件，网站常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109894",
+   "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Arraytics Booktics booktics allows SQL Injection.This issue affects Booktics: from n/a through 1.0.29."
+  }
+ ],
  "media": [],
  "commits": [
   {
    "repo": "FFmpeg/FFmpeg",
-   "sha": "c2bbf2b83d064313ca3739f81c651553cfbb26fb",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/c2bbf2b83d064313ca3739f81c651553cfbb26fb",
-   "title": "avcodec/nvdec: attach the hw_frames_ctx before the unmap buffer owns the mapped frame",
-   "date": "2026-10-18T22:47:35",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "5a2f87c1903237166785adb560acc02461fe9be0",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/5a2f87c1903237166785adb560acc02461fe9be0",
-   "title": "avfilter/vf_libvmaf: reject a feature config without a name",
-   "date": "2026-10-18T22:47:35",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "ebd451b62f28111e3d88770d304a56bea9a736cc",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/ebd451b62f28111e3d88770d304a56bea9a736cc",
-   "title": "avcodec/mediacodecdec: escape a 00 00 0x sequence ending on the last byte of a parameter set",
-   "date": "2026-10-18T22:47:35",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "f29e8dd79eed86a73f6fce67e1d9776633c1db07",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/f29e8dd79eed86a73f6fce67e1d9776633c1db07",
-   "title": "avformat/rtmpdh: fail bn_hex2bn() when bn_new() fails with GMP and mbedTLS",
-   "date": "2026-10-18T22:47:35",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "8d6ad744c6262f8df1c4a233970ba5910f95c1c2",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/8d6ad744c6262f8df1c4a233970ba5910f95c1c2",
-   "title": "avformat/rtmpproto: reject a llnw authentication challenge without a nonce",
-   "date": "2026-10-18T22:47:35",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "a3bfdd7318929fea85872db37aa37f28dddc04d2",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/a3bfdd7318929fea85872db37aa37f28dddc04d2",
-   "title": "avcodec/decode: use avcodec_get_hw_config() in avcodec_default_get_format()",
-   "date": "2026-10-18T22:47:35",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "65ca8b1f50b850b063bed514330884c74794eeef",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/65ca8b1f50b850b063bed514330884c74794eeef",
-   "title": "avfilter/vf_crop: keep the x/y expressions when the new ones fail to parse",
-   "date": "2026-10-18T22:47:35",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "ad89cd9d072a252d197e9174c7e53e7945d30083",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/ad89cd9d072a252d197e9174c7e53e7945d30083",
-   "title": "avcodec/tiff: clear the separated intermediate buffer",
-   "date": "2026-10-18T22:45:57",
+   "sha": "14e27afd94e6e6596ed874ad90a14fe4e55fb9bc",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/14e27afd94e6e6596ed874ad90a14fe4e55fb9bc",
+   "title": "avcodec/pngdec: unpack sub-8-bit APNG frames before applying the offset",
+   "date": "2026-10-18T23:23:22",
    "score": 2,
    "matched": [
     "未初始化/内存破坏"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "5ed22b254c266873602e5e7773741ba576b0c29a",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/5ed22b254c266873602e5e7773741ba576b0c29a",
-   "title": "avcodec/tdsc: clear newly allocated reference frames",
-   "date": "2026-10-18T22:45:57",
-   "score": 2,
-   "matched": [
-    "未初始化/内存破坏"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "98dd1b354b434ff137db3b16cddfc03062453fd0",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/98dd1b354b434ff137db3b16cddfc03062453fd0",
-   "title": "avformat/file: release the JNI references when fstat() fails in android_content_open()",
-   "date": "2026-10-18T22:43:31",
-   "score": 2,
-   "matched": [
-    "安全修复"
    ],
    "cve": null
   }
