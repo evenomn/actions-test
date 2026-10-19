@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-10-19T16:33:08+00:00",
+ "generated_at": "2026-10-19T21:36:44+00:00",
  "lookback_hours": 5,
  "count": 5,
  "stats": {
@@ -12,29 +12,30 @@
    "P1 重点关注": 5
   },
   "by_category": {
-   "未知": 5
+   "未知": 3,
+   "CMS": 2
   },
   "kev": 0,
-  "with_poc": 0,
+  "with_poc": 1,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-111058",
+   "id": "CVE-2026-111862",
    "tier": "critical",
-   "title": "Mercury默认无令牌致未授权RCE",
-   "title_zh": "Mercury默认无令牌致未授权RCE",
-   "summary_zh": "默认无令牌部署下，未授权攻击者可创建Jupyter内核并发送execute_request执行任意Python",
-   "published": "2026-10-19T16:17:03.957",
+   "title": "Rank Math 恶意代码植入风险",
+   "title_zh": "Rank Math 恶意代码植入风险",
+   "summary_zh": "环境中出现恶意 wp_options、隐藏 PHP 后门及未授权管理员账户，提示站点可能已被植入后门。",
+   "published": "2026-10-19T17:17:04.507",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "缺失授权(越权)"
+    "CWE-506"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -43,15 +44,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/mljar/mercury/commit/73a40ceb0becf057f495a5738ad7f5a5222a53e1"
+     "url": "https://rankmath.com/changelog/"
     },
     {
      "label": "参考",
-     "url": "https://github.com/mljar/mercury/releases/tag/3.2.6"
+     "url": "https://rankmath.com/kb/pro-3-0-123-security-incident/"
     },
     {
      "label": "参考",
-     "url": "https://github.com/mljar/mercury/security/advisories/GHSA-rv4m-xm3f-3ccq"
+     "url": "https://rdap.verisign.com/com/v1/domain/rank1cdn.com"
     }
    ],
    "poc": [],
@@ -62,76 +63,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至3.2.6及以上",
-   "repro_worthy": "值得",
-   "repro_note": "未授权创建kernel并发送execute_request执行Python",
-   "impact_scope": "Notebook应用框架，或暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111058",
-   "description": "Mercury is a Python framework for sharing Jupyter notebooks as web applications and dashboards. Prior to 3.2.6, default tokenless deployments allow anonymous clients to create Jupyter kernels and send execute_request messages containing arbitrary Python. The endpoint blocklist does not cover /api/kernels, and the websocket wrapper previously tracked idle activity without authorizing executable messages. This issue is fixed in version 3.2.6."
+   "action_zh": "排查并清除后门，升级 Rank Math 至最新版并重置管理员凭据",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress 站点，易被植入后门",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111862",
+   "description": "Rank Math SEO PRO for WordPress is affected by a supply-chain compromise in a subset of version 3.0.123 packages downloaded or updated between October 15, 2026 at 20:02 UTC and October 16, 2026 at 07:12 UTC. Rank Math identifies three malicious wp_options keys, hidden PHP backdoors, unauthorized administrator accounts, a fake WordPress core file, PHP-executable .cache files, and a system cron marker as incident indicators."
   },
   {
-   "id": "CVE-2026-111057",
+   "id": "CVE-2026-112776",
    "tier": "critical",
-   "title": "Mercury终端API绕过致未授权RCE",
-   "title_zh": "Mercury终端API绕过致未授权RCE",
-   "summary_zh": "未授权攻击者经/api/terminals绕过匿名黑名单，获得Jupyter交互式系统shell",
-   "published": "2026-10-19T16:17:03.810",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-185",
-    "访问控制缺失"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/mljar/mercury/commit/8c467129037ee9df269d543ac217ffd33b97bf3f"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/mljar/mercury/releases/tag/v3.2.4"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/mljar/mercury/security/advisories/GHSA-f8c7-rwf9-fmgm"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复信息；禁用匿名终端并限制/api/terminals",
-   "repro_worthy": "一般",
-   "repro_note": "未授权请求/api/terminals进入Jupyter终端API；需目标可达",
-   "impact_scope": "Notebook应用框架，可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111057",
-   "description": "Requests to /api/terminals therefore bypass the anonymous endpoint blocklist and reach Jupyter Server's terminal API. An unauthenticated attacker can use the resulting interactive operating-system shell to execute commands and access data available to the Mercury process."
-  },
-  {
-   "id": "CVE-2026-112292",
-   "tier": "critical",
-   "title": "CheckCle缺失授权可读写删记录",
-   "title_zh": "CheckCle缺失授权可读写删记录",
-   "summary_zh": "未授权攻击者查询PocketBase记录接口，窃取密钥、篡改状态页并删除监控数据",
-   "published": "2026-10-19T14:17:07.903",
+   "title": "Craft CMS GraphQL 跨站越权",
+   "title_zh": "Craft CMS GraphQL 跨站越权",
+   "summary_zh": "持有站点A的 GraphQL 令牌的攻击者可跨站指定 siteId 增删内容，导致越权篡改。",
+   "published": "2026-10-19T20:17:54.900",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "缺失授权(越权)"
+    "授权错误"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -140,15 +92,11 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/operacle/checkcle/blob/v1.6.0/application/public/upload/data/pb_schema_latest.json"
+     "url": "https://github.com/craftcms/cms/security/advisories/GHSA-7rr3-4jcm-x526"
     },
     {
      "label": "参考",
-     "url": "https://github.com/operacle/checkcle/commit/f2c338ced9162b7820b2495e298d5578df92bf75"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/operacle/checkcle/issues/214"
+     "url": "https://www.vulncheck.com/advisories/craft-cms-5.0.0-before-5.11.0-graphql-site-scope-bypass-via-mutations"
     }
    ],
    "poc": [],
@@ -159,27 +107,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复信息；配置集合API规则并限制访问",
+   "action_zh": "升级 Craft CMS 至 5.11.0 或更高版本",
    "repro_worthy": "一般",
-   "repro_note": "未授权访问/api/collections/*/records；API规则为空",
-   "impact_scope": "监控平台，常暴露内网或公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112292",
-   "description": "CheckCle through 1.6.0 contains a missing authorization vulnerability that allows unauthenticated attackers to read, modify and delete records because shipped PocketBase collections use empty API rules. Attackers can query /api/collections/<name>/records endpoints to steal server_token values and alert_configurations secrets, disable alerting, alter status pages, or delete monitoring data."
+   "repro_note": "需站点A GraphQL令牌，跨站指定siteId增删内容",
+   "impact_scope": "Craft CMS 多站点内容管理",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112776",
+   "description": "Craft CMS from 5.0.0 before 5.11.0 contains an authorization bypass vulnerability that allows site-scoped GraphQL tokens to mutate other sites' content because requireAllowedSite() is not enforced. Attackers holding a site-A token can create entries in site B via supplied siteId and delete entries, categories, tags, and assets shared across sites."
   },
   {
-   "id": "CVE-2026-112296",
+   "id": "CVE-2026-107083",
    "tier": "critical",
-   "title": "FlyCms默认凭据致超管接管",
-   "title_zh": "FlyCms默认凭据致超管接管",
-   "summary_zh": "未授权攻击者用默认flycms/admin123登录，仅需验证码即可接管站点",
-   "published": "2026-10-19T14:17:08.510",
+   "title": "SLiMS 报表模块 SQL 注入",
+   "title_zh": "SLiMS 报表模块 SQL 注入",
+   "summary_zh": "已登录管理员可通过 fileID 参数注入 SQL，读取或篡改数据库内容。",
+   "published": "2026-10-19T17:17:00.690",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "默认凭据"
+    "SQL注入"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -188,18 +136,19 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/sunkaifei/FlyCms/blob/edfdf724c3b944310f60c29aa755d03a00a75837/README.md"
+     "url": "https://github.com/Primandito/CVE-2026-107083"
     },
     {
      "label": "参考",
-     "url": "https://github.com/sunkaifei/FlyCms/blob/edfdf724c3b944310f60c29aa755d03a00a75837/sql/flycms_20260928_093335.sql"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/sunkaifei/FlyCms/issues/19"
+     "url": "https://github.com/slims/slims9_bulian/issues/393"
     }
    ],
-   "poc": [],
+   "poc": [
+    {
+     "url": "https://github.com/Primandito/CVE-2026-107083",
+     "label": "Primandito/CVE-2026-107083 0★(仅README)"
+    }
+   ],
    "nuclei": false,
    "patched": null,
    "kev": false,
@@ -207,28 +156,28 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复信息；修改默认密码并限制登录",
+   "action_zh": "升级 SLiMS 修复版本；临时限制后台访问并过滤 fileID 参数",
    "repro_worthy": "一般",
-   "repro_note": "POST /api/auth/login；flycms/admin123登录",
-   "impact_scope": "CMS站点，可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112296",
-   "description": "FlyCms through commit edfdf724 contains a default credentials vulnerability that allows unauthenticated remote attackers to gain super administrator access via the flycms account with password admin123. Attackers can log in through POST /api/auth/login, solving only the image captcha, to obtain full control of site content, users and configuration."
+   "repro_note": "登录后台，向 dl_detail.php 的 fileID 参数注入",
+   "impact_scope": "图书馆管理系统后台数据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107083",
+   "description": "SENAYAN Library Management System (SLiMS) Bulian (slims9_bulian) 9.8.0 is vulnerable to SQL Injection in admin/modules/reporting/customs/dl_detail.php via the parameter fileID."
   },
   {
-   "id": "CVE-2026-109432",
+   "id": "CVE-2026-109437",
    "tier": "critical",
-   "title": "Camunda表达式注入可绕过限制",
-   "title_zh": "Camunda表达式注入可绕过限制",
-   "summary_zh": "已认证用户通过TaskQueryDto的orQueries子查询注入表达式，可能造成命令执行",
-   "published": "2026-10-19T16:17:02.487",
+   "title": "Cognition 沙箱未授权 RCE",
+   "title_zh": "Cognition 沙箱未授权 RCE",
+   "summary_zh": "未认证攻击者可调用无鉴权的 REST/SSE API，触发本地沙箱执行任意代码。",
+   "published": "2026-10-19T19:17:19.807",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入(RCE)",
-    "CWE-917"
+    "缺失认证",
+    "初始化不安全(默认凭据)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -237,15 +186,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://codeant.ai/security-research/camunda-adhoc-query-expression-rce-cve-2026-109432"
+     "url": "https://github.com/CognicellAI/Cognition/releases/tag/v0.13.0"
     },
     {
      "label": "参考",
-     "url": "https://docs.camunda.org/enterprise/download/"
+     "url": "https://www.lasso.security/vulnerability-database/cve-2026-109437"
     },
     {
      "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/camunda-expression-injection-via-orqueries-rce"
+     "url": "https://www.vulncheck.com/advisories/cognition-unauthenticated-rce-via-local-shell-backend"
     }
    ],
    "poc": [],
@@ -256,49 +205,105 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到7.24.14或7.23.17",
+   "action_zh": "升级至 0.13.0 及以上；为 API 增加认证并禁用本地沙箱",
    "repro_worthy": "一般",
-   "repro_note": "认证后向TaskQueryDto.orQueries注入子查询表达式",
-   "impact_scope": "工作流引擎，内网核心业务",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109432",
-   "description": "Camunda 7.24.0 before 7.24.14 and 7.23.0 before 7.23.17 contains an expression injection vulnerability where AdhocQueryValidator.validate() fails to check sub-query expression maps within the orQueries field exposed by TaskQueryDto, allowing authenticated users to bypass the enableExpressionsInAdhocQueries restriction."
+   "repro_note": "未授权访问 REST/SSE API，触发本地沙箱执行",
+   "impact_scope": "AI Agent 沙箱，可能暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109437",
+   "description": "Cognition before 0.13.0 contains an unauthenticated remote code execution vulnerability due to defaulting its agent sandbox backend to local execution and shipping no authentication on its REST/SSE API. Attackers can create a session via POST /sessions and post a message via POST /sessions/{id}/messages without credentials, causing the Deep Agents ReAct loop to run attacker-directed shell commands through the local shell backend, resulting in remote code execution as the server process."
+  },
+  {
+   "id": "CVE-2026-112779",
+   "tier": "critical",
+   "title": "未知组件 未授权资源耗尽",
+   "title_zh": "未知组件 未授权资源耗尽",
+   "summary_zh": "未认证攻击者可反复请求写入约560KB数据，耗尽磁盘或 APCu；低权账号可篡改翻译。",
+   "published": "2026-10-19T20:17:55.323",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "资源分配无限制"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/getgrav/grav/security/advisories/GHSA-8pcm-97fc-4xwh"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/grav-api-plugin-before-1.0.42-cache-exhaustion-and-page-permission-bypass"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本；限制匿名请求及写入配额，监控 APCu 与磁盘",
+   "repro_worthy": "一般",
+   "repro_note": "匿名请求触发约560KB存储写入，验证配额耗尽",
+   "impact_scope": "Web 应用存储与缓存资源",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112779",
+   "description": "Unauthenticated attackers can send small requests that each store about 560 KB to exhaust disk or APCu, while accounts with api.pages.write can overwrite translations or create pages that page-level rules deny."
   }
  ],
  "media": [],
  "commits": [
   {
+   "repo": "elastic/elasticsearch",
+   "sha": "68790bc0503cec6f66a8c384b65c9e95acafff6f",
+   "url": "https://github.com/elastic/elasticsearch/commit/68790bc0503cec6f66a8c384b65c9e95acafff6f",
+   "title": "Prevent SO in automatic KNN prefilter (#162315)",
+   "date": "2026-10-19T21:10:13",
+   "score": 2,
+   "matched": [
+    "缓冲区溢出"
+   ],
+   "cve": null
+  },
+  {
    "repo": "FFmpeg/FFmpeg",
-   "sha": "d522eb22c275f0564a2ea48c44b19460ed1c5f3e",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/d522eb22c275f0564a2ea48c44b19460ed1c5f3e",
-   "title": "avformat/iamf_parse: free the context when reading the descriptors fails",
-   "date": "2026-10-19T14:57:27",
+   "sha": "d20d75cb9bcb954bfe76c07f5b5cc4abf3289ef0",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/d20d75cb9bcb954bfe76c07f5b5cc4abf3289ef0",
+   "title": "avformat: remove the asf_o demuxer",
+   "date": "2026-10-19T19:16:58",
    "score": 2,
    "matched": [
-    "UAF"
+    "安全修复"
    ],
    "cve": null
   },
   {
-   "repo": "haproxy/haproxy",
-   "sha": "612b87e75f399b928903141d9bf8ecf59d4f4f6b",
-   "url": "https://github.com/haproxy/haproxy/commit/612b87e75f399b928903141d9bf8ecf59d4f4f6b",
-   "title": "BUG/MEDIUM: resolvers: reject too long labels when encoding a name",
-   "date": "2026-10-19T13:39:00",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/ofbiz-framework",
-   "sha": "f1faa87638176720302ec5ab8a63644ceeaa670d",
-   "url": "https://github.com/apache/ofbiz-framework/commit/f1faa87638176720302ec5ab8a63644ceeaa670d",
-   "title": "Upgrade Redoc to 3.0.1 and remove the npm overrides",
-   "date": "2026-10-19T13:18:36",
+   "repo": "openbsd/src",
+   "sha": "5e2b008c70caa7153814546b28c8dc5a4dd5a1fc",
+   "url": "https://github.com/openbsd/src/commit/5e2b008c70caa7153814546b28c8dc5a4dd5a1fc",
+   "title": "Back out the last video(4) vulnerability fix, which changed the",
+   "date": "2026-10-19T18:16:24",
    "score": 2,
    "matched": [
     "漏洞相关"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "969c7eb091989a664cb7bf66a1f02051cc46cb52",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/969c7eb091989a664cb7bf66a1f02051cc46cb52",
+   "title": "avutil/encryption_info: avoid stack exhaustion freeing init info list",
+   "date": "2026-10-19T15:14:17",
+   "score": 2,
+   "matched": [
+    "缓冲区溢出"
    ],
    "cve": null
   }

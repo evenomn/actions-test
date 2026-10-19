@@ -5,52 +5,53 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
-    <lastBuildDate>Mon, 19 Oct 2026 16:33:08 +0000</lastBuildDate>
+    <pubDate>Mon, 19 Oct 2026 21:36:44 +0000</pubDate>
+    <lastBuildDate>Mon, 19 Oct 2026 21:36:44 +0000</lastBuildDate>
     <item>
-      <title>[critical]Mercury默认无令牌致未授权RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111058</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111058-2026-10-19</guid>
-      <description>CVE-2026-111058 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 缺失授权(越权) · 难度 低(远程·免认证)
-Prior to 3.2.6, default tokenless deployments allow anonymous clients to create Jupyter kernels and send execute_request messages containing arbitrary Python.
+      <title>[critical]Rank Math 恶意代码植入风险</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111862</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111862-2026-10-19</guid>
+      <description>CVE-2026-111862 · 🎯P1 重点关注 · 披露 2026-10-19 · 组件 CMS · CVSS 9.8 · 类型 CWE-506 · 难度 低(远程·免认证)
+Rank Math identifies three malicious wp_options keys, hidden PHP backdoors, unauthorized administrator accounts, a fake WordPress core file, PHP-executable .cac…
 信号:</description>
-      <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
+      <pubDate>Mon, 19 Oct 2026 21:36:44 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Mercury终端API绕过致未授权RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111057</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111057-2026-10-19</guid>
-      <description>CVE-2026-111057 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 10.0 · 类型 CWE-185/访问控制缺失 · 难度 低(远程·免认证)
-An unauthenticated attacker can use the resulting interactive operating-system shell to execute commands and access data available to the Mercury process.
+      <title>[critical]Craft CMS GraphQL 跨站越权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112776</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112776-2026-10-19</guid>
+      <description>CVE-2026-112776 · 🎯P1 重点关注 · 披露 2026-10-19 · 组件 CMS · CVSS 9.8 · 类型 授权错误 · 难度 低(远程·免认证)
+Craft CMS from 5.0.0 before 5.11.0 contains an authorization bypass vulnerability that allows site-scoped GraphQL tokens to mutate other sites' content because …
 信号:</description>
-      <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
+      <pubDate>Mon, 19 Oct 2026 21:36:44 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]CheckCle缺失授权可读写删记录</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112292</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112292-2026-10-19</guid>
-      <description>CVE-2026-112292 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 缺失授权(越权) · 难度 低(远程·免认证)
-CheckCle through 1.6.0 contains a missing authorization vulnerability that allows unauthenticated attackers to read, modify and delete records because shipped P…
-信号:</description>
-      <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
+      <title>[critical]SLiMS 报表模块 SQL 注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107083</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107083-2026-10-19</guid>
+      <description>CVE-2026-107083 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
+SENAYAN Library Management System (SLiMS) Bulian (slims9_bulian) 9.8.0 is vulnerable to SQL Injection in admin/modules/reporting/customs/dl_detail.php via the p…
+信号: 有PoC
+[Primandito/CVE-2026-107083 0★(仅README)](https://github.com/Primandito/CVE-2026-107083)</description>
+      <pubDate>Mon, 19 Oct 2026 21:36:44 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]FlyCms默认凭据致超管接管</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112296</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112296-2026-10-19</guid>
-      <description>CVE-2026-112296 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 默认凭据 · 难度 低(远程·免认证)
-FlyCms through commit edfdf724 contains a default credentials vulnerability that allows unauthenticated remote attackers to gain super administrator access via …
+      <title>[critical]Cognition 沙箱未授权 RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109437</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109437-2026-10-19</guid>
+      <description>CVE-2026-109437 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 缺失认证/初始化不安全(默认凭据) · 难度 低(远程·免认证)
+Cognition before 0.13.0 contains an unauthenticated remote code execution vulnerability due to defaulting its agent sandbox backend to local execution and shipp…
 信号:</description>
-      <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
+      <pubDate>Mon, 19 Oct 2026 21:36:44 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Camunda表达式注入可绕过限制</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109432</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109432-2026-10-19</guid>
-      <description>CVE-2026-109432 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 命令注入(RCE)/CWE-917 · 难度 低(远程·免认证)
-Camunda 7.24.0 before 7.24.14 and 7.23.0 before 7.23.17 contains an expression injection vulnerability where AdhocQueryValidator.validate() fails to check sub-q…
+      <title>[critical]未知组件 未授权资源耗尽</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112779</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112779-2026-10-19</guid>
+      <description>CVE-2026-112779 · 🎯P1 重点关注 · 披露 2026-10-19 · CVSS 9.8 · 类型 资源分配无限制 · 难度 低(远程·免认证)
+Unauthenticated attackers can send small requests that each store about 560 KB to exhaust disk or APCu, while accounts with api.pages.write can overwrite transl…
 信号:</description>
-      <pubDate>Mon, 19 Oct 2026 16:33:08 +0000</pubDate>
+      <pubDate>Mon, 19 Oct 2026 21:36:44 +0000</pubDate>
     </item>
   </channel>
 </rss>
