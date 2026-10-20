@@ -1,152 +1,75 @@
 {
  "version": 3,
- "generated_at": "2026-10-19T21:36:44+00:00",
- "lookback_hours": 5,
- "count": 5,
+ "generated_at": "2026-10-20T02:03:43+00:00",
+ "lookback_hours": 24,
+ "count": 28,
  "stats": {
-  "total": 5,
+  "total": 28,
   "by_tier": {
-   "critical": 5
+   "critical": 23,
+   "high": 5
   },
   "by_urgency": {
-   "P1 重点关注": 5
+   "P1 重点关注": 28
   },
   "by_category": {
-   "未知": 3,
-   "CMS": 2
+   "未知": 18,
+   "开发库/依赖": 4,
+   "数据库": 2,
+   "网络设备": 2,
+   "Web中间件": 1,
+   "容器/虚拟化": 1
   },
   "kev": 0,
-  "with_poc": 1,
+  "with_poc": 3,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [],
+ "briefing": [
+  "- 本清单未标记在野利用或勒索软件关联，暂无相关证据。",
+  "- 批量公告趋势明显：9.8-10.0高危扎堆，认证缺失、默认凭据与注入类集中。",
+  "- 最需立即处置：Apache反序列化RCE CVSS10.0，优先排查暴露面。",
+  "- 网络设备命令注入与代码注入均9.9，应紧急封堵；默认凭据9.8需改密。"
+ ],
  "items": [
   {
-   "id": "CVE-2026-111862",
-   "tier": "critical",
-   "title": "Rank Math 恶意代码植入风险",
-   "title_zh": "Rank Math 恶意代码植入风险",
-   "summary_zh": "环境中出现恶意 wp_options、隐藏 PHP 后门及未授权管理员账户，提示站点可能已被植入后门。",
-   "published": "2026-10-19T17:17:04.507",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "id": "CVE-2026-78164",
+   "tier": "high",
+   "title": "Apache Camel模板注入信息泄露",
+   "title_zh": "Apache Camel模板注入信息泄露",
+   "summary_zh": "未授权攻击者可经HTTP等组件触发模板引擎注入，读取敏感信息",
+   "published": "2026-10-19T11:17:19.403",
+   "cvss": 8.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-506"
+    "信息泄露",
+    "CWE-1336"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": null,
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://rankmath.com/changelog/"
+     "url": "https://camel.apache.org/security/CVE-2026-78164.html"
     },
     {
      "label": "参考",
-     "url": "https://rankmath.com/kb/pro-3-0-123-security-incident/"
+     "url": "https://github.com/apache/camel/commit/7cec534c66969015d85e56631143174dd150ed94"
     },
     {
      "label": "参考",
-     "url": "https://rdap.verisign.com/com/v1/domain/rank1cdn.com"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "排查并清除后门，升级 Rank Math 至最新版并重置管理员凭据",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress 站点，易被植入后门",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111862",
-   "description": "Rank Math SEO PRO for WordPress is affected by a supply-chain compromise in a subset of version 3.0.123 packages downloaded or updated between October 15, 2026 at 20:02 UTC and October 16, 2026 at 07:12 UTC. Rank Math identifies three malicious wp_options keys, hidden PHP backdoors, unauthorized administrator accounts, a fake WordPress core file, PHP-executable .cache files, and a system cron marker as incident indicators."
-  },
-  {
-   "id": "CVE-2026-112776",
-   "tier": "critical",
-   "title": "Craft CMS GraphQL 跨站越权",
-   "title_zh": "Craft CMS GraphQL 跨站越权",
-   "summary_zh": "持有站点A的 GraphQL 令牌的攻击者可跨站指定 siteId 增删内容，导致越权篡改。",
-   "published": "2026-10-19T20:17:54.900",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "授权错误"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/craftcms/cms/security/advisories/GHSA-7rr3-4jcm-x526"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/craft-cms-5.0.0-before-5.11.0-graphql-site-scope-bypass-via-mutations"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级 Craft CMS 至 5.11.0 或更高版本",
-   "repro_worthy": "一般",
-   "repro_note": "需站点A GraphQL令牌，跨站指定siteId增删内容",
-   "impact_scope": "Craft CMS 多站点内容管理",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112776",
-   "description": "Craft CMS from 5.0.0 before 5.11.0 contains an authorization bypass vulnerability that allows site-scoped GraphQL tokens to mutate other sites' content because requireAllowedSite() is not enforced. Attackers holding a site-A token can create entries in site B via supplied siteId and delete entries, categories, tags, and assets shared across sites."
-  },
-  {
-   "id": "CVE-2026-107083",
-   "tier": "critical",
-   "title": "SLiMS 报表模块 SQL 注入",
-   "title_zh": "SLiMS 报表模块 SQL 注入",
-   "summary_zh": "已登录管理员可通过 fileID 参数注入 SQL，读取或篡改数据库内容。",
-   "published": "2026-10-19T17:17:00.690",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/Primandito/CVE-2026-107083"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/slims/slims9_bulian/issues/393"
+     "url": "https://github.com/apache/camel/commit/9f8a185e315ce9e120889c4106be3dbf4688e507"
     }
    ],
    "poc": [
     {
-     "url": "https://github.com/Primandito/CVE-2026-107083",
-     "label": "Primandito/CVE-2026-107083 0★(仅README)"
+     "url": "https://github.com/oscerd/CVE-2026-78164",
+     "label": "oscerd/CVE-2026-78164 0★(仅README)"
     }
    ],
    "nuclei": false,
@@ -154,21 +77,591 @@
    "kev": false,
    "kev_due": null,
    "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版本，过滤模板表达式输入",
+   "repro_worthy": "一般",
+   "repro_note": "入口为Camel HTTP/Netty路由，需可控模板表达式",
+   "impact_scope": "集成中间件，泄露配置与敏感数据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-78164",
+   "description": "Improper Neutralization of Special Elements Used in a Template Engine and Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Apache Camel HTTP, Netty HTTP, Undertow and Vert.x HTTP components. Reaching the headers did not always require header injection, because several Camel HTTP consumers populate CamelHttpUri from the request line themselves as a documented reverse-proxy feature."
+  },
+  {
+   "id": "CVE-2026-78162",
+   "tier": "critical",
+   "title": "Camel Hazelcast反序列化RCE",
+   "title_zh": "Camel Hazelcast反序列化RCE",
+   "summary_zh": "能向Hazelcast集群发布数据的攻击者可构造对象触发反序列化RCE",
+   "published": "2026-10-19T11:17:19.037",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://camel.apache.org/security/CVE-2026-43865.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://camel.apache.org/security/CVE-2026-78162.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/apache/camel/pull/25566"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/oscerd/CVE-2026-78162",
+     "label": "oscerd/CVE-2026-78162 0★(仅README)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Camel并启用Hazelcast反序列化白名单",
+   "repro_worthy": "一般",
+   "repro_note": "需可向目标Hazelcast集群发布消息，构造序列化对象",
+   "impact_scope": "集成中间件集群，横向移动跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-78162",
+   "description": "Deserialization of Untrusted Data vulnerability in Apache Camel. In both cases an attacker able to publish into the Hazelcast cluster that the affected instance is attached to can cause a serialized Java object of their choosing to be deserialized inside Hazelcast's own serialization layer, before Camel processes the exchange, resulting in remote code execution."
+  },
+  {
+   "id": "CVE-2026-78165",
+   "tier": "high",
+   "title": "Camel Redis组件反序列化RCE",
+   "title_zh": "Camel Redis组件反序列化RCE",
+   "summary_zh": "可写入Redis数据的攻击者可注入恶意序列化对象，触发RCE",
+   "published": "2026-10-19T11:17:19.643",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://camel.apache.org/security/CVE-2026-78165.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/apache/camel/pull/25587"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/apache/camel/pull/25588"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/oscerd/CVE-2026-78165",
+     "label": "oscerd/CVE-2026-78165 0★(仅README)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Camel并禁用不必要Redis反序列化",
+   "repro_worthy": "一般",
+   "repro_note": "入口为Spring Redis组件消费数据，需可写Redis",
+   "impact_scope": "使用Redis的集成应用，可致RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-78165",
+   "description": "Deserialization of Untrusted Data vulnerability in Apache Camel Spring Redis component. Spring's implementation delegates through DeserializingConverter to DefaultDeserializer, which reads the bytes with a ConfigurableObjectInputStream and installs no java.io.ObjectInputFilter on the stream, so an arbitrary serialized class graph was materialised and its readObject method executed."
+  },
+  {
+   "id": "CVE-2026-83531",
+   "tier": "high",
+   "title": "Camel动态路由EL注入RCE",
+   "title_zh": "Camel动态路由EL注入RCE",
+   "summary_zh": "可控动态路由表达式的攻击者可注入EL并执行代码",
+   "published": "2026-10-19T11:17:21.507",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)",
+    "CWE-917"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://camel.apache.org/security/CVE-2026-83531.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/apache/camel/pull/25992"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/apache/camel/pull/26018"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Camel，限制动态路由表达式语言",
+   "repro_worthy": "一般",
+   "repro_note": "入口为DynamicRouterControlService，需可控表达式",
+   "impact_scope": "集成路由服务，可被远程代码执行",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83531",
+   "description": "Improper Control of Generation of Code ('Code Injection'), Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection') vulnerability in Apache Camel. DynamicRouterControlService then resolved that language from the CamelContext and compiled the expression into a Predicate, with no allow-list and no opt-in."
+  },
+  {
+   "id": "CVE-2026-88900",
+   "tier": "high",
+   "title": "Camel Jgroups反序列化RCE",
+   "title_zh": "Camel Jgroups反序列化RCE",
+   "summary_zh": "可向Jgroups发送消息的攻击者可构造对象触发RCE",
+   "published": "2026-10-19T12:17:11.980",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(需相邻网络·免认证)",
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://camel.apache.org/security/CVE-2026-40860.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://camel.apache.org/security/CVE-2026-88900.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/apache/camel/pull/26267"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Camel，启用反序列化过滤与网络隔离",
+   "repro_worthy": "一般",
+   "repro_note": "需接入Jgroups集群并发送恶意序列化对象",
+   "impact_scope": "集群通信组件，内网横向风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88900",
+   "description": "Deserialization of Untrusted Data vulnerability in Apache Camel Camel-Jgroups component. Such a host could send a crafted serialized object that leads to remote code execution in the Camel process when a usable deserialization gadget chain is present on the classpath, and no non-default option was required on the consumer."
+  },
+  {
+   "id": "CVE-2026-80312",
+   "tier": "high",
+   "title": "Camel OAuth组件认证绕过",
+   "title_zh": "Camel OAuth组件认证绕过",
+   "summary_zh": "未认证调用者可绕过OAuth校验，访问后续路由功能",
+   "published": "2026-10-19T11:17:21.073",
+   "cvss": 8.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://camel.apache.org/security/CVE-2026-80312.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/apache/camel/pull/25567"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/apache/camel/pull/25575"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Camel，修复OAuth失败放行逻辑",
+   "repro_worthy": "一般",
+   "repro_note": "入口为OAuth保护路由，构造失败认证请求",
+   "impact_scope": "认证网关/路由，未授权访问风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-80312",
+   "description": "Improper Authentication vulnerability in Apache Camel OAuth component. The effect is a fail-open authentication guard: an unauthenticated caller reached whatever the route did next."
+  },
+  {
+   "id": "CVE-2026-110887",
+   "tier": "critical",
+   "title": "HivePress代码注入RCE",
+   "title_zh": "HivePress代码注入RCE",
+   "summary_zh": "攻击者可利用代码注入在HivePress站点执行任意代码",
+   "published": "2026-10-19T10:16:45.627",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/hivepress/vulnerability/wordpress-hivepress-plugin-1-7-32-remote-code-execution-rce-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级 SLiMS 修复版本；临时限制后台访问并过滤 fileID 参数",
+   "action_zh": "升级HivePress至厂商修复版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件站点，可能被植入后门",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110887",
+   "description": "Improper Control of Generation of Code ('Code Injection') vulnerability in HivePress HivePress hivepress allows Remote Code Inclusion.This issue affects HivePress: from n/a through 1.7.32."
+  },
+  {
+   "id": "CVE-2026-111406",
+   "tier": "critical",
+   "title": "MapSVG任意文件上传RCE",
+   "title_zh": "MapSVG任意文件上传RCE",
+   "summary_zh": "攻击者可上传WebShell到MapSVG站点，获得服务器控制",
+   "published": "2026-10-19T10:16:46.007",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "任意文件上传"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/mapsvg-lite-interactive-vector-maps/vulnerability/wordpress-mapsvg-plugin-8-16-1-arbitrary-file-upload-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级MapSVG至修复版本，限制上传目录执行",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress地图插件，WebShell落地风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111406",
+   "description": "Unrestricted Upload of File with Dangerous Type vulnerability in PT Norther Lights Production MapSVG mapsvg-lite-interactive-vector-maps allows Upload a Web Shell to a Web Server.This issue affects MapSVG: from n/a through 8.16.1."
+  },
+  {
+   "id": "CVE-2026-112370",
+   "tier": "critical",
+   "title": "H3C NX15命令注入RCE",
+   "title_zh": "H3C NX15命令注入RCE",
+   "summary_zh": "远程攻击者可经usrlist组件注入OS命令，执行任意指令",
+   "published": "2026-10-19T23:17:35.817",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/XxingGoD/H3C-NX15-R017-Vulns/tree/main/H3C/NX15R017/usrlist_cmdi_root_rce"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/XxingGoD/H3C-NX15-R017-Vulns/tree/main/H3C/NX15R017/usrlist_cmdi_root_rce/poc"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-112370"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级H3C固件；限制管理面暴露公网",
    "repro_worthy": "一般",
-   "repro_note": "登录后台，向 dl_detail.php 的 fileID 参数注入",
-   "impact_scope": "图书馆管理系统后台数据",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107083",
-   "description": "SENAYAN Library Management System (SLiMS) Bulian (slims9_bulian) 9.8.0 is vulnerable to SQL Injection in admin/modules/reporting/customs/dl_detail.php via the parameter fileID."
+   "repro_note": "远程访问usrlist相关接口，操纵命令参数",
+   "impact_scope": "家用/小型网络设备，公网暴露风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112370",
+   "description": "A vulnerability was found in H3C Magic NX15 100R017. This issue affects the function sub_416874 of the file /usr/bin/usrlist. Performing a manipulation results in os command injection. Remote exploitation of the attack is possible. The exploit has been made public and could be used. The vendor was contacted early about this disclosure."
+  },
+  {
+   "id": "CVE-2026-112371",
+   "tier": "critical",
+   "title": "H3C NX15 RPC接口代码注入",
+   "title_zh": "H3C NX15 RPC接口代码注入",
+   "summary_zh": "远程攻击者可经/api/esps的path参数注入代码执行",
+   "published": "2026-10-19T23:17:36.000",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "注入",
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/XxingGoD/H3C-NX15-R017-Vulns/tree/main/H3C/NX15R017/file_write_root_rce"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-112371"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/983538"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级H3C固件；限制管理面暴露公网",
+   "repro_worthy": "一般",
+   "repro_note": "远程访问/api/esps，操纵path参数注入代码",
+   "impact_scope": "小型网络设备RPC面，远程RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112371",
+   "description": "A vulnerability was determined in H3C Magic NX15 NX15V100R017. Impacted is the function write of the file /api/esps of the component RPC Interface. Executing a manipulation of the argument path can lead to code injection. The attack can be executed remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure."
+  },
+  {
+   "id": "CVE-2026-90910",
+   "tier": "critical",
+   "title": "Apache Answer反应API缺失认证",
+   "title_zh": "Apache Answer反应API缺失认证",
+   "summary_zh": "未授权用户可读取受限内容反应元数据，或增减反应",
+   "published": "2026-10-19T10:16:49.897",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread/bhw80mvmnt9206wyqz80rcbwx1znv1p3"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/16/34"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到Apache Answer 2.0.3",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问reaction相关API，指定受限内容ID",
+   "impact_scope": "问答社区内容权限，元数据泄露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-90910",
+   "description": "Missing authentication for critical function vulnerability in Apache Answer. This issue affects Apache Answer: through 2.0.2. The reaction API did not enforce content visibility controls, allowing unauthorized users to read reaction metadata from restricted content or add and remove their own reactions. Users are recommended to upgrade to version 2.0.3, which fixes the issue."
+  },
+  {
+   "id": "CVE-2026-112296",
+   "tier": "critical",
+   "title": "FlyCms默认凭据接管后台",
+   "title_zh": "FlyCms默认凭据接管后台",
+   "summary_zh": "未认证攻击者用flycms/admin123登录，接管站点",
+   "published": "2026-10-19T14:17:08.510",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "默认凭据"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/sunkaifei/FlyCms/blob/edfdf724c3b944310f60c29aa755d03a00a75837/README.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/sunkaifei/FlyCms/blob/edfdf724c3b944310f60c29aa755d03a00a75837/sql/flycms_20260928_093335.sql"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/sunkaifei/FlyCms/issues/19"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "修改默认管理员密码，限制登录接口暴露",
+   "repro_worthy": "一般",
+   "repro_note": "POST /api/auth/login，账号flycms密码admin123",
+   "impact_scope": "CMS后台接管，内容与用户失控",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112296",
+   "description": "FlyCms through commit edfdf724 contains a default credentials vulnerability that allows unauthenticated remote attackers to gain super administrator access via the flycms account with password admin123. Attackers can log in through POST /api/auth/login, solving only the image captcha, to obtain full control of site content, users and configuration."
+  },
+  {
+   "id": "CVE-2026-109432",
+   "tier": "critical",
+   "title": "Camunda查询表达式注入RCE",
+   "title_zh": "Camunda查询表达式注入RCE",
+   "summary_zh": "已认证用户可绕过表达式限制，在Adhoc查询中注入执行代码",
+   "published": "2026-10-19T16:17:02.487",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)",
+    "CWE-917"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://codeant.ai/security-research/camunda-adhoc-query-expression-rce-cve-2026-109432"
+    },
+    {
+     "label": "参考",
+     "url": "https://docs.camunda.org/enterprise/download/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/camunda-expression-injection-via-orqueries-rce"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Camunda 7.24.14/7.23.17或更高",
+   "repro_worthy": "一般",
+   "repro_note": "认证后经TaskQueryDto的orQueries注入表达式",
+   "impact_scope": "工作流引擎，认证用户可RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109432",
+   "description": "Camunda 7.24.0 before 7.24.14 and 7.23.0 before 7.23.17 contains an expression injection vulnerability where AdhocQueryValidator.validate() fails to check sub-query expression maps within the orQueries field exposed by TaskQueryDto, allowing authenticated users to bypass the enableExpressionsInAdhocQueries restriction."
   },
   {
    "id": "CVE-2026-109437",
    "tier": "critical",
-   "title": "Cognition 沙箱未授权 RCE",
-   "title_zh": "Cognition 沙箱未授权 RCE",
-   "summary_zh": "未认证攻击者可调用无鉴权的 REST/SSE API，触发本地沙箱执行任意代码。",
+   "title": "Cognition默认本地沙箱未授权RCE",
+   "title_zh": "Cognition默认本地沙箱未授权RCE",
+   "summary_zh": "未认证攻击者可调用REST/SSE API，在本地沙箱执行代码",
    "published": "2026-10-19T19:17:19.807",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -205,19 +698,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至 0.13.0 及以上；为 API 增加认证并禁用本地沙箱",
+   "action_zh": "升级Cognition 0.13.0，启用API认证",
    "repro_worthy": "一般",
-   "repro_note": "未授权访问 REST/SSE API，触发本地沙箱执行",
-   "impact_scope": "AI Agent 沙箱，可能暴露公网",
+   "repro_note": "未授权访问REST/SSE API，提交代理任务",
+   "impact_scope": "AI代理服务，主机命令执行风险",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109437",
    "description": "Cognition before 0.13.0 contains an unauthenticated remote code execution vulnerability due to defaulting its agent sandbox backend to local execution and shipping no authentication on its REST/SSE API. Attackers can create a session via POST /sessions and post a message via POST /sessions/{id}/messages without credentials, causing the Deep Agents ReAct loop to run attacker-directed shell commands through the local shell backend, resulting in remote code execution as the server process."
   },
   {
    "id": "CVE-2026-112779",
    "tier": "critical",
-   "title": "未知组件 未授权资源耗尽",
-   "title_zh": "未知组件 未授权资源耗尽",
-   "summary_zh": "未认证攻击者可反复请求写入约560KB数据，耗尽磁盘或 APCu；低权账号可篡改翻译。",
+   "title": "Web应用资源分配无限制致耗尽",
+   "title_zh": "Web应用资源分配无限制致耗尽",
+   "summary_zh": "未认证攻击者可发送小请求写入约560KB，耗尽磁盘或APCu",
    "published": "2026-10-19T20:17:55.323",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -249,61 +742,669 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级修复版本；限制匿名请求及写入配额，监控 APCu 与磁盘",
+   "action_zh": "限制请求频率与存储配额，修补资源分配逻辑",
    "repro_worthy": "一般",
-   "repro_note": "匿名请求触发约560KB存储写入，验证配额耗尽",
-   "impact_scope": "Web 应用存储与缓存资源",
+   "repro_note": "未授权请求触发约560KB存储写入，观察磁盘/APCu",
+   "impact_scope": "Web服务存储，DoS与内容篡改风险",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112779",
    "description": "Unauthenticated attackers can send small requests that each store about 560 KB to exhaust disk or APCu, while accounts with api.pages.write can overwrite translations or create pages that page-level rules deny."
+  },
+  {
+   "id": "CVE-2026-109442",
+   "tier": "critical",
+   "title": "piflow聊天代理未授权RCE",
+   "title_zh": "piflow聊天代理未授权RCE",
+   "summary_zh": "未认证攻击者可调用/chat接口，提交代理指令执行代码",
+   "published": "2026-10-20T01:17:10.383",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/cas-bigdatalab/piflow/blob/ad8d0108a54a4257307d4946dc9250e26f24c63f/agents/tools.py#L114"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/cas-bigdatalab/piflow/blob/ad8d0108a54a4257307d4946dc9250e26f24c63f/server.py#L615"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.lasso.security/vulnerability-database/cve-2026-109442"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级piflow，为聊天接口增加认证",
+   "repro_worthy": "一般",
+   "repro_note": "未授权POST /chat或/chat/stream，提交代理指令",
+   "impact_scope": "AI工作流服务，远程代码执行",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109442",
+   "description": "piflow 2.0.0 through 2.0.1 contains a remote code execution vulnerability in its DeepAgents chat agent, whose POST /chat and POST /chat/stream endpoints lack authentication. Attackers can instruct the agent to call the exec_shell tool, which runs arbitrary commands via subprocess.run without human approval or an allow-list, exposing environment secrets such as LLM API keys and database credentials."
+  },
+  {
+   "id": "CVE-2026-75128",
+   "tier": "critical",
+   "title": "Chatchat工具调用未授权RCE",
+   "title_zh": "Chatchat工具调用未授权RCE",
+   "summary_zh": "未认证攻击者可调用已注册shell工具，以服务账户执行命令",
+   "published": "2026-10-20T01:17:19.063",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/chatchat-space/Langchain-Chatchat/blob/a6a9193b5002061719f0eee62c6310bd5b1b7f63/libs/chatchat-server/chatchat/server/api_server/tool_routes.py#L33"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.lasso.security/vulnerability-database/cve-2026-75128"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/langchain-chatchat-through-0.3.1.3-unauthenticated-rce-via-tools-call-endpoint"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Chatchat，禁用shell工具并增加认证",
+   "repro_worthy": "一般",
+   "repro_note": "未授权POST /tools/call，指定shell工具与命令",
+   "impact_scope": "AI知识库服务，命令执行风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-75128",
+   "description": "Langchain-Chatchat through 0.3.1.3 exposes a POST /tools/call API endpoint that invokes any registered tool by name without authentication, leaving the always-registered shell tool callable. Remote attackers can send a single request naming the shell tool to execute arbitrary OS commands as the server user (root in the shipped Docker image)."
+  },
+  {
+   "id": "CVE-2026-77932",
+   "tier": "critical",
+   "title": "DB-GPT聊天代理未授权RCE",
+   "title_zh": "DB-GPT聊天代理未授权RCE",
+   "summary_zh": "未认证攻击者可经react-agent接口以管理员身份执行代码",
+   "published": "2026-10-20T01:17:19.503",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/eosphoros-ai/DB-GPT/blob/83609c471266607490b24e72188311efa23a0d16/packages/dbgpt-app/src/dbgpt_app/openapi/api_v1/tools/code_interpreter.py#L39"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/eosphoros-ai/DB-GPT/blob/83609c471266607490b24e72188311efa23a0d16/packages/dbgpt-serve/src/dbgpt_serve/utils/auth.py#L25"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.lasso.security/vulnerability-database/cve-2026-77932"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级DB-GPT，替换mock鉴权并加认证",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问/api/v1/chat/react-agent，构造请求",
+   "impact_scope": "AI数据平台，管理员权限RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77932",
+   "description": "DB-GPT through 0.8.2 contains an unauthenticated remote code execution vulnerability because the /api/v1/chat/react-agent endpoint relies on a mock get_user_from_headers function that grants every caller the admin role. Unauthenticated attackers can send prompts that make the ReAct agent's unsandboxed code_interpreter and shell_interpreter tools run arbitrary Python or bash as root in the webserver container, including reaching the bundled database with default credentials."
+  },
+  {
+   "id": "CVE-2026-77933",
+   "tier": "critical",
+   "title": "DB-GPT默认MySQL凭据暴露",
+   "title_zh": "DB-GPT默认MySQL凭据暴露",
+   "summary_zh": "可访问3306或dbgptnet的攻击者用默认root密码接管数据库",
+   "published": "2026-10-20T01:17:19.670",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "默认凭据"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/eosphoros-ai/DB-GPT/blob/83609c471266607490b24e72188311efa23a0d16/docker-compose.yml#L9"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.lasso.security/vulnerability-database/cve-2026-77933"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/db-gpt-through-0.8.2-hardcoded-mysql-root-credentials-in-docker-compose-deployment"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "修改默认MySQL密码，关闭3306公网暴露",
+   "repro_worthy": "一般",
+   "repro_note": "连接暴露的3306，root@%使用默认密码登录",
+   "impact_scope": "数据库服务，数据泄露与篡改",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77933",
+   "description": "DB-GPT through 0.8.2 contains a hardcoded credentials vulnerability in its default docker-compose.yml that sets a static MYSQL_ROOT_PASSWORD and publishes port 3306 on all interfaces. Attackers reaching port 3306 or the shared dbgptnet network can authenticate as root@% to gain full database access including FILE and SUPER privileges."
+  },
+  {
+   "id": "CVE-2026-77936",
+   "tier": "critical",
+   "title": "Letta默认配置API未授权RCE",
+   "title_zh": "Letta默认配置API未授权RCE",
+   "summary_zh": "未认证攻击者可调用/v1/tools/run执行Python或经COPY PROGRAM执行命令",
+   "published": "2026-10-20T01:17:20.107",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "初始化不安全(默认凭据)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/compose.yaml#L17"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/letta/server/rest_api/app.py#L799"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.lasso.security/vulnerability-database/cve-2026-77936"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "启用LETTA_SERVER_SECURE并改默认数据库密码",
+   "repro_worthy": "一般",
+   "repro_note": "未授权POST /v1/tools/run执行Python；或连默认PG",
+   "impact_scope": "AI代理平台，主机与数据库失陷",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77936",
+   "description": "Letta through 0.16.8 ships a compose.yaml that does not enable LETTA_SERVER_SECURE, so the password middleware is never added and all API routes are unauthenticated, and it exposes a superuser PostgreSQL port with default credentials. Remote attackers can execute arbitrary Python via POST /v1/tools/run, manage /v1/admin users, or run OS commands via COPY PROGRAM."
+  },
+  {
+   "id": "CVE-2026-107188",
+   "tier": "critical",
+   "title": "Web应用报表上传功能任意文件上传RCE",
+   "title_zh": "Web应用报表上传功能任意文件上传RCE",
+   "summary_zh": "已登录用户可上传JSP/JSPX报表并访问执行，串联认证绕过即可未授权远程执行代码",
+   "published": "2026-10-19T17:17:01.080",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "任意文件上传"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.rapid7.com/blog/post/ve-authentication-bypass-remote-code-execution-and-database-read-in-eptura-archibus-fixed/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无补丁信息；上传目录禁止脚本解析，严格白名单文件扩展名",
+   "repro_worthy": "一般",
+   "repro_note": "调用导出报表上传接口写入JSP/JSPX，再访问上传路径触发执行",
+   "impact_scope": "Java Web业务应用，直接代码执行",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107188",
+   "description": "A user can upload export reports with any file contents and specify any contents. JSP code can be uploaded, JSPX can be specified as the file extension, and anyone can browse to the uploaded file, leading to command execution. The authentication bypass vulnerability can be chained with this vulnerability to run code on the server without authentication."
+  },
+  {
+   "id": "CVE-2026-103091",
+   "tier": "critical",
+   "title": "Google SAM MCP代理缺失认证可自注册入网",
+   "title_zh": "Google SAM MCP代理缺失认证可自注册入网",
+   "summary_zh": "远程攻击者走OIDC注册流程自助入网，经MCP代理未授权调用后端服务甚至执行操作",
+   "published": "2026-10-19T03:16:58.377",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00406,
+   "epss_percentile": 0.33455,
+   "cwe_labels": [
+    "信息泄露",
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/google/sam/releases/tag/v0.1.0-alpha.9"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/google/sam/security/advisories/GHSA-cgmg-9xf6-rrgw"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/google/agentmesh/security/advisories/GHSA-cgmg-9xf6-rrgw"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 alpha.8 之后修复版本；限制 /register 与 /info 暴露面",
+   "repro_worthy": "一般",
+   "repro_note": "未授权 POST /register 自注册入mesh，再经MCP代理直通调用后端",
+   "impact_scope": "AI代理网格控制面，横向调用跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103091",
+   "description": "Missing Authorization (CWE-862) and Initialization of a Resource with an Insecure Default (CWE-1188) in the MCP proxy (HandleStreamPassThrough in mcp_service.go) and OIDC registration flow (GET /info and POST /register in internal/controlplane/server.go) in Google OSS Agent Mesh (SAM) versions 0.1.0-alpha.1 through 0.1.0-alpha.8 allow a remote attacker to self-enroll into the mesh and invoke arbitrary tools across all connected MCP backend nodes."
+  },
+  {
+   "id": "CVE-2026-102503",
+   "tier": "critical",
+   "title": "Google SAM libp2p入口缺失认证绕过策略",
+   "title_zh": "Google SAM libp2p入口缺失认证绕过策略",
+   "summary_zh": "未认证libp2p对端接入ingress即可绕过Biscuit能力策略，调用任意已注册后端服务",
+   "published": "2026-10-19T03:16:58.193",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.0034,
+   "epss_percentile": 0.26053,
+   "cwe_labels": [
+    "缺失认证",
+    "缺失授权(越权)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/google/sam/commit/433bc99d2a2c10071167bf22acc2c930a12e64e1"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/google/sam/releases/tag/v0.1.0-alpha.3"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/google/sam/security/advisories/GHSA-r6hp-67wp-c7jx"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 alpha.2 之后修复版本；对ingress对端做身份与白名单校验",
+   "repro_worthy": "一般",
+   "repro_note": "启动SAM节点后由未认证libp2p对端访问ingress已注册服务路径",
+   "impact_scope": "分布式节点网格入口，内网横向跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102503",
+   "description": "Missing Authentication for Critical Function (CWE-306) and Missing Authorization (CWE-862) in the /libp2p-http ingress server (StartIngressServer in cmd/sam-node/node.go) in Google OSS Agent Mesh (SAM) versions 0.1.0-alpha.1 through 0.1.0-alpha.2 allow an unauthenticated remote libp2p peer to bypass Biscuit capability policy enforcement and invoke arbitrary registered backend services (including command/stdio-backed MCP servers, A2A, and inference endpoints)."
+  },
+  {
+   "id": "CVE-2026-112398",
+   "tier": "critical",
+   "title": "olefile解析FlashPix堆溢出或致RCE",
+   "title_zh": "olefile解析FlashPix堆溢出或致RCE",
+   "summary_zh": "攻击者投递特制OLE2 FlashPix文件，应用解析或生成缩略图时堆内存破坏，可能执行代码",
+   "published": "2026-10-19T22:17:07.107",
+   "cvss": 9.2,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出",
+    "越界写入"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/commit/242a059aedc1935097d9aa1dc3f099750467ba75"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-5x8w-8jj5-q52h"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级 olefile 至修复版本；禁止对不受信文件解析FlashPix与做缩略图",
+   "repro_worthy": "一般",
+   "repro_note": "构造畸形FlashPix流交由olefile解析，触发堆写越界",
+   "impact_scope": "文档/图片处理依赖库，影响调用方",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112398",
+   "description": "An attacker can supply a crafted OLE2 FlashPix file to an application with the optional olefile dependency installed that opens or thumbnails untrusted input. This can corrupt heap memory and may allow arbitrary code execution."
+  },
+  {
+   "id": "CVE-2026-112403",
+   "tier": "critical",
+   "title": "图像库JPEG降采样堆溢出可执行代码",
+   "title_zh": "图像库JPEG降采样堆溢出可执行代码",
+   "summary_zh": "攻击者提供特制JPEG，应用调用draft()/thumbnail()降采样时堆溢出，可崩溃或执行代码",
+   "published": "2026-10-19T22:17:07.770",
+   "cvss": 9.2,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/commit/242a059aedc1935097d9aa1dc3f099750467ba75"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-8g5g-8vmr-9782"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级图像库至修复版本；避免对不受信JPEG调用降采样接口",
+   "repro_worthy": "一般",
+   "repro_note": "对特制JPEG调用draft()/thumbnail()触发堆写越界",
+   "impact_scope": "图像处理依赖库，影响调用方服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112403",
+   "description": "An attacker can supply such a JPEG to an application that uses draft() or thumbnail() to request downscaling. This can corrupt heap memory, crash the process, or potentially allow code execution."
+  },
+  {
+   "id": "CVE-2026-112900",
+   "tier": "critical",
+   "title": "Pillow处理EPS时Ghostscript参数注入",
+   "title_zh": "Pillow处理EPS时Ghostscript参数注入",
+   "summary_zh": "攻击者控制EPS文件名即可注入Ghostscript参数，在调用方服务器上执行任意命令",
+   "published": "2026-10-19T22:17:10.160",
+   "cvss": 9.2,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)",
+    "参数拼接注入"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/commit/a2c363141da31a265dd536c945677db4b64f3ec9"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-w889-685w-c8fh"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Pillow至修复版本；清洗文件名并禁用EPS格式解析",
+   "repro_worthy": "一般",
+   "repro_note": "构造含Ghostscript参数的文件名，经EPS解析路径注入执行",
+   "impact_scope": "Python图像处理依赖，服务端命令执行",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112900",
+   "description": "From 2.6.0 until 13.0.0, Pillow is vulnerable to argument injection when invoking Ghostscript for EPS input. An attacker who controls the filename can inject Ghostscript arguments."
+  },
+  {
+   "id": "CVE-2026-109395",
+   "tier": "critical",
+   "title": "compress-lzf解压越界读泄露堆内存",
+   "title_zh": "compress-lzf解压越界读泄露堆内存",
+   "summary_zh": "攻击者提供畸形LZF流，默认解码器未校验回溯引用即越界读，泄露JVM堆数据或崩溃",
+   "published": "2026-10-20T01:17:09.957",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界读取"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/github/securitylab/discussions/970"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ning/compress"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ning/compress/blob/compress-lzf-1.1.3/src/main/java/com/ning/compress/lzf/impl/UnsafeChunkDecoder.java#L104"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 1.2.0 及以上版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造非法back-reference/literal的LZF流，调用LZFDecoder解压",
+   "impact_scope": "Java解压组件，影响调用方服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109395",
+   "description": "Ning compress-lzf before 1.2.0 contains an out-of-bounds memory access vulnerability in the sun.misc.Unsafe based UnsafeChunkDecoder that fails to validate back-references and literal runs. Attackers can supply crafted LZF streams to applications using the default LZFDecoder to leak unrelated JVM heap memory into decompressed output or crash the JVM."
+  },
+  {
+   "id": "CVE-2026-112393",
+   "tier": "critical",
+   "title": "TIFF写回调堆溢出并可泄露残留堆数据",
+   "title_zh": "TIFF写回调堆溢出并可泄露残留堆数据",
+   "summary_zh": "攻击者以特制TIFF标签或ICC配置使写回调按旧缓冲区分配越界拷贝，可执行代码并泄露堆",
+   "published": "2026-10-19T21:17:07.613",
+   "cvss": 9.2,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "中(远程·利用条件苛刻·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/commit/11582e5ffbdceb973d5ee593f3105af5a9852b40"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-332p-7hrc-92wf"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级libtiff及相关封装库至修复版本；停止处理不受信TIFF",
+   "repro_worthy": "一般",
+   "repro_note": "构造超长out-of-line标签或ICC配置，触发编码写回调越界",
+   "impact_scope": "图像编码依赖库，影响调用方应用",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112393",
+   "description": "The callback sizes its allocation from the prior buffer size instead of the current write position, allowing an attacker-controlled out-of-line TIFF tag or retained ICC profile to be copied beyond the allocation after libtiff seeks forward. Independently, unwritten alignment gaps in compressed TIFF output larger than 64 KiB can disclose stale heap bytes without a crafted tag."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "elastic/elasticsearch",
-   "sha": "68790bc0503cec6f66a8c384b65c9e95acafff6f",
-   "url": "https://github.com/elastic/elasticsearch/commit/68790bc0503cec6f66a8c384b65c9e95acafff6f",
-   "title": "Prevent SO in automatic KNN prefilter (#162315)",
-   "date": "2026-10-19T21:10:13",
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "0d6ab4c619b13e8e5e0ca48359afc88579fa67c8",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/0d6ab4c619b13e8e5e0ca48359afc88579fa67c8",
+   "title": "avcodec/aac/aacdec_usac: reject SBR ratios other than 2:1",
+   "date": "2026-10-19T23:40:15",
    "score": 2,
    "matched": [
-    "缓冲区溢出"
+    "未初始化/内存破坏"
    ],
    "cve": null
   },
   {
    "repo": "FFmpeg/FFmpeg",
-   "sha": "d20d75cb9bcb954bfe76c07f5b5cc4abf3289ef0",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/d20d75cb9bcb954bfe76c07f5b5cc4abf3289ef0",
-   "title": "avformat: remove the asf_o demuxer",
-   "date": "2026-10-19T19:16:58",
+   "sha": "5c02093341182a0015d2229c4e9722439e824a56",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/5c02093341182a0015d2229c4e9722439e824a56",
+   "title": "avcodec/nvdec: take the output sw_format from the decoder's frames context",
+   "date": "2026-10-19T23:38:37",
    "score": 2,
    "matched": [
-    "安全修复"
+    "UAF"
    ],
    "cve": null
   },
   {
-   "repo": "openbsd/src",
-   "sha": "5e2b008c70caa7153814546b28c8dc5a4dd5a1fc",
-   "url": "https://github.com/openbsd/src/commit/5e2b008c70caa7153814546b28c8dc5a4dd5a1fc",
-   "title": "Back out the last video(4) vulnerability fix, which changed the",
-   "date": "2026-10-19T18:16:24",
+   "repo": "grafana/grafana",
+   "sha": "b495816ab5624afd997c97c8d2f90d98ce460c03",
+   "url": "https://github.com/grafana/grafana/commit/b495816ab5624afd997c97c8d2f90d98ce460c03",
+   "title": "Alerting: Surface access control errors when checking protected field permissions (#135004)",
+   "date": "2026-10-19T22:07:55",
    "score": 2,
    "matched": [
-    "漏洞相关"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "969c7eb091989a664cb7bf66a1f02051cc46cb52",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/969c7eb091989a664cb7bf66a1f02051cc46cb52",
-   "title": "avutil/encryption_info: avoid stack exhaustion freeing init info list",
-   "date": "2026-10-19T15:14:17",
-   "score": 2,
-   "matched": [
-    "缓冲区溢出"
+    "认证/鉴权绕过"
    ],
    "cve": null
   }

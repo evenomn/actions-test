@@ -9270,5 +9270,302 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-10-20": {
+  "qualified": 28,
+  "critical": 23,
+  "kev": 0,
+  "repro_top": 0,
+  "kev_total": 1748,
+  "by_category": {
+   "Web中间件": 1,
+   "未分类": 18,
+   "数据库": 2,
+   "网络设备": 2,
+   "容器/虚拟化": 1,
+   "开发库/依赖": 4
+  },
+  "items": [
+   {
+    "id": "CVE-2026-78164",
+    "title": "Apache Camel模板注入信息泄露",
+    "tier": "high",
+    "category": "Web中间件",
+    "cvss": 8.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-78162",
+    "title": "Camel Hazelcast反序列化RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-78165",
+    "title": "Camel Redis组件反序列化RCE",
+    "tier": "high",
+    "category": "数据库",
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-83531",
+    "title": "Camel动态路由EL注入RCE",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-88900",
+    "title": "Camel Jgroups反序列化RCE",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-80312",
+    "title": "Camel OAuth组件认证绕过",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-110887",
+    "title": "HivePress代码注入RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-111406",
+    "title": "MapSVG任意文件上传RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112370",
+    "title": "H3C NX15命令注入RCE",
+    "tier": "critical",
+    "category": "网络设备",
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112371",
+    "title": "H3C NX15 RPC接口代码注入",
+    "tier": "critical",
+    "category": "网络设备",
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-90910",
+    "title": "Apache Answer反应API缺失认证",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112296",
+    "title": "FlyCms默认凭据接管后台",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-109432",
+    "title": "Camunda查询表达式注入RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-109437",
+    "title": "Cognition默认本地沙箱未授权RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112779",
+    "title": "Web应用资源分配无限制致耗尽",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-109442",
+    "title": "piflow聊天代理未授权RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-75128",
+    "title": "Chatchat工具调用未授权RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-77932",
+    "title": "DB-GPT聊天代理未授权RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-77933",
+    "title": "DB-GPT默认MySQL凭据暴露",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-77936",
+    "title": "Letta默认配置API未授权RCE",
+    "tier": "critical",
+    "category": "数据库",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107188",
+    "title": "Web应用报表上传功能任意文件上传RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-103091",
+    "title": "Google SAM MCP代理缺失认证可自注册入网",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102503",
+    "title": "Google SAM libp2p入口缺失认证绕过策略",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112398",
+    "title": "olefile解析FlashPix堆溢出或致RCE",
+    "tier": "critical",
+    "category": "开发库/依赖",
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112403",
+    "title": "图像库JPEG降采样堆溢出可执行代码",
+    "tier": "critical",
+    "category": "开发库/依赖",
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112900",
+    "title": "Pillow处理EPS时Ghostscript参数注入",
+    "tier": "critical",
+    "category": "开发库/依赖",
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-109395",
+    "title": "compress-lzf解压越界读泄露堆内存",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112393",
+    "title": "TIFF写回调堆溢出并可泄露残留堆数据",
+    "tier": "critical",
+    "category": "开发库/依赖",
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }
