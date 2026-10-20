@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-20 02:03 UTC · 共 **112** 条(强烈推荐 15 / 值得 97)
+**更新**: 2026-10-20 06:10 UTC · 共 **113** 条(强烈推荐 15 / 值得 98)
 
 ---
 
@@ -392,6 +392,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### Letta 默认配置未认证RCE
+[CVE-2026-77936](https://nvd.nist.gov/vuln/detail/CVE-2026-77936) | P1 重点关注 | 数据库 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20
+远程攻击者未授权调用 /v1/tools/run 执行任意 Python,并借默认口令 PostgreSQL 执行系统命令
+复现: 值得 — 未认证 POST /v1/tools/run 提交工具定义;基于默认 compose 部署 · 影响面: 内网 AI Agent 服务,常与数据库同机暴露
+处置: 启用 LETTA_SERVER_SECURE、改默认数据库口令,限制 API/DB 端口暴露并关注官方修复
+参考: [参考](https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/compose.yaml#L17) · [参考](https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/letta/server/rest_api/app.py#L799) · [参考](https://www.lasso.security/vulnerability-database/cve-2026-77936)
 
 ### Mercury默认无令牌致未授权RCE
 [CVE-2026-111058](https://nvd.nist.gov/vuln/detail/CVE-2026-111058) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-19 | 入库 2026-10-19
