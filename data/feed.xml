@@ -5,52 +5,127 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 20 Oct 2026 14:23:45 +0000</pubDate>
-    <lastBuildDate>Tue, 20 Oct 2026 14:23:45 +0000</lastBuildDate>
+    <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+    <lastBuildDate>Tue, 20 Oct 2026 20:43:36 +0000</lastBuildDate>
     <item>
-      <title>[critical]Red Hat Strimzi控制台提权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105312</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105312-2026-10-20</guid>
-      <description>CVE-2026-105312 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 权限提升 · 难度 低(远程·需低权限)
-The attacker's code reads the projected SA token and gains cross-tenant Strimzi control-plane read+write access.
-信号:</description>
-      <pubDate>Tue, 20 Oct 2026 14:23:45 +0000</pubDate>
+      <title>[critical]Plex媒体服务器URL未中和致插件调用</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96654</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96654-2026-10-20</guid>
+      <description>CVE-2026-96654 · 🎯P0 立即处置 · 披露 2026-09-23 · CVSS 6.5 · EPSS 0.2%,前 13% · 类型 CWE-84 · 难度 低(远程·免认证)
+Plex Media Server before 1.43.3.10861 does not correctly neutralize URL values included in 'searchOne,' allowing an attacker to call other plugins' functions an…
+信号: 🔥 KEV 在野利用,CISA 限期 2026-10-23 | 有PoC
+[code-zm/plex2shell 42★(有源码)](https://github.com/code-zm/plex2shell) · [gmh5225/plex2shell 0★(有源码)](https://github.com/gmh5225/plex2shell)</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]DrayTek Vigor2960命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113389</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113389-2026-10-20</guid>
-      <description>CVE-2026-113389 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 类型 注入/命令注入 · 难度 低(远程·需低权限)
-A vulnerability was detected in DrayTek Vigor2960 1.5.1.6 Revision 8218.
-信号:</description>
-      <pubDate>Tue, 20 Oct 2026 14:23:45 +0000</pubDate>
+      <title>[critical]Plex媒体服务器转码路径SSRF</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96655</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96655-2026-10-20</guid>
+      <description>CVE-2026-96655 · 🎯P0 立即处置 · 披露 2026-09-23 · CVSS 4.3 · EPSS 0.2%,前 12% · 类型 SSRF · 难度 低(远程·需低权限)
+Plex Media Server before 1.43.3.10861 allows an authenticated user to request arbitrary internal or external addresses via the '/video/:/transcode/universal' pa…
+信号: 🔥 KEV 在野利用,CISA 限期 2026-11-03 | 有PoC
+[code-zm/plex2shell 42★(有源码)](https://github.com/code-zm/plex2shell) · [gmh5225/plex2shell 0★(有源码)](https://github.com/gmh5225/plex2shell)</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]未标明组件远程命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113390</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113390-2026-10-20</guid>
-      <description>CVE-2026-113390 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-This manipulation of the argument usefile/usescript/option causes os command injection. Remote exploitation of the attack is possible.
-信号:</description>
-      <pubDate>Tue, 20 Oct 2026 14:23:45 +0000</pubDate>
+      <title>[critical]Plex媒体服务器时间线SSRF</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96652</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96652-2026-10-20</guid>
+      <description>CVE-2026-96652 · 🎯P0 立即处置 · 披露 2026-09-23 · CVSS 4.3 · EPSS 0.2%,前 12% · 类型 SSRF · 难度 低(远程·需低权限)
+Plex Media Server before 1.43.3.10861 allows SSRF via '/player/timeline'.
+信号: 🔥 KEV 在野利用,CISA 限期 2026-11-03 | 有PoC
+[code-zm/plex2shell 42★(有源码)](https://github.com/code-zm/plex2shell) · [gmh5225/plex2shell 0★(有源码)](https://github.com/gmh5225/plex2shell)</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]未标明组件命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113391</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113391-2026-10-20</guid>
-      <description>CVE-2026-113391 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 类型 注入/命令注入 · 难度 低(远程·需低权限)
-Such manipulation leads to command injection. The exploit has been disclosed to the public and may be used.
-信号:</description>
-      <pubDate>Tue, 20 Oct 2026 14:23:45 +0000</pubDate>
+      <title>[critical]SiteGuard服务器命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-106931</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-106931-2026-10-20</guid>
+      <description>CVE-2026-106931 · 🎯P0 立即处置 · 披露 2026-10-14 · CVSS 8.5 · EPSS 0.7%,前 51% · 类型 命令注入(RCE) · 难度 高(需本地访问·需低权限)
+SiteGuard Server Edition contains an OS command injection vulnerability, which may allow an attacker to execute arbitrary OS commands with root or SYSTEM privil…
+信号: 🔥 KEV 在野利用,CISA 限期 2026-10-23</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]ioFog WebSocket鉴权绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113620</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113620-2026-10-20</guid>
-      <description>CVE-2026-113620 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 类型 签名校验错误 · 难度 低(远程·免认证)
-The attacker can open an exec or log session for a microservice or fog whose UUID they already know.
+      <title>[critical]Plex管理员任意文件写入致代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96656</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96656-2026-10-20</guid>
+      <description>CVE-2026-96656 · 🎯P0 立即处置 · 披露 2026-09-23 · CVSS 7.2 · EPSS 0.4%,前 32% · 类型 CWE-73 · 难度 中(远程·需高权限)
+Plex Media Server before 1.43.3.10861 allows an admin user to write arbitrary files that may be executed on load.
+信号: 🔥 KEV 在野利用,CISA 限期 2026-10-23</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]西门子软件中心DLL搜索路径劫持</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110936</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110936-2026-10-20</guid>
+      <description>CVE-2026-110936 · 🎯P0 立即处置 · 披露 2026-10-15 · CVSS 6.7 · EPSS 0.1%,前 3% · 类型 CWE-427 · 难度 高(需本地访问·需高权限)
+This could allow an authenticated local attacker to place a specially crafted DLL in a directory that the application searches, leading to arbitrary code execut…
+信号: 🔥 KEV 在野利用,CISA 限期 2026-11-03</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Wavlink路由器命令注入未授权RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113802</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113802-2026-10-20</guid>
+      <description>CVE-2026-113802 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+A remote unauthenticated attacker can send a forged IP-FROM: 127.0.0.1 header to bypass login and execute arbitrary commands as root.
 信号:</description>
-      <pubDate>Tue, 20 Oct 2026 14:23:45 +0000</pubDate>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Froxlor统计符号链接致root提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113678</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113678-2026-10-20</guid>
+      <description>CVE-2026-113678 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 类型 文件链接绕过 · 难度 低(远程·需低权限)
+Froxlor before 2.3.15 contains a symlink following vulnerability in Statistics::makeChownWithNewStats that allows authenticated customers to take ownership of a…
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件参数命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113506</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113506-2026-10-20</guid>
+      <description>CVE-2026-113506 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+The manipulation of the argument sfile/dfile/access/user leads to os command injection. The exploit has been disclosed to the public and may be used.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Argo CD仓库服务路径遍历</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113672</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113672-2026-10-20</guid>
+      <description>CVE-2026-113672 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+Absolute paths, parent-directory traversal, and repository symlinks can open any file readable by the repo-server, including /proc/self/environ, projected servi…
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Argo CD仓库服务参数注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113708</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113708-2026-10-20</guid>
+      <description>CVE-2026-113708 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 参数拼接注入 · 难度 低(远程·需低权限)
+A leading-hyphen value can be parsed as --upload-pack and execute a command inside argocd-repo-server when the remote uses a local transport such as file://.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Argo CD Helm插件自动加载RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113709</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113709-2026-10-20</guid>
+      <description>CVE-2026-113709 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 CWE-829 · 难度 低(远程·需低权限)
+Helm automatically loads a downloader plugin from &lt;configHome&gt;/.data/plugins without a separate plugin-install step and executes its program inside argocd-rep…
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Kiro Crew群组越权致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112380</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112380-2026-10-20</guid>
+      <description>CVE-2026-112380 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 类型 缺失授权(越权)/授权错误 · 难度 低(远程·需低权限)
+Missing authorization in the WhatsApp group channel in Kiro Crew might allow a remote actor who is a member of an operator-configured WhatsApp group to control …
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
     </item>
   </channel>
 </rss>

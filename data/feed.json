@@ -1,54 +1,378 @@
 {
  "version": 3,
- "generated_at": "2026-10-20T14:23:45+00:00",
+ "generated_at": "2026-10-20T20:43:36+00:00",
  "lookback_hours": 5,
- "count": 5,
+ "count": 13,
  "stats": {
-  "total": 5,
+  "total": 13,
   "by_tier": {
-   "critical": 5
+   "critical": 13
   },
   "by_urgency": {
-   "P1 重点关注": 5
+   "P1 重点关注": 7,
+   "P0 立即处置": 6
   },
   "by_category": {
-   "未知": 4,
-   "容器/虚拟化": 1
+   "未知": 10,
+   "容器/虚拟化": 3
   },
-  "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
-  "repro_recommended": 0
+  "kev": 6,
+  "with_poc": 3,
+  "with_poc_source": 3,
+  "repro_recommended": 1
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-105312",
+   "id": "CVE-2026-96654",
    "tier": "critical",
-   "title": "Red Hat Strimzi控制台提权",
-   "title_zh": "Red Hat Strimzi控制台提权",
-   "summary_zh": "具备Console CR创建权限的租户可指定恶意镜像，读取SA令牌并跨租户读写Strimzi控制面。",
-   "published": "2026-10-20T12:17:28.703",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L",
-   "epss": null,
-   "epss_percentile": null,
+   "title": "Plex媒体服务器URL未中和致插件调用",
+   "title_zh": "Plex媒体服务器URL未中和致插件调用",
+   "summary_zh": "攻击者通过searchOne未中和URL调用其他插件函数并注入参数，可能滥用插件功能",
+   "published": "2026-09-23T17:17:23.517",
+   "cvss": 6.5,
+   "severity": "MEDIUM",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+   "epss": 0.00227,
+   "epss_percentile": 0.12576,
    "cwe_labels": [
-    "权限提升"
+    "CWE-84"
    ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "plex media_server"
+   ],
+   "affected": "plex media_server <1.43.0.10861",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://access.redhat.com/security/cve/CVE-2026-105312"
+     "url": "https://forums.plex.tv/t/plex-media-server/30447/711"
     },
     {
      "label": "参考",
-     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2510863"
+     "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-266-01.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cve.org/CVERecord?id=CVE-2026-96654"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/code-zm/plex2shell",
+     "label": "code-zm/plex2shell 42★(有源码)"
+    },
+    {
+     "url": "https://github.com/gmh5225/plex2shell",
+     "label": "gmh5225/plex2shell 0★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-23",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至1.43.3.10861或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "向searchOne传入未中和URL，调用其他插件并自带参数",
+   "impact_scope": "媒体服务器，可能暴露公网或内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96654",
+   "description": "Plex Media Server before 1.43.3.10861 does not correctly neutralize URL values included in 'searchOne,' allowing an attacker to call other plugins' functions and supply their own parameters."
+  },
+  {
+   "id": "CVE-2026-96655",
+   "tier": "critical",
+   "title": "Plex媒体服务器转码路径SSRF",
+   "title_zh": "Plex媒体服务器转码路径SSRF",
+   "summary_zh": "已认证用户经转码接口path参数请求任意内外部地址，探测内网或访问敏感服务",
+   "published": "2026-09-23T17:17:23.677",
+   "cvss": 4.3,
+   "severity": "MEDIUM",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+   "epss": 0.00222,
+   "epss_percentile": 0.11974,
+   "cwe_labels": [
+    "SSRF"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [
+    "plex media_server"
+   ],
+   "affected": "plex media_server <1.43.0.10861",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://forums.plex.tv/t/plex-media-server/30447/711"
+    },
+    {
+     "label": "参考",
+     "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-266-01.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cve.org/CVERecord?id=CVE-2026-96655"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/code-zm/plex2shell",
+     "label": "code-zm/plex2shell 42★(有源码)"
+    },
+    {
+     "url": "https://github.com/gmh5225/plex2shell",
+     "label": "gmh5225/plex2shell 0★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-03",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至1.43.3.10861或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "认证后向/video/:/transcode/universal的path传任意URL",
+   "impact_scope": "媒体服务器，可作内网探测跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96655",
+   "description": "Plex Media Server before 1.43.3.10861 allows an authenticated user to request arbitrary internal or external addresses via the '/video/:/transcode/universal' path parameter."
+  },
+  {
+   "id": "CVE-2026-96652",
+   "tier": "critical",
+   "title": "Plex媒体服务器时间线SSRF",
+   "title_zh": "Plex媒体服务器时间线SSRF",
+   "summary_zh": "攻击者用任意X-Plex-Token经timeline的protocol参数令服务器POST任意URL",
+   "published": "2026-09-23T17:17:23.363",
+   "cvss": 4.3,
+   "severity": "MEDIUM",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+   "epss": 0.00222,
+   "epss_percentile": 0.11974,
+   "cwe_labels": [
+    "SSRF"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [
+    "plex media_server"
+   ],
+   "affected": "plex media_server <1.43.0.10861",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://forums.plex.tv/t/plex-media-server/30447/711"
+    },
+    {
+     "label": "参考",
+     "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-266-01.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cve.org/CVERecord?id=CVE-2026-96652"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/code-zm/plex2shell",
+     "label": "code-zm/plex2shell 42★(有源码)"
+    },
+    {
+     "url": "https://github.com/gmh5225/plex2shell",
+     "label": "gmh5225/plex2shell 0★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-03",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至1.43.3.10861或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "任意X-Plex-Token经timeline的protocol传URL",
+   "impact_scope": "媒体服务器，可被用于内网请求转发",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96652",
+   "description": "Plex Media Server before 1.43.3.10861 allows SSRF via '/player/timeline'. An attacker using any X-Plex-Token value can include a full URL in the 'protocol' parameter and force the Plex server to POST to the attacker's chosen destination."
+  },
+  {
+   "id": "CVE-2026-106931",
+   "tier": "critical",
+   "title": "SiteGuard服务器命令注入RCE",
+   "title_zh": "SiteGuard服务器命令注入RCE",
+   "summary_zh": "攻击者可利用命令注入在SiteGuard运行主机以root或SYSTEM权限执行任意OS命令",
+   "published": "2026-10-14T05:16:42.633",
+   "cvss": 8.5,
+   "severity": "HIGH",
+   "vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00662,
+   "epss_percentile": 0.50774,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "高(需本地访问·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://jvn.jp/en/jp/JVN88474777/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.eg-secure.co.jp/siteguard/news/alert-202610-1"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-106931"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-23",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商修复版本或联系厂商获取补丁",
+   "repro_worthy": "一般",
+   "repro_note": "入口未披露，需审计SiteGuard命令注入点并验证root/SYSTEM执行",
+   "impact_scope": "安全服务器软件，常部署于内网或公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106931",
+   "description": "SiteGuard Server Edition contains an OS command injection vulnerability, which may allow an attacker to execute arbitrary OS commands with root or SYSTEM privileges on the system running the affected product."
+  },
+  {
+   "id": "CVE-2026-96656",
+   "tier": "critical",
+   "title": "Plex管理员任意文件写入致代码执行",
+   "title_zh": "Plex管理员任意文件写入致代码执行",
+   "summary_zh": "管理员可通过TranscoderH264Options写入任意文件，重启加载恶意.so执行代码",
+   "published": "2026-09-23T17:17:23.840",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00396,
+   "epss_percentile": 0.32349,
+   "cwe_labels": [
+    "CWE-73"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [
+    "plex media_server"
+   ],
+   "affected": "plex media_server <1.43.0.10861",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://forums.plex.tv/t/plex-media-server/30447/711"
+    },
+    {
+     "label": "参考",
+     "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-266-01.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cve.org/CVERecord?id=CVE-2026-96656"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-23",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至1.43.3.10861或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "管理员设置TranscoderH264Options写.so到加载目录后重启",
+   "impact_scope": "媒体服务器，管理员权限后可持久化控制",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96656",
+   "description": "Plex Media Server before 1.43.3.10861 allows an admin user to write arbitrary files that may be executed on load. The preference TranscoderH264Options is appended verbatim to x264's option string on every transcode. At startup, all .so files are run without signature, execute bit, or symbol checks."
+  },
+  {
+   "id": "CVE-2026-110936",
+   "tier": "critical",
+   "title": "西门子软件中心DLL搜索路径劫持",
+   "title_zh": "西门子软件中心DLL搜索路径劫持",
+   "summary_zh": "本地已认证攻击者可在搜索路径放置恶意DLL，诱使应用加载并以应用权限执行代码",
+   "published": "2026-10-15T15:17:30.383",
+   "cvss": 6.7,
+   "severity": "MEDIUM",
+   "vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00135,
+   "epss_percentile": 0.02673,
+   "cwe_labels": [
+    "CWE-427"
+   ],
+   "difficulty": "高(需本地访问·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cert-portal.siemens.com/productcert/html/ssa-580366.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://productcert.siemens.com/news/2026/10/19/active-exploitation-of-cve-2026-110936-in-siemens-software-center/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-110936"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-03",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至V4.0.9.8或更高版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "Windows本地终端，需本地访问",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110936",
+   "description": "A vulnerability has been identified in Siemens Software Center (All versions < V4.0.9.8). The affected application loads dynamic-link libraries (DLLs) from an uncontrolled search path. This could allow an authenticated local attacker to place a specially crafted DLL in a directory that the application searches, leading to arbitrary code execution with the privileges of the affected application."
+  },
+  {
+   "id": "CVE-2026-113802",
+   "tier": "critical",
+   "title": "Wavlink路由器命令注入未授权RCE",
+   "title_zh": "Wavlink路由器命令注入未授权RCE",
+   "summary_zh": "远程未授权攻击者伪造IP-FROM头绕过登录，经ovpn_file的file_id注入命令并以root执行",
+   "published": "2026-10-20T18:17:21.430",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/F-yyjy/cve/blob/main/WN530BE1(en).md"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/wavlink-wl-wn530be1-a-unauthenticated-os-command-injection-in-ioos-protocol-csp-ovpn-file-handler"
     }
    ],
    "poc": [],
@@ -59,28 +383,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至修复版本；限制Console CR创建权限并审计镜像来源。",
-   "repro_worthy": "一般",
-   "repro_note": "需Console CR创建权限，篡改镜像字段并读取SA令牌。",
-   "impact_scope": "多租户K8s集群，跨租户控制面风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105312",
-   "description": "A Kubernetes tenant with create permission on Console custom resources can set spec.containers.api.spec.image to an arbitrary container image. The attacker's code reads the projected SA token and gains cross-tenant Strimzi control-plane read+write access."
+   "action_zh": "升级至修复固件，或限制受影响管理接口",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "伪造IP-FROM头访问/protocol.csp，向file_id注入命令",
+   "impact_scope": "边界路由器，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113802",
+   "description": "Wavlink WL-WN530BE1-A firmware through M30BE1_V251117 contains an OS command injection vulnerability in the sub_23B54 function of the ioos binary, which passes the unsanitized file_id parameter of /protocol.csp?opt=ovpn_file requests with type=del to popen(). A remote unauthenticated attacker can send a forged IP-FROM: 127.0.0.1 header to bypass login and execute arbitrary commands as root."
   },
   {
-   "id": "CVE-2026-113389",
+   "id": "CVE-2026-113678",
    "tier": "critical",
-   "title": "DrayTek Vigor2960命令注入",
-   "title_zh": "DrayTek Vigor2960命令注入",
-   "summary_zh": "可访问CGI接口的攻击者可向set_table函数注入命令，可能导致设备被远程控制。",
-   "published": "2026-10-20T12:17:29.443",
+   "title": "Froxlor统计符号链接致root提权",
+   "title_zh": "Froxlor统计符号链接致root提权",
+   "summary_zh": "已认证客户可将统计目录替换为符号链接，借root cron chown获取任意目录所有权并提权",
+   "published": "2026-10-20T16:17:12.613",
    "cvss": 9.9,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "注入",
-    "命令注入"
+    "文件链接绕过"
    ],
    "difficulty": "低(远程·需低权限)",
    "products": [],
@@ -89,15 +412,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0006-authenticated-set-table-command-injection"
+     "url": "https://github.com/froxlor/froxlor/blob/2.3.14/lib/Froxlor/Http/Statistics.php#L144-L162"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-113389"
+     "url": "https://github.com/froxlor/froxlor/commit/0805a7e16a223d528b51d8cacfaff54217b9d8f8"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/992223"
+     "url": "https://github.com/froxlor/froxlor/releases/tag/2.3.15"
     }
    ],
    "poc": [],
@@ -108,20 +431,20 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复版本；临时限制CGI管理接口访问。",
+   "action_zh": "升级至2.3.15或更高版本",
    "repro_worthy": "一般",
-   "repro_note": "入口mainfunction.cgi的set_table参数，构造命令注入。",
-   "impact_scope": "边界路由器Web管理接口，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113389",
-   "description": "A vulnerability was detected in DrayTek Vigor2960 1.5.1.6 Revision 8218. Affected by this vulnerability is the function set_table of the file /cgi-bin/mainfunction.cgi of the component CGI Process."
+   "repro_note": "认证客户将文档根统计目录替换为符号链接，等待root cron执行chown",
+   "impact_scope": "主机控制面板，低权客户可提权至root",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113678",
+   "description": "Froxlor before 2.3.15 contains a symlink following vulnerability in Statistics::makeChownWithNewStats that allows authenticated customers to take ownership of arbitrary host directories by abusing the root-run traffic cron. Attackers can replace the goaccess statistics directory in their document root with a symlink, causing chown -R to hand root-owned trees to them and enabling root escalation."
   },
   {
-   "id": "CVE-2026-113390",
+   "id": "CVE-2026-113506",
    "tier": "critical",
-   "title": "未标明组件远程命令注入",
-   "title_zh": "未标明组件远程命令注入",
-   "summary_zh": "远程攻击者可操纵usefile/usescript/option参数触发OS命令注入，导致任意命令执行。",
-   "published": "2026-10-20T13:16:40.463",
+   "title": "未知组件参数命令注入RCE",
+   "title_zh": "未知组件参数命令注入RCE",
+   "summary_zh": "攻击者可操纵sfile/dfile/access/user参数触发OS命令注入，执行任意命令并控制主机",
+   "published": "2026-10-20T18:17:18.633",
    "cvss": 9.9,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
@@ -138,15 +461,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0007-authenticated-jsonstatus-usefile-file-clobber"
+     "url": "https://github.com/JdExploit/aapanel-cve-2026/tree/master/aapanel-rce"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-113390"
+     "url": "https://vuldb.com/cve/CVE-2026-113506"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/992224"
+     "url": "https://vuldb.com/submit/996819"
     }
    ],
    "poc": [],
@@ -157,28 +480,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "确认受影响组件并升级至修复版本；临时过滤恶意参数。",
+   "action_zh": "定位受影响组件并升级至修复版本",
    "repro_worthy": "一般",
-   "repro_note": "操纵usefile/usescript/option参数触发OS命令注入。",
-   "impact_scope": "未明确，可能为远程网络服务",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113390",
-   "description": "This manipulation of the argument usefile/usescript/option causes os command injection. Remote exploitation of the attack is possible."
+   "repro_note": "操纵sfile/dfile/access/user参数验证命令注入",
+   "impact_scope": "影响面未知，需按资产清单排查",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113506",
+   "description": "A vulnerability has been found in aaPanel up to 8.25.0. The affected element is the function ExecShell of the file class/public/common.py of the component File Manager. The manipulation of the argument sfile/dfile/access/user leads to os command injection. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used. The vendor confirms: \"The reported RCE and LFI vulnerabilities require authentication.\""
   },
   {
-   "id": "CVE-2026-113391",
+   "id": "CVE-2026-113672",
    "tier": "critical",
-   "title": "未标明组件命令注入",
-   "title_zh": "未标明组件命令注入",
-   "summary_zh": "可访问接口的攻击者可通过构造参数触发命令注入，导致任意命令执行。",
-   "published": "2026-10-20T13:16:40.640",
+   "title": "Argo CD仓库服务路径遍历",
+   "title_zh": "Argo CD仓库服务路径遍历",
+   "summary_zh": "攻击者利用绝对路径、父目录或符号链接读取repo-server可读文件，泄露环境变量、令牌和私钥",
+   "published": "2026-10-20T18:17:20.950",
    "cvss": 9.9,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "注入",
-    "命令注入"
+    "路径遍历/任意文件读取"
    ],
    "difficulty": "低(远程·需低权限)",
    "products": [],
@@ -187,15 +509,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip"
+     "url": "https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/#disable-built-in-tools"
     },
     {
      "label": "参考",
-     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0008-authenticated-upload-filename-command-injection"
+     "url": "https://github.com/argoproj/argo-cd/commit/27471d524958878e7acc5131fb466b292079cd05"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-113391"
+     "url": "https://github.com/argoproj/argo-cd/pull/561"
     }
    ],
    "poc": [],
@@ -206,44 +528,44 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "确认受影响组件并升级至修复版本；限制接口访问。",
+   "action_zh": "升级修复版本，限制repo-server文件访问权限",
    "repro_worthy": "一般",
-   "repro_note": "构造恶意参数触发命令注入，入口待厂商公告确认。",
-   "impact_scope": "未明确组件，影响范围待确认",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113391",
-   "description": "Such manipulation leads to command injection. The exploit has been disclosed to the public and may be used."
+   "repro_note": "经绝对路径、../或仓库符号链接读取/proc/self/environ等文件",
+   "impact_scope": "Kubernetes交付组件，凭据泄露可横向",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113672",
+   "description": "Absolute paths, parent-directory traversal, and repository symlinks can open any file readable by the repo-server, including /proc/self/environ, projected service-account tokens, mounted private keys, and repository credentials. An attacker can commit a .jsonnet file to a Git repository used by an Application or upload the file through POST /api/v1/applications/manifestsWithFiles, also exposed by argocd app diff --local --server-side-generate."
   },
   {
-   "id": "CVE-2026-113620",
+   "id": "CVE-2026-113708",
    "tier": "critical",
-   "title": "ioFog WebSocket鉴权绕过",
-   "title_zh": "ioFog WebSocket鉴权绕过",
-   "summary_zh": "已知UUID的攻击者可绕过JWT校验，打开exec或log会话，读取日志或执行命令。",
-   "published": "2026-10-20T13:16:41.610",
-   "cvss": 9.8,
+   "title": "Argo CD仓库服务参数注入RCE",
+   "title_zh": "Argo CD仓库服务参数注入RCE",
+   "summary_zh": "攻击者经Kustomization或上传接口注入--upload-pack，在repo-server执行命令",
+   "published": "2026-10-20T19:17:33.287",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "签名校验错误"
+    "参数拼接注入"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/468"
+     "url": "https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions"
     },
     {
      "label": "参考",
-     "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/1267"
+     "url": "https://github.com/argoproj/argo-cd/commit/25badeb7a1e154805340bb7237e0ce671f3772dd"
     },
     {
      "label": "参考",
-     "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/1269"
+     "url": "https://github.com/argoproj/argo-cd/pull/12299"
     }
    ],
    "poc": [],
@@ -254,46 +576,177 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复版本；限制exec/log WebSocket访问。",
+   "action_zh": "升级修复版本，禁用file://本地传输",
    "repro_worthy": "一般",
-   "repro_note": "未授权WebSocket请求exec/log路由，需已知UUID。",
-   "impact_scope": "边缘计算控制器，可横向控制微服务",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113620",
-   "description": "In Eclipse ioFog Controller versions 3.8.0 through 3.9.1, operator WebSocket upgrades on the exec and log routes do not verify the bearer JWT. The attacker can open an exec or log session for a microservice or fog whose UUID they already know."
+   "repro_note": "经上传接口或Kustomization注入--upload-pack",
+   "impact_scope": "Kubernetes交付组件，repo-server凭据可横",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113708",
+   "description": "A leading-hyphen value can be parsed as --upload-pack and execute a command inside argocd-repo-server when the remote uses a local transport such as file://. An attacker can commit a Kustomization to a Git repository that an Application builds or upload files through POST /api/v1/applications/manifestsWithFiles, also exposed by argocd app diff --local --server-side-generate."
+  },
+  {
+   "id": "CVE-2026-113709",
+   "tier": "critical",
+   "title": "Argo CD Helm插件自动加载RCE",
+   "title_zh": "Argo CD Helm插件自动加载RCE",
+   "summary_zh": "攻击者用恶意helmCharts仓库URL触发Helm自动加载下载插件，在repo-server执行命令",
+   "published": "2026-10-20T19:17:33.457",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-829"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomizing-helm-charts"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/argoproj/argo-cd/commit/b6d5c23bce2f8a46c52975ba438a3b93d242d96c"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/argoproj/argo-cd/pull/6059"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本，禁用不可信Helm下载插件",
+   "repro_worthy": "一般",
+   "repro_note": "配置helmCharts的插件协议URL，使Helm自动加载并执行插件",
+   "impact_scope": "Kubernetes交付组件，repo-server可执行命",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113709",
+   "description": "Helm automatically loads a downloader plugin from `<configHome>/.data/plugins` without a separate plugin-install step and executes its program inside argocd-repo-server when a helmCharts repository URL uses the plugin's protocol. An attacker can commit the Kustomization and plugin to a Git repository that an Application builds or upload the files through POST /api/v1/applications/manifestsWithFiles, also exposed by argocd app diff --local --server-side-generate."
+  },
+  {
+   "id": "CVE-2026-112380",
+   "tier": "critical",
+   "title": "Kiro Crew群组越权致RCE",
+   "title_zh": "Kiro Crew群组越权致RCE",
+   "summary_zh": "已加入运营者配置WhatsApp群组的远程成员可越权控制其他Agent会话并在主机执行命令",
+   "published": "2026-10-20T20:17:16.553",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失授权(越权)",
+    "授权错误"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://aws.amazon.com/security/security-bulletins/2026-140-aws/"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/kirodotdev/KiroCrew/releases/tag/v0.7.2"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至0.7.2或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "以WhatsApp群成员发送消息，越权控制Agent会话并执行主机命令",
+   "impact_scope": "AI Agent主机，群成员可横向控制",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112380",
+   "description": "Missing authorization in the WhatsApp group channel in Kiro Crew might allow a remote actor who is a member of an operator-configured WhatsApp group to control the operator's other agent sessions and execute arbitrary commands on the host running Kiro Crew via messages sent to the group. To remediate this issue, users should upgrade to version 0.7.2."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "35744a2bd4bf7e9229488312c2900e9a5ccbc5a8",
-   "url": "https://github.com/envoyproxy/envoy/commit/35744a2bd4bf7e9229488312c2900e9a5ccbc5a8",
-   "title": "udp_proxy: add upstream GSO batching (#48200)",
-   "date": "2026-10-20T13:52:18",
-   "score": 2,
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "2c31cf561f840c3f928054c3c745dbdb2037fded",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/2c31cf561f840c3f928054c3c745dbdb2037fded",
+   "title": "avfilter/dnn_backend_openvino: do not free the input layouts twice",
+   "date": "2026-10-20T20:41:50",
+   "score": 4,
    "matched": [
-    "安全修复"
+    "UAF",
+    "类型混淆/double free"
    ],
    "cve": null
   },
   {
-   "repo": "openssl/openssl",
-   "sha": "eeb5f65fb3b6ef3a57fa7847c0242fcbf8c0d2dc",
-   "url": "https://github.com/openssl/openssl/commit/eeb5f65fb3b6ef3a57fa7847c0242fcbf8c0d2dc",
-   "title": "DTLS 1.3: only accept plaintext alerts once the hellos are done",
-   "date": "2026-10-20T12:38:12",
-   "score": 2,
+   "repo": "redis/redis",
+   "sha": "13056451a571938d57068812f061d67d50f3ce9c",
+   "url": "https://github.com/redis/redis/commit/13056451a571938d57068812f061d67d50f3ce9c",
+   "title": "Update RedisTimeSeries to version 8.11.90 (#15969)",
+   "date": "2026-10-20T18:14:19",
+   "score": 4,
    "matched": [
-    "UAF"
+    "缓冲区溢出",
+    "反序列化"
    ],
    "cve": null
   },
   {
-   "repo": "haproxy/haproxy",
-   "sha": "803437cb83e9518173ef1200d30f4925e24f5d90",
-   "url": "https://github.com/haproxy/haproxy/commit/803437cb83e9518173ef1200d30f4925e24f5d90",
-   "title": "BUG/MEDIUM: h3: fix memory corruption on trailers parsing realign",
-   "date": "2026-10-20T12:27:35",
+   "repo": "apache/tomcat",
+   "sha": "6c0327626cabbaa7e739227f743abc1517a73925",
+   "url": "https://github.com/apache/tomcat/commit/6c0327626cabbaa7e739227f743abc1517a73925",
+   "title": "Add a test case for CVE-2026-101356",
+   "date": "2026-10-20T19:17:42",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-101356"
+  },
+  {
+   "repo": "apache/tomcat",
+   "sha": "9a2b13306e59b61cdc62d8e3b0cdcb12d176e504",
+   "url": "https://github.com/apache/tomcat/commit/9a2b13306e59b61cdc62d8e3b0cdcb12d176e504",
+   "title": "Add a test case for CVE-2026-103119",
+   "date": "2026-10-20T19:17:42",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-103119"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "d9a3f3d150f7959f2d448d9a61aa11f5a75aa2b3",
+   "url": "https://github.com/nodejs/node/commit/d9a3f3d150f7959f2d448d9a61aa11f5a75aa2b3",
+   "title": "tls: reject chains containing blocked public keys",
+   "date": "2026-10-20T16:43:42",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-111943"
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "ed397944c66e1b31867eacfab09091b00b468213",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/ed397944c66e1b31867eacfab09091b00b468213",
+   "title": "avcodec/x86/hevc: keep the slack sample out of the copied last 3-tap sample",
+   "date": "2026-10-20T20:41:50",
    "score": 2,
    "matched": [
     "未初始化/内存破坏"
@@ -302,10 +755,10 @@
   },
   {
    "repo": "FFmpeg/FFmpeg",
-   "sha": "64afb8a930b3bf7a02013e0655085275862f4efc",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/64afb8a930b3bf7a02013e0655085275862f4efc",
-   "title": "avcodec/cbs_apv: reject user defined metadata shorter than its UUID",
-   "date": "2026-10-20T11:36:57",
+   "sha": "25e4cde609ef3296b60da56b4ab9b641e1fd0934",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/25e4cde609ef3296b60da56b4ab9b641e1fd0934",
+   "title": "avfilter/dnn_backend_openvino: free the frames when execution fails before the task is queued",
+   "date": "2026-10-20T20:41:50",
    "score": 2,
    "matched": [
     "安全修复"
@@ -314,49 +767,25 @@
   },
   {
    "repo": "FFmpeg/FFmpeg",
-   "sha": "ddb610f9fe90b4f0c4c6ba757e51c2448939ce64",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/ddb610f9fe90b4f0c4c6ba757e51c2448939ce64",
-   "title": "avfilter/qrencode: free the rendered width expressions",
-   "date": "2026-10-20T11:36:57",
+   "sha": "3a75cd0ad3af0b4fceb9c53cf593ea94cd8de263",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/3a75cd0ad3af0b4fceb9c53cf593ea94cd8de263",
+   "title": "swscale/graph: copy the palette of a PAL8 frame as a whole",
+   "date": "2026-10-20T20:41:50",
    "score": 2,
    "matched": [
-    "安全修复"
+    "未初始化/内存破坏"
    ],
    "cve": null
   },
   {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "97daefb4d6775aff6b143dbdb4ad743fe2b3a577",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/97daefb4d6775aff6b143dbdb4ad743fe2b3a577",
-   "title": "avformat/tls_mbedtls: free the mbedtls contexts on every error path",
-   "date": "2026-10-20T11:36:57",
+   "repo": "redis/redis",
+   "sha": "89791b3677564845516a6dac8e99356ca10ffc42",
+   "url": "https://github.com/redis/redis/commit/89791b3677564845516a6dac8e99356ca10ffc42",
+   "title": "MOD-19657: Vector Sets: salt the deserialization ID table hash (#15999)",
+   "date": "2026-10-20T14:28:50",
    "score": 2,
    "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "0ff8cac632a43229bd8ccca6bfa9e7e2a409ef2f",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/0ff8cac632a43229bd8ccca6bfa9e7e2a409ef2f",
-   "title": "avformat/md5proto: free the MD5 context when opening the output fails",
-   "date": "2026-10-20T11:36:57",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "f02f1707b1318fd8cdf2b2936ce79d0061cdad08",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/f02f1707b1318fd8cdf2b2936ce79d0061cdad08",
-   "title": "avcodec/dvbsubdec: check the object segment size before reading its header",
-   "date": "2026-10-20T11:36:57",
-   "score": 2,
-   "matched": [
-    "安全修复"
+    "反序列化"
    ],
    "cve": null
   }

@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-20 14:23 UTC · 共 **113** 条(强烈推荐 15 / 值得 98)
+**更新**: 2026-10-20 20:43 UTC · 共 **114** 条(强烈推荐 16 / 值得 98)
 
 ---
 
@@ -105,6 +105,13 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 处置: 升级至 19.2.8、19.3.5 或 19.4.2 及以上版本
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/630686) · [参考](https://hackerone.com/reports/4055749)
+
+### Wavlink路由器命令注入未授权RCE
+[CVE-2026-113802](https://nvd.nist.gov/vuln/detail/CVE-2026-113802) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20
+远程未授权攻击者伪造IP-FROM头绕过登录，经ovpn_file的file_id注入命令并以root执行
+复现: 强烈推荐 — 伪造IP-FROM头访问/protocol.csp，向file_id注入命令 · 影响面: 边界路由器，常暴露公网
+处置: 升级至修复固件，或限制受影响管理接口
+参考: [参考](https://github.com/F-yyjy/cve/blob/main/WN530BE1(en).md) · [参考](https://www.vulncheck.com/advisories/wavlink-wl-wn530be1-a-unauthenticated-os-command-injection-in-ioos-protocol-csp-ovpn-file-handler)
 
 ### FortiSIEM 路径遍历未认证RCE
 [CVE-2026-106173](https://nvd.nist.gov/vuln/detail/CVE-2026-106173) | P1 重点关注 | 边界设备/VPN | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-13
