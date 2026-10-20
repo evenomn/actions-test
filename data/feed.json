@@ -1,18 +1,19 @@
 {
  "version": 3,
- "generated_at": "2026-10-20T06:10:29+00:00",
+ "generated_at": "2026-10-20T14:23:45+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 5,
  "stats": {
-  "total": 1,
+  "total": 5,
   "by_tier": {
-   "critical": 1
+   "critical": 5
   },
   "by_urgency": {
-   "P1 重点关注": 1
+   "P1 重点关注": 5
   },
   "by_category": {
-   "数据库": 1
+   "未知": 4,
+   "容器/虚拟化": 1
   },
   "kev": 0,
   "with_poc": 0,
@@ -22,36 +23,32 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-77936",
+   "id": "CVE-2026-105312",
    "tier": "critical",
-   "title": "Letta 默认配置未认证RCE",
-   "title_zh": "Letta 默认配置未认证RCE",
-   "summary_zh": "远程攻击者未授权调用 /v1/tools/run 执行任意 Python,并借默认口令 PostgreSQL 执行系统命令",
-   "published": "2026-10-20T01:17:20.107",
-   "cvss": 9.8,
+   "title": "Red Hat Strimzi控制台提权",
+   "title_zh": "Red Hat Strimzi控制台提权",
+   "summary_zh": "具备Console CR创建权限的租户可指定恶意镜像，读取SA令牌并跨租户读写Strimzi控制面。",
+   "published": "2026-10-20T12:17:28.703",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "初始化不安全(默认凭据)"
+    "权限提升"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
-   "affected": null,
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/compose.yaml#L17"
+     "url": "https://access.redhat.com/security/cve/CVE-2026-105312"
     },
     {
      "label": "参考",
-     "url": "https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/letta/server/rest_api/app.py#L799"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.lasso.security/vulnerability-database/cve-2026-77936"
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2510863"
     }
    ],
    "poc": [],
@@ -62,82 +59,229 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "启用 LETTA_SERVER_SECURE、改默认数据库口令,限制 API/DB 端口暴露并关注官方修复",
-   "repro_worthy": "值得",
-   "repro_note": "未认证 POST /v1/tools/run 提交工具定义;基于默认 compose 部署",
-   "impact_scope": "内网 AI Agent 服务,常与数据库同机暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77936",
-   "description": "Letta through 0.16.8 ships a compose.yaml that does not enable LETTA_SERVER_SECURE, so the password middleware is never added and all API routes are unauthenticated, and it exposes a superuser PostgreSQL port with default credentials. Remote attackers can execute arbitrary Python via POST /v1/tools/run, manage /v1/admin users, or run OS commands via COPY PROGRAM."
+   "action_zh": "升级至修复版本；限制Console CR创建权限并审计镜像来源。",
+   "repro_worthy": "一般",
+   "repro_note": "需Console CR创建权限，篡改镜像字段并读取SA令牌。",
+   "impact_scope": "多租户K8s集群，跨租户控制面风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105312",
+   "description": "A Kubernetes tenant with create permission on Console custom resources can set spec.containers.api.spec.image to an arbitrary container image. The attacker's code reads the projected SA token and gains cross-tenant Strimzi control-plane read+write access."
+  },
+  {
+   "id": "CVE-2026-113389",
+   "tier": "critical",
+   "title": "DrayTek Vigor2960命令注入",
+   "title_zh": "DrayTek Vigor2960命令注入",
+   "summary_zh": "可访问CGI接口的攻击者可向set_table函数注入命令，可能导致设备被远程控制。",
+   "published": "2026-10-20T12:17:29.443",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "注入",
+    "命令注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0006-authenticated-set-table-command-injection"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-113389"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/992223"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版本；临时限制CGI管理接口访问。",
+   "repro_worthy": "一般",
+   "repro_note": "入口mainfunction.cgi的set_table参数，构造命令注入。",
+   "impact_scope": "边界路由器Web管理接口，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113389",
+   "description": "A vulnerability was detected in DrayTek Vigor2960 1.5.1.6 Revision 8218. Affected by this vulnerability is the function set_table of the file /cgi-bin/mainfunction.cgi of the component CGI Process."
+  },
+  {
+   "id": "CVE-2026-113390",
+   "tier": "critical",
+   "title": "未标明组件远程命令注入",
+   "title_zh": "未标明组件远程命令注入",
+   "summary_zh": "远程攻击者可操纵usefile/usescript/option参数触发OS命令注入，导致任意命令执行。",
+   "published": "2026-10-20T13:16:40.463",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0007-authenticated-jsonstatus-usefile-file-clobber"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-113390"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/992224"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "确认受影响组件并升级至修复版本；临时过滤恶意参数。",
+   "repro_worthy": "一般",
+   "repro_note": "操纵usefile/usescript/option参数触发OS命令注入。",
+   "impact_scope": "未明确，可能为远程网络服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113390",
+   "description": "This manipulation of the argument usefile/usescript/option causes os command injection. Remote exploitation of the attack is possible."
+  },
+  {
+   "id": "CVE-2026-113391",
+   "tier": "critical",
+   "title": "未标明组件命令注入",
+   "title_zh": "未标明组件命令注入",
+   "summary_zh": "可访问接口的攻击者可通过构造参数触发命令注入，导致任意命令执行。",
+   "published": "2026-10-20T13:16:40.640",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "注入",
+    "命令注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0008-authenticated-upload-filename-command-injection"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-113391"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "确认受影响组件并升级至修复版本；限制接口访问。",
+   "repro_worthy": "一般",
+   "repro_note": "构造恶意参数触发命令注入，入口待厂商公告确认。",
+   "impact_scope": "未明确组件，影响范围待确认",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113391",
+   "description": "Such manipulation leads to command injection. The exploit has been disclosed to the public and may be used."
+  },
+  {
+   "id": "CVE-2026-113620",
+   "tier": "critical",
+   "title": "ioFog WebSocket鉴权绕过",
+   "title_zh": "ioFog WebSocket鉴权绕过",
+   "summary_zh": "已知UUID的攻击者可绕过JWT校验，打开exec或log会话，读取日志或执行命令。",
+   "published": "2026-10-20T13:16:41.610",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "签名校验错误"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/468"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/1267"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/1269"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版本；限制exec/log WebSocket访问。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权WebSocket请求exec/log路由，需已知UUID。",
+   "impact_scope": "边缘计算控制器，可横向控制微服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113620",
+   "description": "In Eclipse ioFog Controller versions 3.8.0 through 3.9.1, operator WebSocket upgrades on the exec and log routes do not verify the bearer JWT. The attacker can open an exec or log session for a microservice or fog whose UUID they already know."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "golang/go",
-   "sha": "7f86f957633ee31a1c17a1eb8452ca7a3d9bc141",
-   "url": "https://github.com/golang/go/commit/7f86f957633ee31a1c17a1eb8452ca7a3d9bc141",
-   "title": "crypto/x509: distrust a handful of intermediates",
-   "date": "2026-10-20T02:40:26",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-111943"
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "341553de8a6224e636a56d084e3b635290377742",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/341553de8a6224e636a56d084e3b635290377742",
-   "title": "avfilter/dnn_backend_openvino: do not free the model when updating it fails",
-   "date": "2026-10-20T02:25:09",
-   "score": 2,
-   "matched": [
-    "类型混淆/double free"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "30455d58d268e2dfb02274ac6b2b9ee05880b7d9",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/30455d58d268e2dfb02274ac6b2b9ee05880b7d9",
-   "title": "avcodec/aac: do not keep the frame pointer after decoding",
-   "date": "2026-10-20T02:25:09",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "be68477fb25bf92807a2e84828d4a8530f02f655",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/be68477fb25bf92807a2e84828d4a8530f02f655",
-   "title": "avutil/opt: do not store a color that failed to parse",
-   "date": "2026-10-20T02:25:09",
-   "score": 2,
-   "matched": [
-    "未初始化/内存破坏"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "8548a40fc9d17c5caca869c014d2d45e55c5ea22",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/8548a40fc9d17c5caca869c014d2d45e55c5ea22",
-   "title": "avutil/opt: do not store an image size that failed to parse",
-   "date": "2026-10-20T02:25:09",
-   "score": 2,
-   "matched": [
-    "未初始化/内存破坏"
-   ],
-   "cve": null
-  },
-  {
    "repo": "envoyproxy/envoy",
-   "sha": "77b512527cf54aee30882d4764d5254d187d31b9",
-   "url": "https://github.com/envoyproxy/envoy/commit/77b512527cf54aee30882d4764d5254d187d31b9",
-   "title": "http3: keep the persistent QUIC info alive while its pools use it (#47893)",
-   "date": "2026-10-20T02:15:08",
+   "sha": "35744a2bd4bf7e9229488312c2900e9a5ccbc5a8",
+   "url": "https://github.com/envoyproxy/envoy/commit/35744a2bd4bf7e9229488312c2900e9a5ccbc5a8",
+   "title": "udp_proxy: add upstream GSO batching (#48200)",
+   "date": "2026-10-20T13:52:18",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openssl/openssl",
+   "sha": "eeb5f65fb3b6ef3a57fa7847c0242fcbf8c0d2dc",
+   "url": "https://github.com/openssl/openssl/commit/eeb5f65fb3b6ef3a57fa7847c0242fcbf8c0d2dc",
+   "title": "DTLS 1.3: only accept plaintext alerts once the hellos are done",
+   "date": "2026-10-20T12:38:12",
    "score": 2,
    "matched": [
     "UAF"
@@ -145,14 +289,74 @@
    "cve": null
   },
   {
-   "repo": "openbsd/src",
-   "sha": "47a24bc770eaccdcba1d1e0feda629c70b787bfe",
-   "url": "https://github.com/openbsd/src/commit/47a24bc770eaccdcba1d1e0feda629c70b787bfe",
-   "title": "Fix a kernel stack overflow in mue_init_ltm().",
-   "date": "2026-10-20T01:50:43",
+   "repo": "haproxy/haproxy",
+   "sha": "803437cb83e9518173ef1200d30f4925e24f5d90",
+   "url": "https://github.com/haproxy/haproxy/commit/803437cb83e9518173ef1200d30f4925e24f5d90",
+   "title": "BUG/MEDIUM: h3: fix memory corruption on trailers parsing realign",
+   "date": "2026-10-20T12:27:35",
    "score": 2,
    "matched": [
-    "缓冲区溢出"
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "64afb8a930b3bf7a02013e0655085275862f4efc",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/64afb8a930b3bf7a02013e0655085275862f4efc",
+   "title": "avcodec/cbs_apv: reject user defined metadata shorter than its UUID",
+   "date": "2026-10-20T11:36:57",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "ddb610f9fe90b4f0c4c6ba757e51c2448939ce64",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/ddb610f9fe90b4f0c4c6ba757e51c2448939ce64",
+   "title": "avfilter/qrencode: free the rendered width expressions",
+   "date": "2026-10-20T11:36:57",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "97daefb4d6775aff6b143dbdb4ad743fe2b3a577",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/97daefb4d6775aff6b143dbdb4ad743fe2b3a577",
+   "title": "avformat/tls_mbedtls: free the mbedtls contexts on every error path",
+   "date": "2026-10-20T11:36:57",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "0ff8cac632a43229bd8ccca6bfa9e7e2a409ef2f",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/0ff8cac632a43229bd8ccca6bfa9e7e2a409ef2f",
+   "title": "avformat/md5proto: free the MD5 context when opening the output fails",
+   "date": "2026-10-20T11:36:57",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "f02f1707b1318fd8cdf2b2936ce79d0061cdad08",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/f02f1707b1318fd8cdf2b2936ce79d0061cdad08",
+   "title": "avcodec/dvbsubdec: check the object segment size before reading its header",
+   "date": "2026-10-20T11:36:57",
+   "score": 2,
+   "matched": [
+    "安全修复"
    ],
    "cve": null
   }
