@@ -5,127 +5,458 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
-    <lastBuildDate>Tue, 20 Oct 2026 20:43:36 +0000</lastBuildDate>
+    <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    <lastBuildDate>Tue, 20 Oct 2026 23:58:59 +0000</lastBuildDate>
     <item>
-      <title>[critical]Plex媒体服务器URL未中和致插件调用</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96654</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96654-2026-10-20</guid>
-      <description>CVE-2026-96654 · 🎯P0 立即处置 · 披露 2026-09-23 · CVSS 6.5 · EPSS 0.2%,前 13% · 类型 CWE-84 · 难度 低(远程·免认证)
-Plex Media Server before 1.43.3.10861 does not correctly neutralize URL values included in 'searchOne,' allowing an attacker to call other plugins' functions an…
-信号: 🔥 KEV 在野利用,CISA 限期 2026-10-23 | 有PoC
-[code-zm/plex2shell 42★(有源码)](https://github.com/code-zm/plex2shell) · [gmh5225/plex2shell 0★(有源码)](https://github.com/gmh5225/plex2shell)</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Plex媒体服务器转码路径SSRF</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96655</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96655-2026-10-20</guid>
-      <description>CVE-2026-96655 · 🎯P0 立即处置 · 披露 2026-09-23 · CVSS 4.3 · EPSS 0.2%,前 12% · 类型 SSRF · 难度 低(远程·需低权限)
-Plex Media Server before 1.43.3.10861 allows an authenticated user to request arbitrary internal or external addresses via the '/video/:/transcode/universal' pa…
-信号: 🔥 KEV 在野利用,CISA 限期 2026-11-03 | 有PoC
-[code-zm/plex2shell 42★(有源码)](https://github.com/code-zm/plex2shell) · [gmh5225/plex2shell 0★(有源码)](https://github.com/gmh5225/plex2shell)</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Plex媒体服务器时间线SSRF</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96652</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96652-2026-10-20</guid>
-      <description>CVE-2026-96652 · 🎯P0 立即处置 · 披露 2026-09-23 · CVSS 4.3 · EPSS 0.2%,前 12% · 类型 SSRF · 难度 低(远程·需低权限)
-Plex Media Server before 1.43.3.10861 allows SSRF via '/player/timeline'.
-信号: 🔥 KEV 在野利用,CISA 限期 2026-11-03 | 有PoC
-[code-zm/plex2shell 42★(有源码)](https://github.com/code-zm/plex2shell) · [gmh5225/plex2shell 0★(有源码)](https://github.com/gmh5225/plex2shell)</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]SiteGuard服务器命令注入RCE</title>
+      <title>[critical]SiteGuard命令注入可获系统权限</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-106931</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-106931-2026-10-20</guid>
       <description>CVE-2026-106931 · 🎯P0 立即处置 · 披露 2026-10-14 · CVSS 8.5 · EPSS 0.7%,前 51% · 类型 命令注入(RCE) · 难度 高(需本地访问·需低权限)
 SiteGuard Server Edition contains an OS command injection vulnerability, which may allow an attacker to execute arbitrary OS commands with root or SYSTEM privil…
 信号: 🔥 KEV 在野利用,CISA 限期 2026-10-23</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Plex管理员任意文件写入致代码执行</title>
+      <title>[critical]Plex媒体服务器任意文件写入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96656</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96656-2026-10-20</guid>
       <description>CVE-2026-96656 · 🎯P0 立即处置 · 披露 2026-09-23 · CVSS 7.2 · EPSS 0.4%,前 32% · 类型 CWE-73 · 难度 中(远程·需高权限)
 Plex Media Server before 1.43.3.10861 allows an admin user to write arbitrary files that may be executed on load.
-信号: 🔥 KEV 在野利用,CISA 限期 2026-10-23</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+信号: 🔥 KEV 在野利用,CISA 限期 2026-10-23 | 有PoC
+[code-zm/plex2shell 43★(有源码)](https://github.com/code-zm/plex2shell) · [gmh5225/plex2shell 0★(有源码)](https://github.com/gmh5225/plex2shell)</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]西门子软件中心DLL搜索路径劫持</title>
+      <title>[critical]西门子软件中心DLL劫持</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110936</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110936-2026-10-20</guid>
       <description>CVE-2026-110936 · 🎯P0 立即处置 · 披露 2026-10-15 · CVSS 6.7 · EPSS 0.1%,前 3% · 类型 CWE-427 · 难度 高(需本地访问·需高权限)
 This could allow an authenticated local attacker to place a specially crafted DLL in a directory that the application searches, leading to arbitrary code execut…
 信号: 🔥 KEV 在野利用,CISA 限期 2026-11-03</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Wavlink路由器命令注入未授权RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113802</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113802-2026-10-20</guid>
-      <description>CVE-2026-113802 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
-A remote unauthenticated attacker can send a forged IP-FROM: 127.0.0.1 header to bypass login and execute arbitrary commands as root.
+      <title>[critical]Oracle WebLogic未授权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83399</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83399-2026-10-20</guid>
+      <description>CVE-2026-83399 · 🎯P0 立即处置 · 披露 2026-10-20 · 组件 Web中间件 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via T3, IIOP to compromise Oracle WebLogic Server.
 信号:</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Froxlor统计符号链接致root提权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113678</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113678-2026-10-20</guid>
-      <description>CVE-2026-113678 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 类型 文件链接绕过 · 难度 低(远程·需低权限)
-Froxlor before 2.3.15 contains a symlink following vulnerability in Statistics::makeChownWithNewStats that allows authenticated customers to take ownership of a…
+      <title>[critical]Oracle WebLogic未授权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91323</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91323-2026-10-20</guid>
+      <description>CVE-2026-91323 · 🎯P0 立即处置 · 披露 2026-10-20 · 组件 Web中间件 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebLogic Server.
 信号:</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]未知组件参数命令注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113506</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113506-2026-10-20</guid>
-      <description>CVE-2026-113506 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-The manipulation of the argument sfile/dfile/access/user leads to os command injection. The exploit has been disclosed to the public and may be used.
+      <title>[critical]Oracle SOA Fabric未授权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91216</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91216-2026-10-20</guid>
+      <description>CVE-2026-91216 · 🎯P0 立即处置 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 10.0 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via T3, IIOP to compromise Oracle SOA Suite.
 信号:</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Argo CD仓库服务路径遍历</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113672</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113672-2026-10-20</guid>
-      <description>CVE-2026-113672 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
-Absolute paths, parent-directory traversal, and repository symlinks can open any file readable by the repo-server, including /proc/self/environ, projected servi…
+      <title>[critical]Oracle SOA Fabric未授权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91221</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91221-2026-10-20</guid>
+      <description>CVE-2026-91221 · 🎯P0 立即处置 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 10.0 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via T3, IIOP to compromise Oracle SOA Suite.
 信号:</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Argo CD仓库服务参数注入RCE</title>
+      <title>[critical]Oracle SOA适配器未授权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91231</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91231-2026-10-20</guid>
+      <description>CVE-2026-91231 · 🎯P0 立即处置 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 10.0 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle SOA Fabric未授权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91214</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91214-2026-10-20</guid>
+      <description>CVE-2026-91214 · 🎯P0 立即处置 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle SOA ESS未授权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91233</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91233-2026-10-20</guid>
+      <description>CVE-2026-91233 · 🎯P0 立即处置 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via SOAP to compromise Oracle SOA Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle SOA Fabric未授权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91234</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91234-2026-10-20</guid>
+      <description>CVE-2026-91234 · 🎯P0 立即处置 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle SOA Fabric未授权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91235</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91235-2026-10-20</guid>
+      <description>CVE-2026-91235 · 🎯P0 立即处置 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle SOA Fabric未授权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91236</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91236-2026-10-20</guid>
+      <description>CVE-2026-91236 · 🎯P0 立即处置 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle SOA Fabric低权限漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91224</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91224-2026-10-20</guid>
+      <description>CVE-2026-91224 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle SOA Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle SOA Fabric低权限漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91232</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91232-2026-10-20</guid>
+      <description>CVE-2026-91232 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle SOA Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle SOA适配器低权限漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91250</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91250-2026-10-20</guid>
+      <description>CVE-2026-91250 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise Oracle SOA Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle SOA适配器低权限漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91251</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91251-2026-10-20</guid>
+      <description>CVE-2026-91251 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 OA/协同办公 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle SOA Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Workflow 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101809</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101809-2026-10-20</guid>
+      <description>CVE-2026-101809 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 ERP/业务系统 · CVSS 10.0 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Workflow.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]IBM DataStage 未授权 CWE-285</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-81212</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-81212-2026-10-20</guid>
+      <description>CVE-2026-81212 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 数据库 · CVSS 10.0 · 类型 CWE-285 · 难度 低(远程·免认证)
+IBM DataStage on Cloud Pak for Data 5.4.0.0 allows an unauthenticated user to perform an arbitrary write into shared Redis under any tenant's key.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Fusion Middleware 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-87337</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-87337-2026-10-20</guid>
+      <description>CVE-2026-87337 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 10.0 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Access Manager.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]JD Edwards EnterpriseOne Orchestrator 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91299</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91299-2026-10-20</guid>
+      <description>CVE-2026-91299 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 10.0 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise JD Edwards EnterpriseOne Orchestrator.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]参数拼接注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113708</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113708-2026-10-20</guid>
       <description>CVE-2026-113708 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 参数拼接注入 · 难度 低(远程·需低权限)
 A leading-hyphen value can be parsed as --upload-pack and execute a command inside argocd-repo-server when the remote uses a local transport such as file://.
 信号:</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Argo CD Helm插件自动加载RCE</title>
+      <title>[critical]Helm CWE-829</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113709</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113709-2026-10-20</guid>
       <description>CVE-2026-113709 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 CWE-829 · 难度 低(远程·需低权限)
 Helm automatically loads a downloader plugin from &lt;configHome&gt;/.data/plugins without a separate plugin-install step and executes its program inside argocd-rep…
 信号:</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Kiro Crew群组越权致RCE</title>
+      <title>[critical]Missing 缺失授权(越权)</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112380</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112380-2026-10-20</guid>
       <description>CVE-2026-112380 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 类型 缺失授权(越权)/授权错误 · 难度 低(远程·需低权限)
 Missing authorization in the WhatsApp group channel in Kiro Crew might allow a remote actor who is a member of an operator-configured WhatsApp group to control …
 信号:</description>
-      <pubDate>Tue, 20 Oct 2026 20:43:36 +0000</pubDate>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Siebel CRM Cloud Applications Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101446</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101446-2026-10-20</guid>
+      <description>CVE-2026-101446 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Siebel CRM Cloud Applications.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Trusted Answer Search Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101501</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101501-2026-10-20</guid>
+      <description>CVE-2026-101501 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via Oracle Net to compromise Oracle Trusted Answer Search.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Trusted Answer Search Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101503</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101503-2026-10-20</guid>
+      <description>CVE-2026-101503 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via Oracle Net to compromise Oracle Trusted Answer Search.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Enterprise Manager Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101528</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101528-2026-10-20</guid>
+      <description>CVE-2026-101528 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 数据库 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Enterprise Manager for Oracle Database.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Enterprise Manager Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101529</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101529-2026-10-20</guid>
+      <description>CVE-2026-101529 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 数据库 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Enterprise Manager for Oracle Database.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Business Process Management Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91222</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91222-2026-10-20</guid>
+      <description>CVE-2026-91222 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via SOAP to compromise Oracle Business Process Management Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Outside In Technology Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91354</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91354-2026-10-20</guid>
+      <description>CVE-2026-91354 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Outside In Technology.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Essbase Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91637</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91637-2026-10-20</guid>
+      <description>CVE-2026-91637 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Essbase.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Essbase Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91638</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91638-2026-10-20</guid>
+      <description>CVE-2026-91638 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Essbase.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Essbase Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91658</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91658-2026-10-20</guid>
+      <description>CVE-2026-91658 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Essbase.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Essbase Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91663</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91663-2026-10-20</guid>
+      <description>CVE-2026-91663 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.9 · 难度 低(远程·需低权限)
+Easily exploitable vulnerability allows low privileged attacker with network access via T3, IIOP to compromise Oracle Essbase.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Secure Backup 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101484</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101484-2026-10-20</guid>
+      <description>CVE-2026-101484 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Secure Backup.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle WebCenter Sites 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101499</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101499-2026-10-20</guid>
+      <description>CVE-2026-101499 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebCenter Sites.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle APEX 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101521</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101521-2026-10-20</guid>
+      <description>CVE-2026-101521 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTPS to compromise Oracle APEX.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Solaris 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101537</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101537-2026-10-20</guid>
+      <description>CVE-2026-101537 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Solaris.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Easily 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101763</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101763-2026-10-20</guid>
+      <description>CVE-2026-101763 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via RMI to compromise Oracle Communications BRM - Elastic Charging Engine.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Application Object Library 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101767</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101767-2026-10-20</guid>
+      <description>CVE-2026-101767 · 🎯P1 重点关注 · 披露 2026-10-20 · 组件 ERP/业务系统 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Application Object Library.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Solaris 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-60432</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-60432-2026-10-20</guid>
+      <description>CVE-2026-60432 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Solaris.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Data Integrator 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83396</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83396-2026-10-20</guid>
+      <description>CVE-2026-83396 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via RMI to compromise Oracle Data Integrator.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Data Integrator 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83397</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83397-2026-10-20</guid>
+      <description>CVE-2026-83397 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Data Integrator.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Fusion Middleware 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-87251</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-87251-2026-10-20</guid>
+      <description>CVE-2026-87251 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via SAML to compromise Oracle Access Manager.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Business Process Management 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91220</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91220-2026-10-20</guid>
+      <description>CVE-2026-91220 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Business Process Management Suite.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Identity Manager 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91408</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91408-2026-10-20</guid>
+      <description>CVE-2026-91408 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via T3, IIOP to compromise Oracle Identity Manager.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Identity Manager Connector 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91491</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91491-2026-10-20</guid>
+      <description>CVE-2026-91491 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via LDAP to compromise Oracle Identity Manager Connector.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle WebCenter Content 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91495</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91495-2026-10-20</guid>
+      <description>CVE-2026-91495 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebCenter Content.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle Essbase 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91665</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91665-2026-10-20</guid>
+      <description>CVE-2026-91665 · 🎯P1 重点关注 · 披露 2026-10-20 · CVSS 9.8 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Essbase.
+信号:</description>
+      <pubDate>Tue, 20 Oct 2026 23:58:59 +0000</pubDate>
     </item>
   </channel>
 </rss>

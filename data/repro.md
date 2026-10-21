@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-20 20:43 UTC · 共 **114** 条(强烈推荐 16 / 值得 98)
+**更新**: 2026-10-20 23:58 UTC · 共 **124** 条(强烈推荐 18 / 值得 106)
 
 ---
 
@@ -112,6 +112,22 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 复现: 强烈推荐 — 伪造IP-FROM头访问/protocol.csp，向file_id注入命令 · 影响面: 边界路由器，常暴露公网
 处置: 升级至修复固件，或限制受影响管理接口
 参考: [参考](https://github.com/F-yyjy/cve/blob/main/WN530BE1(en).md) · [参考](https://www.vulncheck.com/advisories/wavlink-wl-wn530be1-a-unauthenticated-os-command-injection-in-ioos-protocol-csp-ovpn-file-handler)
+
+### Oracle WebLogic未授权漏洞
+[CVE-2026-83399](https://nvd.nist.gov/vuln/detail/CVE-2026-83399) | P0 立即处置 | Web中间件 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20
+未授权攻击者经T3/IIOP访问WebLogic核心，可完全攻陷中间件。
+复现: 强烈推荐 — 未授权T3/IIOP入口，确认版本与默认配置 · 影响面: 公网/内网Web中间件，横向跳板
+处置: 按Oracle CPU升级WebLogic；临时封禁T3/IIOP
+影响: Oracle(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
+
+### Oracle WebLogic未授权漏洞
+[CVE-2026-91323](https://nvd.nist.gov/vuln/detail/CVE-2026-91323) | P0 立即处置 | Web中间件 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20
+未授权攻击者经HTTP访问WebLogic核心，可完全攻陷中间件。
+复现: 强烈推荐 — 未授权HTTP入口，确认WebLogic版本与默认配置 · 影响面: 公网/内网Web中间件，横向跳板
+处置: 按Oracle CPU升级WebLogic；临时限制HTTP入口
+影响: Oracle(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
 
 ### FortiSIEM 路径遍历未认证RCE
 [CVE-2026-106173](https://nvd.nist.gov/vuln/detail/CVE-2026-106173) | P1 重点关注 | 边界设备/VPN | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-13
@@ -289,6 +305,30 @@ PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/ho
 影响: fortinet fortios >=6.4.0 <7.4.10; fortinet fortios >=7.6.0 <7.6.5
 参考: [厂商通告](https://fortiguard.fortinet.com/psirt/FG-IR-26-122) · [参考](https://cert-portal.siemens.com/productcert/html/ssa-975644.html) · [参考](https://unit42.paloaltonetworks.com/fortimanager-cve-2024-47575-peerstitch-malware/#post-188095-_guyq53ar8k05)
 
+### Oracle SOA Fabric未授权漏洞
+[CVE-2026-91216](https://nvd.nist.gov/vuln/detail/CVE-2026-91216) | P0 立即处置 | OA/协同办公 | CVSS 10.0 | 披露 2026-10-20 | 入库 2026-10-20
+未授权攻击者经T3/IIOP网络访问即可完全攻陷SOA Suite，危及业务与数据。
+复现: 值得 — 未授权T3/IIOP入口，确认可访问性与版本 · 影响面: 内网SOA中间件，业务集成核心
+处置: 按Oracle公告升级SOA Suite；临时封禁T3/IIOP
+影响: Oracle(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
+
+### Oracle SOA Fabric未授权漏洞
+[CVE-2026-91221](https://nvd.nist.gov/vuln/detail/CVE-2026-91221) | P0 立即处置 | OA/协同办公 | CVSS 10.0 | 披露 2026-10-20 | 入库 2026-10-20
+未授权攻击者经T3/IIOP网络访问即可完全攻陷SOA Suite，危及业务与数据。
+复现: 值得 — 未授权T3/IIOP入口，确认可访问性与版本 · 影响面: 内网SOA中间件，业务集成核心
+处置: 按Oracle公告升级SOA Suite；临时封禁T3/IIOP
+影响: Oracle(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
+
+### Oracle SOA适配器未授权漏洞
+[CVE-2026-91231](https://nvd.nist.gov/vuln/detail/CVE-2026-91231) | P0 立即处置 | OA/协同办公 | CVSS 10.0 | 披露 2026-10-20 | 入库 2026-10-20
+未授权攻击者经HTTP访问SOA Suite适配器组件，即可完全攻陷系统。
+复现: 值得 — 未授权HTTP访问适配器组件，确认版本与暴露面 · 影响面: 内网SOA中间件，业务集成核心
+处置: 按Oracle公告升级；临时限制适配器HTTP访问
+影响: Oracle(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
+
 ### Wavlink路由器堆溢出 未认证远程
 [CVE-2026-110958](https://nvd.nist.gov/vuln/detail/CVE-2026-110958) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-15 | 入库 2026-10-15
 PoC 源码可用
@@ -406,6 +446,46 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — 未认证 POST /v1/tools/run 提交工具定义;基于默认 compose 部署 · 影响面: 内网 AI Agent 服务,常与数据库同机暴露
 处置: 启用 LETTA_SERVER_SECURE、改默认数据库口令,限制 API/DB 端口暴露并关注官方修复
 参考: [参考](https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/compose.yaml#L17) · [参考](https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/letta/server/rest_api/app.py#L799) · [参考](https://www.lasso.security/vulnerability-database/cve-2026-77936)
+
+### Oracle SOA Fabric未授权漏洞
+[CVE-2026-91214](https://nvd.nist.gov/vuln/detail/CVE-2026-91214) | P0 立即处置 | OA/协同办公 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20
+未授权攻击者经HTTP访问Fabric层，可完全攻陷SOA Suite业务。
+复现: 值得 — 未授权HTTP访问Fabric层，确认版本与暴露面 · 影响面: 内网SOA中间件，业务集成核心
+处置: 按Oracle公告升级；限制Fabric层HTTP访问
+影响: Oracle(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
+
+### Oracle SOA ESS未授权漏洞
+[CVE-2026-91233](https://nvd.nist.gov/vuln/detail/CVE-2026-91233) | P0 立即处置 | OA/协同办公 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20
+未授权攻击者经SOAP访问企业调度组件，可完全攻陷SOA Suite。
+复现: 值得 — 未授权SOAP访问调度组件，确认版本与接口 · 影响面: 内网SOA中间件，业务集成核心
+处置: 按Oracle公告升级；限制SOAP调度接口访问
+影响: Oracle(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
+
+### Oracle SOA Fabric未授权漏洞
+[CVE-2026-91234](https://nvd.nist.gov/vuln/detail/CVE-2026-91234) | P0 立即处置 | OA/协同办公 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20
+未授权攻击者经HTTP访问Fabric层，可完全攻陷SOA Suite业务。
+复现: 值得 — 未授权HTTP访问Fabric层，确认版本与暴露面 · 影响面: 内网SOA中间件，业务集成核心
+处置: 按Oracle公告升级；限制Fabric层HTTP访问
+影响: Oracle(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
+
+### Oracle SOA Fabric未授权漏洞
+[CVE-2026-91235](https://nvd.nist.gov/vuln/detail/CVE-2026-91235) | P0 立即处置 | OA/协同办公 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20
+未授权攻击者经HTTP访问Fabric层，可完全攻陷SOA Suite业务。
+复现: 值得 — 未授权HTTP访问Fabric层，确认版本与暴露面 · 影响面: 内网SOA中间件，业务集成核心
+处置: 按Oracle公告升级；限制Fabric层HTTP访问
+影响: Oracle(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
+
+### Oracle SOA Fabric未授权漏洞
+[CVE-2026-91236](https://nvd.nist.gov/vuln/detail/CVE-2026-91236) | P0 立即处置 | OA/协同办公 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20
+未授权攻击者经HTTP访问Fabric层，可完全攻陷SOA Suite业务。
+复现: 值得 — 未授权HTTP访问Fabric层，确认版本与暴露面 · 影响面: 内网SOA中间件，业务集成核心
+处置: 按Oracle公告升级；限制Fabric层HTTP访问
+影响: Oracle(产品与版本待 NVD/厂商补充)
+参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
 
 ### Mercury默认无令牌致未授权RCE
 [CVE-2026-111058](https://nvd.nist.gov/vuln/detail/CVE-2026-111058) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-19 | 入库 2026-10-19
