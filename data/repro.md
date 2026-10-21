@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-21 14:33 UTC · 共 **119** 条(强烈推荐 16 / 值得 103)
+**更新**: 2026-10-21 20:44 UTC · 共 **120** 条(强烈推荐 17 / 值得 103)
 
 ---
 
@@ -113,6 +113,14 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 处置: 应用 Oracle 补丁，限制 T3/IIOP 访问并隔离管理网络
 影响: Oracle(产品与版本待 NVD/厂商补充)
 参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
+
+### Expressway硬编码凭据RCE
+[CVE-2026-76466](https://nvd.nist.gov/vuln/detail/CVE-2026-76466) | P0 立即处置 | 网络设备 | CVSS 9.8 | 披露 2026-10-21 | 入库 2026-10-21
+未授权远程攻击者可利用数据库服务硬编码凭据，以root执行任意系统命令。
+复现: 强烈推荐 — 网络访问Expressway数据库服务，使用硬编码凭据执行命令 · 影响面: 边界协作网关，常暴露公网
+处置: 升级Cisco修复版本；限制Expressway数据库服务网络访问
+影响: Cisco(产品与版本待 NVD/厂商补充)
+参考: [参考](https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-vcs-static-cred-hr7EWZ8t)
 
 ### FortiSIEM 路径遍历未认证RCE
 [CVE-2026-106173](https://nvd.nist.gov/vuln/detail/CVE-2026-106173) | P1 重点关注 | 边界设备/VPN | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-13
