@@ -1,233 +1,145 @@
 {
  "version": 3,
- "generated_at": "2026-10-21T06:08:48+00:00",
+ "generated_at": "2026-10-21T14:33:06+00:00",
  "lookback_hours": 5,
- "count": 4,
+ "count": 0,
  "stats": {
-  "total": 4,
-  "by_tier": {
-   "critical": 4
-  },
-  "by_urgency": {
-   "P1 重点关注": 4
-  },
-  "by_category": {
-   "Web中间件": 1,
-   "网络设备": 1,
-   "未知": 1,
-   "数据库": 1
-  },
+  "total": 0,
+  "by_tier": {},
+  "by_urgency": {},
+  "by_category": {},
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [
-  {
-   "id": "CVE-2026-113744",
-   "tier": "critical",
-   "title": "Tenda AC19 栈溢出远程利用",
-   "title_zh": "Tenda AC19 栈溢出远程利用",
-   "summary_zh": "远程攻击者向 SetFirewallCfg 的 firewallEn 参数传入超长数据，触发栈溢出并可能控制设备。",
-   "published": "2026-10-21T02:17:07.053",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "内存破坏",
-    "栈溢出"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/henrythekingofuk/TendaCVE"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-113744"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1018542"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复版本；无法升级时限制管理接口暴露并过滤参数",
-   "repro_worthy": "一般",
-   "repro_note": "SetFirewallCfg 的 firewallEn 传超长值；需管理面可达",
-   "impact_scope": "家用路由器管理面，可能公网暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113744",
-   "description": "A security vulnerability has been detected in Tenda AC19 16.03.10.07. The impacted element is the function formSetFirewallCfg of the file /goform/SetFirewallCfg of the component httpd Web Management Service. Such manipulation of the argument firewallEn leads to stack-based buffer overflow. The attack may be launched remotely. The exploit has been disclosed publicly and may be used."
-  },
-  {
-   "id": "CVE-2026-113736",
-   "tier": "critical",
-   "title": "DHP-W610AV HNAP空口令登录",
-   "title_zh": "DHP-W610AV HNAP空口令登录",
-   "summary_zh": "远程攻击者可通过 HNAP 登录使用空口令认证，绕过管理认证并控制设备配置。",
-   "published": "2026-10-21T01:17:25.187",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-258",
-    "CWE-259"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/XueDugu/dlink-dhp-w610av-empty-admin-password-evidence"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/XueDugu/dlink-dhp-w610av-empty-admin-password-evidence/blob/main/poc/poc_dhp610av_login.py"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-113736"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复固件；临时禁用 HNAP 或限制管理接口访问",
-   "repro_worthy": "一般",
-   "repro_note": "访问 HNAP 登录接口，将 Password 置空尝试认证；需管理面可达",
-   "impact_scope": "网络扩展器管理面，存在空口令风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113736",
-   "description": "A vulnerability has been found in D-Link DHP-W610AV 1.02EUb03. The impacted element is the function login_prepare_hnap of the file etc/defnodes/defaultvalue.xml of the component HNAP Login. The manipulation of the argument Password leads to empty password in configuration file. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used."
-  },
-  {
-   "id": "CVE-2026-114108",
-   "tier": "critical",
-   "title": "Vibe-Trading API未授权访问",
-   "title_zh": "Vibe-Trading API未授权访问",
-   "summary_zh": "未设置 API_AUTH_KEY 时，未认证者可访问 FastAPI 接口，可能读取或操作交易数据。",
-   "published": "2026-10-21T01:17:36.820",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失认证"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/HKUDS/Vibe-Trading/security/advisories/GHSA-v2f8-6655-7grj"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/hkuds-vibe-trading-before-0.1.7-missing-authentication-in-fastapi-server-enabling-rce"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 0.1.7；确保设置 API_AUTH_KEY 并限制接口暴露",
-   "repro_worthy": "一般",
-   "repro_note": "未设置 API_AUTH_KEY 时直接访问 FastAPI 路由验证",
-   "impact_scope": "交易类 API 服务，未授权可触达",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114108",
-   "description": "HKUDS Vibe-Trading from 0.1.0 before 0.1.7 contains a missing authentication vulnerability that allows unauthenticated attackers to access the FastAPI surface because require_auth() returns early when API_AUTH_KEY is unset. Attackers can post messages to /sessions/{id}/messages to trigger root shell commands via BashTool, upload .py or .sh files via /upload, read session histories, and obtain partial API keys."
-  },
-  {
-   "id": "CVE-2026-114119",
-   "tier": "critical",
-   "title": "Bp Premier MSSQL硬编码口令",
-   "title_zh": "Bp Premier MSSQL硬编码口令",
-   "summary_zh": "可访问数据库的网络攻击者用内置 MSSQL 管理员口令登录，绕过应用认证并以 SYSTEM 执行命令。",
-   "published": "2026-10-21T01:17:38.353",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "硬编码凭据"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://def.ci-isac.org.au/vuln/records/GCVE-123-2026-0001.json"
-    },
-    {
-     "label": "参考",
-     "url": "https://kb.bestpracticesoftware.com/bppremier/oxford/WhatsNew/BpPremier_OxfordSP1_ReleaseNotes.htm"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/best-practice-software-bp-premier-before-1.14.1.1128-hardcoded-sql-server-administrative-credential"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 1.14.1.1128；严格限制 MSSQL 端口访问",
-   "repro_worthy": "一般",
-   "repro_note": "连接 MSSQL 使用内置管理员口令认证；需数据库端口可达",
-   "impact_scope": "医疗管理软件数据库，横向控制风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114119",
-   "description": "Best Practice Software Bp Premier before 1.14.1.1128 uses a hardcoded Microsoft SQL Server administrative password that is shared across all installations and cannot be changed without breaking the application. Attackers with network access to the database instance can authenticate as sysadmin, bypass application authentication, and execute operating system commands as SYSTEM."
-  }
- ],
+ "items": [],
  "media": [],
  "commits": [
   {
-   "repo": "python/cpython",
-   "sha": "9c649dbaa80e905c9ccd874606cea706ca799a0d",
-   "url": "https://github.com/python/cpython/commit/9c649dbaa80e905c9ccd874606cea706ca799a0d",
-   "title": "gh-159739: Keep generic alias arguments alive while formatting errors (#159981)",
-   "date": "2026-10-21T04:33:19",
-   "score": 2,
+   "repo": "openbsd/src",
+   "sha": "c04101f4a830c0b0b70f697669918ec3e3b85940",
+   "url": "https://github.com/openbsd/src/commit/c04101f4a830c0b0b70f697669918ec3e3b85940",
+   "title": "import unbound 1.26.2, ok phessler",
+   "date": "2026-10-21T13:18:15",
+   "score": 5,
    "matched": [
-    "UAF"
+    "CVE",
+    "漏洞相关"
+   ],
+   "cve": "CVE-2026-50106"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "8c44e38dc6c7cf3a8d058439479acd3446d2b9dd",
+   "url": "https://github.com/nodejs/node/commit/8c44e38dc6c7cf3a8d058439479acd3446d2b9dd",
+   "title": "crypto: reset random caches across snapshots",
+   "date": "2026-10-21T10:57:43",
+   "score": 5,
+   "matched": [
+    "CVE",
+    "反序列化"
+   ],
+   "cve": "CVE-2026-106074"
+  },
+  {
+   "repo": "envoyproxy/envoy",
+   "sha": "db44f5ca246338e875c9d7dac27492a0b571976d",
+   "url": "https://github.com/envoyproxy/envoy/commit/db44f5ca246338e875c9d7dac27492a0b571976d",
+   "title": "listener: fix use-after-free when destroying connection handler (#48413)",
+   "date": "2026-10-21T14:24:22",
+   "score": 4,
+   "matched": [
+    "UAF",
+    "安全修复"
    ],
    "cve": null
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "9731991b3c8c8ea1c917cdec7c1049cbed63d943",
+   "url": "https://github.com/nodejs/node/commit/9731991b3c8c8ea1c917cdec7c1049cbed63d943",
+   "title": "tls: fix ip normalization regression",
+   "date": "2026-10-21T10:57:42",
+   "score": 4,
+   "matched": [
+    "CVE",
+    "回合/回归"
+   ],
+   "cve": "CVE-2026-105483"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "7ba22c28127e88d7ce5a207af15fff2fbca71d46",
+   "url": "https://github.com/nodejs/node/commit/7ba22c28127e88d7ce5a207af15fff2fbca71d46",
+   "title": "src: expose `BROTLI_DECODER_ERROR_FORMAT_BLOCK_SWITCH`",
+   "date": "2026-10-21T11:00:47",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-111497"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "6b88896652dabf01780e0cec785914f80fcb8600",
+   "url": "https://github.com/nodejs/node/commit/6b88896652dabf01780e0cec785914f80fcb8600",
+   "title": "permission: check permission model in realpathSync",
+   "date": "2026-10-21T10:57:43",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-106073"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "5faa1497e06e6131e4c3048b5398d39dfa3fdeaf",
+   "url": "https://github.com/nodejs/node/commit/5faa1497e06e6131e4c3048b5398d39dfa3fdeaf",
+   "title": "src: fix the fs permission tree node on wildcard nodes",
+   "date": "2026-10-21T10:57:43",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-106071"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "c5f5cb5b9685b6d69b22c79b001055f385505ae7",
+   "url": "https://github.com/nodejs/node/commit/c5f5cb5b9685b6d69b22c79b001055f385505ae7",
+   "title": "zlib: avoid caching invalid ZIP local headers",
+   "date": "2026-10-21T10:57:43",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-106070"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "9ccbc81eceeb4bd3316936731b0f0a01ec379e05",
+   "url": "https://github.com/nodejs/node/commit/9ccbc81eceeb4bd3316936731b0f0a01ec379e05",
+   "title": "tls: reject non-canonical IP addresses",
+   "date": "2026-10-21T10:57:43",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-106069"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "a37096628256c0d4b4abbdf548e4d5e339e4f04f",
+   "url": "https://github.com/nodejs/node/commit/a37096628256c0d4b4abbdf548e4d5e339e4f04f",
+   "title": "dns: validate resolve inputs for null bytes",
+   "date": "2026-10-21T10:57:35",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-105482"
   }
  ]
 }
