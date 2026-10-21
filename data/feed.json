@@ -1,193 +1,374 @@
 {
  "version": 3,
- "generated_at": "2026-10-20T23:58:59+00:00",
- "lookback_hours": 5,
- "count": 51,
+ "generated_at": "2026-10-21T01:59:50+00:00",
+ "lookback_hours": 24,
+ "count": 160,
  "stats": {
-  "total": 51,
+  "total": 160,
   "by_tier": {
-   "critical": 51
+   "critical": 151,
+   "high": 9
   },
   "by_urgency": {
-   "P1 重点关注": 38,
-   "P0 立即处置": 13
+   "P1 重点关注": 156,
+   "P0 立即处置": 4
   },
   "by_category": {
-   "未知": 29,
-   "OA/协同办公": 12,
-   "ERP/业务系统": 3,
-   "数据库": 3,
-   "Web中间件": 2,
-   "容器/虚拟化": 2
+   "未知": 92,
+   "OA/协同办公": 42,
+   "Web中间件": 6,
+   "ERP/业务系统": 5,
+   "数据库": 5,
+   "操作系统": 5,
+   "容器/虚拟化": 3,
+   "安全设备": 1,
+   "网络设备": 1
   },
-  "kev": 3,
-  "with_poc": 1,
-  "with_poc_source": 1,
-  "repro_recommended": 2
+  "kev": 0,
+  "with_poc": 7,
+  "with_poc_source": 0,
+  "repro_recommended": 1
  },
- "briefing": [],
+ "briefing": [
+  "- 本批无KEV标记，未见在野利用与勒索软件关联。",
+  "- nginx ui、Apache、Oracle多漏洞批量披露，按资产面排查。",
+  "- Oracle OA两条10.0最急，Web中间件9.8紧随。",
+  "- nginx ui三漏洞均8.8且有POC，应修复至2.5.0。",
+  "- OA协同办公命令注入与溢出9.1，安全设备9.2同步排查。"
+ ],
  "items": [
   {
-   "id": "CVE-2026-106931",
-   "tier": "critical",
-   "title": "SiteGuard命令注入可获系统权限",
-   "title_zh": "SiteGuard命令注入可获系统权限",
-   "summary_zh": "攻击者可注入OS命令，以root/SYSTEM权限执行任意代码并完全控制主机。",
-   "published": "2026-10-14T05:16:42.633",
-   "cvss": 8.5,
+   "id": "CVE-2026-107811",
+   "tier": "high",
+   "title": "Nginx UI 节点密钥认证绕过",
+   "title_zh": "Nginx UI 节点密钥认证绕过",
+   "summary_zh": "持有有效令牌者可将其作为 X-Node-Secret，冒充可信节点访问集群管理接口，读取配置并重启服务。",
+   "published": "2026-10-09T16:17:25.690",
+   "cvss": 8.8,
    "severity": "HIGH",
-   "vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": 0.00662,
-   "epss_percentile": 0.50774,
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00356,
+   "epss_percentile": 0.27856,
    "cwe_labels": [
-    "命令注入(RCE)"
+    "信息泄露",
+    "缺失授权(越权)"
    ],
-   "difficulty": "高(需本地访问·需低权限)",
-   "products": [],
-   "affected": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [
+    "nginxui nginx_ui"
+   ],
+   "affected": "nginxui nginx_ui >=2.0.0 <2.5.0",
    "ghsa_url": null,
    "refs": [
     {
-     "label": "参考",
-     "url": "https://jvn.jp/en/jp/JVN88474777/"
+     "label": "官方补丁",
+     "url": "https://github.com/0xJacky/nginx-ui/commit/0ecbd106c37b5143be14880c9447a66135151512"
     },
     {
      "label": "参考",
-     "url": "https://www.eg-secure.co.jp/siteguard/news/alert-202610-1"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-106931"
+     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.5.0"
     }
    ],
    "poc": [],
    "nuclei": false,
    "patched": null,
-   "kev": true,
-   "kev_due": "2026-10-23",
+   "kev": false,
+   "kev_due": null,
    "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至厂商修复版本；临时限制服务访问并审计命令执行",
+   "keyword_hit": "nginx",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 2.5.0，轮换节点密钥并限制集群端口访问",
    "repro_worthy": "一般",
-   "repro_note": "需确认受影响版本与命令注入入口，验证系统权限",
-   "impact_scope": "安全服务器，管理面可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106931",
-   "description": "SiteGuard Server Edition contains an OS command injection vulnerability, which may allow an attacker to execute arbitrary OS commands with root or SYSTEM privileges on the system running the affected product."
+   "repro_note": "需有效令牌，将其作为 X-Node-Secret 冒充可信节点",
+   "impact_scope": "Nginx 管理面，可横向至集群节点",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107811",
+   "description": "The same token is accepted as X-Node-Secret by AuthRequired and maps the request to initUser, allowing the user to impersonate a trusted node against a reachable cluster member. This cross-node authentication bypass can expose sensitive management operations, including configuration synchronization and service restart."
   },
   {
-   "id": "CVE-2026-96656",
-   "tier": "critical",
-   "title": "Plex媒体服务器任意文件写入",
-   "title_zh": "Plex媒体服务器任意文件写入",
-   "summary_zh": "管理员可通过转码参数写入恶意文件，重启加载后以服务权限执行代码。",
-   "published": "2026-09-23T17:17:23.840",
+   "id": "CVE-2026-107807",
+   "tier": "high",
+   "title": "Nginx UI 密钥泄露认证绕过",
+   "title_zh": "Nginx UI 密钥泄露认证绕过",
+   "summary_zh": "获取泄露密钥者可绕过密码、JWT、会话及二次验证，持续访问管理 API 并读取敏感配置。",
+   "published": "2026-10-09T16:17:25.087",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00309,
+   "epss_percentile": 0.22323,
+   "cwe_labels": [
+    "CWE-312",
+    "CWE-598"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [
+    "nginxui nginx_ui"
+   ],
+   "affected": "nginxui nginx_ui >=2.0.0 <2.5.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/0xJacky/nginx-ui/commit/a3999bd78a3b97ab22e6b5e9fd478ac57598a954"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.5.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "nginx",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 2.5.0，轮换密钥并审计管理 API 访问日志",
+   "repro_worthy": "一般",
+   "repro_note": "需先获得泄露密钥，携带其访问管理 API 绕过认证",
+   "impact_scope": "Nginx 管理面，配置与密钥泄露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107807",
+   "description": "Nginx UI is a web user interface for the Nginx web server. A party that obtains the secret can bypass normal password, JWT, session, and second-factor checks and obtain persistent administrative API access, including access to configuration and secret material."
+  },
+  {
+   "id": "CVE-2026-107809",
+   "tier": "high",
+   "title": "Nginx UI 管理接口 CSRF",
+   "title_zh": "Nginx UI 管理接口 CSRF",
+   "summary_zh": "攻击者诱导已登录管理员访问恶意页面，跨站提交 POST /api/configs 修改配置，可能导致配置被篡改。",
+   "published": "2026-10-09T16:17:25.387",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": 0.00185,
+   "epss_percentile": 0.07631,
+   "cwe_labels": [
+    "CSRF"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [
+    "nginxui nginx_ui"
+   ],
+   "affected": "nginxui nginx_ui >=2.0.0 <2.5.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/0xJacky/nginx-ui/commit/a3999bd78a3b97ab22e6b5e9fd478ac57598a954"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.5.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "nginx",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 2.5.0，限制管理面来源并启用 CSRF/Origin 校验",
+   "repro_worthy": "一般",
+   "repro_note": "管理员登录后访问恶意页面，跨站 POST /api/configs",
+   "impact_scope": "Nginx 管理面，管理员浏览器为跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107809",
+   "description": "Because management endpoints do not universally require a CSRF token or perform Origin or Referer validation, a remote attacker can induce a logged-in administrator's browser to submit authenticated cross-site state-changing requests, including POST /api/configs. The attacker cannot read the cross-origin response but can modify Nginx configuration, trigger reloads, or invoke other management operations reachable with the victim's session."
+  },
+  {
+   "id": "CVE-2026-107808",
+   "tier": "high",
+   "title": "Nginx UI 绕过 Passkey 认证",
+   "title_zh": "Nginx UI 绕过 Passkey 认证",
+   "summary_zh": "获取账户密码者可绕过已注册 Passkey 接管账户，进入管理功能并持久控制 Nginx UI。",
+   "published": "2026-10-09T16:17:25.237",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00409,
+   "epss_percentile": 0.33786,
+   "cwe_labels": [
+    "认证绕过",
+    "CWE-305"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [
+    "nginxui nginx_ui"
+   ],
+   "affected": "nginxui nginx_ui >=2.0.0 <2.5.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/0xJacky/nginx-ui/commit/95cd21b70814e5d9a48a359aa238aeea1ac97429"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.5.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "nginx",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 2.5.0，强制多因素并轮换可疑账户密码",
+   "repro_worthy": "一般",
+   "repro_note": "需已知账户密码，登录时绕过 Passkey 校验接管账户",
+   "impact_scope": "Nginx 管理面，账户接管风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107808",
+   "description": "Nginx UI is a web user interface for the Nginx web server. An attacker who obtains the password can take over the account and reach administrative functionality without the registered passkey."
+  },
+  {
+   "id": "CVE-2026-107810",
+   "tier": "high",
+   "title": "Nginx UI 文件链接绕过注入",
+   "title_zh": "Nginx UI 文件链接绕过注入",
+   "summary_zh": "攻击者可利用文件链接绕过写入或篡改配置，待文件被消费时持久注入配置或造成拒绝服务。",
+   "published": "2026-10-09T16:17:25.540",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+   "epss": 0.00363,
+   "epss_percentile": 0.28716,
+   "cwe_labels": [
+    "文件链接绕过",
+    "CWE-61"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [
+    "nginxui nginx_ui"
+   ],
+   "affected": "nginxui nginx_ui >=2.0.0 <2.5.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/0xJacky/nginx-ui/commit/a467ed652591fc0cd1b466a1ec751b493faef9f7"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.5.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "nginx",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 2.5.0，校验配置目录符号链接并限制文件写入权限",
+   "repro_worthy": "一般",
+   "repro_note": "需可写配置路径，利用符号链接绕过文件校验后注入配置",
+   "impact_scope": "Nginx 配置面，配置持久化污染",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107810",
+   "description": "Nginx UI is a web user interface for the Nginx web server. This can persistently inject configuration or cause denial of service when the modified files are later consumed."
+  },
+  {
+   "id": "CVE-2026-107812",
+   "tier": "high",
+   "title": "Nginx UI 升级校验供应链风险",
+   "title_zh": "Nginx UI 升级校验供应链风险",
+   "summary_zh": "能篡改镜像响应的网络攻击者可提供恶意升级包及匹配摘要，待管理员触发升级后在进程内执行代码。",
+   "published": "2026-10-09T16:17:25.847",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": 0.00173,
+   "epss_percentile": 0.06358,
+   "cwe_labels": [
+    "CWE-494"
+   ],
+   "difficulty": "中(远程·利用条件苛刻·免认证·需用户交互)",
+   "products": [
+    "nginxui nginx_ui"
+   ],
+   "affected": "nginxui nginx_ui >=2.0.0 <2.5.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/0xJacky/nginx-ui/commit/580585516dd87a8b176bcdac258db70c3b64b7ec"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.5.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "nginx",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 2.5.0，启用签名校验并仅从可信镜像升级",
+   "repro_worthy": "一般",
+   "repro_note": "需中间人篡改升级响应并诱导管理员执行升级",
+   "impact_scope": "Nginx UI 主机，升级链路供应链",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107812",
+   "description": "A compromised mirror or network attacker able to alter both responses can supply a malicious executable and matching digest. An operator-triggered upgrade is required, and the application installs and runs the attacker-controlled code in the Nginx UI process context on the next upgrade."
+  },
+  {
+   "id": "CVE-2026-107806",
+   "tier": "high",
+   "title": "Nginx UI 备份恢复代码注入",
+   "title_zh": "Nginx UI 备份恢复代码注入",
+   "summary_zh": "已登录管理员可向 /api/restore 提交恶意备份密钥与清单，恢复流程替换 app.ini 并注入命令执行。",
+   "published": "2026-10-09T15:17:10.150",
    "cvss": 7.2,
    "severity": "HIGH",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.00396,
-   "epss_percentile": 0.32349,
+   "epss": 0.00333,
+   "epss_percentile": 0.25124,
    "cwe_labels": [
-    "CWE-73"
+    "代码注入(RCE)"
    ],
    "difficulty": "中(远程·需高权限)",
    "products": [
-    "plex media_server"
+    "nginxui nginx_ui"
    ],
-   "affected": "plex media_server <1.43.0.10861",
+   "affected": "nginxui nginx_ui >=2.3.8 <2.5.0",
    "ghsa_url": null,
    "refs": [
     {
-     "label": "参考",
-     "url": "https://forums.plex.tv/t/plex-media-server/30447/711"
+     "label": "官方补丁",
+     "url": "https://github.com/0xJacky/nginx-ui/commit/a467ed652591fc0cd1b466a1ec751b493faef9f7"
     },
     {
      "label": "参考",
-     "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-266-01.json"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cve.org/CVERecord?id=CVE-2026-96656"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/code-zm/plex2shell",
-     "label": "code-zm/plex2shell 43★(有源码)"
-    },
-    {
-     "url": "https://github.com/gmh5225/plex2shell",
-     "label": "gmh5225/plex2shell 0★(有源码)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-10-23",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至1.43.3.10861及以上；限制管理员权限",
-   "repro_worthy": "一般",
-   "repro_note": "需管理员权限，修改转码参数并放置恶意文件",
-   "impact_scope": "内网媒体服务器，管理员权限可触达",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96656",
-   "description": "Plex Media Server before 1.43.3.10861 allows an admin user to write arbitrary files that may be executed on load. The preference TranscoderH264Options is appended verbatim to x264's option string on every transcode. At startup, all .so files are run without signature, execute bit, or symbol checks."
-  },
-  {
-   "id": "CVE-2026-110936",
-   "tier": "critical",
-   "title": "西门子软件中心DLL劫持",
-   "title_zh": "西门子软件中心DLL劫持",
-   "summary_zh": "本地已认证攻击者可放置恶意DLL，应用加载后以该应用权限执行代码。",
-   "published": "2026-10-15T15:17:30.383",
-   "cvss": 6.7,
-   "severity": "MEDIUM",
-   "vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.00135,
-   "epss_percentile": 0.02673,
-   "cwe_labels": [
-    "CWE-427"
-   ],
-   "difficulty": "高(需本地访问·需高权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://cert-portal.siemens.com/productcert/html/ssa-580366.html"
-    },
-    {
-     "label": "参考",
-     "url": "https://productcert.siemens.com/news/2026/10/19/active-exploitation-of-cve-2026-110936-in-siemens-software-center/"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-110936"
+     "url": "https://github.com/0xJacky/nginx-ui/releases/tag/v2.5.0"
     }
    ],
    "poc": [],
    "nuclei": false,
    "patched": null,
-   "kev": true,
-   "kev_due": "2026-11-03",
+   "kev": false,
+   "kev_due": null,
    "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至V4.0.9.8及以上；限制本地目录写入",
+   "keyword_hit": "nginx",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 2.5.0，限制管理员权限并审计恢复操作",
    "repro_worthy": "一般",
-   "repro_note": "需本地认证并可写入搜索路径DLL",
-   "impact_scope": "终端软件，需本地访问，影响有限",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110936",
-   "description": "A vulnerability has been identified in Siemens Software Center (All versions < V4.0.9.8). The affected application loads dynamic-link libraries (DLLs) from an uncontrolled search path. This could allow an authenticated local attacker to place a specially crafted DLL in a directory that the application searches, leading to arbitrary code execution with the privileges of the affected application."
+   "repro_note": "需管理员会话，向 POST /api/restore 提交恶意密钥与清单",
+   "impact_scope": "Nginx UI 主机，认证后代码执行",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107806",
+   "description": "From 2.3.8 until 2.5.0, an authenticated administrator with an active secure session can submit attacker-controlled portable backup key material and a matching manifest to POST /api/restore. The restore flow trusts the supplied key, decrypts attacker-controlled contents, and replaces the live app.ini, including protected nginx command settings such as TestConfigCmd."
   },
   {
    "id": "CVE-2026-83399",
    "tier": "critical",
-   "title": "Oracle WebLogic未授权漏洞",
-   "title_zh": "Oracle WebLogic未授权漏洞",
-   "summary_zh": "未授权攻击者经T3/IIOP访问WebLogic核心，可完全攻陷中间件。",
+   "title": "WebLogic 未认证 T3/IIOP",
+   "title_zh": "WebLogic 未认证 T3/IIOP",
+   "summary_zh": "未认证攻击者可通过网络经 T3/IIOP 访问 WebLogic Core，轻松入侵并控制该服务器。",
    "published": "2026-10-20T22:19:56.430",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -213,34 +394,40 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P0 立即处置",
-   "action_zh": "按Oracle CPU升级WebLogic；临时封禁T3/IIOP",
+   "action_zh": "应用 Oracle 补丁，限制 T3/IIOP 访问并隔离管理网络",
    "repro_worthy": "强烈推荐",
-   "repro_note": "未授权T3/IIOP入口，确认版本与默认配置",
-   "impact_scope": "公网/内网Web中间件，横向跳板",
+   "repro_note": "未授权经 T3/IIOP 访问 WebLogic Core，需暴露该协议",
+   "impact_scope": "Oracle WebLogic，公网/内网 Web 中间件",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83399",
    "description": "Vulnerability in the Oracle WebLogic Server product of Oracle Fusion Middleware (component: Core). Easily exploitable vulnerability allows unauthenticated attacker with network access via T3, IIOP to compromise Oracle WebLogic Server."
   },
   {
-   "id": "CVE-2026-91323",
+   "id": "CVE-2026-101296",
    "tier": "critical",
-   "title": "Oracle WebLogic未授权漏洞",
-   "title_zh": "Oracle WebLogic未授权漏洞",
-   "summary_zh": "未授权攻击者经HTTP访问WebLogic核心，可完全攻陷中间件。",
-   "published": "2026-10-20T22:20:34.323",
-   "cvss": 9.8,
+   "title": "Tomcat JNDI Realm 认证绕过",
+   "title_zh": "Tomcat JNDI Realm 认证绕过",
+   "summary_zh": "使用非 GSSAPI SASL 的 JNDI Realm 配置下，未认证攻击者可绕过密码校验完成认证。",
+   "published": "2026-10-20T14:16:54.767",
+   "cvss": 9.1,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
    "epss": null,
    "epss_percentile": null,
-   "cwe_labels": [],
-   "difficulty": "低(远程·免认证)",
+   "cwe_labels": [
+    "CWE-304"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
    "products": [],
-   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+     "url": "https://lists.apache.org/thread.html/bl52b9go9ckoov8x4v3dt6rkm573cygd"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/20/26"
     }
    ],
    "poc": [],
@@ -249,21 +436,158 @@
    "kev": false,
    "kev_due": null,
    "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Oracle CPU升级WebLogic；临时限制HTTP入口",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "未授权HTTP入口，确认WebLogic版本与默认配置",
-   "impact_scope": "公网/内网Web中间件，横向跳板",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91323",
-   "description": "Vulnerability in the Oracle WebLogic Server product of Oracle Fusion Middleware (component: Core). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebLogic Server."
+   "keyword_hit": "tomcat",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版本，核查 JNDI Realm 非 GSSAPI SASL 配置",
+   "repro_worthy": "一般",
+   "repro_note": "需启用非 GSSAPI SASL 的 JNDI Realm，提交认证请求免密通过",
+   "impact_scope": "Tomcat Web 中间件，认证绕过",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101296",
+   "description": "A missing critical step in authentication vulnerability in Apache Tomcat when the JNDI realm was configured with with a non GSSAPI SASL authentication mechanism allowed attackers to authenticate without providing the correct password. This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.26, from 10.1.0-M1 through 10.1.60, from 9.0.0.M1 through 9.0.122."
+  },
+  {
+   "id": "CVE-2026-101356",
+   "tier": "critical",
+   "title": "Tomcat HTTP/2 异步请求混淆",
+   "title_zh": "Tomcat HTTP/2 异步请求混淆",
+   "summary_zh": "在 HTTP/2 异步 Servlet 场景，攻击者可触发请求/响应对象复用错乱，造成跨用户数据混淆或泄露。",
+   "published": "2026-10-20T14:16:55.767",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-362"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread.html/d1xjt7bbjqw7y7n5mcb4fm815hpfgc27"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/20/27"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "tomcat",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 11.0.27、10.1.61 或 9.0.123",
+   "repro_worthy": "一般",
+   "repro_note": "需 HTTP/2 与异步 Servlet，构造并发请求触发对象复用错乱",
+   "impact_scope": "Tomcat Web 中间件，跨用户数据风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101356",
+   "description": "Incorrect object recycling and re-use vulnerability in Apache Tomcat affecting HTTP/2 processing of asynchronous servlets can trigger request and/or response mix-up between users. This issue affects Apache Tomcat: from 11.0.22 through 11.0.26, from 10.1.55 through 10.1.60, from 9.0.118 through 9.0.122. Users are recommended to upgrade to version 11.0.27, 10.1.61 or 9.0.123, which fixes the issue."
+  },
+  {
+   "id": "CVE-2026-103119",
+   "tier": "critical",
+   "title": "Tomcat 非阻塞写响应越界读",
+   "title_zh": "Tomcat 非阻塞写响应越界读",
+   "summary_zh": "攻击者触发大块非阻塞写时，响应体可能串到下一请求，导致第二请求失败并泄露首个响应数据。",
+   "published": "2026-10-20T14:16:56.087",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-127"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread.html/sk2cg4k077fwcqbm6tqz2n700nq06h80"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/20/28"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "tomcat",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版本，避免非阻塞大响应并审计连接",
+   "repro_worthy": "一般",
+   "repro_note": "需大块非阻塞写场景，构造连续请求触发响应体串包",
+   "impact_scope": "Tomcat Web 中间件，响应数据泄露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103119",
+   "description": "Buffer under-read vulnerability in Apache Tomcat meant that a large non-blocking write could result in the response body being split between the current request and the next request received on that connection leading most likely to failure of the second request and possibly leakage of data from the first response to the second. This issue affects Apache Tomcat: from 11.0.0-M25 through 11.0.26. Users are recommended to upgrade to version 11.0.27, which fixes the issue."
+  },
+  {
+   "id": "CVE-2026-111764",
+   "tier": "high",
+   "title": "A2A Java SDK 默认端点未授权读取",
+   "title_zh": "A2A Java SDK 默认端点未授权读取",
+   "summary_zh": "未认证调用者可直接访问默认/参考传输端点，读取任务数据，导致敏感任务信息泄露。",
+   "published": "2026-10-20T16:17:00.690",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失授权(越权)",
+    "初始化不安全(默认凭据)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "maven:org.a2aproject.sdk:a2a-java-sdk-server-common < 1.3.0.Final(修复: 1.3.0.Final)",
+   "ghsa_url": "https://github.com/advisories/GHSA-qw47-mcm5-934w",
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/a2aproject/a2a-java/commit/efb4e985e99390c4fc1f78c0a187a4254c0a2553"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/a2aproject/a2a-java/pull/1095"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/a2aproject/a2a-java/releases/tag/v1.3.0.Final"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "spring",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 1.3.0.Final，并为传输端点启用认证",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问默认/参考传输端点，读取任务数据",
+   "impact_scope": "A2A SDK 服务，任务数据暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111764",
+   "description": "A2A Java SDK is the official Java SDK for the Agent2Agent (A2A) Protocol. The default/reference transport endpoints do not enforce authentication, so the task-read disclosure is reachable by an unauthenticated caller rather than requiring a privileged account."
   },
   {
    "id": "CVE-2026-91216",
    "tier": "critical",
-   "title": "Oracle SOA Fabric未授权漏洞",
-   "title_zh": "Oracle SOA Fabric未授权漏洞",
-   "summary_zh": "未授权攻击者经T3/IIOP网络访问即可完全攻陷SOA Suite，危及业务与数据。",
+   "title": "SOA Suite 未认证 T3/IIOP",
+   "title_zh": "SOA Suite 未认证 T3/IIOP",
+   "summary_zh": "未认证攻击者可通过网络经 T3/IIOP 访问 SOA Suite Fabric Layer，轻松入侵并控制该产品。",
    "published": "2026-10-20T22:20:22.013",
    "cvss": 10.0,
    "severity": "CRITICAL",
@@ -289,19 +613,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P0 立即处置",
-   "action_zh": "按Oracle公告升级SOA Suite；临时封禁T3/IIOP",
+   "action_zh": "应用 Oracle 补丁，限制 T3/IIOP 访问并隔离管理网络",
    "repro_worthy": "值得",
-   "repro_note": "未授权T3/IIOP入口，确认可访问性与版本",
-   "impact_scope": "内网SOA中间件，业务集成核心",
+   "repro_note": "未授权经 T3/IIOP 访问 Fabric Layer，需 SOA Suite 实例",
+   "impact_scope": "Oracle SOA Suite，企业内网/OA",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91216",
    "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows unauthenticated attacker with network access via T3, IIOP to compromise Oracle SOA Suite."
   },
   {
    "id": "CVE-2026-91221",
    "tier": "critical",
-   "title": "Oracle SOA Fabric未授权漏洞",
-   "title_zh": "Oracle SOA Fabric未授权漏洞",
-   "summary_zh": "未授权攻击者经T3/IIOP网络访问即可完全攻陷SOA Suite，危及业务与数据。",
+   "title": "SOA Suite 未认证 T3/IIOP",
+   "title_zh": "SOA Suite 未认证 T3/IIOP",
+   "summary_zh": "未认证攻击者可通过网络经 T3/IIOP 访问 SOA Suite Fabric Layer，轻松入侵并控制该产品。",
    "published": "2026-10-20T22:20:22.580",
    "cvss": 10.0,
    "severity": "CRITICAL",
@@ -327,19 +651,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P0 立即处置",
-   "action_zh": "按Oracle公告升级SOA Suite；临时封禁T3/IIOP",
+   "action_zh": "应用 Oracle 补丁，限制 T3/IIOP 访问并隔离管理网络",
    "repro_worthy": "值得",
-   "repro_note": "未授权T3/IIOP入口，确认可访问性与版本",
-   "impact_scope": "内网SOA中间件，业务集成核心",
+   "repro_note": "未授权经 T3/IIOP 访问 Fabric Layer，需 SOA Suite 实例",
+   "impact_scope": "Oracle SOA Suite，企业内网/OA",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91221",
    "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows unauthenticated attacker with network access via T3, IIOP to compromise Oracle SOA Suite."
   },
   {
    "id": "CVE-2026-91231",
    "tier": "critical",
-   "title": "Oracle SOA适配器未授权漏洞",
-   "title_zh": "Oracle SOA适配器未授权漏洞",
-   "summary_zh": "未授权攻击者经HTTP访问SOA Suite适配器组件，即可完全攻陷系统。",
+   "title": "SOA Suite 未认证 HTTP 高危",
+   "title_zh": "SOA Suite 未认证 HTTP 高危",
+   "summary_zh": "未认证攻击者可通过 HTTP 访问 SOA Suite Adapters 组件，轻松入侵并控制该产品。",
    "published": "2026-10-20T22:20:23.787",
    "cvss": 10.0,
    "severity": "CRITICAL",
@@ -365,34 +689,44 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P0 立即处置",
-   "action_zh": "按Oracle公告升级；临时限制适配器HTTP访问",
+   "action_zh": "应用 Oracle 补丁，限制 Adapters HTTP 访问并隔离管理网络",
    "repro_worthy": "值得",
-   "repro_note": "未授权HTTP访问适配器组件，确认版本与暴露面",
-   "impact_scope": "内网SOA中间件，业务集成核心",
+   "repro_note": "未授权访问 Adapters HTTP 入口，需定位 SOA Suite 服务",
+   "impact_scope": "Oracle SOA Suite，企业内网/OA",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91231",
    "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Adapters). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite."
   },
   {
-   "id": "CVE-2026-91214",
-   "tier": "critical",
-   "title": "Oracle SOA Fabric未授权漏洞",
-   "title_zh": "Oracle SOA Fabric未授权漏洞",
-   "summary_zh": "未授权攻击者经HTTP访问Fabric层，可完全攻陷SOA Suite业务。",
-   "published": "2026-10-20T22:20:21.787",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "id": "CVE-2026-113728",
+   "tier": "high",
+   "title": "Ical 接口未授权 SSRF",
+   "title_zh": "Ical 接口未授权 SSRF",
+   "summary_zh": "未认证攻击者可向 /api/fetch-ical 提交主机名，利用二次 DNS 解析绕过校验，访问内网服务。",
+   "published": "2026-10-20T22:19:29.740",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
    "epss": null,
    "epss_percentile": null,
-   "cwe_labels": [],
+   "cwe_labels": [
+    "SSRF"
+   ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+     "url": "https://github.com/bulwarkmail/webmail/commit/3288589e5248dcc1da769cc578827a9ee1adc941"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/bulwarkmail/webmail/releases/tag/1.9.2"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/bulwarkmail/webmail/security/advisories/GHSA-24w9-8r42-8jwm"
     }
    ],
    "poc": [],
@@ -401,22 +735,22 @@
    "kev": false,
    "kev_due": null,
    "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Oracle公告升级；限制Fabric层HTTP访问",
-   "repro_worthy": "值得",
-   "repro_note": "未授权HTTP访问Fabric层，确认版本与暴露面",
-   "impact_scope": "内网SOA中间件，业务集成核心",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91214",
-   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite."
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到 1.9.2，限制出站访问并禁用该接口外联",
+   "repro_worthy": "一般",
+   "repro_note": "未授权 POST /api/fetch-ical，构造主机名触发二次解析访问内网",
+   "impact_scope": "Web 接口，可探测/访问内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113728",
+   "description": "Prior to 1.9.2, the unauthenticated POST /api/fetch-ical endpoint validates a caller-supplied hostname with one DNS lookup and then passes the URL to fetch, which performs a separate lookup for the socket connection. An attacker controlling authoritative DNS can return a public address during validation and then rebind the hostname to a loopback, private, link-local, or cloud metadata address for the connection, causing the server to return up to 10 MB of an internal HTTP or HTTPS response."
   },
   {
-   "id": "CVE-2026-91233",
+   "id": "CVE-2026-91323",
    "tier": "critical",
-   "title": "Oracle SOA ESS未授权漏洞",
-   "title_zh": "Oracle SOA ESS未授权漏洞",
-   "summary_zh": "未授权攻击者经SOAP访问企业调度组件，可完全攻陷SOA Suite。",
-   "published": "2026-10-20T22:20:24.017",
+   "title": "WebLogic Core未授权高危",
+   "title_zh": "WebLogic Core未授权高危",
+   "summary_zh": "未认证者经HTTP访问WebLogic Core可攻陷服务，CVSS9.8，或致远程控制。",
+   "published": "2026-10-20T22:20:34.323",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -440,24 +774,24 @@
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Oracle公告升级；限制SOAP调度接口访问",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级WebLogic至厂商修复版本；临时限制HTTP访问。",
    "repro_worthy": "值得",
-   "repro_note": "未授权SOAP访问调度组件，确认版本与接口",
-   "impact_scope": "内网SOA中间件，业务集成核心",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91233",
-   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Enterprise Scheduling System). Easily exploitable vulnerability allows unauthenticated attacker with network access via SOAP to compromise Oracle SOA Suite."
+   "repro_note": "未授权HTTP访问Core组件，具体入口待公告",
+   "impact_scope": "公网/内网Web中间件，横向跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91323",
+   "description": "Vulnerability in the Oracle WebLogic Server product of Oracle Fusion Middleware (component: Core). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebLogic Server."
   },
   {
-   "id": "CVE-2026-91234",
+   "id": "CVE-2026-87302",
    "tier": "critical",
-   "title": "Oracle SOA Fabric未授权漏洞",
-   "title_zh": "Oracle SOA Fabric未授权漏洞",
-   "summary_zh": "未授权攻击者经HTTP访问Fabric层，可完全攻陷SOA Suite业务。",
-   "published": "2026-10-20T22:20:24.130",
-   "cvss": 9.8,
+   "title": "WebLogic Core未授权高危",
+   "title_zh": "WebLogic Core未授权高危",
+   "summary_zh": "未认证者经HTTP访问WebLogic Core可攻陷服务，CVSS9.1，或致远程控制。",
+   "published": "2026-10-20T22:20:07.320",
+   "cvss": 9.1,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [],
@@ -478,24 +812,24 @@
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Oracle公告升级；限制Fabric层HTTP访问",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级WebLogic至厂商修复版本；临时限制HTTP访问。",
    "repro_worthy": "值得",
-   "repro_note": "未授权HTTP访问Fabric层，确认版本与暴露面",
-   "impact_scope": "内网SOA中间件，业务集成核心",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91234",
-   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite."
+   "repro_note": "未授权HTTP访问Core组件，具体入口待公告",
+   "impact_scope": "公网/内网Web中间件，横向跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87302",
+   "description": "Vulnerability in the Oracle WebLogic Server product of Oracle Fusion Middleware (component: Core). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebLogic Server."
   },
   {
-   "id": "CVE-2026-91235",
+   "id": "CVE-2026-91225",
    "tier": "critical",
-   "title": "Oracle SOA Fabric未授权漏洞",
-   "title_zh": "Oracle SOA Fabric未授权漏洞",
-   "summary_zh": "未授权攻击者经HTTP访问Fabric层，可完全攻陷SOA Suite业务。",
-   "published": "2026-10-20T22:20:24.243",
-   "cvss": 9.8,
+   "title": "Oracle SOA Suite 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:20:23.043",
+   "cvss": 9.1,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [],
@@ -516,58 +850,20 @@
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Oracle公告升级；限制Fabric层HTTP访问",
+   "urgency": "P1 重点关注",
+   "action_zh": null,
    "repro_worthy": "值得",
-   "repro_note": "未授权HTTP访问Fabric层，确认版本与暴露面",
-   "impact_scope": "内网SOA中间件，业务集成核心",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91235",
-   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite."
-  },
-  {
-   "id": "CVE-2026-91236",
-   "tier": "critical",
-   "title": "Oracle SOA Fabric未授权漏洞",
-   "title_zh": "Oracle SOA Fabric未授权漏洞",
-   "summary_zh": "未授权攻击者经HTTP访问Fabric层，可完全攻陷SOA Suite业务。",
-   "published": "2026-10-20T22:20:24.353",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Oracle公告升级；限制Fabric层HTTP访问",
-   "repro_worthy": "值得",
-   "repro_note": "未授权HTTP访问Fabric层，确认版本与暴露面",
-   "impact_scope": "内网SOA中间件，业务集成核心",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91236",
-   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite."
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91225",
+   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Adapters). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite."
   },
   {
    "id": "CVE-2026-91224",
    "tier": "critical",
-   "title": "Oracle SOA Fabric低权限漏洞",
-   "title_zh": "Oracle SOA Fabric低权限漏洞",
-   "summary_zh": "低权限攻击者经HTTP访问Fabric层，可完全攻陷SOA Suite。",
+   "title": "SOA Suite 低权限 HTTP 高危",
+   "title_zh": "SOA Suite 低权限 HTTP 高危",
+   "summary_zh": "低权限攻击者可通过网络经 HTTP 访问 SOA Suite Fabric Layer，提升权限并入侵该产品。",
    "published": "2026-10-20T22:20:22.937",
    "cvss": 9.9,
    "severity": "CRITICAL",
@@ -593,19 +889,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Oracle公告升级；限制Fabric层HTTP访问",
+   "action_zh": "应用 Oracle 补丁，收敛低权限账户并限制管理 HTTP",
    "repro_worthy": "一般",
-   "repro_note": "需低权限账号，经HTTP访问Fabric层验证",
-   "impact_scope": "内网SOA中间件，业务集成核心",
+   "repro_note": "需低权限账户，经 HTTP 访问 Fabric Layer 触发漏洞",
+   "impact_scope": "Oracle SOA Suite，企业内网/OA",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91224",
    "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle SOA Suite."
   },
   {
    "id": "CVE-2026-91232",
    "tier": "critical",
-   "title": "Oracle SOA Fabric低权限漏洞",
-   "title_zh": "Oracle SOA Fabric低权限漏洞",
-   "summary_zh": "低权限攻击者经HTTP访问Fabric层，可完全攻陷SOA Suite。",
+   "title": "SOA Suite 低权限 HTTP 高危",
+   "title_zh": "SOA Suite 低权限 HTTP 高危",
+   "summary_zh": "低权限攻击者可通过网络经 HTTP 访问 SOA Suite Fabric Layer，提升权限并入侵该产品。",
    "published": "2026-10-20T22:20:23.897",
    "cvss": 9.9,
    "severity": "CRITICAL",
@@ -631,19 +927,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Oracle公告升级；限制Fabric层HTTP访问",
+   "action_zh": "应用 Oracle 补丁，收敛低权限账户并限制管理 HTTP",
    "repro_worthy": "一般",
-   "repro_note": "需低权限账号，经HTTP访问Fabric层验证",
-   "impact_scope": "内网SOA中间件，业务集成核心",
+   "repro_note": "需低权限账户，经 HTTP 访问 Fabric Layer 触发漏洞",
+   "impact_scope": "Oracle SOA Suite，企业内网/OA",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91232",
    "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle SOA Suite."
   },
   {
    "id": "CVE-2026-91250",
    "tier": "critical",
-   "title": "Oracle SOA适配器低权限漏洞",
-   "title_zh": "Oracle SOA适配器低权限漏洞",
-   "summary_zh": "低权限攻击者可经多协议访问适配器组件，完全攻陷SOA Suite。",
+   "title": "SOA Adapters 低权限多协议",
+   "title_zh": "SOA Adapters 低权限多协议",
+   "summary_zh": "低权限攻击者可通过多种网络协议访问 SOA Suite Adapters 组件，提升权限并入侵该产品。",
    "published": "2026-10-20T22:20:25.970",
    "cvss": 9.9,
    "severity": "CRITICAL",
@@ -669,19 +965,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Oracle公告升级；限制适配器多协议访问",
+   "action_zh": "应用 Oracle 补丁，限制 Adapters 协议访问并收敛账户权限",
    "repro_worthy": "一般",
-   "repro_note": "需低权限账号，测试适配器多协议入口",
-   "impact_scope": "内网SOA中间件，业务集成核心",
+   "repro_note": "需低权限账户，经多种协议访问 Adapters 组件触发",
+   "impact_scope": "Oracle SOA Suite，企业内网/OA",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91250",
    "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Adapters). Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise Oracle SOA Suite."
   },
   {
    "id": "CVE-2026-91251",
    "tier": "critical",
-   "title": "Oracle SOA适配器低权限漏洞",
-   "title_zh": "Oracle SOA适配器低权限漏洞",
-   "summary_zh": "低权限攻击者经HTTP访问适配器组件，可完全攻陷SOA Suite。",
+   "title": "SOA Adapters 低权限 HTTP",
+   "title_zh": "SOA Adapters 低权限 HTTP",
+   "summary_zh": "低权限攻击者可通过 HTTP 访问 SOA Suite Adapters 组件，提升权限并入侵该产品。",
    "published": "2026-10-20T22:20:26.090",
    "cvss": 9.9,
    "severity": "CRITICAL",
@@ -707,12 +1003,1402 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Oracle公告升级；限制适配器HTTP访问",
+   "action_zh": "应用 Oracle 补丁，限制 Adapters HTTP 访问并收敛账户权限",
    "repro_worthy": "一般",
-   "repro_note": "需低权限账号，经HTTP访问适配器组件验证",
-   "impact_scope": "内网SOA中间件，业务集成核心",
+   "repro_note": "需低权限账户，经 HTTP 访问 Adapters 组件触发",
+   "impact_scope": "Oracle SOA Suite，企业内网/OA",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91251",
    "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Adapters). Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle SOA Suite."
+  },
+  {
+   "id": "CVE-2026-91214",
+   "tier": "critical",
+   "title": "SOA Suite Fabric未授权高危",
+   "title_zh": "SOA Suite Fabric未授权高危",
+   "summary_zh": "未认证者经HTTP访问Fabric层可攻陷SOA Suite，CVSS9.8，或致数据泄露/服务失控。",
+   "published": "2026-10-20T22:20:21.787",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注Oracle CPU补丁，升级至修复版本；限制HTTP访问。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权HTTP访问Fabric层组件，具体路径待公告",
+   "impact_scope": "企业SOA集成平台，常在内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91214",
+   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite."
+  },
+  {
+   "id": "CVE-2026-91233",
+   "tier": "critical",
+   "title": "SOA Suite调度系统未授权高危",
+   "title_zh": "SOA Suite调度系统未授权高危",
+   "summary_zh": "未认证者经SOAP访问企业调度系统可攻陷SOA Suite，CVSS9.8，或致服务失控。",
+   "published": "2026-10-20T22:20:24.017",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注Oracle CPU补丁，升级至修复版本；限制SOAP访问。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权SOAP访问企业调度系统接口，参数待公告",
+   "impact_scope": "企业SOA集成平台，常在内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91233",
+   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Enterprise Scheduling System). Easily exploitable vulnerability allows unauthenticated attacker with network access via SOAP to compromise Oracle SOA Suite."
+  },
+  {
+   "id": "CVE-2026-91234",
+   "tier": "critical",
+   "title": "SOA Suite Fabric未授权高危",
+   "title_zh": "SOA Suite Fabric未授权高危",
+   "summary_zh": "未认证者经HTTP访问Fabric层可攻陷SOA Suite，CVSS9.8，或致数据泄露/服务失控。",
+   "published": "2026-10-20T22:20:24.130",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注Oracle CPU补丁，升级至修复版本；限制HTTP访问。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权HTTP访问Fabric层组件，具体路径待公告",
+   "impact_scope": "企业SOA集成平台，常在内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91234",
+   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite."
+  },
+  {
+   "id": "CVE-2026-91235",
+   "tier": "critical",
+   "title": "SOA Suite Fabric未授权高危",
+   "title_zh": "SOA Suite Fabric未授权高危",
+   "summary_zh": "未认证者经HTTP访问Fabric层可攻陷SOA Suite，CVSS9.8，或致数据泄露/服务失控。",
+   "published": "2026-10-20T22:20:24.243",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注Oracle CPU补丁，升级至修复版本；限制HTTP访问。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权HTTP访问Fabric层组件，具体路径待公告",
+   "impact_scope": "企业SOA集成平台，常在内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91235",
+   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite."
+  },
+  {
+   "id": "CVE-2026-91236",
+   "tier": "critical",
+   "title": "SOA Suite Fabric未授权高危",
+   "title_zh": "SOA Suite Fabric未授权高危",
+   "summary_zh": "未认证者经HTTP访问Fabric层可攻陷SOA Suite，CVSS9.8，或致数据泄露/服务失控。",
+   "published": "2026-10-20T22:20:24.353",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注Oracle CPU补丁，升级至修复版本；限制HTTP访问。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权HTTP访问Fabric层组件，具体路径待公告",
+   "impact_scope": "企业SOA集成平台，常在内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91236",
+   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite."
+  },
+  {
+   "id": "CVE-2026-91218",
+   "tier": "critical",
+   "title": "SOA Suite Fabric低权限高危",
+   "title_zh": "SOA Suite Fabric低权限高危",
+   "summary_zh": "低权限攻击者经HTTP访问Fabric层可攻陷SOA Suite，CVSS9.6，或致权限提升。",
+   "published": "2026-10-20T22:20:22.240",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注Oracle CPU补丁，升级至修复版本；限制HTTP访问。",
+   "repro_worthy": "一般",
+   "repro_note": "需低权限账户，经HTTP访问Fabric层组件",
+   "impact_scope": "企业SOA集成平台，常在内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91218",
+   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle SOA Suite."
+  },
+  {
+   "id": "CVE-2026-91230",
+   "tier": "critical",
+   "title": "SOA Suite Fabric未授权高危",
+   "title_zh": "SOA Suite Fabric未授权高危",
+   "summary_zh": "未认证者经HTTP访问Fabric层可攻陷SOA Suite，CVSS9.3，或致数据泄露/服务失控。",
+   "published": "2026-10-20T22:20:23.660",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注Oracle CPU补丁，升级至修复版本；限制HTTP访问。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权HTTP访问Fabric层组件，具体路径待公告",
+   "impact_scope": "企业SOA集成平台，常在内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91230",
+   "description": "Vulnerability in the Oracle SOA Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle SOA Suite."
+  },
+  {
+   "id": "CVE-2026-43845",
+   "tier": "critical",
+   "title": "安全设备密码重置认证绕过",
+   "title_zh": "安全设备密码重置认证绕过",
+   "summary_zh": "攻击者利用密码重置机制缺陷绕过认证，CVSS9.2，可接管安全设备。",
+   "published": "2026-10-20T09:17:10.907",
+   "cvss": 9.2,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00339,
+   "epss_percentile": 0.25906,
+   "cwe_labels": [
+    "CWE-640"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.advantech.com/en/security-advisory"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-149"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商补丁，升级修复版本；限制重置接口访问。",
+   "repro_worthy": "一般",
+   "repro_note": "经密码重置流程触发，需定位具体设备接口",
+   "impact_scope": "安全设备，可能暴露于边界或内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-43845",
+   "description": "A vulnerability in the password reset mechanism could allow an attacker to bypass the authentication mechanism."
+  },
+  {
+   "id": "CVE-2026-10131",
+   "tier": "critical",
+   "title": "X2000R 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:15.853",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2432"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10131",
+   "description": "An OS command injection vulnerability exists in the boa formPasswordSetup functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-10132",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:15.993",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2433"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10132",
+   "description": "A stack-based buffer overflow vulnerability exists in the boa formIpQos mac functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-10136",
+   "tier": "critical",
+   "title": "堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:16.360",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2436"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10136",
+   "description": "A heap-based buffer overflow vulnerability exists in the boa formUpload() functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-10137",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:16.480",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2437"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10137",
+   "description": "A stack-based buffer overflow vulnerability exists in the boa formUpload() functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-10138",
+   "tier": "critical",
+   "title": "X2000R 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:16.597",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2438"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10138",
+   "description": "A OS command injection vulnerability exists in the boa formUpload() functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-10141",
+   "tier": "critical",
+   "title": "Firmware Update 签名校验错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:16.843",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "签名校验错误"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2440"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10141",
+   "description": "A Unsigned Firmware vulnerability exists in the boa Firmware Update functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted firmware binary can lead to arbitrary firmware update. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-28763",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:18.037",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2389"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-28763",
+   "description": "A stack-based buffer overflow vulnerability exists in the boa formMapDelDevice hostname functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-33568",
+   "tier": "critical",
+   "title": "X2000R 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:18.157",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2391"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-33568",
+   "description": "A OS command injection vulnerability exists in the boa formMapDelDevice macstr functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-35499",
+   "tier": "critical",
+   "title": "Totolink X2000R TOTOLINK-X2000R-Gh-V1.0.0-B2025042",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:18.277",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2387"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-35499",
+   "description": "An os command injection vulnerability exists in the boa formWsc peerRptPin functionality of Totolink X2000R TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327. A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-40615",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:18.393",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2393"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-40615",
+   "description": "A stack-based buffer overflow vulnerability exists in the boa formParentControl deviceName functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-40627",
+   "tier": "critical",
+   "title": "Totolink X2000R TOTOLINK-X2000R-Gh-V1.0.0-B2025042",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:18.517",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2388"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-40627",
+   "description": "An os command injection vulnerability exists in the boa formWsc targetAPSsid functionality of Totolink X2000R TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327. A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-41222",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:18.653",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2392"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-41222",
+   "description": "A stack-based buffer overflow vulnerability exists in the boa formParentControl url functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-41223",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:18.783",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2390"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-41223",
+   "description": "A stack-based buffer overflow vulnerability exists in the boa formMapDelDevice macstr functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-42019",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:18.903",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2394"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-42019",
+   "description": "Multiple stack-based buffer overflow vulnerabilities exist in the boa formIpv6Setup pppoe functionality of Totolink X2000R TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327. A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger these vulnerabilities. This vulnerability concerns the pppoe_dns1 parameter."
+  },
+  {
+   "id": "CVE-2026-42020",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:19.020",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2394"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-42020",
+   "description": "Multiple stack-based buffer overflow vulnerabilities exist in the boa formIpv6Setup pppoe functionality of Totolink X2000R TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327. A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger these vulnerabilities. This vulnerability concerns the pppoe_dns2 parameter."
+  },
+  {
+   "id": "CVE-2026-42021",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:19.140",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2395"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-42021",
+   "description": "Multiple stack-based buffer overflow vulnerabilities exist in the boa formIpv6Setup static network configuration functionality of Totolink X2000R TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327. A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger these vulnerabilities. This vulnerability concerns the static_dns1 parameter."
+  },
+  {
+   "id": "CVE-2026-42022",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:19.257",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2395"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-42022",
+   "description": "Multiple stack-based buffer overflow vulnerabilities exist in the boa formIpv6Setup static network configuration functionality of Totolink X2000R TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327. A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger these vulnerabilities. This vulnerability concerns the static_dns2 parameter."
+  },
+  {
+   "id": "CVE-2026-42023",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:19.373",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2395"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-42023",
+   "description": "Multiple stack-based buffer overflow vulnerabilities exist in the boa formIpv6Setup static network configuration functionality of Totolink X2000R TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327. A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger these vulnerabilities. This vulnerability concerns the static_ipv6 parameter."
+  },
+  {
+   "id": "CVE-2026-42024",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:19.490",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2395"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-42024",
+   "description": "Multiple stack-based buffer overflow vulnerabilities exist in the boa formIpv6Setup static network configuration functionality of Totolink X2000R TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327. A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger these vulnerabilities. This vulnerability concerns the static_gw parameter."
+  },
+  {
+   "id": "CVE-2026-42025",
+   "tier": "critical",
+   "title": "X2000R 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:19.610",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2396"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-42025",
+   "description": "Multiple exploitable stack-based buffer overflow vulnerabilities exist in the boa formIpv6Setup dhcp_dns functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger these vulnerabilities. This vulnerability concerns the dhcp_dns1 parameter."
+  },
+  {
+   "id": "CVE-2026-42026",
+   "tier": "critical",
+   "title": "X2000R 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:19.730",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2396"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-42026",
+   "description": "Multiple exploitable stack-based buffer overflow vulnerabilities exist in the boa formIpv6Setup dhcp_dns functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger these vulnerabilities. This vulnerability concerns the dhcp_dns2 parameter."
+  },
+  {
+   "id": "CVE-2026-9659",
+   "tier": "critical",
+   "title": "X2000R 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:22.410",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2425"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-9659",
+   "description": "Multiple exploitable stack-based buffer overflow vulnerabilities exist in the boa formFilter functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger these vulnerabilities. This vulnerability deals with the vpnUser parameter."
+  },
+  {
+   "id": "CVE-2026-9660",
+   "tier": "critical",
+   "title": "X2000R 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:22.613",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2425"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-9660",
+   "description": "Multiple exploitable stack-based buffer overflow vulnerabilities exist in the boa formFilter functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger these vulnerabilities. This vulnerability deals with the vpnPassword parameter."
+  },
+  {
+   "id": "CVE-2026-9814",
+   "tier": "critical",
+   "title": "X2000R 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:22.773",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2428"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-9814",
+   "description": "An OS command injection vulnerability exists in the boa formWizard newPass functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-9817",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:22.900",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2429"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-9817",
+   "description": "A stack-based buffer overflow vulnerability exists in the boa formUploadFile functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-9827",
+   "tier": "critical",
+   "title": "路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:23.020",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2430"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-9827",
+   "description": "A arbitrary file write vulnerability exists in the boa formUploadFile functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-9869",
+   "tier": "critical",
+   "title": "栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:23.143",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2431"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-9869",
+   "description": "A stack-based buffer overflow vulnerability exists in the boa formTR069Config functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
   },
   {
    "id": "CVE-2026-101809",
@@ -867,6 +2553,200 @@
    "impact_scope": null,
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91299",
    "description": "Vulnerability in the JD Edwards EnterpriseOne Orchestrator product of Oracle JD Edwards (component: E1 IOT Orchestrator Security). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise JD Edwards EnterpriseOne Orchestrator."
+  },
+  {
+   "id": "CVE-2026-113391",
+   "tier": "critical",
+   "title": "Such 注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T13:16:40.640",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "注入",
+    "命令注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0008-authenticated-upload-filename-command-injection"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-113391"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113391",
+   "description": "Such manipulation leads to command injection. The exploit has been disclosed to the public and may be used."
+  },
+  {
+   "id": "CVE-2026-113678",
+   "tier": "critical",
+   "title": "Froxlor 文件链接绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T16:17:12.613",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "文件链接绕过"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/froxlor/froxlor/blob/2.3.14/lib/Froxlor/Http/Statistics.php#L144-L162"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/froxlor/froxlor/commit/0805a7e16a223d528b51d8cacfaff54217b9d8f8"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/froxlor/froxlor/releases/tag/2.3.15"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113678",
+   "description": "Froxlor before 2.3.15 contains a symlink following vulnerability in Statistics::makeChownWithNewStats that allows authenticated customers to take ownership of arbitrary host directories by abusing the root-run traffic cron. Attackers can replace the goaccess statistics directory in their document root with a symlink, causing chown -R to hand root-owned trees to them and enabling root escalation."
+  },
+  {
+   "id": "CVE-2026-113506",
+   "tier": "critical",
+   "title": "命令注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T18:17:18.633",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/JdExploit/aapanel-cve-2026/tree/master/aapanel-rce"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-113506"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/996819"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113506",
+   "description": "A vulnerability has been found in aaPanel up to 8.25.0. The affected element is the function ExecShell of the file class/public/common.py of the component File Manager. The manipulation of the argument sfile/dfile/access/user leads to os command injection. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used. The vendor confirms: \"The reported RCE and LFI vulnerabilities require authentication.\""
+  },
+  {
+   "id": "CVE-2026-113672",
+   "tier": "critical",
+   "title": "Absolute 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T18:17:20.950",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/#disable-built-in-tools"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/argoproj/argo-cd/commit/27471d524958878e7acc5131fb466b292079cd05"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/argoproj/argo-cd/pull/561"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113672",
+   "description": "Absolute paths, parent-directory traversal, and repository symlinks can open any file readable by the repo-server, including /proc/self/environ, projected service-account tokens, mounted private keys, and repository credentials. An attacker can commit a .jsonnet file to a Git repository used by an Application or upload the file through POST /api/v1/applications/manifestsWithFiles, also exposed by argocd app diff --local --server-side-generate."
   },
   {
    "id": "CVE-2026-113708",
@@ -1430,6 +3310,98 @@
    "impact_scope": null,
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91663",
    "description": "Vulnerability in Oracle Essbase (component: Security). Easily exploitable vulnerability allows low privileged attacker with network access via T3, IIOP to compromise Oracle Essbase."
+  },
+  {
+   "id": "CVE-2026-113620",
+   "tier": "critical",
+   "title": "Controller 未授权 签名校验错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T13:16:41.610",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "签名校验错误"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/468"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/1267"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/1269"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113620",
+   "description": "In Eclipse ioFog Controller versions 3.8.0 through 3.9.1, operator WebSocket upgrades on the exec and log routes do not verify the bearer JWT. The attacker can open an exec or log session for a microservice or fog whose UUID they already know."
+  },
+  {
+   "id": "CVE-2026-113802",
+   "tier": "critical",
+   "title": "IP-FROM 未授权 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T18:17:21.430",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/F-yyjy/cve/blob/main/WN530BE1(en).md"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/wavlink-wl-wn530be1-a-unauthenticated-os-command-injection-in-ioos-protocol-csp-ovpn-file-handler"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113802",
+   "description": "Wavlink WL-WN530BE1-A firmware through M30BE1_V251117 contains an OS command injection vulnerability in the sub_23B54 function of the ioos binary, which passes the unsanitized file_id parameter of /protocol.csp?opt=ovpn_file requests with type=del to popen(). A remote unauthenticated attacker can send a forged IP-FROM: 127.0.0.1 header to bypass login and execute arbitrary commands as root."
   },
   {
    "id": "CVE-2026-101484",
@@ -2040,21 +4012,2641 @@
    "impact_scope": null,
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92559",
    "description": "IBM App Connect Enterprise 13.0.1.0 through 13.0.8.2 could allow a remote attacker to obtain sensitive information due to binding to an unrestricted IP address."
+  },
+  {
+   "id": "CVE-2026-113736",
+   "tier": "critical",
+   "title": "D-Link DHP-W610AV 未授权 CWE-258",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-21T01:17:25.187",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-258",
+    "CWE-259"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/XueDugu/dlink-dhp-w610av-empty-admin-password-evidence"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/XueDugu/dlink-dhp-w610av-empty-admin-password-evidence/blob/main/poc/poc_dhp610av_login.py"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-113736"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113736",
+   "description": "A vulnerability has been found in D-Link DHP-W610AV 1.02EUb03. The impacted element is the function login_prepare_hnap of the file etc/defnodes/defaultvalue.xml of the component HNAP Login. The manipulation of the argument Password leads to empty password in configuration file. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used."
+  },
+  {
+   "id": "CVE-2026-114108",
+   "tier": "critical",
+   "title": "HKUDS Vibe-Trading 未授权 缺失认证",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-21T01:17:36.820",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/HKUDS/Vibe-Trading/security/advisories/GHSA-v2f8-6655-7grj"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/hkuds-vibe-trading-before-0.1.7-missing-authentication-in-fastapi-server-enabling-rce"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114108",
+   "description": "HKUDS Vibe-Trading from 0.1.0 before 0.1.7 contains a missing authentication vulnerability that allows unauthenticated attackers to access the FastAPI surface because require_auth() returns early when API_AUTH_KEY is unset. Attackers can post messages to /sessions/{id}/messages to trigger root shell commands via BashTool, upload .py or .sh files via /upload, read session histories, and obtain partial API keys."
+  },
+  {
+   "id": "CVE-2026-114119",
+   "tier": "critical",
+   "title": "SYSTEM 未授权 硬编码凭据",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-21T01:17:38.353",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "硬编码凭据"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://def.ci-isac.org.au/vuln/records/GCVE-123-2026-0001.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://kb.bestpracticesoftware.com/bppremier/oxford/WhatsNew/BpPremier_OxfordSP1_ReleaseNotes.htm"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/best-practice-software-bp-premier-before-1.14.1.1128-hardcoded-sql-server-administrative-credential"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114119",
+   "description": "Best Practice Software Bp Premier before 1.14.1.1128 uses a hardcoded Microsoft SQL Server administrative password that is shared across all installations and cannot be changed without breaking the application. Attackers with network access to the database instance can authenticate as sysadmin, bypass application authentication, and execute operating system commands as SYSTEM."
+  },
+  {
+   "id": "CVE-2026-101420",
+   "tier": "critical",
+   "title": "PeopleSoft Enterprise PeopleTools Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:17:50.200",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101420",
+   "description": "Vulnerability in the PeopleSoft Enterprise PeopleTools product of Oracle PeopleSoft (component: SQR). Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise PeopleSoft Enterprise PeopleTools."
+  },
+  {
+   "id": "CVE-2026-112992",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:48.740",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/514422784"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112992",
+   "description": "Memory corruption in Canvas in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113007",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:51.210",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/553394270"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113007",
+   "description": "Memory corruption in Permissions in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113014",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:52.067",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/502251640"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113014",
+   "description": "Use after free in PerformanceAPIs in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113020",
+   "tier": "critical",
+   "title": "Date 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:52.810",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/565838017"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113020",
+   "description": "Improper input validation in Date in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-113023",
+   "tier": "critical",
+   "title": "Extensions 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:53.160",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/517148875"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113023",
+   "description": "Improper input validation in Extensions in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)"
+  },
+  {
+   "id": "CVE-2026-113056",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:56.937",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/502288792"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113056",
+   "description": "Memory corruption in PerformanceAPIs in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)"
+  },
+  {
+   "id": "CVE-2026-113072",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:58.733",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/570638836"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113072",
+   "description": "Memory corruption in CSS in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)"
+  },
+  {
+   "id": "CVE-2026-113078",
+   "tier": "critical",
+   "title": "Compositing 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:59.383",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/499520020"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113078",
+   "description": "Improper input validation in Compositing in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113084",
+   "tier": "critical",
+   "title": "Permissions 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:00.050",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/518099505"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113084",
+   "description": "Improper input validation in Permissions in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113089",
+   "tier": "critical",
+   "title": "PrintPreview 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:00.610",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/563362367"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113089",
+   "description": "Improper input validation in PrintPreview in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113116",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:03.643",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/553259748"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113116",
+   "description": "Use after free in DevTools in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)"
+  },
+  {
+   "id": "CVE-2026-113126",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:04.770",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/531182364"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113126",
+   "description": "Memory corruption in PolicyContainer in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113138",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:06.090",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/561396577"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113138",
+   "description": "Memory corruption in WebAppInstalls in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113169",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:09.557",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/562955271"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113169",
+   "description": "Memory corruption in WebAppInstalls in Google Chrome on on Android prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)"
+  },
+  {
+   "id": "CVE-2026-113171",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:09.780",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/517477395"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113171",
+   "description": "Memory corruption in Prompts in Google Chrome on on Android prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113186",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:11.420",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/533644359"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113186",
+   "description": "Memory corruption in DevTools in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)"
+  },
+  {
+   "id": "CVE-2026-113189",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:11.763",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/514016335"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113189",
+   "description": "Use after free in Core in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113211",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:14.220",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/498828493"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113211",
+   "description": "Memory corruption in ServiceWorker in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113222",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:15.437",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/566091009"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113222",
+   "description": "Use after free in V8 in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-113235",
+   "tier": "critical",
+   "title": "Passwords 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:16.867",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/563352925"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113235",
+   "description": "Improper input validation in Passwords in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113252",
+   "tier": "critical",
+   "title": "ANGLE 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:18.800",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/556750258"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113252",
+   "description": "Improper input validation in ANGLE in Google Chrome on on Windows prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-113261",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:19.787",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/515440087"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113261",
+   "description": "Use after free in WebAppInstalls in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113263",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:20.010",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/497026542"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113263",
+   "description": "Use after free in Core in Google Chrome on on Android prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113270",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:20.773",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/557501968"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113270",
+   "description": "Use after free in Internals in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113283",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:22.243",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/502085234"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113283",
+   "description": "Memory corruption in CredentialProvider in Google Chrome on on Windows prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113300",
+   "tier": "critical",
+   "title": "Out 未授权 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:24.157",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/513468106"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113300",
+   "description": "Out of bounds write in Forms in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)"
+  },
+  {
+   "id": "CVE-2026-113328",
+   "tier": "critical",
+   "title": "Privacy 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:27.257",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/518055862"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113328",
+   "description": "Improper input validation in Privacy in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-113336",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:28.177",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/569286604"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113336",
+   "description": "Memory corruption in Compositing in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-113342",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:19:28.877",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/562024413"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113342",
+   "description": "Memory corruption in Network in Google Chrome prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-87347",
+   "tier": "critical",
+   "title": "Oracle Fusion Middleware Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:20:12.357",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87347",
+   "description": "Vulnerability in the Oracle HTTP Server product of Oracle Fusion Middleware (component: OSSL Module). Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle HTTP Server."
+  },
+  {
+   "id": "CVE-2026-91243",
+   "tier": "critical",
+   "title": "Oracle Business Process Management Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:20:25.167",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91243",
+   "description": "Vulnerability in the Oracle Business Process Management Suite product of Oracle Fusion Middleware (component: Fabric Layer). Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Business Process Management Suite."
+  },
+  {
+   "id": "CVE-2026-43836",
+   "tier": "critical",
+   "title": "未授权 命令注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T09:17:09.957",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00601,
+   "epss_percentile": 0.47792,
+   "cwe_labels": [
+    "命令注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.advantech.com/en/security-advisory"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-149"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-43836",
+   "description": "A vulnerability could allow an attacker to forge a packet to execute arbitrary commands with maximum privileges."
+  },
+  {
+   "id": "CVE-2026-43844",
+   "tier": "critical",
+   "title": "未授权 认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T09:17:10.800",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.0041,
+   "epss_percentile": 0.33851,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.advantech.com/en/security-advisory"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-149"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-43844",
+   "description": "A vulnerability in the proprietary protocol could allow an attacker to bypass the authentication mechanism."
+  },
+  {
+   "id": "CVE-2026-113380",
+   "tier": "critical",
+   "title": "RingRTC 未授权 CWE-754",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T05:16:54.083",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:P/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00287,
+   "epss_percentile": 0.19962,
+   "cwe_labels": [
+    "CWE-754"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/signalapp/ringrtc/commit/4b1b6fa53c9f30c87c8ea78e44675d4a13e1e4d3"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/signalapp/ringrtc/compare/v2.71.0...v2.72.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Imahian/Notes/tree/main/docs/CVEs/CVE-2026-113380"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113380",
+   "description": "In the RingRTC library before 2.72.0 for Signal, a peer that saturates a call's FSM queue can interfere with the ability of a local hangup to tear the call (with its audio and perhaps also video track) down."
+  },
+  {
+   "id": "CVE-2026-9589",
+   "tier": "critical",
+   "title": "Unblu Spark 越权(IDOR)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T11:17:35.770",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)",
+    "缺失授权(越权)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.unblu.com/latest/security-bulletins/#UBL-2026-002"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-9589",
+   "description": "Unblu Spark 7.0 through 8.36.1-hotfix.0, on on-premises and cloud deployments, allows an authenticated remote attacker to read and change configuration properties of entities they aren't authorized to access, including other users, other accounts and, in Unblu Cloud, other customers' accounts, via configuration read and write operations that target those entities."
+  },
+  {
+   "id": "CVE-2026-113703",
+   "tier": "critical",
+   "title": "X-Forwarded-For 未授权 认证欺骗",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T16:17:13.507",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证欺骗"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/giuseppe99barchetta/SuggestArr/releases/tag/v3.0.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/giuseppe99barchetta/SuggestArr/security/advisories/GHSA-fcjm-xhw8-pmh5"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/suggestarr-before-authentication-bypass-via-x-forwarded-for-spoofing"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113703",
+   "description": "Attackers can send a request with X-Forwarded-For set to a trusted CIDR address such as 127.0.0.1 to be granted an unauthenticated admin session via _load_bypass_user_context(), gaining full administrative access to endpoints like /api/users and /api/jobs without providing any credentials."
+  },
+  {
+   "id": "CVE-2026-93475",
+   "tier": "critical",
+   "title": "未授权 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T16:17:17.520",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入",
+    "CWE-1284"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-rcv5-vfff-25gh"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-93475",
+   "description": "A certificate carrying a larger modulus drives an out-of-bounds write past a file-scope static during ordinary certificate-chain verification. The issuer used for the crypto operation is looked up in the remote, peer-supplied store before the trusted store, so the attacker supplies the oversized key themselves as an intermediate in the chain they present."
+  },
+  {
+   "id": "CVE-2026-91622",
+   "tier": "critical",
+   "title": "Easily 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:21:02.110",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91622",
+   "description": "Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Agile Product Lifecycle Management for Process. Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in Oracle Agile Product Lifecycle Management for Process, attacks may significantly impact additional products (scope change)."
+  },
+  {
+   "id": "CVE-2026-91644",
+   "tier": "critical",
+   "title": "Oracle Essbase 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:21:04.543",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91644",
+   "description": "Vulnerability in Oracle Essbase (component: Security). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Essbase."
+  },
+  {
+   "id": "CVE-2026-43838",
+   "tier": "critical",
+   "title": "未授权 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T09:17:10.173",
+   "cvss": 9.2,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00314,
+   "epss_percentile": 0.22913,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.advantech.com/en/security-advisory"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-149"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-43838",
+   "description": "A stack-based buffer overflow vulnerability in the login functionality could allow an attacker to achieve code execution."
+  },
+  {
+   "id": "CVE-2026-105772",
+   "tier": "critical",
+   "title": "FileArtifactService 未授权 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T18:17:16.607",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/google/adk-js/commit/710b4ebed118b0ded8fc257e5d0099e6b2008bc0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/google/adk-js/commit/8c0eaa160a43c1d791d5838a5de6ac87d905cf70"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/google/adk-js/pull/210"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105772",
+   "description": "Path Traversal (CWE-22) in FileArtifactService in Google ADK TypeScript (@google/adk) versions 0.4.0 before 0.6.0 allows a remote unauthenticated attacker to read files matching the artifact directory layout or write files (when an agent tool invokes saveArtifact) outside the intended artifact storage root via crafted relative or percent-encoded path traversal sequences (such as ../ or ..%2F) in the userId or sessionId parameters when the ADK API server is exposed with the non-default FileArtifa…"
+  },
+  {
+   "id": "CVE-2026-112712",
+   "tier": "critical",
+   "title": "未授权 CWE-436",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:17.910",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-436"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cna.openjsf.org/security-advisories.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/fastify/middie/security/advisories/GHSA-5p92-8765-9fv8"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112712",
+   "description": "@fastify/middie is the Express-style middleware engine for Fastify. When the two paths disagreed, the middleware was silently skipped while the route handler still ran, so path-scoped middleware such as authentication, authorization, or rate limiting could be bypassed by a single unauthenticated request."
+  },
+  {
+   "id": "CVE-2026-101590",
+   "tier": "critical",
+   "title": "Helidon 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:12.490",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101590",
+   "description": "Vulnerability in the Helidon product of Oracle Fusion Middleware (component: helidon-microprofile-security). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Helidon."
+  },
+  {
+   "id": "CVE-2026-101634",
+   "tier": "critical",
+   "title": "Oracle Mobile Field Service 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:17.533",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101634",
+   "description": "Vulnerability in the Oracle Mobile Field Service product of Oracle E-Business Suite (component: Internal Operations). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Mobile Field Service."
+  },
+  {
+   "id": "CVE-2026-101765",
+   "tier": "critical",
+   "title": "Oracle Communications Billing 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:31.833",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101765",
+   "description": "Vulnerability in the Oracle Communications Billing and Revenue Management product of Oracle Communications (component: BRM Server). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Communications Billing and Revenue Management."
+  },
+  {
+   "id": "CVE-2026-101808",
+   "tier": "critical",
+   "title": "Oracle Product Workbench 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:18:36.773",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101808",
+   "description": "Vulnerability in the Oracle Product Workbench product of Oracle E-Business Suite (component: WebUI). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Product Workbench."
+  },
+  {
+   "id": "CVE-2026-91265",
+   "tier": "critical",
+   "title": "JD Edwards EnterpriseOne Tools 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:20:27.557",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91265",
+   "description": "Vulnerability in the JD Edwards EnterpriseOne Tools product of Oracle JD Edwards (component: Enterprise Infrastructure SEC). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise JD Edwards EnterpriseOne Tools."
+  },
+  {
+   "id": "CVE-2026-91305",
+   "tier": "critical",
+   "title": "JD Edwards EnterpriseOne Tools 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:20:32.243",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91305",
+   "description": "Vulnerability in the JD Edwards EnterpriseOne Tools product of Oracle JD Edwards (component: Installation Security). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTPS to compromise JD Edwards EnterpriseOne Tools."
+  },
+  {
+   "id": "CVE-2026-91341",
+   "tier": "critical",
+   "title": "Oracle Outside In Technology 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:20:36.473",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91341",
+   "description": "Vulnerability in the Oracle Outside In Technology product of Oracle Fusion Middleware (component: Outside In Clean Content SDK). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Outside In Technology."
+  },
+  {
+   "id": "CVE-2026-91490",
+   "tier": "critical",
+   "title": "Oracle Identity Manager Connector 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:20:53.507",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91490",
+   "description": "Vulnerability in the Oracle Identity Manager Connector product of Oracle Fusion Middleware (component: LDAP Gateway). Easily exploitable vulnerability allows unauthenticated attacker with network access via LDAP to compromise Oracle Identity Manager Connector."
+  },
+  {
+   "id": "CVE-2026-91624",
+   "tier": "critical",
+   "title": "Easily 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:21:02.347",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91624",
+   "description": "Vulnerability in the Oracle Agile Product Lifecycle Management for Process product of Oracle Supply Chain (component: Product Quality Management). Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Agile Product Lifecycle Management for Process."
+  },
+  {
+   "id": "CVE-2026-91655",
+   "tier": "critical",
+   "title": "Oracle Essbase Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:21:05.803",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91655",
+   "description": "Vulnerability in Oracle Essbase (component: Security). Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Essbase."
+  },
+  {
+   "id": "CVE-2026-91656",
+   "tier": "critical",
+   "title": "Oracle Essbase Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:21:05.920",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91656",
+   "description": "Vulnerability in Oracle Essbase (component: Federated Partitions). Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Essbase."
+  },
+  {
+   "id": "CVE-2026-86471",
+   "tier": "critical",
+   "title": "Apache CouchDB 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T16:17:15.217",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:L/SC:H/SI:H/SA:L/E:A/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:N/AU:Y/R:U/V:C/RE:M/U:Red",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread.html/pj83174r8f8f64odf47fwhozbfjtot0f"
+    },
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread/c8p73gswgogtnzvk7hpw8jb8d4mnosdp"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/20/11"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86471",
+   "description": "An unvalidated runtime configuration value in Apache CouchDB 3.5.2 and below on all platforms allows a CouchDB server admin to run arbitrary shell commands as the CouchDB operating system user. Users are recommended to upgrade to version 3.5.3, which fixes this issue."
+  },
+  {
+   "id": "CVE-2026-10133",
+   "tier": "critical",
+   "title": "X2000R 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:16.117",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2434"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10133",
+   "description": "A stack-based buffer overflow vulnerability exists in the batchupg functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-10135",
+   "tier": "critical",
+   "title": "X2000R 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:16.240",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2435"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10135",
+   "description": "A OS command injection vulnerability exists in the batchupg functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-10139",
+   "tier": "critical",
+   "title": "Mcli 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T21:17:16.720",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2439"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10139",
+   "description": "A stack-based buffer overflow vulnerability exists in the Mcli functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability."
+  },
+  {
+   "id": "CVE-2026-91241",
+   "tier": "critical",
+   "title": "Oracle Business Intelligence Enterprise Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-20T22:20:24.937",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/cpuoct2026.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91241",
+   "description": "Vulnerability in the Oracle Business Intelligence Enterprise Edition product of Oracle Analytics (component: Analytics Web Administration). Easily exploitable vulnerability allows high privileged attacker with network access via HTTP to compromise Oracle Business Intelligence Enterprise Edition."
   }
  ],
  "media": [],
- "commits": [
-  {
-   "repo": "envoyproxy/envoy",
-   "sha": "10acebc0ba70213855e0c3f81870d43a8e830e9c",
-   "url": "https://github.com/envoyproxy/envoy/commit/10acebc0ba70213855e0c3f81870d43a8e830e9c",
-   "title": "rds: retain wire-format serialized bytes in route config providers (#48355)",
-   "date": "2026-10-20T21:20:49",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  }
- ]
+ "commits": []
 }
