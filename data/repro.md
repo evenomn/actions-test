@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-22 06:12 UTC · 共 **124** 条(强烈推荐 19 / 值得 105)
+**更新**: 2026-10-22 14:35 UTC · 共 **126** 条(强烈推荐 19 / 值得 107)
 
 ---
 
@@ -468,6 +468,20 @@ nuclei 模板 | PoC 源码可用 | 开源,可源码审计复现
 影响: php php <8.2.35; php php >=8.3.0 <8.3.36
 PoC: [ikow/php2shell-poc 1008★(仅README)](https://github.com/ikow/php2shell-poc) · [eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 614★(有源码)](https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC)
 参考: [厂商通告](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w) · [参考](http://www.openwall.com/lists/oss-security/2026/10/21/6) · [参考](https://www.wiz.io/blog/php2shell-php-rce)
+
+### DedeCMS ShowMsg代码注入RCE
+[CVE-2021-48016](https://nvd.nist.gov/vuln/detail/CVE-2021-48016) | P1 重点关注 | CMS | CVSS 9.8 | 披露 2026-10-22 | 入库 2026-10-22
+未授权攻击者可构造Referer访问flink.php保存接口，注入PHP代码执行任意命令
+复现: 值得 — 入口：flink.php?dopost=save；空验证码并构造Referer · 影响面: 公网CMS，常暴露Web入口
+处置: 升级至5.8.1-beta之后版本，过滤Referer并限制flink.php访问
+参考: [参考](https://github.com/dedecms/DedeCMS/blob/v5.8.1/include/common.func.php) · [参考](https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/dedecms/dedecms-rce.yaml) · [参考](https://srcincite.io/blog/2021/09/30/chasing-a-dream-pwning-the-biggest-cms-in-china.html)
+
+### FineReport 路径遍历写文件RCE
+[CVE-2021-48014](https://nvd.nist.gov/vuln/detail/CVE-2021-48014) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-22 | 入库 2026-10-22
+未授权攻击者可向ReportServer的design_save_svg传入遍历filePath，写JSP木马执行命令
+复现: 值得 — 未授权POST design_save_svg，filePath遍历写JSP · 影响面: 企业报表服务器，常暴露内网
+处置: 升级FineReport至修复版本；限制ReportServer接口并过滤filePath
+参考: [参考](https://github.com/NHPT/WebReportV9Exp/blob/main/WebReport_Exp.py) · [参考](https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/oa/%E5%B8%86%E8%BD%AFOA/%E5%B8%86%E8%BD%AF%E6%8A%A5%E8%A1%A8%20V9%20design_save_svg%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%A6%86%E7%9B%96%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md) · [参考](https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/finereport/fine-report-v9-file-upload.yaml)
 
 ### WebLogic Core未授权高危
 [CVE-2026-91323](https://nvd.nist.gov/vuln/detail/CVE-2026-91323) | P1 重点关注 | Web中间件 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20

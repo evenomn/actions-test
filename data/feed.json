@@ -1,28 +1,197 @@
 {
  "version": 3,
- "generated_at": "2026-10-22T06:12:21+00:00",
+ "generated_at": "2026-10-22T14:35:00+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 3,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 3,
+  "by_tier": {
+   "critical": 3
+  },
+  "by_urgency": {
+   "P1 重点关注": 3
+  },
+  "by_category": {
+   "未知": 2,
+   "CMS": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2021-48016",
+   "tier": "critical",
+   "title": "DedeCMS ShowMsg代码注入RCE",
+   "title_zh": "DedeCMS ShowMsg代码注入RCE",
+   "summary_zh": "未授权攻击者可构造Referer访问flink.php保存接口，注入PHP代码执行任意命令",
+   "published": "2026-10-22T11:17:04.690",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/dedecms/DedeCMS/blob/v5.8.1/include/common.func.php"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/dedecms/dedecms-rce.yaml"
+    },
+    {
+     "label": "参考",
+     "url": "https://srcincite.io/blog/2021/09/30/chasing-a-dream-pwning-the-biggest-cms-in-china.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至5.8.1-beta之后版本，过滤Referer并限制flink.php访问",
+   "repro_worthy": "值得",
+   "repro_note": "入口：flink.php?dopost=save；空验证码并构造Referer",
+   "impact_scope": "公网CMS，常暴露Web入口",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2021-48016",
+   "description": "DedeCMS through 5.8.1-beta contains a PHP code injection vulnerability in ShowMsg() where the HTTP Referer header is written into a DedeTemplate string and included. Unauthenticated attackers can send a crafted Referer to /plus/flink.php?dopost=save with an empty validate code to execute arbitrary PHP and system commands. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14."
+  },
+  {
+   "id": "CVE-2021-48014",
+   "tier": "critical",
+   "title": "FineReport 路径遍历写文件RCE",
+   "title_zh": "FineReport 路径遍历写文件RCE",
+   "summary_zh": "未授权攻击者可向ReportServer的design_save_svg传入遍历filePath，写JSP木马执行命令",
+   "published": "2026-10-22T11:17:04.390",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/NHPT/WebReportV9Exp/blob/main/WebReport_Exp.py"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/oa/%E5%B8%86%E8%BD%AFOA/%E5%B8%86%E8%BD%AF%E6%8A%A5%E8%A1%A8%20V9%20design_save_svg%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%A6%86%E7%9B%96%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/finereport/fine-report-v9-file-upload.yaml"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级FineReport至修复版本；限制ReportServer接口并过滤filePath",
+   "repro_worthy": "值得",
+   "repro_note": "未授权POST design_save_svg，filePath遍历写JSP",
+   "impact_scope": "企业报表服务器，常暴露内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2021-48014",
+   "description": "FineReport 9.0 contains a path traversal vulnerability in the /WebReport/ReportServer design_save_svg operation that allows unauthenticated attackers to write arbitrary files via the filePath parameter. Attackers can send a POST request with directory traversal sequences in filePath and a __CONTENT__ payload to write a JSP webshell and achieve remote code execution. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14."
+  },
+  {
+   "id": "CVE-2026-112832",
+   "tier": "critical",
+   "title": "Rootblox 文件包含致LFI",
+   "title_zh": "Rootblox 文件包含致LFI",
+   "summary_zh": "攻击者可控制include文件名包含本地文件，读取敏感信息并可能执行代码",
+   "published": "2026-10-22T11:17:33.163",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SSRF(文件包含)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/rootblox/vulnerability/wordpress-rootblox-plugin-1-0-6-local-file-inclusion-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Rootblox至1.0.6以上；限制主题文件包含入口",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress主题，站点面广",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112832",
+   "description": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion') vulnerability in CozyThemes Rootblox rootblox allows PHP Local File Inclusion.This issue affects Rootblox: from n/a through 1.0.6."
+  }
+ ],
  "media": [],
  "commits": [
   {
-   "repo": "python/cpython",
-   "sha": "4ecf6ca1b3d1eb8bb9afd0c0b9dfdbebdc9e05fc",
-   "url": "https://github.com/python/cpython/commit/4ecf6ca1b3d1eb8bb9afd0c0b9dfdbebdc9e05fc",
-   "title": "gh-151818: Fix double-free in _CALL_LIST_APPEND on allocation failure (#151826)",
-   "date": "2026-10-22T04:52:56",
+   "repo": "qemu/qemu",
+   "sha": "cfa70f3a82f581ad758586ecf408fe7f3602850f",
+   "url": "https://github.com/qemu/qemu/commit/cfa70f3a82f581ad758586ecf408fe7f3602850f",
+   "title": "hw/usb/hcd-xhci: More reentrancy guard fixes for the XHCI code",
+   "date": "2026-10-22T10:33:17",
+   "score": 5,
+   "matched": [
+    "CVE",
+    "UAF"
+   ],
+   "cve": "CVE-2026-17588"
+  },
+  {
+   "repo": "rust-lang/rust",
+   "sha": "afe686de2708699b69dd31ed14be326f4e95edfc",
+   "url": "https://github.com/rust-lang/rust/commit/afe686de2708699b69dd31ed14be326f4e95edfc",
+   "title": "Auto merge of #164650 - weihanglo:cargo-update, r=weihanglo",
+   "date": "2026-10-22T08:19:13",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-82248"
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "81dfb44d195be4b6e2a665a4e5bd5f2a394ca990",
+   "url": "https://github.com/php/php-src/commit/81dfb44d195be4b6e2a665a4e5bd5f2a394ca990",
+   "title": "Fix GH-24523: UAF in zend_test_compile_to_ast() on parse error (#24524)",
+   "date": "2026-10-22T13:06:18",
    "score": 2,
    "matched": [
     "UAF"
@@ -30,14 +199,26 @@
    "cve": null
   },
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "82a8544fec57ff29a9eb0afaf964aedea09ba2b9",
-   "url": "https://github.com/envoyproxy/envoy/commit/82a8544fec57ff29a9eb0afaf964aedea09ba2b9",
-   "title": "config: add support to unsubscribe from on-demand resources (#47947)",
-   "date": "2026-10-22T02:22:02",
+   "repo": "qemu/qemu",
+   "sha": "6ab4cd2f13debf7682106ff1d9917478814dda10",
+   "url": "https://github.com/qemu/qemu/commit/6ab4cd2f13debf7682106ff1d9917478814dda10",
+   "title": "hw/usb/dev-mtp: Fix heap OOB read in usb_mtp_write_metadata()",
+   "date": "2026-10-22T10:33:17",
    "score": 2,
    "matched": [
-    "安全修复"
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "redis/redis",
+   "sha": "a013fd920766191191c8732fb56af5d7eb9e8333",
+   "url": "https://github.com/redis/redis/commit/a013fd920766191191c8732fb56af5d7eb9e8333",
+   "title": "Fix use-after-free in cluster bus FORGOTTEN_NODE handling (#15685)",
+   "date": "2026-10-22T10:31:45",
+   "score": 2,
+   "matched": [
+    "UAF"
    ],
    "cve": null
   }

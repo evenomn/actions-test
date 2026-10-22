@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-22T06:12:21+00:00",
- "count": 124,
+ "updated_at": "2026-10-22T14:35:00+00:00",
+ "count": 126,
  "count_recommended": 19,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -2447,6 +2447,94 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109618",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2021-48016",
+   "title": "DedeCMS ShowMsg代码注入RCE",
+   "first_seen": "2026-10-22",
+   "last_seen": "2026-10-22",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-22",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "入口：flink.php?dopost=save；空验证码并构造Referer",
+   "impact_scope": "公网CMS，常暴露Web入口",
+   "action_zh": "升级至5.8.1-beta之后版本，过滤Referer并限制flink.php访问",
+   "summary_zh": "未授权攻击者可构造Referer访问flink.php保存接口，注入PHP代码执行任意命令",
+   "category": "CMS",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/dedecms/DedeCMS/blob/v5.8.1/include/common.func.php"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/dedecms/dedecms-rce.yaml"
+    },
+    {
+     "label": "参考",
+     "url": "https://srcincite.io/blog/2021/09/30/chasing-a-dream-pwning-the-biggest-cms-in-china.html"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2021-48016",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2021-48014",
+   "title": "FineReport 路径遍历写文件RCE",
+   "first_seen": "2026-10-22",
+   "last_seen": "2026-10-22",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-22",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权POST design_save_svg，filePath遍历写JSP",
+   "impact_scope": "企业报表服务器，常暴露内网",
+   "action_zh": "升级FineReport至修复版本；限制ReportServer接口并过滤filePath",
+   "summary_zh": "未授权攻击者可向ReportServer的design_save_svg传入遍历filePath，写JSP木马执行命令",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/NHPT/WebReportV9Exp/blob/main/WebReport_Exp.py"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/oa/%E5%B8%86%E8%BD%AFOA/%E5%B8%86%E8%BD%AF%E6%8A%A5%E8%A1%A8%20V9%20design_save_svg%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%A6%86%E7%9B%96%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/finereport/fine-report-v9-file-upload.yaml"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2021-48014",
    "change_note": null
   },
   {
