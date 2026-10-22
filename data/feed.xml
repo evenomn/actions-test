@@ -5,34 +5,214 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 22 Oct 2026 14:35:00 +0000</pubDate>
-    <lastBuildDate>Thu, 22 Oct 2026 14:35:00 +0000</lastBuildDate>
+    <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    <lastBuildDate>Thu, 22 Oct 2026 20:38:35 +0000</lastBuildDate>
     <item>
-      <title>[critical]DedeCMS ShowMsg代码注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2021-48016</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2021-48016-2026-10-22</guid>
-      <description>CVE-2021-48016 · 🎯P1 重点关注 · 披露 2026-10-22 · 组件 CMS · CVSS 9.8 · 类型 代码注入(RCE) · 难度 低(远程·免认证)
-Unauthenticated attackers can send a crafted Referer to /plus/flink.php?dopost=save with an empty validate code to execute arbitrary PHP and system commands.
-信号:</description>
-      <pubDate>Thu, 22 Oct 2026 14:35:00 +0000</pubDate>
+      <title>[critical]Bytebase认证绕过可登录任意用户</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2022-51026</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2022-51026-2026-10-22</guid>
+      <description>CVE-2022-51026 · 🎯P1 重点关注 · 披露 2026-10-22 · 组件 开发运维/CI · CVSS 9.8 · 类型 认证欺骗 · 难度 低(远程·免认证)
+Bytebase 0.12.0 before 1.0.1 contains an authentication bypass vulnerability that allows unauthenticated attackers to log in as any user.
+信号: 关注词:gitlab</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]FineReport 路径遍历写文件RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2021-48014</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2021-48014-2026-10-22</guid>
-      <description>CVE-2021-48014 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
-FineReport 9.0 contains a path traversal vulnerability in the /WebReport/ReportServer design_save_svg operation that allows unauthenticated attackers to write a…
+      <title>[critical]Pillow MPO处理越界写可致崩溃</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96639</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96639-2026-10-22</guid>
+      <description>CVE-2026-96639 · 🎯P1 重点关注 · 披露 2026-10-22 · 组件 开发库/依赖 · CVSS 9.8 · EPSS 0.6%,前 46% · 类型 越界读取/越界写入 · 难度 低(远程·免认证)
+This produces attacker-controlled native out-of-bounds writes and reliable crashes.
 信号:</description>
-      <pubDate>Thu, 22 Oct 2026 14:35:00 +0000</pubDate>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Rootblox 文件包含致LFI</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112832</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112832-2026-10-22</guid>
-      <description>CVE-2026-112832 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 类型 SSRF(文件包含) · 难度 低(远程·免认证)
-Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion') vulnerability in CozyThemes Rootblox rootblox allows PHP…
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79844</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79844-2026-10-22</guid>
+      <description>CVE-2026-79844 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 10.0 · 难度 低(远程·免认证)
+No description provided
 信号:</description>
-      <pubDate>Thu, 22 Oct 2026 14:35:00 +0000</pubDate>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79846</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79846-2026-10-22</guid>
+      <description>CVE-2026-79846 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 10.0 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79847</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79847-2026-10-22</guid>
+      <description>CVE-2026-79847 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 10.0 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79848</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79848-2026-10-22</guid>
+      <description>CVE-2026-79848 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 10.0 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79849</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79849-2026-10-22</guid>
+      <description>CVE-2026-79849 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 10.0 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79850</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79850-2026-10-22</guid>
+      <description>CVE-2026-79850 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 10.0 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79851</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79851-2026-10-22</guid>
+      <description>CVE-2026-79851 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 10.0 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]代理加密上下文复用致提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114612</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114612-2026-10-22</guid>
+      <description>CVE-2026-114612 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.9 · 类型 权限提升/数据真实性验证缺失 · 难度 低(远程·需低权限)
+From 1.87.0 until 1.100.4, 1.101.3, 1.102.2, 1.103.1, and 1.104.0-rc.2, the proxy reuses one cryptographic context for at-rest secrets and session tokens, allow…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Incus 备份路径遍历致主机写文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115375</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115375-2026-10-22</guid>
+      <description>CVE-2026-115375 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+Incus 7.0.0 before 7.0.2 and 7.1.0 before 7.5.0 contains a path traversal vulnerability that allows clients able to create instances to write files on the host.
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Incus 迁移符号链接致任意文件写入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115377</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115377-2026-10-22</guid>
+      <description>CVE-2026-115377 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.9 · 类型 文件链接绕过 · 难度 低(远程·需低权限)
+Incus before 6.0.7, 6.1.0 before 7.0.2, and 7.1.0 before 7.5.0 contains an arbitrary file write vulnerability that allows malicious migration sources to write h…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Wasmtime 异步回调栈溢出可逃逸沙箱</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115384</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115384-2026-10-22</guid>
+      <description>CVE-2026-115384 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.9 · 类型 输入校验缺失 · 难度 低(远程·需低权限)
+Wasmtime 39.0.0 before 48.0.4 and 49.0.0 before 49.0.2 contains a stack buffer overflow vulnerability that allows malicious guests to write ~16KB to the native …
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79852</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79852-2026-10-22</guid>
+      <description>CVE-2026-79852 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79853</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79853-2026-10-22</guid>
+      <description>CVE-2026-79853 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79854</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79854-2026-10-22</guid>
+      <description>CVE-2026-79854 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79855</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79855-2026-10-22</guid>
+      <description>CVE-2026-79855 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79856</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79856-2026-10-22</guid>
+      <description>CVE-2026-79856 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79857</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79857-2026-10-22</guid>
+      <description>CVE-2026-79857 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 高危漏洞 详情缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79858</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79858-2026-10-22</guid>
+      <description>CVE-2026-79858 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件高危漏洞待研判</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79859</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79859-2026-10-22</guid>
+      <description>CVE-2026-79859 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件高危漏洞待研判</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79860</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79860-2026-10-22</guid>
+      <description>CVE-2026-79860 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件高危漏洞待研判</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-79861</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-79861-2026-10-22</guid>
+      <description>CVE-2026-79861 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 9.8 · 难度 低(远程·免认证)
+No description provided
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 20:38:35 +0000</pubDate>
     </item>
   </channel>
 </rss>

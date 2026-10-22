@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-22 14:35 UTC · 共 **126** 条(强烈推荐 19 / 值得 107)
+**更新**: 2026-10-22 20:38 UTC · 共 **127** 条(强烈推荐 19 / 值得 108)
 
 ---
 
@@ -482,6 +482,14 @@ PoC: [ikow/php2shell-poc 1008★(仅README)](https://github.com/ikow/php2shell-p
 复现: 值得 — 未授权POST design_save_svg，filePath遍历写JSP · 影响面: 企业报表服务器，常暴露内网
 处置: 升级FineReport至修复版本；限制ReportServer接口并过滤filePath
 参考: [参考](https://github.com/NHPT/WebReportV9Exp/blob/main/WebReport_Exp.py) · [参考](https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/oa/%E5%B8%86%E8%BD%AFOA/%E5%B8%86%E8%BD%AF%E6%8A%A5%E8%A1%A8%20V9%20design_save_svg%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%A6%86%E7%9B%96%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md) · [参考](https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/finereport/fine-report-v9-file-upload.yaml)
+
+### Pillow MPO处理越界写可致崩溃
+[CVE-2026-96639](https://nvd.nist.gov/vuln/detail/CVE-2026-96639) | P1 重点关注 | 开发库/依赖 | CVSS 9.8 | EPSS 0.6% | 披露 2026-10-22 | 入库 2026-10-22
+开源,可源码审计复现
+未认证攻击者上传恶意 MPO 图片，Pillow 处理时触发越界写，导致服务崩溃或潜在代码执行
+复现: 值得 — 未授权上传恶意 MPO 至 Pillow 处理接口，触发越界写 · 影响面: 图片处理依赖，服务端上传入口
+处置: 升级至 Pillow 13.0.0，限制上传图片格式/大小
+影响: pip:Pillow >= 11.0.0, < 13.0.0(修复: 13.0.0)
 
 ### WebLogic Core未授权高危
 [CVE-2026-91323](https://nvd.nist.gov/vuln/detail/CVE-2026-91323) | P1 重点关注 | Web中间件 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20

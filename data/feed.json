@@ -1,19 +1,20 @@
 {
  "version": 3,
- "generated_at": "2026-10-22T14:35:00+00:00",
+ "generated_at": "2026-10-22T20:38:35+00:00",
  "lookback_hours": 5,
- "count": 3,
+ "count": 23,
  "stats": {
-  "total": 3,
+  "total": 23,
   "by_tier": {
-   "critical": 3
+   "critical": 23
   },
   "by_urgency": {
-   "P1 重点关注": 3
+   "P1 重点关注": 23
   },
   "by_category": {
-   "未知": 2,
-   "CMS": 1
+   "未知": 21,
+   "开发运维/CI": 1,
+   "开发库/依赖": 1
   },
   "kev": 0,
   "with_poc": 0,
@@ -23,19 +24,19 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2021-48016",
+   "id": "CVE-2022-51026",
    "tier": "critical",
-   "title": "DedeCMS ShowMsg代码注入RCE",
-   "title_zh": "DedeCMS ShowMsg代码注入RCE",
-   "summary_zh": "未授权攻击者可构造Referer访问flink.php保存接口，注入PHP代码执行任意命令",
-   "published": "2026-10-22T11:17:04.690",
+   "title": "Bytebase认证绕过可登录任意用户",
+   "title_zh": "Bytebase认证绕过可登录任意用户",
+   "summary_zh": "未认证攻击者可控制 instanceUrl 指向恶意服务，伪造活跃用户邮箱登录任意账户",
+   "published": "2026-10-22T19:17:30.883",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "代码注入(RCE)"
+    "认证欺骗"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -44,15 +45,89 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/dedecms/DedeCMS/blob/v5.8.1/include/common.func.php"
+     "url": "https://github.com/bytebase/bytebase"
     },
     {
      "label": "参考",
-     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/dedecms/dedecms-rce.yaml"
+     "url": "https://github.com/bytebase/bytebase/blob/1.0.0/server/auth.go#L79-L93"
     },
     {
      "label": "参考",
-     "url": "https://srcincite.io/blog/2021/09/30/chasing-a-dream-pwning-the-biggest-cms-in-china.html"
+     "url": "https://github.com/bytebase/bytebase/commit/d69e682243b25b51dd52912a26e2f259b5f3db2d"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "gitlab",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 1.0.1 或更高版本，限制 instanceUrl 配置",
+   "repro_worthy": "一般",
+   "repro_note": "未授权登录，将 instanceUrl 指向恶意服务返回活跃用户邮箱",
+   "impact_scope": "数据库DevOps平台，常内网部署",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2022-51026",
+   "description": "Bytebase 0.12.0 before 1.0.1 contains an authentication bypass vulnerability that allows unauthenticated attackers to log in as any user. Attackers can set instanceUrl to a server they control that returns an active user with a chosen email."
+  },
+  {
+   "id": "CVE-2026-96639",
+   "tier": "critical",
+   "title": "Pillow MPO处理越界写可致崩溃",
+   "title_zh": "Pillow MPO处理越界写可致崩溃",
+   "summary_zh": "未认证攻击者上传恶意 MPO 图片，Pillow 处理时触发越界写，导致服务崩溃或潜在代码执行",
+   "published": "2026-10-22T16:00:15Z",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": null,
+   "epss": 0.00565,
+   "epss_percentile": 0.46187,
+   "cwe_labels": [
+    "越界读取",
+    "越界写入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "pip:Pillow >= 11.0.0, < 13.0.0(修复: 13.0.0)",
+   "ghsa_url": "https://github.com/advisories/GHSA-v9pv-5gc8-w2m6",
+   "refs": [],
+   "poc": [],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 Pillow 13.0.0，限制上传图片格式/大小",
+   "repro_worthy": "值得",
+   "repro_note": "未授权上传恶意 MPO 至 Pillow 处理接口，触发越界写",
+   "impact_scope": "图片处理依赖，服务端上传入口",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96639",
+   "description": "This produces attacker-controlled native out-of-bounds writes and reliable crashes. Server-side deployment impact: - Create a local vulnerable web upload service that accepts an unauthenticated MPO upload and automatically processes it with Pillow."
+  },
+  {
+   "id": "CVE-2026-79844",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:56.367",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
     }
    ],
    "poc": [],
@@ -63,44 +138,317 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至5.8.1-beta之后版本，过滤Referer并限制flink.php访问",
-   "repro_worthy": "值得",
-   "repro_note": "入口：flink.php?dopost=save；空验证码并构造Referer",
-   "impact_scope": "公网CMS，常暴露Web入口",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2021-48016",
-   "description": "DedeCMS through 5.8.1-beta contains a PHP code injection vulnerability in ShowMsg() where the HTTP Referer header is written into a DedeTemplate string and included. Unauthenticated attackers can send a crafted Referer to /plus/flink.php?dopost=save with an empty validate code to execute arbitrary PHP and system commands. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14."
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79844",
+   "description": "No description provided"
   },
   {
-   "id": "CVE-2021-48014",
+   "id": "CVE-2026-79846",
    "tier": "critical",
-   "title": "FineReport 路径遍历写文件RCE",
-   "title_zh": "FineReport 路径遍历写文件RCE",
-   "summary_zh": "未授权攻击者可向ReportServer的design_save_svg传入遍历filePath，写JSP木马执行命令",
-   "published": "2026-10-22T11:17:04.390",
-   "cvss": 9.8,
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:56.490",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79846",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79847",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:56.633",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79847",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79848",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:56.850",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79848",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79849",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:57.070",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79849",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79850",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:57.183",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79850",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79851",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:57.290",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79851",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-114612",
+   "tier": "critical",
+   "title": "代理加密上下文复用致提权",
+   "title_zh": "代理加密上下文复用致提权",
+   "summary_zh": "已认证内部用户可伪造管理员凭据，经API密钥流程加密返回后提权",
+   "published": "2026-10-22T19:17:37.540",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升",
+    "数据真实性验证缺失"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/BerriAI/litellm/commit/1d5fdc87fed66b49e1df8cf7d708ad93249eb7d0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/BerriAI/litellm/commit/9161d7f9d6073603ba61ee4aa5e2c0ef5b37a81b"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/BerriAI/litellm/commit/9fa1a641119dd0d4fe43e93622eae5f482ceb63f"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至官方修复版本（1.100.4/1.101.3等）",
+   "repro_worthy": "一般",
+   "repro_note": "认证后构造元数据，经API密钥流程获取伪造管理员凭据",
+   "impact_scope": "内部代理/密钥服务，需先认证",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114612",
+   "description": "From 1.87.0 until 1.100.4, 1.101.3, 1.102.2, 1.103.1, and 1.104.0-rc.2, the proxy reuses one cryptographic context for at-rest secrets and session tokens, allowing an authenticated internal user to have crafted metadata containing a forged administrator credential encrypted and returned by the API-key flow. Versions 1.87.0 through 1.90.x require EXPERIMENTAL_UI_LOGIN to be enabled, while versions after 1.91.0 are exploitable in the default configuration."
+  },
+  {
+   "id": "CVE-2026-115375",
+   "tier": "critical",
+   "title": "Incus 备份路径遍历致主机写文件",
+   "title_zh": "Incus 备份路径遍历致主机写文件",
+   "summary_zh": "可创建实例的客户端导入恶意备份，用 ../ 卷名写主机文件并完全控制宿主机",
+   "published": "2026-10-22T19:17:44.133",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
     "路径遍历/任意文件读取"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/NHPT/WebReportV9Exp/blob/main/WebReport_Exp.py"
+     "url": "https://github.com/lxc/incus/security/advisories/GHSA-hpjh-q53p-f27r"
     },
     {
      "label": "参考",
-     "url": "https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/oa/%E5%B8%86%E8%BD%AFOA/%E5%B8%86%E8%BD%AF%E6%8A%A5%E8%A1%A8%20V9%20design_save_svg%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%A6%86%E7%9B%96%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/finereport/fine-report-v9-file-upload.yaml"
+     "url": "https://www.vulncheck.com/advisories/incus-7.0.0-before-7.0.2-and-7.1.0-before-7.5.0-path-traversal-via-instance-backup-dependent-volumes"
     }
    ],
    "poc": [],
@@ -111,28 +459,114 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级FineReport至修复版本；限制ReportServer接口并过滤filePath",
-   "repro_worthy": "值得",
-   "repro_note": "未授权POST design_save_svg，filePath遍历写JSP",
-   "impact_scope": "企业报表服务器，常暴露内网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2021-48014",
-   "description": "FineReport 9.0 contains a path traversal vulnerability in the /WebReport/ReportServer design_save_svg operation that allows unauthenticated attackers to write arbitrary files via the filePath parameter. Attackers can send a POST request with directory traversal sequences in filePath and a __CONTENT__ payload to write a JSP webshell and achieve remote code execution. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14."
+   "action_zh": "升级至 7.0.2/7.5.0，限制实例创建权限",
+   "repro_worthy": "一般",
+   "repro_note": "以可创建实例权限导入含 ../ 依赖卷名的备份",
+   "impact_scope": "容器/虚拟化宿主机，内网管理面",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115375",
+   "description": "Incus 7.0.0 before 7.0.2 and 7.1.0 before 7.5.0 contains a path traversal vulnerability that allows clients able to create instances to write files on the host. The flaw stems from unvalidated dependent custom volume names in instance backup index.yaml files. Attackers can import a crafted instance backup with ../ sequences in dependent volume names to create root-owned directories with controlled content, leading to full host compromise."
   },
   {
-   "id": "CVE-2026-112832",
+   "id": "CVE-2026-115377",
    "tier": "critical",
-   "title": "Rootblox 文件包含致LFI",
-   "title_zh": "Rootblox 文件包含致LFI",
-   "summary_zh": "攻击者可控制include文件名包含本地文件，读取敏感信息并可能执行代码",
-   "published": "2026-10-22T11:17:33.163",
+   "title": "Incus 迁移符号链接致任意文件写入",
+   "title_zh": "Incus 迁移符号链接致任意文件写入",
+   "summary_zh": "恶意迁移源在传输卷中植入符号链接，诱导以 root 写主机文件并完全控制宿主机",
+   "published": "2026-10-22T19:17:44.460",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "文件链接绕过"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/lxc/incus/security/advisories/GHSA-579w-c4rw-c8q3"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/incus-before-6.0.7-6.1.0-before-7.0.2-and-7.1.0-before-7.5.0-arbitrary-file-write-via-symlink-in-migration-stream"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 6.0.7/7.0.2/7.5.0，限制迁移源",
+   "repro_worthy": "一般",
+   "repro_note": "构造 rsync/btrfs 流，在卷中植入指向主机根的符号链接",
+   "impact_scope": "容器/虚拟化宿主机，迁移通道",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115377",
+   "description": "Incus before 6.0.7, 6.1.0 before 7.0.2, and 7.1.0 before 7.5.0 contains an arbitrary file write vulnerability that allows malicious migration sources to write host files by planting symlinks in transferred volumes. Attackers can craft rsync or btrfs receive streams with a symlink such as rootfs pointing to the host root, writing files as root for full host compromise."
+  },
+  {
+   "id": "CVE-2026-115384",
+   "tier": "critical",
+   "title": "Wasmtime 异步回调栈溢出可逃逸沙箱",
+   "title_zh": "Wasmtime 异步回调栈溢出可逃逸沙箱",
+   "summary_zh": "恶意 guest 提供类型错误的异步回调，写约16KB至原生栈，崩溃宿主或逃逸沙箱",
+   "published": "2026-10-22T19:17:45.543",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/bytecodealliance/wasmtime/security/advisories/GHSA-32h6-97mm-8q3c"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/wasmtime-39.0.0-before-48.0.4-and-49.0.0-before-49.0.2-stack-buffer-overflow"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 48.0.4/49.0.2，限制不可信 Wasm 组件",
+   "repro_worthy": "一般",
+   "repro_note": "运行含错误类型异步回调的恶意 Wasm 组件触发栈溢出",
+   "impact_scope": "Wasm 运行时，承载不可信组件",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115384",
+   "description": "Wasmtime 39.0.0 before 48.0.4 and 49.0.0 before 49.0.2 contains a stack buffer overflow vulnerability that allows malicious guests to write ~16KB to the native stack via unvalidated async callback result types. Attackers can supply components with mistyped component-model-async callback functions to overwrite return addresses, crashing the host or escaping the sandbox."
+  },
+  {
+   "id": "CVE-2026-79852",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:57.410",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
-   "cwe_labels": [
-    "SSRF(文件包含)"
-   ],
+   "cwe_labels": [],
    "difficulty": "低(远程·免认证)",
    "products": [],
    "affected": null,
@@ -140,7 +574,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/plugin/rootblox/vulnerability/wordpress-rootblox-plugin-1-0-6-local-file-inclusion-vulnerability?_s_id=cve"
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
     }
    ],
    "poc": [],
@@ -151,47 +585,376 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级Rootblox至1.0.6以上；限制主题文件包含入口",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
    "repro_worthy": "不建议",
    "repro_note": null,
-   "impact_scope": "WordPress主题，站点面广",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112832",
-   "description": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion') vulnerability in CozyThemes Rootblox rootblox allows PHP Local File Inclusion.This issue affects Rootblox: from n/a through 1.0.6."
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79852",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79853",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:57.513",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79853",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79854",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:57.627",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79854",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79855",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:57.743",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79855",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79856",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:57.857",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79856",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79857",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:57.963",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79857",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79858",
+   "tier": "critical",
+   "title": "未知组件 高危漏洞 详情缺失",
+   "title_zh": "未知组件 高危漏洞 详情缺失",
+   "summary_zh": "无描述证据，无法判断谁能利用、利用方式与后果",
+   "published": "2026-10-22T19:17:58.083",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "跟踪厂商通告，确认受影响资产并尽快修复",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，需补充信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79858",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79859",
+   "tier": "critical",
+   "title": "未知组件高危漏洞待研判",
+   "title_zh": "未知组件高危漏洞待研判",
+   "summary_zh": "暂无漏洞描述，无法确认利用者、利用方式及影响，需补充信息研判",
+   "published": "2026-10-22T19:17:58.190",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无修复信息，关注厂商通告并限制暴露面",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，影响面待评估",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79859",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79860",
+   "tier": "critical",
+   "title": "未知组件高危漏洞待研判",
+   "title_zh": "未知组件高危漏洞待研判",
+   "summary_zh": "暂无漏洞描述，无法确认利用者、利用方式及影响，需补充信息研判",
+   "published": "2026-10-22T19:17:58.303",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无修复信息，关注厂商通告并限制暴露面",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，影响面待评估",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79860",
+   "description": "No description provided"
+  },
+  {
+   "id": "CVE-2026-79861",
+   "tier": "critical",
+   "title": "未知组件高危漏洞待研判",
+   "title_zh": "未知组件高危漏洞待研判",
+   "summary_zh": "暂无漏洞描述，无法确认利用者、利用方式及影响，需补充信息研判",
+   "published": "2026-10-22T19:17:58.407",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无修复信息，关注厂商通告并限制暴露面",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "未知资产，影响面待评估",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79861",
+   "description": "No description provided"
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "qemu/qemu",
-   "sha": "cfa70f3a82f581ad758586ecf408fe7f3602850f",
-   "url": "https://github.com/qemu/qemu/commit/cfa70f3a82f581ad758586ecf408fe7f3602850f",
-   "title": "hw/usb/hcd-xhci: More reentrancy guard fixes for the XHCI code",
-   "date": "2026-10-22T10:33:17",
-   "score": 5,
-   "matched": [
-    "CVE",
-    "UAF"
-   ],
-   "cve": "CVE-2026-17588"
-  },
-  {
-   "repo": "rust-lang/rust",
-   "sha": "afe686de2708699b69dd31ed14be326f4e95edfc",
-   "url": "https://github.com/rust-lang/rust/commit/afe686de2708699b69dd31ed14be326f4e95edfc",
-   "title": "Auto merge of #164650 - weihanglo:cargo-update, r=weihanglo",
-   "date": "2026-10-22T08:19:13",
+   "repo": "django/django",
+   "sha": "4b09d8c2c84b41931ca17e460edaa2f849e03170",
+   "url": "https://github.com/django/django/commit/4b09d8c2c84b41931ca17e460edaa2f849e03170",
+   "title": "Fixed #37401 -- Aligned safe_makedirs() with os.makedirs() semantics.",
+   "date": "2026-10-22T15:00:17",
    "score": 3,
    "matched": [
     "CVE"
    ],
-   "cve": "CVE-2026-82248"
+   "cve": "CVE-2026-25674"
   },
   {
    "repo": "php/php-src",
-   "sha": "81dfb44d195be4b6e2a665a4e5bd5f2a394ca990",
-   "url": "https://github.com/php/php-src/commit/81dfb44d195be4b6e2a665a4e5bd5f2a394ca990",
-   "title": "Fix GH-24523: UAF in zend_test_compile_to_ast() on parse error (#24524)",
-   "date": "2026-10-22T13:06:18",
+   "sha": "fe8ce13ef7bf19a7571e693400fd5e52742d493a",
+   "url": "https://github.com/php/php-src/commit/fe8ce13ef7bf19a7571e693400fd5e52742d493a",
+   "title": "JIT: Fix use-after-free in ASSIGN_DIM_OP with CONCAT",
+   "date": "2026-10-22T17:08:43",
    "score": 2,
    "matched": [
     "UAF"
@@ -199,26 +962,26 @@
    "cve": null
   },
   {
-   "repo": "qemu/qemu",
-   "sha": "6ab4cd2f13debf7682106ff1d9917478814dda10",
-   "url": "https://github.com/qemu/qemu/commit/6ab4cd2f13debf7682106ff1d9917478814dda10",
-   "title": "hw/usb/dev-mtp: Fix heap OOB read in usb_mtp_write_metadata()",
-   "date": "2026-10-22T10:33:17",
+   "repo": "envoyproxy/envoy",
+   "sha": "7ff9bed6f1d3328e5fb10ea34c0329417172a811",
+   "url": "https://github.com/envoyproxy/envoy/commit/7ff9bed6f1d3328e5fb10ea34c0329417172a811",
+   "title": "sip_proxy: remove ended transactions from the transaction table right away (#48310)",
+   "date": "2026-10-22T16:38:06",
    "score": 2,
    "matched": [
-    "越界读写"
+    "UAF"
    ],
    "cve": null
   },
   {
    "repo": "redis/redis",
-   "sha": "a013fd920766191191c8732fb56af5d7eb9e8333",
-   "url": "https://github.com/redis/redis/commit/a013fd920766191191c8732fb56af5d7eb9e8333",
-   "title": "Fix use-after-free in cluster bus FORGOTTEN_NODE handling (#15685)",
-   "date": "2026-10-22T10:31:45",
+   "sha": "9a95a8913aa11751f2f2b8327b06f1969be847f9",
+   "url": "https://github.com/redis/redis/commit/9a95a8913aa11751f2f2b8327b06f1969be847f9",
+   "title": "Redis cli cmddocs hardening (#16034)",
+   "date": "2026-10-22T15:07:52",
    "score": 2,
    "matched": [
-    "UAF"
+    "缓冲区溢出"
    ],
    "cve": null
   }
