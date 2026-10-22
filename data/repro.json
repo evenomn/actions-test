@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-10-21T20:44:00+00:00",
- "count": 120,
- "count_recommended": 17,
+ "updated_at": "2026-10-22T00:03:15+00:00",
+ "count": 121,
+ "count_recommended": 18,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -756,6 +756,42 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107406",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-91403",
+   "title": "Oracle Java SE 未授权远程漏洞",
+   "first_seen": "2026-10-22",
+   "last_seen": "2026-10-22",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-21",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "按Oracle CPU组件说明，通过网络协议调用受影响API验证",
+   "impact_scope": "Java运行时，服务器/桌面广泛部署",
+   "action_zh": "应用Oracle CPU补丁；限制不可信网络访问受影响API",
+   "summary_zh": "未授权远程攻击者经多协议调用受影响API，可完全攻陷Java SE与GraalVM",
+   "category": null,
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/alert-cve-2026-91403.html"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91403",
    "change_note": null
   },
   {

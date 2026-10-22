@@ -1,20 +1,20 @@
 {
  "version": 3,
- "generated_at": "2026-10-21T20:44:00+00:00",
+ "generated_at": "2026-10-22T00:03:15+00:00",
  "lookback_hours": 5,
- "count": 10,
+ "count": 8,
  "stats": {
-  "total": 10,
+  "total": 8,
   "by_tier": {
-   "critical": 10
+   "critical": 8
   },
   "by_urgency": {
-   "P1 重点关注": 9,
+   "P1 重点关注": 7,
    "P0 立即处置": 1
   },
   "by_category": {
    "未知": 7,
-   "网络设备": 3
+   "开发库/依赖": 1
   },
   "kev": 0,
   "with_poc": 0,
@@ -24,28 +24,26 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-76466",
+   "id": "CVE-2026-91403",
    "tier": "critical",
-   "title": "Expressway硬编码凭据RCE",
-   "title_zh": "Expressway硬编码凭据RCE",
-   "summary_zh": "未授权远程攻击者可利用数据库服务硬编码凭据，以root执行任意系统命令。",
-   "published": "2026-10-21T17:19:06.813",
-   "cvss": 9.8,
+   "title": "Oracle Java SE 未授权远程漏洞",
+   "title_zh": "Oracle Java SE 未授权远程漏洞",
+   "summary_zh": "未授权远程攻击者经多协议调用受影响API，可完全攻陷Java SE与GraalVM",
+   "published": "2026-10-21T22:16:50.243",
+   "cvss": 9.1,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
    "epss": null,
    "epss_percentile": null,
-   "cwe_labels": [
-    "硬编码凭据"
-   ],
+   "cwe_labels": [],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Cisco(产品与版本待 NVD/厂商补充)",
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-vcs-static-cred-hr7EWZ8t"
+     "url": "https://www.oracle.com/security-alerts/alert-cve-2026-91403.html"
     }
    ],
    "poc": [],
@@ -56,107 +54,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P0 立即处置",
-   "action_zh": "升级Cisco修复版本；限制Expressway数据库服务网络访问",
+   "action_zh": "应用Oracle CPU补丁；限制不可信网络访问受影响API",
    "repro_worthy": "强烈推荐",
-   "repro_note": "网络访问Expressway数据库服务，使用硬编码凭据执行命令",
-   "impact_scope": "边界协作网关，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76466",
-   "description": "A vulnerability in the database service feature of Cisco Expressway Series could allow an unauthenticated, remote attacker with network access to a Cisco Expressway device to execute arbitrary operating system commands as&nbsp;root. A successful exploit could allow the attacker to execute arbitrary commands as root on the underlying operating system of an affected device."
-  },
-  {
-   "id": "CVE-2026-105944",
-   "tier": "critical",
-   "title": "Pulsar Manager未授权凭据泄露",
-   "title_zh": "Pulsar Manager未授权凭据泄露",
-   "summary_zh": "未授权用户可借Pulsar Manager向任意主机发送集群凭据，进而操控Pulsar集群。",
-   "published": "2026-10-21T19:16:57.437",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失认证"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://lists.apache.org/thread.html/hol3z7fzhjntwvrv8xqqwx4l4d2jx796"
-    },
-    {
-     "label": "参考",
-     "url": "https://pulsar.apache.org/docs/administration-ui"
-    },
-    {
-     "label": "参考",
-     "url": "https://pulsar.apache.org/security/CVE-2026-105944/"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复版本；限制管理端暴露并轮换集群凭据",
-   "repro_worthy": "一般",
-   "repro_note": "未授权访问Pulsar Manager接口，诱导其向可控主机发送集群凭据",
-   "impact_scope": "Pulsar管理平台，凭据可横向",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105944",
-   "description": "An unauthenticated user can therefore use Pulsar Manager to send requests to the Pulsar admin API, which the cluster processes with the credential configured in Pulsar Manager. An unauthenticated user can make Pulsar Manager send this credential to a host of the user's choosing, and the credential can then be used directly against the Pulsar cluster."
-  },
-  {
-   "id": "CVE-2026-111813",
-   "tier": "critical",
-   "title": "ATS magick插件参数注入",
-   "title_zh": "ATS magick插件参数注入",
-   "summary_zh": "未授权客户端可控ImageMagick convert参数，或致命令执行；需启用实验插件。",
-   "published": "2026-10-21T19:16:59.167",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "参数拼接注入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://lists.apache.org/thread/r95dq29ywcd1f4x30snxlqmb12z4s4kc"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至9.2.16/10.1.5/10.2.1；禁用magick插件",
-   "repro_worthy": "一般",
-   "repro_note": "启用magick插件后，向代理请求注入ImageMagick转换参数",
-   "impact_scope": "边界代理/CDN，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111813",
-   "description": "Apache Traffic Server's experimental magick plugin lets an unauthenticated client control ImageMagick convert arguments in its default (unsigned) configuration. This issue affects Apache Traffic Server: from 8.0.1 through 8.1.11, from 9.0.0 through 9.2.15, from 10.0.0 through 10.1.4, 10.2.0. Users are recommended to upgrade to version 9.2.16, 10.1.5, or 10.2.1, which fix the issue."
+   "repro_note": "按Oracle CPU组件说明，通过网络协议调用受影响API验证",
+   "impact_scope": "Java运行时，服务器/桌面广泛部署",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91403",
+   "description": "Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs."
   },
   {
    "id": "CVE-2026-111812",
    "tier": "critical",
-   "title": "ATS origin_auth签名越权",
-   "title_zh": "ATS origin_auth签名越权",
-   "summary_zh": "客户端可迫使代理以自身凭据为攻击者指定AWS请求头签名，冒用云权限。",
+   "title": "ATS 源站认证签名越权",
+   "title_zh": "ATS 源站认证签名越权",
+   "summary_zh": "客户端可强制代理以其AWS凭证签名攻击者指定的请求头，造成凭证滥用和越权请求",
    "published": "2026-10-21T20:17:23.060",
    "cvss": 10.0,
    "severity": "CRITICAL",
@@ -184,19 +94,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级修复版本；禁用origin_server_auth插件",
+   "action_zh": "升级至9.2.16/10.1.5/10.2.1，审查源站认证配置",
    "repro_worthy": "一般",
-   "repro_note": "启用origin_server_auth插件，构造请求指定待签名AWS头",
-   "impact_scope": "边界代理，云凭据滥用",
+   "repro_note": "启用origin_server_auth后，构造指定AWS头触发签名",
+   "impact_scope": "缓存代理/边界节点，云凭证风险",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111812",
    "description": "Apache Traffic Server's origin_server_auth plugin lets a client force signing of attacker-chosen AWS request headers under the proxy's own credentials. This issue affects Apache Traffic Server: from 8.0.0 through 8.1.11, from 9.0.0 through 9.2.15, from 10.0.0 through 10.1.4, 10.2.0. Users are recommended to upgrade to version 9.2.16, 10.1.5, or 10.2.1, which fix the issue."
   },
   {
    "id": "CVE-2026-111814",
    "tier": "critical",
-   "title": "ATS TLS会话复用证书错配",
-   "title_zh": "ATS TLS会话复用证书错配",
-   "summary_zh": "默认出站会话复用可能让一笔事务沿用另一客户端证书，绕过证书隔离。",
+   "title": "ATS TLS会话复用证书混淆",
+   "title_zh": "ATS TLS会话复用证书混淆",
+   "summary_zh": "代理可能将某客户端证书认证的池化TLS会话复用于另一证书事务，导致证书校验绕过",
    "published": "2026-10-21T20:17:23.190",
    "cvss": 10.0,
    "severity": "CRITICAL",
@@ -224,19 +134,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至9.2.16/10.1.5/10.2.1；调整出站会话复用",
+   "action_zh": "升级至9.2.16/10.1.5/10.2.1，审查出站会话共享",
    "repro_worthy": "一般",
-   "repro_note": "配置出站session sharing及不同客户端证书，复现会话复用错配",
-   "impact_scope": "出站代理/网关，证书身份混淆",
+   "repro_note": "默认出站会话共享下，用不同客户端证书复用池化TLS会话",
+   "impact_scope": "反向代理出站mTLS，凭证混淆",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111814",
    "description": "Apache Traffic Server's default outbound session-sharing policy can reuse a pooled TLS session authenticated with one client certificate for a transaction configured to present a different one. This issue affects Apache Traffic Server: from 9.0.0 through 9.2.15, from 10.0.0 through 10.1.4, 10.2.0. Users are recommended to upgrade to version 9.2.16, 10.1.5, or 10.2.1, which fix the issue."
   },
   {
    "id": "CVE-2026-111815",
    "tier": "critical",
-   "title": "ATS SNI会话恢复绕过mTLS",
-   "title_zh": "ATS SNI会话恢复绕过mTLS",
-   "summary_zh": "跨SNI虚拟主机恢复TLS会话时未重验客户端证书，可绕过STRICT策略。",
+   "title": "ATS SNI跨虚拟主机证书绕过",
+   "title_zh": "ATS SNI跨虚拟主机证书绕过",
+   "summary_zh": "攻击者利用跨SNI虚拟主机的TLS会话恢复，跳过严格客户端证书校验，冒充已认证客户端",
    "published": "2026-10-21T20:17:23.330",
    "cvss": 10.0,
    "severity": "CRITICAL",
@@ -264,19 +174,117 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至9.2.16/10.1.5/10.2.1；禁用跨SNI会话复用",
+   "action_zh": "升级至9.2.16/10.1.5/10.2.1，禁用跨SNI会话复用",
    "repro_worthy": "一般",
-   "repro_note": "配置SNI多虚拟主机与verify_client STRICT，复用会话跨主机",
-   "impact_scope": "边界TLS网关，mTLS身份绕过",
+   "repro_note": "先在一SNI主机完成客户端证书认证，再跨SNI恢复TLS会话",
+   "impact_scope": "反向代理/网关，mTLS认证绕过",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111815",
    "description": "Apache Traffic Server can resume a TLS session across SNI virtual hosts without re-verifying a client certificate required by the resumed host's verify_client STRICT policy. This issue affects Apache Traffic Server: from 8.0.0 through 8.1.11, from 9.0.0 through 9.2.15, from 10.0.0 through 10.1.4, 10.2.0. Users are recommended to upgrade to version 9.2.16, 10.1.5, or 10.2.1, which fix the issue."
   },
   {
+   "id": "CVE-2026-114382",
+   "tier": "critical",
+   "title": "TOTOLINK EX200 栈溢出",
+   "title_zh": "TOTOLINK EX200 栈溢出",
+   "summary_zh": "远程攻击者向cstecgi.cgi的Comment参数传超长数据触发栈溢出，可致崩溃或代码执行",
+   "published": "2026-10-21T22:16:48.910",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏",
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/qwq-nm/CVE/blob/f5d61361eb7d846479f6d76c0aa4273e9af46d27/CVE1/report.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-114382"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1019881"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级最新固件；无法升级则关闭远程管理并限制管理口访问",
+   "repro_worthy": "一般",
+   "repro_note": "setStaticDhcpConfig的Comment参数传超长值",
+   "impact_scope": "家用WiFi扩展器，管理口常暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114382",
+   "description": "A security flaw has been discovered in TOTOLINK EX200 5.2.3c.7200. This affects the function setStaticDhcpConfig of the file /cgi-bin/cstecgi.cgi of the component lan.so. The manipulation of the argument Comment results in stack-based buffer overflow. It is possible to launch the attack remotely. The exploit has been released to the public and may be used for attacks."
+  },
+  {
+   "id": "CVE-2026-114383",
+   "tier": "critical",
+   "title": "TOTOLINK EX200 MAC栈溢出",
+   "title_zh": "TOTOLINK EX200 MAC栈溢出",
+   "summary_zh": "远程攻击者向cstecgi.cgi的macAddress参数传超长数据触发栈溢出，可致崩溃或代码执行",
+   "published": "2026-10-21T22:16:49.077",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏",
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/qwq-nm/CVE/blob/f5d61361eb7d846479f6d76c0aa4273e9af46d27/CVE2/report.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-114383"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1019883"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级最新固件；无法升级则关闭远程管理并限制管理口访问",
+   "repro_worthy": "一般",
+   "repro_note": "setWiFiAclAddConfig的macAddress传超长值",
+   "impact_scope": "家用WiFi扩展器，管理口常暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114383",
+   "description": "A weakness has been identified in TOTOLINK EX200 5.2.3c.7200. This impacts the function setWiFiAclAddConfig of the file /cgi-bin/cstecgi.cgi of the component wireless.so. This manipulation of the argument macAddress causes stack-based buffer overflow. The attack can be initiated remotely. The exploit has been made available to the public and could be used for attacks."
+  },
+  {
    "id": "CVE-2026-114268",
    "tier": "critical",
-   "title": "Tenda BE3L Pro缓冲区溢出",
-   "title_zh": "Tenda BE3L Pro缓冲区溢出",
-   "summary_zh": "远程攻击者可向/goform/WifiBasicSet的security_5g参数触发缓冲区溢出，可能执行代码。",
+   "title": "Tenda BE3L Pro 缓冲区溢出",
+   "title_zh": "Tenda BE3L Pro 缓冲区溢出",
+   "summary_zh": "远程攻击者向/goform/WifiBasicSet的security_5g参数传超长数据触发溢出，可致崩溃或代码执行",
    "published": "2026-10-21T19:17:00.780",
    "cvss": 9.9,
    "severity": "CRITICAL",
@@ -313,107 +321,28 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "关注厂商补丁；限制管理接口访问并过滤security_5g参数",
+   "action_zh": "升级最新固件；无法升级则限制管理接口并关闭远程管理",
    "repro_worthy": "一般",
-   "repro_note": "访问/goform/WifiBasicSet，构造超长security_5g参数",
-   "impact_scope": "家用/小型路由，管理面暴露风险",
+   "repro_note": "向/goform/WifiBasicSet的security_5g传超长值",
+   "impact_scope": "家用WiFi路由器，管理口暴露",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114268",
    "description": "A flaw has been found in Tenda BE3L Pro 16.03.60.62. Affected by this vulnerability is the function formWifiBasicSet of the file /goform/WifiBasicSet. This manipulation of the argument security_5g causes buffer overflow. It is possible to initiate the attack remotely. The exploit has been published and may be used."
   },
   {
-   "id": "CVE-2026-76473",
+   "id": "CVE-2026-96639",
    "tier": "critical",
-   "title": "Cisco网络设备注入漏洞",
-   "title_zh": "Cisco网络设备注入漏洞",
-   "summary_zh": "Cisco多款网络设备存在注入类缺陷，可能被远程利用，具体入口未明。",
-   "published": "2026-10-21T17:19:06.973",
+   "title": "Pillow 图像解析越界写",
+   "title_zh": "Pillow 图像解析越界写",
+   "summary_zh": "攻击者用特制PSD/MPO/DCX/MIC图片触发帧转换越界写，可致崩溃或代码执行",
+   "published": "2026-10-21T21:20:32.217",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "注入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Cisco(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-voice-hardening-twgbH9e3"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "跟踪Cisco修复公告并升级受影响产品",
-   "repro_worthy": "一般",
-   "repro_note": "需确认受影响产品与接口，按公告复现注入路径",
-   "impact_scope": "Cisco网络设备，受影响面待确认",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76473",
-   "description": "This review resulted in software hardening releases that address multiple internally discovered vulnerabilities. The vulnerabilities tracked by CVE-2026-76473 are related to issues concerning improper control of a resource through its lifetime that are grouped under the Common Weakness Enumeration (CWE) Class CWE-74."
-  },
-  {
-   "id": "CVE-2026-76474",
-   "tier": "critical",
-   "title": "Cisco网络设备认证绕过",
-   "title_zh": "Cisco网络设备认证绕过",
-   "summary_zh": "Cisco多款网络设备存在认证绕过，远程攻击者可能未授权访问，细节待公告。",
-   "published": "2026-10-21T17:19:07.113",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Cisco(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-voice-hardening-twgbH9e3"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "跟踪并升级Cisco修复版本；临时收紧管理面访问",
-   "repro_worthy": "一般",
-   "repro_note": "需确认受影响型号与入口，按公告验证认证绕过",
-   "impact_scope": "Cisco网络设备，管理面风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76474",
-   "description": "This review resulted in software hardening releases that address multiple internally discovered vulnerabilities. The vulnerabilities tracked by CVE-2026-76474 are related to issues concerning improper authentication that are grouped under the Common Weakness Enumeration (CWE) Class CWE-287."
-  },
-  {
-   "id": "CVE-2026-111183",
-   "tier": "critical",
-   "title": "GStreamer堆溢出致代码执行",
-   "title_zh": "GStreamer堆溢出致代码执行",
-   "summary_zh": "远程攻击者可通过恶意媒体触发堆溢出，在当前进程执行任意代码。",
-   "published": "2026-10-21T18:17:23.477",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "堆溢出"
+    "越界读取",
+    "越界写入"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -422,11 +351,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/80c184b4c5ee8ba28b2540ba58f40b8d44b61622"
+     "url": "https://github.com/python-pillow/Pillow/commit/78d97d994579aef81aafe123773d525f40f2522a"
     },
     {
      "label": "参考",
-     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-775/"
+     "url": "https://github.com/python-pillow/Pillow/pull/10105"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
     }
    ],
    "poc": [],
@@ -437,75 +370,14 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至修复版本；避免处理不可信媒体文件",
+   "action_zh": "升级至最新修复版本，限制不可信图片解析",
    "repro_worthy": "一般",
-   "repro_note": "构造恶意媒体流触发堆溢出，需目标解析该媒体",
-   "impact_scope": "多媒体处理库，广泛集成",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111183",
-   "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of GStreamer. An attacker can leverage this vulnerability to execute code in the context of the current process."
+   "repro_note": "解析特制PSD/MPO/DCX/MIC图像，触发帧转换越界",
+   "impact_scope": "Python图像库，广泛依赖",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96639",
+   "description": "Pillow is a Python imaging library. Crafted PSD, MPO, DCX, or MIC frame transitions can then write wider pixels into the narrow allocation, causing native out-of-bounds writes and crashes."
   }
  ],
  "media": [],
- "commits": [
-  {
-   "repo": "openssl/openssl",
-   "sha": "df40f231a4c58335868b330ccfabe124e01c1ad6",
-   "url": "https://github.com/openssl/openssl/commit/df40f231a4c58335868b330ccfabe124e01c1ad6",
-   "title": "CHANGES.md, NEWS.md: 4.0.3 fixups",
-   "date": "2026-10-21T16:41:05",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-54872"
-  },
-  {
-   "repo": "openssl/openssl",
-   "sha": "99068b5cc79307c52389afc39d87e6899305deea",
-   "url": "https://github.com/openssl/openssl/commit/99068b5cc79307c52389afc39d87e6899305deea",
-   "title": "CHANGES.md, NEWS.md: update for 4.0.3",
-   "date": "2026-10-21T16:41:03",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-35189"
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "3584a98bda0f2c0d367255b046798b0d3a221a19",
-   "url": "https://github.com/php/php-src/commit/3584a98bda0f2c0d367255b046798b0d3a221a19",
-   "title": "Avoid state corruption via bailout",
-   "date": "2026-10-21T14:06:22",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-109618"
-  },
-  {
-   "repo": "curl/curl",
-   "sha": "c4f294a5b3a04ef6295499e9a14597f9855fc986",
-   "url": "https://github.com/curl/curl/commit/c4f294a5b3a04ef6295499e9a14597f9855fc986",
-   "title": "curl_memrchr: keep reverse searches within the buffer",
-   "date": "2026-10-21T20:29:13",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/ofbiz-framework",
-   "sha": "fac9b4c8bf2c0fc8acae6ebd75eeb8d8be4dd9fc",
-   "url": "https://github.com/apache/ofbiz-framework/commit/fac9b4c8bf2c0fc8acae6ebd75eeb8d8be4dd9fc",
-   "title": "Improved: Group the security fixes and security hardening in the release notes (OFBIZ-13696)",
-   "date": "2026-10-21T16:58:04",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  }
- ]
+ "commits": []
 }
