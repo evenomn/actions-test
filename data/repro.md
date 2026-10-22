@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-22 00:03 UTC · 共 **121** 条(强烈推荐 18 / 值得 103)
+**更新**: 2026-10-22 01:50 UTC · 共 **124** 条(强烈推荐 19 / 值得 105)
 
 ---
 
@@ -97,6 +97,14 @@ PoC: [HackSpeak/CVE-2026-67279 5★(有源码)](https://github.com/HackSpeak/CVE
 影响: strapi strapi >=3.2.1 <4.8.0
 PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-Hakimi/CVE-2023-22894) · [maxntv/CVE-2023-22894-PoC 0★(有源码)](https://github.com/maxntv/CVE-2023-22894-PoC) · [NVD exploit 引用](https://www.ghostccamm.com/blog/multi_strapi_vulns/)
 参考: [参考](https://github.com/strapi/strapi/releases) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-22894)
+
+### GitLab未认证RCE整数溢出
+[CVE-2026-110264](https://nvd.nist.gov/vuln/detail/CVE-2026-110264) | P1 重点关注 | 开发运维/CI | CVSS 10.0 | 披露 2026-10-22 | 入库 2026-10-22
+未认证用户可通过特制请求触发整数溢出，在GitLab服务器执行任意代码
+复现: 强烈推荐 — 未授权入口，构造特制编译请求触发整数溢出 · 影响面: 内网GitLab，代码仓库与CI核心
+处置: 升级至18.11.13/19.3.6/19.4.3/19.5.1等修复版
+影响: GitLab(产品与版本待 NVD/厂商补充)
+参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/633633) · [参考](https://hackerone.com/reports/4093475)
 
 ### GitLab 未认证CI正则RCE
 [CVE-2026-97229](https://nvd.nist.gov/vuln/detail/CVE-2026-97229) | P1 重点关注 | 开发运维/CI | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-13
@@ -440,6 +448,26 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### PHP请求内存UAF代码执行
+[CVE-2026-109619](https://nvd.nist.gov/vuln/detail/CVE-2026-109619) | P1 重点关注 | 安全设备 | CVSS 9.8 | 披露 2026-10-21 | 入库 2026-10-22
+PoC 源码可用 | 开源,可源码审计复现
+攻击者可通过多种请求策略触发请求内存悬垂，导致PHP进程RCE
+复现: 值得 — 构造请求触发全局状态指向请求内存后释放 · 影响面: PHP Web应用运行时
+处置: 升级PHP 8.2.35/8.3.36及以上修复版
+影响: php php <8.2.35; php php >=8.3.0 <8.3.36
+PoC: [eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 614★(有源码)](https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC) · [syhunt/php2shell-protection 63★(有源码)](https://github.com/syhunt/php2shell-protection)
+参考: [厂商通告](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp) · [参考](http://www.openwall.com/lists/oss-security/2026/10/21/16) · [参考](http://www.openwall.com/lists/oss-security/2026/10/21/17)
+
+### PHP OOM长跳转RCE
+[CVE-2026-109618](https://nvd.nist.gov/vuln/detail/CVE-2026-109618) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-21 | 入库 2026-10-22
+nuclei 模板 | PoC 源码可用 | 开源,可源码审计复现
+攻击者可通过OOM策略触发longjmp退出路径，导致PHP进程RCE
+复现: 值得 — 通过OOM策略触发longjmp退出，破坏请求上下文 · 影响面: PHP Web应用运行时
+处置: 升级PHP 8.2.35/8.3.36及以上修复版
+影响: php php <8.2.35; php php >=8.3.0 <8.3.36
+PoC: [ikow/php2shell-poc 1008★(仅README)](https://github.com/ikow/php2shell-poc) · [eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 614★(有源码)](https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC)
+参考: [厂商通告](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w) · [参考](http://www.openwall.com/lists/oss-security/2026/10/21/6) · [参考](https://www.wiz.io/blog/php2shell-php-rce)
 
 ### WebLogic Core未授权高危
 [CVE-2026-91323](https://nvd.nist.gov/vuln/detail/CVE-2026-91323) | P1 重点关注 | Web中间件 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20

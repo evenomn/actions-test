@@ -3,81 +3,272 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 22 Oct 2026 00:03:15 +0000</pubDate>
-    <lastBuildDate>Thu, 22 Oct 2026 00:03:15 +0000</lastBuildDate>
+    <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    <lastBuildDate>Thu, 22 Oct 2026 01:50:04 +0000</lastBuildDate>
     <item>
-      <title>[critical]Oracle Java SE 未授权远程漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91403</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91403-2026-10-22</guid>
-      <description>CVE-2026-91403 · 🎯P0 立即处置 · 披露 2026-10-21 · CVSS 9.1 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK…
-信号:</description>
-      <pubDate>Thu, 22 Oct 2026 00:03:15 +0000</pubDate>
+      <title>[critical]GitLab未认证RCE整数溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110264</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110264-2026-10-22</guid>
+      <description>CVE-2026-110264 · 🎯P1 重点关注 · 披露 2026-10-22 · 组件 开发运维/CI · CVSS 10.0 · 类型 整数溢出 · 难度 低(远程·免认证)
+An issue has been discovered in GitLab CE/EE affecting all versions from 7.0 before 18.11.13, 19.0 before 19.0.10, 19.1 before 19.1.9, 19.2 before 19.2.9, 19.3 …
+信号: 关注词:gitlab</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]ATS 源站认证签名越权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111812</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111812-2026-10-22</guid>
-      <description>CVE-2026-111812 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 10.0 · 类型 授权错误 · 难度 低(远程·免认证)
-Apache Traffic Server's origin_server_auth plugin lets a client force signing of attacker-chosen AWS request headers under the proxy's own credentials.
-信号:</description>
-      <pubDate>Thu, 22 Oct 2026 00:03:15 +0000</pubDate>
+      <title>[high]GitLab SAML/LDAP账号接管</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-15723</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-15723-2026-10-22</guid>
+      <description>CVE-2026-15723 · 🎯P2 保持关注 · 披露 2026-10-22 · 组件 开发运维/CI · CVSS 8.2 · 类型 CWE-90 · 难度 中(远程·利用条件苛刻·需低权限)
+GitLab has remediated an issue in GitLab CE/EE affecting all versions from 10.1 before 19.3.6, 19.4 before 19.4.3, and 19.5 before 19.5.1 that, when OmniAuth SA…
+信号: 关注词:gitlab</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]ATS TLS会话复用证书混淆</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111814</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111814-2026-10-22</guid>
-      <description>CVE-2026-111814 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 10.0 · 类型 证书校验缺陷 · 难度 低(远程·免认证)
-Apache Traffic Server's default outbound session-sharing policy can reuse a pooled TLS session authenticated with one client certificate for a transaction confi…
-信号:</description>
-      <pubDate>Thu, 22 Oct 2026 00:03:15 +0000</pubDate>
+      <title>[high]GitLab OAuth缓存投毒</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112212</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112212-2026-10-22</guid>
+      <description>CVE-2026-112212 · 🎯P2 保持关注 · 披露 2026-10-22 · 组件 开发运维/CI · CVSS 7.5 · 类型 HTTP请求走私 · 难度 中(远程·利用条件苛刻·免认证·需用户交互)
+GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.3 before 19.3.6, 19.4 before 19.4.3, and 19.5 before 19.5.1 that, under certain co…
+信号: 关注词:gitlab</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]ATS SNI跨虚拟主机证书绕过</title>
+      <title>[critical]PHP请求内存UAF代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109619</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109619-2026-10-22</guid>
+      <description>CVE-2026-109619 · 🎯P1 重点关注 · 披露 2026-10-21 · 组件 安全设备 · CVSS 9.8 · 类型 释放后重用(UAF)/CWE-755 · 难度 低(远程·免认证)
+Multiple strategies can trigger this condition and produce remote code execution (RCE).
+信号: 有PoC
+[eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 614★(有源码)](https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC) · [syhunt/php2shell-protection 63★(有源码)](https://github.com/syhunt/php2shell-protection)</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]PHP OOM长跳转RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109618</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109618-2026-10-22</guid>
+      <description>CVE-2026-109618 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 9.8 · 类型 释放后重用(UAF)/CWE-755 · 难度 低(远程·免认证)
+Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).
+信号: 有PoC | nuclei 模板
+[ikow/php2shell-poc 1008★(仅README)](https://github.com/ikow/php2shell-poc) · [eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 614★(有源码)](https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC)</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]WP Mailster任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111832</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111832-2026-10-22</guid>
+      <description>CVE-2026-111832 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 10.0 · 类型 任意文件上传 · 难度 低(远程·免认证)
+Unrestricted Upload of File with Dangerous Type vulnerability in WP Mailster WP Mailster wp-mailster allows Upload a Web Shell to a Web Server.This issue affect…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Apache TS证书校验绕过</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111815</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111815-2026-10-22</guid>
       <description>CVE-2026-111815 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 10.0 · 类型 证书校验缺陷 · 难度 低(远程·免认证)
 Apache Traffic Server can resume a TLS session across SNI virtual hosts without re-verifying a client certificate required by the resumed host's verify_client S…
 信号:</description>
-      <pubDate>Thu, 22 Oct 2026 00:03:15 +0000</pubDate>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]TOTOLINK EX200 栈溢出</title>
+      <title>[critical]TOTOLINK EX200栈溢出</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114382</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114382-2026-10-22</guid>
       <description>CVE-2026-114382 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 10.0 · 类型 内存破坏/栈溢出 · 难度 低(远程·免认证)
 A security flaw has been discovered in TOTOLINK EX200 5.2.3c.7200. The exploit has been released to the public and may be used for attacks.
 信号:</description>
-      <pubDate>Thu, 22 Oct 2026 00:03:15 +0000</pubDate>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]TOTOLINK EX200 MAC栈溢出</title>
+      <title>[critical]TOTOLINK EX200无线ACL栈溢出</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114383</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114383-2026-10-22</guid>
       <description>CVE-2026-114383 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 10.0 · 类型 内存破坏/栈溢出 · 难度 低(远程·免认证)
 A weakness has been identified in TOTOLINK EX200 5.2.3c.7200. The exploit has been made available to the public and could be used for attacks.
 信号:</description>
-      <pubDate>Thu, 22 Oct 2026 00:03:15 +0000</pubDate>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Tenda BE3L Pro 缓冲区溢出</title>
+      <title>[critical]TOTOLINK A950RG命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114575</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114575-2026-10-22</guid>
+      <description>CVE-2026-114575 · 🎯P1 重点关注 · 披露 2026-10-22 · CVSS 10.0 · 类型 注入/命令注入 · 难度 低(远程·免认证)
+Executing a manipulation of the argument FileMd5 can lead to command injection. The exploit has been published and may be used.
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]共享存储多租户授权错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-71195</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-71195-2026-10-22</guid>
+      <description>CVE-2026-71195 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 9.9 · EPSS 0.5%,前 41% · 类型 授权错误 · 难度 低(远程·需低权限)
+This affects the following operations: allow_access: grant data-plane read/write access to another tenant's share; deny_access: revoke the owner's existing acce…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Mang Board WP任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111834</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111834-2026-10-22</guid>
+      <description>CVE-2026-111834 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 9.9 · 类型 任意文件上传 · 难度 低(远程·需低权限)
+Unrestricted Upload of File with Dangerous Type vulnerability in Kitae Park Mang Board WP mangboard allows Upload a Web Shell to a Web Server.This issue affects…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Tenda BE3L Pro缓冲区溢出</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114268</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114268-2026-10-22</guid>
       <description>CVE-2026-114268 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 9.9 · 类型 内存破坏/缓冲区溢出 · 难度 低(远程·需低权限)
 Affected by this vulnerability is the function formWifiBasicSet of the file /goform/WifiBasicSet. The exploit has been published and may be used.
 信号:</description>
-      <pubDate>Thu, 22 Oct 2026 00:03:15 +0000</pubDate>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Pillow 图像解析越界写</title>
+      <title>[critical]Cisco资源控制注入漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-76473</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-76473-2026-10-22</guid>
+      <description>CVE-2026-76473 · 🎯P1 重点关注 · 披露 2026-10-21 · 组件 网络设备 · CVSS 9.8 · 类型 注入 · 难度 低(远程·免认证)
+The vulnerabilities tracked by CVE-2026-76473 are related to issues concerning improper control of a resource through its lifetime that are grouped under the Co…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Cisco认证绕过漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-76474</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-76474-2026-10-22</guid>
+      <description>CVE-2026-76474 · 🎯P1 重点关注 · 披露 2026-10-21 · 组件 网络设备 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+The vulnerabilities tracked by CVE-2026-76474 are related to issues concerning improper authentication that are grouped under the Common Weakness Enumeration (C…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]GStreamer堆溢出RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111183</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111183-2026-10-22</guid>
+      <description>CVE-2026-111183 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
+This vulnerability allows remote attackers to execute arbitrary code on affected installations of GStreamer.
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Pillow图像解析越界写</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96639</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96639-2026-10-22</guid>
       <description>CVE-2026-96639 · 🎯P1 重点关注 · 披露 2026-10-21 · 组件 开发库/依赖 · CVSS 9.8 · 类型 越界读取/越界写入 · 难度 低(远程·免认证)
 Crafted PSD, MPO, DCX, or MIC frame transitions can then write wider pixels into the narrow allocation, causing native out-of-bounds writes and crashes.
 信号:</description>
-      <pubDate>Thu, 22 Oct 2026 00:03:15 +0000</pubDate>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Lagoon ssh服务命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113788</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113788-2026-10-22</guid>
+      <description>CVE-2026-113788 · 🎯P1 重点关注 · 披露 2026-10-21 · 组件 容器/虚拟化 · CVSS 9.4 · 类型 命令注入(RCE) · 难度 低(远程·需低权限)
+Versions prior to 2.33.1 have a vulnerability in the ssh service in Lagoon core that would allow an attacker to execute arbitrary code which could lead to, am…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Ajax Search Lite盲SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111852</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111852-2026-10-22</guid>
+      <description>CVE-2026-111852 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 9.3 · 类型 SQL注入 · 难度 低(远程·免认证)
+Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in WPdreams Ajax Search Lite ajax-search-lite allows Blind SQ…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Cisco Web界面XSS</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-76475</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-76475-2026-10-22</guid>
+      <description>CVE-2026-76475 · 🎯P1 重点关注 · 披露 2026-10-21 · 组件 网络设备 · CVSS 9.3 · 类型 XSS · 难度 低(远程·免认证·需用户交互)
+The vulnerabilities tracked by CVE-2026-76475 are related to issues concerning improper neutralization of input during web page generation that are grouped unde…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ATS 响应走私致缓存投毒</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111816</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111816-2026-10-22</guid>
+      <description>CVE-2026-111816 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 9.3 · 类型 HTTP请求走私 · 难度 低(远程·免认证)
+Apache Traffic Server forwarded a malformed 302 response that should have been rejected as a parse error, because the Transfer-Encoding: chunked carve-out bypas…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ATS HEAD 请求走私</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111809</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111809-2026-10-22</guid>
+      <description>CVE-2026-111809 · 🎯P1 重点关注 · 披露 2026-10-21 · 组件 开发库/依赖 · CVSS 9.3 · 类型 HTTP请求走私 · 难度 低(远程·免认证)
+Apache Traffic Server allows request smuggling via HEAD requests that carry Content-Length or Transfer-Encoding.
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Apache 多角色令牌校验绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105869</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105869-2026-10-22</guid>
+      <description>CVE-2026-105869 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 9.2 · 类型 签名校验错误 · 难度 低(远程·利用条件苛刻·免认证)
+As a result, in deployments that use MultiRolesTokenAuthorizationProvider together with a non-empty anonymousUserRole and that permit this fallback, an unauthen…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TokenGuard 非字符串凭证认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114509</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114509-2026-10-22</guid>
+      <description>CVE-2026-114509 · 🎯P1 重点关注 · 披露 2026-10-21 · 组件 Web框架 · CVSS 9.2 · 类型 认证绕过/CWE-1287 · 难度 低(远程·利用条件苛刻·免认证)
+Under affected MySQL or MariaDB configurations, the authentication lookup can match an unintended existing user, allowing an unauthenticated attacker to bypass …
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Acronis ACI 授权检查不当</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-87095</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-87095-2026-10-22</guid>
+      <description>CVE-2026-87095 · 🎯P1 重点关注 · 披露 2026-10-21 · 组件 ERP/业务系统 · CVSS 9.1 · 类型 授权错误 · 难度 低(远程·免认证)
+Sensitive information disclosure and manipulation due to improper authorization checks.
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Tunnel路由碰撞绕过中间件鉴权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114139</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114139-2026-10-22</guid>
+      <description>CVE-2026-114139 · 🎯P1 重点关注 · 披露 2026-10-21 · 组件 Web框架 · CVSS 9.1 · 类型 CWE-693 · 难度 低(远程·利用条件苛刻·免认证)
+When an application route directly collides with the tunnel path or a root dynamic segment resolves under it, an unauthenticated request can reach that route wi…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Cisco 网络设备越界写入漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-20043</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-20043-2026-10-22</guid>
+      <description>CVE-2026-20043 · 🎯P1 重点关注 · 披露 2026-10-21 · 组件 网络设备 · CVSS 9.0 · 类型 越界写入 · 难度 低(远程·利用条件苛刻·免认证)
+The vulnerabilities tracked by CVE-2026-20043 are related to issues concerning out-of-bounds writes that are grouped under the Common Weakness Enumeration (CWE)…
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ATS tsmemcache 未授权读写</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111811</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111811-2026-10-22</guid>
+      <description>CVE-2026-111811 · 🎯P1 重点关注 · 披露 2026-10-21 · CVSS 9.0 · 类型 缺失认证 · 难度 低(远程·利用条件苛刻·免认证)
+Apache Traffic Server's experimental tsmemcache plugin allows unauthenticated network read, write, and deletion of the shared proxy cache.
+信号:</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>今日要点</title>
+      <description>- 未见在野利用/勒索软件标记，避免误报。
+- PHP高危UAF已有POC及模板，应优先修复。
+- 立即处置PHP &lt;8.2.35及8.3.x&lt;8.3.36。
+- 批量公告：GitLab多枚高危，需核资产。
+- 多个10.0分漏洞缺版本信息，先排查暴露面。</description>
+      <pubDate>Thu, 22 Oct 2026 01:50:04 +0000</pubDate>
     </item>
   </channel>
 </rss>
