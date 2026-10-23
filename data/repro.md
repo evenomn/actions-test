@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-22 20:38 UTC · 共 **127** 条(强烈推荐 19 / 值得 108)
+**更新**: 2026-10-23 00:01 UTC · 共 **128** 条(强烈推荐 20 / 值得 108)
 
 ---
 
@@ -97,6 +97,14 @@ PoC: [HackSpeak/CVE-2026-67279 5★(有源码)](https://github.com/HackSpeak/CVE
 影响: strapi strapi >=3.2.1 <4.8.0
 PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-Hakimi/CVE-2023-22894) · [maxntv/CVE-2023-22894-PoC 0★(有源码)](https://github.com/maxntv/CVE-2023-22894-PoC) · [NVD exploit 引用](https://www.ghostccamm.com/blog/multi_strapi_vulns/)
 参考: [参考](https://github.com/strapi/strapi/releases) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-22894)
+
+### AAD App Proxy认证绕过提权
+[CVE-2026-97785](https://nvd.nist.gov/vuln/detail/CVE-2026-97785) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-22 | 入库 2026-10-23
+未授权攻击者可经网络绕过认证，提升AAD App Proxy权限
+复现: 强烈推荐 — 未授权访问AAD App Proxy认证端点，构造请求绕过 · 影响面: 身份代理边界，常暴露公网
+处置: 应用微软修复，审计App Proxy认证日志与权限
+影响: Microsoft(产品与版本待 NVD/厂商补充)
+参考: [参考](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-97785)
 
 ### GitLab未认证RCE整数溢出
 [CVE-2026-110264](https://nvd.nist.gov/vuln/detail/CVE-2026-110264) | P1 重点关注 | 开发运维/CI | CVSS 10.0 | 披露 2026-10-22 | 入库 2026-10-22
