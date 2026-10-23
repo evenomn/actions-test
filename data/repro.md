@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-23 06:07 UTC · 共 **128** 条(强烈推荐 20 / 值得 108)
+**更新**: 2026-10-23 14:18 UTC · 共 **129** 条(强烈推荐 20 / 值得 109)
 
 ---
 
@@ -456,6 +456,15 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### OpenWrt odhcpd预认证栈溢出
+[CVE-2026-53921](https://nvd.nist.gov/vuln/detail/CVE-2026-53921) | P1 重点关注 | 网络设备 | CVSS 9.8 | 披露 2026-10-23 | 入库 2026-10-23
+PoC 源码可用
+同一调用链两处栈溢出，单个未认证UDP包可触发，可致拒绝服务或代码执行
+复现: 值得 — 向odhcpd监听的DHCPv6/DHCPv4 UDP端口发构造包 · 影响面: OpenWrt路由，局域网DHCP服务
+处置: 升级OpenWrt/odhcpd至修复版；限制UDP服务暴露
+PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy/CVE-2026-53921-PoC-Exploit) · [0xBlackash/CVE-2026-53921 2★(有源码)](https://github.com/0xBlackash/CVE-2026-53921)
+参考: [参考](https://github.com/openwrt/odhcpd/commit/0320032ae313452f3c8cb8725c621dd06c36dc03) · [参考](https://github.com/openwrt/odhcpd/commit/03dacc23356b5789842b9d1bba0200fd005e35f3) · [参考](https://github.com/openwrt/odhcpd/commit/2a42d34c3615e2449ca273f673eee7c429d819a9)
 
 ### PHP请求内存UAF代码执行
 [CVE-2026-109619](https://nvd.nist.gov/vuln/detail/CVE-2026-109619) | P1 重点关注 | 安全设备 | CVSS 9.8 | 披露 2026-10-21 | 入库 2026-10-22

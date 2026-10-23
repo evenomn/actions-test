@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-23T06:07:15+00:00",
- "count": 128,
+ "updated_at": "2026-10-23T14:18:37+00:00",
+ "count": 129,
  "count_recommended": 20,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -2377,6 +2377,59 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-53921",
+   "title": "OpenWrt odhcpd预认证栈溢出",
+   "first_seen": "2026-10-23",
+   "last_seen": "2026-10-23",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-23",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "向odhcpd监听的DHCPv6/DHCPv4 UDP端口发构造包",
+   "impact_scope": "OpenWrt路由，局域网DHCP服务",
+   "action_zh": "升级OpenWrt/odhcpd至修复版；限制UDP服务暴露",
+   "summary_zh": "同一调用链两处栈溢出，单个未认证UDP包可触发，可致拒绝服务或代码执行",
+   "category": "网络设备",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/tc4dy/CVE-2026-53921-PoC-Exploit",
+     "label": "tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)"
+    },
+    {
+     "url": "https://github.com/0xBlackash/CVE-2026-53921",
+     "label": "0xBlackash/CVE-2026-53921 2★(有源码)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/openwrt/odhcpd/commit/0320032ae313452f3c8cb8725c621dd06c36dc03"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/openwrt/odhcpd/commit/03dacc23356b5789842b9d1bba0200fd005e35f3"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/openwrt/odhcpd/commit/2a42d34c3615e2449ca273f673eee7c429d819a9"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-53921",
    "change_note": null
   },
   {
