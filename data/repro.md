@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-23 14:18 UTC · 共 **129** 条(强烈推荐 20 / 值得 109)
+**更新**: 2026-10-23 20:32 UTC · 共 **130** 条(强烈推荐 20 / 值得 110)
 
 ---
 
@@ -197,6 +197,15 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://gi
 PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026-5430) · [HORKimhab/CVE-2026-5430 0★(仅README)](https://github.com/HORKimhab/CVE-2026-5430)
 参考: [厂商通告](https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2026-5328/)
 
+### VeloCloud编排器SQL注入可远程利用
+[CVE-2026-114625](https://nvd.nist.gov/vuln/detail/CVE-2026-114625) | P0 立即处置 | CVSS 9.9 | EPSS 0.6% | 披露 2026-10-22 | 入库 2026-10-23
+🔥 KEV 在野利用,限期 2026-10-26
+远程攻击者可通过对外接口注入SQL，访问内部特权功能，危及编排器及其管理数据的机密性、完整性与可用性
+复现: 值得 — 针对on-prem VCO对外接口构造SQL注入参数验证，需自建实例 · 影响面: SD-WAN编排器，内网管理面核心设备
+处置: 升级至5.2.3.18或6.1.3.10以上，并限制VCO管理接口公网暴露
+影响: arista velocloud_orchestrator >=5.2.0 <5.2.3.18; arista velocloud_orchestrator >=6.1.0 <6.1.3.10
+参考: [厂商通告](https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114625)
+
 ### BeyondTrust 认证欺骗致文件操作
 [CVE-2026-102764](https://nvd.nist.gov/vuln/detail/CVE-2026-102764) | P0 立即处置 | CVSS 9.8 | EPSS 0.6% | 披露 2026-10-15 | 入库 2026-10-16
 🔥 KEV 在野利用,限期 2026-10-19 | 有PoC
@@ -236,6 +245,15 @@ PoC: [ShadowForge-Cyber/CVE-2026-104286-POC 0★(仅README)](https://github.com/
 🔥 KEV 在野利用,限期 2026-10-05 | 开源,可源码审计复现
 复现: 值得
 影响: zammad zammad >=6.3.0 <6.5.4; zammad zammad >=7.0.0 <=7.1.3
+
+### Collabora命令注入可远程执行代码
+[CVE-2026-110447](https://nvd.nist.gov/vuln/detail/CVE-2026-110447) | P0 立即处置 | CVSS 9.2 | EPSS 1.2% | 披露 2026-10-14 | 入库 2026-10-14
+🔥 KEV 在野利用,限期 2026-10-26 | PoC 源码可用
+攻击者可在CODE服务未运行时经proxy.php注入系统命令，远程执行代码控制Nextcloud服务器
+复现: 值得 — 先使CODE服务停止，再向proxy.php提交命令注入参数 · 影响面: Nextcloud协作文档组件，常暴露公网
+处置: 升级至26.4.303以上，或临时停用内置CODE服务
+PoC: [adriyansyah-mf/cve-2026-110447 0★(有源码)](https://github.com/adriyansyah-mf/cve-2026-110447) · [sstrobl-osm/php2shell-tools 0★(有源码)](https://github.com/sstrobl-osm/php2shell-tools)
+参考: [参考](https://github.com/CollaboraOnline/richdocumentscode/issues/354) · [参考](https://help.nextcloud.com/t/to-collabora-built-in-user-update-asap/250516) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-110447)
 
 ### Adobe Commerce and Magento Incorrect Authorization Vulnerability 
 [CVE-2026-71362](https://nvd.nist.gov/vuln/detail/CVE-2026-71362) | P0 立即处置 | CMS | CVSS 9.1 | EPSS 87.5% | 披露 2026-08-11 | 入库 2026-10-01
@@ -787,13 +805,6 @@ PoC: [ikow/php2shell-poc 1008★(仅README)](https://github.com/ikow/php2shell-p
 复现: 值得
 影响: Apache(产品与版本待 NVD/厂商补充)
 参考: [参考](https://lists.apache.org/thread.html/gmbsmrs2lycl9nld7rd0h1r1fc4t75qr) · [参考](http://www.openwall.com/lists/oss-security/2026/10/07/27)
-
-### Collabora CODE 命令注入RCE
-[CVE-2026-110447](https://nvd.nist.gov/vuln/detail/CVE-2026-110447) | P0 立即处置 | CVSS 9.2 | 披露 2026-10-14 | 入库 2026-10-14
-攻击者可在CODE服务未运行时通过proxy.php注入OS命令远程执行代码，已在野利用
-复现: 值得 — 在CODE服务停止或刚重启窗口请求proxy.php注入命令 · 影响面: Nextcloud文档服务，常暴露内网/公网
-处置: 升级到26.4.303及以上；无法升级时先禁用CODE组件
-参考: [参考](https://github.com/CollaboraOnline/richdocumentscode/issues/354) · [参考](https://help.nextcloud.com/t/to-collabora-built-in-user-update-asap/250516)
 
 ### CVE-2026-73642
 [CVE-2026-73642](https://nvd.nist.gov/vuln/detail/CVE-2026-73642) | CVSS 9.2 | 披露 2026-09-28 | 入库 2026-10-08

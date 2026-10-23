@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-23T14:18:37+00:00",
- "count": 129,
+ "updated_at": "2026-10-23T20:32:00+00:00",
+ "count": 130,
  "count_recommended": 20,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -919,6 +919,46 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-114625",
+   "title": "VeloCloud编排器SQL注入可远程利用",
+   "first_seen": "2026-10-23",
+   "last_seen": "2026-10-23",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-22",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "针对on-prem VCO对外接口构造SQL注入参数验证，需自建实例",
+   "impact_scope": "SD-WAN编排器，内网管理面核心设备",
+   "action_zh": "升级至5.2.3.18或6.1.3.10以上，并限制VCO管理接口公网暴露",
+   "summary_zh": "远程攻击者可通过对外接口注入SQL，访问内部特权功能，危及编排器及其管理数据的机密性、完整性与可用性",
+   "category": null,
+   "cvss": 9.9,
+   "epss": 0.00555,
+   "difficulty": "低(远程·需低权限)",
+   "kev": true,
+   "kev_due": "2026-10-26",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "arista velocloud_orchestrator >=5.2.0 <5.2.3.18; arista velocloud_orchestrator >=6.1.0 <6.1.3.10",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114625"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114625",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-102764",
    "title": "BeyondTrust 认证欺骗致文件操作",
    "first_seen": "2026-10-16",
@@ -1123,6 +1163,59 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102489",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-110447",
+   "title": "Collabora命令注入可远程执行代码",
+   "first_seen": "2026-10-14",
+   "last_seen": "2026-10-23",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-14",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "先使CODE服务停止，再向proxy.php提交命令注入参数",
+   "impact_scope": "Nextcloud协作文档组件，常暴露公网",
+   "action_zh": "升级至26.4.303以上，或临时停用内置CODE服务",
+   "summary_zh": "攻击者可在CODE服务未运行时经proxy.php注入系统命令，远程执行代码控制Nextcloud服务器",
+   "category": null,
+   "cvss": 9.2,
+   "epss": 0.01225,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "kev": true,
+   "kev_due": "2026-10-26",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/adriyansyah-mf/cve-2026-110447",
+     "label": "adriyansyah-mf/cve-2026-110447 0★(有源码)"
+    },
+    {
+     "url": "https://github.com/sstrobl-osm/php2shell-tools",
+     "label": "sstrobl-osm/php2shell-tools 0★(有源码)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/CollaboraOnline/richdocumentscode/issues/354"
+    },
+    {
+     "label": "参考",
+     "url": "https://help.nextcloud.com/t/to-collabora-built-in-user-update-asap/250516"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-110447"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110447",
    "change_note": null
   },
   {
@@ -4590,46 +4683,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92414",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-110447",
-   "title": "Collabora CODE 命令注入RCE",
-   "first_seen": "2026-10-14",
-   "last_seen": "2026-10-14",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-10-14",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "值得",
-   "repro_note": "在CODE服务停止或刚重启窗口请求proxy.php注入命令",
-   "impact_scope": "Nextcloud文档服务，常暴露内网/公网",
-   "action_zh": "升级到26.4.303及以上；无法升级时先禁用CODE组件",
-   "summary_zh": "攻击者可在CODE服务未运行时通过proxy.php注入OS命令远程执行代码，已在野利用",
-   "category": null,
-   "cvss": 9.2,
-   "epss": null,
-   "difficulty": "低(远程·利用条件苛刻·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/CollaboraOnline/richdocumentscode/issues/354"
-    },
-    {
-     "label": "参考",
-     "url": "https://help.nextcloud.com/t/to-collabora-built-in-user-update-asap/250516"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110447",
    "change_note": null
   },
   {

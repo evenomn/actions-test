@@ -1,21 +1,21 @@
 {
  "version": 3,
- "generated_at": "2026-10-23T14:18:37+00:00",
+ "generated_at": "2026-10-23T20:32:00+00:00",
  "lookback_hours": 5,
- "count": 13,
+ "count": 4,
  "stats": {
-  "total": 13,
+  "total": 4,
   "by_tier": {
-   "critical": 13
+   "critical": 4
   },
   "by_urgency": {
-   "P1 重点关注": 13
+   "P0 立即处置": 2,
+   "P1 重点关注": 2
   },
   "by_category": {
-   "未知": 12,
-   "网络设备": 1
+   "未知": 4
   },
-  "kev": 0,
+  "kev": 2,
   "with_poc": 1,
   "with_poc_source": 1,
   "repro_recommended": 0
@@ -23,552 +23,193 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-53921",
+   "id": "CVE-2026-114625",
    "tier": "critical",
-   "title": "OpenWrt odhcpd预认证栈溢出",
-   "title_zh": "OpenWrt odhcpd预认证栈溢出",
-   "summary_zh": "同一调用链两处栈溢出，单个未认证UDP包可触发，可致拒绝服务或代码执行",
-   "published": "2026-10-23T14:17:53.710",
-   "cvss": 9.8,
+   "title": "VeloCloud编排器SQL注入可远程利用",
+   "title_zh": "VeloCloud编排器SQL注入可远程利用",
+   "summary_zh": "远程攻击者可通过对外接口注入SQL，访问内部特权功能，危及编排器及其管理数据的机密性、完整性与可用性",
+   "published": "2026-10-22T21:17:16.870",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.00555,
+   "epss_percentile": 0.45586,
    "cwe_labels": [
-    "栈溢出"
+    "SQL注入"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
+   "products": [
+    "arista velocloud_orchestrator"
+   ],
+   "affected": "arista velocloud_orchestrator >=5.2.0 <5.2.3.18; arista velocloud_orchestrator >=6.1.0 <6.1.3.10",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114625"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-26",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至5.2.3.18或6.1.3.10以上，并限制VCO管理接口公网暴露",
+   "repro_worthy": "值得",
+   "repro_note": "针对on-prem VCO对外接口构造SQL注入参数验证，需自建实例",
+   "impact_scope": "SD-WAN编排器，内网管理面核心设备",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114625",
+   "description": "VeloCloud Orchestrator (VCO) on-prem has a security issue where this issue may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and data managed by the orchestrator."
+  },
+  {
+   "id": "CVE-2026-110447",
+   "tier": "critical",
+   "title": "Collabora命令注入可远程执行代码",
+   "title_zh": "Collabora命令注入可远程执行代码",
+   "summary_zh": "攻击者可在CODE服务未运行时经proxy.php注入系统命令，远程执行代码控制Nextcloud服务器",
+   "published": "2026-10-14T03:17:20.683",
+   "cvss": 9.2,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.01225,
+   "epss_percentile": 0.68615,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/openwrt/odhcpd/commit/0320032ae313452f3c8cb8725c621dd06c36dc03"
+     "url": "https://github.com/CollaboraOnline/richdocumentscode/issues/354"
     },
     {
      "label": "参考",
-     "url": "https://github.com/openwrt/odhcpd/commit/03dacc23356b5789842b9d1bba0200fd005e35f3"
+     "url": "https://help.nextcloud.com/t/to-collabora-built-in-user-update-asap/250516"
     },
     {
      "label": "参考",
-     "url": "https://github.com/openwrt/odhcpd/commit/2a42d34c3615e2449ca273f673eee7c429d819a9"
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-110447"
     }
    ],
    "poc": [
     {
-     "url": "https://github.com/tc4dy/CVE-2026-53921-PoC-Exploit",
-     "label": "tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)"
+     "url": "https://github.com/adriyansyah-mf/cve-2026-110447",
+     "label": "adriyansyah-mf/cve-2026-110447 0★(有源码)"
     },
     {
-     "url": "https://github.com/0xBlackash/CVE-2026-53921",
-     "label": "0xBlackash/CVE-2026-53921 2★(有源码)"
+     "url": "https://github.com/sstrobl-osm/php2shell-tools",
+     "label": "sstrobl-osm/php2shell-tools 0★(有源码)"
     }
    ],
    "nuclei": false,
    "patched": null,
-   "kev": false,
-   "kev_due": null,
+   "kev": true,
+   "kev_due": "2026-10-26",
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级OpenWrt/odhcpd至修复版；限制UDP服务暴露",
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至26.4.303以上，或临时停用内置CODE服务",
    "repro_worthy": "值得",
-   "repro_note": "向odhcpd监听的DHCPv6/DHCPv4 UDP端口发构造包",
-   "impact_scope": "OpenWrt路由，局域网DHCP服务",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-53921",
-   "description": "odhcpd is the DHCPv6, DHCPv4, and router-advertisement server used by OpenWrt. Two independent overflow sites exist in the same call chain, both reachable from the network via a single unauthenticated UDP packet."
+   "repro_note": "先使CODE服务停止，再向proxy.php提交命令注入参数",
+   "impact_scope": "Nextcloud协作文档组件，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110447",
+   "description": "Collabora Online Built-in CODE Server before 26.4.303 (richdocumentscode), a Nextcloud app, allows remote code execution, as exploited in the wild in September and October 2026, a different vulnerability than CVE-2025-66208. This is an OS command injection in proxy.php when the CODE server isn't running (e.g., the product was recently restarted). The vulnerability is not present in standalone Collabora Online servers; only this deployment with CODE Server is affected."
   },
   {
-   "id": "CVE-2026-112846",
+   "id": "CVE-2026-77366",
    "tier": "critical",
-   "title": "Save Life主题反序列化注入",
-   "title_zh": "Save Life主题反序列化注入",
-   "summary_zh": "攻击者向主题入口提交恶意序列化数据，触发对象注入，可能导致PHP代码执行",
-   "published": "2026-10-23T13:17:06.057",
-   "cvss": 9.8,
+   "title": "obsidian-tc越权访问任意vault",
+   "title_zh": "obsidian-tc越权访问任意vault",
+   "summary_zh": "持有任意有效令牌者可传入input.vault，越权读写或删除其他租户vault数据，破坏多租户隔离",
+   "published": "2026-10-23T17:29:17Z",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
+   "vector": null,
+   "epss": 0.00308,
+   "epss_percentile": 0.22442,
    "cwe_labels": [
-    "反序列化(RCE)"
+    "越权(IDOR)",
+    "授权错误"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/theme/save-life/vulnerability/wordpress-save-life-theme-1-2-14-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
+   "affected": "npm:obsidian-tc < 1.3.1(修复: 1.3.1)",
+   "ghsa_url": "https://github.com/advisories/GHSA-84c9-qqpq-2pq5",
+   "refs": [],
    "poc": [],
    "nuclei": false,
-   "patched": null,
+   "patched": true,
    "kev": false,
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级主题至修复版；无法升级则停用该主题",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress第三方主题，站点组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112846",
-   "description": "Deserialization of Untrusted Data vulnerability in ThemeREX Group Save Life save-life allows Object Injection.This issue affects Save Life: from n/a through 1.2.14."
-  },
-  {
-   "id": "CVE-2026-112847",
-   "tier": "critical",
-   "title": "ZenSoul主题反序列化注入",
-   "title_zh": "ZenSoul主题反序列化注入",
-   "summary_zh": "攻击者向主题入口提交恶意序列化数据，触发对象注入，可能导致PHP代码执行",
-   "published": "2026-10-23T13:17:06.190",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "反序列化(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/theme/zensoul/vulnerability/wordpress-zensoul-theme-1-13-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级主题至修复版；无法升级则停用该主题",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress第三方主题，站点组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112847",
-   "description": "Deserialization of Untrusted Data vulnerability in ThemeREX ZenSoul zensoul allows Object Injection.This issue affects ZenSoul: from n/a through 1.13."
-  },
-  {
-   "id": "CVE-2026-112848",
-   "tier": "critical",
-   "title": "Hostme v2主题反序列化注入",
-   "title_zh": "Hostme v2主题反序列化注入",
-   "summary_zh": "攻击者向主题入口提交恶意序列化数据，触发对象注入，可能导致PHP代码执行",
-   "published": "2026-10-23T13:17:06.310",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "反序列化(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/theme/hostmev2/vulnerability/wordpress-hostme-v2-theme-7-0-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级主题至修复版；无法升级则停用该主题",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress第三方主题，站点组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112848",
-   "description": "Deserialization of Untrusted Data vulnerability in AivahThemes Hostme v2 hostmev2 allows Object Injection.This issue affects Hostme v2: from n/a through 7.0."
-  },
-  {
-   "id": "CVE-2026-112851",
-   "tier": "critical",
-   "title": "HotLock主题反序列化注入",
-   "title_zh": "HotLock主题反序列化注入",
-   "summary_zh": "攻击者向主题入口提交恶意序列化数据，触发对象注入，可能导致PHP代码执行",
-   "published": "2026-10-23T13:17:06.697",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "反序列化(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/theme/hotlock/vulnerability/wordpress-hotlock-theme-1-3-9-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级主题至修复版；无法升级则停用该主题",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress第三方主题，站点组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112851",
-   "description": "Deserialization of Untrusted Data vulnerability in ThemeREX Group HotLock hotlock allows Object Injection.This issue affects HotLock: from n/a through 1.3.9."
-  },
-  {
-   "id": "CVE-2026-112853",
-   "tier": "critical",
-   "title": "Hallelujah主题反序列化注入",
-   "title_zh": "Hallelujah主题反序列化注入",
-   "summary_zh": "攻击者向主题入口提交恶意序列化数据，触发对象注入，可能导致PHP代码执行",
-   "published": "2026-10-23T13:17:06.940",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "反序列化(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/theme/hallelujah/vulnerability/wordpress-hallelujah-theme-1-1-1-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级主题至修复版；无法升级则停用该主题",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress第三方主题，站点组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112853",
-   "description": "Deserialization of Untrusted Data vulnerability in axiomthemes Hallelujah hallelujah allows Object Injection.This issue affects Hallelujah: from n/a through 1.1.1."
-  },
-  {
-   "id": "CVE-2026-112854",
-   "tier": "critical",
-   "title": "Holistic Center反序列化注入",
-   "title_zh": "Holistic Center反序列化注入",
-   "summary_zh": "攻击者向主题入口提交恶意序列化数据，触发对象注入，可能导致PHP代码执行",
-   "published": "2026-10-23T13:17:07.070",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "反序列化(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/theme/holistic-center/vulnerability/wordpress-holistic-center-theme-1-2-6-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级主题至修复版；无法升级则停用该主题",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress第三方主题，站点组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112854",
-   "description": "Deserialization of Untrusted Data vulnerability in axiomthemes Holistic Center holistic-center allows Object Injection.This issue affects Holistic Center: from n/a through 1.2.6."
-  },
-  {
-   "id": "CVE-2026-112855",
-   "tier": "critical",
-   "title": "Redy主题反序列化注入",
-   "title_zh": "Redy主题反序列化注入",
-   "summary_zh": "攻击者向主题入口提交恶意序列化数据，触发对象注入，可能导致PHP代码执行",
-   "published": "2026-10-23T13:17:07.197",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "反序列化(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/theme/redy/vulnerability/wordpress-redy-theme-1-3-5-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级主题至修复版；无法升级则停用该主题",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress第三方主题，站点组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112855",
-   "description": "Deserialization of Untrusted Data vulnerability in axiomthemes Redy redy allows Object Injection.This issue affects Redy: from n/a through 1.3.5."
-  },
-  {
-   "id": "CVE-2026-112856",
-   "tier": "critical",
-   "title": "Vagabonds主题反序列化注入",
-   "title_zh": "Vagabonds主题反序列化注入",
-   "summary_zh": "攻击者向主题入口提交恶意序列化数据，触发对象注入，可能导致PHP代码执行",
-   "published": "2026-10-23T13:17:07.323",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "反序列化(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/theme/vagabonds/vulnerability/wordpress-vagabonds-theme-1-3-10-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级主题至修复版；无法升级则停用该主题",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress第三方主题，站点组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112856",
-   "description": "Deserialization of Untrusted Data vulnerability in ThemeREX Group Vagabonds vagabonds allows Object Injection.This issue affects Vagabonds: from n/a through 1.3.10."
-  },
-  {
-   "id": "CVE-2026-112857",
-   "tier": "critical",
-   "title": "Reprizo主题反序列化注入",
-   "title_zh": "Reprizo主题反序列化注入",
-   "summary_zh": "攻击者向主题入口提交恶意序列化数据，触发对象注入，可能导致PHP代码执行",
-   "published": "2026-10-23T13:17:07.447",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "反序列化(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/theme/reprizo/vulnerability/wordpress-reprizo-theme-1-0-8-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级主题至修复版；无法升级则停用该主题",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress第三方主题，站点组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112857",
-   "description": "Deserialization of Untrusted Data vulnerability in axiomthemes Reprizo reprizo allows Object Injection.This issue affects Reprizo: from n/a through 1.0.8."
-  },
-  {
-   "id": "CVE-2026-112858",
-   "tier": "critical",
-   "title": "Rhodos主题反序列化注入",
-   "title_zh": "Rhodos主题反序列化注入",
-   "summary_zh": "攻击者向主题入口提交恶意序列化数据，触发对象注入，可能导致PHP代码执行",
-   "published": "2026-10-23T13:17:07.573",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "反序列化(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/theme/rhodos/vulnerability/wordpress-rhodos-theme-1-3-3-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级主题至修复版；无法升级则停用该主题",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress第三方主题，站点组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112858",
-   "description": "Deserialization of Untrusted Data vulnerability in axiomthemes Rhodos rhodos allows Object Injection.This issue affects Rhodos: from n/a through 1.3.3."
-  },
-  {
-   "id": "CVE-2026-112859",
-   "tier": "critical",
-   "title": "Little Birdies反序列化注入",
-   "title_zh": "Little Birdies反序列化注入",
-   "summary_zh": "攻击者向主题入口提交恶意序列化数据，触发对象注入，可能导致PHP代码执行",
-   "published": "2026-10-23T13:17:07.700",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "反序列化(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/theme/little-birdies/vulnerability/wordpress-little-birdies-theme-1-3-16-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级主题至修复版；无法升级则停用该主题",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress第三方主题，站点组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112859",
-   "description": "Deserialization of Untrusted Data vulnerability in ThemeREX Group Little Birdies little-birdies allows Object Injection.This issue affects Little Birdies: from n/a through 1.3.16."
-  },
-  {
-   "id": "CVE-2026-57116",
-   "tier": "critical",
-   "title": "PraisonAI AgentOS未授权执行",
-   "title_zh": "PraisonAI AgentOS未授权执行",
-   "summary_zh": "未授权或错误Bearer请求即可调用AgentOS执行已部署Agent，导致未授权操作",
-   "published": "2026-10-23T13:17:10.690",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "信息泄露",
-    "缺失认证"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-892r-p3jq-jp24"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至4.6.59及以上；为AgentOS启用认证",
+   "action_zh": "升级obsidian-tc至1.3.1，并校验令牌vault绑定",
    "repro_worthy": "一般",
-   "repro_note": "访问AgentOS FastAPI接口，不带或伪造Bearer即可执行",
-   "impact_scope": "AI Agent部署面，常暴露内网/公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-57116",
-   "description": "From version 4.2.1 to before version 4.6.59, PraisonAI's AgentOS FastAPI deployment surface remains unauthenticated in current main and in releases after the published patched version for GHSA-pm96-6xpr-978x / CVE-2026-40151. No-auth and wrong-bearer requests both execute the deployed agent."
+   "repro_note": "持低权令牌调用工具接口，将input.vault指向他人vault",
+   "impact_scope": "内部MCP工具，多租户数据隔离面",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77366",
+   "description": "### Impact Tool dispatch did not check the caller-supplied `input.vault` against the caller's bound vault (`ctx.vaultId`); the folder ACL was a single global instance and the JWT carried no vault claim. As a result, **any valid token could read, write, or delete any configured vault** by passing `input.vault`, defeating multi-tenant isolation across ~90 tool sites."
+  },
+  {
+   "id": "CVE-2026-115812",
+   "tier": "critical",
+   "title": "AWS多模型服务器解压遍历致RCE",
+   "title_zh": "AWS多模型服务器解压遍历致RCE",
+   "summary_zh": "攻击者上传恶意模型归档，利用解压路径遍历写入任意文件，进而远程执行代码",
+   "published": "2026-10-23T18:17:21.460",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://aws.amazon.com/security/security-bulletins/2026-148-aws/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "产品已EOL且无修复，停用并迁移至受支持的模型服务方案",
+   "repro_worthy": "一般",
+   "repro_note": "向模型加载接口上传含../路径条目的归档，触发解压写入",
+   "impact_scope": "模型推理服务，EOL仍在用环境",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115812",
+   "description": "Relative path traversal during model archive extraction in Amazon Web Services Multi Model Server 1.1.11 and earlier might allow remote actors to execute arbitrary code via a crafted model archive. Multi Model Server is end of life and no fixed version is available. Users should discontinue use of Multi Model Server and migrate to a supported model serving solution."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "sqlite/sqlite",
-   "sha": "881f4fd02522c3691ab25c18aaefaf734d53362f",
-   "url": "https://github.com/sqlite/sqlite/commit/881f4fd02522c3691ab25c18aaefaf734d53362f",
-   "title": "Fix a UAF in FTS5 on a query that uses a prefix query and a ordinary term",
-   "date": "2026-10-23T12:23:36",
+   "repo": "php/php-src",
+   "sha": "a44a529d266b0152d90553582875a77445b43233",
+   "url": "https://github.com/php/php-src/commit/a44a529d266b0152d90553582875a77445b43233",
+   "title": "Fix GH-22554: ext/dom: UAF with XPath callback returning foreign-doc node",
+   "date": "2026-10-23T15:55:05",
    "score": 2,
    "matched": [
     "UAF"
@@ -576,23 +217,11 @@
    "cve": null
   },
   {
-   "repo": "apache/tomcat",
-   "sha": "99c5cef00c31294f50ad10fdc394f4c71ba2d3f0",
-   "url": "https://github.com/apache/tomcat/commit/99c5cef00c31294f50ad10fdc394f4c71ba2d3f0",
-   "title": "Review \"Deserialize the key of a backup request with the loaders ...\"",
-   "date": "2026-10-23T11:20:32",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  },
-  {
    "repo": "sqlite/sqlite",
-   "sha": "a0599e8b60502db0c21c4a3918c1596112b4d509",
-   "url": "https://github.com/sqlite/sqlite/commit/a0599e8b60502db0c21c4a3918c1596112b4d509",
-   "title": "Fix a heap-buffer overread in FTS5 due to a corrupt inverted index holding",
-   "date": "2026-10-23T09:38:43",
+   "sha": "b66207d7327254c97ceb0e7686137e2229bc1cbc",
+   "url": "https://github.com/sqlite/sqlite/commit/b66207d7327254c97ceb0e7686137e2229bc1cbc",
+   "title": "Fix a one-byte buffer overread in FTS5 associated with LIKE processing.",
+   "date": "2026-10-23T13:22:05",
    "score": 2,
    "matched": [
     "缓冲区溢出"
@@ -600,14 +229,14 @@
    "cve": null
   },
   {
-   "repo": "php/php-src",
-   "sha": "f6852befa34b1107da57d26ead79e575ccd73e2a",
-   "url": "https://github.com/php/php-src/commit/f6852befa34b1107da57d26ead79e575ccd73e2a",
-   "title": "ext/mbstring: fix over-read in php_mb_rfc1867_getword()",
-   "date": "2026-10-23T06:27:24",
+   "repo": "YunaiV/ruoyi-vue-pro",
+   "sha": "c0168a8b104fd0874d1efe6915c7d4ddc0121569",
+   "url": "https://github.com/YunaiV/ruoyi-vue-pro/commit/c0168a8b104fd0874d1efe6915c7d4ddc0121569",
+   "title": "fix(system): 批量删除部门时整批校验数据权限",
+   "date": "2026-10-23T12:43:33",
    "score": 2,
    "matched": [
-    "越界读写"
+    "提权"
    ],
    "cve": null
   }
