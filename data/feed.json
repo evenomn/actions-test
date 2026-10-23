@@ -1,151 +1,60 @@
 {
  "version": 3,
- "generated_at": "2026-10-23T20:32:00+00:00",
+ "generated_at": "2026-10-23T23:53:21+00:00",
  "lookback_hours": 5,
- "count": 4,
+ "count": 3,
  "stats": {
-  "total": 4,
+  "total": 3,
   "by_tier": {
-   "critical": 4
+   "critical": 3
   },
   "by_urgency": {
-   "P0 立即处置": 2,
-   "P1 重点关注": 2
+   "P1 重点关注": 3
   },
   "by_category": {
-   "未知": 4
+   "未知": 3
   },
-  "kev": 2,
-  "with_poc": 1,
-  "with_poc_source": 1,
+  "kev": 0,
+  "with_poc": 0,
+  "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-114625",
+   "id": "CVE-2026-115889",
    "tier": "critical",
-   "title": "VeloCloud编排器SQL注入可远程利用",
-   "title_zh": "VeloCloud编排器SQL注入可远程利用",
-   "summary_zh": "远程攻击者可通过对外接口注入SQL，访问内部特权功能，危及编排器及其管理数据的机密性、完整性与可用性",
-   "published": "2026-10-22T21:17:16.870",
+   "title": "Wasmtime编译器SSA索引溢出",
+   "title_zh": "Wasmtime编译器SSA索引溢出",
+   "summary_zh": "能提交Wasm模块者可构造含大量SSA值的函数，使Cranelift发布构建中位打包索引溢出，导致内存破坏",
+   "published": "2026-10-23T22:16:58.400",
    "cvss": 9.9,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": 0.00555,
-   "epss_percentile": 0.45586,
+   "epss": null,
+   "epss_percentile": null,
    "cwe_labels": [
-    "SQL注入"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [
-    "arista velocloud_orchestrator"
-   ],
-   "affected": "arista velocloud_orchestrator >=5.2.0 <5.2.3.18; arista velocloud_orchestrator >=6.1.0 <6.1.3.10",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114625"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-10-26",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至5.2.3.18或6.1.3.10以上，并限制VCO管理接口公网暴露",
-   "repro_worthy": "值得",
-   "repro_note": "针对on-prem VCO对外接口构造SQL注入参数验证，需自建实例",
-   "impact_scope": "SD-WAN编排器，内网管理面核心设备",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114625",
-   "description": "VeloCloud Orchestrator (VCO) on-prem has a security issue where this issue may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and data managed by the orchestrator."
-  },
-  {
-   "id": "CVE-2026-110447",
-   "tier": "critical",
-   "title": "Collabora命令注入可远程执行代码",
-   "title_zh": "Collabora命令注入可远程执行代码",
-   "summary_zh": "攻击者可在CODE服务未运行时经proxy.php注入系统命令，远程执行代码控制Nextcloud服务器",
-   "published": "2026-10-14T03:17:20.683",
-   "cvss": 9.2,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": 0.01225,
-   "epss_percentile": 0.68615,
-   "cwe_labels": [
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·利用条件苛刻·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/CollaboraOnline/richdocumentscode/issues/354"
-    },
-    {
-     "label": "参考",
-     "url": "https://help.nextcloud.com/t/to-collabora-built-in-user-update-asap/250516"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-110447"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/adriyansyah-mf/cve-2026-110447",
-     "label": "adriyansyah-mf/cve-2026-110447 0★(有源码)"
-    },
-    {
-     "url": "https://github.com/sstrobl-osm/php2shell-tools",
-     "label": "sstrobl-osm/php2shell-tools 0★(有源码)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-10-26",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至26.4.303以上，或临时停用内置CODE服务",
-   "repro_worthy": "值得",
-   "repro_note": "先使CODE服务停止，再向proxy.php提交命令注入参数",
-   "impact_scope": "Nextcloud协作文档组件，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110447",
-   "description": "Collabora Online Built-in CODE Server before 26.4.303 (richdocumentscode), a Nextcloud app, allows remote code execution, as exploited in the wild in September and October 2026, a different vulnerability than CVE-2025-66208. This is an OS command injection in proxy.php when the CODE server isn't running (e.g., the product was recently restarted). The vulnerability is not present in standalone Collabora Online servers; only this deployment with CODE Server is affected."
-  },
-  {
-   "id": "CVE-2026-77366",
-   "tier": "critical",
-   "title": "obsidian-tc越权访问任意vault",
-   "title_zh": "obsidian-tc越权访问任意vault",
-   "summary_zh": "持有任意有效令牌者可传入input.vault，越权读写或删除其他租户vault数据，破坏多租户隔离",
-   "published": "2026-10-23T17:29:17Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": 0.00308,
-   "epss_percentile": 0.22442,
-   "cwe_labels": [
-    "越权(IDOR)",
-    "授权错误"
+    "CWE-197",
+    "CWE-843"
    ],
    "difficulty": "低(远程·需低权限)",
    "products": [],
-   "affected": "npm:obsidian-tc < 1.3.1(修复: 1.3.1)",
-   "ghsa_url": "https://github.com/advisories/GHSA-84c9-qqpq-2pq5",
-   "refs": [],
+   "affected": "rust:wasmtime < 36.0.19(修复: 36.0.19); rust:wasmtime >= 37.0.0, < 43.0.0(修复: 43.0.0)",
+   "ghsa_url": "https://github.com/advisories/GHSA-897f-g5gm-fmxm",
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/bytecodealliance/wasmtime/commit/ba8f7d70caa1825b7f64fa75cd9d03f4a438dae0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/bytecodealliance/wasmtime/commit/f517bd6e890c7c1291ab9fe05d8cc0c9f11e56aa"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/bytecodealliance/wasmtime/pull/12613"
+    }
+   ],
    "poc": [],
    "nuclei": false,
    "patched": true,
@@ -154,36 +63,44 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级obsidian-tc至1.3.1，并校验令牌vault绑定",
+   "action_zh": "升级到36.0.19或43.0.0，并限制编译不可信Wasm模块",
    "repro_worthy": "一般",
-   "repro_note": "持低权令牌调用工具接口，将input.vault指向他人vault",
-   "impact_scope": "内部MCP工具，多租户数据隔离面",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77366",
-   "description": "### Impact Tool dispatch did not check the caller-supplied `input.vault` against the caller's bound vault (`ctx.vaultId`); the folder ACL was a single global instance and the JWT carried no vault claim. As a result, **any valid token could read, write, or delete any configured vault** by passing `input.vault`, defeating multi-tenant isolation across ~90 tool sites."
+   "repro_note": "构造含大量SSA值的Wasm函数，在release构建的Cranelift后端编译触发",
+   "impact_scope": "服务端Wasm运行时，多租户沙箱场景",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115889",
+   "description": "Prior to 36.0.19 and 43.0.0, the Cranelift compiler backend bit-packs SSA value indices in a way that can silently overflow in release builds when compiling a sufficiently large or specially crafted Wasm function with many SSA values. The overflow can make Cranelift reference incorrect IR values, causing arbitrary miscompilation, type confusion, and other attacker-controlled effects that may escape the Wasm sandbox on any architecture using the default Cranelift backend."
   },
   {
-   "id": "CVE-2026-115812",
+   "id": "CVE-2026-115893",
    "tier": "critical",
-   "title": "AWS多模型服务器解压遍历致RCE",
-   "title_zh": "AWS多模型服务器解压遍历致RCE",
-   "summary_zh": "攻击者上传恶意模型归档，利用解压路径遍历写入任意文件，进而远程执行代码",
-   "published": "2026-10-23T18:17:21.460",
-   "cvss": 9.8,
+   "title": "Wasmtime aarch64沙箱逃逸",
+   "title_zh": "Wasmtime aarch64沙箱逃逸",
+   "summary_zh": "能提交Wasm模块者可在aarch64引擎上构造分支跳转至用户控制偏移，逃逸沙箱后执行任意代码",
+   "published": "2026-10-23T22:16:58.820",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "路径遍历"
+    "CWE-691"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://aws.amazon.com/security/security-bulletins/2026-148-aws/"
+     "url": "https://github.com/bytecodealliance/wasmtime/commit/222ff3a65dab9aa7011f8c246937751a0bac5abd"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/bytecodealliance/wasmtime/commit/994549891c8a706cb4f2809f9d17b9f67b31e618"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/bytecodealliance/wasmtime/commit/e61df1b454be9313d61a5f8de07722a421139bbe"
     }
    ],
    "poc": [],
@@ -194,51 +111,63 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "产品已EOL且无修复，停用并迁移至受支持的模型服务方案",
+   "action_zh": "升级至最新Wasmtime，aarch64环境暂停运行不可信Wasm模块",
    "repro_worthy": "一般",
-   "repro_note": "向模型加载接口上传含../路径条目的归档，触发解压写入",
-   "impact_scope": "模型推理服务，EOL仍在用环境",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115812",
-   "description": "Relative path traversal during model archive extraction in Amazon Web Services Multi Model Server 1.1.11 and earlier might allow remote actors to execute arbitrary code via a crafted model archive. Multi Model Server is end of life and no fixed version is available. Users should discontinue use of Multi Model Server and migrate to a supported model serving solution."
+   "repro_note": "aarch64引擎下提交构造分支的Wasm模块，控制跳转偏移验证越界",
+   "impact_scope": "aarch64平台Wasm运行时，云与边缘沙箱",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115893",
+   "description": "Wasmtime is a runtime for WebAssembly. The branch can then jump to arbitrary other code at a user-controlled offset, allowing a user-controlled Wasm module to escape the sandbox on aarch64 engines using the default Cranelift backend."
+  },
+  {
+   "id": "CVE-2026-115931",
+   "tier": "critical",
+   "title": "Postiz内部函数可被越权调用",
+   "title_zh": "Postiz内部函数可被越权调用",
+   "summary_zh": "已登录用户可请求后端在已连接频道上执行任意内部helper函数，越权触达本不应暴露的接口",
+   "published": "2026-10-23T23:17:43.263",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-73",
+    "CWE-470"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gadvisory.org/advisories/PSA-2026-JNXM56"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/gitroomhq/postiz-app"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/gitroomhq/postiz-app/commit/9383f5be4d310c346e33a3748a9a7ded64c96fed"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至最新Postiz，后端函数调用增加白名单校验",
+   "repro_worthy": "一般",
+   "repro_note": "登录后调用频道函数执行接口，将函数名替换为内部helper函数",
+   "impact_scope": "内网SaaS运营平台，需有效账号",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115931",
+   "description": "Postiz lets a signed-in user ask the backend to run a function on one of their connected channels. The backend did not restrict which functions can be requested, so a user could call internal helper functions that were never meant to be reachable from the web interface."
   }
  ],
  "media": [],
- "commits": [
-  {
-   "repo": "php/php-src",
-   "sha": "a44a529d266b0152d90553582875a77445b43233",
-   "url": "https://github.com/php/php-src/commit/a44a529d266b0152d90553582875a77445b43233",
-   "title": "Fix GH-22554: ext/dom: UAF with XPath callback returning foreign-doc node",
-   "date": "2026-10-23T15:55:05",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "sqlite/sqlite",
-   "sha": "b66207d7327254c97ceb0e7686137e2229bc1cbc",
-   "url": "https://github.com/sqlite/sqlite/commit/b66207d7327254c97ceb0e7686137e2229bc1cbc",
-   "title": "Fix a one-byte buffer overread in FTS5 associated with LIKE processing.",
-   "date": "2026-10-23T13:22:05",
-   "score": 2,
-   "matched": [
-    "缓冲区溢出"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "YunaiV/ruoyi-vue-pro",
-   "sha": "c0168a8b104fd0874d1efe6915c7d4ddc0121569",
-   "url": "https://github.com/YunaiV/ruoyi-vue-pro/commit/c0168a8b104fd0874d1efe6915c7d4ddc0121569",
-   "title": "fix(system): 批量删除部门时整批校验数据权限",
-   "date": "2026-10-23T12:43:33",
-   "score": 2,
-   "matched": [
-    "提权"
-   ],
-   "cve": null
-  }
- ]
+ "commits": []
 }
