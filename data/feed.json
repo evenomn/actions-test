@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-10-24T06:02:40+00:00",
+ "generated_at": "2026-10-24T13:25:05+00:00",
  "lookback_hours": 5,
  "count": 0,
  "stats": {
@@ -18,26 +18,63 @@
  "media": [],
  "commits": [
   {
-   "repo": "python/cpython",
-   "sha": "7dd8b4736a1419750b94a388e6d158be15836fe6",
-   "url": "https://github.com/python/cpython/commit/7dd8b4736a1419750b94a388e6d158be15836fe6",
-   "title": "gh-160040: Distrust compromised eMudhra intermediate CA keys (CVE-2026-115557) (GH-160042)",
-   "date": "2026-10-24T05:40:49",
-   "score": 3,
+   "repo": "jeecgboot/JeecgBoot",
+   "sha": "6298ab5f4f0ffb7223a6bb38a475c85993e50924",
+   "url": "https://github.com/jeecgboot/JeecgBoot/commit/6298ab5f4f0ffb7223a6bb38a475c85993e50924",
+   "title": "fix(airag): AI 聊天下载图片改用禁止自动跳转、逐跳校验的安全下载，修复 SSRF 重定向绕过",
+   "date": "2026-10-24T09:34:35",
+   "score": 4,
    "matched": [
-    "CVE"
+    "SSRF",
+    "未授权/绕过"
    ],
-   "cve": "CVE-2026-115557"
+   "cve": null
   },
   {
-   "repo": "redis/redis",
-   "sha": "c039dd784ca6139314880631de162f65dda25d45",
-   "url": "https://github.com/redis/redis/commit/c039dd784ca6139314880631de162f65dda25d45",
-   "title": "Fix double free of reply in redis-cli --cluster add-node (#16053)",
-   "date": "2026-10-24T02:42:58",
+   "repo": "qemu/qemu",
+   "sha": "c4c07cac75c01cda0efd6a828a42e37bc57545e5",
+   "url": "https://github.com/qemu/qemu/commit/c4c07cac75c01cda0efd6a828a42e37bc57545e5",
+   "title": "util/cutils: Add STR_ARRAY_ELEM_OR_NULL() for string table lookups",
+   "date": "2026-10-24T09:48:29",
    "score": 2,
    "matched": [
-    "类型混淆/double free"
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "jeecgboot/JeecgBoot",
+   "sha": "4591311060d6c88dd42fa68e0c0fed9beda656eb",
+   "url": "https://github.com/jeecgboot/JeecgBoot/commit/4591311060d6c88dd42fa68e0c0fed9beda656eb",
+   "title": "fix(system): 富文本 XSS 过滤补充 / 和引号分隔的事件属性",
+   "date": "2026-10-24T09:34:35",
+   "score": 2,
+   "matched": [
+    "XSS"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "jeecgboot/JeecgBoot",
+   "sha": "4436c5af813e417272b41b50fc26d115a73a7926",
+   "url": "https://github.com/jeecgboot/JeecgBoot/commit/4436c5af813e417272b41b50fc26d115a73a7926",
+   "title": "fix(openapi): /openapi/call 不再接受 OPTIONS、TRACE",
+   "date": "2026-10-24T09:27:17",
+   "score": 2,
+   "matched": [
+    "未授权/绕过"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "curl/curl",
+   "sha": "66c33953280959ea9c945a65e0f9ba18714eae9b",
+   "url": "https://github.com/curl/curl/commit/66c33953280959ea9c945a65e0f9ba18714eae9b",
+   "title": "pytest: update pip filelock from 4.0.12 to 4.2.4",
+   "date": "2026-10-24T08:39:34",
+   "score": 2,
+   "matched": [
+    "漏洞相关"
    ],
    "cve": null
   }
