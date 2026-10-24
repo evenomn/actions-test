@@ -1,80 +1,112 @@
 {
  "version": 3,
- "generated_at": "2026-10-24T13:25:05+00:00",
+ "generated_at": "2026-10-24T16:48:32+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 1,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 1,
+  "by_tier": {
+   "critical": 1
+  },
+  "by_urgency": {
+   "P1 重点关注": 1
+  },
+  "by_category": {
+   "安全设备": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2026-115933",
+   "tier": "critical",
+   "title": "Postiz令牌共用密钥致认证绕过",
+   "title_zh": "Postiz令牌共用密钥致认证绕过",
+   "summary_zh": "会话、邀请与重置令牌共用密钥且无用途标记，攻击者可用邀请令牌冒充任意用户并读取敏感数据。",
+   "published": "2026-10-24T15:17:33.957",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证欺骗",
+    "数据真实性验证缺失"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gadvisory.org/advisories/PSA-2026-YT2HMH"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/gitroomhq/postiz-app"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/gitroomhq/postiz-app/commit/a5affe62c74e39c1e7ac960d50d8418b807d532c"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商修复，轮换共享签名密钥并为各类令牌加独立用途标记",
+   "repro_worthy": "一般",
+   "repro_note": "入口为邀请/密码重置令牌接口，需先取得邀请令牌再改用于会话刷新",
+   "impact_scope": "自托管社媒运营平台，持有用户令牌",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115933",
+   "description": "Postiz signs its session, invitation and password reset tokens with one shared secret and without any marker of what a token is for. A route that refreshes the credentials of a browser-extension channel signed data taken from the request itself and stored the result where the requesting user can read it back."
+  }
+ ],
  "media": [],
  "commits": [
   {
-   "repo": "jeecgboot/JeecgBoot",
-   "sha": "6298ab5f4f0ffb7223a6bb38a475c85993e50924",
-   "url": "https://github.com/jeecgboot/JeecgBoot/commit/6298ab5f4f0ffb7223a6bb38a475c85993e50924",
-   "title": "fix(airag): AI 聊天下载图片改用禁止自动跳转、逐跳校验的安全下载，修复 SSRF 重定向绕过",
-   "date": "2026-10-24T09:34:35",
+   "repo": "laravel/framework",
+   "sha": "a21f9d110a4b957defa0e14f6e43924b54470c58",
+   "url": "https://github.com/laravel/framework/commit/a21f9d110a4b957defa0e14f6e43924b54470c58",
+   "title": "[13.x] Block phar:// stream wrapper in Filesystem::exists() and isFile() (#62164)",
+   "date": "2026-10-24T14:31:05",
    "score": 4,
    "matched": [
-    "SSRF",
-    "未授权/绕过"
+    "RCE",
+    "反序列化"
    ],
    "cve": null
   },
   {
    "repo": "qemu/qemu",
-   "sha": "c4c07cac75c01cda0efd6a828a42e37bc57545e5",
-   "url": "https://github.com/qemu/qemu/commit/c4c07cac75c01cda0efd6a828a42e37bc57545e5",
-   "title": "util/cutils: Add STR_ARRAY_ELEM_OR_NULL() for string table lookups",
-   "date": "2026-10-24T09:48:29",
+   "sha": "c994a5d091ff9f647ca4f30e6b5b43db2ee318b4",
+   "url": "https://github.com/qemu/qemu/commit/c994a5d091ff9f647ca4f30e6b5b43db2ee318b4",
+   "title": "chardev/baum: unregister the brlapi fd handler on finalize",
+   "date": "2026-10-24T13:15:20",
    "score": 2,
    "matched": [
-    "越界读写"
+    "UAF"
    ],
    "cve": null
   },
   {
-   "repo": "jeecgboot/JeecgBoot",
-   "sha": "4591311060d6c88dd42fa68e0c0fed9beda656eb",
-   "url": "https://github.com/jeecgboot/JeecgBoot/commit/4591311060d6c88dd42fa68e0c0fed9beda656eb",
-   "title": "fix(system): 富文本 XSS 过滤补充 / 和引号分隔的事件属性",
-   "date": "2026-10-24T09:34:35",
+   "repo": "openbsd/src",
+   "sha": "fb6f1f1eed7468c89a8bca5ea0458494d6e0ac64",
+   "url": "https://github.com/openbsd/src/commit/fb6f1f1eed7468c89a8bca5ea0458494d6e0ac64",
+   "title": "vmd(8): Fix double free in the virtio-net TX path",
+   "date": "2026-10-24T08:01:27",
    "score": 2,
    "matched": [
-    "XSS"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "jeecgboot/JeecgBoot",
-   "sha": "4436c5af813e417272b41b50fc26d115a73a7926",
-   "url": "https://github.com/jeecgboot/JeecgBoot/commit/4436c5af813e417272b41b50fc26d115a73a7926",
-   "title": "fix(openapi): /openapi/call 不再接受 OPTIONS、TRACE",
-   "date": "2026-10-24T09:27:17",
-   "score": 2,
-   "matched": [
-    "未授权/绕过"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "curl/curl",
-   "sha": "66c33953280959ea9c945a65e0f9ba18714eae9b",
-   "url": "https://github.com/curl/curl/commit/66c33953280959ea9c945a65e0f9ba18714eae9b",
-   "title": "pytest: update pip filelock from 4.0.12 to 4.2.4",
-   "date": "2026-10-24T08:39:34",
-   "score": 2,
-   "matched": [
-    "漏洞相关"
+    "类型混淆/double free"
    ],
    "cve": null
   }
