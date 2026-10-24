@@ -5,16 +5,17 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 24 Oct 2026 16:48:32 +0000</pubDate>
-    <lastBuildDate>Sat, 24 Oct 2026 16:48:32 +0000</lastBuildDate>
+    <pubDate>Sat, 24 Oct 2026 19:35:23 +0000</pubDate>
+    <lastBuildDate>Sat, 24 Oct 2026 19:35:23 +0000</lastBuildDate>
     <item>
-      <title>[critical]Postiz令牌共用密钥致认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115933</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115933-2026-10-24</guid>
-      <description>CVE-2026-115933 · 🎯P1 重点关注 · 披露 2026-10-24 · 组件 安全设备 · CVSS 9.9 · 类型 认证欺骗/数据真实性验证缺失 · 难度 低(远程·需低权限)
-Postiz signs its session, invitation and password reset tokens with one shared secret and without any marker of what a token is for.
-信号:</description>
-      <pubDate>Sat, 24 Oct 2026 16:48:32 +0000</pubDate>
+      <title>[critical]Oracle Java未认证远程高危</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114820</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114820-2026-10-24</guid>
+      <description>CVE-2026-114820 · 🎯P0 立即处置 · 披露 2026-10-24 · CVSS 9.1 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK…
+信号: 有PoC
+[joedayz/cve-2026-114820-java-scan 0★(仅README)](https://github.com/joedayz/cve-2026-114820-java-scan)</description>
+      <pubDate>Sat, 24 Oct 2026 19:35:23 +0000</pubDate>
     </item>
   </channel>
 </rss>

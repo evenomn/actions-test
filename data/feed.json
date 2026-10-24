@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-10-24T16:48:32+00:00",
+ "generated_at": "2026-10-24T19:35:23+00:00",
  "lookback_hours": 5,
  "count": 1,
  "stats": {
@@ -9,106 +9,62 @@
    "critical": 1
   },
   "by_urgency": {
-   "P1 重点关注": 1
+   "P0 立即处置": 1
   },
   "by_category": {
-   "安全设备": 1
+   "未知": 1
   },
   "kev": 0,
-  "with_poc": 0,
+  "with_poc": 1,
   "with_poc_source": 0,
-  "repro_recommended": 0
+  "repro_recommended": 1
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-115933",
+   "id": "CVE-2026-114820",
    "tier": "critical",
-   "title": "Postiz令牌共用密钥致认证绕过",
-   "title_zh": "Postiz令牌共用密钥致认证绕过",
-   "summary_zh": "会话、邀请与重置令牌共用密钥且无用途标记，攻击者可用邀请令牌冒充任意用户并读取敏感数据。",
-   "published": "2026-10-24T15:17:33.957",
-   "cvss": 9.9,
+   "title": "Oracle Java未认证远程高危",
+   "title_zh": "Oracle Java未认证远程高危",
+   "summary_zh": "未认证远程攻击者经多协议或Web服务调用Java API，可攻陷受影响服务",
+   "published": "2026-10-24T19:17:04.413",
+   "cvss": 9.1,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
    "epss": null,
    "epss_percentile": null,
-   "cwe_labels": [
-    "认证欺骗",
-    "数据真实性验证缺失"
-   ],
-   "difficulty": "低(远程·需低权限)",
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": null,
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://gadvisory.org/advisories/PSA-2026-YT2HMH"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/gitroomhq/postiz-app"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/gitroomhq/postiz-app/commit/a5affe62c74e39c1e7ac960d50d8418b807d532c"
+     "url": "https://www.oracle.com/security-alerts/alert-cve-2026-114820.html"
     }
    ],
-   "poc": [],
+   "poc": [
+    {
+     "url": "https://github.com/joedayz/cve-2026-114820-java-scan",
+     "label": "joedayz/cve-2026-114820-java-scan 0★(仅README)"
+    }
+   ],
    "nuclei": false,
    "patched": null,
    "kev": false,
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "关注厂商修复，轮换共享签名密钥并为各类令牌加独立用途标记",
-   "repro_worthy": "一般",
-   "repro_note": "入口为邀请/密码重置令牌接口，需先取得邀请令牌再改用于会话刷新",
-   "impact_scope": "自托管社媒运营平台，持有用户令牌",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115933",
-   "description": "Postiz signs its session, invitation and password reset tokens with one shared secret and without any marker of what a token is for. A route that refreshes the credentials of a browser-extension channel signed data taken from the request itself and stored the result where the requesting user can read it back."
+   "urgency": "P0 立即处置",
+   "action_zh": "应用Oracle最新CPU补丁，限制受影响Java服务网络暴露",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "入口为使用受影响Java API的Web服务或多协议接口，未认证网络可达",
+   "impact_scope": "Java运行时广泛部署，内网公网均暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114820",
+   "description": "Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs."
   }
  ],
  "media": [],
- "commits": [
-  {
-   "repo": "laravel/framework",
-   "sha": "a21f9d110a4b957defa0e14f6e43924b54470c58",
-   "url": "https://github.com/laravel/framework/commit/a21f9d110a4b957defa0e14f6e43924b54470c58",
-   "title": "[13.x] Block phar:// stream wrapper in Filesystem::exists() and isFile() (#62164)",
-   "date": "2026-10-24T14:31:05",
-   "score": 4,
-   "matched": [
-    "RCE",
-    "反序列化"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "qemu/qemu",
-   "sha": "c994a5d091ff9f647ca4f30e6b5b43db2ee318b4",
-   "url": "https://github.com/qemu/qemu/commit/c994a5d091ff9f647ca4f30e6b5b43db2ee318b4",
-   "title": "chardev/baum: unregister the brlapi fd handler on finalize",
-   "date": "2026-10-24T13:15:20",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "openbsd/src",
-   "sha": "fb6f1f1eed7468c89a8bca5ea0458494d6e0ac64",
-   "url": "https://github.com/openbsd/src/commit/fb6f1f1eed7468c89a8bca5ea0458494d6e0ac64",
-   "title": "vmd(8): Fix double free in the virtio-net TX path",
-   "date": "2026-10-24T08:01:27",
-   "score": 2,
-   "matched": [
-    "类型混淆/double free"
-   ],
-   "cve": null
-  }
- ]
+ "commits": []
 }

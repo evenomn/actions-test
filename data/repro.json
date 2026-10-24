@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-10-24T16:48:32+00:00",
- "count": 131,
- "count_recommended": 20,
+ "updated_at": "2026-10-24T19:35:23+00:00",
+ "count": 132,
+ "count_recommended": 21,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -836,6 +836,47 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107406",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-114820",
+   "title": "Oracle Java未认证远程高危",
+   "first_seen": "2026-10-24",
+   "last_seen": "2026-10-24",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-24",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "入口为使用受影响Java API的Web服务或多协议接口，未认证网络可达",
+   "impact_scope": "Java运行时广泛部署，内网公网均暴露",
+   "action_zh": "应用Oracle最新CPU补丁，限制受影响Java服务网络暴露",
+   "summary_zh": "未认证远程攻击者经多协议或Web服务调用Java API，可攻陷受影响服务",
+   "category": null,
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "readme",
+   "poc": [
+    {
+     "url": "https://github.com/joedayz/cve-2026-114820-java-scan",
+     "label": "joedayz/cve-2026-114820-java-scan 0★(仅README)"
+    }
+   ],
+   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.oracle.com/security-alerts/alert-cve-2026-114820.html"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114820",
    "change_note": null
   },
   {

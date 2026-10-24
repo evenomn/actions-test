@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-24 16:48 UTC · 共 **131** 条(强烈推荐 20 / 值得 111)
+**更新**: 2026-10-24 19:35 UTC · 共 **132** 条(强烈推荐 21 / 值得 111)
 
 ---
 
@@ -177,6 +177,16 @@ PoC 源码可用
 影响: Citrix(产品与版本待 NVD/厂商补充)
 PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker)
 参考: [参考](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697191)
+
+### Oracle Java未认证远程高危
+[CVE-2026-114820](https://nvd.nist.gov/vuln/detail/CVE-2026-114820) | P0 立即处置 | CVSS 9.1 | 披露 2026-10-24 | 入库 2026-10-24
+有PoC
+未认证远程攻击者经多协议或Web服务调用Java API，可攻陷受影响服务
+复现: 强烈推荐 — 入口为使用受影响Java API的Web服务或多协议接口，未认证网络可达 · 影响面: Java运行时广泛部署，内网公网均暴露
+处置: 应用Oracle最新CPU补丁，限制受影响Java服务网络暴露
+影响: Oracle(产品与版本待 NVD/厂商补充)
+PoC: [joedayz/cve-2026-114820-java-scan 0★(仅README)](https://github.com/joedayz/cve-2026-114820-java-scan)
+参考: [参考](https://www.oracle.com/security-alerts/alert-cve-2026-114820.html)
 
 ### Oracle Java SE 未授权远程漏洞
 [CVE-2026-91403](https://nvd.nist.gov/vuln/detail/CVE-2026-91403) | P0 立即处置 | CVSS 9.1 | 披露 2026-10-21 | 入库 2026-10-22
