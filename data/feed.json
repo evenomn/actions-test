@@ -1,70 +1,58 @@
 {
  "version": 3,
- "generated_at": "2026-10-24T19:35:23+00:00",
+ "generated_at": "2026-10-24T23:26:32+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 0,
  "stats": {
-  "total": 1,
-  "by_tier": {
-   "critical": 1
-  },
-  "by_urgency": {
-   "P0 立即处置": 1
-  },
-  "by_category": {
-   "未知": 1
-  },
+  "total": 0,
+  "by_tier": {},
+  "by_urgency": {},
+  "by_category": {},
   "kev": 0,
-  "with_poc": 1,
+  "with_poc": 0,
   "with_poc_source": 0,
-  "repro_recommended": 1
+  "repro_recommended": 0
  },
  "briefing": [],
- "items": [
-  {
-   "id": "CVE-2026-114820",
-   "tier": "critical",
-   "title": "Oracle Java未认证远程高危",
-   "title_zh": "Oracle Java未认证远程高危",
-   "summary_zh": "未认证远程攻击者经多协议或Web服务调用Java API，可攻陷受影响服务",
-   "published": "2026-10-24T19:17:04.413",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Oracle(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.oracle.com/security-alerts/alert-cve-2026-114820.html"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/joedayz/cve-2026-114820-java-scan",
-     "label": "joedayz/cve-2026-114820-java-scan 0★(仅README)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "应用Oracle最新CPU补丁，限制受影响Java服务网络暴露",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "入口为使用受影响Java API的Web服务或多协议接口，未认证网络可达",
-   "impact_scope": "Java运行时广泛部署，内网公网均暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114820",
-   "description": "Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs."
-  }
- ],
+ "items": [],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "4ed2f60e1b30eeaa97535f60d857d2b613cbff76",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/4ed2f60e1b30eeaa97535f60d857d2b613cbff76",
+   "title": "avcodec/flacenc: clamp the minimum LPC prediction order to 1",
+   "date": "2026-10-24T20:19:14",
+   "score": 4,
+   "matched": [
+    "越界读写",
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "941598a1efd4f7e43895d5d001e4f52663ff2709",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/941598a1efd4f7e43895d5d001e4f52663ff2709",
+   "title": "avformat/dashdec: do not seek before the first segment",
+   "date": "2026-10-24T20:19:14",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openbsd/src",
+   "sha": "084feb6accb170a2353b85201b1bdd1ebc7e989c",
+   "url": "https://github.com/openbsd/src/commit/084feb6accb170a2353b85201b1bdd1ebc7e989c",
+   "title": "Fix out-of-bounds read on on missing right bracket after character class.",
+   "date": "2026-10-24T18:08:57",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  }
+ ]
 }
