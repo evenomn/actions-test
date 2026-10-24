@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-23 23:53 UTC · 共 **130** 条(强烈推荐 20 / 值得 110)
+**更新**: 2026-10-24 01:56 UTC · 共 **131** 条(强烈推荐 20 / 值得 111)
 
 ---
 
@@ -624,6 +624,14 @@ PoC: [ikow/php2shell-poc 1008★(仅README)](https://github.com/ikow/php2shell-p
 复现: 值得
 影响: watchguard fireware >=12.0 <12.5.21; watchguard fireware >=12.12 <12.12.3
 参考: [厂商通告](https://psirt.watchguard.com/CVE-2026-86131)
+
+### obsidian-tc源校验缺失致SSRF
+[CVE-2026-77363](https://nvd.nist.gov/vuln/detail/CVE-2026-77363) | P1 重点关注 | CVSS 9.6 | EPSS 0.2% | 披露 2026-10-23 | 入库 2026-10-24
+开源,可源码审计复现
+远程攻击者可借恶意Origin/Host触发DNS重绑定，访问内网服务
+复现: 值得 — Streamable HTTP端点未校验Origin/Host · 影响面: 开源MCP组件,常暴露HTTP服务
+处置: 升级到 1.3.1
+影响: npm:obsidian-tc < 1.3.1(修复: 1.3.1)
 
 ### CVE-2026-104848
 [CVE-2026-104848](https://nvd.nist.gov/vuln/detail/CVE-2026-104848) | CVSS 9.5 | 披露 2026-10-02 | 入库 2026-10-08

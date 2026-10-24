@@ -1,60 +1,153 @@
 {
  "version": 3,
- "generated_at": "2026-10-23T23:53:21+00:00",
- "lookback_hours": 5,
- "count": 3,
+ "generated_at": "2026-10-24T01:56:59+00:00",
+ "lookback_hours": 24,
+ "count": 31,
  "stats": {
-  "total": 3,
+  "total": 31,
   "by_tier": {
-   "critical": 3
+   "critical": 31
   },
   "by_urgency": {
-   "P1 重点关注": 3
+   "P1 重点关注": 31
   },
   "by_category": {
-   "未知": 3
+   "未知": 29,
+   "数据库": 1,
+   "操作系统": 1
   },
   "kev": 0,
-  "with_poc": 0,
+  "with_poc": 1,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [],
+ "briefing": [
+  "- 清单未标记在野利用或勒索软件，风险以高CVSS集中披露为主。",
+  "- 9条反序列化RCE同批披露，疑似批量公告，需排查同类组件。",
+  "- 优先处置CVE-2026-53942：9.9分代码注入RCE，暂无补丁。",
+  "- Vitess XSS有PoC，9.8分，尽快升级修复。"
+ ],
  "items": [
   {
-   "id": "CVE-2026-115889",
+   "id": "CVE-2026-104252",
    "tier": "critical",
-   "title": "Wasmtime编译器SSA索引溢出",
-   "title_zh": "Wasmtime编译器SSA索引溢出",
-   "summary_zh": "能提交Wasm模块者可构造含大量SSA值的函数，使Cranelift发布构建中位打包索引溢出，导致内存破坏",
-   "published": "2026-10-23T22:16:58.400",
-   "cvss": 9.9,
+   "title": "Vitess 未授权XSS注入运维浏览器",
+   "title_zh": "Vitess 未授权XSS注入运维浏览器",
+   "summary_zh": "默认为allow-all ACL，远程未授权攻击者构造请求，诱导运维打开后在其浏览器执行脚本。",
+   "published": "2026-10-13T20:17:12.453",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00885,
+   "epss_percentile": 0.58883,
+   "cwe_labels": [
+    "XSS"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "linuxfoundation vitess"
+   ],
+   "affected": "linuxfoundation vitess <23.0.5; linuxfoundation vitess >=24.0.0 <24.0.2",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/vitessio/vitess/commit/3140c1846cd120db34f33b2083139b4ab638aed2"
+    },
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/vitessio/vitess/commit/976e1e0d78f9d29d02e5e31b4aa7e180648f08af"
+    },
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/vitessio/vitess/commit/c1ed96302e658190168c971afdac730cf70e43f7"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至23.0.5或24.0.2以上，并收紧默认ACL策略。",
+   "repro_worthy": "一般",
+   "repro_note": "构造恶意请求诱导运维访问；默认ACL下无需认证，PoC仅低星仓库",
+   "impact_scope": "MySQL水平扩展集群中间件，内网部署",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104252",
+   "description": "Vitess is a database clustering system for horizontal scaling of MySQL. Under the default allow-all ACL policy, a remote unauthenticated attacker can send an operator a crafted request that executes script in the operator's browser after the request is opened."
+  },
+  {
+   "id": "CVE-2026-46652",
+   "tier": "critical",
+   "title": "Goobi viewer路径遍历任意写入",
+   "title_zh": "Goobi viewer路径遍历任意写入",
+   "summary_zh": "攻击者控制被采集的恶意HTTP服务器，用绝对路径或../作文件名，向Tomcat可写路径任意写文件。",
+   "published": "2026-10-23T15:17:31.593",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-197",
-    "CWE-843"
+    "路径遍历/任意文件读取",
+    "CWE-73"
    ],
-   "difficulty": "低(远程·需低权限)",
+   "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "rust:wasmtime < 36.0.19(修复: 36.0.19); rust:wasmtime >= 37.0.0, < 43.0.0(修复: 43.0.0)",
-   "ghsa_url": "https://github.com/advisories/GHSA-897f-g5gm-fmxm",
+   "affected": null,
+   "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/bytecodealliance/wasmtime/commit/ba8f7d70caa1825b7f64fa75cd9d03f4a438dae0"
+     "url": "https://github.com/intranda/goobi-viewer-core/commit/5281245708447ae3419cb42492fbb8af731a2ce5"
     },
     {
      "label": "参考",
-     "url": "https://github.com/bytecodealliance/wasmtime/commit/f517bd6e890c7c1291ab9fe05d8cc0c9f11e56aa"
+     "url": "https://github.com/intranda/goobi-viewer-core/releases/tag/v26.05"
     },
     {
      "label": "参考",
-     "url": "https://github.com/bytecodealliance/wasmtime/pull/12613"
+     "url": "https://github.com/intranda/goobi-viewer-core/security/advisories/GHSA-r386-2frm-w3v6"
     }
    ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "tomcat",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至官方修复版本，限制外部采集源并校验下载文件名。",
+   "repro_worthy": "一般",
+   "repro_note": "需控制viewer抓取的HTTP服务器，在filename中返回../写任意路径",
+   "impact_scope": "数字图书馆Web应用，多暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-46652",
+   "description": "The Goobi viewer is a web application that allows digitised material to be displayed in a web browser. This allows for a malicious HTTP server that the viewer fetches from to supply an absolute path or ../ traversal sequences as the filename, writing attacker-controlled content to an arbitrary path writable by the Tomcat process."
+  },
+  {
+   "id": "CVE-2026-77363",
+   "tier": "critical",
+   "title": "obsidian-tc源校验缺失致SSRF",
+   "title_zh": "obsidian-tc源校验缺失致SSRF",
+   "summary_zh": "远程攻击者可借恶意Origin/Host触发DNS重绑定，访问内网服务",
+   "published": "2026-10-23T18:29:02Z",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": null,
+   "epss": 0.00157,
+   "epss_percentile": 0.0452,
+   "cwe_labels": [
+    "源校验错误(SSRF类)",
+    "CWE-1385"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "npm:obsidian-tc < 1.3.1(修复: 1.3.1)",
+   "ghsa_url": "https://github.com/advisories/GHSA-pqh8-4pj7-32xx",
+   "refs": [],
    "poc": [],
    "nuclei": false,
    "patched": true,
@@ -63,27 +156,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到36.0.19或43.0.0，并限制编译不可信Wasm模块",
-   "repro_worthy": "一般",
-   "repro_note": "构造含大量SSA值的Wasm函数，在release构建的Cranelift后端编译触发",
-   "impact_scope": "服务端Wasm运行时，多租户沙箱场景",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115889",
-   "description": "Prior to 36.0.19 and 43.0.0, the Cranelift compiler backend bit-packs SSA value indices in a way that can silently overflow in release builds when compiling a sufficiently large or specially crafted Wasm function with many SSA values. The overflow can make Cranelift reference incorrect IR values, causing arbitrary miscompilation, type confusion, and other attacker-controlled effects that may escape the Wasm sandbox on any architecture using the default Cranelift backend."
+   "action_zh": "升级到 1.3.1",
+   "repro_worthy": "值得",
+   "repro_note": "Streamable HTTP端点未校验Origin/Host",
+   "impact_scope": "开源MCP组件,常暴露HTTP服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77363",
+   "description": "### Impact The Streamable HTTP transport was constructed without `enableDnsRebindingProtection`/`allowedHosts`/`allowedOrigins` and performed no `Origin`-header validation. The transport now enables DNS-rebinding protection and allowed hosts/origins and returns HTTP 403 on an invalid Origin (per MCP 2025-11-25)."
   },
   {
-   "id": "CVE-2026-115893",
+   "id": "CVE-2026-53942",
    "tier": "critical",
-   "title": "Wasmtime aarch64沙箱逃逸",
-   "title_zh": "Wasmtime aarch64沙箱逃逸",
-   "summary_zh": "能提交Wasm模块者可在aarch64引擎上构造分支跳转至用户控制偏移，逃逸沙箱后执行任意代码",
-   "published": "2026-10-23T22:16:58.820",
+   "title": "conda Actions工作流模板注入RCE",
+   "title_zh": "conda Actions工作流模板注入RCE",
+   "summary_zh": "攻击者提交PR触发工作流，未沙箱的Jinja2渲染其可控模板内容，在CI环境执行任意代码。",
+   "published": "2026-10-23T15:17:32.157",
    "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-691"
+    "代码注入(RCE)"
    ],
    "difficulty": "低(远程·需低权限)",
    "products": [],
@@ -92,15 +185,11 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/bytecodealliance/wasmtime/commit/222ff3a65dab9aa7011f8c246937751a0bac5abd"
+     "url": "https://github.com/conda/infrastructure/commit/9c0f23857282ff5cf7a6b3ad6bf0dd6f9974be55"
     },
     {
      "label": "参考",
-     "url": "https://github.com/bytecodealliance/wasmtime/commit/994549891c8a706cb4f2809f9d17b9f67b31e618"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/bytecodealliance/wasmtime/commit/e61df1b454be9313d61a5f8de07722a421139bbe"
+     "url": "https://github.com/conda/infrastructure/security/advisories/GHSA-pf87-fcg3-wjfh"
     }
    ],
    "poc": [],
@@ -111,45 +200,34 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至最新Wasmtime，aarch64环境暂停运行不可信Wasm模块",
+   "action_zh": "升级至commit 9c0f238之后版本，并限制PR触发工作流的令牌权限。",
    "repro_worthy": "一般",
-   "repro_note": "aarch64引擎下提交构造分支的Wasm模块，控制跳转偏移验证越界",
-   "impact_scope": "aarch64平台Wasm运行时，云与边缘沙箱",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115893",
-   "description": "Wasmtime is a runtime for WebAssembly. The branch can then jump to arbitrary other code at a user-controlled offset, allowing a user-controlled Wasm module to escape the sandbox on aarch64 engines using the default Cranelift backend."
+   "repro_note": "向仓库提交PR触发受影响action，模板内容可控即执行，需仓库交互",
+   "impact_scope": "CI/CD流水线，可窃取令牌与发布权",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-53942",
+   "description": "Prior to commit 9c0f238, a GitHub Actions Pwn Request vulnerability appears to remain present in conda/conda. In the confirmed finding, that action uses an unsandboxed Jinja2 environment to render attacker-controlled template content."
   },
   {
-   "id": "CVE-2026-115931",
+   "id": "CVE-2026-63244",
    "tier": "critical",
-   "title": "Postiz内部函数可被越权调用",
-   "title_zh": "Postiz内部函数可被越权调用",
-   "summary_zh": "已登录用户可请求后端在已连接频道上执行任意内部helper函数，越权触达本不应暴露的接口",
-   "published": "2026-10-23T23:17:43.263",
-   "cvss": 9.9,
+   "title": "WizLearn LMS 未授权认证绕过",
+   "title_zh": "WizLearn LMS 未授权认证绕过",
+   "summary_zh": "未认证远程攻击者向认证接口发送特制POST，绕过密码与OAuth校验，接管账号乃至平台管理员。",
+   "published": "2026-10-23T08:16:55.320",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-73",
-    "CWE-470"
-   ],
-   "difficulty": "低(远程·需低权限)",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00536,
+   "epss_percentile": 0.44389,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://gadvisory.org/advisories/PSA-2026-JNXM56"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/gitroomhq/postiz-app"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/gitroomhq/postiz-app/commit/9383f5be4d310c346e33a3748a9a7ded64c96fed"
+     "url": "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-155"
     }
    ],
    "poc": [],
@@ -160,14 +238,1134 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至最新Postiz，后端函数调用增加白名单校验",
+   "action_zh": "联系厂商获取修复版本；临时在WAF拦截异常登录POST并加固OAuth回调。",
    "repro_worthy": "一般",
-   "repro_note": "登录后调用频道函数执行接口，将函数名替换为内部helper函数",
-   "impact_scope": "内网SaaS运营平台，需有效账号",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115931",
-   "description": "Postiz lets a signed-in user ask the backend to run a function on one of their connected channels. The backend did not restrict which functions can be requested, so a user could call internal helper functions that were never meant to be reachable from the web interface."
+   "repro_note": "未授权向登录/OAuth接口POST特制请求即可通过认证，无前置条件",
+   "impact_scope": "在线学习平台，常面向公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63244",
+   "description": "An authentication bypass vulnerability in WizLearn Technologies' Learning Management System (LMS) could allow an unauthenticated remote attacker to bypass password authentication and the OAuth authentication flow by sending a specially crafted POST request, potentially resulting in unauthorised access to user accounts and full administrative control of the LMS platform."
+  },
+  {
+   "id": "CVE-2026-25784",
+   "tier": "critical",
+   "title": "BlueSpice容器镜像 不安全默认配置提权",
+   "title_zh": "BlueSpice容器镜像 不安全默认配置提权",
+   "summary_zh": "使用官方容器镜像部署时沿用不安全默认设置，攻击者可据此提升权限并获取管理员能力。",
+   "published": "2026-10-23T09:17:06.943",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00345,
+   "epss_percentile": 0.26906,
+   "cwe_labels": [
+    "权限提升",
+    "初始化不安全(默认凭据)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://en.wiki.bluespice.com/wiki/Security:Security_Advisories/BSSA-2026-07"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/hallowelt/docker-bluespice-wiki/commit/04b840be565b508f6e741c376970909b69d2a444"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级镜像至修复版本，部署后立即修改默认凭据与初始配置。",
+   "repro_worthy": "一般",
+   "repro_note": "以默认镜像启动后利用不安全初始配置提权，需能访问实例",
+   "impact_scope": "企业Wiki容器，内网部署常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-25784",
+   "description": "Initialization of a Resource with an Insecure Default vulnerability in Hallo Welt! GmbH BlueSpice (container image bluespice/wiki) allows privilege escalation."
+  },
+  {
+   "id": "CVE-2026-112862",
+   "tier": "critical",
+   "title": "Participants DB插件反序列化RCE",
+   "title_zh": "Participants DB插件反序列化RCE",
+   "summary_zh": "攻击者向插件传入恶意序列化数据触发PHP对象注入，可构造利用链执行任意代码。",
+   "published": "2026-10-23T09:17:06.393",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00313,
+   "epss_percentile": 0.23039,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/participants-database/vulnerability/wordpress-participants-database-plugin-2-7-8-5-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2.7.8.5以上版本；无法升级时停用该插件。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件，站点多暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112862",
+   "description": "Deserialization of Untrusted Data vulnerability in xnau webdesign Participants Database participants-database allows Object Injection.This issue affects Participants Database: from n/a through 2.7.8.5."
+  },
+  {
+   "id": "CVE-2026-112848",
+   "tier": "critical",
+   "title": "Hostme v2主题反序列化RCE",
+   "title_zh": "Hostme v2主题反序列化RCE",
+   "summary_zh": "攻击者向主题传入恶意序列化数据触发PHP对象注入，可构造利用链执行任意代码。",
+   "published": "2026-10-23T13:17:06.310",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/theme/hostmev2/vulnerability/wordpress-hostme-v2-theme-7-0-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至7.0以上版本；无法升级时停用该主题。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress主题，公网站点常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112848",
+   "description": "Deserialization of Untrusted Data vulnerability in AivahThemes Hostme v2 hostmev2 allows Object Injection.This issue affects Hostme v2: from n/a through 7.0."
+  },
+  {
+   "id": "CVE-2026-112851",
+   "tier": "critical",
+   "title": "HotLock主题反序列化RCE",
+   "title_zh": "HotLock主题反序列化RCE",
+   "summary_zh": "攻击者向主题传入恶意序列化数据触发PHP对象注入，可构造利用链执行任意代码。",
+   "published": "2026-10-23T13:17:06.697",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/theme/hotlock/vulnerability/wordpress-hotlock-theme-1-3-9-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.3.9以上版本；无法升级时停用该主题。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress主题，公网站点常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112851",
+   "description": "Deserialization of Untrusted Data vulnerability in ThemeREX Group HotLock hotlock allows Object Injection.This issue affects HotLock: from n/a through 1.3.9."
+  },
+  {
+   "id": "CVE-2026-112853",
+   "tier": "critical",
+   "title": "Hallelujah主题反序列化RCE",
+   "title_zh": "Hallelujah主题反序列化RCE",
+   "summary_zh": "攻击者向主题传入恶意序列化数据触发PHP对象注入，可构造利用链执行任意代码。",
+   "published": "2026-10-23T13:17:06.940",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/theme/hallelujah/vulnerability/wordpress-hallelujah-theme-1-1-1-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.1.1以上版本；无法升级时停用该主题。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress主题，公网站点常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112853",
+   "description": "Deserialization of Untrusted Data vulnerability in axiomthemes Hallelujah hallelujah allows Object Injection.This issue affects Hallelujah: from n/a through 1.1.1."
+  },
+  {
+   "id": "CVE-2026-112854",
+   "tier": "critical",
+   "title": "Holistic Center主题反序列化RCE",
+   "title_zh": "Holistic Center主题反序列化RCE",
+   "summary_zh": "攻击者向主题传入恶意序列化数据触发PHP对象注入，可构造利用链执行任意代码。",
+   "published": "2026-10-23T13:17:07.070",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/theme/holistic-center/vulnerability/wordpress-holistic-center-theme-1-2-6-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.2.6以上版本；无法升级时停用该主题。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress主题，公网站点常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112854",
+   "description": "Deserialization of Untrusted Data vulnerability in axiomthemes Holistic Center holistic-center allows Object Injection.This issue affects Holistic Center: from n/a through 1.2.6."
+  },
+  {
+   "id": "CVE-2026-112855",
+   "tier": "critical",
+   "title": "Redy主题反序列化RCE",
+   "title_zh": "Redy主题反序列化RCE",
+   "summary_zh": "攻击者向主题传入恶意序列化数据触发PHP对象注入，可构造利用链执行任意代码。",
+   "published": "2026-10-23T13:17:07.197",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/theme/redy/vulnerability/wordpress-redy-theme-1-3-5-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.3.5以上版本；无法升级时停用该主题。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress主题，公网站点常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112855",
+   "description": "Deserialization of Untrusted Data vulnerability in axiomthemes Redy redy allows Object Injection.This issue affects Redy: from n/a through 1.3.5."
+  },
+  {
+   "id": "CVE-2026-112856",
+   "tier": "critical",
+   "title": "Vagabonds主题反序列化RCE",
+   "title_zh": "Vagabonds主题反序列化RCE",
+   "summary_zh": "攻击者向主题传入恶意序列化数据触发PHP对象注入，可构造利用链执行任意代码。",
+   "published": "2026-10-23T13:17:07.323",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/theme/vagabonds/vulnerability/wordpress-vagabonds-theme-1-3-10-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.3.10以上版本；无法升级时停用该主题。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress主题，公网站点常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112856",
+   "description": "Deserialization of Untrusted Data vulnerability in ThemeREX Group Vagabonds vagabonds allows Object Injection.This issue affects Vagabonds: from n/a through 1.3.10."
+  },
+  {
+   "id": "CVE-2026-112857",
+   "tier": "critical",
+   "title": "Reprizo主题反序列化RCE",
+   "title_zh": "Reprizo主题反序列化RCE",
+   "summary_zh": "攻击者向主题传入恶意序列化数据触发PHP对象注入，可构造利用链执行任意代码。",
+   "published": "2026-10-23T13:17:07.447",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/theme/reprizo/vulnerability/wordpress-reprizo-theme-1-0-8-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.0.8以上版本；无法升级时停用该主题。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress主题，公网站点常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112857",
+   "description": "Deserialization of Untrusted Data vulnerability in axiomthemes Reprizo reprizo allows Object Injection.This issue affects Reprizo: from n/a through 1.0.8."
+  },
+  {
+   "id": "CVE-2026-112858",
+   "tier": "critical",
+   "title": "Rhodos主题反序列化RCE",
+   "title_zh": "Rhodos主题反序列化RCE",
+   "summary_zh": "攻击者向主题传入恶意序列化数据触发PHP对象注入，可构造利用链执行任意代码。",
+   "published": "2026-10-23T13:17:07.573",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/theme/rhodos/vulnerability/wordpress-rhodos-theme-1-3-3-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.3.3以上版本；无法升级时停用该主题。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress主题，公网站点常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112858",
+   "description": "Deserialization of Untrusted Data vulnerability in axiomthemes Rhodos rhodos allows Object Injection.This issue affects Rhodos: from n/a through 1.3.3."
+  },
+  {
+   "id": "CVE-2026-112859",
+   "tier": "critical",
+   "title": "Little Birdies主题反序列化RCE",
+   "title_zh": "Little Birdies主题反序列化RCE",
+   "summary_zh": "攻击者向主题传入恶意序列化数据触发PHP对象注入，可构造利用链执行任意代码。",
+   "published": "2026-10-23T13:17:07.700",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/theme/little-birdies/vulnerability/wordpress-little-birdies-theme-1-3-16-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.3.16以上版本；无法升级时停用该主题。",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress主题，公网站点常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112859",
+   "description": "Deserialization of Untrusted Data vulnerability in ThemeREX Group Little Birdies little-birdies allows Object Injection.This issue affects Little Birdies: from n/a through 1.3.16."
+  },
+  {
+   "id": "CVE-2026-57116",
+   "tier": "critical",
+   "title": "PraisonAI AgentOS 未授权调用Agent",
+   "title_zh": "PraisonAI AgentOS 未授权调用Agent",
+   "summary_zh": "部署的AgentOS接口无需认证，无令牌或错误令牌请求均可直接执行已部署的Agent。",
+   "published": "2026-10-23T13:17:10.690",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "信息泄露",
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-892r-p3jq-jp24"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至4.6.59以上，并为AgentOS接口强制启用鉴权。",
+   "repro_worthy": "一般",
+   "repro_note": "直接向AgentOS FastAPI接口发请求即可执行Agent，无需令牌",
+   "impact_scope": "AI Agent服务接口，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-57116",
+   "description": "From version 4.2.1 to before version 4.6.59, PraisonAI's AgentOS FastAPI deployment surface remains unauthenticated in current main and in releases after the published patched version for GHSA-pm96-6xpr-978x / CVE-2026-40151. No-auth and wrong-bearer requests both execute the deployed agent."
+  },
+  {
+   "id": "CVE-2026-46651",
+   "tier": "critical",
+   "title": "Goobi viewer WebSocket未授权下载",
+   "title_zh": "Goobi viewer WebSocket未授权下载",
+   "summary_zh": "未认证用户连接下载监控WebSocket即可下发下载任务，读取或获取受限文件。",
+   "published": "2026-10-23T15:17:31.453",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证",
+    "任意文件读取"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/intranda/goobi-viewer-core/commit/5281245708447ae3419cb42492fbb8af731a2ce5"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/intranda/goobi-viewer-core/commit/b8943ee963e2aa1131da2212eaf85c5a2d90214f"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/intranda/goobi-viewer-core/releases/tag/v26.05"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至26.05以上，或在网关侧禁止未认证访问该WebSocket。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权连接/tasks/download/monitor.socket提交下载任务即可",
+   "impact_scope": "数字图书馆Web应用，多暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-46651",
+   "description": "The Goobi viewer is a web application that allows digitised material to be displayed in a web browser. From version 24.03 to before version 26.05, the DownloadTaskEndpoint WebSocket endpoint (/tasks/download/monitor.socket) in goobi-viewer-core accepts download requests from unauthenticated users. This issue has been patched in version 26.05."
+  },
+  {
+   "id": "CVE-2026-115812",
+   "tier": "critical",
+   "title": "AWS MMS模型解压路径遍历RCE",
+   "title_zh": "AWS MMS模型解压路径遍历RCE",
+   "summary_zh": "攻击者上传含../的恶意模型归档，解压时越权写文件并执行任意代码；产品已停止维护。",
+   "published": "2026-10-23T18:17:21.460",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://aws.amazon.com/security/security-bulletins/2026-148-aws/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "产品已EOL无官方修复，立即停用并迁移至受支持的模型服务。",
+   "repro_worthy": "一般",
+   "repro_note": "上传含../路径的模型归档触发解压写入，需可提交模型",
+   "impact_scope": "模型推理服务，内网部署为主",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115812",
+   "description": "Relative path traversal during model archive extraction in Amazon Web Services Multi Model Server 1.1.11 and earlier might allow remote actors to execute arbitrary code via a crafted model archive. Multi Model Server is end of life and no fixed version is available. Users should discontinue use of Multi Model Server and migrate to a supported model serving solution."
+  },
+  {
+   "id": "CVE-2026-55981",
+   "tier": "critical",
+   "title": "Sound Blaster Katana 固件校验缺失",
+   "title_zh": "Sound Blaster Katana 固件校验缺失",
+   "summary_zh": "攻击者可修改合法固件镜像并刷入受影响设备，使其运行被篡改的固件。",
+   "published": "2026-10-23T07:16:38.420",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.00304,
+   "epss_percentile": 0.21992,
+   "cwe_labels": [],
+   "difficulty": "低(需相邻网络·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-134/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商固件更新，仅刷入带签名校验的官方固件。",
+   "repro_worthy": "一般",
+   "repro_note": "需本地接触设备并进入固件升级流程刷入篡改镜像",
+   "impact_scope": "消费级音箱设备，需物理接触",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55981",
+   "description": "A firmware verification vulnerability in Creative Sound Blaster Katana could allow an attacker to modify a legitimate firmware image and upload the modified firmware to an affected device."
+  },
+  {
+   "id": "CVE-2026-54630",
+   "tier": "critical",
+   "title": "默认镜像.phar上传致代码执行",
+   "title_zh": "默认镜像.phar上传致代码执行",
+   "summary_zh": "在默认容器配置下，攻击者上传.phar文件后由Apache转发PHP-FPM解析执行，获得代码执行。",
+   "published": "2026-10-23T04:18:17.007",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+   "epss": 0.00234,
+   "epss_percentile": 0.13475,
+   "cwe_labels": [
+    "任意文件上传"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Part-DB/Part-DB-server/releases/tag/v2.12.1"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Part-DB/Part-DB-server/security/advisories/GHSA-w5m7-3xf7-6g7g"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "禁用.phar解析并升级镜像修复版本，严格校验上传文件类型。",
+   "repro_worthy": "一般",
+   "repro_note": "向上传功能提交.phar文件后访问，默认镜像即按PHP解析执行",
+   "impact_scope": "容器化PHP应用，需可访问上传功能",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-54630",
+   "description": "The shipped Apache configuration routes .phar to PHP-FPM, so the stored file is executed as PHP on request. Ability to exploit depends on the webserver config, docker image contained the vulnerability by default."
+  },
+  {
+   "id": "CVE-2025-30047",
+   "tier": "critical",
+   "title": "CGM CLININET反序列化RCE",
+   "title_zh": "CGM CLININET反序列化RCE",
+   "summary_zh": "攻击者向反序列化入口提交恶意数据，可以root权限执行任意代码",
+   "published": "2026-10-23T09:17:04.573",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00379,
+   "epss_percentile": 0.30649,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(需相邻网络·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cert.pl/en/posts/2026/10/CVE-2025-30043/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cgm.com/pol_pl/products/szpital/cgm-clininet.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "联系厂商获取补丁并升级至修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "反序列化入口提交恶意序列化数据",
+   "impact_scope": "医疗内网系统,可root执行代码",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-30047",
+   "description": "CGM CLININET is vulnerable to Remote Code Execution caused by deserialization of untrusted data. The server exposes an HTTP-based API, used by the administrative module, that exchanges data using Java object serialization. An attacker within the same local network is able to send requests to this API and transmit a crafted serialized object. When it is deserialized, it allows arbitrary code execution with root privileges on the server. This issue was fixed in version 2026.MS3"
+  },
+  {
+   "id": "CVE-2025-30050",
+   "tier": "critical",
+   "title": "CGM CLININET参数注入RCE",
+   "title_zh": "CGM CLININET参数注入RCE",
+   "summary_zh": "相邻网络攻击者构造查询参数导入恶意模块，以root权限执行任意代码",
+   "published": "2026-10-23T09:17:04.810",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00217,
+   "epss_percentile": 0.11512,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(需相邻网络·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cert.pl/en/posts/2026/10/CVE-2025-30043/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cgm.com/pol_pl/products/szpital/cgm-clininet.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "联系厂商获取补丁并升级至修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "RunCGI.pm查询参数指定恶意模块",
+   "impact_scope": "医疗内网系统,邻近网络可RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-30050",
+   "description": "CGM CLININET is vulnerable to Code Injection in the RunCGI.pm component, which dynamically imports the module specified as a query parameter and executes code from untrusted data provided by the user. An attacker from adjacent network can supply a crafted query parameter to have an attacker-controlled module imported which results in arbitrary code execution with root privileges. This issue was fixed in version 2026.MS3"
+  },
+  {
+   "id": "CVE-2026-19677",
+   "tier": "critical",
+   "title": "frevvo注册表单认证绕过RCE",
+   "title_zh": "frevvo注册表单认证绕过RCE",
+   "summary_zh": "未认证远程攻击者操纵注册参数冒充任意租户用户，获管理员权限并执行系统命令",
+   "published": "2026-10-23T02:16:57.560",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00533,
+   "epss_percentile": 0.44243,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://frevvo-docs.atlassian.net/wiki/spaces/frevvo110/overview?homepageId=1069252609"
+    },
+    {
+     "label": "参考",
+     "url": "https://frevvo-docs.atlassian.net/wiki/spaces/frevvo110/pages/1069273270/Detailed+Release+Notes"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "联系厂商升级至修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "公开注册表单需已知租户名和用户标识",
+   "impact_scope": "低代码平台注册入口,可获管理员",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-19677",
+   "description": "An authentication bypass vulnerability in the public onPhase/ frevvo registration form version 11.0.14 allows an unauthenticated remote attacker to authenticate as an arbitrary tenant user, obtain TenantAdmin and Designer privileges, and execute arbitrary operating system commands via manipulation of registration parameters containing a valid tenant name and existing user identifier."
+  },
+  {
+   "id": "CVE-2026-112860",
+   "tier": "critical",
+   "title": "Participants DB盲SQL注入",
+   "title_zh": "Participants DB盲SQL注入",
+   "summary_zh": "攻击者向插件参数注入SQL语句，可盲注读取数据库敏感信息",
+   "published": "2026-10-23T09:17:06.280",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
+   "epss": 0.00236,
+   "epss_percentile": 0.13829,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/participants-database/vulnerability/wordpress-participants-database-plugin-2-7-8-5-sql-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级插件至厂商修复版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件,公网站点常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112860",
+   "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in xnau webdesign Participants Database participants-database allows Blind SQL Injection.This issue affects Participants Database: from n/a through 2.7.8.5."
+  },
+  {
+   "id": "CVE-2026-114357",
+   "tier": "critical",
+   "title": "DJI CrystalSky adbd未认证",
+   "title_zh": "DJI CrystalSky adbd未认证",
+   "summary_zh": "邻近攻击者连接未鉴权adbd获取uid2000 shell，并可进一步提权root",
+   "published": "2026-10-23T14:17:49.820",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:P/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cyber-defence-campus.github.io/projects/vulnerabilities/CVE-2026-114357"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级固件至厂商修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "adbd调试端口未鉴权,邻近网络连接",
+   "impact_scope": "DJI手持终端,现场邻近网络",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114357",
+   "description": "Missing authentication for a critical function in the Android Debug Bridge daemon (adbd) in DJI CrystalSky ZS600C firmware v0.3.9.7 through v0.6.6.9 allows an attacker to obtain an unauthenticated shell (uid 2000), a foothold for privilege escalation to root. via the shipped /system/bin/adbd_tcp.sh or 'setprop persist.adb.tcp.port 5555'), the same unauthenticated shell is reachable over the network (CVSS 4.0 base 9.3)."
+  },
+  {
+   "id": "CVE-2026-55486",
+   "tier": "critical",
+   "title": "Goobi viewer反射型XSS",
+   "title_zh": "Goobi viewer反射型XSS",
+   "summary_zh": "攻击者构造登录/令牌回调参数注入脚本，诱导用户触发反射XSS",
+   "published": "2026-10-23T15:17:33.657",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "XSS",
+    "CWE-113"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/intranda/goobi-viewer-core/commit/0e488c6b02a28c1d1a747dfe3958ad2bbcff2d0b"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/intranda/goobi-viewer-core/releases/tag/v26.05"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/intranda/goobi-viewer-core/security/advisories/GHSA-975w-g9gj-xq48"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至修复版本并校验回调参数",
+   "repro_worthy": "一般",
+   "repro_note": "登录/令牌回调参数未转义",
+   "impact_scope": "数字图书馆Web应用,可窃会话",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55486",
+   "description": "The Goobi viewer is a web application that allows digitised material to be displayed in a web browser. Because the attacker controls both the login and token calls that initiate the flow, the unescaped value yields reflected XSS."
+  },
+  {
+   "id": "CVE-2026-107685",
+   "tier": "critical",
+   "title": "req_llm证书校验缺失致会话劫持",
+   "title_zh": "req_llm证书校验缺失致会话劫持",
+   "summary_zh": "中间人利用不受信TLS证书读取篡改OpenAI WebSocket会话及Bearer令牌",
+   "published": "2026-10-23T12:18:06.410",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "证书校验缺陷"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cna.erlef.org/cves/CVE-2026-107685.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/agentjido/req_llm/commit/a389d718640ceb2d541a8f540ab954cbf5ef8313"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/agentjido/req_llm/commit/c7264fc0217fbacfb5562234ff790b8e4462de76"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至修复版本并启用证书校验",
+   "repro_worthy": "一般",
+   "repro_note": "中间人劫持WebSocket并伪造证书",
+   "impact_scope": "LLM客户端,泄露API令牌",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107685",
+   "description": "Improper Certificate Validation vulnerability in the WebSocket streaming client in agentjido req_llm allows an on-path attacker to read and modify OpenAI WebSocket sessions, including the authorization bearer token, via a TLS certificate the client does not trust. The option allowlist also drops any caller-supplied cacerts or ssl_options, so an application cannot turn verification on."
+  },
+  {
+   "id": "CVE-2025-30046",
+   "tier": "critical",
+   "title": "HL7 CWE-250",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-10-23T09:17:04.450",
+   "cvss": 9.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:A/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00263,
+   "epss_percentile": 0.17238,
+   "cwe_labels": [
+    "CWE-250"
+   ],
+   "difficulty": "中(需相邻网络·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cert.pl/en/posts/2026/10/CVE-2025-30043/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cgm.com/pol_pl/products/szpital/cgm-clininet.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-30046",
+   "description": "In the CGM CLININET application server, multiple processes responsible for HL7 communication with external systems run with root privileges while processing untrusted data received from those external systems. An attacker in adjacent network able to send data to these HL7 communication processes can achieve remote code execution with root privileges. The vulnerability was confirmed to affect versions up to 2026.MS3 but later versions may also be vulnerable."
+  },
+  {
+   "id": "CVE-2025-30054",
+   "tier": "critical",
+   "title": "CGM CLININET本地提权至root",
+   "title_zh": "CGM CLININET本地提权至root",
+   "summary_zh": "拥有uhcapache权限的本地攻击者可篡改文件，以root执行任意代码",
+   "published": "2026-10-23T09:17:05.290",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.001,
+   "epss_percentile": 0.00821,
+   "cwe_labels": [
+    "权限错误"
+   ],
+   "difficulty": "高(需本地访问·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cert.pl/en/posts/2026/10/CVE-2025-30043/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cgm.com/pol_pl/products/szpital/cgm-clininet.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至修复版本并收紧文件权限",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "医疗内网服务器,本地提权",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-30054",
+   "description": "CGM CLININET is vulnerable to local privilege escalation. The service that processes incoming HL7 messages runs with root privileges, but due to incorrect permissions, its scripts and configuration files can be modified by the uhcapache user. An attacker with uhcapache privileges can modify these files to execute arbitrary code as root. The vulnerability was confirmed to affect versions up to 2026.MS3 but later versions may also be vulnerable."
+  },
+  {
+   "id": "CVE-2026-115547",
+   "tier": "critical",
+   "title": "Okta OAG管理台命令注入RCE",
+   "title_zh": "Okta OAG管理台命令注入RCE",
+   "summary_zh": "已认证管理员可提交特制配置值，在OAG服务账户上下文执行系统命令",
+   "published": "2026-10-23T04:18:16.030",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.00444,
+   "epss_percentile": 0.37653,
+   "cwe_labels": [
+    "输入校验缺失",
+    "代码注入(RCE)"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "http://trust.okta.com/security-advisories/command-execution-via-admin-console-input-in-okta-access-gateway-cve-2026-115547"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级OAG管理台至修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "管理台配置项注入命令,需管理员",
+   "impact_scope": "身份网关管理台,高权限后台",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115547",
+   "description": "An input validation issue in the Okta Access Gateway (OAG) Admin Console allows the processing of specially formatted configuration values. An authenticated administrator can leverage this to execute system commands within the context of the OAG service account."
   }
  ],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "rust-lang/rust",
+   "sha": "9cd159cfa5b56207cfecf70fd8bd213558243c23",
+   "url": "https://github.com/rust-lang/rust/commit/9cd159cfa5b56207cfecf70fd8bd213558243c23",
+   "title": "Auto merge of #164819 - JonathanBrouwer:rollup-iro0RVR, r=JonathanBrouwer",
+   "date": "2026-10-23T22:24:05",
+   "score": 2,
+   "matched": [
+    "缓冲区溢出"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "rust-lang/rust",
+   "sha": "bf8930f60b85a0d1344355657dd0449ac61ce674",
+   "url": "https://github.com/rust-lang/rust/commit/bf8930f60b85a0d1344355657dd0449ac61ce674",
+   "title": "Rollup merge of #163743 - joboet:miri_bypass_stack_overflow, r=ChrisDenton",
+   "date": "2026-10-23T19:27:07",
+   "score": 2,
+   "matched": [
+    "缓冲区溢出"
+   ],
+   "cve": null
+  }
+ ]
 }
