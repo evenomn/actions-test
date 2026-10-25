@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-10-25T06:20:34+00:00",
+ "generated_at": "2026-10-25T13:47:24+00:00",
  "lookback_hours": 5,
  "count": 0,
  "stats": {
@@ -16,5 +16,30 @@
  "briefing": [],
  "items": [],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "sqlite/sqlite",
+   "sha": "427b538f72820fcc88cdf2b0a25f385644a21789",
+   "url": "https://github.com/sqlite/sqlite/commit/427b538f72820fcc88cdf2b0a25f385644a21789",
+   "title": "Fix a possible OOB write in the recover extension given a corrupt",
+   "date": "2026-10-25T13:07:54",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "curl/curl",
+   "sha": "c190227d9147b980b66b51a6d6a11769330a137c",
+   "url": "https://github.com/curl/curl/commit/c190227d9147b980b66b51a6d6a11769330a137c",
+   "title": "VULN-DISCLOSURE-POLICY.md: take severity < HIGH to GitHub",
+   "date": "2026-10-25T10:36:44",
+   "score": 2,
+   "matched": [
+    "漏洞相关"
+   ],
+   "cve": null
+  }
+ ]
 }
