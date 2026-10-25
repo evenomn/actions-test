@@ -12357,5 +12357,98 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-10-25": {
+  "qualified": 8,
+  "critical": 7,
+  "kev": 0,
+  "repro_top": 0,
+  "kev_total": 1756,
+  "by_category": {
+   "OA/协同办公": 1,
+   "未分类": 7
+  },
+  "items": [
+   {
+    "id": "CVE-2026-115975",
+    "title": "Cervantes越权操作Jira工单",
+    "tier": "high",
+    "category": "OA/协同办公",
+    "cvss": 7.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-114196",
+    "title": "Paytium反序列化对象注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-94075",
+    "title": "Newsletters反序列化对象注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-115932",
+    "title": "媒体路径校验绕过任意文件读取",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-115995",
+    "title": "Unitree Go2参数命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-115557",
+    "title": "Python ssl证书吊销校验问题",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-111402",
+    "title": "Newsletters SQL注入漏洞",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112866",
+    "title": "Product Filter SQL盲注",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }

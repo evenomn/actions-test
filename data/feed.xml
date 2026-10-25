@@ -3,9 +3,90 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 24 Oct 2026 23:26:32 +0000</pubDate>
-    <lastBuildDate>Sat, 24 Oct 2026 23:26:32 +0000</lastBuildDate>
+    <pubDate>Sun, 25 Oct 2026 01:36:48 +0000</pubDate>
+    <lastBuildDate>Sun, 25 Oct 2026 01:36:48 +0000</lastBuildDate>
+    <item>
+      <title>[high]Cervantes越权操作Jira工单</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115975</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115975-2026-10-25</guid>
+      <description>CVE-2026-115975 · 🎯P2 保持关注 · 披露 2026-10-24 · 组件 OA/协同办公 · CVSS 7.1 · EPSS 0.3%,前 20% · 类型 缺失授权(越权) · 难度 低(远程·需低权限)
+Broken access control in JiraController in Cervantes version v1.3-beta could allow an attacker to create, edit, or delete Jira tickets for vulnerabilities in ot…
+信号: 关注词:jira</description>
+      <pubDate>Sun, 25 Oct 2026 01:36:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Paytium反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114196</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114196-2026-10-25</guid>
+      <description>CVE-2026-114196 · 🎯P1 重点关注 · 披露 2026-10-24 · CVSS 9.8 · EPSS 0.6%,前 46% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in paytiumsupport Paytium paytium allows Object Injection.This issue affects Paytium: from n/a through 5.0.5.
+信号:</description>
+      <pubDate>Sun, 25 Oct 2026 01:36:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Newsletters反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-94075</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-94075-2026-10-25</guid>
+      <description>CVE-2026-94075 · 🎯P1 重点关注 · 披露 2026-10-24 · CVSS 9.8 · EPSS 0.6%,前 46% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in Tribulant Software Newsletters newsletters-lite allows Object Injection.This issue affects Newsletters: from …
+信号:</description>
+      <pubDate>Sun, 25 Oct 2026 01:36:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]媒体路径校验绕过任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115932</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115932-2026-10-25</guid>
+      <description>CVE-2026-115932 · 🎯P1 重点关注 · 披露 2026-10-24 · CVSS 9.6 · 类型 路径遍历/任意文件读取/注入 · 难度 低(远程·需低权限)
+A registered user can store a crafted media path with a post, get it past the checks that normally restrict it, and have the publishing worker read an arbitrary…
+信号:</description>
+      <pubDate>Sun, 25 Oct 2026 01:36:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Unitree Go2参数命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115995</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115995-2026-10-25</guid>
+      <description>CVE-2026-115995 · 🎯P1 重点关注 · 披露 2026-10-24 · CVSS 9.6 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证·需用户交互)
+Such manipulation of the argument Value leads to os command injection.
+信号:</description>
+      <pubDate>Sun, 25 Oct 2026 01:36:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Python ssl证书吊销校验问题</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115557</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115557-2026-10-25</guid>
+      <description>CVE-2026-115557 · 🎯P1 重点关注 · 披露 2026-10-24 · CVSS 9.4 · 类型 CWE-299 · 难度 低(远程·免认证·需用户交互)
+Python has added a denylist for known compromised certificates to the "ssl" module to ensure user safety even without certificate revocation configured.
+信号:</description>
+      <pubDate>Sun, 25 Oct 2026 01:36:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Newsletters SQL注入漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111402</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111402-2026-10-25</guid>
+      <description>CVE-2026-111402 · 🎯P1 重点关注 · 披露 2026-10-24 · CVSS 9.3 · EPSS 0.4%,前 33% · 类型 SQL注入 · 难度 低(远程·免认证)
+Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Tribulant Software Newsletters newsletters-lite allows SQL…
+信号:</description>
+      <pubDate>Sun, 25 Oct 2026 01:36:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Product Filter SQL盲注</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112866</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112866-2026-10-25</guid>
+      <description>CVE-2026-112866 · 🎯P1 重点关注 · 披露 2026-10-24 · CVSS 9.3 · EPSS 0.4%,前 33% · 类型 SQL注入 · 难度 低(远程·免认证)
+Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in WPFactory Product Filter by WBW woo-product-filter allows …
+信号:</description>
+      <pubDate>Sun, 25 Oct 2026 01:36:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>今日要点</title>
+      <description>- 清单未标记在野利用或勒索软件关联，暂无需按已遭攻击响应。
+- 今日批量公告8条高危，反序列化与注入类漏洞集中。
+- 最急：CVE-2026-114196等反序列化RCE（9.8）优先修复。
+- 多处路径遍历、命令注入和SQL注入（9.3-9.6）需同步排查。
+- 无公开PoC/模板，但高危暴露面仍需先行处置。</description>
+      <pubDate>Sun, 25 Oct 2026 01:36:48 +0000</pubDate>
+    </item>
   </channel>
 </rss>
