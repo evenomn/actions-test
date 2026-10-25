@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-10-25T13:47:24+00:00",
+ "generated_at": "2026-10-25T19:47:47+00:00",
  "lookback_hours": 5,
  "count": 0,
  "stats": {
@@ -18,26 +18,39 @@
  "media": [],
  "commits": [
   {
-   "repo": "sqlite/sqlite",
-   "sha": "427b538f72820fcc88cdf2b0a25f385644a21789",
-   "url": "https://github.com/sqlite/sqlite/commit/427b538f72820fcc88cdf2b0a25f385644a21789",
-   "title": "Fix a possible OOB write in the recover extension given a corrupt",
-   "date": "2026-10-25T13:07:54",
+   "repo": "rust-lang/rust",
+   "sha": "c9e43777b57182329ae878ad51f9d5a127022b11",
+   "url": "https://github.com/rust-lang/rust/commit/c9e43777b57182329ae878ad51f9d5a127022b11",
+   "title": "Rollup merge of #164758 - renovate-bot:renovate/pypi-jinja2-vulnerability, r=jieyouxu",
+   "date": "2026-10-25T09:41:42",
+   "score": 5,
+   "matched": [
+    "CVE",
+    "漏洞相关"
+   ],
+   "cve": "CVE-2024-56326"
+  },
+  {
+   "repo": "wireshark/wireshark",
+   "sha": "7a8aafe4170ec51ab188b53760dca8ec15cdf189",
+   "url": "https://github.com/wireshark/wireshark/commit/7a8aafe4170ec51ab188b53760dca8ec15cdf189",
+   "title": "ACN: Build the universe discovery list in a wmem_strbuf",
+   "date": "2026-10-25T14:19:28",
    "score": 2,
    "matched": [
-    "越界读写"
+    "缓冲区溢出"
    ],
    "cve": null
   },
   {
-   "repo": "curl/curl",
-   "sha": "c190227d9147b980b66b51a6d6a11769330a137c",
-   "url": "https://github.com/curl/curl/commit/c190227d9147b980b66b51a6d6a11769330a137c",
-   "title": "VULN-DISCLOSURE-POLICY.md: take severity < HIGH to GitHub",
-   "date": "2026-10-25T10:36:44",
+   "repo": "sqlite/sqlite",
+   "sha": "7dcbdfa6718afb2afaf0a349e7d23a275f8377d2",
+   "url": "https://github.com/sqlite/sqlite/commit/7dcbdfa6718afb2afaf0a349e7d23a275f8377d2",
+   "title": "A better fix for the recover OOB write problem of the [37963c3869640f98]",
+   "date": "2026-10-25T13:36:36",
    "score": 2,
    "matched": [
-    "漏洞相关"
+    "越界读写"
    ],
    "cve": null
   }
