@@ -1,89 +1,140 @@
 {
  "version": 3,
- "generated_at": "2026-10-26T16:13:12+00:00",
+ "generated_at": "2026-10-26T21:42:47+00:00",
  "lookback_hours": 5,
- "count": 7,
+ "count": 6,
  "stats": {
-  "total": 7,
+  "total": 6,
   "by_tier": {
-   "critical": 7
+   "critical": 6
   },
   "by_urgency": {
-   "P1 重点关注": 5,
-   "P0 立即处置": 1,
-   "P2 保持关注": 1
+   "P1 重点关注": 6
   },
   "by_category": {
-   "未知": 6,
-   "边界设备/VPN": 1
+   "未知": 4,
+   "容器/虚拟化": 1,
+   "操作系统": 1
   },
   "kev": 0,
-  "with_poc": 2,
+  "with_poc": 0,
   "with_poc_source": 0,
-  "repro_recommended": 1
+  "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-107656",
+   "id": "CVE-2026-102649",
    "tier": "critical",
-   "title": "FortiSandbox 认证绕过致远程命令执行",
-   "title_zh": "FortiSandbox 认证绕过致远程命令执行",
-   "summary_zh": "未认证远程攻击者构造恶意 HTTP 请求绕过认证路径，以设备权限执行任意代码或命令",
-   "published": "2026-10-26T14:16:24.147",
-   "cvss": 9.8,
+   "title": "burrito-server 缺失认证",
+   "title_zh": "burrito-server 缺失认证",
+   "summary_zh": "知晓仓库URL者可直连服务端点伪造事件，创建或删除TerraformPullRequest资源，破坏GitOps流程",
+   "published": "2026-10-26T18:17:21.803",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "认证绕过"
+    "缺失认证",
+    "授权错误"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-185"
-    }
-   ],
-   "poc": [
+     "url": "https://github.com/padok-team/burrito/commit/1d48432a4a0126429c99f5fa42567bf3711d1ca1"
+    },
     {
-     "url": "https://github.com/Ghost-Bx1/Fortinet-Exploits-CVE-2026-39808-106173-107656",
-     "label": "Ghost-Bx1/Fortinet-Exploits-CVE-2026-39808-106173-107656 0★(仅README)"
+     "label": "参考",
+     "url": "https://github.com/padok-team/burrito/releases/tag/v0.13.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/padok-team/burrito/security/advisories/GHSA-7m68-72r6-3jx8"
     }
    ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "gitlab",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至修复版本并限制服务端点访问",
+   "repro_worthy": "一般",
+   "repro_note": "向burrito-server端点提交伪造事件，需已知仓库URL",
+   "impact_scope": "内网GitOps组件，供应链风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102649",
+   "description": "Anyone who can reach `burrito-server`'s endpoint and knows a tracked repository's URL can forge events to create or delete `TerraformPullRequest` custom resources with attacker-chosen `Branch`, `Base`, and `ID` fields. Auto-apply is disabled for these temporary layers, so this vulnerability alone cannot force a `terraform apply`; plan-time provider and data-source code execution depends on the selected branch's contents."
+  },
+  {
+   "id": "CVE-2026-115905",
+   "tier": "critical",
+   "title": "Rust zip库解压路径不一致",
+   "title_zh": "Rust zip库解压路径不一致",
+   "summary_zh": "攻击者构造恶意压缩包，使中央目录与流式解压路径不一致，覆盖下游服务文件",
+   "published": "2026-10-26T17:17:17.823",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失",
+    "CWE-436"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/zip-rs/zip2/commit/8068ab480ccf8daa7411424e365fcdbe6d09443e"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/zip-rs/zip2/releases/tag/v9.0.5"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/zip-rs/zip2/security/advisories/GHSA-m665-v7pm-7grj"
+    }
+   ],
+   "poc": [],
    "nuclei": false,
    "patched": null,
    "kev": false,
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至厂商修复版本，限制管理接口公网暴露并排查异常 HTTP 请求",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "未授权构造 HTTP 请求走备用路径绕过认证，再注入命令执行",
-   "impact_scope": "Fortinet 安全设备，常暴露公网与管理网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107656",
-   "description": "An authentication bypass using an alternate path or channel vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.6, FortiSandbox 4.4.0 through 4.4.9, FortiSandbox 4.2 all versions, FortiSandbox PaaS 5.0.0 through 5.0.6, FortiSandbox PaaS 4.4 all versions, FortiSandbox PaaS 4.2 all versions may allow attacker to execute unauthorized code or commands via crafted HTTP requests"
+   "urgency": "P1 重点关注",
+   "action_zh": "升级zip库至修复版本，解压后校验输出路径",
+   "repro_worthy": "一般",
+   "repro_note": "构造中央目录与本地头不一致的压缩包，验证覆盖路径",
+   "impact_scope": "被广泛依赖的压缩解析库",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115905",
+   "description": "zip is a zip library for Rust that supports reading and writing simple ZIP files. A crafted archive can therefore appear benign to a component that inspects the central directory but cause a streaming extractor to write a different attacker-selected path and content, potentially overwriting files used by a downstream service."
   },
   {
-   "id": "CVE-2026-115188",
+   "id": "CVE-2026-110720",
    "tier": "critical",
-   "title": "Mautic 活动导入任意文件上传致 RCE",
-   "title_zh": "Mautic 活动导入任意文件上传致 RCE",
-   "summary_zh": "具备活动导入权限的已认证用户上传恶意文件，在按目录生效配置的 Apache 上以 Web 权限执行代码",
-   "published": "2026-10-26T14:16:30.047",
+   "title": "consul-k8s 跨命名空间授权绕过",
+   "title_zh": "consul-k8s 跨命名空间授权绕过",
+   "summary_zh": "攻击者借组件ACL绑定规则缺陷跨命名空间越权，获取更高Consul权限",
+   "published": "2026-10-26T19:16:29.940",
    "cvss": 9.9,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "代码注入(RCE)",
-    "任意文件上传"
+    "授权错误"
    ],
    "difficulty": "低(远程·需低权限)",
    "products": [],
@@ -92,7 +143,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/mautic/mautic/security/advisories/GHSA-mxjf-pghx-h299"
+     "url": "https://discuss.hashicorp.com/t/hcsec-2026-50-consul-k8s-vulnerable-to-a-cross-namespace-authorization-bypass-in-component-acl-binding-rules/77915"
     }
    ],
    "poc": [],
@@ -103,46 +154,48 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复版本；临时收紧活动导入权限或关闭该功能",
+   "action_zh": "升级到2.1.0或1.8.18，审查ACL绑定规则",
    "repro_worthy": "一般",
-   "repro_note": "认证后经 campaign 导入上传含目录配置与脚本的文件，访问触发执行",
-   "impact_scope": "营销自动化平台，存联系人数据与应用密钥",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115188",
-   "description": "An unrestricted file upload vulnerability exists in the campaign import feature of Mautic 7. On web servers that honor per-directory configuration, such as the default Apache setup of the official Mautic Docker image, this leads to remote code execution with the privileges of the web server user, including access to the Mautic configuration, application secrets, and contact data."
+   "repro_note": "需集群内身份与组件ACL绑定配置，实现跨命名空间提权",
+   "impact_scope": "K8s服务网格控制面，横向提权",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110720",
+   "description": "Consul-k8s versions 0.42.0 and later are vulnerable to a cross-namespace authorization bypass in component ACL binding rules that may allow an attacker to obtain elevated Consul privileges. This vulnerability (CVE-2026-110720) is fixed in consul-k8s 2.1.0 and 1.8.18."
   },
   {
-   "id": "CVE-2026-107092",
+   "id": "CVE-2026-116504",
    "tier": "critical",
-   "title": "NexoPOS 更新接口目录遍历",
-   "title_zh": "NexoPOS 更新接口目录遍历",
-   "summary_zh": "攻击者通过 api/update 接口的路径参数穿越目录，读取或覆盖服务器上的任意敏感文件",
-   "published": "2026-10-26T14:16:23.737",
-   "cvss": 9.8,
+   "title": "TOTOLINK A950RG云升级命令注入",
+   "title_zh": "TOTOLINK A950RG云升级命令注入",
+   "summary_zh": "远程攻击者通过云升级接口FileName参数注入系统命令，可完全控制路由器",
+   "published": "2026-10-26T21:18:12.420",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
-   "cwe_labels": [],
-   "difficulty": "低(远程·免认证)",
+   "cwe_labels": [
+    "注入",
+    "命令注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "http://nexopos.com"
+     "url": "https://gist.github.com/H3rmesk1t/c2f2dcfdb6238a7ddb8fb0622ad52948"
     },
     {
      "label": "参考",
-     "url": "https://github.com/raivenLockdown/CVE-2026-107092"
-    }
-   ],
-   "poc": [
+     "url": "https://vuldb.com/cve/CVE-2026-116504"
+    },
     {
-     "url": "https://github.com/raivenLockdown/CVE-2026-107092",
-     "label": "raivenLockdown/CVE-2026-107092 1★(仅README)"
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1022553"
     }
    ],
+   "poc": [],
    "nuclei": false,
    "patched": null,
    "kev": false,
@@ -150,27 +203,76 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至 6.2.5 或更高版本，并限制 api/update 接口访问来源",
+   "action_zh": "暂无官方修复信息，停用云升级并限制管理面访问",
    "repro_worthy": "一般",
-   "repro_note": "向 /api/update 的路径类参数注入 ../ 序列读取或写入任意文件",
-   "impact_scope": "零售 POS 系统，门店内网部署为主",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107092",
-   "description": "NexoPOS v6.2.4 is vulnerable to Directory Traversal via the api/update endpoint."
+   "repro_note": "调用setCloudUpgradeFW的FileName参数注入命令",
+   "impact_scope": "家用/小型企业路由器，边界设备",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116504",
+   "description": "A vulnerability has been found in TOTOLINK A950RG 4.1.2cu.5268_B20221104. This affects the function setCloudUpgradeFW of the file lib/cste_modules/upgrade.so of the component Cloud Upgrade. The manipulation of the argument FileName leads to command injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used."
   },
   {
-   "id": "CVE-2026-116485",
+   "id": "CVE-2026-116506",
    "tier": "critical",
-   "title": "danmu_api 默认令牌缺失认证致配置篡改",
-   "title_zh": "danmu_api 默认令牌缺失认证致配置篡改",
-   "summary_zh": "使用默认 TOKEN 且未设 ADMIN_TOKEN 时，未认证者调 /api/env/* 改配置、锁管理员并触发 SSRF",
-   "published": "2026-10-26T14:16:37.040",
+   "title": "TOTOLINK A950RG防火墙命令注入",
+   "title_zh": "TOTOLINK A950RG防火墙命令注入",
+   "summary_zh": "远程攻击者操纵防火墙模块apmib_set参数注入命令，取得路由器控制权",
+   "published": "2026-10-26T21:18:13.047",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "注入",
+    "命令注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/H3rmesk1t/1046036a8601e93f375754e11307bfc8"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-116506"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1022555"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复信息，限制管理面访问并监控异常命令",
+   "repro_worthy": "一般",
+   "repro_note": "firewall.so中apmib_set参数未过滤，远程注入命令",
+   "impact_scope": "家用/小型企业路由器，边界设备",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116506",
+   "description": "A vulnerability was determined in TOTOLINK A950RG 4.1.2cu.5268_B20221104. Affected is the function apmib_set of the file firewall.so. This manipulation causes command injection. The attack may be initiated remotely. The exploit has been publicly disclosed and may be utilized."
+  },
+  {
+   "id": "CVE-2026-10757",
+   "tier": "critical",
+   "title": "ArcGIS Server SQL注入",
+   "title_zh": "ArcGIS Server SQL注入",
+   "summary_zh": "具服务访问权限者（或匿名公开配置）可注入SQL调用数据库函数，读取或篡改数据",
+   "published": "2026-10-26T18:17:34.580",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "缺失认证"
+    "SQL注入"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -179,15 +281,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/huangxd-/danmu_api"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/huangxd-/danmu_api/blob/5ef63a01bae7c4bad4dcd7bafbbcdcf33aa82564/danmu_api/worker.js#L223-L244"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/huangxd-/danmu_api/commit/6e93478064a0ce4e7ed3bc2eae88adaad1b7ab02"
+     "url": "https://www.esri.com/arcgis-blog/products/trust-arcgis/administration/october-2026-arcgis-security-bulletin"
     }
    ],
    "poc": [],
@@ -198,221 +292,25 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至 1.21.7，务必设置自定义 ADMIN_TOKEN 并弃用默认令牌",
+   "action_zh": "升级至修复版本，将服务访问权限改为非公开",
    "repro_worthy": "一般",
-   "repro_note": "未授权 POST /api/env/set，前置为默认 TOKEN 且 ADMIN_TOKEN 未设置",
-   "impact_scope": "自建弹幕聚合服务，常直接暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116485",
-   "description": "danmu_api before 1.21.7 contains an authentication bypass vulnerability that allows unauthenticated attackers to modify server environment configuration when the default TOKEN is used and ADMIN_TOKEN is unset. Attackers can send POST requests to /api/env/set, /api/env/add, or /api/env/del to set ADMIN_TOKEN, lock out operators, redirect OTHER_SERVER or PROXY_URL for SSRF, and trigger redeployment."
-  },
-  {
-   "id": "CVE-2026-59106",
-   "tier": "critical",
-   "title": "WolfProt 接口命令注入致未授权 RCE",
-   "title_zh": "WolfProt 接口命令注入致未授权 RCE",
-   "summary_zh": "网络可达的未认证攻击者向受影响服务注入系统命令，以应用服务权限执行任意操作系统命令",
-   "published": "2026-10-26T14:16:38.813",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://wolfvision.com/de/security/cve-2026-59106-2"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复版本；临时限制该接口的网络访问范围",
-   "repro_worthy": "一般",
-   "repro_note": "未授权访问 WolfProt 服务接口，在命令拼接参数中注入 shell 元字符",
-   "impact_scope": "WolfProt 接口服务，暴露面待现场核查",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59106",
-   "description": "A security vulnerability has been identified in the WolfProt interface implementation. Insufficient neutralization of user-controlled input could allow an unauthenticated attacker with network access to a vulnerable service to execute operating-system commands with the privileges of the affected application service."
-  },
-  {
-   "id": "CVE-2026-65184",
-   "tier": "critical",
-   "title": "wsserver 终端桥命令注入致 root 执行",
-   "title_zh": "wsserver 终端桥命令注入致 root 执行",
-   "summary_zh": "攻击者经 WebSocket 传入未过滤字段，在 root 权限守护进程中被拼接执行任意系统命令",
-   "published": "2026-10-26T15:16:41.627",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.runzero.com/advisories/avocent-acs8000-wsserver-cmdinj-cve-2026-65184"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.runzero.com/blog/lights-out-exposed/"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级修复版本；限制 wsserver 端口暴露并关闭公钥会话免校验路径",
-   "repro_worthy": "一般",
-   "repro_note": "连接 wsserver WebSocket，在会话字段注入命令元字符并走公钥路径免校验",
-   "impact_scope": "设备终端桥守护进程，内网暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65184",
-   "description": "The root-privileged `wsserver` terminal-bridge daemon builds a shell command from client-supplied WebSocket fields and passes it to `system()` and `popen()` without quoting, escaping, or character-set validation. The daemon's public-key session path performs no appliance-session check."
-  },
-  {
-   "id": "CVE-2026-59107",
-   "tier": "critical",
-   "title": "vSolution 共享密钥致 root 登录",
-   "title_zh": "vSolution 共享密钥致 root 登录",
-   "summary_zh": "持有配套私钥的攻击者利用共享加密信任配置，以 root 身份 SSH 登录已启用文件共享的主站设备",
-   "published": "2026-10-26T14:16:38.973",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-797"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://wolfvision.com/de/security/cve-2026-59107-1"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P2 保持关注",
-   "action_zh": "升级修复版本；关闭文件共享功能并轮换相关密钥与信任配置",
-   "repro_worthy": "一般",
-   "repro_note": "前置为主站启用文件共享且已获取对应私钥，再用其 SSH 以 root 登录",
-   "impact_scope": "会议室协作主站设备，内网部署",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59107",
-   "description": "A security vulnerability has been identified in the vSolution Matrix file sharing feature. A shared cryptographic trust configuration could allow an attacker who obtains the matching private key to authenticate to an affected device via SSH as root. This vulnerability affects only devices configured as a vSolution Matrix main/master station with the file sharing feature enabled."
+   "repro_note": "需具备服务访问权限，向受影响功能注入SQL语句",
+   "impact_scope": "GIS服务端，常暴露内网/公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10757",
+   "description": "There is a SQL injection vulnerability in Esri ArcGIS Server versions 12.1 and earlier on Windows and Linux that may allow a remote attacker with privileges to access the service (which could, depending on the service being configured in a non-default access configuration “public”, include an anonymous attacker) to issue database specific functions that should not be allowed."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "grafana/grafana",
-   "sha": "4bc113ea9b2ef8da853758abb04ce9ac21bfc9c6",
-   "url": "https://github.com/grafana/grafana/commit/4bc113ea9b2ef8da853758abb04ce9ac21bfc9c6",
-   "title": "Docker: Bump Alpine base image to 3.24.3 (CVE-2026-111497) (#135945)",
-   "date": "2026-10-26T08:50:40",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-111497"
-  },
-  {
-   "repo": "curl/curl",
-   "sha": "088d59b4ca9049bc9073cb6f2805c98ab2465661",
-   "url": "https://github.com/curl/curl/commit/088d59b4ca9049bc9073cb6f2805c98ab2465661",
-   "title": "SECURITY: remove a dupe link, drop \"confidentiality\" mention",
-   "date": "2026-10-26T12:28:22",
+   "repo": "php/php-src",
+   "sha": "59f8e1d2653c39f8f6e3ef9ada7dac8264c82512",
+   "url": "https://github.com/php/php-src/commit/59f8e1d2653c39f8f6e3ef9ada7dac8264c82512",
+   "title": "Fix use-after-free of CURLOPT_STDERR stream on cloned curl handle",
+   "date": "2026-10-26T21:08:42",
    "score": 2,
    "matched": [
-    "漏洞相关"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "alibaba/nacos",
-   "sha": "7ff2bd7183f0a05a5be93a76235cea918f952546",
-   "url": "https://github.com/alibaba/nacos/commit/7ff2bd7183f0a05a5be93a76235cea918f952546",
-   "title": "Roll up legacy and next UI security dependency fixes (#15944)",
-   "date": "2026-10-26T10:13:52",
-   "score": 2,
-   "matched": [
-    "漏洞相关"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "postgres/postgres",
-   "sha": "fcfd2456078db0a7591fd53c87c67f717ac73fba",
-   "url": "https://github.com/postgres/postgres/commit/fcfd2456078db0a7591fd53c87c67f717ac73fba",
-   "title": "pg_combinebackup: Reject out-of-range block numbers in incremental files",
-   "date": "2026-10-26T09:55:13",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "curl/curl",
-   "sha": "269c44ff7326fdda3f0d9def664080d352eb1708",
-   "url": "https://github.com/curl/curl/commit/269c44ff7326fdda3f0d9def664080d352eb1708",
-   "title": "SECURITY-ADVISORY: document some news",
-   "date": "2026-10-26T09:50:09",
-   "score": 2,
-   "matched": [
-    "漏洞相关"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "grafana/grafana",
-   "sha": "499431da3df9300b88cd44cccba80f2261537c1d",
-   "url": "https://github.com/grafana/grafana/commit/499431da3df9300b88cd44cccba80f2261537c1d",
-   "title": "Dashboards: Remove groupByVariable feature toggle (#135490)",
-   "date": "2026-10-26T09:44:42",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "madler/zlib",
-   "sha": "2804ba75738582d9c87b31e61622290cde0ac4e5",
-   "url": "https://github.com/madler/zlib/commit/2804ba75738582d9c87b31e61622290cde0ac4e5",
-   "title": "Fix double free in minizip block_central_name().",
-   "date": "2026-10-26T06:21:55",
-   "score": 2,
-   "matched": [
-    "类型混淆/double free"
+    "UAF"
    ],
    "cve": null
   }

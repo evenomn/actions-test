@@ -5,72 +5,61 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
-    <lastBuildDate>Mon, 26 Oct 2026 16:13:12 +0000</lastBuildDate>
+    <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
+    <lastBuildDate>Mon, 26 Oct 2026 21:42:47 +0000</lastBuildDate>
     <item>
-      <title>[critical]FortiSandbox 认证绕过致远程命令执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107656</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107656-2026-10-26</guid>
-      <description>CVE-2026-107656 · 🎯P0 立即处置 · 披露 2026-10-26 · 组件 边界设备/VPN · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
-An authentication bypass using an alternate path or channel vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.6, FortiSandbox 4.4.0 through 4.4.9, FortiS…
-信号: 有PoC
-[Ghost-Bx1/Fortinet-Exploits-CVE-2026-39808-106173-107656 0★(仅README)](https://github.com/Ghost-Bx1/Fortinet-Exploits-CVE-2026-39808-106173-107656)</description>
-      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+      <title>[critical]burrito-server 缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102649</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102649-2026-10-26</guid>
+      <description>CVE-2026-102649 · 🎯P1 重点关注 · 披露 2026-10-26 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 缺失认证/授权错误 · 难度 低(远程·免认证)
+Anyone who can reach burrito-server's endpoint and knows a tracked repository's URL can forge events to create or delete TerraformPullRequest custom resourc…
+信号: 关注词:gitlab</description>
+      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Mautic 活动导入任意文件上传致 RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115188</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115188-2026-10-26</guid>
-      <description>CVE-2026-115188 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.9 · 类型 代码注入(RCE)/任意文件上传 · 难度 低(远程·需低权限)
-On web servers that honor per-directory configuration, such as the default Apache setup of the official Mautic Docker image, this leads to remote code execution…
+      <title>[critical]Rust zip库解压路径不一致</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115905</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115905-2026-10-26</guid>
+      <description>CVE-2026-115905 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 10.0 · 类型 输入校验缺失/CWE-436 · 难度 低(远程·免认证)
+A crafted archive can therefore appear benign to a component that inspects the central directory but cause a streaming extractor to write a different attacker-s…
 信号:</description>
-      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]NexoPOS 更新接口目录遍历</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107092</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107092-2026-10-26</guid>
-      <description>CVE-2026-107092 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 难度 低(远程·免认证)
-NexoPOS v6.2.4 is vulnerable to Directory Traversal via the api/update endpoint.
-信号: 有PoC
-[raivenLockdown/CVE-2026-107092 1★(仅README)](https://github.com/raivenLockdown/CVE-2026-107092)</description>
-      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]danmu_api 默认令牌缺失认证致配置篡改</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116485</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116485-2026-10-26</guid>
-      <description>CVE-2026-116485 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
-danmu_api before 1.21.7 contains an authentication bypass vulnerability that allows unauthenticated attackers to modify server environment configuration when th…
+      <title>[critical]consul-k8s 跨命名空间授权绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110720</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110720-2026-10-26</guid>
+      <description>CVE-2026-110720 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.9 · 类型 授权错误 · 难度 低(远程·需低权限)
+Consul-k8s versions 0.42.0 and later are vulnerable to a cross-namespace authorization bypass in component ACL binding rules that may allow an attacker to obtai…
 信号:</description>
-      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WolfProt 接口命令注入致未授权 RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59106</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59106-2026-10-26</guid>
-      <description>CVE-2026-59106 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
-Insufficient neutralization of user-controlled input could allow an unauthenticated attacker with network access to a vulnerable service to execute operating-sy…
+      <title>[critical]TOTOLINK A950RG云升级命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116504</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116504-2026-10-26</guid>
+      <description>CVE-2026-116504 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.9 · 类型 注入/命令注入 · 难度 低(远程·需低权限)
+The manipulation of the argument FileName leads to command injection. The exploit has been disclosed to the public and may be used.
 信号:</description>
-      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]wsserver 终端桥命令注入致 root 执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-65184</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-65184-2026-10-26</guid>
-      <description>CVE-2026-65184 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
-The root-privileged wsserver terminal-bridge daemon builds a shell command from client-supplied WebSocket fields and passes it to system() and popen() wit…
+      <title>[critical]TOTOLINK A950RG防火墙命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116506</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116506-2026-10-26</guid>
+      <description>CVE-2026-116506 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.9 · 类型 注入/命令注入 · 难度 低(远程·需低权限)
+A vulnerability was determined in TOTOLINK A950RG 4.1.2cu.5268_B20221104. The exploit has been publicly disclosed and may be utilized.
 信号:</description>
-      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]vSolution 共享密钥致 root 登录</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59107</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59107-2026-10-26</guid>
-      <description>CVE-2026-59107 · 🎯P2 保持关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 CWE-797 · 难度 低(远程·免认证)
-A shared cryptographic trust configuration could allow an attacker who obtains the matching private key to authenticate to an affected device via SSH as root.
+      <title>[critical]ArcGIS Server SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-10757</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-10757-2026-10-26</guid>
+      <description>CVE-2026-10757 · 🎯P1 重点关注 · 披露 2026-10-26 · 组件 操作系统 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
+There is a SQL injection vulnerability in Esri ArcGIS Server versions 12.1 and earlier on Windows and Linux that may allow a remote attacker with privileges to …
 信号:</description>
-      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
     </item>
   </channel>
 </rss>
