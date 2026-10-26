@@ -3,9 +3,27 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 25 Oct 2026 23:22:30 +0000</pubDate>
-    <lastBuildDate>Sun, 25 Oct 2026 23:22:30 +0000</lastBuildDate>
+    <pubDate>Mon, 26 Oct 2026 01:40:45 +0000</pubDate>
+    <lastBuildDate>Mon, 26 Oct 2026 01:40:45 +0000</lastBuildDate>
+    <item>
+      <title>[critical]YesWiki 搜索SQL注入可读哈希</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116207</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116207-2026-10-26</guid>
+      <description>CVE-2026-116207 · 🎯P1 重点关注 · 披露 2026-10-25 · CVSS 9.1 · 类型 SQL注入 · 难度 低(远程·免认证)
+YesWiki 4.6.0 before 4.7.0 and 5.0.0-alpha1 before 5.0.0-alpha4 contains an unauthenticated SQL injection vulnerability in SearchManager::prepareSearchRequest()…
+信号:</description>
+      <pubDate>Mon, 26 Oct 2026 01:40:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>今日要点</title>
+      <description>- 今日仅1条高危SQL注入，CVSS 9.1，需优先处置。
+- 该漏洞暂无KEV标记、无公开PoC，未见在野利用证据。
+- 未见关联勒索软件活动，暂不按勒索事件响应。
+- 批量公告趋势不明显，今日为单条漏洞披露。
+- 建议立即排查受影响入口并修复，防止后续利用。</description>
+      <pubDate>Mon, 26 Oct 2026 01:40:45 +0000</pubDate>
+    </item>
   </channel>
 </rss>
