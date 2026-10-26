@@ -5,7 +5,72 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 26 Oct 2026 06:29:56 +0000</pubDate>
-    <lastBuildDate>Mon, 26 Oct 2026 06:29:56 +0000</lastBuildDate>
+    <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+    <lastBuildDate>Mon, 26 Oct 2026 16:13:12 +0000</lastBuildDate>
+    <item>
+      <title>[critical]FortiSandbox 认证绕过致远程命令执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107656</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107656-2026-10-26</guid>
+      <description>CVE-2026-107656 · 🎯P0 立即处置 · 披露 2026-10-26 · 组件 边界设备/VPN · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+An authentication bypass using an alternate path or channel vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.6, FortiSandbox 4.4.0 through 4.4.9, FortiS…
+信号: 有PoC
+[Ghost-Bx1/Fortinet-Exploits-CVE-2026-39808-106173-107656 0★(仅README)](https://github.com/Ghost-Bx1/Fortinet-Exploits-CVE-2026-39808-106173-107656)</description>
+      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Mautic 活动导入任意文件上传致 RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115188</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115188-2026-10-26</guid>
+      <description>CVE-2026-115188 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.9 · 类型 代码注入(RCE)/任意文件上传 · 难度 低(远程·需低权限)
+On web servers that honor per-directory configuration, such as the default Apache setup of the official Mautic Docker image, this leads to remote code execution…
+信号:</description>
+      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]NexoPOS 更新接口目录遍历</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107092</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107092-2026-10-26</guid>
+      <description>CVE-2026-107092 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 难度 低(远程·免认证)
+NexoPOS v6.2.4 is vulnerable to Directory Traversal via the api/update endpoint.
+信号: 有PoC
+[raivenLockdown/CVE-2026-107092 1★(仅README)](https://github.com/raivenLockdown/CVE-2026-107092)</description>
+      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]danmu_api 默认令牌缺失认证致配置篡改</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116485</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116485-2026-10-26</guid>
+      <description>CVE-2026-116485 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+danmu_api before 1.21.7 contains an authentication bypass vulnerability that allows unauthenticated attackers to modify server environment configuration when th…
+信号:</description>
+      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]WolfProt 接口命令注入致未授权 RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59106</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59106-2026-10-26</guid>
+      <description>CVE-2026-59106 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+Insufficient neutralization of user-controlled input could allow an unauthenticated attacker with network access to a vulnerable service to execute operating-sy…
+信号:</description>
+      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]wsserver 终端桥命令注入致 root 执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-65184</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-65184-2026-10-26</guid>
+      <description>CVE-2026-65184 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+The root-privileged wsserver terminal-bridge daemon builds a shell command from client-supplied WebSocket fields and passes it to system() and popen() wit…
+信号:</description>
+      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]vSolution 共享密钥致 root 登录</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59107</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59107-2026-10-26</guid>
+      <description>CVE-2026-59107 · 🎯P2 保持关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 CWE-797 · 难度 低(远程·免认证)
+A shared cryptographic trust configuration could allow an attacker who obtains the matching private key to authenticate to an affected device via SSH as root.
+信号:</description>
+      <pubDate>Mon, 26 Oct 2026 16:13:12 +0000</pubDate>
+    </item>
   </channel>
 </rss>

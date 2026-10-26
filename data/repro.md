@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-26 06:29 UTC · 共 **132** 条(强烈推荐 21 / 值得 111)
+**更新**: 2026-10-26 16:13 UTC · 共 **133** 条(强烈推荐 22 / 值得 111)
 
 ---
 
@@ -121,6 +121,16 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 处置: 升级至 19.2.8、19.3.5 或 19.4.2 及以上版本
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/630686) · [参考](https://hackerone.com/reports/4055749)
+
+### FortiSandbox 认证绕过致远程命令执行
+[CVE-2026-107656](https://nvd.nist.gov/vuln/detail/CVE-2026-107656) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | 披露 2026-10-26 | 入库 2026-10-26
+有PoC
+未认证远程攻击者构造恶意 HTTP 请求绕过认证路径，以设备权限执行任意代码或命令
+复现: 强烈推荐 — 未授权构造 HTTP 请求走备用路径绕过认证，再注入命令执行 · 影响面: Fortinet 安全设备，常暴露公网与管理网
+处置: 升级至厂商修复版本，限制管理接口公网暴露并排查异常 HTTP 请求
+影响: Fortinet(产品与版本待 NVD/厂商补充)
+PoC: [Ghost-Bx1/Fortinet-Exploits-CVE-2026-39808-106173-107656 0★(仅README)](https://github.com/Ghost-Bx1/Fortinet-Exploits-CVE-2026-39808-106173-107656)
+参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-185)
 
 ### WebLogic 未认证 T3/IIOP
 [CVE-2026-83399](https://nvd.nist.gov/vuln/detail/CVE-2026-83399) | P0 立即处置 | Web中间件 | CVSS 9.8 | 披露 2026-10-20 | 入库 2026-10-20
