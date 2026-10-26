@@ -1,92 +1,31 @@
 {
  "version": 3,
- "generated_at": "2026-10-26T01:40:45+00:00",
- "lookback_hours": 24,
- "count": 1,
+ "generated_at": "2026-10-26T06:29:56+00:00",
+ "lookback_hours": 5,
+ "count": 0,
  "stats": {
-  "total": 1,
-  "by_tier": {
-   "critical": 1
-  },
-  "by_urgency": {
-   "P1 重点关注": 1
-  },
-  "by_category": {
-   "未知": 1
-  },
+  "total": 0,
+  "by_tier": {},
+  "by_urgency": {},
+  "by_category": {},
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [
-  "- 今日仅1条高危SQL注入，CVSS 9.1，需优先处置。",
-  "- 该漏洞暂无KEV标记、无公开PoC，未见在野利用证据。",
-  "- 未见关联勒索软件活动，暂不按勒索事件响应。",
-  "- 批量公告趋势不明显，今日为单条漏洞披露。",
-  "- 建议立即排查受影响入口并修复，防止后续利用。"
- ],
- "items": [
-  {
-   "id": "CVE-2026-116207",
-   "tier": "critical",
-   "title": "YesWiki 搜索SQL注入可读哈希",
-   "title_zh": "YesWiki 搜索SQL注入可读哈希",
-   "summary_zh": "未授权攻击者可在搜索请求中注入反引号构造子查询，读取密码哈希或耗尽数据库线程。",
-   "published": "2026-10-25T14:17:01.847",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/YesWiki/yeswiki/security/advisories/GHSA-ccp2-6q93-hggh"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/YesWiki/yeswiki/security/advisories/GHSA-hgxv-w4r8-8877"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/yeswiki-4.6.0-before-4.7.0-sql-injection-via-bazar-entries-search-api"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至4.7.0或5.0.0-alpha4；无法升级时限制搜索接口访问",
-   "repro_worthy": "一般",
-   "repro_note": "未授权搜索请求参数注入反引号构造子查询验证",
-   "impact_scope": "自建Wiki/CMS，数据库数据暴露风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116207",
-   "description": "YesWiki 4.6.0 before 4.7.0 and 5.0.0-alpha1 before 5.0.0-alpha4 contains an unauthenticated SQL injection vulnerability in SearchManager::prepareSearchRequest(). Field names from the query and searchfields parameters of the public Bazar entries search API are placed in a backtick-quoted alias escaped only with mysqli_real_escape_string. Attackers can supply a backtick to inject subqueries, reading data such as user password hashes or exhausting database threads with SLEEP()."
-  }
- ],
+ "briefing": [],
+ "items": [],
  "media": [],
  "commits": [
   {
-   "repo": "golang/go",
-   "sha": "4aa41767d6f1390281f90a0d91a0e27fefbd9b73",
-   "url": "https://github.com/golang/go/commit/4aa41767d6f1390281f90a0d91a0e27fefbd9b73",
-   "title": "crypto/x509: document reason for custom distrust",
-   "date": "2026-10-25T23:30:23",
+   "repo": "madler/zlib",
+   "sha": "6cf6cd6ad06a8e74a8466279ccbf33e4ea6a1dd3",
+   "url": "https://github.com/madler/zlib/commit/6cf6cd6ad06a8e74a8466279ccbf33e4ea6a1dd3",
+   "title": "Remove offset pointer optimization in inftree9.c.",
+   "date": "2026-10-26T02:04:01",
    "score": 2,
    "matched": [
-    "漏洞相关"
+    "越界读写"
    ],
    "cve": null
   }
