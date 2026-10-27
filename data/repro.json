@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-27T15:27:03+00:00",
- "count": 137,
+ "updated_at": "2026-10-27T21:24:25+00:00",
+ "count": 138,
  "count_recommended": 22,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -1298,6 +1298,59 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102489",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-111497",
+   "title": "Node.js Brotli解码溢出可RCE",
+   "first_seen": "2026-10-27",
+   "last_seen": "2026-10-27",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-22",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "向Brotli解压入口提交特制压缩流",
+   "impact_scope": "Node.js服务，广泛部署",
+   "action_zh": "升级Node.js/Brotli至修复版本",
+   "summary_zh": "远程未认证攻击者提交特制Brotli流，可致内存破坏甚至RCE",
+   "category": null,
+   "cvss": 9.2,
+   "epss": 0.55483,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-10",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/assetnote/node2shell-scanner",
+     "label": "assetnote/node2shell-scanner 74★(有源码)"
+    },
+    {
+     "url": "https://github.com/dimasma0305/CVE-2026-111497-POC",
+     "label": "dimasma0305/CVE-2026-111497-POC 61★(有源码)"
+    }
+   ],
+   "affected": "Node.js(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/andybalholm/brotli/releases/tag/v1.2.7"
+    },
+    {
+     "label": "参考",
+     "url": "https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/23/25"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111497",
    "change_note": null
   },
   {

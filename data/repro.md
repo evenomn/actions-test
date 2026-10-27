@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-27 15:27 UTC · 共 **137** 条(强烈推荐 22 / 值得 115)
+**更新**: 2026-10-27 21:24 UTC · 共 **138** 条(强烈推荐 22 / 值得 116)
 
 ---
 
@@ -275,6 +275,16 @@ PoC: [ShadowForge-Cyber/CVE-2026-104286-POC 0★(仅README)](https://github.com/
 🔥 KEV 在野利用,限期 2026-10-05 | 开源,可源码审计复现
 复现: 值得
 影响: zammad zammad >=6.3.0 <6.5.4; zammad zammad >=7.0.0 <=7.1.3
+
+### Node.js Brotli解码溢出可RCE
+[CVE-2026-111497](https://nvd.nist.gov/vuln/detail/CVE-2026-111497) | P0 立即处置 | CVSS 9.2 | EPSS 55.5% | 披露 2026-10-22 | 入库 2026-10-27
+🔥 KEV 在野利用,限期 2026-11-10 | PoC 源码可用
+远程未认证攻击者提交特制Brotli流，可致内存破坏甚至RCE
+复现: 值得 — 向Brotli解压入口提交特制压缩流 · 影响面: Node.js服务，广泛部署
+处置: 升级Node.js/Brotli至修复版本
+影响: Node.js(产品与版本待 NVD/厂商补充)
+PoC: [assetnote/node2shell-scanner 74★(有源码)](https://github.com/assetnote/node2shell-scanner) · [dimasma0305/CVE-2026-111497-POC 61★(有源码)](https://github.com/dimasma0305/CVE-2026-111497-POC)
+参考: [参考](https://github.com/andybalholm/brotli/releases/tag/v1.2.7) · [参考](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high) · [参考](http://www.openwall.com/lists/oss-security/2026/10/23/25)
 
 ### Collabora命令注入可远程执行代码
 [CVE-2026-110447](https://nvd.nist.gov/vuln/detail/CVE-2026-110447) | P0 立即处置 | CVSS 9.2 | EPSS 1.2% | 披露 2026-10-14 | 入库 2026-10-14

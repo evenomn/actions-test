@@ -1,92 +1,171 @@
 {
  "version": 3,
- "generated_at": "2026-10-27T15:27:03+00:00",
+ "generated_at": "2026-10-27T21:24:25+00:00",
  "lookback_hours": 5,
- "count": 6,
+ "count": 9,
  "stats": {
-  "total": 6,
+  "total": 9,
   "by_tier": {
-   "critical": 6
+   "critical": 9
   },
   "by_urgency": {
-   "P1 重点关注": 6
+   "P1 重点关注": 7,
+   "P0 立即处置": 2
   },
   "by_category": {
-   "未知": 6
+   "未知": 8,
+   "CMS": 1
   },
-  "kev": 0,
-  "with_poc": 1,
-  "with_poc_source": 1,
+  "kev": 2,
+  "with_poc": 2,
+  "with_poc_source": 2,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-27975",
+   "id": "CVE-2026-48356",
    "tier": "critical",
-   "title": "aj 未授权访问致RCE",
-   "title_zh": "aj 未授权访问致RCE",
-   "summary_zh": "未授权攻击者可访问服务并执行任意代码，完全控制受影响服务器",
-   "published": "2026-10-27T13:27:58Z",
-   "cvss": 9.8,
-   "severity": "HIGH",
-   "vector": null,
-   "epss": 0.00588,
-   "epss_percentile": 0.47918,
+   "title": "Adobe Commerce文件上传需交互",
+   "title_zh": "Adobe Commerce文件上传需交互",
+   "summary_zh": "攻击者需诱导受害者访问恶意页面，上传文件可致代码执行",
+   "published": "2026-07-14T20:17:08.437",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
+   "epss": 0.30582,
+   "epss_percentile": 0.98231,
    "cwe_labels": [
-    "访问控制缺失"
+    "任意文件上传"
    ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "pip:aj < 2.2.13(修复: 2.2.13)",
-   "ghsa_url": "https://github.com/advisories/GHSA-vcw3-r3fx-j444",
-   "refs": [],
-   "poc": [],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [
+    "adobe commerce",
+    "adobe commerce_b2b",
+    "adobe magento",
+    "adobe i\\/o_events"
+   ],
+   "affected": "adobe i\\/o_events >=1.6.0 <1.21.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://helpx.adobe.com/security/products/magento/apsb26-73.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://sansec.io/research/magento-cms-block-loader-deepveindrilling#indicators-of-compromise"
+    },
+    {
+     "label": "参考",
+     "url": "https://sansec.io/research/polyshell-mass-attack-wave"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/abraxas/CVE-2026-48356",
+     "label": "abraxas/CVE-2026-48356 0★(有源码)"
+    },
+    {
+     "url": "https://github.com/piecar21/CVE-2026-48356",
+     "label": "piecar21/CVE-2026-48356 0★(仅README)"
+    }
+   ],
    "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-10",
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至2.2.13，限制服务暴露面",
-   "repro_worthy": "值得",
-   "repro_note": "未授权访问服务并执行代码，具体入口需审计源码",
-   "impact_scope": "开源服务组件，暴露公网易失陷",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-27975",
-   "description": "### Impact An unauthenticated user could gain access to a server to execute arbitrary code on this server. ### Patches This is fixed in the version 2.2.13. Users should upgrade to this version as soon as possible."
+   "urgency": "P0 立即处置",
+   "action_zh": "升级Adobe I/O Events至1.21.0并排查",
+   "repro_worthy": "一般",
+   "repro_note": "需诱导用户访问恶意URL后上传文件",
+   "impact_scope": "电商CMS上传入口，需交互",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-48356",
+   "description": "Adobe Commerce is affected by an Unrestricted Upload of File with Dangerous Type vulnerability that could result in arbitrary code execution in the context of the current user, potentially gaining elevated access or control over the victim's account or session. Exploitation of this issue requires user interaction in that a victim must visit a maliciously crafted URL or interact with a compromised web page. Scope is changed."
   },
   {
-   "id": "CVE-2026-65145",
+   "id": "CVE-2026-111497",
    "tier": "critical",
-   "title": "NeMo Agent 缺失认证",
-   "title_zh": "NeMo Agent 缺失认证",
-   "summary_zh": "未授权攻击者可访问NeMo Agent Toolkit接口，可能导致代码执行与数据泄露",
-   "published": "2026-10-27T13:16:59.860",
+   "title": "Node.js Brotli解码溢出可RCE",
+   "title_zh": "Node.js Brotli解码溢出可RCE",
+   "summary_zh": "远程未认证攻击者提交特制Brotli流，可致内存破坏甚至RCE",
+   "published": "2026-10-22T14:17:37.190",
+   "cvss": 9.2,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.55483,
+   "epss_percentile": 0.9903,
+   "cwe_labels": [
+    "CWE-252",
+    "越界写入"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": "Node.js(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/andybalholm/brotli/releases/tag/v1.2.7"
+    },
+    {
+     "label": "参考",
+     "url": "https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/23/25"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/assetnote/node2shell-scanner",
+     "label": "assetnote/node2shell-scanner 74★(有源码)"
+    },
+    {
+     "url": "https://github.com/dimasma0305/CVE-2026-111497-POC",
+     "label": "dimasma0305/CVE-2026-111497-POC 61★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-10",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级Node.js/Brotli至修复版本",
+   "repro_worthy": "值得",
+   "repro_note": "向Brotli解压入口提交特制压缩流",
+   "impact_scope": "Node.js服务，广泛部署",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111497",
+   "description": "A buffer overflow vulnerability in the Brotli decoder (c/dec/decode.c) in Google Brotli versions 1.0.3 through 1.2.0 on all platforms allows a remote unauthenticated attacker to corrupt adjacent decoder state memory, disclose sensitive memory contents, cause a denial of service, or potentially execute arbitrary code using a crafted Brotli-compressed stream. Users need to update any Brotli libraries or binaries between 1.0.3 through 1.2.0 to the latest available version: 1.0.10 or 1.1.1 or 1.2.1."
+  },
+  {
+   "id": "CVE-2026-105781",
+   "tier": "critical",
+   "title": "Adobe Campaign SQL注入可RCE",
+   "title_zh": "Adobe Campaign SQL注入可RCE",
+   "summary_zh": "攻击者注入SQL命令，可能以当前用户权限执行代码并控制账户",
+   "published": "2026-10-27T17:16:56.430",
    "cvss": 10.0,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "缺失认证"
+    "SQL注入"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": null,
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/NVIDIA/product-security/tree/main/2026/5912"
-    },
-    {
-     "label": "参考",
-     "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65145"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cve.org/CVERecord?id=CVE-2026-65145"
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-162.html"
     }
    ],
    "poc": [],
@@ -97,116 +176,36 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "安装最新版本并限制服务网络暴露",
+   "action_zh": "升级Adobe Campaign Classic至修复版",
    "repro_worthy": "一般",
-   "repro_note": "未授权访问Toolkit服务接口，具体入口待确认",
-   "impact_scope": "AI工具链服务，内网部署易横向",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65145",
-   "description": "NVIDIA NeMo Agent Toolkit contains a vulnerability where a attacker could cause a missing authentication issue. This vulnerability might lead to code execution, escalation of privileges, data tampering, denial of service, and information disclosure."
+   "repro_note": "经ACC输入点注入SQL，需定位接口参数",
+   "impact_scope": "营销平台后台，含敏感数据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105781",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to execute arbitrary SQL commands, potentially gaining elevated access or control over the victim's account or session. Exploitation of this issue does not require user interaction. Scope is changed."
   },
   {
-   "id": "CVE-2026-114612",
+   "id": "CVE-2026-104351",
    "tier": "critical",
-   "title": "litellm 权限提升致RCE",
-   "title_zh": "litellm 权限提升致RCE",
-   "summary_zh": "内部普通用户可伪造管理员凭据创建API Key，提权至proxy_admin并执行代码",
-   "published": "2026-10-27T15:04:14Z",
+   "title": "Adobe Campaign代码注入可RCE",
+   "title_zh": "Adobe Campaign代码注入可RCE",
+   "summary_zh": "低权限攻击者无需交互，可注入代码并以当前用户权限执行",
+   "published": "2026-10-27T17:16:55.593",
    "cvss": 9.9,
-   "severity": "HIGH",
-   "vector": null,
-   "epss": 0.00319,
-   "epss_percentile": 0.24722,
-   "cwe_labels": [
-    "权限提升",
-    "数据真实性验证缺失"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "pip:litellm >= 1.91.0, < 1.100.4(修复: 1.100.4); pip:litellm >= 1.101.0, < 1.101.3(修复: 1.101.3)",
-   "ghsa_url": "https://github.com/advisories/GHSA-7hp6-4w63-5g45",
-   "refs": [],
-   "poc": [
-    {
-     "url": "https://github.com/Hunt-Benito/one-salt-to-forge-them-all-cve-2026-114612-forged-admin-session-in-litellm",
-     "label": "Hunt-Benito/one-salt-to-forge-them-all-cve-2026-114612-forged-admin-session-in-litellm 0★(有源码)"
-    }
-   ],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至1.100.4或1.101.3",
-   "repro_worthy": "一般",
-   "repro_note": "以internal_user创建API Key，在metadata伪造admin secret",
-   "impact_scope": "AI网关/代理服务，内网横向跳板",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114612",
-   "description": "### Summary An authenticated user with `internal_user` privileges can escalate to `proxy_admin` and achieve remote code execution. An attacker exploits this by requesting a new API key with a crafted metadata field containing a forged admin credential as the \"secret\" value."
-  },
-  {
-   "id": "CVE-2026-35002",
-   "tier": "critical",
-   "title": "agno eval代码注入RCE",
-   "title_zh": "agno eval代码注入RCE",
-   "summary_zh": "可影响FunctionCall字段的攻击者通过eval执行任意Python代码，控制Agno进程",
-   "published": "2026-10-27T13:30:41Z",
-   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": null,
-   "epss": 0.00842,
-   "epss_percentile": 0.57707,
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
    "cwe_labels": [
     "代码注入(RCE)"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
-   "affected": "pip:agno < 2.3.24(修复: 2.3.24)",
-   "ghsa_url": "https://github.com/advisories/GHSA-m4w4-3r8h-jw98",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至2.3.24，校验输入并禁用eval",
-   "repro_worthy": "一般",
-   "repro_note": "构造FunctionCall的field_type传入eval表达式，需可影响该字段",
-   "impact_scope": "AI应用框架，进程可被控",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-35002",
-   "description": "### Impact Agno versions prior to 2.3.24 contain an arbitrary code execution vulnerability in the model execution component. The `field_type` parameter on a `FunctionCall` input field was passed to Python's built-in `eval()`, allowing an attacker who could influence that value to execute arbitrary Python code in the Agno process."
-  },
-  {
-   "id": "CVE-2026-117532",
-   "tier": "critical",
-   "title": "REDAXO 认证绕过接管后台",
-   "title_zh": "REDAXO 认证绕过接管后台",
-   "summary_zh": "未授权攻击者可伪造临时登录token冒充admin，获取后台权限并执行代码",
-   "published": "2026-10-27T11:17:33.597",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/redaxo/core/security/advisories/GHSA-px8f-whj8-hrpq"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/redaxo-core-5.3.0-before-5.21.4-authentication-bypass-via-history-plugin"
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-162.html"
     }
    ],
    "poc": [],
@@ -217,44 +216,36 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至5.21.4并限制后台访问",
+   "action_zh": "升级Adobe Campaign Classic至修复版",
    "repro_worthy": "一般",
-   "repro_note": "伪造临时登录token，需structure/history插件与可预测secret",
-   "impact_scope": "CMS后台，可致后台接管",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117532",
-   "description": "REDAXO core from 5.3.0 before 5.21.4 contains an authentication bypass vulnerability in the structure/history plugin that allows unauthenticated attackers to forge temporary login tokens. Attackers can force the session-tied secret into a predictable state and forge tokens for accounts like admin, gaining backend access and code execution outside live mode."
+   "repro_note": "低权限账号经ACC功能注入代码执行",
+   "impact_scope": "营销平台，低权限可RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104351",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
   },
   {
-   "id": "CVE-2026-117564",
+   "id": "CVE-2026-104353",
    "tier": "critical",
-   "title": "nest-admin 硬编码JWT认证绕过",
-   "title_zh": "nest-admin 硬编码JWT认证绕过",
-   "summary_zh": "未授权攻击者用硬编码JWT_SECRET签发admin令牌，冒充任意用户获取后台权限",
-   "published": "2026-10-27T14:16:38.720",
-   "cvss": 9.8,
+   "title": "Adobe Campaign命令注入可RCE",
+   "title_zh": "Adobe Campaign命令注入可RCE",
+   "summary_zh": "低权限攻击者无需交互，可注入系统命令并执行任意代码",
+   "published": "2026-10-27T17:16:55.717",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-321"
+    "命令注入(RCE)"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
-   "affected": null,
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/buqiyuan/nest-admin"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/buqiyuan/nest-admin/blob/2eeccc4cb699d1aedbe04b4437a9d095cde02c74/.env.production#L5"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/buqiyuan/nest-admin/commit/f2cec8cb776cbf113115b33164dac69a46d24097"
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-162.html"
     }
    ],
    "poc": [],
@@ -265,121 +256,242 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至1.0.1，更换JWT密钥并轮换令牌",
+   "action_zh": "升级Adobe Campaign Classic至修复版",
    "repro_worthy": "一般",
-   "repro_note": "用.env.production中硬编码JWT_SECRET伪造admin令牌",
-   "impact_scope": "后台管理框架，内网系统常见",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117564",
-   "description": "nest-admin before 1.0.1 contains an authentication bypass vulnerability that allows unauthenticated attackers to forge administrator tokens by using a hardcoded JWT_SECRET committed in .env.production. Attackers can sign tokens with the known secret that JwtStrategy and RbacGuard trust, impersonating any user ID or claiming the admin role for full administrative access."
+   "repro_note": "低权限账号经ACC命令注入点执行系统命令",
+   "impact_scope": "营销平台，低权限可RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104353",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-105489",
+   "tier": "critical",
+   "title": "Adobe Campaign SQL注入提权RCE",
+   "title_zh": "Adobe Campaign SQL注入提权RCE",
+   "summary_zh": "低权限攻击者无需交互，注入SQL可执行代码并提升权限",
+   "published": "2026-10-27T17:16:56.080",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-162.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe Campaign Classic至修复版",
+   "repro_worthy": "一般",
+   "repro_note": "低权限账号经ACC注入SQL执行任意代码",
+   "impact_scope": "营销平台，低权限可RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105489",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-105780",
+   "tier": "critical",
+   "title": "Adobe Campaign授权错误可RCE",
+   "title_zh": "Adobe Campaign授权错误可RCE",
+   "summary_zh": "低权限攻击者无需交互，绕过授权后以当前用户权限执行代码",
+   "published": "2026-10-27T17:16:56.313",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-162.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe Campaign Classic至修复版",
+   "repro_worthy": "一般",
+   "repro_note": "低权限账号绕过ACC授权执行任意代码",
+   "impact_scope": "营销平台，低权限可RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105780",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Incorrect Authorization vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-114595",
+   "tier": "critical",
+   "title": "EPICS Base整数溢出可RCE",
+   "title_zh": "EPICS Base整数溢出可RCE",
+   "summary_zh": "远程攻击者发送特制网络请求，可致内存破坏、DoS或潜在RCE",
+   "published": "2026-10-27T17:16:58.530",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "整数溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-300-01"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级EPICS Base至修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造特制网络请求触发整数溢出",
+   "impact_scope": "工业控制系统基础库，网络可达",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114595",
+   "description": "In EPICS Base release 7.0.10 and prior, an integer overflow in network request processing can cause memory to be allocated with an incorrect size. Subsequent handling of attacker supplied data may result in memory corruption, denial of service, or potential remote code execution."
+  },
+  {
+   "id": "CVE-2026-116692",
+   "tier": "critical",
+   "title": "MLflow评分器反序列化RCE",
+   "title_zh": "MLflow评分器反序列化RCE",
+   "summary_zh": "调用者可上传恶意模块并经scorer/invoke加载，执行任意代码",
+   "published": "2026-10-27T21:18:05.013",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)",
+    "CWE-470"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mlflow/mlflow/commit/a732443e695c3c677680c54320efc394c81654ab"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mlflow/mlflow/pull/25906"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mlflow/mlflow/releases/tag/v3.17.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级MLflow至3.17.0及以上",
+   "repro_worthy": "一般",
+   "repro_note": "经artifact上传模块并调用scorer/invoke加载",
+   "impact_scope": "MLflow模型平台，内网常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116692",
+   "description": "From 3.12.0rc0 until 3.17.0, third-party scorer deserialization in mlflow/genai/scorers/base.py accepts request-selected descendants of THIRD_PARTY_SCORER_ALLOWED_MODULES rather than requiring an exact allowed module. A caller can use MLflow artifact endpoints to place a Python module beneath a writable allowed package and submit its module and class through /ajax-api/3.0/mlflow/scorer/invoke."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "sqlite/sqlite",
-   "sha": "495eef2d14b1d12af567003c7a4a1bf54c3dc368",
-   "url": "https://github.com/sqlite/sqlite/commit/495eef2d14b1d12af567003c7a4a1bf54c3dc368",
-   "title": "Fix a typo in sqlite3expert.c that could lead to a heap buffer overwrite in some cases. Report [bugs:/info/2026-10-27T14",
-   "date": "2026-10-27T14:37:55",
+   "repo": "php/php-src",
+   "sha": "154b090df25ff8d30820aea365265489c7c51613",
+   "url": "https://github.com/php/php-src/commit/154b090df25ff8d30820aea365265489c7c51613",
+   "title": "curl: Fix UAF on clone due to callback data pointer mismatch",
+   "date": "2026-10-27T19:43:46",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "3aa4da4a20707d81aa2a849177587595c8a8ac7a",
+   "url": "https://github.com/php/php-src/commit/3aa4da4a20707d81aa2a849177587595c8a8ac7a",
+   "title": "fpm: fix a use-after-free of scoreboard_p",
+   "date": "2026-10-27T17:49:55",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openssl/openssl",
+   "sha": "1a97d4178935b7d9ef4b905f889cdee412f8109a",
+   "url": "https://github.com/openssl/openssl/commit/1a97d4178935b7d9ef4b905f889cdee412f8109a",
+   "title": "Fix use-after-free of PSK binder pointer on packet growth",
+   "date": "2026-10-27T17:40:47",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "qemu/qemu",
+   "sha": "5b6dfdf80077515e4cdf14c435ca3e1a7d3fe30f",
+   "url": "https://github.com/qemu/qemu/commit/5b6dfdf80077515e4cdf14c435ca3e1a7d3fe30f",
+   "title": "target/hexagon: fix semihosting ACCESS filename handling",
+   "date": "2026-10-27T14:23:27",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "qemu/qemu",
+   "sha": "5ce4818b435c32a0d529341e42de428a191bd398",
+   "url": "https://github.com/qemu/qemu/commit/5ce4818b435c32a0d529341e42de428a191bd398",
+   "title": "target/hexagon: add v83 trap2 and vector stack instructions",
+   "date": "2026-10-27T14:23:27",
    "score": 2,
    "matched": [
     "缓冲区溢出"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "c220739be57307ea821d1197ad89ff6e372180e8",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/c220739be57307ea821d1197ad89ff6e372180e8",
-   "title": "avcodec/cuviddec: keep the decoder and CUarray surfaces alive while zero-copy frames use them",
-   "date": "2026-10-27T13:02:42",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "f58a6776546567367baf5223df9ffbfd289299f8",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/f58a6776546567367baf5223df9ffbfd289299f8",
-   "title": "avcodec/mjpegdec: reject a SOF without a preceding SOI when a hwaccel is used",
-   "date": "2026-10-27T13:02:42",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "03cd7851955c023f1ff4c8a495d47e996d01485a",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/03cd7851955c023f1ff4c8a495d47e996d01485a",
-   "title": "avcodec/nvdec: forget the previous picture's bitstream pointer when a picture starts",
-   "date": "2026-10-27T13:02:42",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "envoyproxy/envoy",
-   "sha": "aedd2c437990a143d73adf3eb08547cf2f4b32fb",
-   "url": "https://github.com/envoyproxy/envoy/commit/aedd2c437990a143d73adf3eb08547cf2f4b32fb",
-   "title": "listener: fix use-after-free in filter_chain_benchmark_test at exit (#48757)",
-   "date": "2026-10-27T11:53:19",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "jeecgboot/JeecgBoot",
-   "sha": "f7eb9f38dc4ea42cc4faad7a97db02b075b6f8ff",
-   "url": "https://github.com/jeecgboot/JeecgBoot/commit/f7eb9f38dc4ea42cc4faad7a97db02b075b6f8ff",
-   "title": "SSRF 地址校验补全（GHSA-5g5g / GHSA-2m5w / GHSA-hw5p）",
-   "date": "2026-10-27T10:38:41",
-   "score": 2,
-   "matched": [
-    "SSRF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "wireshark/wireshark",
-   "sha": "834d88d696c3cffe2653305d64632cda94f774a6",
-   "url": "https://github.com/wireshark/wireshark/commit/834d88d696c3cffe2653305d64632cda94f774a6",
-   "title": "AMQP: Add a synthetic capture and tests",
-   "date": "2026-10-27T08:35:06",
-   "score": 2,
-   "matched": [
-    "类型混淆/double free"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "wireshark/wireshark",
-   "sha": "acd5cc67e74cec1b2e391cbbfb5c41a723a9429e",
-   "url": "https://github.com/wireshark/wireshark/commit/acd5cc67e74cec1b2e391cbbfb5c41a723a9429e",
-   "title": "AMQP: Fix a field type assertion and a type confusion in AMQP 1.0",
-   "date": "2026-10-27T08:35:06",
-   "score": 2,
-   "matched": [
-    "类型混淆/double free"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "elastic/elasticsearch",
-   "sha": "191720a7439925d6e1b50c6659b8faa336155946",
-   "url": "https://github.com/elastic/elasticsearch/commit/191720a7439925d6e1b50c6659b8faa336155946",
-   "title": "Charge decoded terms query values to the request breaker (#163311)",
-   "date": "2026-10-27T08:31:54",
-   "score": 2,
-   "matched": [
-    "反序列化"
    ],
    "cve": null
   }
