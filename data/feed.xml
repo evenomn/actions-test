@@ -5,7 +5,62 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 27 Oct 2026 06:27:37 +0000</pubDate>
-    <lastBuildDate>Tue, 27 Oct 2026 06:27:37 +0000</lastBuildDate>
+    <pubDate>Tue, 27 Oct 2026 15:27:03 +0000</pubDate>
+    <lastBuildDate>Tue, 27 Oct 2026 15:27:03 +0000</lastBuildDate>
+    <item>
+      <title>[critical]aj 未授权访问致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-27975</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-27975-2026-10-27</guid>
+      <description>CVE-2026-27975 · 🎯P1 重点关注 · 披露 2026-10-27 · CVSS 9.8 · EPSS 0.6%,前 48% · 类型 访问控制缺失 · 难度 低(远程·免认证)
+ Impact An unauthenticated user could gain access to a server to execute arbitrary code on this server.  Patches This is fixed in the version 2.2.13.
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 15:27:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]NeMo Agent 缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-65145</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-65145-2026-10-27</guid>
+      <description>CVE-2026-65145 · 🎯P1 重点关注 · 披露 2026-10-27 · CVSS 10.0 · 类型 缺失认证 · 难度 低(远程·免认证)
+This vulnerability might lead to code execution, escalation of privileges, data tampering, denial of service, and information disclosure.
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 15:27:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]litellm 权限提升致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114612</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114612-2026-10-27</guid>
+      <description>CVE-2026-114612 · 🎯P1 重点关注 · 披露 2026-10-27 · CVSS 9.9 · EPSS 0.3%,前 25% · 类型 权限提升/数据真实性验证缺失 · 难度 低(远程·需低权限)
+ Summary An authenticated user with internal_user privileges can escalate to proxy_admin and achieve remote code execution.
+信号: 有PoC
+[Hunt-Benito/one-salt-to-forge-them-all-cve-2026-114612-forged-admin-session-in-litellm 0★(有源码)](https://github.com/Hunt-Benito/one-salt-to-forge-them-all-cve-2026-114612-forged-admin-session-in-litellm)</description>
+      <pubDate>Tue, 27 Oct 2026 15:27:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]agno eval代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-35002</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-35002-2026-10-27</guid>
+      <description>CVE-2026-35002 · 🎯P1 重点关注 · 披露 2026-10-27 · CVSS 9.8 · EPSS 0.8%,前 58% · 类型 代码注入(RCE) · 难度 低(远程·免认证)
+The field_type parameter on a FunctionCall input field was passed to Python's built-in eval(), allowing an attacker who could influence that value to exec…
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 15:27:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]REDAXO 认证绕过接管后台</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-117532</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-117532-2026-10-27</guid>
+      <description>CVE-2026-117532 · 🎯P1 重点关注 · 披露 2026-10-27 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+REDAXO core from 5.3.0 before 5.21.4 contains an authentication bypass vulnerability in the structure/history plugin that allows unauthenticated attackers to fo…
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 15:27:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]nest-admin 硬编码JWT认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-117564</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-117564-2026-10-27</guid>
+      <description>CVE-2026-117564 · 🎯P1 重点关注 · 披露 2026-10-27 · CVSS 9.8 · 类型 CWE-321 · 难度 低(远程·免认证)
+nest-admin before 1.0.1 contains an authentication bypass vulnerability that allows unauthenticated attackers to forge administrator tokens by using a hardcoded…
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 15:27:03 +0000</pubDate>
+    </item>
   </channel>
 </rss>

@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-27 06:27 UTC · 共 **136** 条(强烈推荐 22 / 值得 114)
+**更新**: 2026-10-27 15:27 UTC · 共 **137** 条(强烈推荐 22 / 值得 115)
 
 ---
 
@@ -521,6 +521,14 @@ DockerWorkspace/Apptainer启动器把沙箱agent绑定0.0.0.0且会话密钥为�
 复现: 值得 — 默认启动沙箱后直接访问agent HTTP接口下发执行指令；需0.0.0.0可达 · 影响面: AI Agent沙箱服务，容器环境易横向
 处置: 升级至 1.52.0 及以上，配置session_api_keys并限定监听地址
 参考: [参考](https://github.com/OpenHands/software-agent-sdk/commit/7b66584ff8899144eb4ce679c2811861342af9de) · [参考](https://github.com/OpenHands/software-agent-sdk/pull/5209) · [参考](https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.52.0)
+
+### aj 未授权访问致RCE
+[CVE-2026-27975](https://nvd.nist.gov/vuln/detail/CVE-2026-27975) | P1 重点关注 | CVSS 9.8 | EPSS 0.6% | 披露 2026-10-27 | 入库 2026-10-27
+开源,可源码审计复现
+未授权攻击者可访问服务并执行任意代码，完全控制受影响服务器
+复现: 值得 — 未授权访问服务并执行代码，具体入口需审计源码 · 影响面: 开源服务组件，暴露公网易失陷
+处置: 升级至2.2.13，限制服务暴露面
+影响: pip:aj < 2.2.13(修复: 2.2.13)
 
 ### OpenWrt odhcpd预认证栈溢出
 [CVE-2026-53921](https://nvd.nist.gov/vuln/detail/CVE-2026-53921) | P1 重点关注 | 网络设备 | CVSS 9.8 | 披露 2026-10-23 | 入库 2026-10-23
