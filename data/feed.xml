@@ -3,63 +3,246 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
-    <lastBuildDate>Mon, 26 Oct 2026 21:42:47 +0000</lastBuildDate>
+    <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    <lastBuildDate>Tue, 27 Oct 2026 02:24:36 +0000</lastBuildDate>
     <item>
-      <title>[critical]burrito-server 缺失认证</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102649</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102649-2026-10-26</guid>
-      <description>CVE-2026-102649 · 🎯P1 重点关注 · 披露 2026-10-26 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 缺失认证/授权错误 · 难度 低(远程·免认证)
-Anyone who can reach burrito-server's endpoint and knows a tracked repository's URL can forge events to create or delete TerraformPullRequest custom resourc…
-信号: 关注词:gitlab</description>
-      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
+      <title>[critical]PHP全局状态UAF可致远程代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109619</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109619-2026-10-27</guid>
+      <description>CVE-2026-109619 · 🎯P0 立即处置 · 披露 2026-10-21 · 组件 安全设备 · CVSS 8.1 · EPSS 100.0%,前 100% · 类型 释放后重用(UAF)/CWE-755 · 难度 低(远程·利用条件苛刻·免认证)
+Multiple strategies can trigger this condition and produce remote code execution (RCE).
+信号: 🔥 KEV 在野利用,CISA 限期 2026-10-29 | 有PoC
+[ikow/php2shell-poc 1834★(仅README)](https://github.com/ikow/php2shell-poc) · [eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 1019★(有源码)](https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC)</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Rust zip库解压路径不一致</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115905</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115905-2026-10-26</guid>
-      <description>CVE-2026-115905 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 10.0 · 类型 输入校验缺失/CWE-436 · 难度 低(远程·免认证)
-A crafted archive can therefore appear benign to a component that inspects the central directory but cause a streaming extractor to write a different attacker-s…
-信号:</description>
-      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
+      <title>[critical]PHP内存耗尽长跳转UAF致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109618</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109618-2026-10-27</guid>
+      <description>CVE-2026-109618 · 🎯P0 立即处置 · 披露 2026-10-21 · 组件 安全设备 · CVSS 9.8 · EPSS 100.0%,前 100% · 类型 释放后重用(UAF)/CWE-755 · 难度 低(远程·免认证)
+Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).
+信号: 🔥 KEV 在野利用,CISA 限期 2026-10-29 | 有PoC
+[ikow/php2shell-poc 1834★(仅README)](https://github.com/ikow/php2shell-poc) · [eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 1019★(有源码)](https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC)</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]consul-k8s 跨命名空间授权绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110720</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110720-2026-10-26</guid>
-      <description>CVE-2026-110720 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.9 · 类型 授权错误 · 难度 低(远程·需低权限)
-Consul-k8s versions 0.42.0 and later are vulnerable to a cross-namespace authorization bypass in component ACL binding rules that may allow an attacker to obtai…
+      <title>[critical]Pillow TIFF处理堆溢出可越界读写</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112393</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112393-2026-10-27</guid>
+      <description>CVE-2026-112393 · 🎯P1 重点关注 · 披露 2026-10-19 · 组件 开发库/依赖 · CVSS 9.8 · EPSS 0.8%,前 57% · 类型 堆溢出 · 难度 低(远程·免认证)
+The callback sizes its allocation from the prior buffer size instead of the current write position, allowing an attacker-controlled out-of-line TIFF tag or reta…
+信号: 有PoC
+[github.com/python-pillow/Pillow/security](https://github.com/python-pillow/Pillow/security/advisories/GHSA-332p-7hrc-92wf)</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]TTLock硬编码AES密钥可解BLE会话</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112345</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112345-2026-10-27</guid>
+      <description>CVE-2026-112345 · 🎯P2 保持关注 · 披露 2026-10-26 · 组件 操作系统 · CVSS 8.1 · 类型 CWE-321 · 难度 低(需相邻网络·免认证)
+TTLock Android application before v9.8.260718 and associated smart-lock firmware contain a hardcoded static AES key vulnerability that allows an attacker within…
+信号: 关注词:exchange</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Asterisk PJSIP释放后重用漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-57187</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-57187-2026-10-27</guid>
+      <description>CVE-2026-57187 · 🎯P2 保持关注 · 披露 2026-10-26 · CVSS 7.1 · 类型 释放后重用(UAF)/CWE-664 · 难度 低(远程·需低权限)
+Prior to Asterisk 20.20.1, 21.12.3, 22.10.1, 23.4.1 and Certified Asterisk 20.7-cert11, 22.8-cert3, an authenticated attacker may cause a heap-use-after-free in…
+信号: 关注词:exchange</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]苹果CMS找回密码校验缺失致账号接管</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116214</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116214-2026-10-27</guid>
+      <description>CVE-2026-116214 · 🎯P1 重点关注 · 披露 2026-10-26 · 组件 安全设备 · CVSS 9.1 · 类型 CWE-640 · 难度 低(远程·免认证)
+MacCMS v10 before 2026.1000.4054 contains an authentication bypass vulnerability that allows unauthenticated attackers to reset any member's password because ch…
 信号:</description>
-      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OpenHands沙箱默认无认证RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112346</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112346-2026-10-27</guid>
+      <description>CVE-2026-112346 · 🎯P1 重点关注 · 披露 2026-10-26 · 组件 容器/虚拟化 · CVSS 9.8 · 类型 CWE-1327 · 难度 低(远程·免认证)
+OpenHands Software Agent SDK before 1.52.0 contains an unauthenticated remote code execution vulnerability where the DockerWorkspace and Apptainer workspace lau…
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MCP Toolbox路径遍历致任意文件读写</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93328</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93328-2026-10-27</guid>
+      <description>CVE-2026-93328 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.3 · 类型 路径遍历/任意文件读取/缺失授权(越权) · 难度 低(远程·免认证)
+Path Traversal and Missing Authorization in cloud-storage source in Google Cloud MCP Toolbox for Databases (googleapis/mcp-toolbox) versions 1.2.0 through 1.4.0…
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ERP系统栈溢出漏洞可远程执行代码</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116508</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116508-2026-10-27</guid>
+      <description>CVE-2026-116508 · 🎯P1 重点关注 · 披露 2026-10-26 · 组件 ERP/业务系统 · CVSS 10.0 · 类型 内存破坏/栈溢出 · 难度 低(远程·免认证)
+Remote exploitation of the attack is possible. The exploit has been released to the public and may be used for attacks.
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件regmsg参数CRLF注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116231</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116231-2026-10-27</guid>
+      <description>CVE-2026-116231 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.9 · EPSS 0.4%,前 38% · 类型 注入/CRLF注入 · 难度 低(远程·需低权限)
+Performing a manipulation of the argument regmsg results in crlf injection. The exploit has been released to the public and may be used for attacks.
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]info.community参数CRLF注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116232</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116232-2026-10-27</guid>
+      <description>CVE-2026-116232 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.9 · EPSS 0.4%,前 38% · 类型 注入/CRLF注入 · 难度 低(远程·需低权限)
+Executing a manipulation of the argument info.community can lead to crlf injection.
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
     </item>
     <item>
       <title>[critical]TOTOLINK A950RG云升级命令注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116504</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116504-2026-10-26</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116504-2026-10-27</guid>
       <description>CVE-2026-116504 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.9 · 类型 注入/命令注入 · 难度 低(远程·需低权限)
 The manipulation of the argument FileName leads to command injection. The exploit has been disclosed to the public and may be used.
 信号:</description>
-      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
     </item>
     <item>
       <title>[critical]TOTOLINK A950RG防火墙命令注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116506</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116506-2026-10-26</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116506-2026-10-27</guid>
       <description>CVE-2026-116506 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.9 · 类型 注入/命令注入 · 难度 低(远程·需低权限)
 A vulnerability was determined in TOTOLINK A950RG 4.1.2cu.5268_B20221104. The exploit has been publicly disclosed and may be utilized.
 信号:</description>
-      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]danmu_api默认令牌致未授权配置篡改</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116485</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116485-2026-10-27</guid>
+      <description>CVE-2026-116485 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+danmu_api before 1.21.7 contains an authentication bypass vulnerability that allows unauthenticated attackers to modify server environment configuration when th…
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]WolfProt接口命令注入致未授权RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59106</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59106-2026-10-27</guid>
+      <description>CVE-2026-59106 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+Insufficient neutralization of user-controlled input could allow an unauthenticated attacker with network access to a vulnerable service to execute operating-sy…
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]vSolution Matrix密钥共享提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59107</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59107-2026-10-27</guid>
+      <description>CVE-2026-59107 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 CWE-797 · 难度 低(远程·免认证)
+A shared cryptographic trust configuration could allow an attacker who obtains the matching private key to authenticate to an affected device via SSH as root.
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]wsserver终端桥命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-65184</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-65184-2026-10-27</guid>
+      <description>CVE-2026-65184 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+The root-privileged wsserver terminal-bridge daemon builds a shell command from client-supplied WebSocket fields and passes it to system() and popen() wit…
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
     </item>
     <item>
       <title>[critical]ArcGIS Server SQL注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-10757</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-10757-2026-10-26</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-10757-2026-10-27</guid>
       <description>CVE-2026-10757 · 🎯P1 重点关注 · 披露 2026-10-26 · 组件 操作系统 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
 There is a SQL injection vulnerability in Esri ArcGIS Server versions 12.1 and earlier on Windows and Linux that may allow a remote attacker with privileges to …
 信号:</description>
-      <pubDate>Mon, 26 Oct 2026 21:42:47 +0000</pubDate>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知平台凭据校验不足致管理员冒充</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110475</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110475-2026-10-27</guid>
+      <description>CVE-2026-110475 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.3 · 类型 凭据保护不足 · 难度 低(远程·免认证)
+Successful exploitation of this vulnerability could allow the attacker to enumerate platform users, establish sessions as arbitrary users including administrati…
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]蒲公英X5 Pro L2TP认证CRLF注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116235</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116235-2026-10-27</guid>
+      <description>CVE-2026-116235 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.1 · EPSS 0.6%,前 49% · 类型 注入/CRLF注入 · 难度 中(远程·需高权限)
+Affected by this vulnerability is an unknown functionality of the component L2TP Authentication.
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]蒲公英X5 Pro 租期参数CRLF注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116233</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116233-2026-10-27</guid>
+      <description>CVE-2026-116233 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.1 · EPSS 0.5%,前 40% · 类型 注入/CRLF注入 · 难度 中(远程·需高权限)
+The manipulation of the argument rent_time leads to crlf injection. The exploit has been disclosed publicly and may be used.
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]蒲公英X5 Pro IPsec CRLF注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116234</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116234-2026-10-27</guid>
+      <description>CVE-2026-116234 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.1 · EPSS 0.5%,前 40% · 类型 注入/CRLF注入 · 难度 中(远程·需高权限)
+A vulnerability was detected in Oray Pugongying X5 Pro 7.6.1. The manipulation of the argument secproto results in crlf injection.
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]hackney证书校验缺陷可绕过固定CA</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115693</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115693-2026-10-27</guid>
+      <description>CVE-2026-115693 · 🎯P1 重点关注 · 披露 2026-10-26 · CVSS 9.1 · 类型 证书校验缺陷 · 难度 中(远程·利用条件苛刻·利用条件苛刻·免认证)
+Improper Certificate Validation vulnerability in hackney_ssl in benoitc hackney allows an on-path attacker to impersonate a server pinned to a private certifica…
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TOTOLINK A950RG 命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116505</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116505-2026-10-27</guid>
+      <description>CVE-2026-116505 · 🎯P1 重点关注 · 披露 2026-10-26 · 组件 ERP/业务系统 · CVSS 9.1 · 类型 注入/命令注入 · 难度 中(远程·需高权限)
+A vulnerability was found in TOTOLINK A950RG 4.1.2cu.5268_B20221104. The manipulation of the argument MAC address results in command injection.
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]boneIO服务账号过度授权致本地提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-77055</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-77055-2026-10-27</guid>
+      <description>CVE-2026-77055 · 🎯P2 保持关注 · 披露 2026-10-26 · 组件 容器/虚拟化 · CVSS 9.3 · 类型 CWE-266 · 难度 高(需本地访问·需低权限)
+A local attacker who compromises the boneio user can use these privileges to escalate to root.
+信号:</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>今日要点</title>
+      <description>- PHP两个UAF已入KEV并遭在野利用，EPSS近满分，优先修复。
+- 今日批量公告密集：多个9.9-10.0分注入与内存破坏漏洞集中披露。
+- 清单未见勒索软件关联，但仍需排查暴露面与异常加密行为。
+- 最急处置：先升PHP至8.2.35/8.3.36以上，再修Pillow堆溢出。
+- Pillow堆溢出9.8且有PoC，图像服务应紧急升级至13.0.0。</description>
+      <pubDate>Tue, 27 Oct 2026 02:24:36 +0000</pubDate>
     </item>
   </channel>
 </rss>

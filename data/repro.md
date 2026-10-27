@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-26 21:42 UTC · 共 **133** 条(强烈推荐 22 / 值得 111)
+**更新**: 2026-10-27 02:24 UTC · 共 **136** 条(强烈推荐 22 / 值得 114)
 
 ---
 
@@ -226,6 +226,16 @@ PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026
 影响: arista velocloud_orchestrator >=5.2.0 <5.2.3.18; arista velocloud_orchestrator >=6.1.0 <6.1.3.10
 参考: [厂商通告](https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114625)
 
+### PHP内存耗尽长跳转UAF致RCE
+[CVE-2026-109618](https://nvd.nist.gov/vuln/detail/CVE-2026-109618) | P0 立即处置 | 安全设备 | CVSS 9.8 | EPSS 100.0% | 披露 2026-10-21 | 入库 2026-10-22
+🔥 KEV 在野利用,限期 2026-10-29 | PoC 源码可用 | 开源,可源码审计复现
+远程攻击者构造内存耗尽场景触发longjmp跳出上下文，遗留全局状态指向已释放内存，已在野利用并可能执行代码
+复现: 值得 — 触发OOM使longjmp中止请求处理，随后访问残留全局状态；可审计源码构造PoC · 影响面: PHP-FPM/Apache模块，互联网暴露面广
+处置: 升级到 8.2.35 或 8.3.36 及以上版本，收紧请求内存上限并监控OOM异常
+影响: php php >=7.3.0 <8.2.35; php php >=8.3.0 <8.3.36
+PoC: [ikow/php2shell-poc 1834★(仅README)](https://github.com/ikow/php2shell-poc) · [eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 1019★(有源码)](https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC)
+参考: [厂商通告](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w) · [参考](http://www.openwall.com/lists/oss-security/2026/10/21/6) · [参考](http://www.openwall.com/lists/oss-security/2026/10/23/5)
+
 ### BeyondTrust 认证欺骗致文件操作
 [CVE-2026-102764](https://nvd.nist.gov/vuln/detail/CVE-2026-102764) | P0 立即处置 | CVSS 9.8 | EPSS 0.6% | 披露 2026-10-15 | 入库 2026-10-16
 🔥 KEV 在野利用,限期 2026-10-19 | 有PoC
@@ -307,6 +317,16 @@ PoC: [msuiche/hotcell 5★(有源码)](https://github.com/msuiche/hotcell) · [D
 影响: microsoft sharepoint_server <16.0.19725.20522
 PoC: [ShadowForge-Cyber/CVE-2026-65660-Poc 1★(仅README)](https://github.com/ShadowForge-Cyber/CVE-2026-65660-Poc) · [HORKimhab/CVE-2026-65660 0★(仅README)](https://github.com/HORKimhab/CVE-2026-65660)
 参考: [厂商通告](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-65660)
+
+### PHP全局状态UAF可致远程代码执行
+[CVE-2026-109619](https://nvd.nist.gov/vuln/detail/CVE-2026-109619) | P0 立即处置 | 安全设备 | CVSS 8.1 | EPSS 100.0% | 披露 2026-10-21 | 入库 2026-10-22
+🔥 KEV 在野利用,限期 2026-10-29 | PoC 源码可用 | 开源,可源码审计复现
+远程攻击者通过构造请求输入，使临时指向请求内存的全局状态被提前释放，已在野利用，可导致内存破坏乃至代码执行
+复现: 值得 — 无；需构造请求使全局状态残留指向已释放请求内存，依赖特定扩展组合 · 影响面: Web运行环境核心组件，影响面极广
+处置: 升级到 8.2.35 或 8.3.36 及以上版本，并排查历史请求日志中的异常利用痕迹
+影响: php php >=5.4.0 <8.2.35; php php >=8.3.0 <8.3.36
+PoC: [ikow/php2shell-poc 1834★(仅README)](https://github.com/ikow/php2shell-poc) · [eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 1019★(有源码)](https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC)
+参考: [厂商通告](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp) · [参考](http://www.openwall.com/lists/oss-security/2026/10/21/16) · [参考](http://www.openwall.com/lists/oss-security/2026/10/21/17)
 
 ### Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability
 [CVE-2026-88772](https://nvd.nist.gov/vuln/detail/CVE-2026-88772) | P0 立即处置 | 边界设备/VPN | CVSS 8.1 | EPSS 1.3% | 披露 2026-09-27 | 入库 2026-09-30
@@ -495,6 +515,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
 
+### OpenHands沙箱默认无认证RCE
+[CVE-2026-112346](https://nvd.nist.gov/vuln/detail/CVE-2026-112346) | P1 重点关注 | 容器/虚拟化 | CVSS 9.8 | 披露 2026-10-26 | 入库 2026-10-27
+DockerWorkspace/Apptainer启动器把沙箱agent绑定0.0.0.0且会话密钥为空，网络可达者未授权下发任务执行代码
+复现: 值得 — 默认启动沙箱后直接访问agent HTTP接口下发执行指令；需0.0.0.0可达 · 影响面: AI Agent沙箱服务，容器环境易横向
+处置: 升级至 1.52.0 及以上，配置session_api_keys并限定监听地址
+参考: [参考](https://github.com/OpenHands/software-agent-sdk/commit/7b66584ff8899144eb4ce679c2811861342af9de) · [参考](https://github.com/OpenHands/software-agent-sdk/pull/5209) · [参考](https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.52.0)
+
 ### OpenWrt odhcpd预认证栈溢出
 [CVE-2026-53921](https://nvd.nist.gov/vuln/detail/CVE-2026-53921) | P1 重点关注 | 网络设备 | CVSS 9.8 | 披露 2026-10-23 | 入库 2026-10-23
 PoC 源码可用
@@ -503,26 +530,6 @@ PoC 源码可用
 处置: 升级OpenWrt/odhcpd至修复版；限制UDP服务暴露
 PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy/CVE-2026-53921-PoC-Exploit) · [0xBlackash/CVE-2026-53921 2★(有源码)](https://github.com/0xBlackash/CVE-2026-53921)
 参考: [参考](https://github.com/openwrt/odhcpd/commit/0320032ae313452f3c8cb8725c621dd06c36dc03) · [参考](https://github.com/openwrt/odhcpd/commit/03dacc23356b5789842b9d1bba0200fd005e35f3) · [参考](https://github.com/openwrt/odhcpd/commit/2a42d34c3615e2449ca273f673eee7c429d819a9)
-
-### PHP请求内存UAF代码执行
-[CVE-2026-109619](https://nvd.nist.gov/vuln/detail/CVE-2026-109619) | P1 重点关注 | 安全设备 | CVSS 9.8 | 披露 2026-10-21 | 入库 2026-10-22
-PoC 源码可用 | 开源,可源码审计复现
-攻击者可通过多种请求策略触发请求内存悬垂，导致PHP进程RCE
-复现: 值得 — 构造请求触发全局状态指向请求内存后释放 · 影响面: PHP Web应用运行时
-处置: 升级PHP 8.2.35/8.3.36及以上修复版
-影响: php php <8.2.35; php php >=8.3.0 <8.3.36
-PoC: [eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 614★(有源码)](https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC) · [syhunt/php2shell-protection 63★(有源码)](https://github.com/syhunt/php2shell-protection)
-参考: [厂商通告](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp) · [参考](http://www.openwall.com/lists/oss-security/2026/10/21/16) · [参考](http://www.openwall.com/lists/oss-security/2026/10/21/17)
-
-### PHP OOM长跳转RCE
-[CVE-2026-109618](https://nvd.nist.gov/vuln/detail/CVE-2026-109618) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-21 | 入库 2026-10-22
-nuclei 模板 | PoC 源码可用 | 开源,可源码审计复现
-攻击者可通过OOM策略触发longjmp退出路径，导致PHP进程RCE
-复现: 值得 — 通过OOM策略触发longjmp退出，破坏请求上下文 · 影响面: PHP Web应用运行时
-处置: 升级PHP 8.2.35/8.3.36及以上修复版
-影响: php php <8.2.35; php php >=8.3.0 <8.3.36
-PoC: [ikow/php2shell-poc 1008★(仅README)](https://github.com/ikow/php2shell-poc) · [eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 614★(有源码)](https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC)
-参考: [厂商通告](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w) · [参考](http://www.openwall.com/lists/oss-security/2026/10/21/6) · [参考](https://www.wiz.io/blog/php2shell-php-rce)
 
 ### DedeCMS ShowMsg代码注入RCE
 [CVE-2021-48016](https://nvd.nist.gov/vuln/detail/CVE-2021-48016) | P1 重点关注 | CMS | CVSS 9.8 | 披露 2026-10-22 | 入库 2026-10-22
@@ -728,6 +735,13 @@ PoC: [ikow/php2shell-poc 1008★(仅README)](https://github.com/ikow/php2shell-p
 复现: 值得
 参考: [参考](https://www.veeam.com/KB4934)
 
+### MCP Toolbox路径遍历致任意文件读写
+[CVE-2026-93328](https://nvd.nist.gov/vuln/detail/CVE-2026-93328) | P1 重点关注 | CVSS 9.3 | 披露 2026-10-26 | 入库 2026-10-27
+未授权远程攻击者构造工具调用参数遍历路径，可将主机文件外传至外部GCS桶或覆盖本地任意文件
+复现: 值得 — 向cloud-storage源工具调用参数注入../，未授权即可读取主机文件 · 影响面: 数据库MCP服务，多部署于内网
+处置: 暂无明确修复版本，建议禁用cloud-storage源并限制Toolbox外部访问
+参考: [参考](https://github.com/googleapis/mcp-toolbox/pull/3454)
+
 ### CVE-2026-73640
 [CVE-2026-73640](https://nvd.nist.gov/vuln/detail/CVE-2026-73640) | CVSS 9.3 | 披露 2026-09-28 | 入库 2026-10-08
 复现: 值得
@@ -870,6 +884,13 @@ PoC: [ikow/php2shell-poc 1008★(仅README)](https://github.com/ikow/php2shell-p
 [CVE-2026-107194](https://nvd.nist.gov/vuln/detail/CVE-2026-107194) | CVSS 9.2 | 披露 2026-10-07 | 入库 2026-10-08
 复现: 值得
 参考: [参考](https://jakkaru.de/articles/sungrow-vulnerability-exposes-gigawatts-worldwide) · [参考](https://www.sungrowpower.com/en/products/cloud-software/isolarcloud)
+
+### 苹果CMS找回密码校验缺失致账号接管
+[CVE-2026-116214](https://nvd.nist.gov/vuln/detail/CVE-2026-116214) | P1 重点关注 | 安全设备 | CVSS 9.1 | 披露 2026-10-26 | 入库 2026-10-27
+未授权攻击者用自己邮箱通过findpass_msg获取验证码，再以受害者邮箱或手机提交findpass_reset，即可重置任意会员密码
+复现: 值得 — 未授权访问 user/findpass_msg 取自己的验证码，再用 victim 邮箱调 findpass_reset · 影响面: 中小型视频/内容站点CMS，公网可达
+处置: 升级至 2026.1000.4054 及以上，或临时关闭找回密码相关接口
+参考: [参考](https://github.com/maccmspro/maccms10) · [参考](https://github.com/maccmspro/maccms10/blob/7f388ee0008faf5b01e5df7bf5e5a6ff4bbe13e8/application/common/model/User.php#L607-L630) · [参考](https://github.com/maccmspro/maccms10/issues/30)
 
 ### WebLogic Core未授权高危
 [CVE-2026-87302](https://nvd.nist.gov/vuln/detail/CVE-2026-87302) | P1 重点关注 | Web中间件 | CVSS 9.1 | 披露 2026-10-20 | 入库 2026-10-21

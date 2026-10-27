@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-26T21:42:47+00:00",
- "count": 133,
+ "updated_at": "2026-10-27T02:24:36+00:00",
+ "count": 136,
  "count_recommended": 22,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -1041,6 +1041,59 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-109618",
+   "title": "PHP内存耗尽长跳转UAF致RCE",
+   "first_seen": "2026-10-22",
+   "last_seen": "2026-10-27",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": true,
+   "published": "2026-10-21",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "触发OOM使longjmp中止请求处理，随后访问残留全局状态；可审计源码构造PoC",
+   "impact_scope": "PHP-FPM/Apache模块，互联网暴露面广",
+   "action_zh": "升级到 8.2.35 或 8.3.36 及以上版本，收紧请求内存上限并监控OOM异常",
+   "summary_zh": "远程攻击者构造内存耗尽场景触发longjmp跳出上下文，遗留全局状态指向已释放内存，已在野利用并可能执行代码",
+   "category": "安全设备",
+   "cvss": 9.8,
+   "epss": 0.99981,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-10-29",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/ikow/php2shell-poc",
+     "label": "ikow/php2shell-poc 1834★(仅README)"
+    },
+    {
+     "url": "https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC",
+     "label": "eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 1019★(有源码)"
+    }
+   ],
+   "affected": "php php >=7.3.0 <8.2.35; php php >=8.3.0 <8.3.36",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/21/6"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/23/5"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109618",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-102764",
    "title": "BeyondTrust 认证欺骗致文件操作",
    "first_seen": "2026-10-16",
@@ -1471,6 +1524,59 @@
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65660",
    "change_note": null
+  },
+  {
+   "id": "CVE-2026-109619",
+   "title": "PHP全局状态UAF可致远程代码执行",
+   "first_seen": "2026-10-22",
+   "last_seen": "2026-10-27",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": true,
+   "published": "2026-10-21",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "无；需构造请求使全局状态残留指向已释放请求内存，依赖特定扩展组合",
+   "impact_scope": "Web运行环境核心组件，影响面极广",
+   "action_zh": "升级到 8.2.35 或 8.3.36 及以上版本，并排查历史请求日志中的异常利用痕迹",
+   "summary_zh": "远程攻击者通过构造请求输入，使临时指向请求内存的全局状态被提前释放，已在野利用，可导致内存破坏乃至代码执行",
+   "category": "安全设备",
+   "cvss": 8.1,
+   "epss": 0.99997,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "kev": true,
+   "kev_due": "2026-10-29",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/ikow/php2shell-poc",
+     "label": "ikow/php2shell-poc 1834★(仅README)"
+    },
+    {
+     "url": "https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC",
+     "label": "eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 1019★(有源码)"
+    }
+   ],
+   "affected": "php php >=5.4.0 <8.2.35; php php >=8.3.0 <8.3.36",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/21/16"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/21/17"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109619",
+   "change_note": "📈 评分 9.8→8.1(降分)"
   },
   {
    "id": "CVE-2026-88772",
@@ -2555,6 +2661,50 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-112346",
+   "title": "OpenHands沙箱默认无认证RCE",
+   "first_seen": "2026-10-27",
+   "last_seen": "2026-10-27",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-26",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "默认启动沙箱后直接访问agent HTTP接口下发执行指令；需0.0.0.0可达",
+   "impact_scope": "AI Agent沙箱服务，容器环境易横向",
+   "action_zh": "升级至 1.52.0 及以上，配置session_api_keys并限定监听地址",
+   "summary_zh": "DockerWorkspace/Apptainer启动器把沙箱agent绑定0.0.0.0且会话密钥为空，网络可达者未授权下发任务执行代码",
+   "category": "容器/虚拟化",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/OpenHands/software-agent-sdk/commit/7b66584ff8899144eb4ce679c2811861342af9de"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/OpenHands/software-agent-sdk/pull/5209"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.52.0"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112346",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-53921",
    "title": "OpenWrt odhcpd预认证栈溢出",
    "first_seen": "2026-10-23",
@@ -2605,112 +2755,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-53921",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-109619",
-   "title": "PHP请求内存UAF代码执行",
-   "first_seen": "2026-10-22",
-   "last_seen": "2026-10-22",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": true,
-   "published": "2026-10-21",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "构造请求触发全局状态指向请求内存后释放",
-   "impact_scope": "PHP Web应用运行时",
-   "action_zh": "升级PHP 8.2.35/8.3.36及以上修复版",
-   "summary_zh": "攻击者可通过多种请求策略触发请求内存悬垂，导致PHP进程RCE",
-   "category": "安全设备",
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": "code",
-   "poc": [
-    {
-     "url": "https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC",
-     "label": "eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 614★(有源码)"
-    },
-    {
-     "url": "https://github.com/syhunt/php2shell-protection",
-     "label": "syhunt/php2shell-protection 63★(有源码)"
-    }
-   ],
-   "affected": "php php <8.2.35; php php >=8.3.0 <8.3.36",
-   "patched": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp"
-    },
-    {
-     "label": "参考",
-     "url": "http://www.openwall.com/lists/oss-security/2026/10/21/16"
-    },
-    {
-     "label": "参考",
-     "url": "http://www.openwall.com/lists/oss-security/2026/10/21/17"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109619",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-109618",
-   "title": "PHP OOM长跳转RCE",
-   "first_seen": "2026-10-22",
-   "last_seen": "2026-10-22",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": true,
-   "published": "2026-10-21",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "通过OOM策略触发longjmp退出，破坏请求上下文",
-   "impact_scope": "PHP Web应用运行时",
-   "action_zh": "升级PHP 8.2.35/8.3.36及以上修复版",
-   "summary_zh": "攻击者可通过OOM策略触发longjmp退出路径，导致PHP进程RCE",
-   "category": null,
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": true,
-   "poc_quality": "code",
-   "poc": [
-    {
-     "url": "https://github.com/ikow/php2shell-poc",
-     "label": "ikow/php2shell-poc 1008★(仅README)"
-    },
-    {
-     "url": "https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC",
-     "label": "eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 614★(有源码)"
-    }
-   ],
-   "affected": "php php <8.2.35; php php >=8.3.0 <8.3.36",
-   "patched": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w"
-    },
-    {
-     "label": "参考",
-     "url": "http://www.openwall.com/lists/oss-security/2026/10/21/6"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.wiz.io/blog/php2shell-php-rce"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109618",
    "change_note": null
   },
   {
@@ -4007,6 +4051,42 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-93328",
+   "title": "MCP Toolbox路径遍历致任意文件读写",
+   "first_seen": "2026-10-27",
+   "last_seen": "2026-10-27",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-26",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "向cloud-storage源工具调用参数注入../，未授权即可读取主机文件",
+   "impact_scope": "数据库MCP服务，多部署于内网",
+   "action_zh": "暂无明确修复版本，建议禁用cloud-storage源并限制Toolbox外部访问",
+   "summary_zh": "未授权远程攻击者构造工具调用参数遍历路径，可将主机文件外传至外部GCS桶或覆盖本地任意文件",
+   "category": null,
+   "cvss": 9.3,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/googleapis/mcp-toolbox/pull/3454"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-93328",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-73640",
    "title": "CVE-2026-73640",
    "first_seen": "2026-10-08",
@@ -5068,6 +5148,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107194",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-116214",
+   "title": "苹果CMS找回密码校验缺失致账号接管",
+   "first_seen": "2026-10-27",
+   "last_seen": "2026-10-27",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-26",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问 user/findpass_msg 取自己的验证码，再用 victim 邮箱调 findpass_reset",
+   "impact_scope": "中小型视频/内容站点CMS，公网可达",
+   "action_zh": "升级至 2026.1000.4054 及以上，或临时关闭找回密码相关接口",
+   "summary_zh": "未授权攻击者用自己邮箱通过findpass_msg获取验证码，再以受害者邮箱或手机提交findpass_reset，即可重置任意会员密码",
+   "category": "安全设备",
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/maccmspro/maccms10"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/maccmspro/maccms10/blob/7f388ee0008faf5b01e5df7bf5e5a6ff4bbe13e8/application/common/model/User.php#L607-L630"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/maccmspro/maccms10/issues/30"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116214",
    "change_note": null
   },
   {

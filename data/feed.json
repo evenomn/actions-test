@@ -1,109 +1,197 @@
 {
  "version": 3,
- "generated_at": "2026-10-26T21:42:47+00:00",
- "lookback_hours": 5,
- "count": 6,
+ "generated_at": "2026-10-27T02:24:36+00:00",
+ "lookback_hours": 24,
+ "count": 25,
  "stats": {
-  "total": 6,
+  "total": 25,
   "by_tier": {
-   "critical": 6
+   "critical": 23,
+   "high": 2
   },
   "by_urgency": {
-   "P1 重点关注": 6
+   "P1 重点关注": 20,
+   "P2 保持关注": 3,
+   "P0 立即处置": 2
   },
   "by_category": {
-   "未知": 4,
-   "容器/虚拟化": 1,
-   "操作系统": 1
+   "未知": 15,
+   "安全设备": 3,
+   "操作系统": 2,
+   "容器/虚拟化": 2,
+   "ERP/业务系统": 2,
+   "开发库/依赖": 1
   },
-  "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
+  "kev": 2,
+  "with_poc": 3,
+  "with_poc_source": 2,
   "repro_recommended": 0
  },
- "briefing": [],
+ "briefing": [
+  "- PHP两个UAF已入KEV并遭在野利用，EPSS近满分，优先修复。",
+  "- 今日批量公告密集：多个9.9-10.0分注入与内存破坏漏洞集中披露。",
+  "- 清单未见勒索软件关联，但仍需排查暴露面与异常加密行为。",
+  "- 最急处置：先升PHP至8.2.35/8.3.36以上，再修Pillow堆溢出。",
+  "- Pillow堆溢出9.8且有PoC，图像服务应紧急升级至13.0.0。"
+ ],
  "items": [
   {
-   "id": "CVE-2026-102649",
+   "id": "CVE-2026-109619",
    "tier": "critical",
-   "title": "burrito-server 缺失认证",
-   "title_zh": "burrito-server 缺失认证",
-   "summary_zh": "知晓仓库URL者可直连服务端点伪造事件，创建或删除TerraformPullRequest资源，破坏GitOps流程",
-   "published": "2026-10-26T18:17:21.803",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:H",
-   "epss": null,
-   "epss_percentile": null,
+   "title": "PHP全局状态UAF可致远程代码执行",
+   "title_zh": "PHP全局状态UAF可致远程代码执行",
+   "summary_zh": "远程攻击者通过构造请求输入，使临时指向请求内存的全局状态被提前释放，已在野利用，可导致内存破坏乃至代码执行",
+   "published": "2026-10-21T14:17:09.823",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.99997,
+   "epss_percentile": 0.99989,
    "cwe_labels": [
-    "缺失认证",
-    "授权错误"
+    "释放后重用(UAF)",
+    "CWE-755"
    ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [
+    "php php",
+    "siemens ruggedcom_ape1808_firmware",
+    "siemens ruggedcom_ape1808",
+    "paloaltonetworks pan-os",
+    "paloaltonetworks panorama_m-200"
+   ],
+   "affected": "php php >=5.4.0 <8.2.35; php php >=8.3.0 <8.3.36",
    "ghsa_url": null,
    "refs": [
     {
-     "label": "参考",
-     "url": "https://github.com/padok-team/burrito/commit/1d48432a4a0126429c99f5fa42567bf3711d1ca1"
+     "label": "厂商通告",
+     "url": "https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp"
     },
     {
      "label": "参考",
-     "url": "https://github.com/padok-team/burrito/releases/tag/v0.13.0"
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/21/16"
     },
     {
      "label": "参考",
-     "url": "https://github.com/padok-team/burrito/security/advisories/GHSA-7m68-72r6-3jx8"
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/21/17"
     }
    ],
-   "poc": [],
+   "poc": [
+    {
+     "url": "https://github.com/ikow/php2shell-poc",
+     "label": "ikow/php2shell-poc 1834★(仅README)"
+    },
+    {
+     "url": "https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC",
+     "label": "eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 1019★(有源码)"
+    }
+   ],
    "nuclei": false,
    "patched": null,
-   "kev": false,
-   "kev_due": null,
+   "kev": true,
+   "kev_due": "2026-10-29",
    "ransomware": false,
-   "keyword_hit": "gitlab",
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复版本并限制服务端点访问",
-   "repro_worthy": "一般",
-   "repro_note": "向burrito-server端点提交伪造事件，需已知仓库URL",
-   "impact_scope": "内网GitOps组件，供应链风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102649",
-   "description": "Anyone who can reach `burrito-server`'s endpoint and knows a tracked repository's URL can forge events to create or delete `TerraformPullRequest` custom resources with attacker-chosen `Branch`, `Base`, and `ID` fields. Auto-apply is disabled for these temporary layers, so this vulnerability alone cannot force a `terraform apply`; plan-time provider and data-source code execution depends on the selected branch's contents."
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级到 8.2.35 或 8.3.36 及以上版本，并排查历史请求日志中的异常利用痕迹",
+   "repro_worthy": "值得",
+   "repro_note": "无；需构造请求使全局状态残留指向已释放请求内存，依赖特定扩展组合",
+   "impact_scope": "Web运行环境核心组件，影响面极广",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109619",
+   "description": "PHP has various global state that temporarily points into request memory. In some scenarios, global state may not be correctly reset, or may be repopulated after being reset. The global state may then refer to request memory even after it has been freed. Subsequent requests may read or branch on this stale state before it is fully initialized. Multiple strategies can trigger this condition and produce remote code execution (RCE)."
   },
   {
-   "id": "CVE-2026-115905",
+   "id": "CVE-2026-109618",
    "tier": "critical",
-   "title": "Rust zip库解压路径不一致",
-   "title_zh": "Rust zip库解压路径不一致",
-   "summary_zh": "攻击者构造恶意压缩包，使中央目录与流式解压路径不一致，覆盖下游服务文件",
-   "published": "2026-10-26T17:17:17.823",
-   "cvss": 10.0,
+   "title": "PHP内存耗尽长跳转UAF致RCE",
+   "title_zh": "PHP内存耗尽长跳转UAF致RCE",
+   "summary_zh": "远程攻击者构造内存耗尽场景触发longjmp跳出上下文，遗留全局状态指向已释放内存，已在野利用并可能执行代码",
+   "published": "2026-10-21T14:17:09.357",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.99981,
+   "epss_percentile": 0.99981,
    "cwe_labels": [
-    "输入校验缺失",
-    "CWE-436"
+    "释放后重用(UAF)",
+    "CWE-755"
    ],
    "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
+   "products": [
+    "php php",
+    "siemens ruggedcom_ape1808_firmware",
+    "siemens ruggedcom_ape1808",
+    "paloaltonetworks pan-os",
+    "paloaltonetworks panorama_m-200"
+   ],
+   "affected": "php php >=7.3.0 <8.2.35; php php >=8.3.0 <8.3.36",
    "ghsa_url": null,
    "refs": [
     {
-     "label": "参考",
-     "url": "https://github.com/zip-rs/zip2/commit/8068ab480ccf8daa7411424e365fcdbe6d09443e"
+     "label": "厂商通告",
+     "url": "https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w"
     },
     {
      "label": "参考",
-     "url": "https://github.com/zip-rs/zip2/releases/tag/v9.0.5"
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/21/6"
     },
     {
      "label": "参考",
-     "url": "https://github.com/zip-rs/zip2/security/advisories/GHSA-m665-v7pm-7grj"
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/23/5"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/ikow/php2shell-poc",
+     "label": "ikow/php2shell-poc 1834★(仅README)"
+    },
+    {
+     "url": "https://github.com/eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC",
+     "label": "eness/php2shell-CVE-2026-109618-CVE-2026-109619-PoC 1019★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-29",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级到 8.2.35 或 8.3.36 及以上版本，收紧请求内存上限并监控OOM异常",
+   "repro_worthy": "值得",
+   "repro_note": "触发OOM使longjmp中止请求处理，随后访问残留全局状态；可审计源码构造PoC",
+   "impact_scope": "PHP-FPM/Apache模块，互联网暴露面广",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109618",
+   "description": "PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request. Some contexts may not properly account for this scenario and leave request memory in an uninitialized state before performing an allocation. The subsequent request cleanup procedure may read or branch on this memory. Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE)."
+  },
+  {
+   "id": "CVE-2026-112393",
+   "tier": "critical",
+   "title": "Pillow TIFF处理堆溢出可越界读写",
+   "title_zh": "Pillow TIFF处理堆溢出可越界读写",
+   "summary_zh": "攻击者构造恶意TIFF标签或ICC数据，诱导应用解析时写出分配边界并泄露堆内存，可致内存破坏甚至代码执行",
+   "published": "2026-10-19T21:17:07.613",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00818,
+   "epss_percentile": 0.56894,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "python pillow"
+   ],
+   "affected": "python pillow >=2.0.0 <13.0.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/python-pillow/Pillow/commit/11582e5ffbdceb973d5ee593f3105af5a9852b40"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
     }
    ],
    "poc": [],
@@ -114,27 +202,72 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级zip库至修复版本，解压后校验输出路径",
+   "action_zh": "升级 Pillow 至 13.0.0 及以上版本，解析前限制图像尺寸与标签长度",
    "repro_worthy": "一般",
-   "repro_note": "构造中央目录与本地头不一致的压缩包，验证覆盖路径",
-   "impact_scope": "被广泛依赖的压缩解析库",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115905",
-   "description": "zip is a zip library for Rust that supports reading and writing simple ZIP files. A crafted archive can therefore appear benign to a component that inspects the central directory but cause a streaming extractor to write a different attacker-selected path and content, potentially overwriting files used by a downstream service."
+   "repro_note": "解析含超长离行TIFF标签或保留ICC的图片；入口需接收不可信图像文件",
+   "impact_scope": "图像处理依赖库，广泛嵌入Web服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112393",
+   "description": "The callback sizes its allocation from the prior buffer size instead of the current write position, allowing an attacker-controlled out-of-line TIFF tag or retained ICC profile to be copied beyond the allocation after libtiff seeks forward. Independently, unwritten alignment gaps in compressed TIFF output larger than 64 KiB can disclose stale heap bytes without a crafted tag."
   },
   {
-   "id": "CVE-2026-110720",
-   "tier": "critical",
-   "title": "consul-k8s 跨命名空间授权绕过",
-   "title_zh": "consul-k8s 跨命名空间授权绕过",
-   "summary_zh": "攻击者借组件ACL绑定规则缺陷跨命名空间越权，获取更高Consul权限",
-   "published": "2026-10-26T19:16:29.940",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "id": "CVE-2026-112345",
+   "tier": "high",
+   "title": "TTLock硬编码AES密钥可解BLE会话",
+   "title_zh": "TTLock硬编码AES密钥可解BLE会话",
+   "summary_zh": "蓝牙范围内的攻击者利用App与固件中硬编码的AES密钥，解密BLE配对时传输的会话密钥，进而开锁或重放指令",
+   "published": "2026-10-26T15:16:38.167",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "授权错误"
+    "CWE-321"
+   ],
+   "difficulty": "低(需相邻网络·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://damiri.fr/en/cve/CVE-2026-112345"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/ttlock-android-app-hardcoded-ble-pairing-key-exposure"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P2 保持关注",
+   "action_zh": "升级App至 9.8.260718 及以上并同步升级门锁固件，改用动态协商密钥",
+   "repro_worthy": "一般",
+   "repro_note": "近场抓取BLE配对报文后以硬编码密钥解出会话密钥；需实体锁与App配合",
+   "impact_scope": "智能门锁，近场蓝牙攻击面",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112345",
+   "description": "TTLock Android application before v9.8.260718 and associated smart-lock firmware contain a hardcoded static AES key vulnerability that allows an attacker within Bluetooth range to decrypt the per-pairing session key transmitted during BLE pairing."
+  },
+  {
+   "id": "CVE-2026-57187",
+   "tier": "high",
+   "title": "Asterisk PJSIP释放后重用漏洞",
+   "title_zh": "Asterisk PJSIP释放后重用漏洞",
+   "summary_zh": "已认证SIP用户通过面向连接的传输发送INVITE后立即断开，在200 OK返回前触发堆释放后重用，可致服务崩溃",
+   "published": "2026-10-26T20:17:56.700",
+   "cvss": 7.1,
+   "severity": "HIGH",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)",
+    "CWE-664"
    ],
    "difficulty": "低(远程·需低权限)",
    "products": [],
@@ -143,7 +276,63 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://discuss.hashicorp.com/t/hcsec-2026-50-consul-k8s-vulnerable-to-a-cross-namespace-authorization-bypass-in-component-acl-binding-rules/77915"
+     "url": "https://github.com/asterisk/asterisk/commit/0f076168e0be31ebee37762192d0ee049e9c0d42"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/asterisk/asterisk/commit/27b9544b32f059a4f614169243eaa7559f622aa0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/asterisk/asterisk/commit/6e1f4df744369d66ea6f412e355d819b2a7bf26c"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P2 保持关注",
+   "action_zh": "升级至 20.20.1、21.12.3、22.10.1、23.4.1 或对应cert版本",
+   "repro_worthy": "一般",
+   "repro_note": "已认证账号经TCP/TLS发送INVITE并抢在200 OK前断开，触发SDP处理UAF",
+   "impact_scope": "企业IPPBX/呼叫中心，常暴露SIP端口",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-57187",
+   "description": "Asterisk is an open source private branch exchange and telephony toolkit. Prior to Asterisk 20.20.1, 21.12.3, 22.10.1, 23.4.1 and Certified Asterisk 20.7-cert11, 22.8-cert3, an authenticated attacker may cause a heap-use-after-free in `PJSIP TCP/SDP` handling by sending a `SIP INVITE` over a connection-oriented transport and disconnecting before Asterisk responds with the `200 OK`."
+  },
+  {
+   "id": "CVE-2026-116214",
+   "tier": "critical",
+   "title": "苹果CMS找回密码校验缺失致账号接管",
+   "title_zh": "苹果CMS找回密码校验缺失致账号接管",
+   "summary_zh": "未授权攻击者用自己邮箱通过findpass_msg获取验证码，再以受害者邮箱或手机提交findpass_reset，即可重置任意会员密码",
+   "published": "2026-10-26T14:16:34.173",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-640"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/maccmspro/maccms10"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/maccmspro/maccms10/blob/7f388ee0008faf5b01e5df7bf5e5a6ff4bbe13e8/application/common/model/User.php#L607-L630"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/maccmspro/maccms10/issues/30"
     }
    ],
    "poc": [],
@@ -154,19 +343,255 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到2.1.0或1.8.18，审查ACL绑定规则",
+   "action_zh": "升级至 2026.1000.4054 及以上，或临时关闭找回密码相关接口",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问 user/findpass_msg 取自己的验证码，再用 victim 邮箱调 findpass_reset",
+   "impact_scope": "中小型视频/内容站点CMS，公网可达",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116214",
+   "description": "MacCMS v10 before 2026.1000.4054 contains an authentication bypass vulnerability that allows unauthenticated attackers to reset any member's password because check_msg() never compares msg_to. Attackers can request a recovery code to their own mailbox via user/findpass_msg, then submit it to user/findpass_reset with the victim's email or phone to take over the account."
+  },
+  {
+   "id": "CVE-2026-112346",
+   "tier": "critical",
+   "title": "OpenHands沙箱默认无认证RCE",
+   "title_zh": "OpenHands沙箱默认无认证RCE",
+   "summary_zh": "DockerWorkspace/Apptainer启动器把沙箱agent绑定0.0.0.0且会话密钥为空，网络可达者未授权下发任务执行代码",
+   "published": "2026-10-26T16:17:14.110",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-1327"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/OpenHands/software-agent-sdk/commit/7b66584ff8899144eb4ce679c2811861342af9de"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/OpenHands/software-agent-sdk/pull/5209"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.52.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 1.52.0 及以上，配置session_api_keys并限定监听地址",
+   "repro_worthy": "值得",
+   "repro_note": "默认启动沙箱后直接访问agent HTTP接口下发执行指令；需0.0.0.0可达",
+   "impact_scope": "AI Agent沙箱服务，容器环境易横向",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112346",
+   "description": "OpenHands Software Agent SDK before 1.52.0 contains an unauthenticated remote code execution vulnerability where the DockerWorkspace and Apptainer workspace launchers bind the sandbox agent server to all network interfaces (0.0.0.0) with an empty session_api_keys list, disabling authentication by default."
+  },
+  {
+   "id": "CVE-2026-93328",
+   "tier": "critical",
+   "title": "MCP Toolbox路径遍历致任意文件读写",
+   "title_zh": "MCP Toolbox路径遍历致任意文件读写",
+   "summary_zh": "未授权远程攻击者构造工具调用参数遍历路径，可将主机文件外传至外部GCS桶或覆盖本地任意文件",
+   "published": "2026-10-26T15:16:45.813",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:Amber",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取",
+    "缺失授权(越权)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/googleapis/mcp-toolbox/pull/3454"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无明确修复版本，建议禁用cloud-storage源并限制Toolbox外部访问",
+   "repro_worthy": "值得",
+   "repro_note": "向cloud-storage源工具调用参数注入../，未授权即可读取主机文件",
+   "impact_scope": "数据库MCP服务，多部署于内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-93328",
+   "description": "Path Traversal and Missing Authorization in cloud-storage source in Google Cloud MCP Toolbox for Databases (googleapis/mcp-toolbox) versions 1.2.0 through 1.4.0 allows an unauthenticated remote attacker to exfiltrate host files to external Google Cloud Storage buckets and overwrite arbitrary local files via crafted tool invocation parameters."
+  },
+  {
+   "id": "CVE-2026-116508",
+   "tier": "critical",
+   "title": "ERP系统栈溢出漏洞可远程执行代码",
+   "title_zh": "ERP系统栈溢出漏洞可远程执行代码",
+   "summary_zh": "远程攻击者向对外ERP服务提交畸形超长数据触发栈溢出，可能导致业务进程崩溃甚至执行任意代码",
+   "published": "2026-10-26T22:16:54.373",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏",
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/H3rmesk1t/ad72def4ccc232757d4cbabf45da72cb"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-116508"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1022557"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "厂商未公布修复版本，先收敛ERP服务暴露面并加强边界输入校验",
    "repro_worthy": "一般",
-   "repro_note": "需集群内身份与组件ACL绑定配置，实现跨命名空间提权",
-   "impact_scope": "K8s服务网格控制面，横向提权",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110720",
-   "description": "Consul-k8s versions 0.42.0 and later are vulnerable to a cross-namespace authorization bypass in component ACL binding rules that may allow an attacker to obtain elevated Consul privileges. This vulnerability (CVE-2026-110720) is fixed in consul-k8s 2.1.0 and 1.8.18."
+   "repro_note": "入口为对外ERP服务解析逻辑，需构造超长字段；具体组件与参数未标注",
+   "impact_scope": "企业ERP对外服务，内网核心业务系统",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116508",
+   "description": "A security flaw has been discovered in TOTOLINK A950RG 4.1.2cu.5268_B20221104. Affected by this issue is the function sub_402340 of the file infostat.cgi of the component Device-Information CGI. Performing a manipulation of the argument CONTENT_LENGTH results in stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been released to the public and may be used for attacks."
+  },
+  {
+   "id": "CVE-2026-116231",
+   "tier": "critical",
+   "title": "未知组件regmsg参数CRLF注入",
+   "title_zh": "未知组件regmsg参数CRLF注入",
+   "summary_zh": "远程攻击者向regmsg参数注入CRLF字符，可拆分响应报文或伪造头部，用于缓存投毒、会话劫持与日志伪造",
+   "published": "2026-10-26T08:17:17.620",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.00436,
+   "epss_percentile": 0.37632,
+   "cwe_labels": [
+    "注入",
+    "CRLF注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://app.notion.com/p/Oray-Pgyer-X5-Pro-Router-7-6-1-A-Serial-Banner-Newline-Lets-ser2net-Overwrite-Existing-Files-3ea797159f158019b687eadcc7d6a85b"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-116231"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1005078"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "对regmsg参数做CR/LF过滤并输出编码；暂无官方修复信息",
+   "repro_worthy": "一般",
+   "repro_note": "向regmsg参数注入%0d%0a观察响应头分裂；具体产品未标注，需先定位资产",
+   "impact_scope": "产品未定位，需确认资产是否受影响",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116231",
+   "description": "A security flaw has been discovered in Oray Pugongying X5 Pro 7.6.1. The impacted element is an unknown function of the component Ser2net. Performing a manipulation of the argument regmsg results in crlf injection. It is possible to initiate the attack remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-116232",
+   "tier": "critical",
+   "title": "info.community参数CRLF注入",
+   "title_zh": "info.community参数CRLF注入",
+   "summary_zh": "远程攻击者向info.community参数注入CRLF，可伪造响应头或拆分报文，造成缓存投毒与凭据泄露",
+   "published": "2026-10-26T08:17:17.837",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.00436,
+   "epss_percentile": 0.37632,
+   "cwe_labels": [
+    "注入",
+    "CRLF注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://app.notion.com/p/Oray-Pgyer-X5-Pro-Router-7-6-1-A-Community-Newline-Makes-snmpd-Run-Commands-as-Root-3ea797159f1580f3bae8c6e7d8b91d1f"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-116232"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1005079"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "对community参数做CR/LF过滤与输出编码；暂无官方修复信息",
+   "repro_worthy": "一般",
+   "repro_note": "向info.community注入%0d%0a观察头部拆分；产品未标注，需先定位受影响组件",
+   "impact_scope": "产品未定位，需先排查资产",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116232",
+   "description": "A weakness has been identified in Oray Pugongying X5 Pro 7.6.1. This affects the function snmp_set of the component SNMP Handler. Executing a manipulation of the argument info.community can lead to crlf injection. It is possible to launch the attack remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way."
   },
   {
    "id": "CVE-2026-116504",
    "tier": "critical",
    "title": "TOTOLINK A950RG云升级命令注入",
    "title_zh": "TOTOLINK A950RG云升级命令注入",
-   "summary_zh": "远程攻击者通过云升级接口FileName参数注入系统命令，可完全控制路由器",
+   "summary_zh": "攻击者可远程调用云升级流程，在FileName参数拼接系统命令，在路由器上以高权限执行任意指令",
    "published": "2026-10-26T21:18:12.420",
    "cvss": 9.9,
    "severity": "CRITICAL",
@@ -203,10 +628,10 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复信息，停用云升级并限制管理面访问",
+   "action_zh": "暂无官方修复，建议禁用云升级功能并限制管理界面仅内网访问",
    "repro_worthy": "一般",
-   "repro_note": "调用setCloudUpgradeFW的FileName参数注入命令",
-   "impact_scope": "家用/小型企业路由器，边界设备",
+   "repro_note": "向 setCloudUpgradeFW 的 FileName 传入命令分隔符触发拼接，需可访问升级接口",
+   "impact_scope": "SOHO路由器，公网管理面易被扫描",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116504",
    "description": "A vulnerability has been found in TOTOLINK A950RG 4.1.2cu.5268_B20221104. This affects the function setCloudUpgradeFW of the file lib/cste_modules/upgrade.so of the component Cloud Upgrade. The manipulation of the argument FileName leads to command injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used."
   },
@@ -215,7 +640,7 @@
    "tier": "critical",
    "title": "TOTOLINK A950RG防火墙命令注入",
    "title_zh": "TOTOLINK A950RG防火墙命令注入",
-   "summary_zh": "远程攻击者操纵防火墙模块apmib_set参数注入命令，取得路由器控制权",
+   "summary_zh": "远程攻击者通过防火墙相关管理接口操纵apmib_set参数注入系统命令，可在路由器上以高权限执行指令",
    "published": "2026-10-26T21:18:13.047",
    "cvss": 9.9,
    "severity": "CRITICAL",
@@ -252,19 +677,191 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复信息，限制管理面访问并监控异常命令",
+   "action_zh": "暂无官方修复，建议关闭远程管理、限制管理面访问并等待厂商固件",
    "repro_worthy": "一般",
-   "repro_note": "firewall.so中apmib_set参数未过滤，远程注入命令",
-   "impact_scope": "家用/小型企业路由器，边界设备",
+   "repro_note": "经防火墙配置接口向apmib_set传入恶意值触发命令拼接，需具备管理入口",
+   "impact_scope": "SOHO路由器，常作为内网出口设备",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116506",
    "description": "A vulnerability was determined in TOTOLINK A950RG 4.1.2cu.5268_B20221104. Affected is the function apmib_set of the file firewall.so. This manipulation causes command injection. The attack may be initiated remotely. The exploit has been publicly disclosed and may be utilized."
+  },
+  {
+   "id": "CVE-2026-116485",
+   "tier": "critical",
+   "title": "danmu_api默认令牌致未授权配置篡改",
+   "title_zh": "danmu_api默认令牌致未授权配置篡改",
+   "summary_zh": "使用默认TOKEN且未设ADMIN_TOKEN时，未授权者可调用/api/env/set等接口写入ADMIN_TOKEN、篡改代理配置并接管服务",
+   "published": "2026-10-26T14:16:37.040",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/huangxd-/danmu_api"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/huangxd-/danmu_api/blob/5ef63a01bae7c4bad4dcd7bafbbcdcf33aa82564/danmu_api/worker.js#L223-L244"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/huangxd-/danmu_api/commit/6e93478064a0ce4e7ed3bc2eae88adaad1b7ab02"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 1.21.7 及以上，修改默认TOKEN并显式设置ADMIN_TOKEN",
+   "repro_worthy": "一般",
+   "repro_note": "默认配置下直接POST /api/env/set写入ADMIN_TOKEN；前置为未改默认TOKEN",
+   "impact_scope": "自建弹幕服务，常直接暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116485",
+   "description": "danmu_api before 1.21.7 contains an authentication bypass vulnerability that allows unauthenticated attackers to modify server environment configuration when the default TOKEN is used and ADMIN_TOKEN is unset. Attackers can send POST requests to /api/env/set, /api/env/add, or /api/env/del to set ADMIN_TOKEN, lock out operators, redirect OTHER_SERVER or PROXY_URL for SSRF, and trigger redeployment."
+  },
+  {
+   "id": "CVE-2026-59106",
+   "tier": "critical",
+   "title": "WolfProt接口命令注入致未授权RCE",
+   "title_zh": "WolfProt接口命令注入致未授权RCE",
+   "summary_zh": "具备网络访问的未授权攻击者向WolfProt接口提交恶意输入，即可以应用服务权限执行操作系统命令",
+   "published": "2026-10-26T14:16:38.813",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://wolfvision.com/de/security/cve-2026-59106-2"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商补丁；暂无修复版本，先限制该服务网络访问并加前置鉴权",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问WolfProt接口，向拼接命令的字段注入载荷；需网络可达",
+   "impact_scope": "对外服务接口，网络可达即可利用",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59106",
+   "description": "A security vulnerability has been identified in the WolfProt interface implementation. Insufficient neutralization of user-controlled input could allow an unauthenticated attacker with network access to a vulnerable service to execute operating-system commands with the privileges of the affected application service."
+  },
+  {
+   "id": "CVE-2026-59107",
+   "tier": "critical",
+   "title": "vSolution Matrix密钥共享提权",
+   "title_zh": "vSolution Matrix密钥共享提权",
+   "summary_zh": "仅当设备为主站且启用文件共享时，取得匹配私钥者可冒充受信主机，以root身份SSH登录受影响设备",
+   "published": "2026-10-26T14:16:38.973",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-797"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://wolfvision.com/de/security/cve-2026-59107-1"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复，先禁用文件共享功能并轮换共享密钥对",
+   "repro_worthy": "一般",
+   "repro_note": "需先获取共享私钥，再以受信主机身份SSH登录主站；前置为开启文件共享",
+   "impact_scope": "会议室协作设备主站，典型内网部署",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59107",
+   "description": "A security vulnerability has been identified in the vSolution Matrix file sharing feature. A shared cryptographic trust configuration could allow an attacker who obtains the matching private key to authenticate to an affected device via SSH as root. This vulnerability affects only devices configured as a vSolution Matrix main/master station with the file sharing feature enabled."
+  },
+  {
+   "id": "CVE-2026-65184",
+   "tier": "critical",
+   "title": "wsserver终端桥命令注入RCE",
+   "title_zh": "wsserver终端桥命令注入RCE",
+   "summary_zh": "未授权攻击者通过WebSocket公钥会话路径提交恶意字段，被拼入system/popen调用，以root权限执行命令",
+   "published": "2026-10-26T15:16:41.627",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.runzero.com/advisories/avocent-acs8000-wsserver-cmdinj-cve-2026-65184"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.runzero.com/blog/lights-out-exposed/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复；限制wsserver端口暴露并补充会话校验与参数转义",
+   "repro_worthy": "一般",
+   "repro_note": "经公钥会话路径向拼接字段注入命令，无需应用会话；需WebSocket端口可达",
+   "impact_scope": "终端桥接守护进程，root权限危害大",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65184",
+   "description": "The root-privileged `wsserver` terminal-bridge daemon builds a shell command from client-supplied WebSocket fields and passes it to `system()` and `popen()` without quoting, escaping, or character-set validation. The daemon's public-key session path performs no appliance-session check."
   },
   {
    "id": "CVE-2026-10757",
    "tier": "critical",
    "title": "ArcGIS Server SQL注入",
    "title_zh": "ArcGIS Server SQL注入",
-   "summary_zh": "具服务访问权限者（或匿名公开配置）可注入SQL调用数据库函数，读取或篡改数据",
+   "summary_zh": "拥有服务访问权的远程攻击者（服务配置为public时含匿名用户）注入SQL，调用不应开放的函数读写数据库",
    "published": "2026-10-26T18:17:34.580",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -292,25 +889,365 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至修复版本，将服务访问权限改为非公开",
+   "action_zh": "升级至厂商修复版本，并将服务访问权限收紧为非匿名",
    "repro_worthy": "一般",
-   "repro_note": "需具备服务访问权限，向受影响功能注入SQL语句",
-   "impact_scope": "GIS服务端，常暴露内网/公网",
+   "repro_note": "对配置为公开的地图/要素服务参数注入SQL；需服务允许匿名访问",
+   "impact_scope": "企业GIS门户，常发布至公网",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10757",
    "description": "There is a SQL injection vulnerability in Esri ArcGIS Server versions 12.1 and earlier on Windows and Linux that may allow a remote attacker with privileges to access the service (which could, depending on the service being configured in a non-default access configuration “public”, include an anonymous attacker) to issue database specific functions that should not be allowed."
+  },
+  {
+   "id": "CVE-2026-110475",
+   "tier": "critical",
+   "title": "未知平台凭据校验不足致管理员冒充",
+   "title_zh": "未知平台凭据校验不足致管理员冒充",
+   "summary_zh": "攻击者利用凭据保护缺陷枚举平台用户并伪造任意用户（含管理员）会话，读写敏感数据、篡改配置",
+   "published": "2026-10-26T14:16:26.573",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "凭据保护不足"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01&VLCODE=CIVN-2026-0523"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复信息，先限制平台访问并加强凭据与会话校验",
+   "repro_worthy": "一般",
+   "repro_note": "针对会话/凭据校验接口伪造身份；具体产品与入口未标注，需先确认资产",
+   "impact_scope": "统一管理平台，管理员权限集中",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110475",
+   "description": "An unauthenticated remote attacker could exploit this vulnerability by manipulating authentication requests and accessing APIs without a valid authenticated session on the targeted system. Successful exploitation of this vulnerability could allow the attacker to enumerate platform users, establish sessions as arbitrary users including administrative users, access and modify sensitive information with the privileges of the impersonated user."
+  },
+  {
+   "id": "CVE-2026-116235",
+   "tier": "critical",
+   "title": "蒲公英X5 Pro L2TP认证CRLF注入",
+   "title_zh": "蒲公英X5 Pro L2TP认证CRLF注入",
+   "summary_zh": "远程攻击者向L2TP认证的Username参数注入CRLF，可污染认证与会话处理流程。",
+   "published": "2026-10-26T09:16:35.163",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.00614,
+   "epss_percentile": 0.49118,
+   "cwe_labels": [
+    "注入",
+    "CRLF注入"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://app.notion.com/p/Oray-Pgyer-X5-Pro-Router-7-6-1-Root-Code-Execution-via-L2TP-Username-Injection-3ea797159f158012be0af2ca84d1ee2b"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-116235"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1005083"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "厂商未响应，暂无官方修复；限制L2TP/VPN入口访问并监控异常配置。",
+   "repro_worthy": "一般",
+   "repro_note": "向L2TP认证Username字段注入CRLF，需可访问VPN/L2TP入口。",
+   "impact_scope": "蒲公英SD-WAN/VPN网关，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116235",
+   "description": "A flaw has been found in Oray Pugongying X5 Pro 7.6.1. Affected by this vulnerability is an unknown functionality of the component L2TP Authentication. This manipulation of the argument Username causes crlf injection. The attack may be initiated remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-116233",
+   "tier": "critical",
+   "title": "蒲公英X5 Pro 租期参数CRLF注入",
+   "title_zh": "蒲公英X5 Pro 租期参数CRLF注入",
+   "summary_zh": "远程攻击者向Dnsmasq的rent_time参数注入CRLF，可篡改DHCP租期相关配置。",
+   "published": "2026-10-26T09:16:34.787",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.00461,
+   "epss_percentile": 0.39682,
+   "cwe_labels": [
+    "注入",
+    "CRLF注入"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://app.notion.com/p/Oray-Pgyer-X5-Pro-Router-7-6-1-Dnsmasq-Directive-Injection-Through-DHCP-Lease-Time-3ea797159f1580979394d23087844670"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-116233"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1005081"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复，关闭公网Dnsmasq/DHCP管理入口并审计租期配置。",
+   "repro_worthy": "一般",
+   "repro_note": "在DHCP租期请求rent_time参数中注入CRLF，需可访问管理面。",
+   "impact_scope": "蒲公英网关Dnsmasq组件，内网出口设备",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116233",
+   "description": "A security vulnerability has been detected in Oray Pugongying X5 Pro 7.6.1. This impacts an unknown function of the component Dnsmasq. The manipulation of the argument rent_time leads to crlf injection. The attack can be initiated remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-116234",
+   "tier": "critical",
+   "title": "蒲公英X5 Pro IPsec CRLF注入",
+   "title_zh": "蒲公英X5 Pro IPsec CRLF注入",
+   "summary_zh": "远程攻击者向IPsec策略的secproto参数注入CRLF，可污染ipsec.conf配置内容。",
+   "published": "2026-10-26T09:16:34.953",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.00461,
+   "epss_percentile": 0.39682,
+   "cwe_labels": [
+    "注入",
+    "CRLF注入"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://app.notion.com/p/Oray-Pgyer-X5-Pro-Router-7-6-1-Root-Code-Execution-via-IPsec-secproto-Injection-3ea797159f1580919c5dea13e5baea84"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-116234"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1005082"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复，限制IPsec配置接口访问并核查ipsec.conf完整性。",
+   "repro_worthy": "一般",
+   "repro_note": "在IPsec策略secproto参数注入CRLF写入/etc/ipsec.conf，需管理权限或接口可达。",
+   "impact_scope": "蒲公英网关IPsec模块，站点互联边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116234",
+   "description": "A vulnerability was detected in Oray Pugongying X5 Pro 7.6.1. Affected is an unknown function of the file /etc/ipsec.conf of the component IPsec Policy Handler. The manipulation of the argument secproto results in crlf injection. The attack can be launched remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-115693",
+   "tier": "critical",
+   "title": "hackney证书校验缺陷可绕过固定CA",
+   "title_zh": "hackney证书校验缺陷可绕过固定CA",
+   "summary_zh": "中间人可用公网可信证书链通过私有CA固定校验，冒充被固定主机。",
+   "published": "2026-10-26T14:16:31.853",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "证书校验缺陷"
+   ],
+   "difficulty": "中(远程·利用条件苛刻·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cna.erlef.org/cves/CVE-2026-115693.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/benoitc/hackney/commit/915eb5737e9c489d8fc22eec8cdae30e9b027be4"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/benoitc/hackney/commit/d8a9afcf5c3849904274e2eba1df56c63d1a1a0c"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级hackney至修复版本，或在应用层自行校验证书链固定。",
+   "repro_worthy": "一般",
+   "repro_note": "需中间人位置及被固定主机名的公网可信证书，构造替代链。",
+   "impact_scope": "Erlang/Elixir HTTP客户端库，MITM场景",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115693",
+   "description": "Improper Certificate Validation vulnerability in hackney_ssl in benoitc hackney allows an on-path attacker to impersonate a server pinned to a private certificate authority via a certificate chain that ends in a publicly trusted root. The hostname check still applies, so the attacker needs a publicly trusted certificate for the pinned hostname."
+  },
+  {
+   "id": "CVE-2026-116505",
+   "tier": "critical",
+   "title": "TOTOLINK A950RG 命令注入",
+   "title_zh": "TOTOLINK A950RG 命令注入",
+   "summary_zh": "远程攻击者经DHCP租约写入恶意MAC，触发getDeviceInfo命令注入执行。",
+   "published": "2026-10-26T21:18:12.730",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "注入",
+    "命令注入"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/H3rmesk1t/836a8c4be24fcc4b7041b4bbe9cbb178"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-116505"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1022554"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复，限制LAN接入并关闭远程管理功能。",
+   "repro_worthy": "一般",
+   "repro_note": "先向LAN发DHCP请求写入恶意MAC至udhcpd.leases，再调用getDeviceInfo。",
+   "impact_scope": "家用/SOHO路由器，多部署于网络边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116505",
+   "description": "A vulnerability was found in TOTOLINK A950RG 4.1.2cu.5268_B20221104. This impacts the function getDeviceInfo of the file /var/lib/misc/udhcpd.leases of the component device-information Handler. The manipulation of the argument MAC address results in command injection. The attack can be launched remotely. The exploit has been made public and could be used."
+  },
+  {
+   "id": "CVE-2026-77055",
+   "tier": "critical",
+   "title": "boneIO服务账号过度授权致本地提权",
+   "title_zh": "boneIO服务账号过度授权致本地提权",
+   "summary_zh": "本地攻击者先拿下boneio账号，再借无密码sudo权限与docker组成员身份提权至root并控制设备",
+   "published": "2026-10-26T15:16:43.123",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-266"
+   ],
+   "difficulty": "高(需本地访问·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://boneio.eu/en/docs/black"
+    },
+    {
+     "label": "参考",
+     "url": "https://cert.pl/en/posts/2026/10/CVE-2026-77052"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "升级至修复镜像，移除boneio的免密sudo并移出docker组",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "嵌入式设备本地权限，需先失陷账号",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77055",
+   "description": "boneIO black_debian_images gives the boneio service account excessive privileges, including full passwordless sudo access and membership in the docker group. A local attacker who compromises the boneio user can use these privileges to escalate to root."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "php/php-src",
-   "sha": "59f8e1d2653c39f8f6e3ef9ada7dac8264c82512",
-   "url": "https://github.com/php/php-src/commit/59f8e1d2653c39f8f6e3ef9ada7dac8264c82512",
-   "title": "Fix use-after-free of CURLOPT_STDERR stream on cloned curl handle",
-   "date": "2026-10-26T21:08:42",
+   "repo": "wireshark/wireshark",
+   "sha": "86ec0a48b5d234313a2610b5424822aee84a955e",
+   "url": "https://github.com/wireshark/wireshark/commit/86ec0a48b5d234313a2610b5424822aee84a955e",
+   "title": "AIM: Add a synthetic capture and tests",
+   "date": "2026-10-26T04:21:17",
    "score": 2,
    "matched": [
-    "UAF"
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "wireshark/wireshark",
+   "sha": "985d5a80b487cd4c24706aab32f2ba4699188fe4",
+   "url": "https://github.com/wireshark/wireshark/commit/985d5a80b487cd4c24706aab32f2ba4699188fe4",
+   "title": "AIM: Terminate the chat message before giving up on a long one",
+   "date": "2026-10-26T04:21:17",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
    ],
    "cve": null
   }

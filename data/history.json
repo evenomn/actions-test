@@ -12472,5 +12472,272 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-10-27": {
+  "qualified": 25,
+  "critical": 23,
+  "kev": 2,
+  "repro_top": 0,
+  "kev_total": 1758,
+  "by_category": {
+   "安全设备": 3,
+   "开发库/依赖": 1,
+   "操作系统": 2,
+   "未分类": 15,
+   "容器/虚拟化": 2,
+   "ERP/业务系统": 2
+  },
+  "items": [
+   {
+    "id": "CVE-2026-109619",
+    "title": "PHP全局状态UAF可致远程代码执行",
+    "tier": "critical",
+    "category": "安全设备",
+    "cvss": 8.1,
+    "kev": true,
+    "repro": "值得",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-109618",
+    "title": "PHP内存耗尽长跳转UAF致RCE",
+    "tier": "critical",
+    "category": "安全设备",
+    "cvss": 9.8,
+    "kev": true,
+    "repro": "值得",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-112393",
+    "title": "Pillow TIFF处理堆溢出可越界读写",
+    "tier": "critical",
+    "category": "开发库/依赖",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112345",
+    "title": "TTLock硬编码AES密钥可解BLE会话",
+    "tier": "high",
+    "category": "操作系统",
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-57187",
+    "title": "Asterisk PJSIP释放后重用漏洞",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-116214",
+    "title": "苹果CMS找回密码校验缺失致账号接管",
+    "tier": "critical",
+    "category": "安全设备",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112346",
+    "title": "OpenHands沙箱默认无认证RCE",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-93328",
+    "title": "MCP Toolbox路径遍历致任意文件读写",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116508",
+    "title": "ERP系统栈溢出漏洞可远程执行代码",
+    "tier": "critical",
+    "category": "ERP/业务系统",
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116231",
+    "title": "未知组件regmsg参数CRLF注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116232",
+    "title": "info.community参数CRLF注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116504",
+    "title": "TOTOLINK A950RG云升级命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116506",
+    "title": "TOTOLINK A950RG防火墙命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116485",
+    "title": "danmu_api默认令牌致未授权配置篡改",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-59106",
+    "title": "WolfProt接口命令注入致未授权RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-59107",
+    "title": "vSolution Matrix密钥共享提权",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-65184",
+    "title": "wsserver终端桥命令注入RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-10757",
+    "title": "ArcGIS Server SQL注入",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-110475",
+    "title": "未知平台凭据校验不足致管理员冒充",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116235",
+    "title": "蒲公英X5 Pro L2TP认证CRLF注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116233",
+    "title": "蒲公英X5 Pro 租期参数CRLF注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116234",
+    "title": "蒲公英X5 Pro IPsec CRLF注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-115693",
+    "title": "hackney证书校验缺陷可绕过固定CA",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116505",
+    "title": "TOTOLINK A950RG 命令注入",
+    "tier": "critical",
+    "category": "ERP/业务系统",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-77055",
+    "title": "boneIO服务账号过度授权致本地提权",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P2 保持关注"
+   }
+  ]
  }
 }
