@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-27 21:24 UTC · 共 **138** 条(强烈推荐 22 / 值得 116)
+**更新**: 2026-10-28 00:39 UTC · 共 **139** 条(强烈推荐 22 / 值得 117)
 
 ---
 
@@ -524,6 +524,15 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### mlflow评分器反序列化RCE
+[CVE-2026-116692](https://nvd.nist.gov/vuln/detail/CVE-2026-116692) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-27 | 入库 2026-10-28
+开源,可源码审计复现
+可访问MLflow API者用artifact植入模块，经scorer/invoke触发反序列化远程执行代码
+复现: 值得 — 上传恶意模块至artifact，再调scorer/invoke接口 · 影响面: 内网ML平台，常被多团队共享访问
+处置: 升级到3.17.0，限制artifact写入与scorer调用权限
+影响: pip:mlflow >= 3.12.0rc0, < 3.17.0(修复: 3.17.0)
+参考: [参考](https://github.com/mlflow/mlflow/commit/a732443e695c3c677680c54320efc394c81654ab) · [参考](https://github.com/mlflow/mlflow/pull/25906) · [参考](https://github.com/mlflow/mlflow/releases/tag/v3.17.0)
 
 ### OpenHands沙箱默认无认证RCE
 [CVE-2026-112346](https://nvd.nist.gov/vuln/detail/CVE-2026-112346) | P1 重点关注 | 容器/虚拟化 | CVSS 9.8 | 披露 2026-10-26 | 入库 2026-10-27

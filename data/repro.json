@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-27T21:24:25+00:00",
- "count": 138,
+ "updated_at": "2026-10-28T00:39:13+00:00",
+ "count": 139,
  "count_recommended": 22,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -2711,6 +2711,50 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-116692",
+   "title": "mlflow评分器反序列化RCE",
+   "first_seen": "2026-10-28",
+   "last_seen": "2026-10-28",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": true,
+   "published": "2026-10-27",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "上传恶意模块至artifact，再调scorer/invoke接口",
+   "impact_scope": "内网ML平台，常被多团队共享访问",
+   "action_zh": "升级到3.17.0，限制artifact写入与scorer调用权限",
+   "summary_zh": "可访问MLflow API者用artifact植入模块，经scorer/invoke触发反序列化远程执行代码",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "pip:mlflow >= 3.12.0rc0, < 3.17.0(修复: 3.17.0)",
+   "patched": true,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mlflow/mlflow/commit/a732443e695c3c677680c54320efc394c81654ab"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mlflow/mlflow/pull/25906"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mlflow/mlflow/releases/tag/v3.17.0"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116692",
    "change_note": null
   },
   {
