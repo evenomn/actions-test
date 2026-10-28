@@ -5,7 +5,43 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 28 Oct 2026 06:56:43 +0000</pubDate>
-    <lastBuildDate>Wed, 28 Oct 2026 06:56:43 +0000</lastBuildDate>
+    <pubDate>Wed, 28 Oct 2026 16:09:57 +0000</pubDate>
+    <lastBuildDate>Wed, 28 Oct 2026 16:09:57 +0000</lastBuildDate>
+    <item>
+      <title>[critical]未知组件栈溢出可远程RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-103780</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-103780-2026-10-28</guid>
+      <description>CVE-2026-103780 · 🎯P1 重点关注 · 披露 2026-10-28 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
+An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to command execution.
+信号:</description>
+      <pubDate>Wed, 28 Oct 2026 16:09:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Che执行组件默认无认证RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114278</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114278-2026-10-28</guid>
+      <description>CVE-2026-114278 · 🎯P1 重点关注 · 披露 2026-10-28 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+When che-machine-exec is run with authentication disabled (its default), any network-reachable attacker can achieve remote code execution in containers che-mach…
+信号:</description>
+      <pubDate>Wed, 28 Oct 2026 16:09:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]KaliFast Git配置命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-118477</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-118477-2026-10-28</guid>
+      <description>CVE-2026-118477 · 🎯P1 重点关注 · 披露 2026-10-28 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+This OS Command Injection vulnerability allows an authenticated attacker (free registration available) to execute arbitrary commands on the KaliFast server with…
+信号:</description>
+      <pubDate>Wed, 28 Oct 2026 16:09:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]UltimateMember反序列化对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115968</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115968-2026-10-28</guid>
+      <description>CVE-2026-115968 · 🎯P1 重点关注 · 披露 2026-10-28 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in Ultimate Member Ultimate Member ultimate-member allows Object Injection.This issue affects Ultimate Member: f…
+信号:</description>
+      <pubDate>Wed, 28 Oct 2026 16:09:57 +0000</pubDate>
+    </item>
   </channel>
 </rss>

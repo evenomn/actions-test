@@ -1,44 +1,290 @@
 {
  "version": 3,
- "generated_at": "2026-10-28T06:56:43+00:00",
+ "generated_at": "2026-10-28T16:09:57+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 4,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 4,
+  "by_tier": {
+   "critical": 4
+  },
+  "by_urgency": {
+   "P1 重点关注": 4
+  },
+  "by_category": {
+   "未知": 4
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2026-103780",
+   "tier": "critical",
+   "title": "未知组件栈溢出可远程RCE",
+   "title_zh": "未知组件栈溢出可远程RCE",
+   "summary_zh": "未授权远程攻击者可通过超长输入触发栈溢出，最终执行任意命令",
+   "published": "2026-10-28T11:17:14.113",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000515178/dsa-2026-416-security-update-for-dell-powerprotect-data-domain-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至官方修复版本；限制服务网络访问并启用防护",
+   "repro_worthy": "一般",
+   "repro_note": "未授权远程入口提交超长输入触发栈溢出；组件及参数未明",
+   "impact_scope": "未知远程服务，可能暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103780",
+   "description": "Dell PowerProtect Data Domain, Feature Release versions 7.7.1.0 through 8.8, LTS2024 release versions 7.13.1.0 through 7.13.1.80, LTS2025 release versions 8.3.1.0 through 8.3.1.40, LTS2026 release versions 8.6.1.0 through 8.6.1.20, contain a Stack-based Buffer Overflow vulnerability. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to command execution."
+  },
+  {
+   "id": "CVE-2026-114278",
+   "tier": "critical",
+   "title": "Che执行组件默认无认证RCE",
+   "title_zh": "Che执行组件默认无认证RCE",
+   "summary_zh": "网络可达者在默认关闭认证时通过命令替换在容器内执行任意命令",
+   "published": "2026-10-28T12:17:39.773",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/eclipse-che/che-machine-exec/commit/a78541c29e5f48fd59a49cf206bc0e507628bd23"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/476"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/359"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本；启用认证并限制exec服务网络暴露",
+   "repro_worthy": "一般",
+   "repro_note": "默认禁用认证，访问可达exec接口提交$(...)命令",
+   "impact_scope": "容器执行组件，内网常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114278",
+   "description": "When che-machine-exec is run with authentication disabled (its default), any network-reachable attacker can achieve remote code execution in containers che-machine-exec is configured to access, via shell command substitution ($(...) or backticks)."
+  },
+  {
+   "id": "CVE-2026-118477",
+   "tier": "critical",
+   "title": "KaliFast Git配置命令注入",
+   "title_zh": "KaliFast Git配置命令注入",
+   "summary_zh": "免费注册的已认证攻击者通过ei_git_repo_url参数注入命令，以www-data权限执行",
+   "published": "2026-10-28T12:17:40.227",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://advisories.orangecyberdefense.com/advisories/166"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到2026061802；校验并过滤Git URL参数",
+   "repro_worthy": "一般",
+   "repro_note": "已认证访问Git远程配置端点，在ei_git_repo_url注入命令",
+   "impact_scope": "KaliFast管理服务，认证后利用",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118477",
+   "description": "The ei_git_repo_url parameter in the Git remote configuration endpoint of KaliFast is vulnerable to OS Command Injection. This OS Command Injection vulnerability allows an authenticated attacker (free registration available) to execute arbitrary commands on the KaliFast server with www-data privileges. Fixed in version 2026061802."
+  },
+  {
+   "id": "CVE-2026-115968",
+   "tier": "critical",
+   "title": "UltimateMember反序列化对象注入",
+   "title_zh": "UltimateMember反序列化对象注入",
+   "summary_zh": "可提交恶意序列化数据的攻击者利用对象注入，可能导致远程代码执行",
+   "published": "2026-10-28T14:16:58.013",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/ultimate-member/vulnerability/wordpress-ultimate-member-plugin-2-13-1-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至官方修复版本；无法升级时禁用该插件",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件，站点面广",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115968",
+   "description": "Deserialization of Untrusted Data vulnerability in Ultimate Member Ultimate Member ultimate-member allows Object Injection.This issue affects Ultimate Member: from n/a through 2.13.1."
+  }
+ ],
  "media": [],
  "commits": [
   {
-   "repo": "jeecgboot/JeecgBoot",
-   "sha": "7af725ca277af3872fc3b93797c383be77252c72",
-   "url": "https://github.com/jeecgboot/JeecgBoot/commit/7af725ca277af3872fc3b93797c383be77252c72",
-   "title": "fix(security): 字典过滤条件 SQL 注入加固 GHSA-jgwm/GHSA-xmw4/GHSA-g87f",
-   "date": "2026-10-28T03:11:48",
-   "score": 4,
+   "repo": "golang/go",
+   "sha": "3b8e23dc38e276e325ab34e1b3f1703f7130003e",
+   "url": "https://github.com/golang/go/commit/3b8e23dc38e276e325ab34e1b3f1703f7130003e",
+   "title": "cmd/internal/script: report the duration of a failed command to help with triage",
+   "date": "2026-10-28T15:53:49",
+   "score": 2,
    "matched": [
-    "注入",
-    "未授权/绕过"
+    "RCE"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "0302a32017507852fd26d19876f416a3106e40bd",
+   "url": "https://github.com/haproxy/haproxy/commit/0302a32017507852fd26d19876f416a3106e40bd",
+   "title": "BUG/MINOR: ssl: support SCTL in TLS 1.3 Certificate messages",
+   "date": "2026-10-28T13:55:51",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "895762235366484e000cc4a93e7f32a556019978",
+   "url": "https://github.com/haproxy/haproxy/commit/895762235366484e000cc4a93e7f32a556019978",
+   "title": "BUG/MEDIUM: ssl: fix an out-of-bounds read on SSL_CTX switch with a .sctl file",
+   "date": "2026-10-28T13:55:51",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "redis/redis",
+   "sha": "9a5c6e97884e7d8e456eaabd2a1e50f686f60125",
+   "url": "https://github.com/redis/redis/commit/9a5c6e97884e7d8e456eaabd2a1e50f686f60125",
+   "title": "fixed: out-of-bounds read in cluster bus PING/PONG/MEET packet parsing (#16104)",
+   "date": "2026-10-28T13:29:35",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "e00364a7b9071679cc6a72021bdd041a00a7cd6a",
+   "url": "https://github.com/haproxy/haproxy/commit/e00364a7b9071679cc6a72021bdd041a00a7cd6a",
+   "title": "BUG/MINOR: connection: check the NetScaler CIP header length against received data",
+   "date": "2026-10-28T10:38:26",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openssl/openssl",
+   "sha": "fdab63f53859695a29c11f7925802a9b78daf161",
+   "url": "https://github.com/openssl/openssl/commit/fdab63f53859695a29c11f7925802a9b78daf161",
+   "title": "apps/pkcs12.c: fix double free when -jdktrust OID is used",
+   "date": "2026-10-28T10:31:31",
+   "score": 2,
+   "matched": [
+    "类型混淆/double free"
    ],
    "cve": null
   },
   {
    "repo": "php/php-src",
-   "sha": "98b580b0d26645a2c26fb7459f6c16d0d086b207",
-   "url": "https://github.com/php/php-src/commit/98b580b0d26645a2c26fb7459f6c16d0d086b207",
-   "title": "ext/dom: fix UAF on namespace axis results with foreign-doc XPath callback nodes",
-   "date": "2026-10-28T03:14:25",
+   "sha": "3a8bcb6d186b4445e47de9adf8f44be5a48536af",
+   "url": "https://github.com/php/php-src/commit/3a8bcb6d186b4445e47de9adf8f44be5a48536af",
+   "title": "Fix use-after-free in Randomizer::shuffleArray() when the engine throws",
+   "date": "2026-10-28T07:24:25",
    "score": 2,
    "matched": [
     "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "qemu/qemu",
+   "sha": "efe3fc9331cffbb51c3ae3482d5ec6f84888b7f4",
+   "url": "https://github.com/qemu/qemu/commit/efe3fc9331cffbb51c3ae3482d5ec6f84888b7f4",
+   "title": "hw/net/spapr_llan: validate RxBufPool fields on migration load",
+   "date": "2026-10-28T05:15:51",
+   "score": 2,
+   "matched": [
+    "越界读写"
    ],
    "cve": null
   }
