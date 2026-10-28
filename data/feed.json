@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-10-28T16:09:57+00:00",
+ "generated_at": "2026-10-28T21:46:29+00:00",
  "lookback_hours": 5,
  "count": 4,
  "stats": {
@@ -9,65 +9,131 @@
    "critical": 4
   },
   "by_urgency": {
-   "P1 重点关注": 4
+   "P0 立即处置": 2,
+   "P1 重点关注": 2
   },
   "by_category": {
-   "未知": 4
+   "网络设备": 2,
+   "容器/虚拟化": 1,
+   "操作系统": 1
   },
-  "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
-  "repro_recommended": 0
+  "kev": 2,
+  "with_poc": 1,
+  "with_poc_source": 1,
+  "repro_recommended": 1
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-103780",
+   "id": "CVE-2026-41709",
    "tier": "critical",
-   "title": "未知组件栈溢出可远程RCE",
-   "title_zh": "未知组件栈溢出可远程RCE",
-   "summary_zh": "未授权远程攻击者可通过超长输入触发栈溢出，最终执行任意命令",
-   "published": "2026-10-28T11:17:14.113",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
+   "title": "VMware ESX 日志记录不足可被绕过",
+   "title_zh": "VMware ESX 日志记录不足可被绕过",
+   "summary_zh": "具备管理员权限的恶意者可利用日志记录缺陷执行操作而不留审计痕迹，削弱溯源与合规能力",
+   "published": "2026-07-30T14:16:57.420",
+   "cvss": 2.7,
+   "severity": "LOW",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N",
+   "epss": 0.00297,
+   "epss_percentile": 0.22291,
    "cwe_labels": [
-    "栈溢出"
+    "CWE-778"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "中(远程·需高权限)",
    "products": [],
-   "affected": null,
+   "affected": "Broadcom(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.dell.com/support/kbdoc/en-us/000515178/dsa-2026-416-security-update-for-dell-powerprotect-data-domain-multiple-vulnerabilities"
+     "url": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/38017"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-41709"
     }
    ],
    "poc": [],
    "nuclei": false,
    "patched": null,
-   "kev": false,
-   "kev_due": null,
+   "kev": true,
+   "kev_due": "2026-11-11",
    "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至官方修复版本；限制服务网络访问并启用防护",
+   "keyword_hit": "vmware",
+   "urgency": "P0 立即处置",
+   "action_zh": "关注Broadcom官方补丁；收敛管理员权限并外发审计日志",
    "repro_worthy": "一般",
-   "repro_note": "未授权远程入口提交超长输入触发栈溢出；组件及参数未明",
-   "impact_scope": "未知远程服务，可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103780",
-   "description": "Dell PowerProtect Data Domain, Feature Release versions 7.7.1.0 through 8.8, LTS2024 release versions 7.13.1.0 through 7.13.1.80, LTS2025 release versions 8.3.1.0 through 8.3.1.40, LTS2026 release versions 8.6.1.0 through 8.6.1.20, contain a Stack-based Buffer Overflow vulnerability. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to command execution."
+   "repro_note": "需ESX管理员凭据，执行敏感操作后检查对应日志缺失",
+   "impact_scope": "虚拟化宿主机，高权限滥用与合规风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-41709",
+   "description": "VMware ESX contains an insufficient logging vulnerability. A malicious administrator could exploit this issue to perform certain operations without them being logged."
   },
   {
-   "id": "CVE-2026-114278",
+   "id": "CVE-2026-46300",
    "tier": "critical",
-   "title": "Che执行组件默认无认证RCE",
-   "title_zh": "Che执行组件默认无认证RCE",
-   "summary_zh": "网络可达者在默认关闭认证时通过命令替换在容器内执行任意命令",
-   "published": "2026-10-28T12:17:39.773",
+   "title": "Linux内核 skbuff合并标记丢失",
+   "title_zh": "Linux内核 skbuff合并标记丢失",
+   "summary_zh": "攻击者可触发skb合并丢失共享分片标记，使页缓存或外部内存被误写，造成内核内存破坏",
+   "published": "2026-05-23T12:17:02.660",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.10192,
+   "epss_percentile": 0.95651,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "difficulty": "高(需本地访问·需低权限)",
+   "products": [
+    "linux linux_kernel"
+   ],
+   "affected": "linux linux_kernel >=3.9 <=5.10.257; linux linux_kernel >=5.11 <5.15.208",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://git.kernel.org/stable/c/2f2b16022a2e10ca7bccfb98db5ed2ec0f72641c"
+    },
+    {
+     "label": "官方补丁",
+     "url": "https://git.kernel.org/stable/c/3599e6b3cc1ada96883d496a50a210d3afbb6987"
+    },
+    {
+     "label": "官方补丁",
+     "url": "https://git.kernel.org/stable/c/3884358a9286b17f389a72b1426fc4547c23c111"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/0xBlackash/CVE-2026-46300",
+     "label": "0xBlackash/CVE-2026-46300 16★(有源码)"
+    },
+    {
+     "url": "https://github.com/infiniroot/ansible-mitigate-copyfail-dirtyfrag",
+     "label": "infiniroot/ansible-mitigate-copyfail-dirtyfrag 6★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-10-31",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级内核至 5.15.208/5.10.257 及以上修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造带SKBFL_SHARED_FRAG的skb触发coalesce，需本地或收包路径",
+   "impact_scope": "Linux主机内核，本地提权与内存破坏",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-46300",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: net: skbuff: preserve shared-frag marker during coalescing skb_try_coalesce() can attach paged frags from @from to @to. If @from has SKBFL_SHARED_FRAG set, the resulting @to skb can contain the same externally-owned or page-cache-backed frags, but the shared-frag marker is currently lost."
+  },
+  {
+   "id": "CVE-2026-103406",
+   "tier": "critical",
+   "title": "Juniper SSC 命令注入RCE",
+   "title_zh": "Juniper SSC 命令注入RCE",
+   "summary_zh": "远程攻击者可向AutomatedProvisioner提交特制salt minion ID注入命令，以root身份执行任意指令",
+   "published": "2026-10-28T17:17:25.830",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -78,20 +144,12 @@
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": null,
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/eclipse-che/che-machine-exec/commit/a78541c29e5f48fd59a49cf206bc0e507628bd23"
-    },
-    {
-     "label": "参考",
-     "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/476"
-    },
-    {
-     "label": "参考",
-     "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/359"
+     "url": "https://supportportal.juniper.net/JSA112183"
     }
    ],
    "poc": [],
@@ -102,36 +160,36 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级修复版本；启用认证并限制exec服务网络暴露",
-   "repro_worthy": "一般",
-   "repro_note": "默认禁用认证，访问可达exec接口提交$(...)命令",
-   "impact_scope": "容器执行组件，内网常见",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114278",
-   "description": "When che-machine-exec is run with authentication disabled (its default), any network-reachable attacker can achieve remote code execution in containers che-machine-exec is configured to access, via shell command substitution ($(...) or backticks)."
+   "action_zh": "升级至Juniper修复版本，限制Conductor管理面暴露",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "向Conductor的Salt接入端口提交特制minion ID触发命令注入",
+   "impact_scope": "SD-WAN控制器，管理面暴露风险高",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103406",
+   "description": "An Improper Neutralization of Special Elements used in an OS Command vulnerability in the AutomatedProvisioner in Juniper Networks Session Smart Conductor allows a remote attacker to execute arbitrary commands as root via a specially crafted salt minion ID."
   },
   {
-   "id": "CVE-2026-118477",
+   "id": "CVE-2026-103409",
    "tier": "critical",
-   "title": "KaliFast Git配置命令注入",
-   "title_zh": "KaliFast Git配置命令注入",
-   "summary_zh": "免费注册的已认证攻击者通过ei_git_repo_url参数注入命令，以www-data权限执行",
-   "published": "2026-10-28T12:17:40.227",
+   "title": "Juniper SSR 未认证接口可获管理员",
+   "title_zh": "Juniper SSR 未认证接口可获管理员",
+   "summary_zh": "设备未纳管至Mist/Conductor前，攻击者向root权限端点传入构造URL参数即可获取管理员权限",
+   "published": "2026-10-28T17:17:27.840",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入(RCE)"
+    "缺失认证"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": null,
+   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://advisories.orangecyberdefense.com/advisories/166"
+     "url": "https://supportportal.juniper.net/JSA112183"
     }
    ],
    "poc": [],
@@ -142,149 +200,37 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到2026061802；校验并过滤Git URL参数",
-   "repro_worthy": "一般",
-   "repro_note": "已认证访问Git远程配置端点，在ei_git_repo_url注入命令",
-   "impact_scope": "KaliFast管理服务，认证后利用",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118477",
-   "description": "The ei_git_repo_url parameter in the Git remote configuration endpoint of KaliFast is vulnerable to OS Command Injection. This OS Command Injection vulnerability allows an authenticated attacker (free registration available) to execute arbitrary commands on the KaliFast server with www-data privileges. Fixed in version 2026061802."
-  },
-  {
-   "id": "CVE-2026-115968",
-   "tier": "critical",
-   "title": "UltimateMember反序列化对象注入",
-   "title_zh": "UltimateMember反序列化对象注入",
-   "summary_zh": "可提交恶意序列化数据的攻击者利用对象注入，可能导致远程代码执行",
-   "published": "2026-10-28T14:16:58.013",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "反序列化(RCE)"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/plugin/ultimate-member/vulnerability/wordpress-ultimate-member-plugin-2-13-1-php-object-injection-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至官方修复版本；无法升级时禁用该插件",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress插件，站点面广",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115968",
-   "description": "Deserialization of Untrusted Data vulnerability in Ultimate Member Ultimate Member ultimate-member allows Object Injection.This issue affects Ultimate Member: from n/a through 2.13.1."
+   "action_zh": "升级修复版本；新设备上线前隔离管理面并限制访问",
+   "repro_worthy": "值得",
+   "repro_note": "未认证访问root运行的端点并构造URL参数，仅限未纳管设备",
+   "impact_scope": "SD-WAN边缘路由器，常暴露于公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103409",
+   "description": "A Missing authentication for critical function vulnerability in Juniper Networks Session Smart Router allows an unauthenticated network-based attacker to obtain administrative privileges by passing crafted URL parameters to an insecure endpoint running as root. Note that this vulnerability can only be exploited prior to the device being onboarded to Mist/Conductor. The issue can no longer be exploited once a device is onboarded to Mist/Conductor."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "golang/go",
-   "sha": "3b8e23dc38e276e325ab34e1b3f1703f7130003e",
-   "url": "https://github.com/golang/go/commit/3b8e23dc38e276e325ab34e1b3f1703f7130003e",
-   "title": "cmd/internal/script: report the duration of a failed command to help with triage",
-   "date": "2026-10-28T15:53:49",
-   "score": 2,
-   "matched": [
-    "RCE"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "haproxy/haproxy",
-   "sha": "0302a32017507852fd26d19876f416a3106e40bd",
-   "url": "https://github.com/haproxy/haproxy/commit/0302a32017507852fd26d19876f416a3106e40bd",
-   "title": "BUG/MINOR: ssl: support SCTL in TLS 1.3 Certificate messages",
-   "date": "2026-10-28T13:55:51",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "haproxy/haproxy",
-   "sha": "895762235366484e000cc4a93e7f32a556019978",
-   "url": "https://github.com/haproxy/haproxy/commit/895762235366484e000cc4a93e7f32a556019978",
-   "title": "BUG/MEDIUM: ssl: fix an out-of-bounds read on SSL_CTX switch with a .sctl file",
-   "date": "2026-10-28T13:55:51",
+   "repo": "php/php-src",
+   "sha": "df110715265e9612cca77867afefe3db0006028a",
+   "url": "https://github.com/php/php-src/commit/df110715265e9612cca77867afefe3db0006028a",
+   "title": "Bound the LRUN page count in the realloc shrink path (#23774)",
+   "date": "2026-10-28T16:58:36",
    "score": 2,
    "matched": [
     "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "redis/redis",
-   "sha": "9a5c6e97884e7d8e456eaabd2a1e50f686f60125",
-   "url": "https://github.com/redis/redis/commit/9a5c6e97884e7d8e456eaabd2a1e50f686f60125",
-   "title": "fixed: out-of-bounds read in cluster bus PING/PONG/MEET packet parsing (#16104)",
-   "date": "2026-10-28T13:29:35",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "haproxy/haproxy",
-   "sha": "e00364a7b9071679cc6a72021bdd041a00a7cd6a",
-   "url": "https://github.com/haproxy/haproxy/commit/e00364a7b9071679cc6a72021bdd041a00a7cd6a",
-   "title": "BUG/MINOR: connection: check the NetScaler CIP header length against received data",
-   "date": "2026-10-28T10:38:26",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "openssl/openssl",
-   "sha": "fdab63f53859695a29c11f7925802a9b78daf161",
-   "url": "https://github.com/openssl/openssl/commit/fdab63f53859695a29c11f7925802a9b78daf161",
-   "title": "apps/pkcs12.c: fix double free when -jdktrust OID is used",
-   "date": "2026-10-28T10:31:31",
-   "score": 2,
-   "matched": [
-    "类型混淆/double free"
    ],
    "cve": null
   },
   {
    "repo": "php/php-src",
-   "sha": "3a8bcb6d186b4445e47de9adf8f44be5a48536af",
-   "url": "https://github.com/php/php-src/commit/3a8bcb6d186b4445e47de9adf8f44be5a48536af",
-   "title": "Fix use-after-free in Randomizer::shuffleArray() when the engine throws",
-   "date": "2026-10-28T07:24:25",
+   "sha": "c9295153d18d53f32cf1a733ba97f5db44a36b63",
+   "url": "https://github.com/php/php-src/commit/c9295153d18d53f32cf1a733ba97f5db44a36b63",
+   "title": "Bound the page count in the large-run free path (Zend/zend_alloc.c) (#23772)",
+   "date": "2026-10-28T16:53:07",
    "score": 2,
    "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "qemu/qemu",
-   "sha": "efe3fc9331cffbb51c3ae3482d5ec6f84888b7f4",
-   "url": "https://github.com/qemu/qemu/commit/efe3fc9331cffbb51c3ae3482d5ec6f84888b7f4",
-   "title": "hw/net/spapr_llan: validate RxBufPool fields on migration load",
-   "date": "2026-10-28T05:15:51",
-   "score": 2,
-   "matched": [
-    "越界读写"
+    "缓冲区溢出"
    ],
    "cve": null
   }
