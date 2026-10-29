@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-28 21:46 UTC · 共 **141** 条(强烈推荐 23 / 值得 118)
+**更新**: 2026-10-29 02:50 UTC · 共 **140** 条(强烈推荐 23 / 值得 117)
 
 ---
 
@@ -541,14 +541,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级到3.17.0，限制artifact写入与scorer调用权限
 影响: pip:mlflow >= 3.12.0rc0, < 3.17.0(修复: 3.17.0)
 参考: [参考](https://github.com/mlflow/mlflow/commit/a732443e695c3c677680c54320efc394c81654ab) · [参考](https://github.com/mlflow/mlflow/pull/25906) · [参考](https://github.com/mlflow/mlflow/releases/tag/v3.17.0)
-
-### Juniper SSR 未认证接口可获管理员
-[CVE-2026-103409](https://nvd.nist.gov/vuln/detail/CVE-2026-103409) | P1 重点关注 | 网络设备 | CVSS 9.8 | 披露 2026-10-28 | 入库 2026-10-28
-设备未纳管至Mist/Conductor前，攻击者向root权限端点传入构造URL参数即可获取管理员权限
-复现: 值得 — 未认证访问root运行的端点并构造URL参数，仅限未纳管设备 · 影响面: SD-WAN边缘路由器，常暴露于公网
-处置: 升级修复版本；新设备上线前隔离管理面并限制访问
-影响: Juniper(产品与版本待 NVD/厂商补充)
-参考: [参考](https://supportportal.juniper.net/JSA112183)
 
 ### OpenHands沙箱默认无认证RCE
 [CVE-2026-112346](https://nvd.nist.gov/vuln/detail/CVE-2026-112346) | P1 重点关注 | 容器/虚拟化 | CVSS 9.8 | 披露 2026-10-26 | 入库 2026-10-27

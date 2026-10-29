@@ -1,155 +1,112 @@
 {
  "version": 3,
- "generated_at": "2026-10-28T21:46:29+00:00",
- "lookback_hours": 5,
- "count": 4,
+ "generated_at": "2026-10-29T02:50:00+00:00",
+ "lookback_hours": 24,
+ "count": 25,
  "stats": {
-  "total": 4,
+  "total": 25,
   "by_tier": {
-   "critical": 4
+   "critical": 25
   },
   "by_urgency": {
-   "P0 立即处置": 2,
-   "P1 重点关注": 2
+   "P1 重点关注": 25
   },
   "by_category": {
+   "未知": 22,
    "网络设备": 2,
-   "容器/虚拟化": 1,
-   "操作系统": 1
+   "OA/协同办公": 1
   },
-  "kev": 2,
-  "with_poc": 1,
-  "with_poc_source": 1,
-  "repro_recommended": 1
+  "kev": 0,
+  "with_poc": 0,
+  "with_poc_source": 0,
+  "repro_recommended": 0
  },
- "briefing": [],
+ "briefing": [
+  "- 今日无在野利用、勒索软件或公开POC证据，暂未见KEV收录。",
+  "- 批量公告高危密集：多条10.0/9.8，集中RCE、认证绕过与缺失认证。",
+  "- 优先处置CVE-2026-61564/61567：10.0 RCE，立即修复。",
+  "- OA协同办公9.9 RCE及Juniper 9.8缺失认证次优先，核查暴露资产。"
+ ],
  "items": [
   {
-   "id": "CVE-2026-41709",
+   "id": "CVE-2026-44179",
    "tier": "critical",
-   "title": "VMware ESX 日志记录不足可被绕过",
-   "title_zh": "VMware ESX 日志记录不足可被绕过",
-   "summary_zh": "具备管理员权限的恶意者可利用日志记录缺陷执行操作而不留审计痕迹，削弱溯源与合规能力",
-   "published": "2026-07-30T14:16:57.420",
-   "cvss": 2.7,
-   "severity": "LOW",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N",
-   "epss": 0.00297,
-   "epss_percentile": 0.22291,
+   "title": "XWiki宏包含注入致RCE",
+   "title_zh": "XWiki宏包含注入致RCE",
+   "summary_zh": "低权限用户可编辑页面并注入XWiki语法，借宏权限执行任意代码",
+   "published": "2026-10-28T16:17:07.400",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
    "cwe_labels": [
-    "CWE-778"
+    "代码注入(RCE)"
    ],
-   "difficulty": "中(远程·需高权限)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
-   "affected": "Broadcom(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/38017"
+     "url": "https://github.com/xwikisas/xwiki-pro-macros/commit/151d4fccb62f6ec5f3c972e837869454677ab1ca"
     },
     {
      "label": "参考",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-41709"
+     "url": "https://github.com/xwikisas/xwiki-pro-macros/releases/tag/xwiki-pro-macros-1.14.5"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/xwikisas/xwiki-pro-macros/security/advisories/GHSA-w56x-9778-rppx"
     }
    ],
    "poc": [],
    "nuclei": false,
    "patched": null,
-   "kev": true,
-   "kev_due": "2026-11-11",
+   "kev": false,
+   "kev_due": null,
    "ransomware": false,
-   "keyword_hit": "vmware",
-   "urgency": "P0 立即处置",
-   "action_zh": "关注Broadcom官方补丁；收敛管理员权限并外发审计日志",
+   "keyword_hit": "confluence",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.14.5，收敛页面编辑权限",
    "repro_worthy": "一般",
-   "repro_note": "需ESX管理员凭据，执行敏感操作后检查对应日志缺失",
-   "impact_scope": "虚拟化宿主机，高权限滥用与合规风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-41709",
-   "description": "VMware ESX contains an insufficient logging vulnerability. A malicious administrator could exploit this issue to perform certain operations without them being logged."
+   "repro_note": "需账号可编辑页面，经excerpt-include注入语法",
+   "impact_scope": "内网Wiki知识库，可横向",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-44179",
+   "description": "From 1.13 until 1.14.5, the `excerpt-include` macro does not properly escape the included page's title and executes `excerpt` content with the macro's rights. The title handling in `xwiki-pro-macros-ui/src/main/resources/Confluence/Macros/ExcerptInclude.xml` and the rendering of `excerpt` content into XWiki syntax both allow syntax injection."
   },
   {
-   "id": "CVE-2026-46300",
+   "id": "CVE-2026-61564",
    "tier": "critical",
-   "title": "Linux内核 skbuff合并标记丢失",
-   "title_zh": "Linux内核 skbuff合并标记丢失",
-   "summary_zh": "攻击者可触发skb合并丢失共享分片标记，使页缓存或外部内存被误写，造成内核内存破坏",
-   "published": "2026-05-23T12:17:02.660",
-   "cvss": 7.8,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.10192,
-   "epss_percentile": 0.95651,
-   "cwe_labels": [
-    "越界写入"
-   ],
-   "difficulty": "高(需本地访问·需低权限)",
-   "products": [
-    "linux linux_kernel"
-   ],
-   "affected": "linux linux_kernel >=3.9 <=5.10.257; linux linux_kernel >=5.11 <5.15.208",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "官方补丁",
-     "url": "https://git.kernel.org/stable/c/2f2b16022a2e10ca7bccfb98db5ed2ec0f72641c"
-    },
-    {
-     "label": "官方补丁",
-     "url": "https://git.kernel.org/stable/c/3599e6b3cc1ada96883d496a50a210d3afbb6987"
-    },
-    {
-     "label": "官方补丁",
-     "url": "https://git.kernel.org/stable/c/3884358a9286b17f389a72b1426fc4547c23c111"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/0xBlackash/CVE-2026-46300",
-     "label": "0xBlackash/CVE-2026-46300 16★(有源码)"
-    },
-    {
-     "url": "https://github.com/infiniroot/ansible-mitigate-copyfail-dirtyfrag",
-     "label": "infiniroot/ansible-mitigate-copyfail-dirtyfrag 6★(有源码)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-10-31",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级内核至 5.15.208/5.10.257 及以上修复版本",
-   "repro_worthy": "一般",
-   "repro_note": "构造带SKBFL_SHARED_FRAG的skb触发coalesce，需本地或收包路径",
-   "impact_scope": "Linux主机内核，本地提权与内存破坏",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-46300",
-   "description": "In the Linux kernel, the following vulnerability has been resolved: net: skbuff: preserve shared-frag marker during coalescing skb_try_coalesce() can attach paged frags from @from to @to. If @from has SKBFL_SHARED_FRAG set, the resulting @to skb can contain the same externally-owned or page-cache-backed frags, but the shared-frag marker is currently lost."
-  },
-  {
-   "id": "CVE-2026-103406",
-   "tier": "critical",
-   "title": "Juniper SSC 命令注入RCE",
-   "title_zh": "Juniper SSC 命令注入RCE",
-   "summary_zh": "远程攻击者可向AutomatedProvisioner提交特制salt minion ID注入命令，以root身份执行任意指令",
-   "published": "2026-10-28T17:17:25.830",
-   "cvss": 9.8,
+   "title": "视频CMS安装接口PHP代码注入",
+   "title_zh": "视频CMS安装接口PHP代码注入",
+   "summary_zh": "未授权调用安装接口注入PHP，以Web用户身份执行任意代码",
+   "published": "2026-10-28T22:17:15.750",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入(RCE)"
+    "代码注入(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://supportportal.juniper.net/JSA112183"
+     "url": "https://github.com/WWBN/AVideo-Encoder/commit/0faaddebd11c087885d25a7e0513745465cad411"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/WWBN/AVideo-Encoder/releases/tag/v8.1.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/WWBN/AVideo-Encoder/security/advisories/GHSA-xrj3-cqm8-r992"
     }
    ],
    "poc": [],
@@ -160,19 +117,227 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至Juniper修复版本，限制Conductor管理面暴露",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "向Conductor的Salt接入端口提交特制minion ID触发命令注入",
-   "impact_scope": "SD-WAN控制器，管理面暴露风险高",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103406",
-   "description": "An Improper Neutralization of Special Elements used in an OS Command vulnerability in the AutomatedProvisioner in Juniper Networks Session Smart Conductor allows a remote attacker to execute arbitrary commands as root via a specially crafted salt minion ID."
+   "action_zh": "升级至8.1.0，删除或禁用install目录",
+   "repro_worthy": "一般",
+   "repro_note": "未授权调用install接口，向webSiteRootURL注入PHP",
+   "impact_scope": "公网视频站点，安装目录常残留",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61564",
+   "description": "Prior to 8.1.0, the unauthenticated installer endpoint `install/checkConfiguration.php` assembles `videos/configuration.php` by interpolating request parameters, including `webSiteRootURL`, into single-quoted PHP string literals without escaping. An attacker can terminate a literal and inject PHP that executes as the web-server user when the generated, directly requestable file is loaded."
+  },
+  {
+   "id": "CVE-2026-61567",
+   "tier": "critical",
+   "title": "视频CMS直播接口认证绕过",
+   "title_zh": "视频CMS直播接口认证绕过",
+   "summary_zh": "未授权攻击者以可控webSiteRootURL伪造登录态，自授推流权限",
+   "published": "2026-10-28T22:17:15.900",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/WWBN/AVideo-Encoder/commit/99b8ad9b66fe5726cababbe29dce9d9695131caa"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/WWBN/AVideo-Encoder/releases/tag/v8.1.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/WWBN/AVideo-Encoder/security/advisories/GHSA-rf63-6vwm-wv8p"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至8.1.0，勿信任Login::run返回",
+   "repro_worthy": "一般",
+   "repro_note": "未授权请求videosListToLive.php，自建服务返回伪造JSON",
+   "impact_scope": "公网视频与直播站点",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61567",
+   "description": "Prior to 8.1.0, the live-streaming endpoint `view/videosListToLive.php` accepts an attacker-named streamer in `webSiteRootURL`, calls `Login::run` in `objects/Login.php`, and trusts the returned JSON as session state. An unauthenticated remote attacker who can host an HTTP service reachable by the encoder can self-grant `isLogged` and `canStream` without legitimate credentials."
+  },
+  {
+   "id": "CVE-2026-86400",
+   "tier": "critical",
+   "title": "未明组件未授权root命令执行",
+   "title_zh": "未明组件未授权root命令执行",
+   "summary_zh": "远程未授权攻击者可借认证绕过取得root权限并执行任意命令",
+   "published": "2026-10-28T09:17:08.040",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00896,
+   "epss_percentile": 0.59431,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000515178/dsa-2026-416-security-update-for-dell-powerprotect-data-domain-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "产品未明，先定位资产并等待官方补丁",
+   "repro_worthy": "一般",
+   "repro_note": "产品未知，需先定位受影响组件再验证入口",
+   "impact_scope": "产品未明，需排查暴露资产",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86400",
+   "description": "An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to arbitrary command execution with root privileges. This is a critical severity vulnerability as it allows an attacker to take complete control of the system."
+  },
+  {
+   "id": "CVE-2026-86384",
+   "tier": "critical",
+   "title": "未明组件硬编码密钥致凭据泄露",
+   "title_zh": "未明组件硬编码密钥致凭据泄露",
+   "summary_zh": "远程未授权攻击者可利用硬编码密钥获取敏感凭据",
+   "published": "2026-10-28T10:17:09.433",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00498,
+   "epss_percentile": 0.42569,
+   "cwe_labels": [
+    "CWE-321"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000515178/dsa-2026-416-security-update-for-dell-powerprotect-data-domain-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无细节，定位组件后轮换相关凭据",
+   "repro_worthy": "一般",
+   "repro_note": "产品未知，需确认密钥使用位置",
+   "impact_scope": "产品未明，凭据泄露风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86384",
+   "description": "Dell PowerProtect Data Domain, Feature Release versions 7.7.1.0 through 8.8, LTS2024 release versions 7.13.1.0 through 7.13.1.80, LTS2025 release versions 8.3.1.0 through 8.3.1.40, LTS2026 release versions 8.6.1.0 through 8.6.1.20, contain an Use of Hard-coded Cryptographic Key vulnerability. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to credential exposure."
+  },
+  {
+   "id": "CVE-2026-86397",
+   "tier": "critical",
+   "title": "未明组件缺失授权可建管理员",
+   "title_zh": "未明组件缺失授权可建管理员",
+   "summary_zh": "远程未授权攻击者可创建特权账号，进而完全控制系统",
+   "published": "2026-10-28T09:17:07.663",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00336,
+   "epss_percentile": 0.26963,
+   "cwe_labels": [
+    "缺失授权(越权)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000515178/dsa-2026-416-security-update-for-dell-powerprotect-data-domain-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "产品未明，先审计账号创建接口鉴权",
+   "repro_worthy": "一般",
+   "repro_note": "产品未知，核查未鉴权的账号创建接口",
+   "impact_scope": "产品未明，管理面暴露风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86397",
+   "description": "An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to privileged account creation. This is a critical severity vulnerability as it allows an attacker to take complete control of the system."
+  },
+  {
+   "id": "CVE-2026-115968",
+   "tier": "critical",
+   "title": "Ultimate Member反序列化注入",
+   "title_zh": "Ultimate Member反序列化注入",
+   "summary_zh": "攻击者可向Ultimate Member传入恶意序列化数据触发对象注入",
+   "published": "2026-10-28T14:16:58.013",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/ultimate-member/vulnerability/wordpress-ultimate-member-plugin-2-13-1-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Ultimate Member至2.13.1之后版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress站点插件，面较广",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115968",
+   "description": "Deserialization of Untrusted Data vulnerability in Ultimate Member Ultimate Member ultimate-member allows Object Injection.This issue affects Ultimate Member: from n/a through 2.13.1."
   },
   {
    "id": "CVE-2026-103409",
    "tier": "critical",
-   "title": "Juniper SSR 未认证接口可获管理员",
-   "title_zh": "Juniper SSR 未认证接口可获管理员",
-   "summary_zh": "设备未纳管至Mist/Conductor前，攻击者向root权限端点传入构造URL参数即可获取管理员权限",
+   "title": "Juniper SSR未授权获管理员",
+   "title_zh": "Juniper SSR未授权获管理员",
+   "summary_zh": "未纳管Mist/Conductor前，攻击者传构造URL参数即可获管理员",
    "published": "2026-10-28T17:17:27.840",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -200,37 +365,777 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级修复版本；新设备上线前隔离管理面并限制访问",
-   "repro_worthy": "值得",
-   "repro_note": "未认证访问root运行的端点并构造URL参数，仅限未纳管设备",
-   "impact_scope": "SD-WAN边缘路由器，常暴露于公网",
+   "action_zh": "升级厂商修复版本，未纳管设备优先",
+   "repro_worthy": "一般",
+   "repro_note": "设备未onboarding时，向root权限端点传构造参数",
+   "impact_scope": "边界路由器，未纳管时暴露",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103409",
    "description": "A Missing authentication for critical function vulnerability in Juniper Networks Session Smart Router allows an unauthenticated network-based attacker to obtain administrative privileges by passing crafted URL parameters to an insecure endpoint running as root. Note that this vulnerability can only be exploited prior to the device being onboarded to Mist/Conductor. The issue can no longer be exploited once a device is onboarded to Mist/Conductor."
+  },
+  {
+   "id": "CVE-2026-118690",
+   "tier": "critical",
+   "title": "Signal K未授权日志下载致接管",
+   "title_zh": "Signal K未授权日志下载致接管",
+   "summary_zh": "未授权下载/skServer/ziplogs日志，提取JWT密钥伪造管理员",
+   "published": "2026-10-28T22:17:13.070",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/SignalK/signalk-server"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/SignalK/signalk-server/blob/v2.32.0/src/interfaces/logfiles.js#L30-L91"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/SignalK/signalk-server/commit/728bab82742d16c54e50525b95dc9b6e32396107"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2.33.0并轮换JWT secretKey",
+   "repro_worthy": "一般",
+   "repro_note": "未授权GET /skServer/ziplogs，解压取security.json",
+   "impact_scope": "船舶物联网服务端，多暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118690",
+   "description": "Signal K Server before 2.33.0 contains a missing authentication vulnerability that allows unauthenticated remote attackers to download log archives via the /skServer/ziplogs endpoint. Attackers can extract the JWT secretKey from security.json in the ZIP, forge administrator tokens, and create persistent admin accounts for full server control."
+  },
+  {
+   "id": "CVE-2026-118579",
+   "tier": "critical",
+   "title": "D-Link DIR-505 CGI存在后门",
+   "title_zh": "D-Link DIR-505 CGI存在后门",
+   "summary_zh": "攻击者可远程向/secmark1524.cgi传参触发后门，控制设备",
+   "published": "2026-10-28T23:17:09.940",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-912"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Walnut1337/DIR-505_backdoor/tree/main/poc"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-118579"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1025351"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "设备已停止支持，建议替换或断公网访问",
+   "repro_worthy": "一般",
+   "repro_note": "远程访问/secmark1524.cgi，控制accu/pass/cmds参数",
+   "impact_scope": "停产家用路由器，暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118579",
+   "description": "A weakness has been identified in D-Link DIR-505 1.10B02. The impacted element is the function main of the file /secmark1524.cgi of the component Web Management CGI. This manipulation of the argument accu/pass/code/hash/cmds causes backdoor. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks."
+  },
+  {
+   "id": "CVE-2026-103792",
+   "tier": "critical",
+   "title": "未明系统低权限SQL注入",
+   "title_zh": "未明系统低权限SQL注入",
+   "summary_zh": "低权限远程攻击者可注入SQL，越权访问被管系统数据",
+   "published": "2026-10-28T11:17:14.250",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000515178/dsa-2026-416-security-update-for-dell-powerprotect-data-domain-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "产品未明，先确认受影响管理平台",
+   "repro_worthy": "一般",
+   "repro_note": "需低权限账号，向管理接口提交构造查询",
+   "impact_scope": "集中管理平台，横向风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103792",
+   "description": "A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Unauthorized access to managed systems."
+  },
+  {
+   "id": "CVE-2026-103799",
+   "tier": "critical",
+   "title": "未明系统低权限越权操作",
+   "title_zh": "未明系统低权限越权操作",
+   "summary_zh": "低权限远程攻击者可越权对被管系统执行未授权操作",
+   "published": "2026-10-28T11:17:14.390",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失授权(越权)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000515178/dsa-2026-416-security-update-for-dell-powerprotect-data-domain-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "产品未明，先核查接口权限校验",
+   "repro_worthy": "一般",
+   "repro_note": "需低权限账号，调用未校验权限的接口",
+   "impact_scope": "集中管理平台，横向风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103799",
+   "description": "Dell PowerProtect Data Domain Management Center, Feature Release versions 7.7.1.0 through 8.8, LTS2024 release versions 7.13.1.0 through 7.13.1.80, LTS2025 release versions 8.3.1.0 through 8.3.1.40, LTS2026 release versions 8.6.1.0 through 8.6.1.20, contain a Missing Authorization vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to unauthorized system operation on managed systems."
+  },
+  {
+   "id": "CVE-2026-115904",
+   "tier": "critical",
+   "title": "Topluyo桌面命令注入",
+   "title_zh": "Topluyo桌面命令注入",
+   "summary_zh": "诱导用户打开恶意链接，即可以其权限执行系统命令",
+   "published": "2026-10-28T13:17:05.400",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/topluyo/App/security/advisories/GHSA-vrrv-3f46-c3x7"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2026.9.2410以上，勿点陌生链接",
+   "repro_worthy": "一般",
+   "repro_note": "构造URL经openExternalLinks()处理，需用户点击",
+   "impact_scope": "Linux桌面终端，影响单机",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115904",
+   "description": "Topluyo is a social networking platform. A vulnerability exists in Topluyo Desktop for Linux prior to version 2026.9.2410 where user-controlled URLs are unsafely processed, leading to OS Command Injection via the `openExternalLinks()` routine in `utils.js`. An attacker who controls a target URL can execute arbitrary operating system commands with the privileges of the user running the application upon opening the link. Version 2026.9.2410 patches the issue."
+  },
+  {
+   "id": "CVE-2026-104383",
+   "tier": "critical",
+   "title": "Aquila MFA服务代码注入RCE",
+   "title_zh": "Aquila MFA服务代码注入RCE",
+   "summary_zh": "已认证远程攻击者可向Pigeon MFA注入代码，执行任意指令",
+   "published": "2026-10-28T05:16:59.533",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00367,
+   "epss_percentile": 0.30432,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0039.md"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Aquila至2.6.7.2之后版本",
+   "repro_worthy": "一般",
+   "repro_note": "需已认证账号，向MFA服务提交构造代码",
+   "impact_scope": "内部MFA服务，权限较高",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104383",
+   "description": "Improper Control of Generation of Code in Pigeon MFA service in EagleCloud Aquila versions through 2.6.7.2 on on-premises platforms allows authenticated remote attackers to execute arbitrary code via code injection"
+  },
+  {
+   "id": "CVE-2026-112197",
+   "tier": "critical",
+   "title": "未明服务未授权远程调用方法",
+   "title_zh": "未明服务未授权远程调用方法",
+   "summary_zh": "未授权调用远程方法取凭据并执行SQL，进而控制数据库主机",
+   "published": "2026-10-28T11:17:15.073",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.incibe.es/en/incibe-cert/notices/aviso/multiple-vulnerabilities-tactis-novigest-desktop-app"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "产品未明，先限制该服务网络暴露",
+   "repro_worthy": "一般",
+   "repro_note": "网络可达即可调用未鉴权远程方法",
+   "impact_scope": "内部服务，常连PostgreSQL",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112197",
+   "description": "An attacker with network access to the service can invoke remote methods without authentication, obtain sensitive credentials, and execute arbitrary SQL queries on PostgreSQL. The elevated privileges of the database account allow these capabilities to be chained together to execute operating system commands on the server, compromising its confidentiality, integrity, and availability."
+  },
+  {
+   "id": "CVE-2026-63190",
+   "tier": "critical",
+   "title": "PHP内置服务器点段绕过鉴权",
+   "title_zh": "PHP内置服务器点段绕过鉴权",
+   "summary_zh": "攻击者用/./admin/绕过登录校验，直接执行后台脚本",
+   "published": "2026-10-28T20:18:37.470",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取",
+    "XSS"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/fearlessgeekmedia/FearlessCMS/commit/59fb22cf989b5ba14c387c3212e15b146e02cf9a"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/fearlessgeekmedia/FearlessCMS/security/advisories/GHSA-3mq8-hrhf-7hv6"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/fearlessgeekmedia/FearlessCMS/tree/0.1.4"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "勿用内置开发服务器，前置路径规范化",
+   "repro_worthy": "一般",
+   "repro_note": "请求/./admin/，利用router.php未规范化缺陷",
+   "impact_scope": "开发及默认Docker部署环境",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63190",
+   "description": "On PHP's built-in development server, including the default Docker deployment, `router.php` checks an unnormalized admin URI prefix while the filesystem resolves dot segments, so `/./admin/` bypasses the admin login gate and executes those scripts directly."
+  },
+  {
+   "id": "CVE-2026-66088",
+   "tier": "critical",
+   "title": "openEQUELLA脚本命令注入",
+   "title_zh": "openEQUELLA脚本命令注入",
+   "summary_zh": "可编辑脚本者调用system.execute()以服务账号执行命令",
+   "published": "2026-10-29T02:16:52.523",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)",
+    "CWE-749"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/openequella/openEQUELLA/security/advisories/GHSA-q8xp-w3fr-hj4v"
+    },
+    {
+     "label": "参考",
+     "url": "https://openequella.github.io/guides/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2026.1，收紧脚本编辑权限",
+   "repro_worthy": "一般",
+   "repro_note": "需脚本编辑权限，调用system.execute()执行命令",
+   "impact_scope": "教学资源平台，内网服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-66088",
+   "description": "In openEQUELLA before 2026.1, the system.execute() function available to the scripting engine runs supplied operating system commands without validation or an allow-list of permitted executables. A user able to create or edit scripts can use it to execute arbitrary commands with the privileges of the openEQUELLA service account."
+  },
+  {
+   "id": "CVE-2026-111411",
+   "tier": "critical",
+   "title": "FunnelKit插件盲注SQL注入",
+   "title_zh": "FunnelKit插件盲注SQL注入",
+   "summary_zh": "攻击者可向FunnelKit Automations传参触发盲注SQL",
+   "published": "2026-10-28T13:17:04.167",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/wp-marketing-automations/vulnerability/wordpress-funnelkit-automations-plugin-3-8-5-2-sql-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至3.8.5.2之后版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress营销插件站点",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111411",
+   "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Aman FunnelKit Automations wp-marketing-automations allows Blind SQL Injection.This issue affects FunnelKit Automations: from n/a through 3.8.5.2."
+  },
+  {
+   "id": "CVE-2026-115607",
+   "tier": "critical",
+   "title": "DXP ToolKit插件SQL注入",
+   "title_zh": "DXP ToolKit插件SQL注入",
+   "summary_zh": "攻击者可借插件参数注入SQL，读取或篡改数据库数据",
+   "published": "2026-10-28T13:17:04.993",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/dxp-toolkit/vulnerability/wordpress-dxp-toolkit-plugin-2-0-1-sql-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2.0.1之后版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress站点插件",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115607",
+   "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Crowd Favorite DXP ToolKit dxp-toolkit allows SQL Injection.This issue affects DXP ToolKit: from n/a through 2.0.1."
+  },
+  {
+   "id": "CVE-2026-14571",
+   "tier": "critical",
+   "title": "未明系统未授权SQL注入",
+   "title_zh": "未明系统未授权SQL注入",
+   "summary_zh": "未授权攻击者可执行任意SQL查询，窃取含PII敏感数据",
+   "published": "2026-10-28T10:17:08.780",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:L/VA:L/SC:H/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00425,
+   "epss_percentile": 0.36627,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.incibe.es/en/incibe-cert/notices/aviso/sql-injection-sqli-user-authentication-module-futurum-software"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "产品未明，先排查并加最小权限与WAF",
+   "repro_worthy": "一般",
+   "repro_note": "未授权向业务接口提交注入载荷，可回显或盲注",
+   "impact_scope": "面向公网的业务系统",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14571",
+   "description": "Successful exploitation of the vulnerability could allow an unauthenticated attacker to execute arbitrary queries against the database, extract its complete structure and gain access to sensitive customer information, including personally identifiable information (PII)."
+  },
+  {
+   "id": "CVE-2026-90717",
+   "tier": "critical",
+   "title": "未知组件认证欺骗致权限提升",
+   "title_zh": "未知组件认证欺骗致权限提升",
+   "summary_zh": "低权限远程攻击者可利用认证欺骗提升权限，入口与影响产品未明",
+   "published": "2026-10-28T09:17:08.297",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:H/A:L",
+   "epss": 0.00233,
+   "epss_percentile": 0.14146,
+   "cwe_labels": [
+    "认证欺骗"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000515178/dsa-2026-416-security-update-for-dell-powerprotect-data-domain-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商补丁；限制低权限远程访问并审计认证与提权",
+   "repro_worthy": "一般",
+   "repro_note": "需低权限账户，认证欺骗入口与参数未披露",
+   "impact_scope": "未知组件，远程低权限账户可提权",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-90717",
+   "description": "Dell PowerProtect Data Domain Management Center, Feature Release versions 7.7.1.0 through 8.8, LTS2024 release versions 7.13.1.0 through 7.13.1.80, LTS2025 release versions 8.3.1.0 through 8.3.1.40, LTS2026 release versions 8.6.1.0 through 8.6.1.20, contain an Authentication Bypass by Spoofing vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Elevation of privileges."
+  },
+  {
+   "id": "CVE-2026-118264",
+   "tier": "critical",
+   "title": "Echo框架请求走私致认证绕过",
+   "title_zh": "Echo框架请求走私致认证绕过",
+   "summary_zh": "远程攻击者利用请求走私绕过Echo路由鉴权，需代理路由等特定条件",
+   "published": "2026-10-28T19:17:31.237",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "HTTP请求走私",
+    "授权错误"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/labstack/echo/commit/1855061e572ae9dab727c811d8382f266bfbaaec"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/labstack/echo/commit/3fb0ba7e17645bb65611e2a08875d0a2f65c421f"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/labstack/echo/releases/tag/v4.16.1"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Echo修复版本；代理层独立鉴权并拒绝异常Upgrade请求",
+   "repro_worthy": "一般",
+   "repro_note": "需可访问代理路由、异常Upgrade响应且上游无独立鉴权",
+   "impact_scope": "Go Web框架，常作为API服务后端",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118264",
+   "description": "Echo is a Go web framework. This can bypass authentication or authorization enforced only by Echo routes, but requires an accessible proxy route, a cooperating rejected-upgrade response, and a target without independent upstream authorization."
+  },
+  {
+   "id": "CVE-2026-117574",
+   "tier": "critical",
+   "title": "Red Hat LLM接口越权致配额盗用",
+   "title_zh": "Red Hat LLM接口越权致配额盗用",
+   "summary_zh": "已认证远程攻击者篡改租户模型标识，越权消耗其他租户LLM资源与配额",
+   "published": "2026-10-28T20:17:21.417",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/security/cve/CVE-2026-117574"
+    },
+    {
+     "label": "参考",
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2494861"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Red Hat修复版本；校验租户与模型ID绑定并限制配额",
+   "repro_worthy": "一般",
+   "repro_note": "认证后修改请求体/头中的租户模型ID，需已知目标ID",
+   "impact_scope": "多租户LLM平台，横向越权消耗资源",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117574",
+   "description": "An authenticated remote attacker can exploit this vulnerability by submitting a request specifying another tenant's model identifier in the request body or header. This flaw allows an attacker to perform unauthorized requests and consume another tenant's large language model (LLM) resources and quotas."
+  },
+  {
+   "id": "CVE-2026-105420",
+   "tier": "critical",
+   "title": "未知组件路径遍历写入致RCE",
+   "title_zh": "未知组件路径遍历写入致RCE",
+   "summary_zh": "攻击者可路径遍历写入文件，借sudo启动服务以root权限执行代码",
+   "published": "2026-10-28T14:16:56.230",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cert.pl/en/posts/2026/10/CVE-2026-105420"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.wftpserver.com/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到8.2.6；避免以sudo运行服务并限制写入路径",
+   "repro_worthy": "一般",
+   "repro_note": "需可写路径及sudo运行服务，构造遍历写入触发RCE",
+   "impact_scope": "未知组件，若以sudo运行可致Root失陷",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105420",
+   "description": "Wing FTP Server does not verify user's base folder. An attacker with admin privileges can add user directories via scripts, allowing the added directories to escape the base folder. This allows the attacker to write files on the system and can lead to remote code execution with process owner privileges.Critically, since the installation guide mentions running the command with `sudo`, the files are created as “root.” This issue was fixed in version 8.2.6."
+  },
+  {
+   "id": "CVE-2026-67074",
+   "tier": "critical",
+   "title": "HCL BigFix AEX命令注入RCE",
+   "title_zh": "HCL BigFix AEX命令注入RCE",
+   "summary_zh": "攻击者可向HCL BigFix AEX注入命令，以应用权限执行代码并控制系统",
+   "published": "2026-10-28T13:17:08.463",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)",
+    "代码注入(RCE)"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hcl-software.com/csm?id=kb_article&sysparm_article=KB0134281"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级HCL BigFix AEX修复版本；限制管理接口并审计命令参数",
+   "repro_worthy": "一般",
+   "repro_note": "入口与注入参数未披露，需访问受影响服务构造命令注入",
+   "impact_scope": "终端管理平台，失陷可控制大量终端",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67074",
+   "description": "HCL BigFix AEX is affected by a Remote Code Execution Vulnerability . It may allow attackers to execute code with the privileges of the affected application or service, potentially leading to unauthorized access, data exposure, or system compromise."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "php/php-src",
-   "sha": "df110715265e9612cca77867afefe3db0006028a",
-   "url": "https://github.com/php/php-src/commit/df110715265e9612cca77867afefe3db0006028a",
-   "title": "Bound the LRUN page count in the realloc shrink path (#23774)",
-   "date": "2026-10-28T16:58:36",
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "f4a0848874372186b3b981b97c9ca51d0b258e47",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/f4a0848874372186b3b981b97c9ca51d0b258e47",
+   "title": "avfilter/vf_bm3d: bound the search position buffer by the frame size",
+   "date": "2026-10-29T01:48:30",
    "score": 2,
    "matched": [
-    "越界读写"
+    "缓冲区溢出"
    ],
    "cve": null
   },
   {
-   "repo": "php/php-src",
-   "sha": "c9295153d18d53f32cf1a733ba97f5db44a36b63",
-   "url": "https://github.com/php/php-src/commit/c9295153d18d53f32cf1a733ba97f5db44a36b63",
-   "title": "Bound the page count in the large-run free path (Zend/zend_alloc.c) (#23772)",
-   "date": "2026-10-28T16:53:07",
+   "repo": "apache/tomcat",
+   "sha": "b6fe2650290f01066102c84e1aba27dd45b1f15d",
+   "url": "https://github.com/apache/tomcat/commit/b6fe2650290f01066102c84e1aba27dd45b1f15d",
+   "title": "Send the slow query JMX notifications from a serializable source",
+   "date": "2026-10-28T18:12:17",
    "score": 2,
    "matched": [
-    "缓冲区溢出"
+    "反序列化"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/tomcat",
+   "sha": "09ce40b5a5e8804ff6e1808e0ff4a71b8cf98b5c",
+   "url": "https://github.com/apache/tomcat/commit/09ce40b5a5e8804ff6e1808e0ff4a71b8cf98b5c",
+   "title": "Publish the slow queries of the JMX report as a snapshot",
+   "date": "2026-10-28T17:50:55",
+   "score": 2,
+   "matched": [
+    "越界读写"
    ],
    "cve": null
   }
