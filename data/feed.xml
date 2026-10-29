@@ -5,16 +5,35 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 29 Oct 2026 16:16:47 +0000</pubDate>
-    <lastBuildDate>Thu, 29 Oct 2026 16:16:47 +0000</lastBuildDate>
+    <pubDate>Thu, 29 Oct 2026 21:53:18 +0000</pubDate>
+    <lastBuildDate>Thu, 29 Oct 2026 21:53:18 +0000</lastBuildDate>
     <item>
-      <title>[critical]Yamaha NWR100命令注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97854</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97854-2026-10-29</guid>
-      <description>CVE-2026-97854 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
-Yamaha wireless LAN router NWR100 provided by Yamaha Corporation contains an OS command injection vulnerability.
+      <title>[critical]GitLab CI/CD正则缺陷未授权RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97229</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97229-2026-10-29</guid>
+      <description>CVE-2026-97229 · 🎯P0 立即处置 · 披露 2026-10-13 · 组件 开发运维/CI · CVSS 10.0 · EPSS 18.4%,前 97% · 类型 整数溢出 · 难度 低(远程·免认证)
+GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain co…
+信号: 🔥 KEV 在野利用,CISA 限期 2026-11-01 | 有PoC | 关注词:gitlab
+[jburgess-r7/CVE-2026-97229-PoC 63★(有源码)](https://github.com/jburgess-r7/CVE-2026-97229-PoC) · [gandli/cve-2026-97229-lab 1★(仅README)](https://github.com/gandli/cve-2026-97229-lab)</description>
+      <pubDate>Thu, 29 Oct 2026 21:53:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Cisco SSL VPN未认证DoS重启</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-76418</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-76418-2026-10-29</guid>
+      <description>CVE-2026-76418 · 🎯P0 立即处置 · 披露 2026-10-28 · 组件 网络设备 · CVSS 8.6 · EPSS 0.6%,前 47% · 类型 CWE-690 · 难度 低(远程·免认证)
+A vulnerability in the Remote Access SSL VPN service of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defens…
+信号: 🔥 KEV 在野利用,CISA 限期 2026-11-01</description>
+      <pubDate>Thu, 29 Oct 2026 21:53:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Shelter认证密钥注册缺陷致服务接管</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107058</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107058-2026-10-29</guid>
+      <description>CVE-2026-107058 · 🎯P2 保持关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+An issue in Shelter versionCode 445 allows attackers to register their own auth_key and execute a takeover of another user's binder service API and preference s…
 信号:</description>
-      <pubDate>Thu, 29 Oct 2026 16:16:47 +0000</pubDate>
+      <pubDate>Thu, 29 Oct 2026 21:53:18 +0000</pubDate>
     </item>
   </channel>
 </rss>

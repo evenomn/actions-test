@@ -1,40 +1,146 @@
 {
  "version": 3,
- "generated_at": "2026-10-29T16:16:47+00:00",
+ "generated_at": "2026-10-29T21:53:18+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 3,
  "stats": {
-  "total": 1,
+  "total": 3,
   "by_tier": {
-   "critical": 1
+   "critical": 3
   },
   "by_urgency": {
-   "P1 重点关注": 1
+   "P0 立即处置": 2,
+   "P2 保持关注": 1
   },
   "by_category": {
+   "开发运维/CI": 1,
+   "网络设备": 1,
    "未知": 1
   },
-  "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
-  "repro_recommended": 0
+  "kev": 2,
+  "with_poc": 1,
+  "with_poc_source": 1,
+  "repro_recommended": 1
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-97854",
+   "id": "CVE-2026-97229",
    "tier": "critical",
-   "title": "Yamaha NWR100命令注入RCE",
-   "title_zh": "Yamaha NWR100命令注入RCE",
-   "summary_zh": "攻击者向NWR100发送特制请求即可注入OS命令，导致远程代码执行。",
-   "published": "2026-10-29T12:17:14.443",
+   "title": "GitLab CI/CD正则缺陷未授权RCE",
+   "title_zh": "GitLab CI/CD正则缺陷未授权RCE",
+   "summary_zh": "未认证攻击者可借CI/CD配置中的恶意正则触发服务端任意代码执行，CVSS 10.0且已在野利用",
+   "published": "2026-10-13T02:17:00.840",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.18427,
+   "epss_percentile": 0.97229,
+   "cwe_labels": [
+    "整数溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "gitlab gitlab"
+   ],
+   "affected": "gitlab gitlab >=19.2.0 <19.2.8; gitlab gitlab >=19.2.0 <19.2.8",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.com/gitlab-org/gitlab/-/work_items/630686"
+    },
+    {
+     "label": "参考",
+     "url": "https://hackerone.com/reports/4055749"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/jburgess-r7/CVE-2026-97229-PoC",
+     "label": "jburgess-r7/CVE-2026-97229-PoC 63★(有源码)"
+    },
+    {
+     "url": "https://github.com/gandli/cve-2026-97229-lab",
+     "label": "gandli/cve-2026-97229-lab 1★(仅README)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-01",
+   "ransomware": false,
+   "keyword_hit": "gitlab",
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至19.2.8/19.3.5/19.4.2；无法升级先禁用不可信项目的CI/CD运行",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权入口在CI/CD配置正则解析，提交含恶意正则的流水线配置触发",
+   "impact_scope": "自建代码托管平台，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97229",
+   "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain conditions, could have allowed an unauthenticated user to execute arbitrary code on the GitLab server via a specially crafted regular expression in a CI/CD configuration, due to insufficient regular expression validation."
+  },
+  {
+   "id": "CVE-2026-76418",
+   "tier": "critical",
+   "title": "Cisco SSL VPN未认证DoS重启",
+   "title_zh": "Cisco SSL VPN未认证DoS重启",
+   "summary_zh": "未认证远程攻击者向ASA/FTD的SSL VPN服务发送特制报文即可使设备意外重载，造成拒绝服务",
+   "published": "2026-10-28T20:18:47.063",
+   "cvss": 8.6,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+   "epss": 0.00574,
+   "epss_percentile": 0.47308,
+   "cwe_labels": [
+    "CWE-690"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Cisco(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asaftd-tunnel-dos-s6mgkb75"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-76418"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-01",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至Cisco公告修复版本；短期收敛SSL VPN公网暴露并加强重载告警",
+   "repro_worthy": "一般",
+   "repro_note": "未授权向SSL VPN服务端口发送特制畸形报文，触发设备重载",
+   "impact_scope": "边界SSL VPN设备，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76418",
+   "description": "A vulnerability in the Remote Access SSL VPN service of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition. An attacker could exploit this vulnerability by sending a crafted request when connecting to the SSL remote access VPN."
+  },
+  {
+   "id": "CVE-2026-107058",
+   "tier": "critical",
+   "title": "Shelter认证密钥注册缺陷致服务接管",
+   "title_zh": "Shelter认证密钥注册缺陷致服务接管",
+   "summary_zh": "本地攻击者可自行注册auth_key，接管他人binder服务API与偏好状态，实现越权控制",
+   "published": "2026-10-29T17:17:58.620",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入(RCE)"
+    "认证绕过"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -43,11 +149,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://jvn.jp/en/vu/JVNVU91027179/"
+     "url": "https://f-droid.org/packages/net.typeblog.shelter/"
     },
     {
      "label": "参考",
-     "url": "https://www.rtpro.yamaha.co.jp/RT/FAQ/Security/JVNVU91027179.html"
+     "url": "https://github.com/FFG0d/fdroid-android-advisories/blob/main/advisories/CVE-2026-107058.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/PeterCxy/Shelter"
     }
    ],
    "poc": [],
@@ -57,86 +167,62 @@
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复固件；限制管理界面访问并禁止公网暴露。",
+   "urgency": "P2 保持关注",
+   "action_zh": "升级至versionCode 445之后的修复版本；限制安装来源不明应用",
    "repro_worthy": "一般",
-   "repro_note": "向路由器Web管理接口发送特制请求，定位可注入参数执行OS命令。",
-   "impact_scope": "小型无线路由器，多部署于内网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97854",
-   "description": "Yamaha wireless LAN router NWR100 provided by Yamaha Corporation contains an OS command injection vulnerability. Arbitrary OS commands may be executed by sending a specially crafted request to the affected product."
+   "repro_note": "同设备安装恶意应用后注册自有auth_key，尝试绑定目标用户服务",
+   "impact_scope": "Android沙盒应用，影响单机多用户",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107058",
+   "description": "An issue in Shelter versionCode 445 allows attackers to register their own auth_key and execute a takeover of another user's binder service API and preference state."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "openssl/openssl",
-   "sha": "5d0c3576b4df2d56bfa4e98d7eb68a3fe35858ae",
-   "url": "https://github.com/openssl/openssl/commit/5d0c3576b4df2d56bfa4e98d7eb68a3fe35858ae",
-   "title": "Fix provider fallback duplication in provider store",
-   "date": "2026-10-29T12:00:03",
+   "repo": "envoyproxy/envoy",
+   "sha": "7b15e26ac8a7e54a0081851699314dcd5769a831",
+   "url": "https://github.com/envoyproxy/envoy/commit/7b15e26ac8a7e54a0081851699314dcd5769a831",
+   "title": "api: Add `mode` field to TraceContextPropagationConfig in mcp.proto (#48249)",
+   "date": "2026-10-29T18:57:47",
    "score": 2,
    "matched": [
-    "类型混淆/double free"
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "ee982dbf48397bad3be955feca339338ce73fe97",
+   "url": "https://github.com/nodejs/node/commit/ee982dbf48397bad3be955feca339338ce73fe97",
+   "title": "2026-10-29, Version 27.0.0-alpha.0.0.0 (Alpha)",
+   "date": "2026-10-29T18:20:04",
+   "score": 2,
+   "matched": [
+    "反序列化"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "7abaad3e21dbc5ef8dec1a1db314d54ba1803800",
+   "url": "https://github.com/php/php-src/commit/7abaad3e21dbc5ef8dec1a1db314d54ba1803800",
+   "title": "Fix GH-24989: Use-after-free in GC when an exception is thrown.",
+   "date": "2026-10-29T18:16:14",
+   "score": 2,
+   "matched": [
+    "UAF"
    ],
    "cve": null
   },
   {
    "repo": "python/cpython",
-   "sha": "7e5227fb8c80c9cbf356881fa7c8658aba90b9d7",
-   "url": "https://github.com/python/cpython/commit/7e5227fb8c80c9cbf356881fa7c8658aba90b9d7",
-   "title": "gh-160773: Fix use-after-free in `OSError.__str__` (#160822)",
-   "date": "2026-10-29T11:27:14",
+   "sha": "756319503f9692842ab5e471b44bae632efa518d",
+   "url": "https://github.com/python/cpython/commit/756319503f9692842ab5e471b44bae632efa518d",
+   "title": "gh-158159: Fix use-after-free in asyncio Task.get_name() (#158180)",
+   "date": "2026-10-29T17:00:36",
    "score": 2,
    "matched": [
     "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "c0f6ae570fdca256fa024e446d3f1ee0caa57b93",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/c0f6ae570fdca256fa024e446d3f1ee0caa57b93",
-   "title": "avcodec/videotoolboxenc: fix double free when frame submission fails",
-   "date": "2026-10-29T10:09:08",
-   "score": 2,
-   "matched": [
-    "类型混淆/double free"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "0ceaea99b2cc2b957a1b006d0ffd836e1bfaf43c",
-   "url": "https://github.com/php/php-src/commit/0ceaea99b2cc2b957a1b006d0ffd836e1bfaf43c",
-   "title": "Fix GH-25007: PFA named args in constant expression write out of bounds (#25012)",
-   "date": "2026-10-29T09:57:17",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "openbsd/src",
-   "sha": "f9eb2feb9f8b27eb43d61f379a787a9ee4fd98ed",
-   "url": "https://github.com/openbsd/src/commit/f9eb2feb9f8b27eb43d61f379a787a9ee4fd98ed",
-   "title": "Attach mbuf to the end-of-packet descriptor when sending packets and",
-   "date": "2026-10-29T09:56:22",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "64144487bf50b960baa5e6cdf2b03c22ed30d63a",
-   "url": "https://github.com/php/php-src/commit/64144487bf50b960baa5e6cdf2b03c22ed30d63a",
-   "title": "docs: use private staging repos for stable release tagging and tarballs (#24415)",
-   "date": "2026-10-29T08:37:45",
-   "score": 2,
-   "matched": [
-    "安全修复"
    ],
    "cve": null
   }

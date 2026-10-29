@@ -4,11 +4,21 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-29 16:16 UTC · 共 **140** 条(强烈推荐 23 / 值得 117)
+**更新**: 2026-10-29 21:53 UTC · 共 **140** 条(强烈推荐 23 / 值得 117)
 
 ---
 
 ## 强烈推荐复现
+
+### GitLab CI/CD正则缺陷未授权RCE
+[CVE-2026-97229](https://nvd.nist.gov/vuln/detail/CVE-2026-97229) | P0 立即处置 | 开发运维/CI | CVSS 10.0 | EPSS 18.4% | 披露 2026-10-13 | 入库 2026-10-13
+🔥 KEV 在野利用,限期 2026-11-01 | PoC 源码可用 | 开源,可源码审计复现
+未认证攻击者可借CI/CD配置中的恶意正则触发服务端任意代码执行，CVSS 10.0且已在野利用
+复现: 强烈推荐 — 未授权入口在CI/CD配置正则解析，提交含恶意正则的流水线配置触发 · 影响面: 自建代码托管平台，常暴露公网
+处置: 升级至19.2.8/19.3.5/19.4.2；无法升级先禁用不可信项目的CI/CD运行
+影响: gitlab gitlab >=19.2.0 <19.2.8; gitlab gitlab >=19.2.0 <19.2.8
+PoC: [jburgess-r7/CVE-2026-97229-PoC 63★(有源码)](https://github.com/jburgess-r7/CVE-2026-97229-PoC) · [gandli/cve-2026-97229-lab 1★(仅README)](https://github.com/gandli/cve-2026-97229-lab)
+参考: [厂商通告](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/630686) · [参考](https://hackerone.com/reports/4055749)
 
 ### ProFTPD mod_copy任意文件读写
 [CVE-2015-3306](https://nvd.nist.gov/vuln/detail/CVE-2015-3306) | P0 立即处置 | CVSS 10.0 | EPSS 96.8% | 披露 2015-05-18 | 入库 2026-10-08
@@ -113,14 +123,6 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 处置: 升级至18.11.13/19.3.6/19.4.3/19.5.1等修复版
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/633633) · [参考](https://hackerone.com/reports/4093475)
-
-### GitLab 未认证CI正则RCE
-[CVE-2026-97229](https://nvd.nist.gov/vuln/detail/CVE-2026-97229) | P1 重点关注 | 开发运维/CI | CVSS 10.0 | 披露 2026-10-13 | 入库 2026-10-13
-未认证攻击者在CI/CD配置中提交特制正则触发校验缺陷，可在GitLab服务器执行任意代码。
-复现: 强烈推荐 — 未授权提交含特制正则的CI/CD配置并触发流水线 · 影响面: 自托管DevOps平台，多暴露公网
-处置: 升级至 19.2.8、19.3.5 或 19.4.2 及以上版本
-影响: GitLab(产品与版本待 NVD/厂商补充)
-参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/630686) · [参考](https://hackerone.com/reports/4055749)
 
 ### Juniper SSC 命令注入RCE
 [CVE-2026-103406](https://nvd.nist.gov/vuln/detail/CVE-2026-103406) | P1 重点关注 | 网络设备 | CVSS 9.8 | 披露 2026-10-28 | 入库 2026-10-28
