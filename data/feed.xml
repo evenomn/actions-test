@@ -3,37 +3,467 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 29 Oct 2026 21:53:18 +0000</pubDate>
-    <lastBuildDate>Thu, 29 Oct 2026 21:53:18 +0000</lastBuildDate>
+    <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    <lastBuildDate>Fri, 30 Oct 2026 02:56:23 +0000</lastBuildDate>
     <item>
-      <title>[critical]GitLab CI/CD正则缺陷未授权RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97229</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97229-2026-10-29</guid>
-      <description>CVE-2026-97229 · 🎯P0 立即处置 · 披露 2026-10-13 · 组件 开发运维/CI · CVSS 10.0 · EPSS 18.4%,前 97% · 类型 整数溢出 · 难度 低(远程·免认证)
-GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain co…
-信号: 🔥 KEV 在野利用,CISA 限期 2026-11-01 | 有PoC | 关注词:gitlab
-[jburgess-r7/CVE-2026-97229-PoC 63★(有源码)](https://github.com/jburgess-r7/CVE-2026-97229-PoC) · [gandli/cve-2026-97229-lab 1★(仅README)](https://github.com/gandli/cve-2026-97229-lab)</description>
-      <pubDate>Thu, 29 Oct 2026 21:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Cisco SSL VPN未认证DoS重启</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-76418</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-76418-2026-10-29</guid>
-      <description>CVE-2026-76418 · 🎯P0 立即处置 · 披露 2026-10-28 · 组件 网络设备 · CVSS 8.6 · EPSS 0.6%,前 47% · 类型 CWE-690 · 难度 低(远程·免认证)
-A vulnerability in the Remote Access SSL VPN service of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defens…
-信号: 🔥 KEV 在野利用,CISA 限期 2026-11-01</description>
-      <pubDate>Thu, 29 Oct 2026 21:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Shelter认证密钥注册缺陷致服务接管</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107058</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107058-2026-10-29</guid>
-      <description>CVE-2026-107058 · 🎯P2 保持关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
-An issue in Shelter versionCode 445 allows attackers to register their own auth_key and execute a takeover of another user's binder service API and preference s…
+      <title>[critical]GEO my WP插件未授权反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61992</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61992-2026-10-30</guid>
+      <description>CVE-2026-61992 · 🎯P1 重点关注 · 披露 2026-10-29 · 组件 CMS · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in GEO my WordPress &lt;= 4.5.5.3 versions.
 信号:</description>
-      <pubDate>Thu, 29 Oct 2026 21:53:18 +0000</pubDate>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]WS_FTP未授权泄露管理员凭据</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-84295</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-84295-2026-10-30</guid>
+      <description>CVE-2026-84295 · 🎯P1 重点关注 · 披露 2026-10-29 · 组件 操作系统 · CVSS 10.0 · 类型 认证绕过/凭据保护不足 · 难度 低(远程·免认证)
+Improper authentication in Progress Software WS_FTP Server versions prior to 2024.0.6 and 2025.0.3 on Windows could allow an unauthenticated remote attacker to …
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Langflow OS命令注入远程RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-104339</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-104339-2026-10-30</guid>
+      <description>CVE-2026-104339 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 代码注入(RCE) · 难度 低(远程·免认证)
+IBM Langflow OSS 1.0.0 through 1.12.3 could allow a remote attacker to execute arbitrary code due to improper neutralization of special elements used in an OS c…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Gamezone 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62015</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62015-2026-10-30</guid>
+      <description>CVE-2026-62015 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Gamezone &lt;= 1.1.11 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Gamic 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62016</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62016-2026-10-30</guid>
+      <description>CVE-2026-62016 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Gamic &lt;= 1.19 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Good Homes 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62017</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62017-2026-10-30</guid>
+      <description>CVE-2026-62017 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Good Homes &lt;= 1.3.13 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Gunslinger 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62018</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62018-2026-10-30</guid>
+      <description>CVE-2026-62018 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Gunslinger &lt;= 1.11 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Zoho Flow 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62131</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62131-2026-10-30</guid>
+      <description>CVE-2026-62131 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Zoho Flow &lt;= 2.14.5 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]IBM Langflow OSS 未授权 认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93680</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93680-2026-10-30</guid>
+      <description>CVE-2026-93680 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+IBM Langflow OSS 1.0.0 through 1.12.8 could allow a remote attacker to bypass security restrictions due to improper authentication.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114358</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114358-2026-10-30</guid>
+      <description>CVE-2026-114358 · 🎯P1 重点关注 · 披露 2026-10-29 · 组件 容器/虚拟化 · CVSS 9.3 · EPSS 0.5%,前 43% · 类型 SQL注入 · 难度 低(远程·免认证)
+An unauthenticated remote attacker could exploit this vulnerability by supplying crafted SQL query through input fields to the targeted system.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Special Elements 未授权 SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115964</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115964-2026-10-30</guid>
+      <description>CVE-2026-115964 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.3 · 类型 SQL注入 · 难度 低(远程·免认证)
+Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in StylemixThemes Motors motors-car-dealership-classified-lis…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Connect 未授权 越界写入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111732</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111732-2026-10-30</guid>
+      <description>CVE-2026-111732 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.3 · 类型 越界写入 · 难度 低(远程·免认证)
+A crafted Connect request causes an out-of-bounds write. This can lead to a crash (denial of service) or potentially arbitrary code execution.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]GITHUB_TOKEN 未授权 CWE-829</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-118762</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-118762-2026-10-30</guid>
+      <description>CVE-2026-118762 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.3 · 类型 CWE-829 · 难度 低(远程·免认证·需用户交互)
+Because actions/checkout persists the elevated GITHUB_TOKEN in Git configuration until after untrusted code executes, an external contributor whose pull request…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Veeam Virtualization Extensions 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2023-22793</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2023-22793-2026-10-30</guid>
+      <description>CVE-2023-22793 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.3 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+A vulnerability allowing an unauthenticated attacker to perform remote code execution (RCE) on servers running the Veeam Virtualization Extensions service of Ve…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Acceptance 未授权 CWE-349</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112256</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112256-2026-10-30</guid>
+      <description>CVE-2026-112256 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.2 · 类型 CWE-349 · 难度 低(远程·免认证)
+Acceptance of extraneous untrusted data with trusted data vulnerability in OpenText Advanced Authentication Server allows Accessing Functionality Not Properly C…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FFI 未授权 越界读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-118769</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-118769-2026-10-30</guid>
+      <description>CVE-2026-118769 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.2 · 类型 越界读取/CWE-681 · 难度 低(远程·利用条件苛刻·免认证)
+In an application that accepts external algorithm parameter strings and uses the FFI raw ECB mode, an attacker can select the variable-block-size Lion cipher so…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Insecure 未授权 访问控制缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107015</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107015-2026-10-30</guid>
+      <description>CVE-2026-107015 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.1 · 类型 访问控制缺失 · 难度 低(远程·免认证)
+Insecure permissions in Simple Contacts Pro versionCode 107 allow unauthorized attackers to write and read notes in another user's' note database.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Insecure 未授权 CWE-926</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107032</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107032-2026-10-30</guid>
+      <description>CVE-2026-107032 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.1 · 类型 CWE-926 · 难度 低(远程·免认证)
+Insecure permissions in Bulk Share : Location Sender v2.1.0 (versionCode 5) allows unauthorized attackers to invoke an exported component, leading to arbitrary …
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Docat 任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61645</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61645-2026-10-30</guid>
+      <description>CVE-2026-61645 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.1 · 类型 任意文件上传 · 难度 低(远程·需低权限)
+An attacker can overwrite sensitive configuration files or place malicious files on the Docat web server.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Progress Software WS_FTP Server 未授权 命令注入(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-90865</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-90865-2026-10-30</guid>
+      <description>CVE-2026-90865 · 🎯P1 重点关注 · 披露 2026-10-29 · 组件 操作系统 · CVSS 9.0 · 类型 命令注入(RCE)/参数拼接注入 · 难度 低(远程·利用条件苛刻·免认证)
+An OS command injection vulnerability in Progress Software WS_FTP Server versions prior to 2024.0.7 and 2025.0.4 on Windows could allow arbitrary command execut…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AjaxLoadMore未授权代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61991</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61991-2026-10-30</guid>
+      <description>CVE-2026-61991 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 10.0 · 类型 代码注入(RCE) · 难度 低(远程·免认证)
+Unauthenticated Remote Code Execution (RCE) in AjaxLoadMore Cache &lt;= 3.1.1 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Langflow缺失授权致远程代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107327</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107327-2026-10-30</guid>
+      <description>CVE-2026-107327 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.9 · 类型 缺失授权(越权) · 难度 低(远程·需低权限)
+IBM Langflow OSS 1.0.0 through 1.12.4 could allow a remote authenticated attacker to execute arbitrary code due to missing authorization.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Langflow代码注入远程代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107328</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107328-2026-10-30</guid>
+      <description>CVE-2026-107328 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+IBM Langflow OSS 1.0.0 through 1.12.4 could allow a remote authenticated attacker to execute arbitrary code due to improper neutralization of code in eval/exec.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Langflow代码生成不当致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107329</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107329-2026-10-30</guid>
+      <description>CVE-2026-107329 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+IBM Langflow OSS 1.0.0 through 1.12.4 could allow a remote authenticated attacker to execute arbitrary code due to improper control of code generation.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Frappe文件上传路径穿越RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119145</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119145-2026-10-30</guid>
+      <description>CVE-2026-119145 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+Authenticated attackers can upload crafted files to locations outside the intended storage directory to achieve remote code execution on the server.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]WS_FTP命令注入可执行系统命令</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-90868</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-90868-2026-10-30</guid>
+      <description>CVE-2026-90868 · 🎯P1 重点关注 · 披露 2026-10-29 · 组件 操作系统 · CVSS 9.9 · 类型 命令注入(RCE)/参数拼接注入 · 难度 低(远程·需低权限)
+An OS command injection vulnerability in Progress Software WS_FTP Server versions prior to 2024.0.7 and 2025.0.4 on Windows could allow arbitrary command execut…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Langflow代码生成失控致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110186</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110186-2026-10-30</guid>
+      <description>CVE-2026-110186 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 代码注入(RCE) · 难度 低(远程·免认证)
+IBM Langflow OSS 1.0.0 through 1.12.8 could allow a remote attacker to execute arbitrary code due to improper control of code generation.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]RexCoin主题未授权反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-54856</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-54856-2026-10-30</guid>
+      <description>CVE-2026-54856 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in RexCoin &lt;= 1.2.6 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Quirky主题未授权反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-54857</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-54857-2026-10-30</guid>
+      <description>CVE-2026-54857 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Quirky &lt;= 1.23 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Printy主题未授权反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-54858</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-54858-2026-10-30</guid>
+      <description>CVE-2026-54858 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Printy &lt;= 1.13.0 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Preservation主题反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-54859</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-54859-2026-10-30</guid>
+      <description>CVE-2026-54859 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Preservation &lt;= 1.15 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Ozisti主题未授权反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-54860</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-54860-2026-10-30</guid>
+      <description>CVE-2026-54860 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Ozisti &lt;= 1.1.10 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Legal Stone主题反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61997</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61997-2026-10-30</guid>
+      <description>CVE-2026-61997 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Legal Stone &lt;= 1.2.11 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Le Truffe主题未授权反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61998</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61998-2026-10-30</guid>
+      <description>CVE-2026-61998 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Le Truffe &lt;= 1.1.7 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Marcell主题未授权反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62001</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62001-2026-10-30</guid>
+      <description>CVE-2026-62001 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Marcell &lt;= 1.2.14 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Meals&amp;Wheels主题反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62002</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62002-2026-10-30</guid>
+      <description>CVE-2026-62002 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Meals &amp; Wheels &lt;= 1.1.13 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Mission主题未授权反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62003</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62003-2026-10-30</guid>
+      <description>CVE-2026-62003 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Mission &lt;= 1.22 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Motorix未认证反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62004</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62004-2026-10-30</guid>
+      <description>CVE-2026-62004 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Motorix &lt;= 1.11 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Muzicon未认证反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62005</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62005-2026-10-30</guid>
+      <description>CVE-2026-62005 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Muzicon &lt;= 1.15 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Nuts未认证反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62006</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62006-2026-10-30</guid>
+      <description>CVE-2026-62006 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Nuts &lt;= 1.12 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Orpheus未认证反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62008</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62008-2026-10-30</guid>
+      <description>CVE-2026-62008 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Orpheus &lt;= 1.8 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Filmax未认证反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62009</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62009-2026-10-30</guid>
+      <description>CVE-2026-62009 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Filmax &lt;= 1.1.11 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Avventure未认证反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62010</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62010-2026-10-30</guid>
+      <description>CVE-2026-62010 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Avventure &lt;= 1.1.12 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Bonbon未认证反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62011</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62011-2026-10-30</guid>
+      <description>CVE-2026-62011 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Bonbon &lt;= 1.11 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Coinpress未认证反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62012</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62012-2026-10-30</guid>
+      <description>CVE-2026-62012 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Coinpress &lt;= 1.0.15 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Edge Decor未认证反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62013</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62013-2026-10-30</guid>
+      <description>CVE-2026-62013 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in Edge Decor &lt;= 2.9 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]EmojiNation未认证反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62014</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62014-2026-10-30</guid>
+      <description>CVE-2026-62014 · 🎯P1 重点关注 · 披露 2026-10-29 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Unauthenticated PHP Object Injection in EmojiNation &lt;= 1.0.12 versions.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Rhino 访问控制缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-103093</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-103093-2026-10-30</guid>
+      <description>CVE-2026-103093 · 🎯P1 重点关注 · 披露 2026-10-29 · 组件 ERP/业务系统 · CVSS 9.4 · 类型 访问控制缺失 · 难度 中(远程·需高权限)
+This vulnerability could enable an authenticated user with the admin role to bypass Rhino sandbox restrictions and execute arbitrary code on the underlying host…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Missing 缺失授权(越权)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-90863</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-90863-2026-10-30</guid>
+      <description>CVE-2026-90863 · 🎯P1 重点关注 · 披露 2026-10-29 · 组件 操作系统 · CVSS 9.1 · 类型 缺失授权(越权)/CWE-915 · 难度 中(远程·需高权限)
+Missing authorization in the administrative interface of Progress Software WS_FTP Server versions prior to 2024.0.7 and 2025.0.4 on Windows could allow a delega…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Progress Software WS_FTP Server 路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-90864</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-90864-2026-10-30</guid>
+      <description>CVE-2026-90864 · 🎯P1 重点关注 · 披露 2026-10-29 · 组件 操作系统 · CVSS 9.1 · 类型 路径遍历/任意文件读取/任意文件上传 · 难度 中(远程·需高权限)
+A path traversal vulnerability in Progress Software WS_FTP Server versions prior to 2024.0.7 and 2025.0.4 on Windows could allow a delegated Host Administrator …
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>今日要点</title>
+      <description>- 清单未见KEV或勒索标记，暂无在野利用证据。
+- 批量披露多枚9.8反序列化RCE，呈集中公告趋势。
+- 最优先处置CVSS 10.0操作系统认证绕过CVE-2026-84295。
+- CMS反序列化RCE CVE-2026-61992应同步紧急修复。</description>
+      <pubDate>Fri, 30 Oct 2026 02:56:23 +0000</pubDate>
     </item>
   </channel>
 </rss>

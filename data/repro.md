@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-29 21:53 UTC · 共 **140** 条(强烈推荐 23 / 值得 117)
+**更新**: 2026-10-30 02:56 UTC · 共 **142** 条(强烈推荐 23 / 值得 119)
 
 ---
 
@@ -400,6 +400,13 @@ PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/ho
 影响: fortinet fortios >=6.4.0 <7.4.10; fortinet fortios >=7.6.0 <7.6.5
 参考: [厂商通告](https://fortiguard.fortinet.com/psirt/FG-IR-26-122) · [参考](https://cert-portal.siemens.com/productcert/html/ssa-975644.html) · [参考](https://unit42.paloaltonetworks.com/fortimanager-cve-2024-47575-peerstitch-malware/#post-188095-_guyq53ar8k05)
 
+### WS_FTP未授权泄露管理员凭据
+[CVE-2026-84295](https://nvd.nist.gov/vuln/detail/CVE-2026-84295) | P1 重点关注 | 操作系统 | CVSS 10.0 | 披露 2026-10-29 | 入库 2026-10-30
+未授权远程攻击者可读取敏感信息获取管理员凭据，进而接管文件传输服务器
+复现: 值得 — 未授权访问WS_FTP管理/配置相关接口读取凭据，需Windows部署 · 影响面: 边界文件传输服务器，常暴露公网
+处置: 升级至2024.0.6或2025.0.3及之后版本
+参考: [参考](https://progress.lightning.force.com/lightning/r/Knowledge__kav/ka7Pb000001vl86IAA/view)
+
 ### SOA Suite 未认证 T3/IIOP
 [CVE-2026-91216](https://nvd.nist.gov/vuln/detail/CVE-2026-91216) | P0 立即处置 | OA/协同办公 | CVSS 10.0 | 披露 2026-10-20 | 入库 2026-10-20
 未认证攻击者可通过网络经 T3/IIOP 访问 SOA Suite Fabric Layer，轻松入侵并控制该产品。
@@ -534,6 +541,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### Langflow OS命令注入远程RCE
+[CVE-2026-104339](https://nvd.nist.gov/vuln/detail/CVE-2026-104339) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-29 | 入库 2026-10-30
+远程攻击者可向Langflow组件接口注入系统命令，执行任意代码控制实例
+复现: 值得 — 访问Langflow组件/接口，构造参数注入OS命令触发执行 · 影响面: AI应用编排平台，内网/云上暴露
+处置: 升级至官方修复版本，限制服务对外访问
+参考: [参考](https://www.ibm.com/support/pages/node/7293015)
 
 ### mlflow评分器反序列化RCE
 [CVE-2026-116692](https://nvd.nist.gov/vuln/detail/CVE-2026-116692) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-27 | 入库 2026-10-28
