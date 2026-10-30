@@ -5,7 +5,70 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 30 Oct 2026 07:19:56 +0000</pubDate>
-    <lastBuildDate>Fri, 30 Oct 2026 07:19:56 +0000</lastBuildDate>
+    <pubDate>Fri, 30 Oct 2026 16:03:27 +0000</pubDate>
+    <lastBuildDate>Fri, 30 Oct 2026 16:03:27 +0000</lastBuildDate>
+    <item>
+      <title>[critical]大华ICC命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2025-31704</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2025-31704-2026-10-30</guid>
+      <description>CVE-2025-31704 · 🎯P1 重点关注 · 披露 2026-10-30 · 组件 视频监控 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+A remote attacker could send a specially crafted request to the affected system, allowing the attacker to execute arbitrary commands, resulting in remote code e…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 16:03:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Vvveb密码重置认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110799</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110799-2026-10-30</guid>
+      <description>CVE-2026-110799 · 🎯P1 重点关注 · 披露 2026-10-30 · 组件 安全设备 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+Prior to version 1.0.8.7, the password reset functionality is vulnerable to an Authentication Bypass due to insufficient validation of the user and token GET pa…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 16:03:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]报告写入组件路径遍历</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61738</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61738-2026-10-30</guid>
+      <description>CVE-2026-61738 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 10.0 · 类型 路径遍历/任意文件读取/CWE-73 · 难度 低(远程·免认证)
+A traversal filename therefore writes the supplied JSON outside the intended report directory.
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 16:03:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]SOC平台存储型XSS</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61728</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61728-2026-10-30</guid>
+      <description>CVE-2026-61728 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.9 · 类型 XSS/CWE-922 · 难度 低(远程·需低权限)
+When another user views the poisoned alert, stored script executes on the application origin; the same unsanitized rendering pattern affects server-stored SOC c…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 16:03:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OpenDeepWiki硬编码JWT密钥</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119597</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119597-2026-10-30</guid>
+      <description>CVE-2026-119597 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 CWE-321 · 难度 低(远程·免认证)
+OpenDeepWiki through 2.0.6 contains a hard-coded JWT signing key vulnerability that allows unauthenticated attackers to forge administrator tokens using the pub…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 16:03:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MuseBot默认会话密钥绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119660</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119660-2026-10-30</guid>
+      <description>CVE-2026-119660 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 CWE-1394 · 难度 低(远程·免认证)
+MuseBot before 2.0.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to forge admin sessions by using the hard-coded defau…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 16:03:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ng-antd-admin认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61737</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61737-2026-10-30</guid>
+      <description>CVE-2026-61737 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 CWE-321 · 难度 低(远程·免认证)
+An attacker can bypass authentication and authorization, impersonate any user including administrators, and access protected API endpoints, leading to account t…
+信号:</description>
+      <pubDate>Fri, 30 Oct 2026 16:03:27 +0000</pubDate>
+    </item>
   </channel>
 </rss>
