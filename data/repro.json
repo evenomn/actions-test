@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-10-30T16:03:27+00:00",
- "count": 142,
+ "updated_at": "2026-10-30T21:37:51+00:00",
+ "count": 144,
  "count_recommended": 23,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -1915,6 +1915,50 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-111357",
+   "title": "Ivanti VPN提权至root",
+   "first_seen": "2026-10-30",
+   "last_seen": "2026-10-30",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-15",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "滥用DSCache配置信任缺陷触发提权至root",
+   "impact_scope": "边界VPN设备，常暴露公网",
+   "action_zh": "升级至25.1.1.3并排查DSCache配置",
+   "summary_zh": "攻击者可滥用DSCache信任缺陷提权至root，已在野利用并控制VPN设备",
+   "category": "边界设备/VPN",
+   "cvss": 7.0,
+   "epss": 0.00316,
+   "difficulty": "高(需本地访问·利用条件苛刻·需低权限)",
+   "kev": true,
+   "kev_due": "2026-11-02",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "ivanti connect_secure >=25.1.0.0 <25.1.1.3",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111357"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111357",
+   "change_note": null
+  },
+  {
    "id": "CVE-2025-61624",
    "title": "FortiOS 路径遍历任意文件读取",
    "first_seen": "2026-10-16",
@@ -1992,6 +2036,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84295",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-112816",
+   "title": "LXD证书校验缺陷可接管集群",
+   "first_seen": "2026-10-30",
+   "last_seen": "2026-10-30",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-30",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "向LXD HTTPS监听发送特制证书链冒充受信客户端",
+   "impact_scope": "容器/虚机管理面，集群接管风险",
+   "action_zh": "升级至6.10.1/5.21.9等修复版本",
+   "summary_zh": "未授权攻击者用特制证书链冒充受信客户端，完全控制LXD集群与虚机",
+   "category": null,
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Ubuntu(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://discourse.ubuntu.com/t/lxd-4-0-15-lts-has-been-released/90571"
+    },
+    {
+     "label": "参考",
+     "url": "https://discourse.ubuntu.com/t/lxd-5-0-11-lts-has-been-released/90570/1"
+    },
+    {
+     "label": "参考",
+     "url": "https://discourse.ubuntu.com/t/lxd-5-21-9-lts-has-been-released/90565/1"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112816",
    "change_note": null
   },
   {

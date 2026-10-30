@@ -1,22 +1,23 @@
 {
  "version": 3,
- "generated_at": "2026-10-30T16:03:27+00:00",
+ "generated_at": "2026-10-30T21:37:51+00:00",
  "lookback_hours": 5,
- "count": 7,
+ "count": 12,
  "stats": {
-  "total": 7,
+  "total": 12,
   "by_tier": {
-   "critical": 7
+   "critical": 12
   },
   "by_urgency": {
-   "P1 重点关注": 7
+   "P1 重点关注": 10,
+   "P0 立即处置": 2
   },
   "by_category": {
-   "未知": 5,
-   "视频监控": 1,
-   "安全设备": 1
+   "未知": 9,
+   "边界设备/VPN": 2,
+   "操作系统": 1
   },
-  "kev": 0,
+  "kev": 2,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
@@ -24,28 +25,121 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2025-31704",
+   "id": "CVE-2026-111357",
    "tier": "critical",
-   "title": "大华ICC命令注入RCE",
-   "title_zh": "大华ICC命令注入RCE",
-   "summary_zh": "远程未认证攻击者向大华ICC发送特制请求，可注入系统命令并执行任意代码",
-   "published": "2026-10-30T11:17:31.450",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "title": "Ivanti VPN提权至root",
+   "title_zh": "Ivanti VPN提权至root",
+   "summary_zh": "攻击者可滥用DSCache信任缺陷提权至root，已在野利用并控制VPN设备",
+   "published": "2026-10-15T21:17:13.190",
+   "cvss": 7.0,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00316,
+   "epss_percentile": 0.24569,
+   "cwe_labels": [
+    "CWE-829"
+   ],
+   "difficulty": "高(需本地访问·利用条件苛刻·需低权限)",
+   "products": [
+    "ivanti connect_secure"
+   ],
+   "affected": "ivanti connect_secure >=25.1.0.0 <25.1.1.3",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111357"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-02",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至25.1.1.3并排查DSCache配置",
+   "repro_worthy": "值得",
+   "repro_note": "滥用DSCache配置信任缺陷触发提权至root",
+   "impact_scope": "边界VPN设备，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111357",
+   "description": "Ivanti Connect Secure 22.8R2.4 mishandles the manner in which the dsinvoked broker trusts DSCache configuration data, leading to privilege escalation to root, as exploited in the wild in October 2026."
+  },
+  {
+   "id": "CVE-2026-118527",
+   "tier": "critical",
+   "title": "Ivanti VPN可预测标识符上传文件",
+   "title_zh": "Ivanti VPN可预测标识符上传文件",
+   "summary_zh": "远程认证攻击者可预测路径上传恶意文件，并串联其他漏洞提权控制设备",
+   "published": "",
+   "cvss": null,
+   "severity": null,
+   "vector": null,
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入(RCE)"
+    "CWE-340"
+   ],
+   "difficulty": null,
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-13",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级Ivanti Connect Secure至最新修复版",
+   "repro_worthy": "一般",
+   "repro_note": "认证后利用可预测标识符上传文件至已知路径",
+   "impact_scope": "边界VPN设备，可作攻击链入口",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118527",
+   "description": "Ivanti Connect Secure contains a generation of predictable numbers or identifiers vulnerability that allows a remote authenticated attacker to upload files with attacker-controlled content to a known location on disk. This vulnerability can be chained with CVE-2026-104935 and CVE-2026-111357."
+  },
+  {
+   "id": "CVE-2026-112816",
+   "tier": "critical",
+   "title": "LXD证书校验缺陷可接管集群",
+   "title_zh": "LXD证书校验缺陷可接管集群",
+   "summary_zh": "未授权攻击者用特制证书链冒充受信客户端，完全控制LXD集群与虚机",
+   "published": "2026-10-30T17:17:14.293",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "证书校验缺陷"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": null,
+   "affected": "Ubuntu(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.cnvd.org.cn/flaw/show/CNVD-2025-00420"
+     "url": "https://discourse.ubuntu.com/t/lxd-4-0-15-lts-has-been-released/90571"
+    },
+    {
+     "label": "参考",
+     "url": "https://discourse.ubuntu.com/t/lxd-5-0-11-lts-has-been-released/90570/1"
+    },
+    {
+     "label": "参考",
+     "url": "https://discourse.ubuntu.com/t/lxd-5-21-9-lts-has-been-released/90565/1"
     }
    ],
    "poc": [],
@@ -56,68 +150,28 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级厂商修复版本，限制ICC管理面暴露",
-   "repro_worthy": "一般",
-   "repro_note": "未认证向ICC接口发送特制请求，构造命令注入参数；需目标可达",
-   "impact_scope": "视频监控管理平台，常暴露内网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-31704",
-   "description": "A vulnerability has been found in the Dahua Intelligent Connection Center. A remote attacker could send a specially crafted request to the affected system, allowing the attacker to execute arbitrary commands, resulting in remote code execution."
+   "action_zh": "升级至6.10.1/5.21.9等修复版本",
+   "repro_worthy": "值得",
+   "repro_note": "向LXD HTTPS监听发送特制证书链冒充受信客户端",
+   "impact_scope": "容器/虚机管理面，集群接管风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112816",
+   "description": "Improper certificate validation in the HTTPS listener in Canonical LXD 4.0.14, 5.0.10, 5.21.8, 6.9 before 4.0.15, 5.0.11, 5.21.9, 6.10.1 allows an unauthenticated attacker to authenticate as any trusted client and gain full access to the cluster and managed virtual machines via a crafted certificate chain."
   },
   {
-   "id": "CVE-2026-110799",
+   "id": "CVE-2026-61826",
    "tier": "critical",
-   "title": "Vvveb密码重置认证绕过",
-   "title_zh": "Vvveb密码重置认证绕过",
-   "summary_zh": "未认证攻击者伪造user和token参数调用密码重置，可接管任意账户",
-   "published": "2026-10-30T15:16:44.787",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/givanz/Vvveb/security/advisories/GHSA-qw5g-hcm8-9jcj"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至1.0.8.7并核查异常密码重置",
-   "repro_worthy": "一般",
-   "repro_note": "未授权访问密码重置接口，构造user/token GET参数绕过校验",
-   "impact_scope": "CMS网站后台，可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110799",
-   "description": "Vvveb is a powerful and easy to use CMS with page builder to build websites, blogs or ecommerce stores. Prior to version 1.0.8.7, the password reset functionality is vulnerable to an Authentication Bypass due to insufficient validation of the user and token GET parameters. This issue has been patched in version 1.0.8.7."
-  },
-  {
-   "id": "CVE-2026-61738",
-   "tier": "critical",
-   "title": "报告写入组件路径遍历",
-   "title_zh": "报告写入组件路径遍历",
-   "summary_zh": "能提交报告任务者控制报告文件名，将JSON写出目录并覆盖主机文件，可破坏应用运行",
-   "published": "2026-10-30T15:16:53.507",
+   "title": "Plex OAuth PIN越权绑定令牌",
+   "title_zh": "Plex OAuth PIN越权绑定令牌",
+   "summary_zh": "攻击者用自有Plex账号完成PIN并绑定令牌，可越权控制目标实例",
+   "published": "2026-10-30T17:17:27.497",
    "cvss": 10.0,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "路径遍历/任意文件读取",
-    "CWE-73"
+    "CSRF",
+    "缺失授权(越权)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -126,15 +180,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/socfortress/CoPilot/commit/1881ef8d28bc7f45ffa88d7ba4fcca7302355508"
+     "url": "https://github.com/morpheus65535/bazarr/commit/4bd29252feebd0803e84cc3ce1bdd24c3a076ed4"
     },
     {
      "label": "参考",
-     "url": "https://github.com/socfortress/CoPilot/commit/bfa630b65d554670c7462a32ce6fd4e3cbd0254c"
+     "url": "https://github.com/morpheus65535/bazarr/commit/f9a8a9514944be0e7b826e67cde042cebfe9c97e"
     },
     {
      "label": "参考",
-     "url": "https://github.com/socfortress/CoPilot/pull/940"
+     "url": "https://github.com/morpheus65535/bazarr/security/advisories/GHSA-fvcv-hh55-x3r4"
     }
    ],
    "poc": [],
@@ -145,28 +199,28 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "应用修复，校验报告文件名并限制目录权限",
+   "action_zh": "升级Plex修复版本并限制管理接口访问",
    "repro_worthy": "一般",
-   "repro_note": "构造含../的报告文件名并提交JSON，观察报告目录外写入",
-   "impact_scope": "报告生成服务，主机文件可被覆盖",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61738",
-   "description": "A traversal filename therefore writes the supplied JSON outside the intended report directory. This permits host-file overwrite subject to the accepted JSON-content constraint and can disrupt application operation; the demonstrated primitive does not establish unrestricted executable contents or unconditional cross-tenant confidentiality loss."
+   "repro_note": "调用/api/plex/oauth/pin并完成PIN绑定攻击者令牌",
+   "impact_scope": "媒体服务器，账号与实例接管风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61826",
+   "description": "Anonymous callers can invoke `POST /api/plex/oauth/logout` to clear credentials and disable the integration, or `POST /api/plex/apikey` to persist an attacker-selected key, without a PIN, account or state precondition. `POST /api/plex/oauth/pin` and `GET /api/plex/oauth/pin/<pin_id>/check` additionally allow an attacker who completes a PIN with an attacker-controlled Plex account to bind that account's token to the instance."
   },
   {
-   "id": "CVE-2026-61728",
+   "id": "CVE-2026-116241",
    "tier": "critical",
-   "title": "SOC平台存储型XSS",
-   "title_zh": "SOC平台存储型XSS",
-   "summary_zh": "低权限用户污染告警或案例字段，其他用户查看时执行脚本，可劫持会话",
-   "published": "2026-10-30T15:16:52.937",
+   "title": "pgAdmin命令注入可执行系统命令",
+   "title_zh": "pgAdmin命令注入可执行系统命令",
+   "summary_zh": "认证用户执行特制\\copy TO PROGRAM语句，可在pgAdmin主机执行系统命令",
+   "published": "2026-10-30T20:17:03.813",
    "cvss": 9.9,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "XSS",
-    "CWE-922"
+    "命令注入(RCE)",
+    "CWE-115"
    ],
    "difficulty": "低(远程·需低权限)",
    "products": [],
@@ -175,15 +229,11 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/socfortress/CoPilot/commit/461e8f84794aee8ada588de3bad79430dc9f4f3d"
+     "url": "https://github.com/pgadmin-org/pgadmin4/commit/9be31a019f780647fb689c458408c8803263c812"
     },
     {
      "label": "参考",
-     "url": "https://github.com/socfortress/CoPilot/commit/ab9078bdee5d1c737f37f481103984665a670bdd"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/socfortress/CoPilot/pull/904"
+     "url": "https://github.com/pgadmin-org/pgadmin4/issues/10663"
     }
    ],
    "poc": [],
@@ -194,27 +244,76 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级修复，对SOC字段输出编码并启用CSP",
+   "action_zh": "升级pgAdmin并禁用非必要TO PROGRAM",
    "repro_worthy": "一般",
-   "repro_note": "在告警/案例字段注入脚本，诱使其他用户查看对应详情页",
-   "impact_scope": "SOC运营平台，可劫持分析师会话",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61728",
-   "description": "When another user views the poisoned alert, stored script executes on the application origin; the same unsanitized rendering pattern affects server-stored SOC case, asset and health-check fields in `SocCaseNote.vue`, `SocCaseItem.vue`, `SocCaseAssetsItem.vue`, `SocAlertAssetsItem.vue` and `HealthcheckItem.vue`. An injected script can steal both tokens, impersonate the viewer and obtain fresh tokens through `/auth/refresh`."
+   "repro_note": "认证用户在pgAdmin执行特制\\copy(...) TO PROGRAM语句",
+   "impact_scope": "数据库管理工具，常存高权凭据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116241",
+   "description": "pgAdmin's and psql's view of the quoting then diverged, a closing parenthesis hidden from the check ended the \\copy (...) wrapper, and a following TO PROGRAM clause was executed by psql on the pgAdmin host, as the operating-system account running pgAdmin, before the server rejected the statement. This is a bypass of the fix for CVE-2026-17566."
   },
   {
-   "id": "CVE-2026-119597",
+   "id": "CVE-2026-62853",
    "tier": "critical",
-   "title": "OpenDeepWiki硬编码JWT密钥",
-   "title_zh": "OpenDeepWiki硬编码JWT密钥",
-   "summary_zh": "未认证者用公开Jwt:SecretKey伪造Admin令牌，控制用户、角色、仓库与API密钥",
-   "published": "2026-10-30T14:16:47.770",
+   "title": "ThingLinks认证后代码注入RCE",
+   "title_zh": "ThingLinks认证后代码注入RCE",
+   "summary_zh": "已认证攻击者可提交服务端编译执行的代码，获取服务器控制权",
+   "published": "2026-10-30T21:17:14.267",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)",
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mqttsnet/thinglinks/commit/311ee760dad798f48652722989fcea02349e13a3"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mqttsnet/thinglinks/releases/tag/v1.4.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mqttsnet/thinglinks/security/advisories/GHSA-9vph-5ccx-qp9v"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级ThingLinks并限制代码编译功能权限",
+   "repro_worthy": "一般",
+   "repro_note": "认证用户向代码执行功能提交恶意代码并触发实例化",
+   "impact_scope": "企业IoT平台，服务器失陷风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62853",
+   "description": "ThingLinks is an enterprise IoT platform. Prior to 1.4.0, the `/groovyScriptTest/registerScript` endpoint accepts user-supplied Groovy script content and passes it to an unsandboxed `Groovy compilation and loading` flow. An authenticated attacker can provide code that is compiled and instantiated on the server, resulting in arbitrary server-side code execution. The issue affects the `rule engine`'s Groovy script test/register flow. This issue is fixed in version 1.4.0."
+  },
+  {
+   "id": "CVE-2026-116386",
+   "tier": "critical",
+   "title": "SMS Alert插件未授权提权",
+   "title_zh": "SMS Alert插件未授权提权",
+   "summary_zh": "未授权攻击者可利用订单通知缺陷提升权限，接管站点或读取敏感数据",
+   "published": "2026-10-30T19:18:13.640",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-321"
+    "CWE-266"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -223,15 +322,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/AIDotNet/OpenDeepWiki"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/AIDotNet/OpenDeepWiki/blob/v2.0.6/src/OpenDeepWiki/Program.cs#L92"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/AIDotNet/OpenDeepWiki/blob/v2.0.6/src/OpenDeepWiki/appsettings.json#L27"
+     "url": "https://patchstack.com/database/wordpress/plugin/sms-alert/vulnerability/wordpress-sms-alert-order-notifications-plugin-4-0-2-privilege-escalation-vulnerability?_s_id=cve"
     }
    ],
    "poc": [],
@@ -242,27 +333,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级修复，更换JWT密钥并轮换API密钥",
-   "repro_worthy": "一般",
-   "repro_note": "读取appsettings.json中Jwt:SecretKey，签发Admin角色HS256令牌访问/api/admi",
-   "impact_scope": "知识库管理后台，可完全接管",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119597",
-   "description": "OpenDeepWiki through 2.0.6 contains a hard-coded JWT signing key vulnerability that allows unauthenticated attackers to forge administrator tokens using the publicly known Jwt:SecretKey in appsettings.json. Attackers can mint HS256 bearer tokens with an Admin role claim to access /api/admin endpoints and control users, roles, repositories, settings, and API keys."
+   "action_zh": "升级插件至最新版，无法升级则停用",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件，站点提权风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116386",
+   "description": "Unauthenticated Privilege Escalation in SMS Alert Order Notifications <= 4.0.2 versions."
   },
   {
-   "id": "CVE-2026-119660",
+   "id": "CVE-2026-119526",
    "tier": "critical",
-   "title": "MuseBot默认会话密钥绕过",
-   "title_zh": "MuseBot默认会话密钥绕过",
-   "summary_zh": "未认证者用硬编码session_key伪造管理员Cookie，读取敏感数据并停用机器人",
-   "published": "2026-10-30T15:16:50.197",
+   "title": "Royal Event主题反序列化RCE",
+   "title_zh": "Royal Event主题反序列化RCE",
+   "summary_zh": "攻击者可构造恶意序列化数据触发对象注入，最终在WordPress站点执行代码",
+   "published": "2026-10-30T19:18:20.673",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-1394"
+    "反序列化(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -271,15 +362,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/yincongcyincong/MuseBot"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/yincongcyincong/MuseBot/blob/v1.0.42/admin/conf/conf.go#L28"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/yincongcyincong/MuseBot/blob/v1.0.42/admin/controller/login.go#L19-L88"
+     "url": "https://patchstack.com/database/wordpress/theme/royal-event/vulnerability/wordpress-royal-event-theme-2-0-php-object-injection-vulnerability?_s_id=cve"
     }
    ],
    "poc": [],
@@ -290,27 +373,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至2.0.0，更换session_key并清理会话",
-   "repro_worthy": "一般",
-   "repro_note": "使用默认muse_bot_session_key签名含user_id的MuseBot-session Cookie",
-   "impact_scope": "机器人管理后台，可读配置与聊天记录",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119660",
-   "description": "MuseBot before 2.0.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to forge admin sessions by using the hard-coded default session_key 'muse_bot_session_key'. Attackers can sign a MuseBot-session cookie carrying a user_id to gain full administrative access, reading password hashes, chat records, and bot configuration, and stopping bots."
+   "action_zh": "升级主题至最新版或停用Royal Event",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress主题，站点RCE风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119526",
+   "description": "Deserialization of Untrusted Data vulnerability in ThemeREX Royal Event allows Object Injection. This issue affects Royal Event: from n/a through 2.0."
   },
   {
-   "id": "CVE-2026-61737",
+   "id": "CVE-2026-39738",
    "tier": "critical",
-   "title": "ng-antd-admin认证绕过",
-   "title_zh": "ng-antd-admin认证绕过",
-   "summary_zh": "攻击者可绕过认证授权，冒充任意用户含管理员，访问受保护API并接管账户",
-   "published": "2026-10-30T15:16:53.363",
+   "title": "FunnelKit未授权反序列化RCE",
+   "title_zh": "FunnelKit未授权反序列化RCE",
+   "summary_zh": "未授权攻击者可触发PHP对象注入，在受影响WordPress站点执行任意代码",
+   "published": "2026-10-30T19:18:24.427",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-321"
+    "反序列化(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -319,15 +402,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/huajian123/ng-antd-admin/commit/23e92ff9176074ee534af3ea3700b3652a9726a9"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/huajian123/ng-antd-admin/releases/tag/v22.0"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/huajian123/ng-antd-admin/security/advisories/GHSA-qphq-m2hv-wj5h"
+     "url": "https://patchstack.com/database/wordpress/plugin/wp-marketing-automations/vulnerability/wordpress-funnelkit-automations-plugin-3-8-6-1-php-object-injection-vulnerability?_s_id=cve"
     }
    ],
    "poc": [],
@@ -338,87 +413,143 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级修复，更换JWT密钥并审计受保护接口",
+   "action_zh": "升级FunnelKit Automations至最新版",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件，站点RCE风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-39738",
+   "description": "Unauthenticated PHP Object Injection in FunnelKit Automations <= 3.8.6.1 versions."
+  },
+  {
+   "id": "CVE-2026-90888",
+   "tier": "critical",
+   "title": "LeadSnap未授权反序列化RCE",
+   "title_zh": "LeadSnap未授权反序列化RCE",
+   "summary_zh": "未授权攻击者可触发PHP对象注入，在LeadSnap站点执行任意代码或接管",
+   "published": "2026-10-30T19:20:18.680",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/leadsnap/vulnerability/wordpress-leadsnap-plugin-1-25-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级LeadSnap至最新版或停用插件",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件，站点RCE风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-90888",
+   "description": "Unauthenticated PHP Object Injection in LeadSnap <= 1.25 versions."
+  },
+  {
+   "id": "CVE-2026-61620",
+   "tier": "critical",
+   "title": "HoneySQL DSL构造不当致SQL注入",
+   "title_zh": "HoneySQL DSL构造不当致SQL注入",
+   "summary_zh": "应用若将不可信输入传入keyword/symbol生成DSL，可被注入SQL窃取或篡改数据",
+   "published": "2026-10-30T20:17:10.967",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/seancorfield/honeysql/commit/1141fcd4597393d2af61c20a7cc82b8f1b3cea4a"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/seancorfield/honeysql/compare/v2.7.1390...v2.7.1392"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/seancorfield/honeysql/releases/tag/v2.7.1392"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2.7.1392以上并参数化查询",
    "repro_worthy": "一般",
-   "repro_note": "伪造或篡改认证令牌访问受保护API，验证用户与管理员越权",
-   "impact_scope": "后台管理模板，可能导致账户接管",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61737",
-   "description": "ng-antd-admin is an Angular and NestJS administration system template. An attacker can bypass authentication and authorization, impersonate any user including administrators, and access protected API endpoints, leading to account takeover, data leakage and unauthorized operations."
+   "repro_note": "应用将用户输入传给keyword/symbol生成并执行DSL",
+   "impact_scope": "Clojure数据库应用，注入风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61620",
+   "description": "From 2.0.0 until 2.7.1392, applications that pass user input or other arbitrary data into the HoneySQL `DSL` by calling `keyword` or `symbol` on that input can produce SQL strings that facilitate SQL injection when executed unchanged by a `JDBC` driver. The impact depends on the privileges of the database connection executing the generated statement."
+  },
+  {
+   "id": "CVE-2026-78403",
+   "tier": "critical",
+   "title": "Sentinel Keys HTTP溢出",
+   "title_zh": "Sentinel Keys HTTP溢出",
+   "summary_zh": "未授权攻击者向Sentinel Keys Server发送特制HTTP请求，可触发溢出或越权",
+   "published": "2026-10-30T20:17:17.843",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出",
+    "缺失授权(越权)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=50fc9f3b3b005f10bba8b41864e45a61&sysparm_article=KB0031216"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Sentinel Keys Server并限制HTTP访问",
+   "repro_worthy": "一般",
+   "repro_note": "向Sentinel Keys Server HTTP接口发送特制请求",
+   "impact_scope": "Windows许可服务，内网攻击面",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-78403",
+   "description": "Stack-based buffer overflow and missing authorization vulnerability in Thales Sentinel Keys Server on Windows allows Overflow Buffers. Sentinel Keys Server does not check the length of the first field in the HTTP request. An attacker may craft an HTTP request and send it to Sentinel Keys Server. It may lead to remote code execution as NT AUTHORITY\\SYSTEM. This issue affects Sentinel Keys Server: versions lower than 1.3.8.0."
   }
  ],
  "media": [],
- "commits": [
-  {
-   "repo": "php/php-src",
-   "sha": "5f4d73a697bf83ea9d25f542c3641e8b0c0951f8",
-   "url": "https://github.com/php/php-src/commit/5f4d73a697bf83ea9d25f542c3641e8b0c0951f8",
-   "title": "Fix potential infinite recursion in HYBRID/TAILCALL VMs (#25039)",
-   "date": "2026-10-30T14:46:22",
-   "score": 2,
-   "matched": [
-    "缓冲区溢出"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "9eae3ff58ca5152a75f0281f6100b4d3c1a1d866",
-   "url": "https://github.com/php/php-src/commit/9eae3ff58ca5152a75f0281f6100b4d3c1a1d866",
-   "title": "Load DECLARE_LAMBDA_FUNCTION cache slot once (#24598)",
-   "date": "2026-10-30T14:35:02",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "qemu/qemu",
-   "sha": "3992091713eb51a4a1cf0a592a30ae9e856c6b55",
-   "url": "https://github.com/qemu/qemu/commit/3992091713eb51a4a1cf0a592a30ae9e856c6b55",
-   "title": "accel/tcg: Do not flush and retry in place in tb_gen_code",
-   "date": "2026-10-30T12:06:15",
-   "score": 2,
-   "matched": [
-    "缓冲区溢出"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/ofbiz-framework",
-   "sha": "1234bc367afd381424a11ba8a66ec3ee721ea179",
-   "url": "https://github.com/apache/ofbiz-framework/commit/1234bc367afd381424a11ba8a66ec3ee721ea179",
-   "title": "Allow copying a GenericValue that was deserialized",
-   "date": "2026-10-30T11:30:17",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/ofbiz-framework",
-   "sha": "af50c9664ba9f9c26388c42fc3d3d190f2abb668",
-   "url": "https://github.com/apache/ofbiz-framework/commit/af50c9664ba9f9c26388c42fc3d3d190f2abb668",
-   "title": "Keep the config item of a restored ProductConfigWrapper and drop a duplicate price call",
-   "date": "2026-10-30T10:43:40",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "haproxy/haproxy",
-   "sha": "b02f93771f6c1fc48810794c05529cf1f130c2d9",
-   "url": "https://github.com/haproxy/haproxy/commit/b02f93771f6c1fc48810794c05529cf1f130c2d9",
-   "title": "BUG/MINOR: sample: fix NULL dereference in the ltime/utime converters",
-   "date": "2026-10-30T09:33:13",
-   "score": 2,
-   "matched": [
-    "格式串"
-   ],
-   "cve": null
-  }
- ]
+ "commits": []
 }

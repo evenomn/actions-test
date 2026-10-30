@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-30 16:03 UTC · 共 **142** 条(强烈推荐 23 / 值得 119)
+**更新**: 2026-10-30 21:37 UTC · 共 **144** 条(强烈推荐 23 / 值得 121)
 
 ---
 
@@ -391,6 +391,15 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 15★(有源码)](https://gi
 PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/horizon3ai/AhsayCBS-Auth-Bypass-RCE)
 参考: [参考](https://vuldb.com/cve/CVE-2026-105133) · [参考](https://vuldb.com/submit/942688) · [参考](https://vuldb.com/vuln/413350)
 
+### Ivanti VPN提权至root
+[CVE-2026-111357](https://nvd.nist.gov/vuln/detail/CVE-2026-111357) | P0 立即处置 | 边界设备/VPN | CVSS 7.0 | EPSS 0.3% | 披露 2026-10-15 | 入库 2026-10-30
+🔥 KEV 在野利用,限期 2026-11-02
+攻击者可滥用DSCache信任缺陷提权至root，已在野利用并控制VPN设备
+复现: 值得 — 滥用DSCache配置信任缺陷触发提权至root · 影响面: 边界VPN设备，常暴露公网
+处置: 升级至25.1.1.3并排查DSCache配置
+影响: ivanti connect_secure >=25.1.0.0 <25.1.1.3
+参考: [厂商通告](https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935) · [参考](https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111357)
+
 ### FortiOS 路径遍历任意文件读取
 [CVE-2025-61624](https://nvd.nist.gov/vuln/detail/CVE-2025-61624) | P0 立即处置 | 边界设备/VPN | CVSS 6.5 | EPSS 0.6% | 披露 2026-04-14 | 入库 2026-10-16
 🔥 KEV 在野利用,限期 2026-10-19
@@ -406,6 +415,14 @@ PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/ho
 复现: 值得 — 未授权访问WS_FTP管理/配置相关接口读取凭据，需Windows部署 · 影响面: 边界文件传输服务器，常暴露公网
 处置: 升级至2024.0.6或2025.0.3及之后版本
 参考: [参考](https://progress.lightning.force.com/lightning/r/Knowledge__kav/ka7Pb000001vl86IAA/view)
+
+### LXD证书校验缺陷可接管集群
+[CVE-2026-112816](https://nvd.nist.gov/vuln/detail/CVE-2026-112816) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-30 | 入库 2026-10-30
+未授权攻击者用特制证书链冒充受信客户端，完全控制LXD集群与虚机
+复现: 值得 — 向LXD HTTPS监听发送特制证书链冒充受信客户端 · 影响面: 容器/虚机管理面，集群接管风险
+处置: 升级至6.10.1/5.21.9等修复版本
+影响: Ubuntu(产品与版本待 NVD/厂商补充)
+参考: [参考](https://discourse.ubuntu.com/t/lxd-4-0-15-lts-has-been-released/90571) · [参考](https://discourse.ubuntu.com/t/lxd-5-0-11-lts-has-been-released/90570/1) · [参考](https://discourse.ubuntu.com/t/lxd-5-21-9-lts-has-been-released/90565/1)
 
 ### SOA Suite 未认证 T3/IIOP
 [CVE-2026-91216](https://nvd.nist.gov/vuln/detail/CVE-2026-91216) | P0 立即处置 | OA/协同办公 | CVSS 10.0 | 披露 2026-10-20 | 入库 2026-10-20
