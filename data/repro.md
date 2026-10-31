@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-10-30 21:37 UTC · 共 **144** 条(强烈推荐 23 / 值得 121)
+**更新**: 2026-10-31 02:42 UTC · 共 **149** 条(强烈推荐 24 / 值得 125)
 
 ---
 
@@ -197,6 +197,13 @@ PoC 源码可用
 影响: Citrix(产品与版本待 NVD/厂商补充)
 PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker)
 参考: [参考](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697191)
+
+### Teltonika RUTOS未授权命令执行
+[CVE-2026-82104](https://nvd.nist.gov/vuln/detail/CVE-2026-82104) | P1 重点关注 | CVSS 9.4 | EPSS 0.4% | 披露 2026-10-30 | 入库 2026-10-31
+未认证攻击者直接调用设备LUA函数绕过API校验，可在RUTOS/TSWOS设备上执行系统命令
+复现: 强烈推荐 — 未授权直接调用设备LUA函数接口，绕过正常API流程执行系统命令 · 影响面: 蜂窝/工业路由设备，常暴露公网
+处置: 升级至厂商修复版本；停止设备Web/API端口对内网外暴露
+参考: [参考](https://www.teltonika-networks.com/support/security-centre?report=CVE-2026-82104)
 
 ### Oracle Java未认证远程高危
 [CVE-2026-114820](https://nvd.nist.gov/vuln/detail/CVE-2026-114820) | P0 立即处置 | CVSS 9.1 | 披露 2026-10-24 | 入库 2026-10-24
@@ -559,6 +566,28 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
 
+### LMDeploy反序列化未授权RCE
+[CVE-2026-119706](https://nvd.nist.gov/vuln/detail/CVE-2026-119706) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-30 | 入库 2026-10-31
+未授权攻击者向/update_weights提交恶意pickle，反序列化执行系统命令。
+复现: 值得 — 向/update_weights提交base64 pickle触发反序列化 · 影响面: AI推理服务，常暴露内网/公网
+处置: 升级修复版本；临时禁用/update_weights或加认证
+参考: [参考](https://github.com/InternLM/lmdeploy) · [参考](https://github.com/InternLM/lmdeploy/blob/v0.18.0/lmdeploy/serve/openai/endpoints/management.py#L55-L60) · [参考](https://github.com/InternLM/lmdeploy/blob/v0.18.0/lmdeploy/turbomind/turbomind.py#L345)
+
+### setup接口未授权创建管理员
+[CVE-2026-63377](https://nvd.nist.gov/vuln/detail/CVE-2026-63377) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-30 | 入库 2026-10-31
+未认证网络攻击者可在合法管理员完成初始化前调用setup接口，抢占创建首个管理员账号
+复现: 值得 — 未授权POST /api/auth/setup提交管理员信息抢占首个账号，默认配置可打 · 影响面: 自建管理平台，暴露公网即失陷
+处置: 升级至3.0.1-beta及以上，或初始化完成前限制该接口访问
+参考: [参考](https://github.com/fctr-id/okta-ai-agent/commit/3b5ccaff8423cdfa6d26f5e133c01b8b71148df4) · [参考](https://github.com/fctr-id/okta-ai-agent/releases/tag/v3.0.1-beta) · [参考](https://github.com/fctr-id/okta-ai-agent/security/advisories/GHSA-536w-42p8-3qv9)
+
+### signalk-server路径遍历窃取密钥
+[GHSA-4xm8-rg9h-jhq2](https://github.com/advisories/GHSA-4xm8-rg9h-jhq2) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-30 | 入库 2026-10-31
+开源,可源码审计复现
+开启readonly时未授权攻击者经路径遍历读取security.json密钥，伪造JWT后可执行命令
+复现: 值得 — 未授权遍历notes接口读security.json取secretKey，再伪造JWT调用命令 · 影响面: 船艇/物联网数据网关，常暴露内网
+处置: 升级至2.34.0，并同步升级resources-provider至1.5.3
+影响: npm:signalk-server >= 2.0.0, < 2.34.0(修复: 2.34.0); npm:@signalk/resources-provider >= 1.0.0, < 1.5.3(修复: 1.5.3)
+
 ### Langflow OS命令注入远程RCE
 [CVE-2026-104339](https://nvd.nist.gov/vuln/detail/CVE-2026-104339) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-29 | 入库 2026-10-30
 远程攻击者可向Langflow组件接口注入系统命令，执行任意代码控制实例
@@ -727,6 +756,13 @@ PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy
 复现: 值得 — Streamable HTTP端点未校验Origin/Host · 影响面: 开源MCP组件,常暴露HTTP服务
 处置: 升级到 1.3.1
 影响: npm:obsidian-tc < 1.3.1(修复: 1.3.1)
+
+### ClickHouse整数溢出致未授权RCE
+[CVE-2026-116366](https://nvd.nist.gov/vuln/detail/CVE-2026-116366) | P1 重点关注 | CVSS 9.5 | 披露 2026-10-30 | 入库 2026-10-31
+具有网络访问的未认证用户可触发整数溢出，在特定条件下于ClickHouse服务器执行任意代码
+复现: 值得 — 未认证连接ClickHouse服务端口构造整数溢出请求，需满足特定条件 · 影响面: 内网分析型数据库，数据面核心
+处置: 升级至厂商修复版本；禁止未授权访问原生与HTTP端口
+参考: [参考](https://clickhouse.com/docs/resources/changelogs/security-changelog) · [参考](https://github.com/ClickHouse/ClickHouse/blob/master/SECURITY.md)
 
 ### CVE-2026-104848
 [CVE-2026-104848](https://nvd.nist.gov/vuln/detail/CVE-2026-104848) | CVSS 9.5 | 披露 2026-10-02 | 入库 2026-10-08

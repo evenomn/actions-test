@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-10-30T21:37:51+00:00",
- "count": 144,
- "count_recommended": 23,
+ "updated_at": "2026-10-31T02:42:24+00:00",
+ "count": 149,
+ "count_recommended": 24,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -922,6 +922,42 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107406",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-82104",
+   "title": "Teltonika RUTOS未授权命令执行",
+   "first_seen": "2026-10-31",
+   "last_seen": "2026-10-31",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-30",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权直接调用设备LUA函数接口，绕过正常API流程执行系统命令",
+   "impact_scope": "蜂窝/工业路由设备，常暴露公网",
+   "action_zh": "升级至厂商修复版本；停止设备Web/API端口对内网外暴露",
+   "summary_zh": "未认证攻击者直接调用设备LUA函数绕过API校验，可在RUTOS/TSWOS设备上执行系统命令",
+   "category": null,
+   "cvss": 9.4,
+   "epss": 0.00416,
+   "difficulty": "低(需相邻网络·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.teltonika-networks.com/support/security-centre?report=CVE-2026-82104"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82104",
    "change_note": null
   },
   {
@@ -2883,6 +2919,125 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-119706",
+   "title": "LMDeploy反序列化未授权RCE",
+   "first_seen": "2026-10-31",
+   "last_seen": "2026-10-31",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-30",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "向/update_weights提交base64 pickle触发反序列化",
+   "impact_scope": "AI推理服务，常暴露内网/公网",
+   "action_zh": "升级修复版本；临时禁用/update_weights或加认证",
+   "summary_zh": "未授权攻击者向/update_weights提交恶意pickle，反序列化执行系统命令。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/InternLM/lmdeploy"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/InternLM/lmdeploy/blob/v0.18.0/lmdeploy/serve/openai/endpoints/management.py#L55-L60"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/InternLM/lmdeploy/blob/v0.18.0/lmdeploy/turbomind/turbomind.py#L345"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119706",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-63377",
+   "title": "setup接口未授权创建管理员",
+   "first_seen": "2026-10-31",
+   "last_seen": "2026-10-31",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-30",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权POST /api/auth/setup提交管理员信息抢占首个账号，默认配置可打",
+   "impact_scope": "自建管理平台，暴露公网即失陷",
+   "action_zh": "升级至3.0.1-beta及以上，或初始化完成前限制该接口访问",
+   "summary_zh": "未认证网络攻击者可在合法管理员完成初始化前调用setup接口，抢占创建首个管理员账号",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/fctr-id/okta-ai-agent/commit/3b5ccaff8423cdfa6d26f5e133c01b8b71148df4"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/fctr-id/okta-ai-agent/releases/tag/v3.0.1-beta"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/fctr-id/okta-ai-agent/security/advisories/GHSA-536w-42p8-3qv9"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63377",
+   "change_note": null
+  },
+  {
+   "id": "GHSA-4xm8-rg9h-jhq2",
+   "title": "signalk-server路径遍历窃取密钥",
+   "first_seen": "2026-10-31",
+   "last_seen": "2026-10-31",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": true,
+   "published": "2026-10-30",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权遍历notes接口读security.json取secretKey，再伪造JWT调用命令",
+   "impact_scope": "船艇/物联网数据网关，常暴露内网",
+   "action_zh": "升级至2.34.0，并同步升级resources-provider至1.5.3",
+   "summary_zh": "开启readonly时未授权攻击者经路径遍历读取security.json密钥，伪造JWT后可执行命令",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "npm:signalk-server >= 2.0.0, < 2.34.0(修复: 2.34.0); npm:@signalk/resources-provider >= 1.0.0, < 1.5.3(修复: 1.5.3)",
+   "patched": true,
+   "refs": [],
+   "link": "https://github.com/advisories/GHSA-4xm8-rg9h-jhq2",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-104339",
    "title": "Langflow OS命令注入远程RCE",
    "first_seen": "2026-10-30",
@@ -3801,6 +3956,46 @@
    "patched": true,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77363",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-116366",
+   "title": "ClickHouse整数溢出致未授权RCE",
+   "first_seen": "2026-10-31",
+   "last_seen": "2026-10-31",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-30",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未认证连接ClickHouse服务端口构造整数溢出请求，需满足特定条件",
+   "impact_scope": "内网分析型数据库，数据面核心",
+   "action_zh": "升级至厂商修复版本；禁止未授权访问原生与HTTP端口",
+   "summary_zh": "具有网络访问的未认证用户可触发整数溢出，在特定条件下于ClickHouse服务器执行任意代码",
+   "category": null,
+   "cvss": 9.5,
+   "epss": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://clickhouse.com/docs/resources/changelogs/security-changelog"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ClickHouse/ClickHouse/blob/master/SECURITY.md"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116366",
    "change_note": null
   },
   {

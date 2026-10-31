@@ -14195,5 +14195,433 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-10-31": {
+  "qualified": 41,
+  "critical": 33,
+  "kev": 0,
+  "repro_top": 1,
+  "kev_total": 1766,
+  "by_category": {
+   "开发库/依赖": 3,
+   "未分类": 33,
+   "容器/虚拟化": 1,
+   "Web框架": 1,
+   "CMS": 1,
+   "操作系统": 1,
+   "监控运维": 1
+  },
+  "items": [
+   {
+    "id": "CVE-2026-96631",
+    "title": "AdminNeo响应头注入 可劫持会话",
+    "tier": "high",
+    "category": "开发库/依赖",
+    "cvss": 8.2,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-59387",
+    "title": "Cloud Controller路由缺失越权",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-63339",
+    "title": "IXP Manager普通用户提权",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-119572",
+    "title": "Traefik认证绕过 mTLS被禁用",
+    "tier": "high",
+    "category": "容器/虚拟化",
+    "cvss": 8.7,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-63338",
+    "title": "IXP Manager API密钥越权",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-96633",
+    "title": "AdminNeo路径穿越 认证用户删文件",
+    "tier": "high",
+    "category": "开发库/依赖",
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-119190",
+    "title": "node-forge证书校验缺陷",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-63414",
+    "title": "Shopify App参数越权 可跨店访问",
+    "tier": "high",
+    "category": "Web框架",
+    "cvss": 7.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-82104",
+    "title": "Teltonika RUTOS未授权命令执行",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "强烈推荐",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107249",
+    "title": "Drupal Block AJAX对象注入",
+    "tier": "critical",
+    "category": "CMS",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-119706",
+    "title": "LMDeploy反序列化未授权RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-63377",
+    "title": "setup接口未授权创建管理员",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "GHSA-4xm8-rg9h-jhq2",
+    "title": "signalk-server路径遍历窃取密钥",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116366",
+    "title": "ClickHouse整数溢出致未授权RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.5,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-93327",
+    "title": "CVE-2026-93327",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-61730",
+    "title": "CVE-2026-61730",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-39732",
+    "title": "CVE-2026-39732",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-117656",
+    "title": "CVE-2026-117656",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-55598",
+    "title": "CVE-2026-55598",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-62849",
+    "title": "CVE-2026-62849",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-118697",
+    "title": "CVE-2026-118697",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.0,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-61826",
+    "title": "Plex OAuth PIN接口授权缺失",
+    "tier": "critical",
+    "category": null,
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-61728",
+    "title": "SOC平台存储型XSS多字段执行脚本",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116241",
+    "title": "pgAdmin命令注入 可执行主机命令",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-62853",
+    "title": "ThingLinks代码注入RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-119597",
+    "title": "OpenDeepWiki硬编码JWT可伪造",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-119660",
+    "title": "MuseBot硬编码会话密钥 可伪造管理员",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-61737",
+    "title": "ng-antd-admin认证绕过冒充管理员",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116386",
+    "title": "SMS Alert插件未授权提权",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-119526",
+    "title": "Royal Event主题反序列化对象注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-39738",
+    "title": "FunnelKit反序列化未授权对象注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-90888",
+    "title": "LeadSnap未授权PHP反序列化注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-61620",
+    "title": "HoneySQL未过滤输入致SQL注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-78403",
+    "title": "Sentinel Keys未认证栈溢出越权",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "GHSA-hff9-5pqw-6w9f",
+    "title": "imgproxy ICO解析整数溢出堆破坏",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-62863",
+    "title": "MoLing SSE模式未授权调用工具",
+    "tier": "critical",
+    "category": "开发库/依赖",
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-61729",
+    "title": "Graylog集成接口未授权转发命令",
+    "tier": "critical",
+    "category": "监控运维",
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-61850",
+    "title": "CVE-2026-61850",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116852",
+    "title": "CVE-2026-116852",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-117666",
+    "title": "CVE-2026-117666",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-112905",
+    "title": "CVE-2026-112905",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.0,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }

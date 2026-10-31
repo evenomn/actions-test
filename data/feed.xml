@@ -3,117 +3,387 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
-    <lastBuildDate>Fri, 30 Oct 2026 21:37:51 +0000</lastBuildDate>
+    <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    <lastBuildDate>Sat, 31 Oct 2026 02:42:24 +0000</lastBuildDate>
     <item>
-      <title>[critical]Ivanti VPN提权至root</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111357</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111357-2026-10-30</guid>
-      <description>CVE-2026-111357 · 🎯P0 立即处置 · 披露 2026-10-15 · 组件 边界设备/VPN · CVSS 7.0 · EPSS 0.3%,前 25% · 类型 CWE-829 · 难度 高(需本地访问·利用条件苛刻·需低权限)
-Ivanti Connect Secure 22.8R2.4 mishandles the manner in which the dsinvoked broker trusts DSCache configuration data, leading to privilege escalation to root, a…
-信号: 🔥 KEV 在野利用,CISA 限期 2026-11-02</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <title>[high]AdminNeo响应头注入 可劫持会话</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96631</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96631-2026-10-31</guid>
+      <description>CVE-2026-96631 · 🎯P1 重点关注 · 披露 2026-10-30 · 组件 开发库/依赖 · CVSS 8.2 · 类型 输入校验缺失/CWE-113 · 难度 低(远程·免认证·需用户交互)
+ Affected Cookies |Cookie|Content|Risk| |neo_sid|PHP session ID|Session hijacking| |neo_key|Encryption key for stored DB passwords|Credential…
+信号: 关注词:nginx</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Ivanti VPN可预测标识符上传文件</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-118527</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-118527-2026-10-30</guid>
-      <description>CVE-2026-118527 · 🎯P0 立即处置 · 组件 边界设备/VPN · 类型 CWE-340
-Ivanti Connect Secure contains a generation of predictable numbers or identifiers vulnerability that allows a remote authenticated attacker to upload files with…
-信号: 🔥 KEV 在野利用,CISA 限期 2026-11-13</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <title>[high]Cloud Controller路由缺失越权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59387</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59387-2026-10-31</guid>
+      <description>CVE-2026-59387 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 8.8 · EPSS 0.3%,前 19% · 类型 访问控制缺失 · 难度 低(远程·需低权限)
+A SpaceAuditor can enumerate GUIDs without write permissions, making this an effective privilege escalation beyond the intended role boundary.
+信号: 关注词:nginx</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]LXD证书校验缺陷可接管集群</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112816</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112816-2026-10-30</guid>
-      <description>CVE-2026-112816 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 10.0 · 类型 证书校验缺陷 · 难度 低(远程·免认证)
-Improper certificate validation in the HTTPS listener in Canonical LXD 4.0.14, 5.0.10, 5.21.8, 6.9 before 4.0.15, 5.0.11, 5.21.9, 6.10.1 allows an unauthenticat…
+      <title>[high]IXP Manager普通用户提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-63339</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-63339-2026-10-31</guid>
+      <description>CVE-2026-63339 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 8.8 · 类型 输入校验缺失/权限提升 · 难度 低(远程·需低权限)
+Prior to version 7.3.0, an authenticated, non-administrative user can elevate their privileges to administrator status.
+信号: 关注词:exchange</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Traefik认证绕过 mTLS被禁用</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119572</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119572-2026-10-31</guid>
+      <description>CVE-2026-119572 · 🎯P1 重点关注 · 披露 2026-10-30 · 组件 容器/虚拟化 · CVSS 8.7 · 类型 认证绕过 · 难度 低(远程·利用条件苛刻·免认证)
+Traefik from 3.7.0-ea.1 before 3.7.15 contains an authentication bypass vulnerability in the Kubernetes Ingress NGINX provider that silently disables mTLS confi…
+信号: 关注词:nginx</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]IXP Manager API密钥越权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-63338</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-63338-2026-10-31</guid>
+      <description>CVE-2026-63338 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 8.3 · 类型 越权(IDOR)/授权错误 · 难度 低(远程·需低权限)
+The API-key edit/update path in ApiKeyController selects records by identifier without checking that user_id matches the caller, allowing access to another …
+信号: 关注词:exchange</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]AdminNeo路径穿越 认证用户删文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96633</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96633-2026-10-31</guid>
+      <description>CVE-2026-96633 · 🎯P1 重点关注 · 披露 2026-10-30 · 组件 开发库/依赖 · CVSS 8.1 · 类型 CWE-73 · 难度 低(远程·需低权限)
+ Summary AdminNeo allows an authenticated SQLite-mode user to delete arbitrary files writable by the PHP process through the database-list drop action.
+信号: 关注词:nginx</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]node-forge证书校验缺陷</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119190</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119190-2026-10-31</guid>
+      <description>CVE-2026-119190 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 7.4 · EPSS 0.2%,前 16% · 类型 证书校验缺陷/CWE-436 · 难度 低(远程·利用条件苛刻·免认证)
+Exploitation requires a CA trusted by the application to issue a certificate that contains the attacker-supplied deprecated-OID extension, typically a CA that c…
+信号: 关注词:openssl</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Shopify App参数越权 可跨店访问</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-63414</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-63414-2026-10-31</guid>
+      <description>CVE-2026-63414 · 🎯P1 重点关注 · 披露 2026-10-30 · 组件 Web框架 · CVSS 7.6 · 类型 授权错误 · 难度 中(远程·利用条件苛刻·需低权限)
+An attacker with a valid Shopify session token for one shop can supply another shop in that parameter and potentially obtain unauthorized application data o…
+信号: 关注词:exchange</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Teltonika RUTOS未授权命令执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-82104</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-82104-2026-10-31</guid>
+      <description>CVE-2026-82104 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.4 · EPSS 0.4%,前 36% · 类型 缺失认证 · 难度 低(需相邻网络·免认证)
+In Teltonika Networks RUTOS devices running versions from 7.22 through 7.24.2 and TSWOS devices running versions 1.9 through 1.10, a vulnerability exists whereb…
 信号:</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Plex OAuth PIN越权绑定令牌</title>
+      <title>[critical]Drupal Block AJAX对象注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107249</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107249-2026-10-31</guid>
+      <description>CVE-2026-107249 · 🎯P1 重点关注 · 披露 2026-10-30 · 组件 CMS · CVSS 9.8 · EPSS 0.2%,前 9% · 类型 CWE-915 · 难度 低(远程·免认证)
+Improperly Controlled Modification of Dynamically-Determined Object Attributes vulnerability in Drupal Block AJAX allows Object Injection.
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LMDeploy反序列化未授权RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119706</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119706-2026-10-31</guid>
+      <description>CVE-2026-119706 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+InternLM LMDeploy 0.9.0 through 0.18.0 contains an unauthenticated remote code execution vulnerability that allows remote attackers to run OS commands by sendin…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]setup接口未授权创建管理员</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-63377</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-63377-2026-10-31</guid>
+      <description>CVE-2026-63377 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+Prior to 3.0.1-beta, POST /api/auth/setup in src/api/routers/auth.py allows an unauthenticated network attacker to create the first administrator account be…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]signalk-server路径遍历窃取密钥</title>
+      <link>https://github.com/advisories/GHSA-4xm8-rg9h-jhq2</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-4xm8-rg9h-jhq2-2026-10-31</guid>
+      <description>GHSA-4xm8-rg9h-jhq2 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+Start the server, enable allow_readonly=true, then run: python !/usr/bin/env python3 import base64, hashlib, hmac, json, time, urllib.request BASE = "http…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ClickHouse整数溢出致未授权RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116366</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116366-2026-10-31</guid>
+      <description>CVE-2026-116366 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.5 · 类型 整数溢出 · 难度 低(远程·利用条件苛刻·免认证)
+An issue has been discovered in ClickHouse Server that, under certain conditions, could allow an unauthenticated user with network access to execute arbitrary c…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Untrusted Data 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-93327</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-93327-2026-10-31</guid>
+      <description>CVE-2026-93327 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.4 · 类型 反序列化(RCE) · 难度 低(远程·需低权限)
+A Deserialization of Untrusted Data vulnerability in the SubWorkflow task in Google Cloud Application Integration versions prior to 2026-09-11 on Google Cloud P…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]StaticFiles 未授权 信息泄露</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61730</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61730-2026-10-31</guid>
+      <description>CVE-2026-61730 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.3 · 类型 信息泄露/缺失认证 · 难度 低(远程·免认证)
+In affected deployments, the unauthenticated /scoutsuite-report StaticFiles mount in backend/copilot.py exposes the scoutsuite-report directory even tho…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Transliterator 未授权 SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-39732</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-39732-2026-10-31</guid>
+      <description>CVE-2026-39732 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.3 · 类型 SQL注入 · 难度 低(远程·免认证)
+Unauthenticated SQL Injection in Transliterator &lt;= 2.5.13 versions.
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Acceptance 未授权 认证欺骗</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-117656</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-117656-2026-10-31</guid>
+      <description>CVE-2026-117656 · 🎯P1 重点关注 · 披露 2026-10-31 · CVSS 9.3 · 类型 认证欺骗/CWE-349 · 难度 低(远程·免认证)
+Acceptance of Extraneous Untrusted Data With Trusted Data vulnerability in the Sign in with Apple strategy in pow-auth Assent allows an unauthenticated remote a…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]GET/HEAD SSRF</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-55598</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-55598-2026-10-31</guid>
+      <description>CVE-2026-55598 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.1 · 类型 SSRF · 难度 低(远程·需低权限)
+A low-privilege user can make server-side GET/HEAD requests to reachable loopback, private-network and cloud metadata services and read downloaded internal resp…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TDengine TDS APIs 未授权 SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62849</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62849-2026-10-31</guid>
+      <description>CVE-2026-62849 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.1 · 类型 SQL注入 · 难度 低(远程·免认证)
+Prior to 1.4.0, an unauthenticated SQL injection vulnerability in the TDengine TDS APIs allows request-controlled JSON field values submitted to /anyUser/tds…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]IntelliJ IDEA 未授权 证书校验缺陷</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-118697</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-118697-2026-10-31</guid>
+      <description>CVE-2026-118697 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.0 · 类型 证书校验缺陷 · 难度 低(远程·利用条件苛刻·免认证)
+In JetBrains Toolbox App before 3.9.1 and 3.8.2; IntelliJ IDEA before 2026.3 and 2026.2.4, the jetbrainsd daemon trusted compromised intermediate certificates
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Plex OAuth PIN接口授权缺失</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61826</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61826-2026-10-30</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61826-2026-10-31</guid>
       <description>CVE-2026-61826 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 10.0 · 类型 CSRF/缺失授权(越权) · 难度 低(远程·免认证)
 POST /api/plex/oauth/pin and GET /api/plex/oauth/pin/&lt;pin_id&gt;/check additionally allow an attacker who completes a PIN with an attacker-controlled Plex acco…
 信号:</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]pgAdmin命令注入可执行系统命令</title>
+      <title>[critical]SOC平台存储型XSS多字段执行脚本</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61728</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61728-2026-10-31</guid>
+      <description>CVE-2026-61728 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.9 · 类型 XSS/CWE-922 · 难度 低(远程·需低权限)
+When another user views the poisoned alert, stored script executes on the application origin; the same unsanitized rendering pattern affects server-stored SOC c…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]pgAdmin命令注入 可执行主机命令</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116241</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116241-2026-10-30</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116241-2026-10-31</guid>
       <description>CVE-2026-116241 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.9 · 类型 命令注入(RCE)/CWE-115 · 难度 低(远程·需低权限)
 pgAdmin's and psql's view of the quoting then diverged, a closing parenthesis hidden from the check ended the \copy (...) wrapper, and a following TO PROGRAM cl…
 信号:</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]ThingLinks认证后代码注入RCE</title>
+      <title>[critical]ThingLinks代码注入RCE</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62853</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62853-2026-10-30</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62853-2026-10-31</guid>
       <description>CVE-2026-62853 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.9 · 类型 命令注入(RCE)/代码注入(RCE) · 难度 低(远程·需低权限)
 An authenticated attacker can provide code that is compiled and instantiated on the server, resulting in arbitrary server-side code execution.
 信号:</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OpenDeepWiki硬编码JWT可伪造</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119597</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119597-2026-10-31</guid>
+      <description>CVE-2026-119597 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 CWE-321 · 难度 低(远程·免认证)
+OpenDeepWiki through 2.0.6 contains a hard-coded JWT signing key vulnerability that allows unauthenticated attackers to forge administrator tokens using the pub…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MuseBot硬编码会话密钥 可伪造管理员</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119660</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119660-2026-10-31</guid>
+      <description>CVE-2026-119660 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 CWE-1394 · 难度 低(远程·免认证)
+MuseBot before 2.0.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to forge admin sessions by using the hard-coded defau…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ng-antd-admin认证绕过冒充管理员</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61737</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61737-2026-10-31</guid>
+      <description>CVE-2026-61737 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 CWE-321 · 难度 低(远程·免认证)
+An attacker can bypass authentication and authorization, impersonate any user including administrators, and access protected API endpoints, leading to account t…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
     <item>
       <title>[critical]SMS Alert插件未授权提权</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116386</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116386-2026-10-30</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116386-2026-10-31</guid>
       <description>CVE-2026-116386 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
 Unauthenticated Privilege Escalation in SMS Alert Order Notifications &lt;= 4.0.2 versions.
 信号:</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Royal Event主题反序列化RCE</title>
+      <title>[critical]Royal Event主题反序列化对象注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119526</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119526-2026-10-30</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119526-2026-10-31</guid>
       <description>CVE-2026-119526 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
 Deserialization of Untrusted Data vulnerability in ThemeREX Royal Event allows Object Injection. This issue affects Royal Event: from n/a through 2.0.
 信号:</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]FunnelKit未授权反序列化RCE</title>
+      <title>[critical]FunnelKit反序列化未授权对象注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-39738</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-39738-2026-10-30</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-39738-2026-10-31</guid>
       <description>CVE-2026-39738 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
 Unauthenticated PHP Object Injection in FunnelKit Automations &lt;= 3.8.6.1 versions.
 信号:</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]LeadSnap未授权反序列化RCE</title>
+      <title>[critical]LeadSnap未授权PHP反序列化注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-90888</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-90888-2026-10-30</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-90888-2026-10-31</guid>
       <description>CVE-2026-90888 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
 Unauthenticated PHP Object Injection in LeadSnap &lt;= 1.25 versions.
 信号:</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]HoneySQL DSL构造不当致SQL注入</title>
+      <title>[critical]HoneySQL未过滤输入致SQL注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61620</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61620-2026-10-30</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61620-2026-10-31</guid>
       <description>CVE-2026-61620 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
 From 2.0.0 until 2.7.1392, applications that pass user input or other arbitrary data into the HoneySQL DSL by calling keyword or symbol on that input can …
 信号:</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Sentinel Keys HTTP溢出</title>
+      <title>[critical]Sentinel Keys未认证栈溢出越权</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-78403</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-78403-2026-10-30</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-78403-2026-10-31</guid>
       <description>CVE-2026-78403 · 🎯P1 重点关注 · 披露 2026-10-30 · 组件 操作系统 · CVSS 9.8 · 类型 栈溢出/缺失授权(越权) · 难度 低(远程·免认证)
 Stack-based buffer overflow and missing authorization vulnerability in Thales Sentinel Keys Server on Windows allows Overflow Buffers.
 信号:</description>
-      <pubDate>Fri, 30 Oct 2026 21:37:51 +0000</pubDate>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]imgproxy ICO解析整数溢出堆破坏</title>
+      <link>https://github.com/advisories/GHSA-hff9-5pqw-6w9f</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-hff9-5pqw-6w9f-2026-10-31</guid>
+      <description>GHSA-hff9-5pqw-6w9f · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.8 · 类型 堆溢出/整数溢出 · 难度 低(远程·免认证)
+ Technical details The vulnerable path is in [vips/icoload.c at commit f4fedbb](https://github.com/imgproxy/imgproxy/blob/f4fedbb5c7f6684e7a8e0a9bb7e66677…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MoLing SSE模式未授权调用工具</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62863</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62863-2026-10-31</guid>
+      <description>CVE-2026-62863 · 🎯P1 重点关注 · 披露 2026-10-30 · 组件 开发库/依赖 · CVSS 9.6 · 类型 缺失认证/CWE-942 · 难度 低(远程·免认证·需用户交互)
+After a victim running SSE mode visits that page, the attacker can use the disclosed sessionId against /message to send unauthorized MCP tool calls.
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Graylog集成接口未授权转发命令</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61729</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61729-2026-10-31</guid>
+      <description>CVE-2026-61729 · 🎯P1 重点关注 · 披露 2026-10-30 · 组件 监控运维 · CVSS 9.4 · 类型 缺失认证/硬编码凭据 · 难度 低(远程·免认证)
+POST /api/graylog/invoke forwards attacker-selected COMMAND, ACTION, VALUE and AGENT_ID to the configured Wazuh manager without the command-enum valid…
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Project-administrator 权限提升</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61850</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61850-2026-10-31</guid>
+      <description>CVE-2026-61850 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.3 · 类型 权限提升 · 难度 中(远程·需高权限)
+This permits escalation to Project-administrator access, disclosure of Project Secrets and credentials, and modification or deletion of Project resources.
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Widget Options 代码注入(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116852</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116852-2026-10-31</guid>
+      <description>CVE-2026-116852 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.1 · 类型 代码注入(RCE) · 难度 中(远程·需高权限)
+Author Remote Code Execution (RCE) in Widget Options &lt;= 4.2.5 versions.
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Certificate 未授权 CWE-297</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-117666</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-117666-2026-10-31</guid>
+      <description>CVE-2026-117666 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.1 · 类型 CWE-297 · 难度 中(远程·利用条件苛刻·利用条件苛刻·免认证)
+Improper Validation of Certificate with Host Mismatch vulnerability in deadtrickster ssl_verify_fun allows an adversary in the middle to impersonate a TLS peer …
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Vvveb CWE-285</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112905</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112905-2026-10-31</guid>
+      <description>CVE-2026-112905 · 🎯P1 重点关注 · 披露 2026-10-30 · CVSS 9.0 · 类型 CWE-285 · 难度 中(远程·需高权限)
+Prior to version 1.0.8.7, authenticated IDOR on admin/auth-token endpoint allows any administrator to read and overwrite another administrator's API tokens.
+信号:</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>今日要点</title>
+      <description>- 今日未发现在野利用及勒索软件关联，相关标记均为否
+- 本批严重漏洞批量公告，多个CVSS 9.8，需按暴露面排查
+- 最需立即处置CVE-2026-82104缺失认证及Drupal 9.8高危漏洞
+- adminneo与node-forge已有补丁，升级至5.5.1和1.4.1
+- 公开PoC与Nuclei模板未见，仍需优先缓解高CVSS暴露服务</description>
+      <pubDate>Sat, 31 Oct 2026 02:42:24 +0000</pubDate>
     </item>
   </channel>
 </rss>
