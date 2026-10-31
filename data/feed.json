@@ -1,33 +1,136 @@
 {
  "version": 3,
- "generated_at": "2026-10-31T15:24:30+00:00",
+ "generated_at": "2026-10-31T20:31:32+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 2,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 2,
+  "by_tier": {
+   "critical": 2
+  },
+  "by_urgency": {
+   "P1 重点关注": 2
+  },
+  "by_category": {
+   "未知": 2
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2026-120201",
+   "tier": "critical",
+   "title": "Jpom 令牌注入认证绕过致RCE",
+   "title_zh": "Jpom 令牌注入认证绕过致RCE",
+   "summary_zh": "未认证者可注入 JPOM-USER-TOKEN: is not null 绕过认证，获取超管权限并执行命令",
+   "published": "2026-10-31T18:17:07.890",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-943"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/dromara/Jpom"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/dromara/Jpom/blob/v2.11.12/modules/server/src/main/java/org/dromara/jpom/common/interceptor/LoginInterceptor.java#L146"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/dromara/Jpom/issues/121"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到官方最新版本，限制管理端公网暴露",
+   "repro_worthy": "一般",
+   "repro_note": "请求头 JPOM-USER-TOKEN 置为 is not null 绕过认证",
+   "impact_scope": "运维部署平台，常暴露内网/公网管理端",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120201",
+   "description": "Jpom 2.10.0 through 2.11.12 contains an authentication bypass vulnerability that allows unauthenticated attackers to gain super-administrator access by injecting query conditions into the JPOM-USER-TOKEN header. Attackers can send a value like 'is not null', which Hutool's Condition parser treats as an operator, then execute commands through Jpom's script features."
+  },
+  {
+   "id": "CVE-2026-120209",
+   "tier": "critical",
+   "title": "AJ-Report硬编码JWT密钥致RCE",
+   "title_zh": "AJ-Report硬编码JWT密钥致RCE",
+   "summary_zh": "攻击者用硬编码JWT密钥伪造Share-Token，访问testTransform触发Groovy RCE",
+   "published": "2026-10-31T18:17:09.263",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-321"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gitee.com/belief-team/report"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitee.com/belief-team/report/blob/V1.7.1/report-core/src/main/java/com/anjiplus/template/gaea/business/util/JwtUtil.java"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitee.com/belief-team/report/issues/IKRV6T"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级官方版本并更换JWT密钥，限制管理端暴露",
+   "repro_worthy": "一般",
+   "repro_note": "用硬编码密钥伪造Share-Token调testTransform",
+   "impact_scope": "报表平台，常部署内网，可作横向跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120209",
+   "description": "AJ-Report through 1.7.1 signs share tokens with a hard-coded JWT secret, allowing attackers to forge valid Share-Tokens offline. Attackers can mint a token with reportCode 'dataSet' to access the testTransform endpoint, which passes scripts to GroovyClassLoader for unauthenticated remote code execution."
+  }
+ ],
  "media": [],
  "commits": [
   {
-   "repo": "apache/struts",
-   "sha": "fade55814b033e7f11430472ba7770a7d655f95a",
-   "url": "https://github.com/apache/struts/commit/fade55814b033e7f11430472ba7770a7d655f95a",
-   "title": "docs: state output encoding by the framework's own tags as a §8 property",
-   "date": "2026-10-31T09:02:26",
-   "score": 3,
+   "repo": "rust-lang/rust",
+   "sha": "312d27ad8bd5e65b9123a03cd8f1adfdb42101c3",
+   "url": "https://github.com/rust-lang/rust/commit/312d27ad8bd5e65b9123a03cd8f1adfdb42101c3",
+   "title": "Rollup merge of #163371 - h-kurashina:fix-format-foreign-concat, r=wesleywiser",
+   "date": "2026-10-31T13:37:29",
+   "score": 2,
    "matched": [
-    "CVE"
+    "格式串"
    ],
-   "cve": "CVE-2011-2087"
+   "cve": null
   }
  ]
 }
