@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-01T07:41:45+00:00",
- "count": 149,
+ "updated_at": "2026-11-01T16:09:51+00:00",
+ "count": 153,
  "count_recommended": 24,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -2916,6 +2916,182 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-120231",
+   "title": "WAVLINK WN553X1-B命令注入",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-01",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "定位管理面命令下发点，提交构造参数触发系统命令拼接",
+   "impact_scope": "无线AP/路由器，管理面常暴露",
+   "action_zh": "升级厂商修复固件；无法升级时限制管理接口公网可达",
+   "summary_zh": "远程攻击者经WN553X1-B管理面注入系统命令，可取得设备完全控制权，CVSS 9.9",
+   "category": "边界设备/VPN",
+   "cvss": 9.9,
+   "epss": null,
+   "difficulty": "低(远程·需低权限)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/senxitoyshuyi-ui/HACKALL/blob/main/WAVLINK%20WN553X1-B%20Router/WAVLINK_WN553X1-B_openvpn_cli_command_injection.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-120231"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/919247"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120231",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-120227",
+   "title": "WN701AE rule_name命令注入",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-01",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "Web后端rule_name参数拼接命令未过滤，需可达管理接口",
+   "impact_scope": "无线AP/路由器，管理面常暴露",
+   "action_zh": "升级厂商修复固件；临时限制管理界面访问来源IP",
+   "summary_zh": "远程攻击者向WN701AE的rule_name参数注入系统命令，可控制设备",
+   "category": null,
+   "cvss": 9.9,
+   "epss": null,
+   "difficulty": "低(远程·需低权限)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/pipiyyb/cve/blob/main/WAVLINK%20WN701AE.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-120227"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/918620"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120227",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-120228",
+   "title": "WN553X1-B ioos命令注入(群组)",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-01",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "ioos服务sub_416D88，group_id/group_name参数拼接命令",
+   "impact_scope": "无线AP/路由器，边界暴露面",
+   "action_zh": "升级厂商修复固件；关闭公网管理面，仅内网受控访问",
+   "summary_zh": "远程攻击者经ioos服务向group_id/group_name注入命令，取得设备控制权",
+   "category": null,
+   "cvss": 9.9,
+   "epss": null,
+   "difficulty": "低(远程·需低权限)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-120228"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/919151"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120228",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-120230",
+   "title": "WN701AE VLAN组命令注入",
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-01",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "Web后端del_vlan_group，vlan_name参数未过滤直接拼接",
+   "impact_scope": "无线AP/路由器，管理面常暴露",
+   "action_zh": "升级厂商修复固件；临时禁用VLAN组管理并限制访问",
+   "summary_zh": "远程攻击者向del_vlan_group的vlan_name注入命令，可完全控制设备",
+   "category": null,
+   "cvss": 9.9,
+   "epss": null,
+   "difficulty": "低(远程·需低权限)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/pipiyyb/cve/blob/main/WAVLINK_WN701AE_del_vlan_group.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-120230"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/919242"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120230",
    "change_note": null
   },
   {

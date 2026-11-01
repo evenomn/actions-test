@@ -5,43 +5,79 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 01 Nov 2026 07:41:45 +0000</pubDate>
-    <lastBuildDate>Sun, 01 Nov 2026 07:41:45 +0000</lastBuildDate>
+    <pubDate>Sun, 01 Nov 2026 16:09:51 +0000</pubDate>
+    <lastBuildDate>Sun, 01 Nov 2026 16:09:51 +0000</lastBuildDate>
     <item>
-      <title>[critical]未知设备命令注入可远程执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120195</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120195-2026-11-01</guid>
-      <description>CVE-2026-120195 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
-The manipulation of the argument wlan_ssid leads to os command injection. The exploit has been disclosed publicly and may be used.
+      <title>[critical]WAVLINK WN553X1-B命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120231</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120231-2026-11-01</guid>
+      <description>CVE-2026-120231 · 🎯P1 重点关注 · 披露 2026-11-01 · 组件 边界设备/VPN · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+A vulnerability was determined in WAVLINK WN553X1-B V260403_2.0.0. The exploit has been publicly disclosed and may be utilized.
 信号:</description>
-      <pubDate>Sun, 01 Nov 2026 07:41:45 +0000</pubDate>
+      <pubDate>Sun, 01 Nov 2026 16:09:51 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WAVLINK路由器命令注入可远程执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120198</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120198-2026-11-01</guid>
-      <description>CVE-2026-120198 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 10.0 · 类型 注入/命令注入 · 难度 低(远程·免认证)
-Such manipulation of the argument group_name/IP-FROM leads to command injection. The exploit has been disclosed to the public and may be used.
+      <title>[critical]WN701AE rule_name命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120227</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120227-2026-11-01</guid>
+      <description>CVE-2026-120227 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+A vulnerability was detected in WAVLINK WN701AE M01AE_V260105. Performing a manipulation of the argument rule_name results in os command injection.
 信号:</description>
-      <pubDate>Sun, 01 Nov 2026 07:41:45 +0000</pubDate>
+      <pubDate>Sun, 01 Nov 2026 16:09:51 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WAVLINK路由器命令注入可远程执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120196</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120196-2026-11-01</guid>
-      <description>CVE-2026-120196 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-A vulnerability was detected in WAVLINK WN579X3-D V250402. The manipulation of the argument Name results in os command injection.
+      <title>[critical]WN553X1-B ioos命令注入(群组)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120228</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120228-2026-11-01</guid>
+      <description>CVE-2026-120228 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+This vulnerability affects the function sub_416D88 of the file /bin/ioos of the component ioos Service.
 信号:</description>
-      <pubDate>Sun, 01 Nov 2026 07:41:45 +0000</pubDate>
+      <pubDate>Sun, 01 Nov 2026 16:09:51 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WAVLINK路由器命令注入可远程执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120197</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120197-2026-11-01</guid>
-      <description>CVE-2026-120197 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-This manipulation of the argument Name causes os command injection. The exploit has been published and may be used.
+      <title>[critical]WN701AE VLAN组命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120230</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120230-2026-11-01</guid>
+      <description>CVE-2026-120230 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+A vulnerability was found in WAVLINK WN701AE 260105. The manipulation of the argument vlan_name results in os command injection.
 信号:</description>
-      <pubDate>Sun, 01 Nov 2026 07:41:45 +0000</pubDate>
+      <pubDate>Sun, 01 Nov 2026 16:09:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未明确产品授权不当越权漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120224</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120224-2026-11-01</guid>
+      <description>CVE-2026-120224 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 CWE-266/CWE-285 · 难度 低(远程·需低权限)
+The manipulation results in improper authorization. The exploit has been released to the public and may be used for attacks.
+信号:</description>
+      <pubDate>Sun, 01 Nov 2026 16:09:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Beta9租户镜像构建提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120306</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120306-2026-11-01</guid>
+      <description>CVE-2026-120306 · 🎯P1 重点关注 · 披露 2026-11-01 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 权限提升/CWE-653 · 难度 低(远程·需低权限)
+Beta9 turns each shell command in a tenant image definition into a Dockerfile RUN line and executes it with Buildah on the build worker.
+信号:</description>
+      <pubDate>Sun, 01 Nov 2026 16:09:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Beta9沙箱文件API路径遍历</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120307</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120307-2026-11-01</guid>
+      <description>CVE-2026-120307 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 路径遍历/任意文件读取/路径遍历 · 难度 低(远程·需低权限)
+The Beta9 worker serves the sandbox file API from outside the container. getHostPathFromContainerPath turns the tenant's container path into a worker path.
+信号:</description>
+      <pubDate>Sun, 01 Nov 2026 16:09:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Beta9卷挂载路径拼接目录穿越</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120308</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120308-2026-11-01</guid>
+      <description>CVE-2026-120308 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 路径遍历/任意文件读取/CWE-668 · 难度 低(远程·需低权限)
+A Beta9 tenant can attach a volume when deploying a function, endpoint, or task queue.
+信号:</description>
+      <pubDate>Sun, 01 Nov 2026 16:09:51 +0000</pubDate>
     </item>
   </channel>
 </rss>
