@@ -1,20 +1,19 @@
 {
  "version": 3,
- "generated_at": "2026-11-01T16:09:51+00:00",
+ "generated_at": "2026-11-01T21:16:47+00:00",
  "lookback_hours": 5,
- "count": 8,
+ "count": 4,
  "stats": {
-  "total": 8,
+  "total": 4,
   "by_tier": {
-   "critical": 8
+   "critical": 4
   },
   "by_urgency": {
-   "P1 重点关注": 8
+   "P1 重点关注": 4
   },
   "by_category": {
-   "未知": 6,
-   "边界设备/VPN": 1,
-   "容器/虚拟化": 1
+   "边界设备/VPN": 2,
+   "未知": 2
   },
   "kev": 0,
   "with_poc": 0,
@@ -24,12 +23,12 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-120231",
+   "id": "CVE-2026-120239",
    "tier": "critical",
-   "title": "WAVLINK WN553X1-B命令注入",
-   "title_zh": "WAVLINK WN553X1-B命令注入",
-   "summary_zh": "远程攻击者经WN553X1-B管理面注入系统命令，可取得设备完全控制权，CVSS 9.9",
-   "published": "2026-11-01T15:17:23.053",
+   "title": "WAVLINK路由器命令注入RCE",
+   "title_zh": "WAVLINK路由器命令注入RCE",
+   "summary_zh": "远程攻击者可经WireGuard CLI处理函数注入系统命令，以设备权限执行任意代码，完全控制设备。",
+   "published": "2026-11-01T18:17:13.920",
    "cvss": 9.9,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
@@ -46,15 +45,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/senxitoyshuyi-ui/HACKALL/blob/main/WAVLINK%20WN553X1-B%20Router/WAVLINK_WN553X1-B_openvpn_cli_command_injection.md"
+     "url": "https://github.com/senxitoyshuyi-ui/HACKALL/blob/main/WAVLINK%20WN553X1-B%20Router/WAVLINK_WN553X1-B_wireguard_cli_command_injection.md"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-120231"
+     "url": "https://vuldb.com/cve/CVE-2026-120239"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/919247"
+     "url": "https://vuldb.com/submit/919250"
     }
    ],
    "poc": [],
@@ -65,273 +64,28 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级厂商修复固件；无法升级时限制管理接口公网可达",
-   "repro_worthy": "值得",
-   "repro_note": "定位管理面命令下发点，提交构造参数触发系统命令拼接",
-   "impact_scope": "无线AP/路由器，管理面常暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120231",
-   "description": "A vulnerability was determined in WAVLINK WN553X1-B V260403_2.0.0. The affected element is the function sub_416568 of the file /bin/ioos of the component OpenVPN CLI Handler. This manipulation of the argument file_id causes os command injection. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure."
-  },
-  {
-   "id": "CVE-2026-120227",
-   "tier": "critical",
-   "title": "WN701AE rule_name命令注入",
-   "title_zh": "WN701AE rule_name命令注入",
-   "summary_zh": "远程攻击者向WN701AE的rule_name参数注入系统命令，可控制设备",
-   "published": "2026-11-01T13:18:00.643",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/pipiyyb/cve/blob/main/WAVLINK%20WN701AE.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-120227"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/918620"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级厂商修复固件；临时限制管理界面访问来源IP",
-   "repro_worthy": "值得",
-   "repro_note": "Web后端rule_name参数拼接命令未过滤，需可达管理接口",
-   "impact_scope": "无线AP/路由器，管理面常暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120227",
-   "description": "A vulnerability was detected in WAVLINK WN701AE M01AE_V260105. This affects the function del_staticrule of the file static_route_setting.sh of the component ioos Web Backend. Performing a manipulation of the argument rule_name results in os command injection. Remote exploitation of the attack is possible. The exploit is now public and may be used. The vendor was contacted early about this disclosure."
-  },
-  {
-   "id": "CVE-2026-120228",
-   "tier": "critical",
-   "title": "WN553X1-B ioos命令注入(群组)",
-   "title_zh": "WN553X1-B ioos命令注入(群组)",
-   "summary_zh": "远程攻击者经ioos服务向group_id/group_name注入命令，取得设备控制权",
-   "published": "2026-11-01T14:18:52.883",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-120228"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/919151"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级厂商修复固件；关闭公网管理面，仅内网受控访问",
-   "repro_worthy": "值得",
-   "repro_note": "ioos服务sub_416D88，group_id/group_name参数拼接命令",
-   "impact_scope": "无线AP/路由器，边界暴露面",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120228",
-   "description": "A flaw has been found in WAVLINK WN553X1-B V260403_2.0.0. This vulnerability affects the function sub_416D88 of the file /bin/ioos of the component ioos Service. Executing a manipulation of the argument group_id/group_name can lead to os command injection. The attack can be executed remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure."
-  },
-  {
-   "id": "CVE-2026-120230",
-   "tier": "critical",
-   "title": "WN701AE VLAN组命令注入",
-   "title_zh": "WN701AE VLAN组命令注入",
-   "summary_zh": "远程攻击者向del_vlan_group的vlan_name注入命令，可完全控制设备",
-   "published": "2026-11-01T15:17:22.830",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/pipiyyb/cve/blob/main/WAVLINK_WN701AE_del_vlan_group.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-120230"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/919242"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级厂商修复固件；临时禁用VLAN组管理并限制访问",
-   "repro_worthy": "值得",
-   "repro_note": "Web后端del_vlan_group，vlan_name参数未过滤直接拼接",
-   "impact_scope": "无线AP/路由器，管理面常暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120230",
-   "description": "A vulnerability was found in WAVLINK WN701AE 260105. Impacted is the function del_vlan_group of the component ioos Web Backend. The manipulation of the argument vlan_name results in os command injection. The attack may be performed from remote. The exploit has been made public and could be used. The vendor was contacted early about this disclosure."
-  },
-  {
-   "id": "CVE-2026-120224",
-   "tier": "critical",
-   "title": "未明确产品授权不当越权漏洞",
-   "title_zh": "未明确产品授权不当越权漏洞",
-   "summary_zh": "攻击者可利用授权校验缺陷绕过权限判定，获得管理员级操作能力，CVSS 9.9",
-   "published": "2026-11-01T11:18:57.437",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-266",
-    "CWE-285"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://app.notion.com/p/Oray-Pgyer-X5-Pro-Router-7-6-1-Restricted-Account-Can-Invoke-Factory-Reset-through-the-JSON-Batch-AP-3eb797159f1580febfd2f0e1ee239352"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-120224"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1007541"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "确认受影响产品后升级；暂无官方说明时收紧接口鉴权",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "组件未明确，影响面待评估",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120224",
-   "description": "A security flaw has been discovered in Oray Pugongying X5 Pro up to 7.6.1. Affected is the function run_apis_by_json/run_async_task of the component API Authorization. The manipulation results in improper authorization. The attack can be launched remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way."
-  },
-  {
-   "id": "CVE-2026-120306",
-   "tier": "critical",
-   "title": "Beta9租户镜像构建提权",
-   "title_zh": "Beta9租户镜像构建提权",
-   "summary_zh": "租户在镜像定义写入shell命令，于特权Worker执行，可逃逸掌控构建节点",
-   "published": "2026-11-01T13:18:01.300",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "权限提升",
-    "CWE-653"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/beam-cloud/beta9"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/beam-cloud/beta9/commit/a28bf12cf0007c792a25d8ed282b4e8bf6f30393"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/beam-cloud/beta9/pull/1897"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级Beta9；构建Worker去特权并与租户负载隔离",
+   "action_zh": "联系厂商升级修复版本；无法升级时限制管理界面公网访问并关闭WireGuard CLI。",
    "repro_worthy": "一般",
-   "repro_note": "需租户权限，提交含恶意RUN命令的镜像定义触发执行",
-   "impact_scope": "多租户AI沙箱平台，可逃逸至宿主",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120306",
-   "description": "Beta9 turns each shell command in a tenant image definition into a Dockerfile RUN line and executes it with Buildah on the build worker. Worker pods are privileged."
+   "repro_note": "入口为WireGuard CLI处理函数，需确认管理面暴露及认证条件",
+   "impact_scope": "边界路由器，公网暴露风险高",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120239",
+   "description": "A vulnerability was found in WAVLINK WN553X1-B V260403_2.0.0. This vulnerability affects the function sub_419DA8 of the file /bin/ioos of the component WireGuard CLI Handler. Performing a manipulation of the argument file_id results in os command injection. The attack is possible to be carried out remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure."
   },
   {
-   "id": "CVE-2026-120307",
+   "id": "CVE-2026-120240",
    "tier": "critical",
-   "title": "Beta9沙箱文件API路径遍历",
-   "title_zh": "Beta9沙箱文件API路径遍历",
-   "summary_zh": "租户调用沙箱文件API传入构造路径，遍历读取Worker宿主任意文件",
-   "published": "2026-11-01T13:18:01.497",
+   "title": "WAVLINK路由器命令注入漏洞",
+   "title_zh": "WAVLINK路由器命令注入漏洞",
+   "summary_zh": "远程攻击者可利用WN553X1-B的命令注入缺陷执行任意系统命令，导致设备被完全控制。",
+   "published": "2026-11-01T19:16:57.950",
    "cvss": 9.9,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "路径遍历/任意文件读取",
-    "路径遍历"
+    "命令注入",
+    "命令注入(RCE)"
    ],
    "difficulty": "低(远程·需低权限)",
    "products": [],
@@ -340,15 +94,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/beam-cloud/beta9"
+     "url": "https://github.com/senxitoyshuyi-ui/HACKALL/blob/main/WAVLINK%20WN553X1-B%20Router/WAVLINK_WN553X1-B_wireguard_cli_group_command_injection.md"
     },
     {
      "label": "参考",
-     "url": "https://github.com/beam-cloud/beta9/commit/a28bf12cf0007c792a25d8ed282b4e8bf6f30393"
+     "url": "https://vuldb.com/cve/CVE-2026-120240"
     },
     {
      "label": "参考",
-     "url": "https://github.com/beam-cloud/beta9/pull/1897"
+     "url": "https://vuldb.com/submit/919251"
     }
    ],
    "poc": [],
@@ -359,45 +113,45 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级Beta9；对文件API路径规范化并限定沙箱根目录",
+   "action_zh": "升级至厂商修复版本；临时限制WAN侧管理访问并关闭不必要的远程管理功能。",
    "repro_worthy": "一般",
-   "repro_note": "需租户权限，构造容器路径绕过getHostPathFromContainerPath",
-   "impact_scope": "多租户沙箱平台，泄露宿主文件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120307",
-   "description": "The Beta9 worker serves the sandbox file API from outside the container. getHostPathFromContainerPath turns the tenant's container path into a worker path."
+   "repro_note": "针对WN553X1-B管理面命令注入，需确认可访问入口与认证条件",
+   "impact_scope": "边界路由器，公网暴露风险高",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120240",
+   "description": "A vulnerability was determined in WAVLINK WN553X1-B V260403_2.0.0. This issue affects the function sub_41A748 of the file /bin/ioos of the component WireGuard CLI Group Handler. Executing a manipulation of the argument group_id/group_name can lead to os command injection. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure."
   },
   {
-   "id": "CVE-2026-120308",
+   "id": "CVE-2026-120338",
    "tier": "critical",
-   "title": "Beta9卷挂载路径拼接目录穿越",
-   "title_zh": "Beta9卷挂载路径拼接目录穿越",
-   "summary_zh": "租户部署函数时构造卷标识，使网关拼出越界宿主路径并挂载敏感目录",
-   "published": "2026-11-01T13:18:01.670",
-   "cvss": 9.9,
+   "title": "prefab-ui Deno权限过宽致RCE",
+   "title_zh": "prefab-ui Deno权限过宽致RCE",
+   "summary_zh": "已认证且能调用工具的客户端可利用Deno全局API与宽松权限执行任意代码，并读写文件、发起网络访问。",
+   "published": "2026-11-01T16:18:14.970",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "路径遍历/任意文件读取",
-    "CWE-668"
+    "代码注入(RCE)",
+    "权限提升"
    ],
-   "difficulty": "低(远程·需低权限)",
+   "difficulty": "低(远程·免认证)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/beam-cloud/beta9"
+     "url": "https://github.com/PrefectHQ/prefab"
     },
     {
      "label": "参考",
-     "url": "https://github.com/beam-cloud/beta9/commit/a28bf12cf0007c792a25d8ed282b4e8bf6f30393"
+     "url": "https://github.com/PrefectHQ/prefab/commit/030f074f85e0b1be0dd44b0283185aecb26337a2"
     },
     {
      "label": "参考",
-     "url": "https://github.com/beam-cloud/beta9/pull/1897"
+     "url": "https://github.com/PrefectHQ/prefab/pull/538"
     }
    ],
    "poc": [],
@@ -408,22 +162,83 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级Beta9；校验volume标识，禁止路径分隔符与上跳",
+   "action_zh": "升级至修复版本；限制工具调用权限并收紧Deno沙箱读写与网络权限。",
    "repro_worthy": "一般",
-   "repro_note": "需租户权限，在stub配置构造volume标识触发路径拼接",
-   "impact_scope": "多租户沙箱平台，可挂载宿主目录",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120308",
-   "description": "A Beta9 tenant can attach a volume when deploying a function, endpoint, or task queue. The gateway builds the host path by joining the shared volumes root, the workspace name, and the volume identifier from the stub configuration."
+   "repro_note": "需已认证且具备工具调用权限，利用Deno全局API与宽松权限执行代码",
+   "impact_scope": "AI工具运行框架，认证后RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120338",
+   "description": "From prefab-ui 0.14.0 through 0.20.2 the launcher starts Deno with unrestricted --allow-read, --allow-write, and --allow-net, and the runner leaves the Deno API on the JavaScript global object. With authentication, any client allowed to call tools can."
+  },
+  {
+   "id": "CVE-2026-120238",
+   "tier": "critical",
+   "title": "WAVLINK路由器ovpn命令注入",
+   "title_zh": "WAVLINK路由器ovpn命令注入",
+   "summary_zh": "远程攻击者可操纵ovpn_file的file_id参数注入系统命令，以设备权限执行任意命令并接管路由器。",
+   "published": "2026-11-01T18:17:13.720",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/senxitoyshuyi-ui/HACKALL/blob/main/WAVLINK%20WN553X1-B%20Router/WAVLINK_WN553X1-B_ovpn_file_command_injection.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-120238"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/919248"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版本；临时限制管理接口暴露，禁用或限制ovpn_file功能。",
+   "repro_worthy": "一般",
+   "repro_note": "入口为ovpn_file处理逻辑，操纵file_id参数，需确认暴露与认证条件",
+   "impact_scope": "边界路由器，常暴露管理面",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120238",
+   "description": "A vulnerability has been found in WAVLINK WN553X1-B 260403_2.0.0. This affects the function sub_4162A8 of the file /bin/ioos of the component ovpn_file Handler. Such manipulation of the argument file_id leads to os command injection. The attack can be executed remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure."
   }
  ],
  "media": [],
  "commits": [
   {
    "repo": "php/php-src",
-   "sha": "0857fdc252af319c8cf139bedaf1d4d935a37aca",
-   "url": "https://github.com/php/php-src/commit/0857fdc252af319c8cf139bedaf1d4d935a37aca",
-   "title": "Fix UAF in reflected attribute write paths (#25120)",
-   "date": "2026-11-01T13:45:14",
+   "sha": "4f2bee40e04aee162d65d5c102de6b1d8ba27b51",
+   "url": "https://github.com/php/php-src/commit/4f2bee40e04aee162d65d5c102de6b1d8ba27b51",
+   "title": "openssl: Fix heap buffer overflow in TLS PSK callbacks",
+   "date": "2026-11-01T20:51:03",
+   "score": 2,
+   "matched": [
+    "缓冲区溢出"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "7e86f2c443382b2f03a546b51ca065872454c087",
+   "url": "https://github.com/php/php-src/commit/7e86f2c443382b2f03a546b51ca065872454c087",
+   "title": "openssl: Fix use-after-free in TLS session remove callback",
+   "date": "2026-11-01T20:32:18",
    "score": 2,
    "matched": [
     "UAF"
@@ -432,50 +247,13 @@
   },
   {
    "repo": "php/php-src",
-   "sha": "99ec10237ae814ecc1cbccba945b02e7d2bd57c7",
-   "url": "https://github.com/php/php-src/commit/99ec10237ae814ecc1cbccba945b02e7d2bd57c7",
-   "title": "Fix GH-25092: Double free in Phar::copy() on link and mounted entries",
-   "date": "2026-11-01T11:29:11",
+   "sha": "7091e5b029f24b7d091dee73432c2cca260a90fe",
+   "url": "https://github.com/php/php-src/commit/7091e5b029f24b7d091dee73432c2cca260a90fe",
+   "title": "Fix free of uninitialized date last_errors after a failed request startup (#25127)",
+   "date": "2026-11-01T16:35:44",
    "score": 2,
    "matched": [
-    "类型混淆/double free"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "24377a0adc16256d48873e237482a841f4f9662c",
-   "url": "https://github.com/php/php-src/commit/24377a0adc16256d48873e237482a841f4f9662c",
-   "title": "Fix GH-25091: UAF in phar rename() when source and destination are equal",
-   "date": "2026-11-01T10:57:55",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "d0828881d513105238cdb058d15716d1a12a0b45",
-   "url": "https://github.com/php/php-src/commit/d0828881d513105238cdb058d15716d1a12a0b45",
-   "title": "Fix GH-25090: UAF in phar rename() of an entry with metadata",
-   "date": "2026-11-01T10:57:20",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "wireshark/wireshark",
-   "sha": "67e25542ff9986844936f2d79b8a8156960bd471",
-   "url": "https://github.com/wireshark/wireshark/commit/67e25542ff9986844936f2d79b8a8156960bd471",
-   "title": "COSE: Do not crash without media information, do not leak a header key",
-   "date": "2026-11-01T08:08:27",
-   "score": 2,
-   "matched": [
-    "崩溃",
-    "泄露"
+    "未初始化/内存破坏"
    ],
    "cve": null
   }
