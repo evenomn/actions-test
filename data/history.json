@@ -14623,5 +14623,38 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-11-01": {
+  "qualified": 2,
+  "critical": 2,
+  "kev": 0,
+  "repro_top": 0,
+  "kev_total": 1766,
+  "by_category": {
+   "网络设备": 1,
+   "未分类": 1
+  },
+  "items": [
+   {
+    "id": "CVE-2026-120189",
+    "title": "D-Link DIR-505 TFTP栈溢出",
+    "tier": "critical",
+    "category": "网络设备",
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-118636",
+    "title": "Apache MINA 3.0反序列化RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }

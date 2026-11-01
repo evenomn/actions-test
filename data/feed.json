@@ -1,7 +1,7 @@
 {
  "version": 3,
- "generated_at": "2026-10-31T20:31:32+00:00",
- "lookback_hours": 5,
+ "generated_at": "2026-11-01T02:32:53+00:00",
+ "lookback_hours": 24,
  "count": 2,
  "stats": {
   "total": 2,
@@ -12,29 +12,36 @@
    "P1 重点关注": 2
   },
   "by_category": {
-   "未知": 2
+   "网络设备": 1,
+   "未知": 1
   },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [],
+ "briefing": [
+  "- 两漏洞均无在野利用与勒索标记，暂不按已遭利用响应。",
+  "- CVE-2026-120189 评分10.0，网络设备栈溢出，须最优先处置。",
+  "- Apache反序列化RCE达9.8，版本待补，先隔离暴露面并核查。",
+  "- 今日仅2条高危公告，非批量趋势；关注设备与Apache后续补丁。"
+ ],
  "items": [
   {
-   "id": "CVE-2026-120201",
+   "id": "CVE-2026-120189",
    "tier": "critical",
-   "title": "Jpom 令牌注入认证绕过致RCE",
-   "title_zh": "Jpom 令牌注入认证绕过致RCE",
-   "summary_zh": "未认证者可注入 JPOM-USER-TOKEN: is not null 绕过认证，获取超管权限并执行命令",
-   "published": "2026-10-31T18:17:07.890",
-   "cvss": 9.8,
+   "title": "D-Link DIR-505 TFTP栈溢出",
+   "title_zh": "D-Link DIR-505 TFTP栈溢出",
+   "summary_zh": "远程攻击者可向DIR-505的TFTP上传服务提交超长文件名,触发栈溢出,可能导致设备崩溃或被控",
+   "published": "2026-11-01T01:17:16.877",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-943"
+    "内存破坏",
+    "栈溢出"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -43,15 +50,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/dromara/Jpom"
+     "url": "https://github.com/Walnut1337/DIR-505_filename_rce/tree/main/poc"
     },
     {
      "label": "参考",
-     "url": "https://github.com/dromara/Jpom/blob/v2.11.12/modules/server/src/main/java/org/dromara/jpom/common/interceptor/LoginInterceptor.java#L146"
+     "url": "https://vuldb.com/cve/CVE-2026-120189"
     },
     {
      "label": "参考",
-     "url": "https://github.com/dromara/Jpom/issues/121"
+     "url": "https://vuldb.com/submit/1027185"
     }
    ],
    "poc": [],
@@ -62,44 +69,44 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到官方最新版本，限制管理端公网暴露",
+   "action_zh": "该型号已停产无修复,建议停用TFTP功能、限制69/UDP访问并隔离设备",
    "repro_worthy": "一般",
-   "repro_note": "请求头 JPOM-USER-TOKEN 置为 is not null 绕过认证",
-   "impact_scope": "运维部署平台，常暴露内网/公网管理端",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120201",
-   "description": "Jpom 2.10.0 through 2.11.12 contains an authentication bypass vulnerability that allows unauthenticated attackers to gain super-administrator access by injecting query conditions into the JPOM-USER-TOKEN header. Attackers can send a value like 'is not null', which Hutool's Condition parser treats as an operator, then execute commands through Jpom's script features."
+   "repro_note": "未认证向69/UDP的TFTP上传接口提交超长文件名参数",
+   "impact_scope": "停产家用路由器,多暴露于网络边缘",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120189",
+   "description": "A vulnerability was identified in D-Link DIR-505 1.10B02. Affected is the function save_upload_file/mp_upload_file of the file /usr/bin/tftpd of the component TFTP Upload Filename Handler. The manipulation leads to stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit is publicly available and might be used."
   },
   {
-   "id": "CVE-2026-120209",
+   "id": "CVE-2026-118636",
    "tier": "critical",
-   "title": "AJ-Report硬编码JWT密钥致RCE",
-   "title_zh": "AJ-Report硬编码JWT密钥致RCE",
-   "summary_zh": "攻击者用硬编码JWT密钥伪造Share-Token，访问testTransform触发Groovy RCE",
-   "published": "2026-10-31T18:17:09.263",
+   "title": "Apache MINA 3.0反序列化RCE",
+   "title_zh": "Apache MINA 3.0反序列化RCE",
+   "summary_zh": "若应用将MINA 3.0解码器前置处理不可信流量,攻击者可投递恶意帧反序列化远程执行代码",
+   "published": "2026-10-31T21:16:53.203",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-321"
+    "反序列化(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": null,
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://gitee.com/belief-team/report"
+     "url": "https://lists.apache.org/thread.html/h76nwcrkvsffhsk2kq6cjzc6srtnty7x"
     },
     {
      "label": "参考",
-     "url": "https://gitee.com/belief-team/report/blob/V1.7.1/report-core/src/main/java/com/anjiplus/template/gaea/business/util/JwtUtil.java"
+     "url": "https://www.cve.org/CVERecord?id=CVE-2026-118636"
     },
     {
      "label": "参考",
-     "url": "https://gitee.com/belief-team/report/issues/IKRV6T"
+     "url": "http://www.openwall.com/lists/oss-security/2026/10/31/3"
     }
    ],
    "poc": [],
@@ -110,27 +117,14 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级官方版本并更换JWT密钥，限制管理端暴露",
+   "action_zh": "3.0分支已停维护无官方修复,须移除该解码器或改用受支持版本",
    "repro_worthy": "一般",
-   "repro_note": "用硬编码密钥伪造Share-Token调testTransform",
-   "impact_scope": "报表平台，常部署内网，可作横向跳板",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120209",
-   "description": "AJ-Report through 1.7.1 signs share tokens with a hard-coded JWT secret, allowing attackers to forge valid Share-Tokens offline. Attackers can mint a token with reportCode 'dataSet' to access the testTransform endpoint, which passes scripts to GroovyClassLoader for unauthenticated remote code execution."
+   "repro_note": "需应用将JavaNativeMessageDecoder前置处理不可信帧,再投gadget链",
+   "impact_scope": "使用MINA 3.0的Java中间件通信组件",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118636",
+   "description": "**UNSUPPORTED WHEN ASSIGNED** JavaNativeMessageDecoder in the MINA 3.0 codec module calls ObjectInputStream.readObject() on frame bytes with no class filter, so an application that puts it in front of an untrusted peer is open to gadget-chain RCE. As the 3.0.0 branch is inactive, we do not plan to release a version that fixes this issue. Users are recommended to use the latest Apache MINA 2.2.X branch."
   }
  ],
  "media": [],
- "commits": [
-  {
-   "repo": "rust-lang/rust",
-   "sha": "312d27ad8bd5e65b9123a03cd8f1adfdb42101c3",
-   "url": "https://github.com/rust-lang/rust/commit/312d27ad8bd5e65b9123a03cd8f1adfdb42101c3",
-   "title": "Rollup merge of #163371 - h-kurashina:fix-format-foreign-concat, r=wesleywiser",
-   "date": "2026-10-31T13:37:29",
-   "score": 2,
-   "matched": [
-    "格式串"
-   ],
-   "cve": null
-  }
- ]
+ "commits": []
 }
