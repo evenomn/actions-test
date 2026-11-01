@@ -3,35 +3,45 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 01 Nov 2026 02:32:53 +0000</pubDate>
-    <lastBuildDate>Sun, 01 Nov 2026 02:32:53 +0000</lastBuildDate>
+    <pubDate>Sun, 01 Nov 2026 07:41:45 +0000</pubDate>
+    <lastBuildDate>Sun, 01 Nov 2026 07:41:45 +0000</lastBuildDate>
     <item>
-      <title>[critical]D-Link DIR-505 TFTP栈溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120189</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120189-2026-11-01</guid>
-      <description>CVE-2026-120189 · 🎯P1 重点关注 · 披露 2026-11-01 · 组件 网络设备 · CVSS 10.0 · 类型 内存破坏/栈溢出 · 难度 低(远程·免认证)
-A vulnerability was identified in D-Link DIR-505 1.10B02. The manipulation leads to stack-based buffer overflow.
+      <title>[critical]未知设备命令注入可远程执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120195</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120195-2026-11-01</guid>
+      <description>CVE-2026-120195 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+The manipulation of the argument wlan_ssid leads to os command injection. The exploit has been disclosed publicly and may be used.
 信号:</description>
-      <pubDate>Sun, 01 Nov 2026 02:32:53 +0000</pubDate>
+      <pubDate>Sun, 01 Nov 2026 07:41:45 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Apache MINA 3.0反序列化RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-118636</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-118636-2026-11-01</guid>
-      <description>CVE-2026-118636 · 🎯P1 重点关注 · 披露 2026-10-31 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-UNSUPPORTED WHEN ASSIGNED JavaNativeMessageDecoder in the MINA 3.0 codec module calls ObjectInputStream.readObject() on frame bytes with no class filter, so…
+      <title>[critical]WAVLINK路由器命令注入可远程执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120198</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120198-2026-11-01</guid>
+      <description>CVE-2026-120198 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 10.0 · 类型 注入/命令注入 · 难度 低(远程·免认证)
+Such manipulation of the argument group_name/IP-FROM leads to command injection. The exploit has been disclosed to the public and may be used.
 信号:</description>
-      <pubDate>Sun, 01 Nov 2026 02:32:53 +0000</pubDate>
+      <pubDate>Sun, 01 Nov 2026 07:41:45 +0000</pubDate>
     </item>
     <item>
-      <title>今日要点</title>
-      <description>- 两漏洞均无在野利用与勒索标记，暂不按已遭利用响应。
-- CVE-2026-120189 评分10.0，网络设备栈溢出，须最优先处置。
-- Apache反序列化RCE达9.8，版本待补，先隔离暴露面并核查。
-- 今日仅2条高危公告，非批量趋势；关注设备与Apache后续补丁。</description>
-      <pubDate>Sun, 01 Nov 2026 02:32:53 +0000</pubDate>
+      <title>[critical]WAVLINK路由器命令注入可远程执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120196</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120196-2026-11-01</guid>
+      <description>CVE-2026-120196 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+A vulnerability was detected in WAVLINK WN579X3-D V250402. The manipulation of the argument Name results in os command injection.
+信号:</description>
+      <pubDate>Sun, 01 Nov 2026 07:41:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]WAVLINK路由器命令注入可远程执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120197</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120197-2026-11-01</guid>
+      <description>CVE-2026-120197 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+This manipulation of the argument Name causes os command injection. The exploit has been published and may be used.
+信号:</description>
+      <pubDate>Sun, 01 Nov 2026 07:41:45 +0000</pubDate>
     </item>
   </channel>
 </rss>

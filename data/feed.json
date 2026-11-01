@@ -1,47 +1,41 @@
 {
  "version": 3,
- "generated_at": "2026-11-01T02:32:53+00:00",
- "lookback_hours": 24,
- "count": 2,
+ "generated_at": "2026-11-01T07:41:45+00:00",
+ "lookback_hours": 5,
+ "count": 4,
  "stats": {
-  "total": 2,
+  "total": 4,
   "by_tier": {
-   "critical": 2
+   "critical": 4
   },
   "by_urgency": {
-   "P1 重点关注": 2
+   "P1 重点关注": 4
   },
   "by_category": {
-   "网络设备": 1,
-   "未知": 1
+   "未知": 4
   },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [
-  "- 两漏洞均无在野利用与勒索标记，暂不按已遭利用响应。",
-  "- CVE-2026-120189 评分10.0，网络设备栈溢出，须最优先处置。",
-  "- Apache反序列化RCE达9.8，版本待补，先隔离暴露面并核查。",
-  "- 今日仅2条高危公告，非批量趋势；关注设备与Apache后续补丁。"
- ],
+ "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-120189",
+   "id": "CVE-2026-120195",
    "tier": "critical",
-   "title": "D-Link DIR-505 TFTP栈溢出",
-   "title_zh": "D-Link DIR-505 TFTP栈溢出",
-   "summary_zh": "远程攻击者可向DIR-505的TFTP上传服务提交超长文件名,触发栈溢出,可能导致设备崩溃或被控",
-   "published": "2026-11-01T01:17:16.877",
+   "title": "未知设备命令注入可远程执行",
+   "title_zh": "未知设备命令注入可远程执行",
+   "summary_zh": "远程攻击者可操纵 wlan_ssid 参数注入系统命令，可能导致设备被控制。",
+   "published": "2026-11-01T04:18:46.687",
    "cvss": 10.0,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "内存破坏",
-    "栈溢出"
+    "命令注入",
+    "命令注入(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -50,15 +44,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/Walnut1337/DIR-505_filename_rce/tree/main/poc"
+     "url": "https://github.com/pipiyyb/cve/blob/main/WAVLINK_WN579A3_CVE_wzdgwMesh_wlan_ssid.md"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-120189"
+     "url": "https://vuldb.com/cve/CVE-2026-120195"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/1027185"
+     "url": "https://vuldb.com/submit/914922"
     }
    ],
    "poc": [],
@@ -69,44 +63,45 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "该型号已停产无修复,建议停用TFTP功能、限制69/UDP访问并隔离设备",
+   "action_zh": "确认受影响产品并升级固件，限制管理接口公网暴露",
    "repro_worthy": "一般",
-   "repro_note": "未认证向69/UDP的TFTP上传接口提交超长文件名参数",
-   "impact_scope": "停产家用路由器,多暴露于网络边缘",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120189",
-   "description": "A vulnerability was identified in D-Link DIR-505 1.10B02. Affected is the function save_upload_file/mp_upload_file of the file /usr/bin/tftpd of the component TFTP Upload Filename Handler. The manipulation leads to stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit is publicly available and might be used."
+   "repro_note": "入口与 wlan_ssid 参数相关，需确认产品及接口前置条件",
+   "impact_scope": "未知网络设备，可能暴露于边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120195",
+   "description": "A security vulnerability has been detected in WAVLINK WL-WN579A3-A 2026-03-10-94f93d4. The impacted element is the function set_wzdgwMesh of the file /cgi-bin/adm.cgi of the component Initial Setup Wizard. The manipulation of the argument wlan_ssid leads to os command injection. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure."
   },
   {
-   "id": "CVE-2026-118636",
+   "id": "CVE-2026-120198",
    "tier": "critical",
-   "title": "Apache MINA 3.0反序列化RCE",
-   "title_zh": "Apache MINA 3.0反序列化RCE",
-   "summary_zh": "若应用将MINA 3.0解码器前置处理不可信流量,攻击者可投递恶意帧反序列化远程执行代码",
-   "published": "2026-10-31T21:16:53.203",
-   "cvss": 9.8,
+   "title": "WAVLINK路由器命令注入可远程执行",
+   "title_zh": "WAVLINK路由器命令注入可远程执行",
+   "summary_zh": "远程攻击者操纵 group_name/IP-FROM 参数注入系统命令，可能导致设备被控制。",
+   "published": "2026-11-01T05:18:57.620",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "反序列化(RCE)"
+    "注入",
+    "命令注入"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://lists.apache.org/thread.html/h76nwcrkvsffhsk2kq6cjzc6srtnty7x"
+     "url": "https://github.com/pipiyyb/cve/blob/main/WN530BE1.md"
     },
     {
      "label": "参考",
-     "url": "https://www.cve.org/CVERecord?id=CVE-2026-118636"
+     "url": "https://vuldb.com/cve/CVE-2026-120198"
     },
     {
      "label": "参考",
-     "url": "http://www.openwall.com/lists/oss-security/2026/10/31/3"
+     "url": "https://vuldb.com/submit/918551"
     }
    ],
    "poc": [],
@@ -117,14 +112,161 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "3.0分支已停维护无官方修复,须移除该解码器或改用受支持版本",
+   "action_zh": "升级至厂商修复固件；临时限制 /protocol.csp 访问",
    "repro_worthy": "一般",
-   "repro_note": "需应用将JavaNativeMessageDecoder前置处理不可信帧,再投gadget链",
-   "impact_scope": "使用MINA 3.0的Java中间件通信组件",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118636",
-   "description": "**UNSUPPORTED WHEN ASSIGNED** JavaNativeMessageDecoder in the MINA 3.0 codec module calls ObjectInputStream.readObject() on frame bytes with no class filter, so an application that puts it in front of an untrusted peer is open to gadget-chain RCE. As the 3.0.0 branch is inactive, we do not plan to release a version that fixes this issue. Users are recommended to use the latest Apache MINA 2.2.X branch."
+   "repro_note": "访问 /protocol.csp，操纵 group_name/IP-FROM，需对应型号",
+   "impact_scope": "消费级路由器，可能暴露于公网或内网边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120198",
+   "description": "A vulnerability has been found in WAVLINK WL-WN530BE1-A V251117. Affected is the function con_check_read_finish of the file /protocol.csp. Such manipulation of the argument group_name/IP-FROM leads to command injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure."
+  },
+  {
+   "id": "CVE-2026-120196",
+   "tier": "critical",
+   "title": "WAVLINK路由器命令注入可远程执行",
+   "title_zh": "WAVLINK路由器命令注入可远程执行",
+   "summary_zh": "远程攻击者通过 port_forward 的 Name 参数注入系统命令，可能导致设备被控制。",
+   "published": "2026-11-01T04:18:46.943",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/pipiyyb/cve/blob/main/WN579X3-D(en).md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-120196"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/916941"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级厂商修复固件；临时限制 /cgi-bin/wapi.cgi 访问",
+   "repro_worthy": "一般",
+   "repro_note": "访问 /cgi-bin/wapi.cgi 的 port_forward，操纵 Name 参数",
+   "impact_scope": "消费级路由器，常作边界或内网接入",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120196",
+   "description": "A vulnerability was detected in WAVLINK WN579X3-D V250402. This affects the function port_forward of the file /cgi-bin/wapi.cgi. The manipulation of the argument Name results in os command injection. The attack may be performed from remote. The exploit is now public and may be used. The vendor was contacted early about this disclosure."
+  },
+  {
+   "id": "CVE-2026-120197",
+   "tier": "critical",
+   "title": "WAVLINK路由器命令注入可远程执行",
+   "title_zh": "WAVLINK路由器命令注入可远程执行",
+   "summary_zh": "远程攻击者通过 port_forward 的 Name 参数注入系统命令，可能导致设备被控制。",
+   "published": "2026-11-01T04:18:47.147",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/pipiyyb/cve/blob/main/WL-WN530HG4B.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-120197"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/917074"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级厂商修复固件；临时限制 /cgi-bin/wapi.cgi 访问",
+   "repro_worthy": "一般",
+   "repro_note": "访问 /cgi-bin/wapi.cgi 的 port_forward，操纵 Name 参数",
+   "impact_scope": "消费级路由器，常作边界或内网接入",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120197",
+   "description": "A flaw has been found in WAVLINK WL-WN530HG4B M_V260724. This impacts the function port_forward of the file /cgi-bin/wapi.cgi. This manipulation of the argument Name causes os command injection. It is possible to initiate the attack remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure."
   }
  ],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "nodejs/node",
+   "sha": "b615ce858fd92c35e1a7111af16b78e9bcf29733",
+   "url": "https://github.com/nodejs/node/commit/b615ce858fd92c35e1a7111af16b78e9bcf29733",
+   "title": "doc: list CVE-2026-106072 in v24 changelog",
+   "date": "2026-11-01T06:45:46",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-106072"
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "6044cf950ab7f436d3b1a5589150aacd2e8e869e",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/6044cf950ab7f436d3b1a5589150aacd2e8e869e",
+   "title": "avfilter/vf_nnedi: fix out of bounds reads on narrow planes",
+   "date": "2026-11-01T04:00:54",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "dec1770703b7c19ba6bbc30049275301cd4c8a2f",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/dec1770703b7c19ba6bbc30049275301cd4c8a2f",
+   "title": "avfilter/vf_nnedi: fix a heap overflow in the prescreener buffer",
+   "date": "2026-11-01T04:00:54",
+   "score": 2,
+   "matched": [
+    "缓冲区溢出"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "jeecgboot/JeecgBoot",
+   "sha": "56fb212cc685f182643ec352381c6441ea707716",
+   "url": "https://github.com/jeecgboot/JeecgBoot/commit/56fb212cc685f182643ec352381c6441ea707716",
+   "title": "fix(security): Online 表单详情存储型 XSS（GHSA-867f-2922-wj26）",
+   "date": "2026-11-01T03:27:03",
+   "score": 2,
+   "matched": [
+    "XSS"
+   ],
+   "cve": null
+  }
+ ]
 }
