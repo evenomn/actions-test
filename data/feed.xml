@@ -3,161 +3,27 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    <lastBuildDate>Mon, 02 Nov 2026 02:44:13 +0000</lastBuildDate>
+    <pubDate>Mon, 02 Nov 2026 07:48:59 +0000</pubDate>
+    <lastBuildDate>Mon, 02 Nov 2026 07:48:59 +0000</lastBuildDate>
     <item>
-      <title>[critical]WAVLINK路由器命令注入漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120279</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120279-2026-11-02</guid>
-      <description>CVE-2026-120279 · 🎯P1 重点关注 · 披露 2026-11-02 · 组件 边界设备/VPN · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
-Executing a manipulation of the argument file_id can lead to os command injection. The exploit has been published and may be used.
+      <title>[critical]边界VPN group_name命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120344</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120344-2026-11-02</guid>
+      <description>CVE-2026-120344 · 🎯P1 重点关注 · 披露 2026-11-02 · 组件 边界设备/VPN · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+Such manipulation of the argument group_name leads to os command injection. The exploit has been disclosed to the public and may be used.
 信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
+      <pubDate>Mon, 02 Nov 2026 07:48:59 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]未知边界设备命令注入漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120280</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120280-2026-11-02</guid>
-      <description>CVE-2026-120280 · 🎯P1 重点关注 · 披露 2026-11-02 · 组件 边界设备/VPN · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
-The manipulation of the argument group_id/group_name leads to os command injection. The exploit has been disclosed to the public and may be used.
+      <title>[critical]WAVLINK路由器data参数命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120345</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120345-2026-11-02</guid>
+      <description>CVE-2026-120345 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+A vulnerability was found in WAVLINK WN551X3-A M51X3_V251020-WO-182e965. Performing a manipulation of the argument data results in os command injection.
 信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WAVLINK路由器OpenVPN栈溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120281</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120281-2026-11-02</guid>
-      <description>CVE-2026-120281 · 🎯P1 重点关注 · 披露 2026-11-02 · 组件 边界设备/VPN · CVSS 10.0 · 类型 内存破坏/栈溢出 · 难度 低(远程·免认证)
-A vulnerability was found in WAVLINK WN536AX6-A V260507. The exploit has been made public and could be used.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WAVLINK路由器WAPI命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120197</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120197-2026-11-02</guid>
-      <description>CVE-2026-120197 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · EPSS 1.7%,前 77% · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-This manipulation of the argument Name causes os command injection. The exploit has been published and may be used.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Linksys E8450 栈溢出漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120283</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120283-2026-11-02</guid>
-      <description>CVE-2026-120283 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 10.0 · 类型 内存破坏/栈溢出 · 难度 低(远程·免认证)
-A vulnerability was identified in Linksys E8450 1.2.00.360516. Such manipulation of the argument hidden_timezone leads to stack-based buffer overflow.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]未知组件权限校验不当漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120224</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120224-2026-11-02</guid>
-      <description>CVE-2026-120224 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 CWE-266/CWE-285 · 难度 低(远程·需低权限)
-The manipulation results in improper authorization. The exploit has been released to the public and may be used for attacks.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Beta9租户镜像构建权限提升</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120306</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120306-2026-11-02</guid>
-      <description>CVE-2026-120306 · 🎯P1 重点关注 · 披露 2026-11-01 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 权限提升/CWE-653 · 难度 低(远程·需低权限)
-Beta9 turns each shell command in a tenant image definition into a Dockerfile RUN line and executes it with Buildah on the build worker.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Beta9沙箱文件接口路径遍历</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120307</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120307-2026-11-02</guid>
-      <description>CVE-2026-120307 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 路径遍历/任意文件读取/路径遍历 · 难度 低(远程·需低权限)
-The Beta9 worker serves the sandbox file API from outside the container. getHostPathFromContainerPath turns the tenant's container path into a worker path.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Beta9卷挂载路径穿越漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120308</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120308-2026-11-02</guid>
-      <description>CVE-2026-120308 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 路径遍历/任意文件读取/CWE-668 · 难度 低(远程·需低权限)
-A Beta9 tenant can attach a volume when deploying a function, endpoint, or task queue.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WAVLINK路由器VLAN命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120230</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120230-2026-11-02</guid>
-      <description>CVE-2026-120230 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-A vulnerability was found in WAVLINK WN701AE 260105. The manipulation of the argument vlan_name results in os command injection.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WAVLINK路由器OVPN命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120238</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120238-2026-11-02</guid>
-      <description>CVE-2026-120238 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-Such manipulation of the argument file_id leads to os command injection. The exploit has been disclosed to the public and may be used.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WAVLINK路由器黑名单命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120282</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120282-2026-11-02</guid>
-      <description>CVE-2026-120282 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-A vulnerability was determined in WAVLINK WN536AX6-A V260507. The exploit has been publicly disclosed and may be utilized.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Termix SSH 路径遍历漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120322</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120322-2026-11-02</guid>
-      <description>CVE-2026-120322 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
-A vulnerability was identified in Termix-SSH Termix up to 2.9.2. The manipulation of the argument destPath leads to path traversal.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]BookIt插件SQL注入漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62048</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62048-2026-11-02</guid>
-      <description>CVE-2026-62048 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.3 · 类型 SQL注入 · 难度 低(远程·免认证)
-Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Liquid Web / StellarWP BookIt bookit allows SQL Injection.…
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]OpenWrt设备配置恢复路径遍历</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120225</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120225-2026-11-02</guid>
-      <description>CVE-2026-120225 · 🎯P1 重点关注 · 披露 2026-11-01 · 组件 网络设备 · CVSS 9.1 · 类型 路径遍历/任意文件读取/路径遍历 · 难度 中(远程·需高权限)
-Affected by this vulnerability is the function config_restore_ex of the file /etc/openwrt_release.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WAVLINK路由器ioos命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120229</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120229-2026-11-02</guid>
-      <description>CVE-2026-120229 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.1 · 类型 命令注入/命令注入(RCE) · 难度 中(远程·需高权限)
-The manipulation of the argument file_id leads to os command injection. The exploit has been disclosed to the public and may be used.
-信号:</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
-    </item>
-    <item>
-      <title>今日要点</title>
-      <description>- 今日未见在野利用或勒索软件标记，勿因未收录KEV而放松。
-- 边界VPN曝多个CVSS10命令注入与栈溢出，应优先排查处置。
-- 高危批量公告集中：多款9.9分RCE、路径遍历和权限提升同日出现。
-- 最急处置：边界VPN CVSS10命令注入，先隔离再修补。</description>
-      <pubDate>Mon, 02 Nov 2026 02:44:13 +0000</pubDate>
+      <pubDate>Mon, 02 Nov 2026 07:48:59 +0000</pubDate>
     </item>
   </channel>
 </rss>
