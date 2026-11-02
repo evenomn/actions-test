@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-11-02T07:48:59+00:00",
+ "generated_at": "2026-11-02T19:38:00+00:00",
  "lookback_hours": 5,
  "count": 2,
  "stats": {
@@ -12,8 +12,7 @@
    "P1 重点关注": 2
   },
   "by_category": {
-   "边界设备/VPN": 1,
-   "未知": 1
+   "未知": 2
   },
   "kev": 0,
   "with_poc": 0,
@@ -23,20 +22,19 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-120344",
+   "id": "CVE-2026-120442",
    "tier": "critical",
-   "title": "边界VPN group_name命令注入",
-   "title_zh": "边界VPN group_name命令注入",
-   "summary_zh": "可访问接口者操控group_name参数注入系统命令，可能完全控制设备。",
-   "published": "2026-11-02T05:18:25.450",
-   "cvss": 10.0,
+   "title": "ape-volo-admin 硬编码密钥绕过",
+   "title_zh": "ape-volo-admin 硬编码密钥绕过",
+   "summary_zh": "未授权攻击者用 appsettings.json 中硬编码密钥离线伪造管理员 JWT，完全控制用户、角色与数据。",
+   "published": "2026-11-02T15:17:26.490",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
+    "CWE-1394"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -45,15 +43,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/senxitoyshuyi-ui/HACKALL/blob/main/WAVLINK_WN551X3-A%20Router/WAVLINK_WN551X3-A_wireguard_cli_group_command_injection.md"
+     "url": "https://github.com/xianhc/ape-volo-admin/blob/V3.5.2/Ape.Volo.Api/appsettings.json#L4-L10"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-120344"
+     "url": "https://github.com/xianhc/ape-volo-admin/blob/V3.5.2/Ape.Volo.Infrastructure/Authentication/PermissionHandler.cs#L130-L172"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/919551"
+     "url": "https://github.com/xianhc/ape-volo-admin/blob/V3.5.2/Ape.Volo.Infrastructure/Extensions/AuthorizationExtensions.cs#L50-L60"
     }
    ],
    "poc": [],
@@ -64,27 +62,26 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "关注厂商补丁，限制接口暴露并过滤group_name参数",
+   "action_zh": "升级至 3.6.1 及以上；立即轮换 JWT 签名密钥与既有令牌。",
    "repro_worthy": "一般",
-   "repro_note": "需访问设备接口并操控group_name参数，确认认证前置",
-   "impact_scope": "边界VPN设备，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120344",
-   "description": "A vulnerability has been found in WAVLINK WN551X3-A M51X3_V251020-WO-182e965. This affects the function system of the file /bin/ioos of the component WireGuard CLI Group Handler. Such manipulation of the argument group_name leads to os command injection. The attack may be performed from remote. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure."
+   "repro_note": "默认配置含固定密钥；伪造 jti 为种子管理员ID 的 JWT",
+   "impact_scope": "后台管理系统，拿下即全量接管",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120442",
+   "description": "ape-volo-admin before 3.6.1 contains an authentication bypass vulnerability that allows unauthenticated attackers to forge administrator tokens using a hardcoded JWT signing key in appsettings.json. Attackers can sign tokens offline with the jti claim set to the seeded administrator id to gain full API control over users, roles, permissions and data."
   },
   {
-   "id": "CVE-2026-120345",
+   "id": "CVE-2026-77876",
    "tier": "critical",
-   "title": "WAVLINK路由器data参数命令注入",
-   "title_zh": "WAVLINK路由器data参数命令注入",
-   "summary_zh": "攻击者可操控data参数注入系统命令，可能完全控制WAVLINK WN551X3-A设备。",
-   "published": "2026-11-02T06:17:43.410",
-   "cvss": 10.0,
+   "title": "CWP 用户面板命令注入RCE",
+   "title_zh": "CWP 用户面板命令注入RCE",
+   "summary_zh": "拥有用户面板账户的攻击者在删除保护目录时经 file 参数注入系统命令，以面板权限执行任意代码。",
+   "published": "2026-11-02T16:17:43.293",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入",
     "命令注入(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
@@ -94,15 +91,11 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/senxitoyshuyi-ui/HACKALL/blob/main/WAVLINK_WN551X3-A%20Router/WAVLINK_WN551X3-A_dns_resolution_command_injection.md"
+     "url": "https://control-webpanel.com/changelog"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-120345"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/919579"
+     "url": "https://www.vulncheck.com/advisories/control-web-panel-cwp-os-command-injection-via-protected-directory"
     }
    ],
    "poc": [],
@@ -113,25 +106,86 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "关注厂商补丁，限制设备管理接口暴露并过滤data参数",
+   "action_zh": "升级至 webpanel 1.16 及以上；临时限制用户面板访问。",
    "repro_worthy": "一般",
-   "repro_note": "需访问WAVLINK设备接口并操控data参数，确认认证前置",
-   "impact_scope": "边缘路由器，可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120345",
-   "description": "A vulnerability was found in WAVLINK WN551X3-A M51X3_V251020-WO-182e965. This impacts the function sub_41a430 of the file /bin/ioos of the component DNS Resolution Handler. Performing a manipulation of the argument data results in os command injection. It is possible to initiate the attack remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure."
+   "repro_note": "登录用户面板；POST acc=deletedp 在 file 参数注入命令",
+   "impact_scope": "虚拟主机控制面板，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77876",
+   "description": "Control Web Panel (CWP) before webpanel_version 1.16 contains an OS command injection vulnerability in the protected_directory user panel module that allows attackers to execute arbitrary commands by submitting unescaped input through the file POST parameter in the acc=deletedp action. Attackers can exploit this flaw, which passes attacker-controlled input directly into a shell_exec call, to achieve code execution in the user panel context."
   }
  ],
  "media": [],
  "commits": [
   {
    "repo": "envoyproxy/envoy",
-   "sha": "f10ce2cc90581e288cadcbe645d4294c4afc1ebd",
-   "url": "https://github.com/envoyproxy/envoy/commit/f10ce2cc90581e288cadcbe645d4294c4afc1ebd",
-   "title": "Split streamInfoFormatterWithSsl test to avoid stack overflow (#48890)",
-   "date": "2026-11-02T03:28:44",
+   "sha": "6c26768e1137f12619f487c3f7fc7722a3e4faf8",
+   "url": "https://github.com/envoyproxy/envoy/commit/6c26768e1137f12619f487c3f7fc7722a3e4faf8",
+   "title": "tracing: log otel span creation and export (#47543)",
+   "date": "2026-11-02T18:58:10",
+   "score": 4,
+   "matched": [
+    "格式串",
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "elastic/elasticsearch",
+   "sha": "93163a09201dc719470c74bf1b12b547efea4add",
+   "url": "https://github.com/elastic/elasticsearch/commit/93163a09201dc719470c74bf1b12b547efea4add",
+   "title": "Connect CLI HTTPS sockets before layering TLS (#161800)",
+   "date": "2026-11-02T17:09:50",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2024-34447"
+  },
+  {
+   "repo": "elastic/elasticsearch",
+   "sha": "59449ad2f5da0591553d009a75ecc4cd61fe2101",
+   "url": "https://github.com/elastic/elasticsearch/commit/59449ad2f5da0591553d009a75ecc4cd61fe2101",
+   "title": "Revert security advisory for 9.4.9 and 9.5.6 (#164352)",
+   "date": "2026-11-02T16:55:09",
    "score": 2,
    "matched": [
-    "缓冲区溢出"
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "elastic/elasticsearch",
+   "sha": "980b7789dffeb3acd4fb70c8ab1a7ec194eb0f76",
+   "url": "https://github.com/elastic/elasticsearch/commit/980b7789dffeb3acd4fb70c8ab1a7ec194eb0f76",
+   "title": "Add security advisory for 9.4.9 and 9.5.6 (#164344)",
+   "date": "2026-11-02T16:38:42",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/struts",
+   "sha": "74af1ef2091a1a0d7161fd6d8c0b44580fe13b23",
+   "url": "https://github.com/apache/struts/commit/74af1ef2091a1a0d7161fd6d8c0b44580fe13b23",
+   "title": "docs: tie the control test to the THREAT_MODEL §8 properties",
+   "date": "2026-11-02T15:03:50",
+   "score": 2,
+   "matched": [
+    "漏洞相关"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "45df6b73d59e5133118df73e8d5537e30fa33440",
+   "url": "https://github.com/nodejs/node/commit/45df6b73d59e5133118df73e8d5537e30fa33440",
+   "title": "module: avoid reparsing package.json in esm format detection",
+   "date": "2026-11-02T14:51:36",
+   "score": 2,
+   "matched": [
+    "反序列化"
    ],
    "cve": null
   }
