@@ -14656,5 +14656,180 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-11-02": {
+  "qualified": 16,
+  "critical": 16,
+  "kev": 0,
+  "repro_top": 0,
+  "kev_total": 1766,
+  "by_category": {
+   "边界设备/VPN": 3,
+   "未分类": 11,
+   "容器/虚拟化": 1,
+   "网络设备": 1
+  },
+  "items": [
+   {
+    "id": "CVE-2026-120279",
+    "title": "WAVLINK路由器命令注入漏洞",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120280",
+    "title": "未知边界设备命令注入漏洞",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120281",
+    "title": "WAVLINK路由器OpenVPN栈溢出",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120197",
+    "title": "WAVLINK路由器WAPI命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120283",
+    "title": "Linksys E8450 栈溢出漏洞",
+    "tier": "critical",
+    "category": null,
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120224",
+    "title": "未知组件权限校验不当漏洞",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120306",
+    "title": "Beta9租户镜像构建权限提升",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120307",
+    "title": "Beta9沙箱文件接口路径遍历",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120308",
+    "title": "Beta9卷挂载路径穿越漏洞",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120230",
+    "title": "WAVLINK路由器VLAN命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120238",
+    "title": "WAVLINK路由器OVPN命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120282",
+    "title": "WAVLINK路由器黑名单命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120322",
+    "title": "Termix SSH 路径遍历漏洞",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-62048",
+    "title": "BookIt插件SQL注入漏洞",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120225",
+    "title": "OpenWrt设备配置恢复路径遍历",
+    "tier": "critical",
+    "category": "网络设备",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120229",
+    "title": "WAVLINK路由器ioos命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }
