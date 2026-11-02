@@ -5,43 +5,25 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 01 Nov 2026 21:16:47 +0000</pubDate>
-    <lastBuildDate>Sun, 01 Nov 2026 21:16:47 +0000</lastBuildDate>
+    <pubDate>Mon, 02 Nov 2026 00:54:27 +0000</pubDate>
+    <lastBuildDate>Mon, 02 Nov 2026 00:54:27 +0000</lastBuildDate>
     <item>
-      <title>[critical]WAVLINK路由器命令注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120239</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120239-2026-11-01</guid>
-      <description>CVE-2026-120239 · 🎯P1 重点关注 · 披露 2026-11-01 · 组件 边界设备/VPN · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-A vulnerability was found in WAVLINK WN553X1-B V260403_2.0.0.
+      <title>[critical]边界设备Web管理命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120277</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120277-2026-11-02</guid>
+      <description>CVE-2026-120277 · 🎯P1 重点关注 · 披露 2026-11-02 · 组件 边界设备/VPN · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+Such manipulation of the argument group_name leads to os command injection. The exploit has been disclosed publicly and may be used.
 信号:</description>
-      <pubDate>Sun, 01 Nov 2026 21:16:47 +0000</pubDate>
+      <pubDate>Mon, 02 Nov 2026 00:54:27 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WAVLINK路由器命令注入漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120240</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120240-2026-11-01</guid>
-      <description>CVE-2026-120240 · 🎯P1 重点关注 · 披露 2026-11-01 · 组件 边界设备/VPN · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-A vulnerability was determined in WAVLINK WN553X1-B V260403_2.0.0. The exploit has been publicly disclosed and may be utilized.
+      <title>[critical]Web管理界面group_name命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120276</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120276-2026-11-02</guid>
+      <description>CVE-2026-120276 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+This vulnerability affects the function sub_416760 of the file /bin/ioos of the component Web Management Interface.
 信号:</description>
-      <pubDate>Sun, 01 Nov 2026 21:16:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]prefab-ui Deno权限过宽致RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120338</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120338-2026-11-01</guid>
-      <description>CVE-2026-120338 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 10.0 · 类型 代码注入(RCE)/权限提升 · 难度 低(远程·免认证)
-From prefab-ui 0.14.0 through 0.20.2 the launcher starts Deno with unrestricted --allow-read, --allow-write, and --allow-net, and the runner leaves the Deno API…
-信号:</description>
-      <pubDate>Sun, 01 Nov 2026 21:16:47 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]WAVLINK路由器ovpn命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120238</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120238-2026-11-01</guid>
-      <description>CVE-2026-120238 · 🎯P1 重点关注 · 披露 2026-11-01 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
-Such manipulation of the argument file_id leads to os command injection. The exploit has been disclosed to the public and may be used.
-信号:</description>
-      <pubDate>Sun, 01 Nov 2026 21:16:47 +0000</pubDate>
+      <pubDate>Mon, 02 Nov 2026 00:54:27 +0000</pubDate>
     </item>
   </channel>
 </rss>
