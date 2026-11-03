@@ -14831,5 +14831,139 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-11-03": {
+  "qualified": 12,
+  "critical": 10,
+  "kev": 0,
+  "repro_top": 2,
+  "kev_total": 1766,
+  "by_category": {
+   "未分类": 9,
+   "开发库/依赖": 1,
+   "容器/虚拟化": 2
+  },
+  "items": [
+   {
+    "id": "CVE-2026-105769",
+    "title": "kaniko 源校验缺陷致令牌泄露",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-115215",
+    "title": "DTLS 服务资源耗尽拒绝服务",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.7,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-109142",
+    "title": "Krill 子 CA 身份校验缺失",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116606",
+    "title": "Barracuda ESG 认证绕过配置导入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "强烈推荐",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116769",
+    "title": "Secure Access 认证绕过改配置",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "强烈推荐",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-73696",
+    "title": "CWP 重定向后认证绕过",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2025-11969",
+    "title": "System REST API 权限校验缺失",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120446",
+    "title": "madong 租户管理接口未授权",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-97718",
+    "title": "Secure Access 服务器 CSRF 建号",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120213",
+    "title": "代理依赖组件路径限制绕过",
+    "tier": "critical",
+    "category": "开发库/依赖",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-88811",
+    "title": "SUSE Rancher 代理凭据泄露",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-94290",
+    "title": "Rancher Fleet 密钥引用越权",
+    "tier": "critical",
+    "category": "容器/虚拟化",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }

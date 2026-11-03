@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-03T02:58:03+00:00",
- "count": 152,
- "count_recommended": 24,
+ "updated_at": "2026-11-03T04:00:20+00:00",
+ "count": 155,
+ "count_recommended": 26,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -958,6 +958,82 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82104",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-116606",
+   "title": "Barracuda ESG 认证绕过配置导入",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-02",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问配置导入接口，上传兼容恶意备份触发恢复",
+   "impact_scope": "边界邮件安全网关，常暴露公网",
+   "action_zh": "升级至 9.4.0.030，临时禁用配置导入功能",
+   "summary_zh": "未认证攻击者可调用配置导入恢复恶意备份，篡改邮件网关全局配置并持久化。",
+   "category": null,
+   "cvss": 9.3,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116606",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-116769",
+   "title": "Secure Access 认证绕过改配置",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-02",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未认证调用服务器接口修改客户端安全设置，需确认客户端联动",
+   "impact_scope": "远程接入服务器，客户端策略被篡改",
+   "action_zh": "升级至 14.61 并核查客户端安全策略",
+   "summary_zh": "未认证攻击者可绕过认证，经服务器修改客户端安全设置，削弱终端防护。",
+   "category": null,
+   "cvss": 9.3,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.absolute.com/platform/security-information/vulnerability-archive/cve-2026-116769"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116769",
    "change_note": null
   },
   {
@@ -5808,6 +5884,46 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107194",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-73696",
+   "title": "CWP 重定向后认证绕过",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-03",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-02",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "访问 CWPUserIndex 认证流程，构造重定向请求观察后续执行",
+   "impact_scope": "主机控制面板，常暴露公网",
+   "action_zh": "升级 webpanel_version 1.12，限制面板公网访问",
+   "summary_zh": "未认证攻击者利用重定向后继续执行缺陷绕过用户面板认证，获取 CWP 面板权限。",
+   "category": null,
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://control-webpanel.com/changelog"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/control-web-panel-cwp-execution-after-redirect-in-cwpuserindex"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73696",
    "change_note": null
   },
   {

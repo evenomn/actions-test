@@ -1,69 +1,547 @@
 {
  "version": 3,
- "generated_at": "2026-11-03T02:58:03+00:00",
- "lookback_hours": 5,
- "count": 0,
+ "generated_at": "2026-11-03T04:00:20+00:00",
+ "lookback_hours": 24,
+ "count": 12,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 12,
+  "by_tier": {
+   "critical": 10,
+   "high": 2
+  },
+  "by_urgency": {
+   "P1 重点关注": 12
+  },
+  "by_category": {
+   "未知": 9,
+   "容器/虚拟化": 2,
+   "开发库/依赖": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
-  "repro_recommended": 0
+  "repro_recommended": 2
  },
- "briefing": [],
- "items": [],
- "media": [],
- "commits": [
+ "briefing": [
+  "- 清单未标记在野利用与勒索软件关联，暂无相应紧急预警。",
+  "- 今日集中披露12个高危漏洞，9.0分以上占多数，涉认证与越权。",
+  "- 优先处置两个9.4分缺失认证/授权漏洞（含CVE-2026-120446）。",
+  "- 认证绕过与SSRF/凭据保护不足均9.3分，公网系统先核查。",
+  "- 无PoC、Nuclei模板或第三方扩展，仍需排查暴露面并尽快修补。"
+ ],
+ "items": [
   {
-   "repo": "madler/zlib",
-   "sha": "2fd31f00740ea183b640f3f5c12659420e189c76",
-   "url": "https://github.com/madler/zlib/commit/2fd31f00740ea183b640f3f5c12659420e189c76",
-   "title": "Avoid a possible out-of-bounds write after inflateReset().",
-   "date": "2026-11-03T01:15:12",
-   "score": 2,
-   "matched": [
-    "越界读写"
+   "id": "CVE-2026-105769",
+   "tier": "critical",
+   "title": "kaniko 源校验缺陷致令牌泄露",
+   "title_zh": "kaniko 源校验缺陷致令牌泄露",
+   "summary_zh": "攻击者控制镜像仓库可诱导 kaniko 外发 Azure 访问令牌，窃取云凭据。",
+   "published": "2026-11-02T17:17:32.670",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "源校验错误(SSRF类)",
+    "凭据保护不足"
    ],
-   "cve": null
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/chainguard-forks/kaniko/pull/495"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/chainguard-forks/kaniko/releases/tag/v1.25.20"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/chainguard-forks/kaniko/security/advisories/GHSA-5q7h-w9jf-cx97"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 1.25.20 并轮换 Azure 凭据",
+   "repro_worthy": "一般",
+   "repro_note": "构建推送至攻击者仓库时触发，检查 registry 配置与令牌范围",
+   "impact_scope": "CI/CD 构建链路，云凭据泄露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105769",
+   "description": "kaniko before 1.25.20 can send a Microsoft Entra ID (Azure AD) access token for Azure Resource Manager to an attacker-controlled registry host. A Dockerfile that references an image on a lookalike host, such as FROM x.azurecr.io.attacker.com/img or COPY --from=<image>, causes the helper to obtain a token from the build's Azure identity (service principal environment variables, federated workload identity token, or managed identity) and POST it to https://<host>/oauth2/exchange."
   },
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "8edf1e540120c1851cdc314289cc328a71eedd1e",
-   "url": "https://github.com/envoyproxy/envoy/commit/8edf1e540120c1851cdc314289cc328a71eedd1e",
-   "title": "build(deps): bump sphinxcontrib-googleanalytics from 0.5 to 0.6 in /docs/tools/python (#48710)",
-   "date": "2026-11-02T23:45:48",
-   "score": 2,
-   "matched": [
-    "漏洞相关"
+   "id": "CVE-2026-115215",
+   "tier": "high",
+   "title": "DTLS 服务资源耗尽拒绝服务",
+   "title_zh": "DTLS 服务资源耗尽拒绝服务",
+   "summary_zh": "未认证攻击者伪造源地址发送单个数据报耗尽会话池，导致合法 DTLS 客户端拒绝服务。",
+   "published": "2026-11-02T22:17:18.397",
+   "cvss": 8.7,
+   "severity": "HIGH",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "资源分配无限制",
+    "CWE-772"
    ],
-   "cve": null
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-3p2g-x7hh-3w4c"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/487"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "应用厂商补丁，限制 DTLS 端口暴露并启用会话回收",
+   "repro_worthy": "一般",
+   "repro_note": "未授权向 DTLS 端口发送伪造源数据报，观察会话池耗尽",
+   "impact_scope": "DTLS 接入服务，公网可触发 DoS",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115215",
+   "description": "In Eclipse ThreadX NetX Duo versions 6.0 through 6.5.2.202603a, the NetX Secure DTLS server allocates a session from its fixed session pool for the first datagram from any unrecognised address and port, before the cookie exchange, and never releases a session whose handshake stalls. A remote, unauthenticated attacker can exhaust the pool with one spoofed datagram per source and deny DTLS service to legitimate clients until the application resets the sessions."
   },
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "6e5a2fa175aead0819cb7469c0a1c2aa94357ac3",
-   "url": "https://github.com/envoyproxy/envoy/commit/6e5a2fa175aead0819cb7469c0a1c2aa94357ac3",
-   "title": "set_filter_state: document skip_if_empty with the \"-\" placeholder (#48834)",
-   "date": "2026-11-02T22:38:30",
-   "score": 2,
-   "matched": [
-    "格式串"
+   "id": "CVE-2026-109142",
+   "tier": "high",
+   "title": "Krill 子 CA 身份校验缺失",
+   "title_zh": "Krill 子 CA 身份校验缺失",
+   "summary_zh": "同服父子 CA 场景下，攻击者可伪造 child_handle 绕过校验，越权操作其他 CA。",
+   "published": "2026-11-02T16:17:27.267",
+   "cvss": 8.4,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)"
    ],
-   "cve": null
+   "difficulty": "中(远程·利用条件苛刻·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.nlnetlabs.nl/downloads/krill/CVE-2026-109142.txt"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级 Krill 修复版本，隔离父子 CA 部署",
+   "repro_worthy": "一般",
+   "repro_note": "同服务器父子 CA 配置，构造父联系人 child_handle 调用管理接口",
+   "impact_scope": "RPKI CA 管理面，配置完整性问题",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109142",
+   "description": "When a CA's parent lives on the same Krill server: instead of building and verifying a signed CMS message, it runs the RFC 6492 provisioning exchange in-process and trusts the child identity (child_handle) that the caller put in the parent contact. Nothing checks that this child identity actually belongs to the CA making the request."
   },
   {
-   "repo": "wireshark/wireshark",
-   "sha": "6da83890e204352d9de156aa4b92bc2b13ddf11b",
-   "url": "https://github.com/wireshark/wireshark/commit/6da83890e204352d9de156aa4b92bc2b13ddf11b",
-   "title": "LSA: Check the security descriptor buffer length",
-   "date": "2026-11-02T19:16:16",
-   "score": 2,
-   "matched": [
-    "未初始化/内存破坏"
+   "id": "CVE-2026-116606",
+   "tier": "critical",
+   "title": "Barracuda ESG 认证绕过配置导入",
+   "title_zh": "Barracuda ESG 认证绕过配置导入",
+   "summary_zh": "未认证攻击者可调用配置导入恢复恶意备份，篡改邮件网关全局配置并持久化。",
+   "published": "2026-11-02T13:17:37.017",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
    ],
-   "cve": null
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 9.4.0.030，临时禁用配置导入功能",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问配置导入接口，上传兼容恶意备份触发恢复",
+   "impact_scope": "边界邮件安全网关，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116606",
+   "description": "An authentication bypass in Barracuda Email Security Gateway versions earlier than 9.4.0.030 allows an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration."
+  },
+  {
+   "id": "CVE-2026-116769",
+   "tier": "critical",
+   "title": "Secure Access 认证绕过改配置",
+   "title_zh": "Secure Access 认证绕过改配置",
+   "summary_zh": "未认证攻击者可绕过认证，经服务器修改客户端安全设置，削弱终端防护。",
+   "published": "2026-11-02T20:17:33.527",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.absolute.com/platform/security-information/vulnerability-archive/cve-2026-116769"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 14.61 并核查客户端安全策略",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未认证调用服务器接口修改客户端安全设置，需确认客户端联动",
+   "impact_scope": "远程接入服务器，客户端策略被篡改",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116769",
+   "description": "CVE-2026-116769 is an authentication bypass vulnerability in Secure Access servers starting with version 13.0 and prior to 14.61. Attackers can modify security settings of a client via the server."
+  },
+  {
+   "id": "CVE-2026-73696",
+   "tier": "critical",
+   "title": "CWP 重定向后认证绕过",
+   "title_zh": "CWP 重定向后认证绕过",
+   "summary_zh": "未认证攻击者利用重定向后继续执行缺陷绕过用户面板认证，获取 CWP 面板权限。",
+   "published": "2026-11-02T15:17:37.480",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-698"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://control-webpanel.com/changelog"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/control-web-panel-cwp-execution-after-redirect-in-cwpuserindex"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级 webpanel_version 1.12，限制面板公网访问",
+   "repro_worthy": "值得",
+   "repro_note": "访问 CWPUserIndex 认证流程，构造重定向请求观察后续执行",
+   "impact_scope": "主机控制面板，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73696",
+   "description": "Control Web Panel (CWP) before webpanel_version 1.12 contains an execution after redirect vulnerability in the user panel authentication flow (CWPUserIndex) that allows unauthenticated attackers to bypass authentication by exploiting a missing exit() call after a header('Location: ...') redirect. Attackers can send unauthenticated requests to continue PHP execution past the redirect, reaching user panel functionality that should require authentication."
+  },
+  {
+   "id": "CVE-2025-11969",
+   "tier": "critical",
+   "title": "System REST API 权限校验缺失",
+   "title_zh": "System REST API 权限校验缺失",
+   "summary_zh": "低权限用户可调用管理 REST 接口执行管理员操作，导致权限提升和系统被控。",
+   "published": "2026-11-02T06:17:42.087",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-285"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2025-4733/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本，临时限制 System REST API 访问",
+   "repro_worthy": "一般",
+   "repro_note": "以低权限账户调用管理 REST 接口，验证未授权操作",
+   "impact_scope": "管理 API，内网横向提权风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-11969",
+   "description": "The System REST APIs do not correctly enforce access control mechanisms, allowing users with lower privilege roles to execute administrative actions that should be restricted. This weakness permits unauthorized operations on the affected product. Successful exploitation could enable a malicious actor to perform unauthorized administrative operations, including executing administrative functions. APIs exposed through the WSO2 API Manager's API Gateway are not affected by this vulnerability."
+  },
+  {
+   "id": "CVE-2026-120446",
+   "tier": "critical",
+   "title": "madong 租户管理接口未授权",
+   "title_zh": "madong 租户管理接口未授权",
+   "summary_zh": "未认证攻击者调用 /platformapi 租户接口，可增删改租户并绑定订阅套餐。",
+   "published": "2026-11-02T15:17:27.323",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/madong-code/madong-admin-saas/blob/v5.1.4/app/platform/controller/tenant/AccountController.php#L26"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/madong-code/madong-admin-saas/blob/v5.1.4/config/middleware.php"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/madong-code/madong-admin-saas/commit/2a199a1523ed749c94b876bc2ae5fedf252b2e39"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本，临时禁用 /platformapi 外网访问",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问 /platformapi/tenant/account 等接口，执行租户管理操作",
+   "impact_scope": "SaaS 租户管理面，公网暴露风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120446",
+   "description": "madong-admin-saas through 5.1.4 contains a missing authentication vulnerability in the platform tenant management API because the 'platformapi' middleware key never matches the 'platform' application. Unauthenticated remote attackers can call /platformapi/tenant/account, bind-plan and sync-data endpoints to list, create, modify, disable or delete tenants and bind subscription plans."
+  },
+  {
+   "id": "CVE-2026-97718",
+   "tier": "critical",
+   "title": "Secure Access 服务器 CSRF 建号",
+   "title_zh": "Secure Access 服务器 CSRF 建号",
+   "summary_zh": "攻击者诱导已登录管理员触发 CSRF，创建受控账户，进而接管 Secure Access 系统。",
+   "published": "2026-11-02T20:18:05.253",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.absolute.com/platform/security-information/vulnerability-archive/cve-2026-97718"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至修复版本，启用 CSRF 防护并核查管理员账户",
+   "repro_worthy": "一般",
+   "repro_note": "管理员已登录时访问恶意页面，提交创建账户请求",
+   "impact_scope": "远程接入管理面，管理员会话劫持",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97718",
+   "description": "CVE-2026-97718 Is a cross-site request forgery vulnerability in version 14.60 of the Secure Access server. Because of a bypassed security control, an attacker can cause an admin to create an account under their control."
+  },
+  {
+   "id": "CVE-2026-120213",
+   "tier": "critical",
+   "title": "代理依赖组件路径限制绕过",
+   "title_zh": "代理依赖组件路径限制绕过",
+   "summary_zh": "未认证攻击者构造路径绕过前缀限制，可能访问上游内部路径并触发 SSRF 或鉴权绕过。",
+   "published": "2026-11-02T11:17:31.137",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取",
+    "CWE-436"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cna.openjsf.org/security-advisories.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/fastify/fastify-http-proxy/security/advisories/GHSA-h3vp-4jfr-v364"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级代理依赖组件，规范化路径并限制上游访问",
+   "repro_worthy": "一般",
+   "repro_note": "向代理发送含 ../ 或编码路径请求，观察是否越出前缀",
+   "impact_scope": "反向代理链路，SSRF/鉴权绕过",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120213",
+   "description": "An unauthenticated remote attacker can use this to reach upstream locations outside the intended prefix, leading to path-restriction bypass and, depending on the upstream, server-side request forgery or authorization bypass in the proxied service."
+  },
+  {
+   "id": "CVE-2026-88811",
+   "tier": "critical",
+   "title": "SUSE Rancher 代理凭据泄露",
+   "title_zh": "SUSE Rancher 代理凭据泄露",
+   "summary_zh": "经 meta proxy 转发时 Rancher 凭据未过滤，可能泄露给云厂商导致权限外泄。",
+   "published": "2026-11-02T17:17:45.793",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-201"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/rancher/rancher/security/advisories/GHSA-x82x-2qj6-5rm2"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至修复版本，轮换 Rancher 与云凭据",
+   "repro_worthy": "一般",
+   "repro_note": "配置 meta proxy 指向云上游，抓包检查 Rancher 凭据外发",
+   "impact_scope": "容器管理平台，云凭据泄露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88811",
+   "description": "Missing filtering in the SUSE Rancher Manager meta proxy could cause passed in rancher credentials to be leaked to cloud providers. This affects SUSE Rancher 2.15.0 up to 2.15.3, 2.14.0 up to 2.14.7, 2.13.0 up to 2.13.11,"
+  },
+  {
+   "id": "CVE-2026-94290",
+   "tier": "critical",
+   "title": "Rancher Fleet 密钥引用越权",
+   "title_zh": "Rancher Fleet 密钥引用越权",
+   "summary_zh": "有 Fleet Cluster 创建权限者可引用任意 kubeconfig 密钥，越权访问下游集群。",
+   "published": "2026-11-02T16:17:45.190",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-250"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/rancher/fleet/security/advisories/GHSA-qfmw-gw96-ffcr"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级 Fleet 修复版本，限制可引用密钥范围",
+   "repro_worthy": "一般",
+   "repro_note": "以可创建 Fleet Cluster 的账户引用其他命名空间 kubeconfig secret",
+   "impact_scope": "Kubernetes 集群管理，横向越权",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94290",
+   "description": "The controller did not sufficiently restrict which kubeconfig secrets a Fleet Cluster object was allowed to reference. As a result, a Fleet cluster defined in a namespace an ordinary user controls could be associated with administrative credentials for the management cluster itself, causing the controller to manage the management cluster on that user's behalf and to run that user's Fleet content there with elevated privileges."
   }
- ]
+ ],
+ "media": [],
+ "commits": []
 }

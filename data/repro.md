@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-03 02:58 UTC · 共 **152** 条(强烈推荐 24 / 值得 128)
+**更新**: 2026-11-03 04:00 UTC · 共 **155** 条(强烈推荐 26 / 值得 129)
 
 ---
 
@@ -204,6 +204,20 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://gi
 复现: 强烈推荐 — 未授权直接调用设备LUA函数接口，绕过正常API流程执行系统命令 · 影响面: 蜂窝/工业路由设备，常暴露公网
 处置: 升级至厂商修复版本；停止设备Web/API端口对内网外暴露
 参考: [参考](https://www.teltonika-networks.com/support/security-centre?report=CVE-2026-82104)
+
+### Barracuda ESG 认证绕过配置导入
+[CVE-2026-116606](https://nvd.nist.gov/vuln/detail/CVE-2026-116606) | P1 重点关注 | CVSS 9.3 | 披露 2026-11-02 | 入库 2026-11-03
+未认证攻击者可调用配置导入恢复恶意备份，篡改邮件网关全局配置并持久化。
+复现: 强烈推荐 — 未授权访问配置导入接口，上传兼容恶意备份触发恢复 · 影响面: 边界邮件安全网关，常暴露公网
+处置: 升级至 9.4.0.030，临时禁用配置导入功能
+参考: [参考](https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md) · [参考](https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection)
+
+### Secure Access 认证绕过改配置
+[CVE-2026-116769](https://nvd.nist.gov/vuln/detail/CVE-2026-116769) | P1 重点关注 | CVSS 9.3 | 披露 2026-11-02 | 入库 2026-11-03
+未认证攻击者可绕过认证，经服务器修改客户端安全设置，削弱终端防护。
+复现: 强烈推荐 — 未认证调用服务器接口修改客户端安全设置，需确认客户端联动 · 影响面: 远程接入服务器，客户端策略被篡改
+处置: 升级至 14.61 并核查客户端安全策略
+参考: [参考](https://www.absolute.com/platform/security-information/vulnerability-archive/cve-2026-116769)
 
 ### Oracle Java未认证远程高危
 [CVE-2026-114820](https://nvd.nist.gov/vuln/detail/CVE-2026-114820) | P0 立即处置 | CVSS 9.1 | 披露 2026-10-24 | 入库 2026-10-24
@@ -1009,6 +1023,13 @@ PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy
 [CVE-2026-107194](https://nvd.nist.gov/vuln/detail/CVE-2026-107194) | CVSS 9.2 | 披露 2026-10-07 | 入库 2026-10-08
 复现: 值得
 参考: [参考](https://jakkaru.de/articles/sungrow-vulnerability-exposes-gigawatts-worldwide) · [参考](https://www.sungrowpower.com/en/products/cloud-software/isolarcloud)
+
+### CWP 重定向后认证绕过
+[CVE-2026-73696](https://nvd.nist.gov/vuln/detail/CVE-2026-73696) | P1 重点关注 | CVSS 9.1 | 披露 2026-11-02 | 入库 2026-11-03
+未认证攻击者利用重定向后继续执行缺陷绕过用户面板认证，获取 CWP 面板权限。
+复现: 值得 — 访问 CWPUserIndex 认证流程，构造重定向请求观察后续执行 · 影响面: 主机控制面板，常暴露公网
+处置: 升级 webpanel_version 1.12，限制面板公网访问
+参考: [参考](https://control-webpanel.com/changelog) · [参考](https://www.vulncheck.com/advisories/control-web-panel-cwp-execution-after-redirect-in-cwpuserindex)
 
 ### 苹果CMS找回密码校验缺失致账号接管
 [CVE-2026-116214](https://nvd.nist.gov/vuln/detail/CVE-2026-116214) | P1 重点关注 | 安全设备 | CVSS 9.1 | 披露 2026-10-26 | 入库 2026-10-27
