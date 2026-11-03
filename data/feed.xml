@@ -3,126 +3,18 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    <lastBuildDate>Tue, 03 Nov 2026 04:00:20 +0000</lastBuildDate>
+    <pubDate>Tue, 03 Nov 2026 12:53:56 +0000</pubDate>
+    <lastBuildDate>Tue, 03 Nov 2026 12:53:56 +0000</lastBuildDate>
     <item>
-      <title>[critical]kaniko 源校验缺陷致令牌泄露</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105769</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105769-2026-11-03</guid>
-      <description>CVE-2026-105769 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 9.3 · 类型 源校验错误(SSRF类)/凭据保护不足 · 难度 低(远程·免认证·需用户交互)
-kaniko before 1.25.20 can send a Microsoft Entra ID (Azure AD) access token for Azure Resource Manager to an attacker-controlled registry host.
-信号: 关注词:exchange</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]DTLS 服务资源耗尽拒绝服务</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115215</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115215-2026-11-03</guid>
-      <description>CVE-2026-115215 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 8.7 · 类型 资源分配无限制/CWE-772 · 难度 低(远程·免认证)
-A remote, unauthenticated attacker can exhaust the pool with one spoofed datagram per source and deny DTLS service to legitimate clients until the application r…
-信号: 关注词:exchange</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]Krill 子 CA 身份校验缺失</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109142</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109142-2026-11-03</guid>
-      <description>CVE-2026-109142 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 8.4 · 类型 越权(IDOR) · 难度 中(远程·利用条件苛刻·需低权限)
-When a CA's parent lives on the same Krill server: instead of building and verifying a signed CMS message, it runs the RFC 6492 provisioning exchange in-process…
-信号: 关注词:exchange</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Barracuda ESG 认证绕过配置导入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116606</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116606-2026-11-03</guid>
-      <description>CVE-2026-116606 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 9.3 · 类型 认证绕过 · 难度 低(远程·免认证)
-An authentication bypass in Barracuda Email Security Gateway versions earlier than 9.4.0.030 allows an unauthenticated remote attacker to invoke a configuration…
+      <title>[critical]WSO2 API Manager 越权调用系统REST接口</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-4052</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-4052-2026-11-03</guid>
+      <description>CVE-2026-4052 · 🎯P1 重点关注 · 披露 2026-11-03 · CVSS 9.8 · 类型 缺失授权(越权) · 难度 低(远程·免认证)
+This issue only impacts deployments where WSO2 Identity Server is configured as a Resident Key Manager with database sharing.
 信号:</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Secure Access 认证绕过改配置</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116769</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116769-2026-11-03</guid>
-      <description>CVE-2026-116769 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 9.3 · 难度 低(远程·免认证)
-CVE-2026-116769 is an authentication bypass vulnerability in Secure Access servers starting with version 13.0 and prior to 14.61.
-信号:</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]CWP 重定向后认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-73696</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-73696-2026-11-03</guid>
-      <description>CVE-2026-73696 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 9.1 · 类型 CWE-698 · 难度 低(远程·免认证)
-Control Web Panel (CWP) before webpanel_version 1.12 contains an execution after redirect vulnerability in the user panel authentication flow (CWPUserIndex) tha…
-信号:</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]System REST API 权限校验缺失</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2025-11969</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2025-11969-2026-11-03</guid>
-      <description>CVE-2025-11969 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 9.4 · 类型 CWE-285 · 难度 低(远程·免认证)
-The System REST APIs do not correctly enforce access control mechanisms, allowing users with lower privilege roles to execute administrative actions that should…
-信号:</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]madong 租户管理接口未授权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120446</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120446-2026-11-03</guid>
-      <description>CVE-2026-120446 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 9.4 · 类型 缺失认证 · 难度 低(远程·免认证)
-Unauthenticated remote attackers can call /platformapi/tenant/account, bind-plan and sync-data endpoints to list, create, modify, disable or delete tenants and …
-信号:</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Secure Access 服务器 CSRF 建号</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97718</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97718-2026-11-03</guid>
-      <description>CVE-2026-97718 · 🎯P1 重点关注 · 披露 2026-11-02 · CVSS 9.4 · 难度 低(远程·免认证·需用户交互)
-Because of a bypassed security control, an attacker can cause an admin to create an account under their control.
-信号:</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]代理依赖组件路径限制绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120213</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120213-2026-11-03</guid>
-      <description>CVE-2026-120213 · 🎯P1 重点关注 · 披露 2026-11-02 · 组件 开发库/依赖 · CVSS 9.1 · 类型 路径遍历/任意文件读取/CWE-436 · 难度 低(远程·免认证)
-An unauthenticated remote attacker can use this to reach upstream locations outside the intended prefix, leading to path-restriction bypass and, depending on th…
-信号:</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]SUSE Rancher 代理凭据泄露</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88811</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88811-2026-11-03</guid>
-      <description>CVE-2026-88811 · 🎯P1 重点关注 · 披露 2026-11-02 · 组件 容器/虚拟化 · CVSS 9.1 · 类型 CWE-201 · 难度 低(远程·免认证)
-Missing filtering in the SUSE Rancher Manager meta proxy could cause passed in rancher credentials to be leaked to cloud providers.
-信号:</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Rancher Fleet 密钥引用越权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-94290</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-94290-2026-11-03</guid>
-      <description>CVE-2026-94290 · 🎯P1 重点关注 · 披露 2026-11-02 · 组件 容器/虚拟化 · CVSS 9.1 · 类型 CWE-250 · 难度 中(远程·需高权限)
-The controller did not sufficiently restrict which kubeconfig secrets a Fleet Cluster object was allowed to reference.
-信号:</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
-    </item>
-    <item>
-      <title>今日要点</title>
-      <description>- 清单未标记在野利用与勒索软件关联，暂无相应紧急预警。
-- 今日集中披露12个高危漏洞，9.0分以上占多数，涉认证与越权。
-- 优先处置两个9.4分缺失认证/授权漏洞（含CVE-2026-120446）。
-- 认证绕过与SSRF/凭据保护不足均9.3分，公网系统先核查。
-- 无PoC、Nuclei模板或第三方扩展，仍需排查暴露面并尽快修补。</description>
-      <pubDate>Tue, 03 Nov 2026 04:00:20 +0000</pubDate>
+      <pubDate>Tue, 03 Nov 2026 12:53:56 +0000</pubDate>
     </item>
   </channel>
 </rss>
