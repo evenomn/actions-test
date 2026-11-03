@@ -5,16 +5,34 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 03 Nov 2026 12:53:56 +0000</pubDate>
-    <lastBuildDate>Tue, 03 Nov 2026 12:53:56 +0000</lastBuildDate>
+    <pubDate>Tue, 03 Nov 2026 20:10:48 +0000</pubDate>
+    <lastBuildDate>Tue, 03 Nov 2026 20:10:48 +0000</lastBuildDate>
     <item>
-      <title>[critical]WSO2 API Manager 越权调用系统REST接口</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-4052</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-4052-2026-11-03</guid>
-      <description>CVE-2026-4052 · 🎯P1 重点关注 · 披露 2026-11-03 · CVSS 9.8 · 类型 缺失授权(越权) · 难度 低(远程·免认证)
-This issue only impacts deployments where WSO2 Identity Server is configured as a Resident Key Manager with database sharing.
+      <title>[critical]Dameware认证后命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-28336</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-28336-2026-11-03</guid>
+      <description>CVE-2026-28336 · 🎯P1 重点关注 · 披露 2026-11-03 · 组件 监控运维 · CVSS 9.9 · 类型 输入校验缺失 · 难度 低(远程·需低权限)
+SolarWinds Dameware was found to be affected by a command injection vulnerability that could lead to the compromise of the remotely controlled host.
 信号:</description>
-      <pubDate>Tue, 03 Nov 2026 12:53:56 +0000</pubDate>
+      <pubDate>Tue, 03 Nov 2026 20:10:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]enspirit/elo Ruby代码注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-44266</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-44266-2026-11-03</guid>
+      <description>CVE-2026-44266 · 🎯P1 重点关注 · 披露 2026-11-03 · CVSS 9.8 · 类型 代码注入(RCE)/CWE-116 · 难度 低(远程·免认证)
+Prior to 1.0.1, the Ruby backend in src/compilers/ruby.ts embeds attacker-controlled text in Ruby double-quoted strings without escaping , so Ruby interpolatio…
+信号:</description>
+      <pubDate>Tue, 03 Nov 2026 20:10:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]enspirit/elo 生成JS代码注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-44267</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-44267-2026-11-03</guid>
+      <description>CVE-2026-44267 · 🎯P1 重点关注 · 披露 2026-11-03 · CVSS 9.8 · 类型 XSS/代码注入(RCE) · 难度 低(远程·免认证)
+The resulting generated JavaScript executes attacker-selected code in the host runtime.
+信号:</description>
+      <pubDate>Tue, 03 Nov 2026 20:10:48 +0000</pubDate>
     </item>
   </channel>
 </rss>

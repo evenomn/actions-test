@@ -1,18 +1,19 @@
 {
  "version": 3,
- "generated_at": "2026-11-03T12:53:56+00:00",
+ "generated_at": "2026-11-03T20:10:48+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 3,
  "stats": {
-  "total": 1,
+  "total": 3,
   "by_tier": {
-   "critical": 1
+   "critical": 3
   },
   "by_urgency": {
-   "P1 重点关注": 1
+   "P1 重点关注": 3
   },
   "by_category": {
-   "未知": 1
+   "未知": 2,
+   "监控运维": 1
   },
   "kev": 0,
   "with_poc": 0,
@@ -22,28 +23,32 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-4052",
+   "id": "CVE-2026-28336",
    "tier": "critical",
-   "title": "WSO2 API Manager 越权调用系统REST接口",
-   "title_zh": "WSO2 API Manager 越权调用系统REST接口",
-   "summary_zh": "在共享数据库+Resident Key Manager部署下,自注册用户可从IS令牌端点取令牌,越权访问API Manager系统REST API",
-   "published": "2026-11-03T08:17:15.530",
-   "cvss": 9.8,
+   "title": "Dameware认证后命令注入",
+   "title_zh": "Dameware认证后命令注入",
+   "summary_zh": "已认证攻击者可向Dameware受控主机注入命令，完全入侵主机。",
+   "published": "2026-11-03T17:18:12.570",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "缺失授权(越权)"
+    "输入校验缺失"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2026-5212/"
+     "url": "https://documentation.solarwinds.com/en/success_center/dameware/content/release_notes/dameware_2026-3-1_release_notes.htm"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.solarwinds.com/trust-center/security-advisories/CVE-2026-28336"
     }
    ],
    "poc": [],
@@ -54,74 +59,232 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复版本;无补丁前关闭自注册并解除IS与APIM数据库共享",
+   "action_zh": "升级至厂商修复版本，限制Dameware管理权限",
    "repro_worthy": "一般",
-   "repro_note": "需IS配置为Resident Key Manager且数据库共享;自注册取令牌后调用APIM系统API",
-   "impact_scope": "身份认证与API网关核心,常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-4052",
-   "description": "This issue only impacts deployments where WSO2 Identity Server is configured as a Resident Key Manager with database sharing. In such environments, a self-registered user may gain access to the System REST APIs of WSO2 API Manager by obtaining a token from the WSO2 Identity Server token endpoint."
+   "repro_note": "需已认证账户，在Dameware受控主机相关功能注入命令",
+   "impact_scope": "远程运维工具，可控制终端横向",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-28336",
+   "description": "SolarWinds Dameware was found to be affected by a command injection vulnerability that could lead to the compromise of the remotely controlled host. Authentication is required."
+  },
+  {
+   "id": "CVE-2026-44266",
+   "tier": "critical",
+   "title": "enspirit/elo Ruby代码注入",
+   "title_zh": "enspirit/elo Ruby代码注入",
+   "summary_zh": "使用elo处理不可信输入可触发Ruby插值执行，导致代码执行。",
+   "published": "2026-11-03T18:18:02.957",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)",
+    "CWE-116"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "npm:@enspirit/elo <= 1.0.0(修复: 1.0.1)",
+   "ghsa_url": "https://github.com/advisories/GHSA-7w38-ggh5-v542",
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/enspirit/elo/commit/51b869963fbe445c18328714a7ccfbd76b21ba38"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/enspirit/elo/commit/d2a89a8db76a244eb740687524a7e8529b7554b5"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/enspirit/elo/security/advisories/GHSA-7w38-ggh5-v542"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.0.1，转义Ruby字符串插值字符",
+   "repro_worthy": "一般",
+   "repro_note": "向Ruby后端传入含#{}的恶意字符串，观察生成代码执行",
+   "impact_scope": "开源代码生成库，依赖方受影响",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-44266",
+   "description": "Prior to 1.0.1, the Ruby backend in src/compilers/ruby.ts embeds attacker-controlled text in Ruby double-quoted strings without escaping #, so Ruby interpolation forms in the string-literal emitter or the labelled subtype-constraint branch become executable Ruby. A failing labelled subtype constraint evaluates its message, while an ordinary string literal is evaluated when the compiled Ruby runs, allowing Ruby code and shell command execution through backticks."
+  },
+  {
+   "id": "CVE-2026-44267",
+   "tier": "critical",
+   "title": "enspirit/elo 生成JS代码注入",
+   "title_zh": "enspirit/elo 生成JS代码注入",
+   "summary_zh": "向elo传入恶意普通字符串可生成并执行攻击者JavaScript，导致代码执行。",
+   "published": "2026-11-03T18:18:03.130",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "XSS",
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "npm:@enspirit/elo <= 1.0.0(修复: 1.0.1)",
+   "ghsa_url": "https://github.com/advisories/GHSA-33r5-xmm8-v6x5",
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/enspirit/elo/commit/2136da1f64eec8ebf99890d3100be9394534b842"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/enspirit/elo/commit/d2a89a8db76a244eb740687524a7e8529b7554b5"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/enspirit/elo/security/advisories/GHSA-33r5-xmm8-v6x5"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.0.1，校验并转义生成JS输入",
+   "repro_worthy": "一般",
+   "repro_note": "构造含恶意JavaScript的普通字符串输入elo编译器",
+   "impact_scope": "开源代码生成库，宿主运行时风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-44267",
+   "description": "The resulting generated JavaScript executes attacker-selected code in the host runtime. This plain-string path is distinct from the programmatic AST-object injection issue."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "4edefad7bba0e4be7a08b52fa398e234619a2986",
-   "url": "https://github.com/envoyproxy/envoy/commit/4edefad7bba0e4be7a08b52fa398e234619a2986",
-   "title": "router: fix crash in addDownstreamSetCookie when no downstream connection (#45984)",
-   "date": "2026-11-03T08:42:52",
-   "score": 3,
+   "repo": "django/django",
+   "sha": "af4319f7217e33ad5db747226765f09b49ec07ba",
+   "url": "https://github.com/django/django/commit/af4319f7217e33ad5db747226765f09b49ec07ba",
+   "title": "Fixed CVE-2026-111211 -- Escaped log messages in BaseGeometryWidget.deserialize().",
+   "date": "2026-11-03T13:09:25",
+   "score": 5,
    "matched": [
-    "安全修复",
-    "崩溃"
+    "CVE",
+    "反序列化"
    ],
-   "cve": null
+   "cve": "CVE-2026-111211"
   },
   {
-   "repo": "php/php-src",
-   "sha": "9ea25b50585269f92ba192585f57d1a865845fc3",
-   "url": "https://github.com/php/php-src/commit/9ea25b50585269f92ba192585f57d1a865845fc3",
-   "title": "uri: Update to uriparser-1.0.3 (#25145)",
-   "date": "2026-11-03T07:39:01",
+   "repo": "django/django",
+   "sha": "5bd95c57a279fad1ac9432d9b7705b8fdf0336c9",
+   "url": "https://github.com/django/django/commit/5bd95c57a279fad1ac9432d9b7705b8fdf0336c9",
+   "title": "Added CVE-2026-108147, CVE-2026-111211, CVE-2026-111362, CVE-2026-113593, CVE-2026-113733, and CVE-2026-114582 to securi",
+   "date": "2026-11-03T15:28:18",
    "score": 3,
    "matched": [
     "CVE"
    ],
-   "cve": "CVE-2026-48841"
+   "cve": "CVE-2026-108147"
   },
   {
-   "repo": "redis/redis",
-   "sha": "dc1e7e2e6b6b6c2e1a5b29a14b58062495bbb254",
-   "url": "https://github.com/redis/redis/commit/dc1e7e2e6b6b6c2e1a5b29a14b58062495bbb254",
-   "title": "Fix use-after-free in ZRANGESTORE when the destination is the source (#16125)",
-   "date": "2026-11-03T08:52:15",
+   "repo": "django/django",
+   "sha": "3a2ec4378b53c7b8ff5283ad7eba624ffa6f2b2f",
+   "url": "https://github.com/django/django/commit/3a2ec4378b53c7b8ff5283ad7eba624ffa6f2b2f",
+   "title": "Fixed CVE-2026-114582 -- Blocked file and network access when setting SRS on GDAL 3.9+.",
+   "date": "2026-11-03T13:09:44",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-114582"
+  },
+  {
+   "repo": "django/django",
+   "sha": "f5b039a619b3b5394ea5b966e17c7546fda6f937",
+   "url": "https://github.com/django/django/commit/f5b039a619b3b5394ea5b966e17c7546fda6f937",
+   "title": "Fixed CVE-2026-113733 -- Fixed password hash disclosure to \"view only\" admin users with custom user models.",
+   "date": "2026-11-03T13:09:40",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-113733"
+  },
+  {
+   "repo": "django/django",
+   "sha": "c0b7e5e4e4546e8ddc58262f1945938bb9d9ac2d",
+   "url": "https://github.com/django/django/commit/c0b7e5e4e4546e8ddc58262f1945938bb9d9ac2d",
+   "title": "Fixed CVE-2026-113593 -- Differentiated empty and missing headers in response cache.",
+   "date": "2026-11-03T13:09:34",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-113593"
+  },
+  {
+   "repo": "django/django",
+   "sha": "ecb2b77b49890d6b2120f73fb3d7eb7ac7650143",
+   "url": "https://github.com/django/django/commit/ecb2b77b49890d6b2120f73fb3d7eb7ac7650143",
+   "title": "Fixed CVE-2026-111362 -- Blocked external CRS values in GeoJSON geometries.",
+   "date": "2026-11-03T13:09:30",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-111362"
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "50865f20b1f474e6b11735c88f668751bc9aa528",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/50865f20b1f474e6b11735c88f668751bc9aa528",
+   "title": "avcodec/vmnc: restore the screen under the cursor only after it was painted",
+   "date": "2026-11-03T19:23:23",
    "score": 2,
    "matched": [
-    "UAF"
+    "未初始化/内存破坏"
    ],
    "cve": null
   },
   {
-   "repo": "php/php-src",
-   "sha": "7774891f161faab183e6c83572a49e37cec8fed8",
-   "url": "https://github.com/php/php-src/commit/7774891f161faab183e6c83572a49e37cec8fed8",
-   "title": "Fix out-of-bounds reads parsing ftp:// wrapper server replies",
-   "date": "2026-11-03T07:23:57",
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "e58c4eb98f0f3c0523089fb9d037eedfcbd204d9",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/e58c4eb98f0f3c0523089fb9d037eedfcbd204d9",
+   "title": "avcodec/cscd: allocate the decompression buffer zeroed",
+   "date": "2026-11-03T19:23:23",
    "score": 2,
    "matched": [
-    "越界读写"
+    "未初始化/内存破坏"
    ],
    "cve": null
   },
   {
-   "repo": "wireshark/wireshark",
-   "sha": "fc23753166e28434b728957dce391d8e755226a8",
-   "url": "https://github.com/wireshark/wireshark/commit/fc23753166e28434b728957dce391d8e755226a8",
-   "title": "DSR: Limit Next Header recursion and fix the flow id length",
-   "date": "2026-11-03T04:45:15",
+   "repo": "django/django",
+   "sha": "2382f40aed50332d2325563ea9097853561d45e8",
+   "url": "https://github.com/django/django/commit/2382f40aed50332d2325563ea9097853561d45e8",
+   "title": "Added requirement for a single vulnerability per email.",
+   "date": "2026-11-03T17:32:16",
    "score": 2,
    "matched": [
-    "缓冲区溢出"
+    "漏洞相关"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "elastic/elasticsearch",
+   "sha": "40922576060ed37cf8734c45222a09ccb4716840",
+   "url": "https://github.com/elastic/elasticsearch/commit/40922576060ed37cf8734c45222a09ccb4716840",
+   "title": "Add security advisory for 9.4.9 and 9.5.6 (#164358)",
+   "date": "2026-11-03T17:31:54",
+   "score": 2,
+   "matched": [
+    "安全修复"
    ],
    "cve": null
   }
