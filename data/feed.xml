@@ -5,7 +5,62 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 04 Nov 2026 13:07:43 +0000</pubDate>
-    <lastBuildDate>Wed, 04 Nov 2026 13:07:43 +0000</lastBuildDate>
+    <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
+    <lastBuildDate>Wed, 04 Nov 2026 20:28:24 +0000</lastBuildDate>
+    <item>
+      <title>[critical]Safari指针认证绕过需先获读写</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2024-27834</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2024-27834-2026-11-04</guid>
+      <description>CVE-2024-27834 · 🎯P0 立即处置 · 披露 2024-05-14 · 组件 操作系统 · CVSS 5.5 · EPSS 0.6%,前 49% · 类型 认证绕过 · 难度 高(需本地访问·需低权限)
+The issue was addressed with improved checks. An attacker with arbitrary read and write capability may be able to bypass Pointer Authentication.
+信号: 🔥 KEV 在野利用,CISA 限期 2026-11-18</description>
+      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]FreeRDP RD网关RPC分片堆溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121964</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121964-2026-11-04</guid>
+      <description>CVE-2026-121964 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 7.5 · 类型 堆溢出 · 难度 低(远程·免认证)
+A malicious or compromised RD Gateway can send crafted RPC fragments with manipulated alloc_hint and frag_length values to overwrite client heap memory with att…
+信号: 有PoC
+[NVD exploit 引用(仅README)](https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-q82v-5wjg-6h57)</description>
+      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Linksys路由器ping参数命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121932</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121932-2026-11-04</guid>
+      <description>CVE-2026-121932 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+A vulnerability was detected in Linksys E5350 1.0.00.037. Performing a manipulation of the argument ping_ip/traceroute_ip results in os command injection.
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]设备Web缺失认证可被完全绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121933</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121933-2026-11-04</guid>
+      <description>CVE-2026-121933 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 10.0 · 类型 认证绕过/缺失认证 · 难度 低(远程·免认证)
+The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FreeRDP位图缓存能力集越界写入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121952</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121952-2026-11-04</guid>
+      <description>CVE-2026-121952 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 越界写入 · 难度 低(远程·免认证)
+FreeRDP before 3.32.2 has an out-of-bounds write in the proxy because rdp_read_bitmap_cache_v2_capability_set rejects only numCellCaches values above 5, yet the…
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FreeRDP rdpgfx通道释放后重用</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121953</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121953-2026-11-04</guid>
+      <description>CVE-2026-121953 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
+FreeRDP before 3.32.2 has a use-after-free in the client's rdpgfx dynamic virtual channel: a duplicate-name channel with a new ChannelId overwrites the listener…
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
+    </item>
   </channel>
 </rss>

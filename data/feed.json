@@ -1,67 +1,402 @@
 {
  "version": 3,
- "generated_at": "2026-11-04T13:07:43+00:00",
+ "generated_at": "2026-11-04T20:28:24+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 6,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
-  "kev": 0,
-  "with_poc": 0,
+  "total": 6,
+  "by_tier": {
+   "critical": 5,
+   "high": 1
+  },
+  "by_urgency": {
+   "P1 重点关注": 5,
+   "P0 立即处置": 1
+  },
+  "by_category": {
+   "未知": 5,
+   "操作系统": 1
+  },
+  "kev": 1,
+  "with_poc": 1,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2024-27834",
+   "tier": "critical",
+   "title": "Safari指针认证绕过需先获读写",
+   "title_zh": "Safari指针认证绕过需先获读写",
+   "summary_zh": "已具备任意读写能力的攻击者可构造内存操作绕过指针认证，削弱iOS/macOS控制流保护，属在野已利用。",
+   "published": "2024-05-14T15:13:06.953",
+   "cvss": 5.5,
+   "severity": "MEDIUM",
+   "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+   "epss": 0.00598,
+   "epss_percentile": 0.4875,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "高(需本地访问·需低权限)",
+   "products": [
+    "apple safari",
+    "apple ipados",
+    "apple iphone_os",
+    "apple macos",
+    "apple tvos"
+   ],
+   "affected": "apple safari <17.5; apple ipados <17.5",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.apple.com/en-us/120896"
+    },
+    {
+     "label": "参考",
+     "url": "https://support.apple.com/en-us/120898"
+    },
+    {
+     "label": "参考",
+     "url": "https://support.apple.com/en-us/120901"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-18",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至 Safari 17.5 / iOS 17.5 / iPadOS 17.5 / macOS 14.5",
+   "repro_worthy": "一般",
+   "repro_note": "需先具备任意读写原语，本地触发指针认证校验绕过",
+   "impact_scope": "Apple终端系统,非边界资产",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2024-27834",
+   "description": "The issue was addressed with improved checks. This issue is fixed in Safari 17.5, iOS 16.7.8 and iPadOS 16.7.8, iOS 17.5 and iPadOS 17.5, macOS Sonoma 14.5, tvOS 17.5, watchOS 10.5. An attacker with arbitrary read and write capability may be able to bypass Pointer Authentication."
+  },
+  {
+   "id": "CVE-2026-121964",
+   "tier": "high",
+   "title": "FreeRDP RD网关RPC分片堆溢出",
+   "title_zh": "FreeRDP RD网关RPC分片堆溢出",
+   "summary_zh": "恶意或失陷RD网关发送alloc_hint与frag_length被篡改的RPC分片，覆盖客户端堆内存致崩溃或代码执行。",
+   "published": "2026-11-04T16:17:49.683",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "freerdp freerdp"
+   ],
+   "affected": "freerdp freerdp <3.32.2",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/freerdp-before-3.32.2-heap-buffer-overflow-via-rpc-client-recv-fragment"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-q82v-5wjg-6h57",
+     "label": "NVD exploit 引用(仅README)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级 FreeRDP 至 3.32.2 及以上",
+   "repro_worthy": "一般",
+   "repro_note": "恶意RD网关下发alloc_hint/frag_length异常的RPC分片",
+   "impact_scope": "RDP客户端,需连接恶意网关",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121964",
+   "description": "A malicious or compromised RD Gateway can send crafted RPC fragments with manipulated alloc_hint and frag_length values to overwrite client heap memory with attacker-controlled data, causing a crash or potentially arbitrary code execution."
+  },
+  {
+   "id": "CVE-2026-121932",
+   "tier": "critical",
+   "title": "Linksys路由器ping参数命令注入",
+   "title_zh": "Linksys路由器ping参数命令注入",
+   "summary_zh": "攻击者可远程向wizard接口的ping_ip参数注入系统命令，以高权限执行任意指令控制设备。",
+   "published": "2026-11-04T19:17:33.440",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Zimo-666/E5350-cves/tree/main/01-wizard-preauth-command-injection"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-121932"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1024275"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复，限制wizard接口访问并隔离设备管理面",
+   "repro_worthy": "值得",
+   "repro_note": "未授权POST /wizard/apply.cgi，在ping_ip/traceroute_ip注入命令",
+   "impact_scope": "家用/小型办公无线路由器",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121932",
+   "description": "A vulnerability was detected in Linksys E5350 1.0.00.037. This affects the function system of the file /wizard/apply.cgi. Performing a manipulation of the argument ping_ip/traceroute_ip results in os command injection. The attack may be initiated remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-121933",
+   "tier": "critical",
+   "title": "设备Web缺失认证可被完全绕过",
+   "title_zh": "设备Web缺失认证可被完全绕过",
+   "summary_zh": "攻击者无需任何凭据即可直接调用受保护的管理功能，绕过认证并完全接管设备。",
+   "published": "2026-11-04T20:19:11.607",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过",
+    "缺失认证"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Zimo-666/E5350-cves/tree/main/02-empty-admin-password-auth-bypass"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-121933"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1024276"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复，收敛管理接口暴露并加前置访问控制",
+   "repro_worthy": "一般",
+   "repro_note": "定位未受认证保护的管理接口直接访问，产品与入口未公开",
+   "impact_scope": "网络设备管理面,常暴露内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121933",
+   "description": "A flaw has been found in Linksys E5350 1.0.00.037. This impacts the function save_settings of the file /wizard/apply.cgi of the component Setup Wizard. Executing a manipulation of the argument wizard_router_pwd can lead to missing authentication. The attack may be launched remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-121952",
+   "tier": "critical",
+   "title": "FreeRDP位图缓存能力集越界写入",
+   "title_zh": "FreeRDP位图缓存能力集越界写入",
+   "summary_zh": "恶意RDP服务端下发构造的位图缓存能力集，触发代理越界写入，可致崩溃或任意代码执行。",
+   "published": "2026-11-04T16:17:47.530",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-xc85-4mqc-xgcx"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/freerdp-before-3.32.2-proxy-out-of-bounds-write-via-bitmap-cache-v2-capability"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级 FreeRDP 至 3.32.2 及以上",
+   "repro_worthy": "一般",
+   "repro_note": "恶意RDP服务端下发numCellCaches异常的能力集触发固定索引访问",
+   "impact_scope": "RDP客户端/代理,需连恶意服务端",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121952",
+   "description": "FreeRDP before 3.32.2 has an out-of-bounds write in the proxy because rdp_read_bitmap_cache_v2_capability_set rejects only numCellCaches values above 5, yet the bitmap cache v2 cell array is later accessed at fixed indices 0 through 4. A client connecting to the proxy can declare fewer than five cell caches in its Confirm Active, causing heap corruption, heap data leakage to the backend, or a crash."
+  },
+  {
+   "id": "CVE-2026-121953",
+   "tier": "critical",
+   "title": "FreeRDP rdpgfx通道释放后重用",
+   "title_zh": "FreeRDP rdpgfx通道释放后重用",
+   "summary_zh": "恶意RDP服务端通过同名通道覆盖回调槽后关闭通道，再在原通道发送PDU触发UAF，可致崩溃或代码执行。",
+   "published": "2026-11-04T16:17:47.717",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-6wqx-rv3q-vcxp"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/freerdp-before-3.32.2-use-after-free-via-rdpgfx-dynamic-virtual-channel-close"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级 FreeRDP 至 3.32.2 及以上",
+   "repro_worthy": "一般",
+   "repro_note": "恶意RDP服务端打开同名rdpgfx通道后关闭，再向原通道发送PDU",
+   "impact_scope": "RDP客户端,需连接恶意服务器",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121953",
+   "description": "FreeRDP before 3.32.2 has a use-after-free in the client's rdpgfx dynamic virtual channel: a duplicate-name channel with a new ChannelId overwrites the listener's single callback slot, which rdpgfx_on_close frees without clearing. A malicious RDP server can open and close such a channel, then send a PDU on the original channel to crash the client or potentially execute code."
+  }
+ ],
  "media": [],
  "commits": [
   {
    "repo": "openssl/openssl",
-   "sha": "ce58c02c5ba30efc0d020bb79a38d8a0b679cbea",
-   "url": "https://github.com/openssl/openssl/commit/ce58c02c5ba30efc0d020bb79a38d8a0b679cbea",
-   "title": "AES-GCM-SIV: no-op on zero-length update and clear stale AAD on reuse",
-   "date": "2026-11-04T12:06:33",
-   "score": 3,
+   "sha": "37d35a863ab1187fc6f46745bd4fa70752a67e1c",
+   "url": "https://github.com/openssl/openssl/commit/37d35a863ab1187fc6f46745bd4fa70752a67e1c",
+   "title": "CONTRIBUTING.md: restructure, fix inaccuracies and omissions",
+   "date": "2026-11-04T16:47:15",
+   "score": 4,
    "matched": [
-    "CVE"
+    "安全修复",
+    "漏洞相关"
    ],
-   "cve": "CVE-2026-88823"
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "5048d707a3d57aaf91579116dbe64585a9715cd8",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/5048d707a3d57aaf91579116dbe64585a9715cd8",
+   "title": "ffbuild: Don't include rpath in static-only *-uninstalled.pc files",
+   "date": "2026-11-04T20:18:17",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "python/cpython",
+   "sha": "a14cccbaa4787860ede0945ffaf67cf14b34c8e2",
+   "url": "https://github.com/python/cpython/commit/a14cccbaa4787860ede0945ffaf67cf14b34c8e2",
+   "title": "gh-161288: Fix perf trampoline crash on UBSan builds (#161294)",
+   "date": "2026-11-04T19:57:14",
+   "score": 2,
+   "matched": [
+    "崩溃",
+    "fuzz/-sanitizer"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "182bb23bf84869e8487a5b5c6253fc9e9c26adfc",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/182bb23bf84869e8487a5b5c6253fc9e9c26adfc",
+   "title": "avutil/hdr_dynamic_metadata: reject oversized HDR10+ counts",
+   "date": "2026-11-04T19:36:53",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
   },
   {
    "repo": "envoyproxy/envoy",
-   "sha": "f54520dbbdb82404d4c0a9b653fb3453929a8b8d",
-   "url": "https://github.com/envoyproxy/envoy/commit/f54520dbbdb82404d4c0a9b653fb3453929a8b8d",
-   "title": "composite: fix use-after-free when an ECDS update replaces the filter while a stream is paused (#48611)",
-   "date": "2026-11-04T12:12:47",
+   "sha": "ac6efa8c5aa1a8aedfb809a929a34f46b9a58573",
+   "url": "https://github.com/envoyproxy/envoy/commit/ac6efa8c5aa1a8aedfb809a929a34f46b9a58573",
+   "title": "spiffe: promote the SPIFFE cert validator to stable (#48986)",
+   "date": "2026-11-04T15:09:34",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/tomcat",
+   "sha": "0028133e3838be69b41a5b3a50d0fabdf780b4e1",
+   "url": "https://github.com/apache/tomcat/commit/0028133e3838be69b41a5b3a50d0fabdf780b4e1",
+   "title": "Put the pool's own JMX MBean's registrations, credentials and wording in order",
+   "date": "2026-11-04T14:17:25",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openbsd/src",
+   "sha": "a61813186729406f5717b1a1365caed753018493",
+   "url": "https://github.com/openbsd/src/commit/a61813186729406f5717b1a1365caed753018493",
+   "title": "pf(4) tcp scrub is prone to UAF when state times for matching packet",
+   "date": "2026-11-04T11:26:05",
    "score": 2,
    "matched": [
     "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "curl/curl",
-   "sha": "3ae96a0cb9c1929916a65b66d115dfd771aa4579",
-   "url": "https://github.com/curl/curl/commit/3ae96a0cb9c1929916a65b66d115dfd771aa4579",
-   "title": "runtests: handle rare errors gracefully",
-   "date": "2026-11-04T11:38:55",
-   "score": 2,
-   "matched": [
-    "未初始化/内存破坏"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "nodejs/node",
-   "sha": "d36e9ba1f8b1d6977a8efdf91263d98a1b4af910",
-   "url": "https://github.com/nodejs/node/commit/d36e9ba1f8b1d6977a8efdf91263d98a1b4af910",
-   "title": "v8: support X509Certificate serialization",
-   "date": "2026-11-04T05:57:21",
-   "score": 2,
-   "matched": [
-    "反序列化"
    ],
    "cve": null
   }

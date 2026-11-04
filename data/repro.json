@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-04T13:07:43+00:00",
- "count": 156,
+ "updated_at": "2026-11-04T20:28:24+00:00",
+ "count": 157,
  "count_recommended": 26,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -2156,6 +2156,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-61624",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-121932",
+   "title": "Linksys路由器ping参数命令注入",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-04",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权POST /wizard/apply.cgi，在ping_ip/traceroute_ip注入命令",
+   "impact_scope": "家用/小型办公无线路由器",
+   "action_zh": "暂无官方修复，限制wizard接口访问并隔离设备管理面",
+   "summary_zh": "攻击者可远程向wizard接口的ping_ip参数注入系统命令，以高权限执行任意指令控制设备。",
+   "category": null,
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Zimo-666/E5350-cves/tree/main/01-wizard-preauth-command-injection"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-121932"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1024275"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121932",
    "change_note": null
   },
   {
