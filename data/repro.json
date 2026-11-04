@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-03T20:10:48+00:00",
- "count": 155,
+ "updated_at": "2026-11-04T01:30:02+00:00",
+ "count": 156,
  "count_recommended": 26,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -1733,6 +1733,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65660",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-119977",
+   "title": "WordPress核心升级期远程代码执行",
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-04",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-31",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "升级窗口期访问可预测暂存路径，构造包触发执行",
+   "impact_scope": "WordPress站点核心，暴露Web可打",
+   "action_zh": "立即升级至修复版本；升级窗口限制访问并清理暂存",
+   "summary_zh": "未认证攻击者可在核心升级窗口访问可预测暂存路径并执行代码",
+   "category": "CMS",
+   "cvss": 8.1,
+   "epss": 0.006,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-06",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "WordPress(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/class-core-upgrader.php#L162"
+    },
+    {
+     "label": "参考",
+     "url": "https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/class-wp-upgrader.php#L378"
+    },
+    {
+     "label": "参考",
+     "url": "https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/update-core.php#L1549"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119977",
    "change_note": null
   },
   {

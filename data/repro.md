@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-03 20:10 UTC · 共 **155** 条(强烈推荐 26 / 值得 129)
+**更新**: 2026-11-04 01:30 UTC · 共 **156** 条(强烈推荐 26 / 值得 130)
 
 ---
 
@@ -358,6 +358,15 @@ PoC: [msuiche/hotcell 5★(有源码)](https://github.com/msuiche/hotcell) · [D
 影响: microsoft sharepoint_server <16.0.19725.20522
 PoC: [ShadowForge-Cyber/CVE-2026-65660-Poc 1★(仅README)](https://github.com/ShadowForge-Cyber/CVE-2026-65660-Poc) · [HORKimhab/CVE-2026-65660 0★(仅README)](https://github.com/HORKimhab/CVE-2026-65660)
 参考: [厂商通告](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-65660)
+
+### WordPress核心升级期远程代码执行
+[CVE-2026-119977](https://nvd.nist.gov/vuln/detail/CVE-2026-119977) | P0 立即处置 | CMS | CVSS 8.1 | EPSS 0.6% | 披露 2026-10-31 | 入库 2026-11-04
+🔥 KEV 在野利用,限期 2026-11-06
+未认证攻击者可在核心升级窗口访问可预测暂存路径并执行代码
+复现: 值得 — 升级窗口期访问可预测暂存路径，构造包触发执行 · 影响面: WordPress站点核心，暴露Web可打
+处置: 立即升级至修复版本；升级窗口限制访问并清理暂存
+影响: WordPress(产品与版本待 NVD/厂商补充)
+参考: [参考](https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/class-core-upgrader.php#L162) · [参考](https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/class-wp-upgrader.php#L378) · [参考](https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/update-core.php#L1549)
 
 ### PHP全局状态UAF可致远程代码执行
 [CVE-2026-109619](https://nvd.nist.gov/vuln/detail/CVE-2026-109619) | P0 立即处置 | 安全设备 | CVSS 8.1 | EPSS 100.0% | 披露 2026-10-21 | 入库 2026-10-22

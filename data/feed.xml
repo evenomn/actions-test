@@ -5,34 +5,115 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 03 Nov 2026 20:10:48 +0000</pubDate>
-    <lastBuildDate>Tue, 03 Nov 2026 20:10:48 +0000</lastBuildDate>
+    <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
+    <lastBuildDate>Wed, 04 Nov 2026 01:30:02 +0000</lastBuildDate>
     <item>
-      <title>[critical]Dameware认证后命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-28336</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-28336-2026-11-03</guid>
-      <description>CVE-2026-28336 · 🎯P1 重点关注 · 披露 2026-11-03 · 组件 监控运维 · CVSS 9.9 · 类型 输入校验缺失 · 难度 低(远程·需低权限)
-SolarWinds Dameware was found to be affected by a command injection vulnerability that could lead to the compromise of the remotely controlled host.
-信号:</description>
-      <pubDate>Tue, 03 Nov 2026 20:10:48 +0000</pubDate>
+      <title>[critical]WordPress核心升级期远程代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119977</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119977-2026-11-04</guid>
+      <description>CVE-2026-119977 · 🎯P0 立即处置 · 披露 2026-10-31 · 组件 CMS · CVSS 8.1 · EPSS 0.6%,前 49% · 类型 CWE-367 · 难度 低(远程·利用条件苛刻·免认证)
+This makes it possible for unauthenticated attackers to execute code on the server during the upgrade window.
+信号: 🔥 KEV 在野利用,CISA 限期 2026-11-06</description>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]enspirit/elo Ruby代码注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-44266</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-44266-2026-11-03</guid>
-      <description>CVE-2026-44266 · 🎯P1 重点关注 · 披露 2026-11-03 · CVSS 9.8 · 类型 代码注入(RCE)/CWE-116 · 难度 低(远程·免认证)
-Prior to 1.0.1, the Ruby backend in src/compilers/ruby.ts embeds attacker-controlled text in Ruby double-quoted strings without escaping , so Ruby interpolatio…
+      <title>[critical]未知组件签名校验缺陷可伪造通过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121606</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121606-2026-11-04</guid>
+      <description>CVE-2026-121606 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 10.0 · 类型 数据真实性验证缺失/签名校验错误 · 难度 低(远程·免认证)
+Such manipulation of the argument sign leads to improper verification of cryptographic signature. The exploit has been disclosed to the public and may be used.
 信号:</description>
-      <pubDate>Tue, 03 Nov 2026 20:10:48 +0000</pubDate>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]enspirit/elo 生成JS代码注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-44267</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-44267-2026-11-03</guid>
-      <description>CVE-2026-44267 · 🎯P1 重点关注 · 披露 2026-11-03 · CVSS 9.8 · 类型 XSS/代码注入(RCE) · 难度 低(远程·免认证)
-The resulting generated JavaScript executes attacker-selected code in the host runtime.
+      <title>[critical]TOTOLINK A950RG栈溢出远程触发</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121597</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121597-2026-11-04</guid>
+      <description>CVE-2026-121597 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.9 · 类型 内存破坏/栈溢出 · 难度 低(远程·需低权限)
+A weakness has been identified in TOTOLINK A950RG 4.1.2cu.5268_B20221104. The exploit has been made available to the public and could be used for attacks.
 信号:</description>
-      <pubDate>Tue, 03 Nov 2026 20:10:48 +0000</pubDate>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TOTOLINK A950RG无线配置栈溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121598</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121598-2026-11-04</guid>
+      <description>CVE-2026-121598 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.9 · 类型 内存破坏/栈溢出 · 难度 低(远程·需低权限)
+A security vulnerability has been detected in TOTOLINK A950RG 4.1.2cu.5268_B20221104. The exploit has been disclosed publicly and may be used.
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TOTOLINK A950RG多SSID溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121599</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121599-2026-11-04</guid>
+      <description>CVE-2026-121599 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.9 · 类型 内存破坏/栈溢出 · 难度 低(远程·需低权限)
+A vulnerability was detected in TOTOLINK A950RG 4.1.2cu.5268_B20221104. The exploit is now public and may be used.
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TOTOLINK A950RG MAC过滤溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121600</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121600-2026-11-04</guid>
+      <description>CVE-2026-121600 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.9 · 类型 内存破坏/栈溢出 · 难度 低(远程·需低权限)
+Affected by this vulnerability is the function setMacFilterRules of the file /cgi-bin/cstecgi.cgi of the component MAC Filter Handler.
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Etrel充电桩管理Web默认凭据</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112354</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112354-2026-11-04</guid>
+      <description>CVE-2026-112354 · 🎯P1 重点关注 · 披露 2026-11-03 · CVSS 9.8 · 类型 默认凭据 · 难度 低(远程·免认证)
+Etrel INCH AC charging station management web interface prior to firmware versions 7.1.2 and 8.0.1 contains a hard-coded default credentials vulnerability that …
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Emerson Ovation协议无认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2022-29966</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2022-29966-2026-11-04</guid>
+      <description>CVE-2022-29966 · 🎯P1 重点关注 · 披露 2026-11-03 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+Emerson Ovation has several protocols that have no authentication, which could allow an attacker to change controller configuration or cause a denial-of-service…
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]NoMachine堆溢出可远程执行代码</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114549</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114549-2026-11-04</guid>
+      <description>CVE-2026-114549 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
+This vulnerability allows remote attackers to execute arbitrary code on affected installations of NoMachine.
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Quest Foglight缺失认证RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-92188</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-92188-2026-11-04</guid>
+      <description>CVE-2026-92188 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest Foglight for Databases.
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Quest Foglight路径处理RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-92189</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-92189-2026-11-04</guid>
+      <description>CVE-2026-92189 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 CWE-73 · 难度 低(远程·免认证)
+This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest Foglight for Databases.
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Quest Foglight反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-92190</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-92190-2026-11-04</guid>
+      <description>CVE-2026-92190 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest Foglight for Databases.
+信号:</description>
+      <pubDate>Wed, 04 Nov 2026 01:30:02 +0000</pubDate>
     </item>
   </channel>
 </rss>
