@@ -1,108 +1,61 @@
 {
  "version": 3,
- "generated_at": "2026-11-04T01:30:02+00:00",
- "lookback_hours": 5,
- "count": 12,
+ "generated_at": "2026-11-04T03:14:08+00:00",
+ "lookback_hours": 24,
+ "count": 58,
  "stats": {
-  "total": 12,
+  "total": 58,
   "by_tier": {
-   "critical": 12
+   "critical": 58
   },
   "by_urgency": {
-   "P1 重点关注": 11,
-   "P0 立即处置": 1
+   "P1 重点关注": 58
   },
   "by_category": {
-   "未知": 11,
-   "CMS": 1
+   "未知": 40,
+   "操作系统": 11,
+   "开发库/依赖": 4,
+   "开发运维/CI": 2,
+   "边界设备/VPN": 1
   },
-  "kev": 1,
-  "with_poc": 0,
+  "kev": 0,
+  "with_poc": 1,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [],
+ "briefing": [
+  "- 本批未标记KEV或在野利用，亦无勒索软件关联，但高危RCE仍需按潜在利用处置。",
+  "- 最优先修复CVE-2026-121607：CVSS10命令注入RCE。",
+  "- Chrome多枚9.6高危含UAF/授权错误，需优先升级。",
+  "- Sureline 9.8及CI代码注入RCE批量披露，边界与CI紧急排查。"
+ ],
  "items": [
   {
-   "id": "CVE-2026-119977",
+   "id": "CVE-2026-113263",
    "tier": "critical",
-   "title": "WordPress核心升级期远程代码执行",
-   "title_zh": "WordPress核心升级期远程代码执行",
-   "summary_zh": "未认证攻击者可在核心升级窗口访问可预测暂存路径并执行代码",
-   "published": "2026-10-31T06:16:34.550",
-   "cvss": 8.1,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.006,
-   "epss_percentile": 0.48751,
-   "cwe_labels": [
-    "CWE-367"
-   ],
-   "difficulty": "低(远程·利用条件苛刻·免认证)",
-   "products": [],
-   "affected": "WordPress(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/class-core-upgrader.php#L162"
-    },
-    {
-     "label": "参考",
-     "url": "https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/class-wp-upgrader.php#L378"
-    },
-    {
-     "label": "参考",
-     "url": "https://core.trac.wordpress.org/browser/tags/7.1.3/src/wp-admin/includes/update-core.php#L1549"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-11-06",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "立即升级至修复版本；升级窗口限制访问并清理暂存",
-   "repro_worthy": "值得",
-   "repro_note": "升级窗口期访问可预测暂存路径，构造包触发执行",
-   "impact_scope": "WordPress站点核心，暴露Web可打",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119977",
-   "description": "WordPress Core is vulnerable to Remote Code Execution in versions 4.7 through 7.1.3. This is due to predictable, web-accessible staging paths used during full-package core upgrades. This makes it possible for unauthenticated attackers to execute code on the server during the upgrade window."
-  },
-  {
-   "id": "CVE-2026-121606",
-   "tier": "critical",
-   "title": "未知组件签名校验缺陷可伪造通过",
-   "title_zh": "未知组件签名校验缺陷可伪造通过",
-   "summary_zh": "攻击者可篡改sign参数使签名校验失效，伪造数据通过验证",
-   "published": "2026-11-04T01:17:23.880",
-   "cvss": 10.0,
+   "title": "Chrome Android越权致跨源数据泄露",
+   "title_zh": "Chrome Android越权致跨源数据泄露",
+   "summary_zh": "远程攻击者诱使Android Chrome打开恶意HTML，可越权读取跨源数据。",
+   "published": "2026-10-20T22:19:20.010",
+   "cvss": 9.6,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": 0.00465,
+   "epss_percentile": 0.40288,
    "cwe_labels": [
-    "数据真实性验证缺失",
-    "签名校验错误"
+    "缺失授权(越权)"
    ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [
+    "google chrome",
+    "google android"
+   ],
+   "affected": "google chrome <156.0.8078.47",
    "ghsa_url": null,
    "refs": [
     {
-     "label": "参考",
-     "url": "https://gist.github.com/gajgdm6-cpu/cf98af20ddb77f27a7c112214a6280f7"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-121606"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1023261"
+     "label": "厂商通告",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
     }
    ],
    "poc": [],
@@ -113,28 +66,74 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "定位受影响组件，升级修复并强制验签",
+   "action_zh": "升级至156.0.8078.47及以上，提醒用户勿点可疑链接",
    "repro_worthy": "一般",
-   "repro_note": "篡改sign参数提交，验证签名校验是否被绕过",
-   "impact_scope": "影响面不明，涉及签名可信链",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121606",
-   "description": "Such manipulation of the argument sign leads to improper verification of cryptographic signature. The exploit has been disclosed to the public and may be used."
+   "repro_note": "诱使Android Chrome访问恶意HTML触发跨源读取",
+   "impact_scope": "Android Chrome用户，需用户交互",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113263",
+   "description": "Missing authorization in Core in Google Chrome on on Android prior to 156.0.8078.47 allowed a remote attacker leveraging social engineering to obtain cross-origin data via a crafted HTML page. (Chromium security severity: Medium)"
   },
   {
-   "id": "CVE-2026-121597",
+   "id": "CVE-2026-112352",
    "tier": "critical",
-   "title": "TOTOLINK A950RG栈溢出远程触发",
-   "title_zh": "TOTOLINK A950RG栈溢出远程触发",
-   "summary_zh": "远程攻击者构造请求触发栈溢出，可致设备崩溃或执行代码",
-   "published": "2026-11-04T00:17:27.410",
-   "cvss": 9.9,
+   "title": "SureLine会话Cookie伪造认证绕过",
+   "title_zh": "SureLine会话Cookie伪造认证绕过",
+   "summary_zh": "未认证远程攻击者可伪造仅含用户名的Cookie，仿冒有活动会话的用户。",
+   "published": "2026-10-27T20:17:12.997",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.01319,
+   "epss_percentile": 0.70866,
+   "cwe_labels": [
+    "CWE-565"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "sunhillo sureline"
+   ],
+   "affected": "sunhillo sureline >=8.0.0 <9.1.5",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.sunhillo.com/product/sureline/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/sunhillo-sureline-authentication-bypass-via-session-cookie"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至9.1.5及以上，临时限制Web管理面访问",
+   "repro_worthy": "一般",
+   "repro_note": "伪造仅含用户名的会话Cookie，需目标存在活动会话",
+   "impact_scope": "SureLine Web管理面，可仿冒用户",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112352",
+   "description": "Sunhillo SureLine before 9.1.5 contains an authentication bypass vulnerability that allows an unauthenticated remote attacker to impersonate any user with an active web session by forging a session cookie containing only a cleartext username with no random identifier or integrity protection."
+  },
+  {
+   "id": "CVE-2026-115731",
+   "tier": "critical",
+   "title": "Puppet Server报告反序列化RCE",
+   "title_zh": "Puppet Server报告反序列化RCE",
+   "summary_zh": "持有任意CA签发agent证书者可提交恶意报告，在Puppet Server执行代码。",
+   "published": "2026-11-03T21:17:01.867",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "内存破坏",
-    "栈溢出"
+    "代码注入(RCE)",
+    "反序列化(RCE)"
    ],
    "difficulty": "低(远程·需低权限)",
    "products": [],
@@ -143,15 +142,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://gist.github.com/H3rmesk1t/49d6ccded59379651568e0bdc6b5624c"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-121597"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1022558"
+     "url": "https://portal.perforce.com/s/cve/a91Qi000003IaHpIAK/report-deserialization-code-execution"
     }
    ],
    "poc": [],
@@ -162,19 +153,1271 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级固件；无法升级时限制管理界面访问",
+   "action_zh": "升级修复版本，限制agent证书签发与报告提交",
    "repro_worthy": "一般",
-   "repro_note": "向设备Web接口构造超长参数触发栈溢出",
-   "impact_scope": "家用/小型办公路由器，管理面暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121597",
-   "description": "A weakness has been identified in TOTOLINK A950RG 4.1.2cu.5268_B20221104. This affects the function setAppEasyWizardConfig of the file /cgi-bin/cstecgi.cgi of the component Easy Setup Wizard Handler. Executing a manipulation of the argument functionType can lead to stack-based buffer overflow. The attack may be performed from remote. The exploit has been made available to the public and could be used for attacks."
+   "repro_note": "持CA签发agent证书，向报告处理PUT提交恶意rich-data",
+   "impact_scope": "Puppet Server，内网配置管理核心",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115731",
+   "description": "Deserialization of untrusted data in the report-processing code of Puppet, as used by Puppet Server, in the affected releases, allows a client that holds any CA-signed agent certificate to execute arbitrary code on the Puppet Server as its service user by submitting a report containing a crafted rich-data type via PUT request. Where the certificate authority autosigns requests without strong verification, an unauthenticated network attacker can obtain such a certificate."
+  },
+  {
+   "id": "CVE-2026-109593",
+   "tier": "critical",
+   "title": "SonicWall GMS未授权文件读取",
+   "title_zh": "SonicWall GMS未授权文件读取",
+   "summary_zh": "网络可达的未认证攻击者可读取GMS内部文件，泄露敏感信息。",
+   "published": "2026-11-03T17:17:53.690",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-636"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0019"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至9.5.2以上修复版本，限制GMS网络访问",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问GMS服务读取内部文件，需网络可达",
+   "impact_scope": "GMS管理设备，常暴露内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109593",
+   "description": "An unauthenticated attacker with network access to the SonicWall GMS 9.5.2 and earlier versions may be able to read internal GMS files, potentially exposing sensitive information."
+  },
+  {
+   "id": "CVE-2026-121089",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:14.543",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/571648522"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121089",
+   "description": "Use after free in WebGPU in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121104",
+   "tier": "critical",
+   "title": "Incorrect 未授权 授权错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:16.653",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/577400245"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121104",
+   "description": "Incorrect authorization in FileSystem in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121114",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:19.087",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/573387527"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121114",
+   "description": "Use after free in TabStrip in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121126",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:20.860",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/571284308"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121126",
+   "description": "Use after free in Core in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)"
+  },
+  {
+   "id": "CVE-2026-121148",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:23.150",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/571059182"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121148",
+   "description": "Use after free in ANGLE in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121156",
+   "tier": "critical",
+   "title": "Buffer 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:23.283",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/567735302"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121156",
+   "description": "Buffer overflow in Dawn in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)"
+  },
+  {
+   "id": "CVE-2026-121185",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:27.177",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/565681453"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121185",
+   "description": "Use after free in PictureInPicture in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121189",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:27.693",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/555547989"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121189",
+   "description": "Use after free in Browser in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Low)"
+  },
+  {
+   "id": "CVE-2026-121200",
+   "tier": "critical",
+   "title": "Incorrect 未授权 CWE-706",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:28.887",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-706"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/528485835"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121200",
+   "description": "Incorrect reference resolution in DevTools in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-121202",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:29.203",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/566935544"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121202",
+   "description": "Use after free in Autofill in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-121214",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:30.847",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/574412369"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121214",
+   "description": "Use after free in Passwords in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121229",
+   "tier": "critical",
+   "title": "Memory 未授权 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:32.837",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/562777838"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121229",
+   "description": "Memory corruption in ANGLE in Google Chrome on on Android prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)"
+  },
+  {
+   "id": "CVE-2026-121234",
+   "tier": "critical",
+   "title": "Contacts 未授权 CWE-250",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:33.503",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-250"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/513767200"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121234",
+   "description": "Privilege elevation in Contacts in Google Chrome on on Android prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-121241",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:34.420",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/574791491"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121241",
+   "description": "Use after free in Navigation in Google Chrome on on Android prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121246",
+   "tier": "critical",
+   "title": "Use 未授权 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:35.093",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/558870371"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121246",
+   "description": "Use after free in WebGL in Google Chrome on on Android prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)"
+  },
+  {
+   "id": "CVE-2026-121247",
+   "tier": "critical",
+   "title": "Buffer 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:35.220",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/569161611"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121247",
+   "description": "Buffer overflow in Dawn in Google Chrome on on Android prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)"
+  },
+  {
+   "id": "CVE-2026-121249",
+   "tier": "critical",
+   "title": "Buffer 未授权 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:35.493",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/574752676"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121249",
+   "description": "Buffer overflow in ANGLE in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-120931",
+   "tier": "critical",
+   "title": "Out 未授权 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T22:19:31.900",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/550607402"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120931",
+   "description": "Out of bounds write in WebGL in Google Chrome on on Android prior to 156.0.8078.47 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)"
+  },
+  {
+   "id": "CVE-2026-63469",
+   "tier": "critical",
+   "title": "OpenAPI 未授权 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T20:18:15.420",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)",
+    "CWE-116"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/koxudaxi/fastapi-code-generator/commit/49301dbdb82170d7f50877419d994b05cb1fa2bc"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/koxudaxi/fastapi-code-generator/commit/b3b9bd66e0b0c4d8c686fda700258104615a1332"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/koxudaxi/fastapi-code-generator/releases/tag/0.8.1"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63469",
+   "description": "A multi-response OpenAPI operation with an attacker-controlled or attacker-influenced second non-primary response key can close the dictionary-key literal and inject a valid Python expression. Syntax-breaking input only causes generation to fail, but syntactically valid generated code executes with the application's or CI process's privileges when the generated module is imported and its decorator arguments are evaluated."
+  },
+  {
+   "id": "CVE-2026-63470",
+   "tier": "critical",
+   "title": "Python 未授权 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T20:18:15.590",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)",
+    "CWE-116"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/koxudaxi/fastapi-code-generator/commit/49301dbdb82170d7f50877419d994b05cb1fa2bc"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/koxudaxi/fastapi-code-generator/commit/b3b9bd66e0b0c4d8c686fda700258104615a1332"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/koxudaxi/fastapi-code-generator/releases/tag/0.8.1"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63470",
+   "description": "An attacker-controlled or attacker-influenced operation summary can close the docstring and inject a valid Python expression statement into the handler body. Syntax-breaking input only causes generation to fail, but syntactically valid generated code executes with the server process's privileges when the affected route handler is called."
+  },
+  {
+   "id": "CVE-2026-63471",
+   "tier": "critical",
+   "title": "OpenAPI 未授权 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T20:18:15.753",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)",
+    "CWE-116"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/koxudaxi/fastapi-code-generator/commit/49301dbdb82170d7f50877419d994b05cb1fa2bc"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/koxudaxi/fastapi-code-generator/commit/b3b9bd66e0b0c4d8c686fda700258104615a1332"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/koxudaxi/fastapi-code-generator/releases/tag/0.8.1"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63471",
+   "description": "An attacker-controlled or attacker-influenced OpenAPI path can close the string and inject a valid Python expression into the decorator argument. Syntax-breaking input only causes generation to fail, but syntactically valid generated code executes with the application's or CI process's privileges when the generated module is imported and the decorator is evaluated."
+  },
+  {
+   "id": "CVE-2026-89292",
+   "tier": "critical",
+   "title": "MNESTIX_BACKEND_API_KEY 未授权 凭据保护不足",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T10:17:20.077",
+   "cvss": 9.2,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00453,
+   "epss_percentile": 0.39387,
+   "cwe_labels": [
+    "凭据保护不足",
+    "SSRF"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/302"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/773"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-89292",
+   "description": "In Eclipse Mnestix Browser versions 1.6.0 up until but excluding 2.3.0 it was possible for an unauthenticated attacker to exfiltrate the MNESTIX_BACKEND_API_KEY for all configured Infrastructures."
+  },
+  {
+   "id": "CVE-2026-13594",
+   "tier": "critical",
+   "title": "Zoho Corporation 未授权 访问控制缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T08:17:15.203",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": 0.01142,
+   "epss_percentile": 0.66717,
+   "cwe_labels": [
+    "访问控制缺失"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "ManageEngine(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.manageengine.com/products/eventlog/advisory/CVE-2026-13594.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-13594",
+   "description": "Zoho Corporation's ManageEngine Log360 and EventLog Analyzer versions 13062 and below are vulnerable to an issue that could allow an adversary to gain unauthorized access to the product."
+  },
+  {
+   "id": "CVE-2026-95860",
+   "tier": "critical",
+   "title": "OPC UA 未授权 CWE-285",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:45.907",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-285",
+    "CWE-636"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/node-opcua/node-opcua/commit/0261e873900800983c622e01120f484dc6063698"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/node-opcua/node-opcua/pull/1580"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/node-opcua/node-opcua/releases/tag/v2.180.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-95860",
+   "description": "node-opcua is an OPC UA implementation for TypeScript and Node.js. Servers with no declared policy, nodes with explicit per-node permissions, and correctly bound programmatic namespace metadata are outside the authorization-bypass case."
+  },
+  {
+   "id": "CVE-2026-115732",
+   "tier": "critical",
+   "title": "Puppet证书名校验错误授权绕过",
+   "title_zh": "Puppet证书名校验错误授权绕过",
+   "summary_zh": "持有CA签发碰撞名称证书者可绕过主机授权，冒充授权主机。",
+   "published": "2026-11-03T21:17:02.033",
+   "cvss": 9.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-697",
+    "授权错误"
+   ],
+   "difficulty": "中(远程·利用条件苛刻·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://portal.perforce.com/s/cve/a91Qi000003IaJRIA0/certificate-name-authorization-bypass"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本，收紧CA签发与autosign策略",
+   "repro_worthy": "一般",
+   "repro_note": "需CA签发名称扩展或缩短的主机证书绕过授权匹配",
+   "impact_scope": "Puppet Server授权，需受信证书",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115732",
+   "description": "Incorrect authorization in the certificate-name matching of trapperkeeper-authorization, as used by Puppet Server, in the affected products, allows a client that holds a CA-signed certificate whose name extends or shortens an authorized hostname to be authorized as that host. Exploitation requires a certificate with a colliding name, which the certificate authority issues by approval or autosign."
+  },
+  {
+   "id": "CVE-2026-121607",
+   "tier": "critical",
+   "title": "360路由器host参数命令注入",
+   "title_zh": "360路由器host参数命令注入",
+   "summary_zh": "可访问管理面的攻击者操纵host参数注入系统命令，可能远程执行代码。",
+   "published": "2026-11-04T02:17:19.753",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/gajgdm6-cpu/e8ef7f512bebb987b0119562873afd5a"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-121607"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1023262"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "联系厂商获取修复固件，限制管理面访问",
+   "repro_worthy": "一般",
+   "repro_note": "向host参数注入系统命令，需可访问管理面",
+   "impact_scope": "360多款路由器，家庭/小型网络",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121607",
+   "description": "A vulnerability was found in Qihoo 360 D603-2, D600-2, D606-6 and D706 up to 6.4.9. This affects the function testspeed_command of the file /fs2/bin/iscm. Performing a manipulation of the argument host results in os command injection. The attack may be initiated remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-121609",
+   "tier": "critical",
+   "title": "360 M5路由器硬编码凭据",
+   "title_zh": "360 M5路由器硬编码凭据",
+   "summary_zh": "远程攻击者可使用固件内置凭据登录管理界面，获取管理员权限。",
+   "published": "2026-11-04T02:17:20.243",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-259",
+    "硬编码凭据"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/gajgdm6-cpu/c8c3bbdeb51c076317834b41c3a919f2"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-121609"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1023264"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级固件，修改默认口令并限制管理面访问",
+   "repro_worthy": "一般",
+   "repro_note": "使用固件内置凭据登录管理界面",
+   "impact_scope": "360家庭路由器M5管理权限",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121609",
+   "description": "A vulnerability was identified in Qihoo 360 Whole Home Router M5 4.0.17.1566. This issue affects the function Home of the file /etc/init.d/mpt of the component Boot Script. The manipulation leads to hard-coded credentials. Remote exploitation of the attack is possible. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way."
   },
   {
    "id": "CVE-2026-121598",
    "tier": "critical",
    "title": "TOTOLINK A950RG无线配置栈溢出",
    "title_zh": "TOTOLINK A950RG无线配置栈溢出",
-   "summary_zh": "远程攻击者在无线配置接口提交超长wepkey，触发栈溢出",
+   "summary_zh": "远程攻击者向cstecgi.cgi的wepkey参数发送超长数据，触发栈溢出。",
    "published": "2026-11-04T01:17:23.160",
    "cvss": 9.9,
    "severity": "CRITICAL",
@@ -211,10 +1454,10 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级固件；限制cstecgi.cgi管理接口访问",
+   "action_zh": "升级固件修复；无法升级则限制cgi接口访问",
    "repro_worthy": "一般",
-   "repro_note": "向/cgi-bin/cstecgi.cgi的wepkey参数提交超长值",
-   "impact_scope": "TOTOLINK路由器，管理面可能暴露",
+   "repro_note": "向/cgi-bin/cstecgi.cgi的wepkey参数发送超长数据",
+   "impact_scope": "TOTOLINK A950RG路由器",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121598",
    "description": "A security vulnerability has been detected in TOTOLINK A950RG 4.1.2cu.5268_B20221104. This impacts the function strcpy of the file /cgi-bin/cstecgi.cgi of the component Basic Wireless Configuration Handler. The manipulation of the argument wepkey leads to stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used."
   },
@@ -223,7 +1466,7 @@
    "tier": "critical",
    "title": "TOTOLINK A950RG多SSID溢出",
    "title_zh": "TOTOLINK A950RG多SSID溢出",
-   "summary_zh": "远程攻击者经多SSID配置的wepkey2/wepkey3提交超长值触发溢出",
+   "summary_zh": "远程攻击者向多SSID配置的wepkey2/3参数传超长值，触发栈溢出。",
    "published": "2026-11-04T01:17:23.413",
    "cvss": 9.9,
    "severity": "CRITICAL",
@@ -260,19 +1503,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级固件；禁用多SSID或限制管理访问",
+   "action_zh": "升级固件修复；无法升级则限制cgi接口访问",
    "repro_worthy": "一般",
-   "repro_note": "向cstecgi.cgi多SSID接口传超长wepkey2/3",
-   "impact_scope": "TOTOLINK路由器，管理面可能暴露",
+   "repro_note": "向cstecgi.cgi多SSID配置wepkey2/3传超长值",
+   "impact_scope": "TOTOLINK A950RG路由器",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121599",
    "description": "A vulnerability was detected in TOTOLINK A950RG 4.1.2cu.5268_B20221104. Affected is the function setWiFiMultipleConfig/delWiFiMultipleConfig of the file /cgi-bin/cstecgi.cgi of the component Multi-SSID Configuration. The manipulation of the argument wepkey2/wepkey3 results in stack-based buffer overflow. It is possible to launch the attack remotely. The exploit is now public and may be used."
   },
   {
    "id": "CVE-2026-121600",
    "tier": "critical",
-   "title": "TOTOLINK A950RG MAC过滤溢出",
-   "title_zh": "TOTOLINK A950RG MAC过滤溢出",
-   "summary_zh": "远程攻击者向MAC过滤接口的addEffect传超长值，触发栈溢出",
+   "title": "TOTOLINK A950RG MAC栈溢出",
+   "title_zh": "TOTOLINK A950RG MAC栈溢出",
+   "summary_zh": "远程攻击者向MAC过滤addEffect参数发送超长数据，触发栈溢出。",
    "published": "2026-11-04T01:17:23.647",
    "cvss": 9.9,
    "severity": "CRITICAL",
@@ -309,19 +1552,105 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级固件；限制管理接口并关闭外网访问",
+   "action_zh": "升级固件修复；无法升级则限制cgi接口访问",
    "repro_worthy": "一般",
-   "repro_note": "向cstecgi.cgi写MAC过滤规则，addEffect超长",
-   "impact_scope": "TOTOLINK路由器，管理面可能暴露",
+   "repro_note": "向cstecgi.cgi的addEffect参数发送超长数据",
+   "impact_scope": "TOTOLINK A950RG路由器",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121600",
    "description": "A flaw has been found in TOTOLINK A950RG 4.1.2cu.5268_B20221104. Affected by this vulnerability is the function setMacFilterRules of the file /cgi-bin/cstecgi.cgi of the component MAC Filter Handler. This manipulation of the argument addEffect causes stack-based buffer overflow. The attack can be initiated remotely. The exploit has been published and may be used."
   },
   {
+   "id": "CVE-2026-38600",
+   "tier": "critical",
+   "title": "gohttpserver ZipSlip写入",
+   "title_zh": "gohttpserver ZipSlip写入",
+   "summary_zh": "攻击者向/upload上传恶意Zip，利用路径穿越写入任意文件。",
+   "published": "2026-11-03T17:18:13.070",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Den-Sec/security-research/blob/master/advisories/gohttpserver/VDR-001-zipslip.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/codeskyblue/gohttpserver"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/codeskyblue/gohttpserver/issues/232"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.3.0以上修复版本，禁用或限制上传",
+   "repro_worthy": "一般",
+   "repro_note": "向/upload上传含../路径的Zip写入任意文件",
+   "impact_scope": "gohttpserver文件服务，上传功能",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-38600",
+   "description": "A Zip Slip vulnerability in the /upload endpoint of codeskyblue gohttpserver through v1.3.0 allows attackers to write arbitrary files via uploading a crafted Zip archive."
+  },
+  {
+   "id": "CVE-2026-95731",
+   "tier": "critical",
+   "title": "HPE Fabric Composer硬编码",
+   "title_zh": "HPE Fabric Composer硬编码",
+   "summary_zh": "未认证远程攻击者可使用CLI硬编码凭据登录，获取高权限管理访问。",
+   "published": "2026-11-03T20:18:21.197",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05172en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本，禁用CLI硬编码账户并限制访问",
+   "repro_worthy": "一般",
+   "repro_note": "使用CLI内置硬编码口令远程登录管理",
+   "impact_scope": "HPE网络编排系统管理面",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-95731",
+   "description": "Hardcoded password vulnerabilities in the command-line interface of HPE Networking Fabric Composer could allow an unauthenticated remote attacker to access the affected system using hardcoded credentials. Successful exploitation could allow an attacker to gain unauthorized administrative access to the affected system with elevated privileges."
+  },
+  {
    "id": "CVE-2026-112354",
    "tier": "critical",
-   "title": "Etrel充电桩管理Web默认凭据",
-   "title_zh": "Etrel充电桩管理Web默认凭据",
-   "summary_zh": "远程攻击者使用出厂默认账号登录，获得充电站管理员权限",
+   "title": "Etrel充电桩默认凭据管理员登录",
+   "title_zh": "Etrel充电桩默认凭据管理员登录",
+   "summary_zh": "远程攻击者使用出厂默认账号登录Web管理界面，获取完全管理员权限。",
    "published": "2026-11-03T22:17:44.660",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -357,19 +1686,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至7.1.2/8.0.1并立即修改默认口令",
+   "action_zh": "升级至7.1.2/8.0.1以上，修改默认口令",
    "repro_worthy": "一般",
-   "repro_note": "用出厂默认账号登录管理Web，验证管理员权限",
-   "impact_scope": "电动汽车充电桩管理面，可能联网",
+   "repro_note": "以出厂默认账号登录充电桩Web管理界面",
+   "impact_scope": "Etrel充电桩Web管理，可获管理员",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112354",
    "description": "Etrel INCH AC charging station management web interface prior to firmware versions 7.1.2 and 8.0.1 contains a hard-coded default credentials vulnerability that allows remote attackers to gain full Administrator access by authenticating with the factory-default account. Attackers can log in over cleartext HTTP to obtain complete charger configuration, OCPP ChargePoint Identity, and CSMS WebSocket connection details, enabling unauthorized administrative control of the charging station."
   },
   {
    "id": "CVE-2022-29966",
    "tier": "critical",
-   "title": "Emerson Ovation协议无认证",
-   "title_zh": "Emerson Ovation协议无认证",
-   "summary_zh": "攻击者可访问无认证协议篡改控制器配置或造成拒绝服务",
+   "title": "Emerson Ovation协议缺失认证",
+   "title_zh": "Emerson Ovation协议缺失认证",
+   "summary_zh": "可访问Ovation协议的网络攻击者可未认证修改控制器配置或造成拒绝服务。",
    "published": "2026-11-03T23:17:20.353",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -401,19 +1730,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "隔离控制网络，升级并按厂商加固协议",
+   "action_zh": "升级修复版本，隔离OT网络并限制协议端口访问",
    "repro_worthy": "一般",
-   "repro_note": "接入控制网络访问无认证协议端口，尝试改配置",
-   "impact_scope": "工业控制系统控制器，生产网络内",
+   "repro_note": "向Ovation协议端口发送未认证配置或控制报文",
+   "impact_scope": "Ovation控制器，OT内网",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2022-29966",
    "description": "Emerson Ovation has several protocols that have no authentication, which could allow an attacker to change controller configuration or cause a denial-of-service condition."
   },
   {
    "id": "CVE-2026-114549",
    "tier": "critical",
-   "title": "NoMachine堆溢出可远程执行代码",
-   "title_zh": "NoMachine堆溢出可远程执行代码",
-   "summary_zh": "远程攻击者利用堆溢出在服务账户上下文执行任意代码",
+   "title": "NoMachine堆溢出远程代码执行",
+   "title_zh": "NoMachine堆溢出远程代码执行",
+   "summary_zh": "远程攻击者可向NoMachine服务发送恶意数据触发堆溢出，以服务账户执行代码。",
    "published": "2026-11-04T00:17:22.627",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -441,10 +1770,10 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级NoMachine至修复版本，限制服务端口暴露",
+   "action_zh": "升级修复版本，限制NoMachine服务网络暴露",
    "repro_worthy": "一般",
-   "repro_note": "向NoMachine服务发送特制请求触发堆溢出",
-   "impact_scope": "远程桌面服务，常暴露内网/公网",
+   "repro_note": "向NoMachine服务发送恶意构造数据触发堆溢出",
+   "impact_scope": "NoMachine远程桌面服务，可RCE",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114549",
    "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of NoMachine. An attacker can leverage this vulnerability to execute code in the context of the service account."
   },
@@ -453,7 +1782,7 @@
    "tier": "critical",
    "title": "Quest Foglight缺失认证RCE",
    "title_zh": "Quest Foglight缺失认证RCE",
-   "summary_zh": "远程攻击者利用缺失认证访问服务，以SYSTEM权限执行代码",
+   "summary_zh": "未授权远程攻击者可访问受影响接口执行任意代码，以SYSTEM权限运行。",
    "published": "2026-11-04T00:17:29.130",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -481,19 +1810,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级Foglight修复版本，限制管理端口访问",
+   "action_zh": "升级修复版本，限制Foglight服务网络访问",
    "repro_worthy": "一般",
-   "repro_note": "未授权访问Foglight管理服务并构造请求执行代码",
-   "impact_scope": "数据库监控平台，内网高权限",
+   "repro_note": "未授权访问受影响服务接口触发代码执行",
+   "impact_scope": "Foglight数据库监控，可SYSTEM",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92188",
    "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest Foglight for Databases. An attacker can leverage this vulnerability to execute code in the context of SYSTEM."
   },
   {
    "id": "CVE-2026-92189",
    "tier": "critical",
-   "title": "Quest Foglight路径处理RCE",
-   "title_zh": "Quest Foglight路径处理RCE",
-   "summary_zh": "远程攻击者可利用路径处理缺陷绕过限制，以SYSTEM权限执行代码",
+   "title": "Quest Foglight路径控制RCE",
+   "title_zh": "Quest Foglight路径控制RCE",
+   "summary_zh": "未授权远程攻击者可控制文件路径参数，在Foglight服务上执行任意代码。",
    "published": "2026-11-04T00:17:29.260",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -521,10 +1850,10 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级Foglight修复版本，限制管理端口访问",
+   "action_zh": "升级修复版本，限制Foglight服务网络访问",
    "repro_worthy": "一般",
-   "repro_note": "构造路径参数触发文件操作，验证代码执行",
-   "impact_scope": "数据库监控平台，内网高权限",
+   "repro_note": "未授权控制文件路径参数导致代码执行",
+   "impact_scope": "Foglight数据库监控，可SYSTEM",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92189",
    "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest Foglight for Databases. An attacker can leverage this vulnerability to execute code in the context of SYSTEM."
   },
@@ -533,7 +1862,7 @@
    "tier": "critical",
    "title": "Quest Foglight反序列化RCE",
    "title_zh": "Quest Foglight反序列化RCE",
-   "summary_zh": "远程攻击者向baseRmiServiceExporter提交恶意序列化数据，执行代码",
+   "summary_zh": "远程攻击者可向baseRmiServiceExporter发送恶意序列化数据，执行任意代码。",
    "published": "2026-11-04T00:17:29.390",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -561,52 +1890,705 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级Foglight修复版本，限制RMI服务访问",
+   "action_zh": "升级修复版本，限制Foglight服务网络访问",
    "repro_worthy": "一般",
-   "repro_note": "向baseRmiServiceExporter发送恶意序列化载荷",
-   "impact_scope": "数据库监控平台，内网高权限",
+   "repro_note": "向baseRmiServiceExporter发送恶意序列化数据",
+   "impact_scope": "Foglight数据库监控，可SYSTEM",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92190",
    "description": "Quest Foglight for Databases baseRmiServiceExporter Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest Foglight for Databases."
+  },
+  {
+   "id": "CVE-2026-95732",
+   "tier": "critical",
+   "title": "HPE网络编排系统认证绕过RCE",
+   "title_zh": "HPE网络编排系统认证绕过RCE",
+   "summary_zh": "相邻网络未认证攻击者可绕过底层系统认证并执行任意代码。",
+   "published": "2026-11-03T20:18:21.320",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(需相邻网络·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05172en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本，隔离相邻网络并限制管理访问",
+   "repro_worthy": "一般",
+   "repro_note": "相邻网络发送特制请求绕过系统认证执行代码",
+   "impact_scope": "HPE网络编排系统，相邻网络",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-95732",
+   "description": "An authentication bypass vulnerability exists in the underlying operating system of HPE Networking Fabric Composer. Successful exploitation could allow an unauthenticated adjacent attacker to execute arbitrary code on the affected system."
+  },
+  {
+   "id": "CVE-2026-95733",
+   "tier": "critical",
+   "title": "HPE网络编排系统组件未认证RCE",
+   "title_zh": "HPE网络编排系统组件未认证RCE",
+   "summary_zh": "相邻网络未认证攻击者可利用组件漏洞，在受影响系统执行任意代码。",
+   "published": "2026-11-03T20:18:21.433",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "低(需相邻网络·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05172en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本，隔离相邻网络并限制管理访问",
+   "repro_worthy": "一般",
+   "repro_note": "相邻网络未认证访问组件触发代码执行",
+   "impact_scope": "HPE网络编排系统，相邻网络",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-95733",
+   "description": "A vulnerability exists in a component of HPE Networking Fabric Composer. Successful exploitation could allow an unauthenticated adjacent attacker to execute arbitrary code on the affected system."
+  },
+  {
+   "id": "CVE-2026-121030",
+   "tier": "critical",
+   "title": "Chrome DevTools授权错误RCE",
+   "title_zh": "Chrome DevTools授权错误RCE",
+   "summary_zh": "远程攻击者构造HTML页面并诱导用户访问，可越出沙箱执行任意代码。",
+   "published": "2026-11-03T21:17:06.013",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/553152519"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Chrome至157.0.8103.38或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造HTML页面诱导打开触发DevTools授权缺陷",
+   "impact_scope": "终端浏览器，用户基数极大",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121030",
+   "description": "Incorrect authorization in DevTools in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-121034",
+   "tier": "critical",
+   "title": "Chrome Views UAF致RCE",
+   "title_zh": "Chrome Views UAF致RCE",
+   "summary_zh": "远程攻击者构造HTML页面并诱导用户访问，可越出沙箱执行任意代码。",
+   "published": "2026-11-03T21:17:06.593",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/577400880"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Chrome至157.0.8103.38或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造HTML页面诱导打开触发Views释放后重用",
+   "impact_scope": "终端浏览器，用户基数极大",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121034",
+   "description": "Use after free in Views in Google Chrome on on Windows prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121035",
+   "tier": "critical",
+   "title": "Chrome预渲染UAF致RCE",
+   "title_zh": "Chrome预渲染UAF致RCE",
+   "summary_zh": "远程攻击者构造HTML页面并诱导用户访问，可越出沙箱执行任意代码。",
+   "published": "2026-11-03T21:17:06.730",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/567216197"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Chrome至157.0.8103.38或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造HTML页面触发预渲染对象释放后重用",
+   "impact_scope": "终端浏览器，用户基数极大",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121035",
+   "description": "Use after free in Prerender in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)"
+  },
+  {
+   "id": "CVE-2026-121037",
+   "tier": "critical",
+   "title": "Chrome ANGLE越界写入致RCE",
+   "title_zh": "Chrome ANGLE越界写入致RCE",
+   "summary_zh": "远程攻击者构造HTML页面并诱导用户访问，可越出沙箱执行任意代码。",
+   "published": "2026-11-03T21:17:07.000",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/569415790"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Chrome至157.0.8103.38或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造HTML页面触发ANGLE越界写入",
+   "impact_scope": "终端浏览器，用户基数极大",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121037",
+   "description": "Out of bounds write in ANGLE in Google Chrome on on Windows prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121060",
+   "tier": "critical",
+   "title": "Chrome文件系统授权错误致RCE",
+   "title_zh": "Chrome文件系统授权错误致RCE",
+   "summary_zh": "远程攻击者构造HTML页面并诱导用户访问，可越出沙箱执行任意代码。",
+   "published": "2026-11-03T21:17:10.570",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/578500839"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Chrome至157.0.8103.38或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造HTML页面触发文件系统授权缺陷",
+   "impact_scope": "终端浏览器，用户基数极大",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121060",
+   "description": "Incorrect authorization in FileSystem in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121071",
+   "tier": "critical",
+   "title": "Chrome文件系统授权错误致RCE",
+   "title_zh": "Chrome文件系统授权错误致RCE",
+   "summary_zh": "远程攻击者构造HTML页面并诱导用户访问，可越出沙箱执行任意代码。",
+   "published": "2026-11-03T21:17:12.057",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/561994040"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Chrome至157.0.8103.38或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造HTML页面触发文件系统授权缺陷",
+   "impact_scope": "终端浏览器，用户基数极大",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121071",
+   "description": "Incorrect authorization in FileSystem in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121074",
+   "tier": "critical",
+   "title": "Chrome Android GPU内存破坏",
+   "title_zh": "Chrome Android GPU内存破坏",
+   "summary_zh": "远程攻击者构造HTML页面并诱导Android用户访问，可越出沙箱执行任意代码。",
+   "published": "2026-11-03T21:17:12.463",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/536617330"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Chrome至157.0.8103.38或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "Android Chrome打开恶意HTML触发GPU内存破坏",
+   "impact_scope": "移动端浏览器，用户面广",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121074",
+   "description": "Memory corruption in GPU in Google Chrome on on Android prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121076",
+   "tier": "critical",
+   "title": "Chrome WebXR UAF致RCE",
+   "title_zh": "Chrome WebXR UAF致RCE",
+   "summary_zh": "远程攻击者构造HTML页面并诱导用户访问，可越出沙箱执行任意代码。",
+   "published": "2026-11-03T21:17:12.757",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/578670966"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Chrome至157.0.8103.38或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造HTML页面触发WebXR对象释放后重用",
+   "impact_scope": "终端浏览器，用户基数极大",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121076",
+   "description": "Use after free in WebXR in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-121077",
+   "tier": "critical",
+   "title": "Chrome Mobile UAF致RCE",
+   "title_zh": "Chrome Mobile UAF致RCE",
+   "summary_zh": "远程攻击者构造HTML页面并诱导用户访问，可越出沙箱执行任意代码。",
+   "published": "2026-11-03T21:17:12.893",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/570026368"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Chrome至157.0.8103.38或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造HTML页面诱导移动端触发Mobile UAF",
+   "impact_scope": "移动端浏览器，用户面广",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121077",
+   "description": "Use after free in Mobile in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)"
+  },
+  {
+   "id": "CVE-2026-121086",
+   "tier": "critical",
+   "title": "Chrome Skia堆溢出致RCE",
+   "title_zh": "Chrome Skia堆溢出致RCE",
+   "summary_zh": "远程攻击者构造HTML页面并诱导用户访问，可越出沙箱执行任意代码。",
+   "published": "2026-11-03T21:17:14.123",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": "Google Chrome(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/569674218"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Chrome至157.0.8103.38或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "构造HTML页面触发Skia堆溢出",
+   "impact_scope": "终端浏览器，用户基数极大",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121086",
+   "description": "Buffer overflow in Skia in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-112917",
+   "tier": "critical",
+   "title": "Windows CWE-424",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T19:17:53.727",
+   "cvss": 9.2,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-424"
+   ],
+   "difficulty": "高(需本地访问·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.docker.com/desktop/release-notes/#4980"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/microsoft/WSL/releases/tag/3.0.3"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/microsoft/WSL2-Linux-Kernel/releases/tag/linux-msft-wsl-6.18.54.1"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112917",
+   "description": "In Docker Desktop for Windows with the WSL2 backend, an unprivileged Linux container can use 32-bit socketcall to bypass the default seccomp restriction on AF_VSOCK. This can expose host-facing services and Windows files accessible to the logged-in user. The issue affects x86-64 WSL2; LinuxKit-based backends are unaffected. The issue is fully fixed only with Docker Desktop 4.98.0 or later and WSL 3.0.3 or later. Docker Desktop 4.98.0 or later running on an older WSL remains affected."
+  },
+  {
+   "id": "CVE-2026-121260",
+   "tier": "critical",
+   "title": "注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T16:17:23.393",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "注入",
+    "代码注入(RCE)"
+   ],
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Wlz1112/ZHOME_A0101/blob/main/zrusb_loadstring_code_injection.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-121260"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1018328"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121260",
+   "description": "A flaw has been found in Ziroom ZHOME A0101 1.0.1.0 Build 202004151405. This issue affects the function loadstring of the file usr/lib/lua/luci/controller/api/zrUsb.lua of the component Lua Handler. This manipulation causes code injection. Remote exploitation of the attack is possible. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-22058",
+   "tier": "critical",
+   "title": "StorageGRID 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T22:19:47.030",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "difficulty": "中(远程·利用条件苛刻·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://security.netapp.com/advisory/NTAP-20261103-0001"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-22058",
+   "description": "StorageGRID (formerly StorageGRID Webscale) versions 11.3 and higher allow an attacker with product-specific knowledge and the ability to communicate with the Grid Network on certain ports to make unauthorized requests."
+  },
+  {
+   "id": "CVE-2026-82158",
+   "tier": "critical",
+   "title": "Dell Wyse Management Suite XSS",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-03T21:17:43.823",
+   "cvss": 9.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "XSS"
+   ],
+   "difficulty": "中(远程·需低权限·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000506515/dsa-2026-405-security-update-for-dell-wyse-management-suite-wms-for-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82158",
+   "description": "Dell Wyse Management Suite, versions prior to 2609.0.0.155, contain an Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Script injection."
   }
  ],
  "media": [],
- "commits": [
-  {
-   "repo": "madler/zlib",
-   "sha": "fd54d99ea36166fea3f5cf319c87b0aeb14b28c9",
-   "url": "https://github.com/madler/zlib/commit/fd54d99ea36166fea3f5cf319c87b0aeb14b28c9",
-   "title": "Avoid path traversals in miniunz selectively by path components.",
-   "date": "2026-11-03T23:52:35",
-   "score": 4,
-   "matched": [
-    "漏洞相关",
-    "路径遍历/任意文件"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "madler/zlib",
-   "sha": "0da544de3f2a57d6016fcf1ed0adbb54ed7a4509",
-   "url": "https://github.com/madler/zlib/commit/0da544de3f2a57d6016fcf1ed0adbb54ed7a4509",
-   "title": "Avoid residual path-traversal vulnerabilities in miniunz.",
-   "date": "2026-11-03T23:04:48",
-   "score": 2,
-   "matched": [
-    "漏洞相关"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "200a98d5ba4a6c792517d3ea464a5392737b4e33",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/200a98d5ba4a6c792517d3ea464a5392737b4e33",
-   "title": "avcodec/exrenc: propagate the scanline encoder errors",
-   "date": "2026-11-03T21:30:40",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  }
- ]
+ "commits": []
 }
