@@ -3,72 +3,333 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
-    <lastBuildDate>Thu, 05 Nov 2026 01:31:06 +0000</lastBuildDate>
+    <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    <lastBuildDate>Thu, 05 Nov 2026 03:42:30 +0000</lastBuildDate>
     <item>
-      <title>[critical]AI推理平台认证绕过可未授权RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102895</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102895-2026-11-05</guid>
-      <description>CVE-2026-102895 · 🎯P0 立即处置 · 披露 2026-11-04 · CVSS 9.8 · 类型 认证绕过/认证欺骗 · 难度 低(远程·免认证)
-The bypass allowed unauthenticated administrative access, including user and model changes, persistent administrator API-key creation, disclosure of worker and …
-信号:</description>
-      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
+      <title>[critical]BTC JS库Merkle根校验缺陷</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-107846</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-107846-2026-11-05</guid>
+      <description>CVE-2026-107846 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.3 · 类型 CWE-354 · 难度 低(远程·免认证)
+bitcoinjs-lib is a JavaScript Bitcoin library for Node.js and browsers.
+信号: 关注词:exchange</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Comfast路由器路径遍历可读任意文件</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122013</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122013-2026-11-05</guid>
-      <description>CVE-2026-122013 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 10.0 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
-A vulnerability was detected in Comfast CF-WR632AX 2.6.0.1.
-信号:</description>
-      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
+      <title>[high]开发库认证会话复用漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121966</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121966-2026-11-05</guid>
+      <description>CVE-2026-121966 · 🎯P1 重点关注 · 披露 2026-11-04 · 组件 开发库/依赖 · CVSS 8.7 · 类型 CWE-488 · 难度 低(远程·利用条件苛刻·免认证)
+An unauthenticated attacker can reuse another user's authenticated connection, receiving the victim's identity via authResponseHeaders to access backends as tha…
+信号: 关注词:nginx</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Edimax路由器命令注入可远程执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122051</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122051-2026-11-05</guid>
-      <description>CVE-2026-122051 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 10.0 · 类型 注入/命令注入 · 难度 低(远程·免认证)
-Affected by this vulnerability is an unknown functionality of the file /goform/mp. Executing a manipulation can lead to command injection.
-信号:</description>
-      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
+      <title>[high]Symfony X509认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-118513</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-118513-2026-11-05</guid>
+      <description>CVE-2026-118513 · 🎯P1 重点关注 · 披露 2026-11-04 · 组件 Web框架 · CVSS 7.7 · 类型 认证欺骗 · 难度 中(远程·利用条件苛刻·需低权限)
+Authentication bypass by spoofing in X509Authenticator and X509AuthenticationListener of Symfony versions prior to 5.4.56, 6.x prior to 6.4.50, 7.x prior to 7.4…
+信号: 关注词:nginx</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]容器沙箱平台越权致跨租户命令执行</title>
+      <title>[critical]Nexus仓库凭据保护不足</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113373</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113373-2026-11-05</guid>
+      <description>CVE-2026-113373 · 🎯P1 重点关注 · 披露 2026-11-04 · 组件 开发运维/CI · CVSS 9.1 · 类型 凭据保护不足 · 难度 低(远程·利用条件苛刻·免认证)
+The attacker needs no Nexus Repository session and no Nexus Repository privilege.
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]GPUStack 未授权 认证绕过(中间人)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102894</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102894-2026-11-05</guid>
+      <description>CVE-2026-102894 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.1 · 类型 认证绕过(中间人)/签名校验错误 · 难度 低(远程·免认证)
+GPUStack is an open-source GPU cluster manager for AI model serving and GPU instance provisioning.
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Kyverno CWE-367</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122321</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122321-2026-11-05</guid>
+      <description>CVE-2026-122321 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 9.1 · 类型 CWE-367 · 难度 低(远程·需低权限)
+Kyverno 1.18.0 before 1.19.2 contains a signature verification bypass in verifyImages because cached verification results are keyed by the image reference strin…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122120</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122120-2026-11-05</guid>
+      <description>CVE-2026-122120 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.0 · 类型 任意文件上传 · 难度 低(远程·利用条件苛刻·免认证)
+In Yealink Plug-in Softwares before 2.35.219.0, there is an unauthorized file write vulnerability under specific scenarios, which may be exploited by attackers …
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]认证组件缺失认证漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121933</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121933-2026-11-05</guid>
+      <description>CVE-2026-121933 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 10.0 · 类型 认证绕过/缺失认证 · 难度 低(远程·免认证)
+The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]沙箱平台租户越权执行命令</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97693</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97693-2026-11-05</guid>
       <description>CVE-2026-97693 · 🎯P1 重点关注 · 披露 2026-11-04 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 命令注入/访问控制缺失 · 难度 低(远程·需低权限)
 A low-privileged authenticated user who can execute commands in their own sandbox can reach other tenants' sandbox APIs, access their files and secrets, execute…
 信号:</description>
-      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]vtenext密码重置认证绕过可接管账户</title>
+      <title>[critical]Kyverno命名空间越权覆写</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122303</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122303-2026-11-05</guid>
+      <description>CVE-2026-122303 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 9.9 · 类型 缺失授权(越权) · 难度 低(远程·需低权限)
+Kyverno from 1.17.0 before 1.19.2 contains an authorization bypass vulnerability that allows namespace tenants to overwrite resources in other namespaces via Na…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Kyverno清理控制器越权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122304</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122304-2026-11-05</guid>
+      <description>CVE-2026-122304 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 9.9 · 类型 授权错误 · 难度 低(远程·需低权限)
+Kyverno from 1.17.0 before 1.19.2 contains an authorization bypass vulnerability that allows namespace admins to escape namespace confinement because the cleanu…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Kyverno apiCall路径绕过提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122310</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122310-2026-11-05</guid>
+      <description>CVE-2026-122310 · 🎯P1 重点关注 · 披露 2026-11-05 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 CWE-436 · 难度 低(远程·需低权限)
+Kyverno from 1.19.1 before 1.19.2 validates a Policy's context.apiCall urlPath after cleaning it but executes the raw path, whose fragment or query the Kubernet…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Kyverno CEL资源路径穿越</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122311</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122311-2026-11-05</guid>
+      <description>CVE-2026-122311 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+Kyverno from 1.16.0 before 1.19.2 fails to validate path segments in the resource argument of resource.get() and resource.post(), allowing namespaced CEL polici…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Kyverno策略表达式越权修改</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122313</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122313-2026-11-05</guid>
+      <description>CVE-2026-122313 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 9.9 · 类型 权限提升 · 难度 低(远程·需低权限)
+Kyverno from 1.17.0 before 1.19.2 contains a privilege escalation vulnerability that allows namespace-scoped tenants to modify resources in other namespaces thr…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]JetFormBuilder权限提升漏洞</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119481</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119481-2026-11-05</guid>
+      <description>CVE-2026-119481 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
+Incorrect Privilege Assignment vulnerability in Crocoblock JetFormBuilder jetformbuilder allows Privilege Escalation.This issue affects JetFormBuilder: from n/a…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LearnDash工具包权限提升</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-65555</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-65555-2026-11-05</guid>
+      <description>CVE-2026-65555 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
+Incorrect Privilege Assignment vulnerability in Uncanny Owl Uncanny Toolkit for LearnDash uncanny-learndash-toolkit allows Privilege Escalation.This issue affec…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Rails附件处理可读写服务器</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122006</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122006-2026-11-05</guid>
+      <description>CVE-2026-122006 · 🎯P1 重点关注 · 披露 2026-11-04 · 组件 Web框架 · CVSS 9.8 · 类型 初始化不安全(默认凭据) · 难度 低(远程·免认证)
+The activestorage gem before 8.1.4.1 for Ruby on Rails, when ImageMagick attachment processing occurs, can allow server read and write operations (e.g., reading…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FreeRDP位图缓存越界写入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121952</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121952-2026-11-05</guid>
+      <description>CVE-2026-121952 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 越界写入 · 难度 低(远程·免认证)
+FreeRDP before 3.32.2 has an out-of-bounds write in the proxy because rdp_read_bitmap_cache_v2_capability_set rejects only numCellCaches values above 5, yet the…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FreeRDP gfx通道释放后重用</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121953</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121953-2026-11-05</guid>
+      <description>CVE-2026-121953 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
+FreeRDP before 3.32.2 has a use-after-free in the client's rdpgfx dynamic virtual channel: a duplicate-name channel with a new ChannelId overwrites the listener…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]vtenext密码重置认证绕过</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2025-71457</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2025-71457-2026-11-05</guid>
       <description>CVE-2025-71457 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 CWE-620 · 难度 低(远程·免认证)
 vtenext 25.02 before 25.02.1 contains an authentication bypass vulnerability that allows unauthenticated attackers to change any account password via hub/rpwd.p…
 信号:</description>
-      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]IBM Watson语音服务UAF可致RCE</title>
+      <title>[critical]Watson语音服务UAF代码执行</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-82418</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-82418-2026-11-05</guid>
       <description>CVE-2026-82418 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
 IBM Watson Speech Services Cartridge 4.0.0 through 5.4.0 could allow a remote attacker to execute arbitrary code due to a use-after-free vulnerability.
 信号:</description>
-      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]VitaFit云API认证绕过可劫持会话</title>
+      <title>[critical]VitaFit SNS登录认证绕过</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-54384</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-54384-2026-11-05</guid>
       <description>CVE-2026-54384 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 认证欺骗 · 难度 低(远程·免认证)
 VitaFit cloud API before 2026-10-30 contained an authentication bypass vulnerability that allows remote attackers to obtain a full session for a victim's accoun…
 信号:</description>
-      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Kyverno generate规则越权创建</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122302</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122302-2026-11-05</guid>
+      <description>CVE-2026-122302 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 9.8 · 类型 权限提升 · 难度 低(远程·免认证)
+Kyverno before 1.19.2 contains a privilege escalation vulnerability that allows namespace admins to create resources beyond their RBAC because generate-rule adm…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]共享存储桶凭据不当致越权读写</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-54378</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-54378-2026-11-05</guid>
+      <description>CVE-2026-54378 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.6 · 类型 凭据保护不足 · 难度 低(远程·需低权限)
+Attackers can use these improperly scoped credentials to list the shared storage bucket and read or overwrite other users' stored files, enabling unauthorized c…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Pocket ID邮箱验证缺失致账户冒用</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115770</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115770-2026-11-05</guid>
+      <description>CVE-2026-115770 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.6 · 类型 数据真实性验证缺失 · 难度 低(远程·需低权限)
+Pocket ID is an OIDC provider that allows users to authenticate with their passkeys to services.
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Readest OPDS代理SSRF内网探测</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-57566</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-57566-2026-11-05</guid>
+      <description>CVE-2026-57566 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.3 · 类型 SSRF · 难度 低(远程·免认证)
+Prior to 0.11.10, the unauthenticated /api/opds/proxy route in apps/readest-app/src/app/api/opds/proxy/route.ts accepted an attacker-controlled URL and fetched …
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]REE 越界写入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113780</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113780-2026-11-05</guid>
+      <description>CVE-2026-113780 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.3 · 类型 越界写入/CWE-822 · 难度 中(需本地访问·免认证)
+A local unprivileged REE application can direct this machine-mode write into TEE-exclusive memory on ESP32-C5, ESP32-C6, ESP32-C61, and ESP32-H2 devices, breaki…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]SEPPmail LFT路径操纵文件操作</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114425</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114425-2026-11-05</guid>
+      <description>CVE-2026-114425 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.2 · EPSS 0.3%,前 26% · 类型 CWE-73 · 难度 低(远程·利用条件苛刻·免认证)
+An unauthenticated remote sender can cause the mail-processing worker to disclose, move, or delete an accessible regular file when LFT is enabled and the messag…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]SEPPmail Perl代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114424</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114424-2026-11-05</guid>
+      <description>CVE-2026-114424 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.2 · EPSS 0.3%,前 18% · 类型 代码注入(RCE) · 难度 低(远程·利用条件苛刻·免认证)
+An unauthenticated remote sender can execute operating-system commands in the mail-processing worker context when an active rule uses message-derived replacemen…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AuthPoint网关未授权关键功能</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121639</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121639-2026-11-05</guid>
+      <description>CVE-2026-121639 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.2 · 类型 CWE-252/认证绕过 · 难度 低(远程·免认证)
+A Missing Authentication for Critical Function vulnerability in WatchGuard AuthPoint Gateway allows a remote unauthenticated attacker with network access to the…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]GLPI 登录URL绕过双因素认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-52848</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-52848-2026-11-05</guid>
+      <description>CVE-2026-52848 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.2 · 类型 认证绕过 · 难度 低(远程·利用条件苛刻·免认证)
+From 11.0.0 until 11.0.8, during the login phase, an unauthenticated user could use a crafted URL to skip one-time-password verification, defeating two-factor a…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]DStarGateway空发送字段整数下溢</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122992</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122992-2026-11-05</guid>
+      <description>CVE-2026-122992 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 9.2 · 类型 CWE-191 · 难度 低(远程·免认证)
+In G4KLX DStarGateway and F4FXL DStarGateway before 7b75de6, dstarCallsignToAPRS in APRSUtils.cpp has an integer underflow via an empty RS-MS1A sender field.
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AuthPoint网关证书校验缺陷</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121638</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121638-2026-11-05</guid>
+      <description>CVE-2026-121638 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.1 · 类型 证书校验缺陷 · 难度 低(远程·利用条件苛刻·免认证)
+An Improper Certificate Validation vulnerability in WatchGuard AuthPoint Gateway allows an attacker with an on-path network position to intercept and modify com…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AuthPoint组件请求重放致管理绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121640</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121640-2026-11-05</guid>
+      <description>CVE-2026-121640 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.1 · 类型 认证绕过(中间人) · 难度 低(远程·利用条件苛刻·免认证)
+An Authentication Bypass by Capture-replay vulnerability in WatchGuard AuthPoint Gateway allows an attacker who has observed a legitimate request between AuthPo…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121930</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121930-2026-11-05</guid>
+      <description>CVE-2026-121930 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.1 · 类型 命令注入/命令注入(RCE) · 难度 中(远程·需高权限)
+This manipulation of the argument ping_ip causes os command injection. The exploit has been made available to the public and could be used for attacks.
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Such 命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121931</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121931-2026-11-05</guid>
+      <description>CVE-2026-121931 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.1 · 类型 命令注入/命令注入(RCE) · 难度 中(远程·需高权限)
+Such manipulation of the argument traceroute_ip leads to os command injection. The exploit has been disclosed publicly and may be used.
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 03:42:30 +0000</pubDate>
     </item>
   </channel>
 </rss>
