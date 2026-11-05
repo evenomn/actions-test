@@ -5,79 +5,54 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 05 Nov 2026 13:20:56 +0000</pubDate>
-    <lastBuildDate>Thu, 05 Nov 2026 13:20:56 +0000</lastBuildDate>
+    <pubDate>Thu, 05 Nov 2026 20:45:08 +0000</pubDate>
+    <lastBuildDate>Thu, 05 Nov 2026 20:45:08 +0000</lastBuildDate>
     <item>
-      <title>[critical]Juneau目录遍历任意文件读取</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121489</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121489-2026-11-05</guid>
-      <description>CVE-2026-121489 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 10.0 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
-Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Apache Juneau.
-信号:</description>
-      <pubDate>Thu, 05 Nov 2026 13:20:56 +0000</pubDate>
+      <title>[high]CalDAV集成SSRF致内网探测</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-69137</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-69137-2026-11-05</guid>
+      <description>CVE-2026-69137 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 7.7 · 类型 SSRF · 难度 低(远程·需低权限)
+The affected flow begins at CalendarAccount::action_testConnection and uses server_url, CalDAVProvider::makeCalDAVRequest(), and PROPFIND to carry attacker-cont…
+信号: 有PoC | nuclei 模板
+[EDB-52686](https://www.exploit-db.com/exploits/52686)</description>
+      <pubDate>Thu, 05 Nov 2026 20:45:08 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Juneau动态类加载可执行初始化</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-73098</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-73098-2026-11-05</guid>
-      <description>CVE-2026-73098 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 10.0 · 类型 CWE-470 · 难度 低(远程·免认证)
-Improper control of dynamically-loaded code vulnerability in Apache Juneau.
-信号:</description>
-      <pubDate>Thu, 05 Nov 2026 13:20:56 +0000</pubDate>
+      <title>[critical]FreeSWITCH API命令注入在野利用</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116779</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116779-2026-11-05</guid>
+      <description>CVE-2026-116779 · 🎯P0 立即处置 · 披露 2026-11-05 · CVSS 9.8 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+Selecting the api chat proto reached switch_api_execute(), allowing a peer whose MESSAGE was accepted to run FreeSWITCH API commands, including operating-system…
+信号: 有PoC
+[majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH- 1★(仅README)](https://github.com/majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH-)</description>
+      <pubDate>Thu, 05 Nov 2026 20:45:08 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Juneau CSRF可投递任意请求体</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-73099</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-73099-2026-11-05</guid>
-      <description>CVE-2026-73099 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 10.0 · 类型 CSRF · 难度 低(远程·免认证)
-Cross-Site Request Forgery (CSRF) vulnerability in Apache Juneau.
+      <title>[critical]AOW工作流控制器文件包含</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-71550</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-71550-2026-11-05</guid>
+      <description>CVE-2026-71550 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 9.9 · 类型 SSRF(文件包含) · 难度 低(远程·需低权限)
+The affected flow begins at modules/AOW_WorkFlow/controller.php and uses aow_action, and require_once() to carry attacker-controlled data or authorization state…
 信号:</description>
-      <pubDate>Thu, 05 Nov 2026 13:20:56 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2026 20:45:08 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Juneau日志记录未脱敏敏感头</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-73100</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-73100-2026-11-05</guid>
-      <description>CVE-2026-73100 · 🎯P1 重点关注 · 披露 2026-11-05 · 组件 开发库/依赖 · CVSS 10.0 · 类型 CWE-532 · 难度 低(远程·免认证)
-Insertion of Sensitive Information into Log File vulnerability in Apache Juneau.
+      <title>[critical]OpenHuman外部消息致持久化命令执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-54143</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-54143-2026-11-05</guid>
+      <description>CVE-2026-54143 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 9.8 · 类型 命令注入(RCE)/CWE-285 · 难度 低(远程·免认证)
+The scheduler later executes these jobs with the privileges of the OpenHuman runtime user.
 信号:</description>
-      <pubDate>Thu, 05 Nov 2026 13:20:56 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2026 20:45:08 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Juneau错误响应泄露内部异常</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-73101</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-73101-2026-11-05</guid>
-      <description>CVE-2026-73101 · 🎯P1 重点关注 · 披露 2026-11-05 · 组件 ERP/业务系统 · CVSS 10.0 · 类型 CWE-209 · 难度 低(远程·免认证)
-Generation of Error Message Containing Sensitive Information vulnerability in Apache Juneau.
+      <title>[critical]LMFDB知识渲染SSTI可远程RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123198</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123198-2026-11-05</guid>
+      <description>CVE-2026-123198 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 9.8 · 类型 CWE-1336 · 难度 低(远程·免认证)
+LMFDB before commit 01829bd contains a server-side template injection vulnerability in the render_knowl function that allows unauthenticated attackers to inject…
 信号:</description>
-      <pubDate>Thu, 05 Nov 2026 13:20:56 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juneau客户端重定向泄露凭据</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-73116</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-73116-2026-11-05</guid>
-      <description>CVE-2026-73116 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 10.0 · 类型 凭据保护不足 · 难度 低(远程·免认证)
-Insufficiently Protected Credentials vulnerability in Apache Juneau.
-信号:</description>
-      <pubDate>Thu, 05 Nov 2026 13:20:56 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juneau响应头CRLF注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-73117</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-73117-2026-11-05</guid>
-      <description>CVE-2026-73117 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 10.0 · 类型 CWE-113 · 难度 低(远程·免认证)
-Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting') vulnerability in Apache Juneau.
-信号:</description>
-      <pubDate>Thu, 05 Nov 2026 13:20:56 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Juneau请求数据反射XSS</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96677</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96677-2026-11-05</guid>
-      <description>CVE-2026-96677 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 10.0 · 类型 XSS · 难度 低(远程·免认证)
-Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Apache Juneau.
-信号:</description>
-      <pubDate>Thu, 05 Nov 2026 13:20:56 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2026 20:45:08 +0000</pubDate>
     </item>
   </channel>
 </rss>

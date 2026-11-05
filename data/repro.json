@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-05T13:20:56+00:00",
- "count": 158,
+ "updated_at": "2026-11-05T20:45:08+00:00",
+ "count": 159,
  "count_recommended": 26,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -3256,6 +3256,55 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102895",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-116779",
+   "title": "FreeSWITCH API命令注入在野利用",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-05",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "向FreeSWITCH发送MESSAGE并选择api chat协议",
+   "impact_scope": "VoIP边界设备，SIP端口暴露",
+   "action_zh": "立即升级修复版本；禁用api chat协议并限制不可信SIP对端",
+   "summary_zh": "被接受MESSAGE的SIP对端可选择api chat协议，以守护进程权限执行FreeSWITCH或系统命令",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "readme",
+   "poc": [
+    {
+     "url": "https://github.com/majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH-",
+     "label": "majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH- 1★(仅README)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/signalwire/freeswitch/commit/7015f6a73ab3d67fed5fbfc277ecfb88a74c2a86"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/signalwire/freeswitch/pull/3135"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/signalwire/freeswitch/releases/tag/v1.11.3"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116779",
    "change_note": null
   },
   {

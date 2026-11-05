@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-05 13:20 UTC · 共 **158** 条(强烈推荐 26 / 值得 132)
+**更新**: 2026-11-05 20:45 UTC · 共 **159** 条(强烈推荐 26 / 值得 133)
 
 ---
 
@@ -623,6 +623,15 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — 调用from-yaml接口提交恶意YAML创建后端 · 影响面: AI推理平台，可致集群与密钥失陷
 处置: 立即升级修复版本，轮换API密钥并排查异常管理员
 参考: [参考](https://github.com/gpustack/gpustack/commit/53f42a6a553542974396d16a4ff6b12bcbedb48d) · [参考](https://github.com/gpustack/gpustack/pull/5346) · [参考](https://github.com/gpustack/gpustack/releases/tag/v2.2.0)
+
+### FreeSWITCH API命令注入在野利用
+[CVE-2026-116779](https://nvd.nist.gov/vuln/detail/CVE-2026-116779) | P0 立即处置 | CVSS 9.8 | 披露 2026-11-05 | 入库 2026-11-05
+有PoC
+被接受MESSAGE的SIP对端可选择api chat协议，以守护进程权限执行FreeSWITCH或系统命令
+复现: 值得 — 向FreeSWITCH发送MESSAGE并选择api chat协议 · 影响面: VoIP边界设备，SIP端口暴露
+处置: 立即升级修复版本；禁用api chat协议并限制不可信SIP对端
+PoC: [majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH- 1★(仅README)](https://github.com/majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH-)
+参考: [参考](https://github.com/signalwire/freeswitch/commit/7015f6a73ab3d67fed5fbfc277ecfb88a74c2a86) · [参考](https://github.com/signalwire/freeswitch/pull/3135) · [参考](https://github.com/signalwire/freeswitch/releases/tag/v1.11.3)
 
 ### LMDeploy反序列化未授权RCE
 [CVE-2026-119706](https://nvd.nist.gov/vuln/detail/CVE-2026-119706) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-30 | 入库 2026-10-31

@@ -1,131 +1,166 @@
 {
  "version": 3,
- "generated_at": "2026-11-05T13:20:56+00:00",
+ "generated_at": "2026-11-05T20:45:08+00:00",
  "lookback_hours": 5,
- "count": 8,
+ "count": 5,
  "stats": {
-  "total": 8,
+  "total": 5,
   "by_tier": {
-   "critical": 8
+   "critical": 4,
+   "high": 1
   },
   "by_urgency": {
-   "P1 重点关注": 8
+   "P1 重点关注": 4,
+   "P0 立即处置": 1
   },
   "by_category": {
-   "未知": 6,
-   "开发库/依赖": 1,
-   "ERP/业务系统": 1
+   "未知": 5
   },
   "kev": 0,
-  "with_poc": 0,
+  "with_poc": 2,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-121489",
-   "tier": "critical",
-   "title": "Juneau目录遍历任意文件读取",
-   "title_zh": "Juneau目录遍历任意文件读取",
-   "summary_zh": "远程访问DirectoryResource即可用路径穿越读取根目录外文件，导致敏感文件泄露",
-   "published": "2026-11-05T12:17:49.643",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "id": "CVE-2026-69137",
+   "tier": "high",
+   "title": "CalDAV集成SSRF致内网探测",
+   "title_zh": "CalDAV集成SSRF致内网探测",
+   "summary_zh": "具备日历账户配置权限者可通过server_url发起SSRF，探测或访问内网服务",
+   "published": "2026-11-05T19:17:25.147",
+   "cvss": 7.7,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "路径遍历/任意文件读取"
+    "SSRF"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://lists.apache.org/thread.html/j05q7vw08j48o96tdlzcsd4sozx1lyl6"
+     "url": "https://github.com/SuiteCRM/SuiteCRM-Core/commit/a11f50180d939f639cc468b5d536e8ad714dfb68"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/SuiteCRM/SuiteCRM-Core/releases/tag/v8.10.2"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/SuiteCRM/SuiteCRM/commit/d6bca97a0159ec019a969b86eca32affab3beb7c"
     }
    ],
-   "poc": [],
-   "nuclei": false,
+   "poc": [
+    {
+     "url": "https://www.exploit-db.com/exploits/52686",
+     "label": "EDB-52686"
+    }
+   ],
+   "nuclei": true,
    "patched": null,
    "kev": false,
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至Juneau修复版本，限制DirectoryResource目录",
+   "action_zh": "升级修复版本；限制server_url出站并禁用非必要CalDAV",
    "repro_worthy": "一般",
-   "repro_note": "访问DirectoryResource，用../越出根目录读文件；需服务暴露",
-   "impact_scope": "微服务文件接口，内网暴露面",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121489",
-   "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Apache Juneau. The microservice DirectoryResource does not keep request paths inside its configured root directory."
+   "repro_note": "调用testConnection并控制server_url，需日历账户配置",
+   "impact_scope": "日历集成组件，可探测内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-69137",
+   "description": "The affected flow begins at CalendarAccount::action_testConnection and uses server_url, CalDAVProvider::makeCalDAVRequest(), and PROPFIND to carry attacker-controlled data or authorization state into the security-sensitive operation. The server sends a PROPFIND request from its network context and returns non-success response bodies, enabling internal-service access, partial response disclosure, service enumeration, and possible cloud metadata access."
   },
   {
-   "id": "CVE-2026-73098",
+   "id": "CVE-2026-116779",
    "tier": "critical",
-   "title": "Juneau动态类加载可执行初始化",
-   "title_zh": "Juneau动态类加载可执行初始化",
-   "summary_zh": "解析java.lang.Class属性时加载类路径内类并触发静态初始化，可能执行代码",
-   "published": "2026-11-05T12:17:50.770",
-   "cvss": 10.0,
+   "title": "FreeSWITCH API命令注入在野利用",
+   "title_zh": "FreeSWITCH API命令注入在野利用",
+   "summary_zh": "被接受MESSAGE的SIP对端可选择api chat协议，以守护进程权限执行FreeSWITCH或系统命令",
+   "published": "2026-11-05T20:17:44.790",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-470"
+    "命令注入",
+    "命令注入(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://lists.apache.org/thread.html/j05q7vw08j48o96tdlzcsd4sozx1lyl6"
+     "url": "https://github.com/signalwire/freeswitch/commit/7015f6a73ab3d67fed5fbfc277ecfb88a74c2a86"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/signalwire/freeswitch/pull/3135"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/signalwire/freeswitch/releases/tag/v1.11.3"
     }
    ],
-   "poc": [],
+   "poc": [
+    {
+     "url": "https://github.com/majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH-",
+     "label": "majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH- 1★(仅README)"
+    }
+   ],
    "nuclei": false,
    "patched": null,
    "kev": false,
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至Juneau修复版本，避免解析外部可控Class属性",
-   "repro_worthy": "一般",
-   "repro_note": "向解析Class属性的接口提交类名，观察静态初始化；需可控属性",
-   "impact_scope": "Java微服务，内网应用依赖",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73098",
-   "description": "Improper control of dynamically-loaded code vulnerability in Apache Juneau. When Apache Juneau parses a value into a property of type java.lang.Class (including parameterized forms), the default class swap loaded the named class with initialization enabled, so input naming a class on the application classpath ran that class's static initializer."
+   "urgency": "P0 立即处置",
+   "action_zh": "立即升级修复版本；禁用api chat协议并限制不可信SIP对端",
+   "repro_worthy": "值得",
+   "repro_note": "向FreeSWITCH发送MESSAGE并选择api chat协议",
+   "impact_scope": "VoIP边界设备，SIP端口暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116779",
+   "description": "Selecting the api chat proto reached switch_api_execute(), allowing a peer whose MESSAGE was accepted to run FreeSWITCH API commands, including operating-system command sinks, with the daemon's privileges. The flaw permits configuration and credential disclosure, arbitrary call control, and command execution, and exploitation has been observed in the wild."
   },
   {
-   "id": "CVE-2026-73099",
+   "id": "CVE-2026-71550",
    "tier": "critical",
-   "title": "Juneau CSRF可投递任意请求体",
-   "title_zh": "Juneau CSRF可投递任意请求体",
-   "summary_zh": "跨站链接可向无CORS预检端点投递任意请求体，绕过基于方法或内容类型的防护",
-   "published": "2026-11-05T12:17:50.917",
-   "cvss": 10.0,
+   "title": "AOW工作流控制器文件包含",
+   "title_zh": "AOW工作流控制器文件包含",
+   "summary_zh": "可控制aow_action者利用路径穿越影响require_once，可能导致代码执行或敏感文件包含",
+   "published": "2026-11-05T19:17:26.357",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CSRF"
+    "SSRF(文件包含)"
    ],
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://lists.apache.org/thread.html/j05q7vw08j48o96tdlzcsd4sozx1lyl6"
+     "url": "https://github.com/SuiteCRM/SuiteCRM-Core/commit/a11f50180d939f639cc468b5d536e8ad714dfb68"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/SuiteCRM/SuiteCRM-Core/releases/tag/v8.10.2"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/SuiteCRM/SuiteCRM/commit/d6bca97a0159ec019a969b86eca32affab3beb7c"
     }
    ],
    "poc": [],
@@ -136,36 +171,45 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至Juneau修复版本，敏感端点增加CSRF令牌校验",
+   "action_zh": "升级至7.15.2/8.10.2；校验aow_action并禁用危险包含",
    "repro_worthy": "一般",
-   "repro_note": "构造跨站请求向无CORS预检端点发送自定义体；需目标端点无令牌",
-   "impact_scope": "Java Web服务端点，依赖用户会话",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73099",
-   "description": "Cross-Site Request Forgery (CSRF) vulnerability in Apache Juneau. A cross-site link can therefore deliver an attacker-chosen request body to an endpoint without a CORS preflight, defeating protections that rely on the HTTP method or content type instead of an anti-CSRF token."
+   "repro_note": "向AOW工作流控制器传入路径穿越的aow_action参数",
+   "impact_scope": "CRM工作流组件，内网常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-71550",
+   "description": "Prior to 7.15.2 and 8.10.2, the workflow controller uses a path-traversal-capable aow_action value in require_once() without constraining the resolved file. The affected flow begins at modules/AOW_WorkFlow/controller.php and uses aow_action, and require_once() to carry attacker-controlled data or authorization state into the security-sensitive operation."
   },
   {
-   "id": "CVE-2026-73100",
+   "id": "CVE-2026-54143",
    "tier": "critical",
-   "title": "Juneau日志记录未脱敏敏感头",
-   "title_zh": "Juneau日志记录未脱敏敏感头",
-   "summary_zh": "服务器错误时默认调用日志记录请求头且不脱敏，凭据等敏感信息可泄露给日志访问者",
-   "published": "2026-11-05T12:17:51.060",
-   "cvss": 10.0,
+   "title": "OpenHuman外部消息致持久化命令执行",
+   "title_zh": "OpenHuman外部消息致持久化命令执行",
+   "summary_zh": "可向已配置外部通道发消息者，可令代理未经审批创建shell定时任务并以运行时权限执行",
+   "published": "2026-11-05T17:18:19.487",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-532"
+    "命令注入(RCE)",
+    "CWE-285"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://lists.apache.org/thread.html/j05q7vw08j48o96tdlzcsd4sozx1lyl6"
+     "url": "https://github.com/tinyhumansai/openhuman/commit/3a7180da7765af861bf44d79e025fc67dbeae0ca"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/tinyhumansai/openhuman/commit/4d9fe2072fdd5787023bafa2c7a63b6f8a7e9b93"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/tinyhumansai/openhuman/pull/2736"
     }
    ],
    "poc": [],
@@ -176,36 +220,44 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至Juneau修复版本，对错误请求头日志脱敏",
+   "action_zh": "升级至0.57.13；限制外部通道消息来源并审查cron",
    "repro_worthy": "一般",
-   "repro_note": "触发服务端错误，使默认日志记录含Authorization等头；需日志访问",
-   "impact_scope": "日志系统，凭据二次泄露风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73100",
-   "description": "Insertion of Sensitive Information into Log File vulnerability in Apache Juneau. The default REST server call logger records request headers for requests that end in a server error, without redacting them."
+   "repro_note": "向已配置外部通道发送诱导消息，触发审批缺失创建cron",
+   "impact_scope": "AI代理运行时，消息通道入口",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-54143",
+   "description": "Before version 0.57.13, an attacker who can send messages to a configured external channel can cause the agent to create persistent shell cron jobs without human approval. The scheduler later executes these jobs with the privileges of the OpenHuman runtime user."
   },
   {
-   "id": "CVE-2026-73101",
+   "id": "CVE-2026-123198",
    "tier": "critical",
-   "title": "Juneau错误响应泄露内部异常",
-   "title_zh": "Juneau错误响应泄露内部异常",
-   "summary_zh": "错误响应头与响应体返回内部异常类及消息，攻击者可获取应用内部信息",
-   "published": "2026-11-05T12:17:51.197",
-   "cvss": 10.0,
+   "title": "LMFDB知识渲染SSTI可远程RCE",
+   "title_zh": "LMFDB知识渲染SSTI可远程RCE",
+   "summary_zh": "未认证攻击者向/knowledge/render/<ID>注入Jinja表达式，可执行系统命令并控制Web账户",
+   "published": "2026-11-05T19:17:18.393",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-209"
+    "CWE-1336"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://lists.apache.org/thread.html/j05q7vw08j48o96tdlzcsd4sozx1lyl6"
+     "url": "https://github.com/LMFDB/lmfdb/blob/c6e5bac205aa12de9edf584a06328fefa81de0de/lmfdb/knowledge/main.py#L747"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/LMFDB/lmfdb/commit/01829bd09b692c720aad30c952758a20630573d4"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/LMFDB/lmfdb/pull/7231"
     }
    ],
    "poc": [],
@@ -216,182 +268,37 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至Juneau修复版本，关闭Thrown头及异常详情回显",
+   "action_zh": "升级至修复提交01829bd之后；过滤模板输入并禁用危险渲染",
    "repro_worthy": "一般",
-   "repro_note": "请求任意错误接口，检查Thrown响应头及错误体内部异常信息",
-   "impact_scope": "REST服务，内部信息暴露面",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73101",
-   "description": "Generation of Error Message Containing Sensitive Information vulnerability in Apache Juneau. The REST server sends the internal exception class and message to clients in a \"Thrown\" response header on every error response, and can include internal exception messages in the error body, even when stack-trace rendering is disabled."
-  },
-  {
-   "id": "CVE-2026-73116",
-   "tier": "critical",
-   "title": "Juneau客户端重定向泄露凭据",
-   "title_zh": "Juneau客户端重定向泄露凭据",
-   "summary_zh": "RestClient跟随跨主机或降级重定向仍带Authorization等头，凭据可被恶意服务器获取",
-   "published": "2026-11-05T12:17:51.333",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "凭据保护不足"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://lists.apache.org/thread.html/j05q7vw08j48o96tdlzcsd4sozx1lyl6"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至Juneau修复版本，禁止跨域重定向携带认证头",
-   "repro_worthy": "一般",
-   "repro_note": "控制重定向到异主机或HTTPS→HTTP，观察RestClient是否带认证头",
-   "impact_scope": "REST客户端，出站凭据可泄露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73116",
-   "description": "Insufficiently Protected Credentials vulnerability in Apache Juneau. The Apache Juneau RestClient followed HTTP redirects while keeping credential headers from the original request, so a server that redirected the client to a different host or port, or from HTTPS to HTTP, could receive headers such as Authorization, Cookie, Proxy-Authorization and X-API-Key."
-  },
-  {
-   "id": "CVE-2026-73117",
-   "tier": "critical",
-   "title": "Juneau响应头CRLF注入",
-   "title_zh": "Juneau响应头CRLF注入",
-   "summary_zh": "应用用请求数据设置响应头或跳转目标时，远程客户端可注入头行或跳转外站",
-   "published": "2026-11-05T12:17:51.473",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-113"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://lists.apache.org/thread.html/j05q7vw08j48o96tdlzcsd4sozx1lyl6"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至Juneau修复版本，过滤响应头与跳转目标CR/LF",
-   "repro_worthy": "一般",
-   "repro_note": "在设置响应头或跳转的请求参数中注入CRLF，检查头分裂或外跳",
-   "impact_scope": "Java Web应用，响应头注入面",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73117",
-   "description": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting') vulnerability in Apache Juneau. An application that sets a response header or redirect target from request data could let a remote client inject header lines (where the servlet container does not itself reject CR/LF) or redirect users to an arbitrary external site."
-  },
-  {
-   "id": "CVE-2026-96677",
-   "tier": "critical",
-   "title": "Juneau请求数据反射XSS",
-   "title_zh": "Juneau请求数据反射XSS",
-   "summary_zh": "应用将请求头、表单或路径值未编码回显到页面，攻击者可注入脚本窃取会话",
-   "published": "2026-11-05T12:17:51.620",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "XSS"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://lists.apache.org/thread.html/j05q7vw08j48o96tdlzcsd4sozx1lyl6"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至Juneau修复版本，对页面回显请求数据做编码",
-   "repro_worthy": "一般",
-   "repro_note": "在含请求变量的页面参数中注入脚本，检查未编码反射",
-   "impact_scope": "Web页面，会话窃取风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96677",
-   "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Apache Juneau. Applications whose chrome includes request-derived variables, such as request headers, form data or path values, reflect those values unencoded, allowing cross-site scripting."
+   "repro_note": "向/knowledge/render/<ID>的查询参数或content注入Jinja",
+   "impact_scope": "数学数据库Web应用，或公网暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123198",
+   "description": "LMFDB before commit 01829bd contains a server-side template injection vulnerability in the render_knowl function that allows unauthenticated attackers to inject Jinja expressions via request parameters. Attackers can supply crafted query-string values or 'content' data to /knowledge/render/<ID> to reach Python builtins and execute operating system commands as the web application account."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "django/django",
-   "sha": "89e3b1bfcf312d20397c6dd7bc7970c46f384851",
-   "url": "https://github.com/django/django/commit/89e3b1bfcf312d20397c6dd7bc7970c46f384851",
-   "title": "Refs CVE-2026-15307 -- Optimized lookup preparation of GeoJSON geometries.",
-   "date": "2026-11-05T13:17:18",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-15307"
-  },
-  {
-   "repo": "postgres/postgres",
-   "sha": "953c6dabdb52663a6b96ad354b33496284d8ed73",
-   "url": "https://github.com/postgres/postgres/commit/953c6dabdb52663a6b96ad354b33496284d8ed73",
-   "title": "Fix io_uring resource leaks across crash restarts",
-   "date": "2026-11-05T09:02:22",
+   "repo": "sqlite/sqlite",
+   "sha": "65be0b20fddbd3df668814d2bddc8c95e0c4d570",
+   "url": "https://github.com/sqlite/sqlite/commit/65be0b20fddbd3df668814d2bddc8c95e0c4d570",
+   "title": "Fix an OOB write in fts5 that could occur when processing a corrupt database. Report [bugs:/info/2026-10-29T14:47:00Z | ",
+   "date": "2026-11-05T16:10:17",
    "score": 2,
    "matched": [
-    "崩溃",
-    "泄露"
+    "越界读写"
    ],
    "cve": null
   },
   {
-   "repo": "apache/httpd",
-   "sha": "14e201f8916be8298c53cdb95c6180a2bae99b74",
-   "url": "https://github.com/apache/httpd/commit/14e201f8916be8298c53cdb95c6180a2bae99b74",
-   "title": "docs/manual: add and update Spanish (es) translations for mod/ modules (#937)",
-   "date": "2026-11-05T05:54:24",
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "a61b32df3fd67f76c1c8c7ea51be2a66efb0f945",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/a61b32df3fd67f76c1c8c7ea51be2a66efb0f945",
+   "title": "avcodec/pcm-bluray: copy only whole samples on big-endian hosts",
+   "date": "2026-11-05T15:01:11",
    "score": 2,
    "matched": [
-    "注入"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "wireshark/wireshark",
-   "sha": "4ec71bade227c38ec7845f49da9ef0cc052c96c4",
-   "url": "https://github.com/wireshark/wireshark/commit/4ec71bade227c38ec7845f49da9ef0cc052c96c4",
-   "title": "FCoIB: Fix the version string format",
-   "date": "2026-11-05T04:42:25",
-   "score": 2,
-   "matched": [
-    "格式串"
+    "缓冲区溢出"
    ],
    "cve": null
   }
