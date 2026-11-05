@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-04T20:28:24+00:00",
- "count": 157,
+ "updated_at": "2026-11-05T01:31:06+00:00",
+ "count": 158,
  "count_recommended": 26,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -3212,6 +3212,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120228",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-102895",
+   "title": "AI推理平台认证绕过可未授权RCE",
+   "first_seen": "2026-11-05",
+   "last_seen": "2026-11-05",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-04",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "调用from-yaml接口提交恶意YAML创建后端",
+   "impact_scope": "AI推理平台，可致集群与密钥失陷",
+   "action_zh": "立即升级修复版本，轮换API密钥并排查异常管理员",
+   "summary_zh": "未认证攻击者可绕过认证获取管理员权限，并借YAML接口执行代码；已观测在野利用",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/gpustack/gpustack/commit/53f42a6a553542974396d16a4ff6b12bcbedb48d"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/gpustack/gpustack/pull/5346"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/gpustack/gpustack/releases/tag/v2.2.0"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102895",
    "change_note": null
   },
   {

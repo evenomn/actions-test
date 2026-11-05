@@ -5,62 +5,70 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
-    <lastBuildDate>Wed, 04 Nov 2026 20:28:24 +0000</lastBuildDate>
+    <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
+    <lastBuildDate>Thu, 05 Nov 2026 01:31:06 +0000</lastBuildDate>
     <item>
-      <title>[critical]Safari指针认证绕过需先获读写</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2024-27834</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2024-27834-2026-11-04</guid>
-      <description>CVE-2024-27834 · 🎯P0 立即处置 · 披露 2024-05-14 · 组件 操作系统 · CVSS 5.5 · EPSS 0.6%,前 49% · 类型 认证绕过 · 难度 高(需本地访问·需低权限)
-The issue was addressed with improved checks. An attacker with arbitrary read and write capability may be able to bypass Pointer Authentication.
-信号: 🔥 KEV 在野利用,CISA 限期 2026-11-18</description>
-      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]FreeRDP RD网关RPC分片堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121964</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121964-2026-11-04</guid>
-      <description>CVE-2026-121964 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 7.5 · 类型 堆溢出 · 难度 低(远程·免认证)
-A malicious or compromised RD Gateway can send crafted RPC fragments with manipulated alloc_hint and frag_length values to overwrite client heap memory with att…
-信号: 有PoC
-[NVD exploit 引用(仅README)](https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-q82v-5wjg-6h57)</description>
-      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Linksys路由器ping参数命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121932</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121932-2026-11-04</guid>
-      <description>CVE-2026-121932 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
-A vulnerability was detected in Linksys E5350 1.0.00.037. Performing a manipulation of the argument ping_ip/traceroute_ip results in os command injection.
+      <title>[critical]AI推理平台认证绕过可未授权RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102895</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102895-2026-11-05</guid>
+      <description>CVE-2026-102895 · 🎯P0 立即处置 · 披露 2026-11-04 · CVSS 9.8 · 类型 认证绕过/认证欺骗 · 难度 低(远程·免认证)
+The bypass allowed unauthenticated administrative access, including user and model changes, persistent administrator API-key creation, disclosure of worker and …
 信号:</description>
-      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]设备Web缺失认证可被完全绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121933</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121933-2026-11-04</guid>
-      <description>CVE-2026-121933 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 10.0 · 类型 认证绕过/缺失认证 · 难度 低(远程·免认证)
-The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.
+      <title>[critical]Comfast路由器路径遍历可读任意文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122013</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122013-2026-11-05</guid>
+      <description>CVE-2026-122013 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 10.0 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+A vulnerability was detected in Comfast CF-WR632AX 2.6.0.1.
 信号:</description>
-      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]FreeRDP位图缓存能力集越界写入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121952</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121952-2026-11-04</guid>
-      <description>CVE-2026-121952 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 越界写入 · 难度 低(远程·免认证)
-FreeRDP before 3.32.2 has an out-of-bounds write in the proxy because rdp_read_bitmap_cache_v2_capability_set rejects only numCellCaches values above 5, yet the…
+      <title>[critical]Edimax路由器命令注入可远程执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122051</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122051-2026-11-05</guid>
+      <description>CVE-2026-122051 · 🎯P1 重点关注 · 披露 2026-11-05 · CVSS 10.0 · 类型 注入/命令注入 · 难度 低(远程·免认证)
+Affected by this vulnerability is an unknown functionality of the file /goform/mp. Executing a manipulation can lead to command injection.
 信号:</description>
-      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]FreeRDP rdpgfx通道释放后重用</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121953</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121953-2026-11-04</guid>
-      <description>CVE-2026-121953 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
-FreeRDP before 3.32.2 has a use-after-free in the client's rdpgfx dynamic virtual channel: a duplicate-name channel with a new ChannelId overwrites the listener…
+      <title>[critical]容器沙箱平台越权致跨租户命令执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97693</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97693-2026-11-05</guid>
+      <description>CVE-2026-97693 · 🎯P1 重点关注 · 披露 2026-11-04 · 组件 容器/虚拟化 · CVSS 9.9 · 类型 命令注入/访问控制缺失 · 难度 低(远程·需低权限)
+A low-privileged authenticated user who can execute commands in their own sandbox can reach other tenants' sandbox APIs, access their files and secrets, execute…
 信号:</description>
-      <pubDate>Wed, 04 Nov 2026 20:28:24 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]vtenext密码重置认证绕过可接管账户</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2025-71457</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2025-71457-2026-11-05</guid>
+      <description>CVE-2025-71457 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 CWE-620 · 难度 低(远程·免认证)
+vtenext 25.02 before 25.02.1 contains an authentication bypass vulnerability that allows unauthenticated attackers to change any account password via hub/rpwd.p…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]IBM Watson语音服务UAF可致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-82418</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-82418-2026-11-05</guid>
+      <description>CVE-2026-82418 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
+IBM Watson Speech Services Cartridge 4.0.0 through 5.4.0 could allow a remote attacker to execute arbitrary code due to a use-after-free vulnerability.
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]VitaFit云API认证绕过可劫持会话</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-54384</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-54384-2026-11-05</guid>
+      <description>CVE-2026-54384 · 🎯P1 重点关注 · 披露 2026-11-04 · CVSS 9.8 · 类型 认证欺骗 · 难度 低(远程·免认证)
+VitaFit cloud API before 2026-10-30 contained an authentication bypass vulnerability that allows remote attackers to obtain a full session for a victim's accoun…
+信号:</description>
+      <pubDate>Thu, 05 Nov 2026 01:31:06 +0000</pubDate>
     </item>
   </channel>
 </rss>

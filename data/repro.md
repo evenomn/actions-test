@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-04 20:28 UTC · 共 **157** 条(强烈推荐 26 / 值得 131)
+**更新**: 2026-11-05 01:31 UTC · 共 **158** 条(强烈推荐 26 / 值得 132)
 
 ---
 
@@ -616,6 +616,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — ioos服务sub_416D88，group_id/group_name参数拼接命令 · 影响面: 无线AP/路由器，边界暴露面
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
+
+### AI推理平台认证绕过可未授权RCE
+[CVE-2026-102895](https://nvd.nist.gov/vuln/detail/CVE-2026-102895) | P0 立即处置 | CVSS 9.8 | 披露 2026-11-04 | 入库 2026-11-05
+未认证攻击者可绕过认证获取管理员权限，并借YAML接口执行代码；已观测在野利用
+复现: 值得 — 调用from-yaml接口提交恶意YAML创建后端 · 影响面: AI推理平台，可致集群与密钥失陷
+处置: 立即升级修复版本，轮换API密钥并排查异常管理员
+参考: [参考](https://github.com/gpustack/gpustack/commit/53f42a6a553542974396d16a4ff6b12bcbedb48d) · [参考](https://github.com/gpustack/gpustack/pull/5346) · [参考](https://github.com/gpustack/gpustack/releases/tag/v2.2.0)
 
 ### LMDeploy反序列化未授权RCE
 [CVE-2026-119706](https://nvd.nist.gov/vuln/detail/CVE-2026-119706) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-30 | 入库 2026-10-31
