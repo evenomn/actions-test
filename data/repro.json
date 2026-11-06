@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-05T20:45:08+00:00",
- "count": 159,
+ "updated_at": "2026-11-06T01:40:05+00:00",
+ "count": 160,
  "count_recommended": 26,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -3212,6 +3212,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120228",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-119757",
+   "title": "BTCPay未授权读取LND凭据",
+   "first_seen": "2026-11-06",
+   "last_seen": "2026-11-06",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-05",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权请求文件读取接口获取.macaroon，需2.4.2以下版本",
+   "impact_scope": "自托管比特币支付服务器，常暴露公网",
+   "action_zh": "升级到2.4.2；限制凭据目录访问并隔离节点",
+   "summary_zh": "未认证远程攻击者可读取LND节点.macaroon凭据文件，接管闪电节点并盗取资金。",
+   "category": "ERP/业务系统",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://blog.btcpayserver.org/security-advisory-btcpay-server-2-4-2/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.binance.com/en/square/post/384812445203404"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/btcpay-server-lnd-macaroon-credential-file-disclosure"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119757",
    "change_note": null
   },
   {

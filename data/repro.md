@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-05 20:45 UTC · 共 **159** 条(强烈推荐 26 / 值得 133)
+**更新**: 2026-11-06 01:40 UTC · 共 **160** 条(强烈推荐 26 / 值得 134)
 
 ---
 
@@ -616,6 +616,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — ioos服务sub_416D88，group_id/group_name参数拼接命令 · 影响面: 无线AP/路由器，边界暴露面
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
+
+### BTCPay未授权读取LND凭据
+[CVE-2026-119757](https://nvd.nist.gov/vuln/detail/CVE-2026-119757) | P1 重点关注 | ERP/业务系统 | CVSS 9.8 | 披露 2026-11-05 | 入库 2026-11-06
+未认证远程攻击者可读取LND节点.macaroon凭据文件，接管闪电节点并盗取资金。
+复现: 值得 — 未授权请求文件读取接口获取.macaroon，需2.4.2以下版本 · 影响面: 自托管比特币支付服务器，常暴露公网
+处置: 升级到2.4.2；限制凭据目录访问并隔离节点
+参考: [参考](https://blog.btcpayserver.org/security-advisory-btcpay-server-2-4-2/) · [参考](https://www.binance.com/en/square/post/384812445203404) · [参考](https://www.vulncheck.com/advisories/btcpay-server-lnd-macaroon-credential-file-disclosure)
 
 ### AI推理平台认证绕过可未授权RCE
 [CVE-2026-102895](https://nvd.nist.gov/vuln/detail/CVE-2026-102895) | P0 立即处置 | CVSS 9.8 | 披露 2026-11-04 | 入库 2026-11-05

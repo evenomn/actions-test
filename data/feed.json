@@ -1,96 +1,43 @@
 {
  "version": 3,
- "generated_at": "2026-11-05T20:45:08+00:00",
+ "generated_at": "2026-11-06T01:40:05+00:00",
  "lookback_hours": 5,
- "count": 5,
+ "count": 3,
  "stats": {
-  "total": 5,
+  "total": 3,
   "by_tier": {
-   "critical": 4,
-   "high": 1
+   "critical": 3
   },
   "by_urgency": {
-   "P1 重点关注": 4,
-   "P0 立即处置": 1
+   "P1 重点关注": 3
   },
   "by_category": {
-   "未知": 5
+   "ERP/业务系统": 1,
+   "未知": 1,
+   "操作系统": 1
   },
   "kev": 0,
-  "with_poc": 2,
+  "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-69137",
-   "tier": "high",
-   "title": "CalDAV集成SSRF致内网探测",
-   "title_zh": "CalDAV集成SSRF致内网探测",
-   "summary_zh": "具备日历账户配置权限者可通过server_url发起SSRF，探测或访问内网服务",
-   "published": "2026-11-05T19:17:25.147",
-   "cvss": 7.7,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SSRF"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/SuiteCRM/SuiteCRM-Core/commit/a11f50180d939f639cc468b5d536e8ad714dfb68"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/SuiteCRM/SuiteCRM-Core/releases/tag/v8.10.2"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/SuiteCRM/SuiteCRM/commit/d6bca97a0159ec019a969b86eca32affab3beb7c"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://www.exploit-db.com/exploits/52686",
-     "label": "EDB-52686"
-    }
-   ],
-   "nuclei": true,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级修复版本；限制server_url出站并禁用非必要CalDAV",
-   "repro_worthy": "一般",
-   "repro_note": "调用testConnection并控制server_url，需日历账户配置",
-   "impact_scope": "日历集成组件，可探测内网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-69137",
-   "description": "The affected flow begins at CalendarAccount::action_testConnection and uses server_url, CalDAVProvider::makeCalDAVRequest(), and PROPFIND to carry attacker-controlled data or authorization state into the security-sensitive operation. The server sends a PROPFIND request from its network context and returns non-success response bodies, enabling internal-service access, partial response disclosure, service enumeration, and possible cloud metadata access."
-  },
-  {
-   "id": "CVE-2026-116779",
+   "id": "CVE-2026-119757",
    "tier": "critical",
-   "title": "FreeSWITCH API命令注入在野利用",
-   "title_zh": "FreeSWITCH API命令注入在野利用",
-   "summary_zh": "被接受MESSAGE的SIP对端可选择api chat协议，以守护进程权限执行FreeSWITCH或系统命令",
-   "published": "2026-11-05T20:17:44.790",
+   "title": "BTCPay未授权读取LND凭据",
+   "title_zh": "BTCPay未授权读取LND凭据",
+   "summary_zh": "未认证远程攻击者可读取LND节点.macaroon凭据文件，接管闪电节点并盗取资金。",
+   "published": "2026-11-05T22:17:53.203",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
+    "凭据保护不足",
+    "任意文件读取"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -99,68 +46,53 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/signalwire/freeswitch/commit/7015f6a73ab3d67fed5fbfc277ecfb88a74c2a86"
+     "url": "https://blog.btcpayserver.org/security-advisory-btcpay-server-2-4-2/"
     },
     {
      "label": "参考",
-     "url": "https://github.com/signalwire/freeswitch/pull/3135"
+     "url": "https://www.binance.com/en/square/post/384812445203404"
     },
     {
      "label": "参考",
-     "url": "https://github.com/signalwire/freeswitch/releases/tag/v1.11.3"
+     "url": "https://www.vulncheck.com/advisories/btcpay-server-lnd-macaroon-credential-file-disclosure"
     }
    ],
-   "poc": [
-    {
-     "url": "https://github.com/majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH-",
-     "label": "majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH- 1★(仅README)"
-    }
-   ],
+   "poc": [],
    "nuclei": false,
    "patched": null,
    "kev": false,
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "立即升级修复版本；禁用api chat协议并限制不可信SIP对端",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到2.4.2；限制凭据目录访问并隔离节点",
    "repro_worthy": "值得",
-   "repro_note": "向FreeSWITCH发送MESSAGE并选择api chat协议",
-   "impact_scope": "VoIP边界设备，SIP端口暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116779",
-   "description": "Selecting the api chat proto reached switch_api_execute(), allowing a peer whose MESSAGE was accepted to run FreeSWITCH API commands, including operating-system command sinks, with the daemon's privileges. The flaw permits configuration and credential disclosure, arbitrary call control, and command execution, and exploitation has been observed in the wild."
+   "repro_note": "未授权请求文件读取接口获取.macaroon，需2.4.2以下版本",
+   "impact_scope": "自托管比特币支付服务器，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119757",
+   "description": "BTCPay Server before 2.4.2, including 2.4.2 release candidates, contains an information disclosure vulnerability that allows unauthenticated remote attackers to retrieve .macaroon credential files for an LND (Lightning Network Daemon) node. Attackers can use the exposed macaroon to gain full control of the LND node, including moving funds, resulting in theft of funds from affected deployments."
   },
   {
-   "id": "CVE-2026-71550",
+   "id": "CVE-2026-111489",
    "tier": "critical",
-   "title": "AOW工作流控制器文件包含",
-   "title_zh": "AOW工作流控制器文件包含",
-   "summary_zh": "可控制aow_action者利用路径穿越影响require_once，可能导致代码执行或敏感文件包含",
-   "published": "2026-11-05T19:17:26.357",
+   "title": "MatchPoint应用硬编码凭据泄露",
+   "title_zh": "MatchPoint应用硬编码凭据泄露",
+   "summary_zh": "攻击者逆向移动App提取静态autorizado令牌，可未认证调用MatchPoint API服务，获取敏感数据。",
+   "published": "2026-11-05T22:17:43.447",
    "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
    "epss": null,
    "epss_percentile": null,
-   "cwe_labels": [
-    "SSRF(文件包含)"
-   ],
-   "difficulty": "低(远程·需低权限)",
+   "cwe_labels": [],
+   "difficulty": "低(远程·免认证)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/SuiteCRM/SuiteCRM-Core/commit/a11f50180d939f639cc468b5d536e8ad714dfb68"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/SuiteCRM/SuiteCRM-Core/releases/tag/v8.10.2"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/SuiteCRM/SuiteCRM/commit/d6bca97a0159ec019a969b86eca32affab3beb7c"
+     "url": "https://www.incibe.es/en/incibe-cert/notices/aviso/multiple-vulnerabilities-tpc-softwares-matchpoint"
     }
    ],
    "poc": [],
@@ -171,28 +103,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至7.15.2/8.10.2；校验aow_action并禁用危险包含",
+   "action_zh": "轮换并移除硬编码令牌，服务端强制身份认证，关注官方更新",
    "repro_worthy": "一般",
-   "repro_note": "向AOW工作流控制器传入路径穿越的aow_action参数",
-   "impact_scope": "CRM工作流组件，内网常见",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-71550",
-   "description": "Prior to 7.15.2 and 8.10.2, the workflow controller uses a path-traversal-capable aow_action value in require_once() without constraining the resolved file. The affected flow begins at modules/AOW_WorkFlow/controller.php and uses aow_action, and require_once() to carry attacker-controlled data or authorization state into the security-sensitive operation."
+   "repro_note": "前置：反编译App提取静态token；以该token直接调用API验证未授权",
+   "impact_scope": "移动应用后端API，暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111489",
+   "description": "A static credential embedded in the mobile app has been reported to return the 'autorizado' token on the MatchPoint platform. The report states that this token grants unauthenticated access to API services."
   },
   {
-   "id": "CVE-2026-54143",
+   "id": "CVE-2026-111490",
    "tier": "critical",
-   "title": "OpenHuman外部消息致持久化命令执行",
-   "title_zh": "OpenHuman外部消息致持久化命令执行",
-   "summary_zh": "可向已配置外部通道发消息者，可令代理未经审批创建shell定时任务并以运行时权限执行",
-   "published": "2026-11-05T17:18:19.487",
-   "cvss": 9.8,
+   "title": "MatchPoint API身份头伪造越权",
+   "title_zh": "MatchPoint API身份头伪造越权",
+   "summary_zh": "任意调用者伪造actingasuser请求头即可冒充其他用户访问API，读取或操作他人数据。",
+   "published": "2026-11-05T22:17:43.597",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入(RCE)",
-    "CWE-285"
+    "越权(IDOR)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -201,15 +132,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/tinyhumansai/openhuman/commit/3a7180da7765af861bf44d79e025fc67dbeae0ca"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/tinyhumansai/openhuman/commit/4d9fe2072fdd5787023bafa2c7a63b6f8a7e9b93"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/tinyhumansai/openhuman/pull/2736"
+     "url": "https://www.incibe.es/en/incibe-cert/notices/aviso/multiple-vulnerabilities-tpc-softwares-matchpoint"
     }
    ],
    "poc": [],
@@ -220,85 +143,134 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至0.57.13；限制外部通道消息来源并审查cron",
+   "action_zh": "服务端校验身份头与实际授权，禁止客户端指定用户身份，及时更新",
    "repro_worthy": "一般",
-   "repro_note": "向已配置外部通道发送诱导消息，触发审批缺失创建cron",
-   "impact_scope": "AI代理运行时，消息通道入口",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-54143",
-   "description": "Before version 0.57.13, an attacker who can send messages to a configured external channel can cause the agent to create persistent shell cron jobs without human approval. The scheduler later executes these jobs with the privileges of the OpenHuman runtime user."
-  },
-  {
-   "id": "CVE-2026-123198",
-   "tier": "critical",
-   "title": "LMFDB知识渲染SSTI可远程RCE",
-   "title_zh": "LMFDB知识渲染SSTI可远程RCE",
-   "summary_zh": "未认证攻击者向/knowledge/render/<ID>注入Jinja表达式，可执行系统命令并控制Web账户",
-   "published": "2026-11-05T19:17:18.393",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-1336"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/LMFDB/lmfdb/blob/c6e5bac205aa12de9edf584a06328fefa81de0de/lmfdb/knowledge/main.py#L747"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/LMFDB/lmfdb/commit/01829bd09b692c720aad30c952758a20630573d4"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/LMFDB/lmfdb/pull/7231"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复提交01829bd之后；过滤模板输入并禁用危险渲染",
-   "repro_worthy": "一般",
-   "repro_note": "向/knowledge/render/<ID>的查询参数或content注入Jinja",
-   "impact_scope": "数学数据库Web应用，或公网暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123198",
-   "description": "LMFDB before commit 01829bd contains a server-side template injection vulnerability in the render_knowl function that allows unauthenticated attackers to inject Jinja expressions via request parameters. Attackers can supply crafted query-string values or 'content' data to /knowledge/render/<ID> to reach Python builtins and execute operating system commands as the web application account."
+   "repro_note": "入口：API请求头actingasuser改为目标用户ID，无需认证即越权",
+   "impact_scope": "业务平台API，公网/内网均可能",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111490",
+   "description": "Insecure direct object reference (IDOR) vulnerability in the MatchPoint API, which relies on the `actingasuser` HTTP header without verifying the requester's authorization for the specified user. Manipulation of sequential identifiers allows access to personal, banking, and financial data, private messages, and QR codes for physical access, as well as the ability to modify third-party accounts, change passwords, impersonate users, and transfer virtual balances."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "sqlite/sqlite",
-   "sha": "65be0b20fddbd3df668814d2bddc8c95e0c4d570",
-   "url": "https://github.com/sqlite/sqlite/commit/65be0b20fddbd3df668814d2bddc8c95e0c4d570",
-   "title": "Fix an OOB write in fts5 that could occur when processing a corrupt database. Report [bugs:/info/2026-10-29T14:47:00Z | ",
-   "date": "2026-11-05T16:10:17",
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "201a2994d335bcad09202f63fca6cfc3425c64e2",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/201a2994d335bcad09202f63fca6cfc3425c64e2",
+   "title": "avcodec/tiertexseqv: keep the block pointer within the block",
+   "date": "2026-11-05T22:51:06",
+   "score": 4,
+   "matched": [
+    "越界读写",
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "postgres/postgres",
+   "sha": "23e2a332dd24c6b67f4a9bdbb3e0dbdb0a527156",
+   "url": "https://github.com/postgres/postgres/commit/23e2a332dd24c6b67f4a9bdbb3e0dbdb0a527156",
+   "title": "Fix use-after-free in COPY (ON_ERROR)",
+   "date": "2026-11-06T00:18:35",
    "score": 2,
    "matched": [
-    "越界读写"
+    "UAF"
    ],
    "cve": null
   },
   {
    "repo": "FFmpeg/FFmpeg",
-   "sha": "a61b32df3fd67f76c1c8c7ea51be2a66efb0f945",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/a61b32df3fd67f76c1c8c7ea51be2a66efb0f945",
-   "title": "avcodec/pcm-bluray: copy only whole samples on big-endian hosts",
-   "date": "2026-11-05T15:01:11",
+   "sha": "0bfa350291b2118f6d590263dc1ee9cea766c0f1",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/0bfa350291b2118f6d590263dc1ee9cea766c0f1",
+   "title": "avcodec/cfhd: allocate the inverse transform scratch buffer zeroed",
+   "date": "2026-11-05T23:27:36",
    "score": 2,
    "matched": [
-    "缓冲区溢出"
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "d42cb1925987cc27899441ce39fa7bd2647dc72e",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/d42cb1925987cc27899441ce39fa7bd2647dc72e",
+   "title": "avcodec/sanm: apply the codec 23 LUT loaded from the frame",
+   "date": "2026-11-05T23:27:36",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "2c515eea07df719379e7f73deeeb7ccb8768433f",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/2c515eea07df719379e7f73deeeb7ccb8768433f",
+   "title": "avcodec/cbs_sei: clear the message slot handed out by ff_cbs_sei_list_add()",
+   "date": "2026-11-05T23:03:11",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "fb13409aaffc151f602ad357db46052e98ea46e8",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/fb13409aaffc151f602ad357db46052e98ea46e8",
+   "title": "avcodec/adpcmenc: encode all samples of a mono ADPCM_MS block with trellis",
+   "date": "2026-11-05T23:01:56",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "f71410e0288f0c40ae2fb5e5a4d7428763d08a71",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/f71410e0288f0c40ae2fb5e5a4d7428763d08a71",
+   "title": "avcodec/roqaudioenc: encode the buffered samples when flushed early",
+   "date": "2026-11-05T23:01:56",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "ad7ce15a51c7a8bac74075bd93618ae6ccab74b5",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/ad7ce15a51c7a8bac74075bd93618ae6ccab74b5",
+   "title": "avcodec/psd: free the RLE buffer when the frame allocation fails",
+   "date": "2026-11-05T23:01:14",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "db98784a72600a94f7ebd5f016a37e01a505c27b",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/db98784a72600a94f7ebd5f016a37e01a505c27b",
+   "title": "avcodec/mlz: reject string codes beyond the dictionary",
+   "date": "2026-11-05T22:59:52",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "01e1bb126179879201429952cc2dcaea0d50d603",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/01e1bb126179879201429952cc2dcaea0d50d603",
+   "title": "avcodec/takdec: require the multichannel channel list to cover all channels",
+   "date": "2026-11-05T22:59:52",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
    ],
    "cve": null
   }
