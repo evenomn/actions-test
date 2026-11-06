@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-06 13:04 UTC · 共 **162** 条(强烈推荐 26 / 值得 136)
+**更新**: 2026-11-06 19:59 UTC · 共 **164** 条(强烈推荐 26 / 值得 138)
 
 ---
 
@@ -631,6 +631,20 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级至24.09.08；临时限制上传与匿名JSON路由
 影响: Apache(产品与版本待 NVD/厂商补充)
 参考: [参考](https://lists.apache.org/thread.html/7b2syzksp7klt9fvhdg0olldvs2g83lz)
+
+### Craft CMS 未认证SQL注入
+[CVE-2026-123488](https://nvd.nist.gov/vuln/detail/CVE-2026-123488) | P1 重点关注 | CMS | CVSS 9.8 | 披露 2026-11-06 | 入库 2026-11-06
+未认证攻击者向element搜索端点注入attribute参数，可读取或篡改数据库，叠加语句还可能命令执行。
+复现: 值得 — 未授权请求element搜索端点，篡改attribute参数注入 · 影响面: 对外CMS站点，常暴露公网
+处置: 升级至4.18.9或5.11.2，或临时下线搜索接口
+参考: [参考](https://github.com/craftcms/cms/security/advisories/GHSA-qcvp-ggx3-97r6) · [参考](https://www.vulncheck.com/advisories/craft-cms-4.0.0-before-4.18.9-sql-injection-via-element-search-endpoint)
+
+### Babelfish TDS堆溢出致RCE
+[CVE-2026-119923](https://nvd.nist.gov/vuln/detail/CVE-2026-119923) | P1 重点关注 | 数据库 | CVSS 9.8 | 披露 2026-11-06 | 入库 2026-11-06
+未认证攻击者向TDS端口发送畸形prelogin包触发堆溢出，可以数据库进程用户身份执行任意系统命令。
+复现: 值得 — 未认证向TDS端口发送畸形prelogin包，构造长度字段溢出 · 影响面: 数据库TDS端口，常暴露内网或公网
+处置: 升级Babelfish/Aurora PostgreSQL至修复版本，限制TDS暴露
+参考: [参考](https://aws.amazon.com/security/security-bulletins/2026-166-aws/) · [参考](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_4_10_0__PG_16_14) · [参考](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_5_6_0__PG_17_10)
 
 ### AI推理平台认证绕过可未授权RCE
 [CVE-2026-102895](https://nvd.nist.gov/vuln/detail/CVE-2026-102895) | P0 立即处置 | CVSS 9.8 | 披露 2026-11-04 | 入库 2026-11-05

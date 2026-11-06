@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-06T13:04:12+00:00",
- "count": 162,
+ "updated_at": "2026-11-06T19:59:36+00:00",
+ "count": 164,
  "count_recommended": 26,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -3292,6 +3292,90 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83542",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-123488",
+   "title": "Craft CMS 未认证SQL注入",
+   "first_seen": "2026-11-06",
+   "last_seen": "2026-11-06",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-06",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权请求element搜索端点，篡改attribute参数注入",
+   "impact_scope": "对外CMS站点，常暴露公网",
+   "action_zh": "升级至4.18.9或5.11.2，或临时下线搜索接口",
+   "summary_zh": "未认证攻击者向element搜索端点注入attribute参数，可读取或篡改数据库，叠加语句还可能命令执行。",
+   "category": "CMS",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/craftcms/cms/security/advisories/GHSA-qcvp-ggx3-97r6"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/craft-cms-4.0.0-before-4.18.9-sql-injection-via-element-search-endpoint"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123488",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-119923",
+   "title": "Babelfish TDS堆溢出致RCE",
+   "first_seen": "2026-11-06",
+   "last_seen": "2026-11-06",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-06",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未认证向TDS端口发送畸形prelogin包，构造长度字段溢出",
+   "impact_scope": "数据库TDS端口，常暴露内网或公网",
+   "action_zh": "升级Babelfish/Aurora PostgreSQL至修复版本，限制TDS暴露",
+   "summary_zh": "未认证攻击者向TDS端口发送畸形prelogin包触发堆溢出，可以数据库进程用户身份执行任意系统命令。",
+   "category": "数据库",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://aws.amazon.com/security/security-bulletins/2026-166-aws/"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_4_10_0__PG_16_14"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_5_6_0__PG_17_10"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119923",
    "change_note": null
   },
   {

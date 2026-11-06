@@ -5,25 +5,106 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 06 Nov 2026 13:04:12 +0000</pubDate>
-    <lastBuildDate>Fri, 06 Nov 2026 13:04:12 +0000</lastBuildDate>
+    <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
+    <lastBuildDate>Fri, 06 Nov 2026 19:59:36 +0000</lastBuildDate>
     <item>
-      <title>[critical]Radius Booking反序列化RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119516</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119516-2026-11-06</guid>
-      <description>CVE-2026-119516 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Deserialization of Untrusted Data vulnerability in Mamunur Rashid Radius Booking — Booking Calendar for Appointments &amp;amp; Services radius-booking allows Object…
+      <title>[critical]Craft CMS 未认证SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123488</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123488-2026-11-06</guid>
+      <description>CVE-2026-123488 · 🎯P1 重点关注 · 披露 2026-11-06 · 组件 CMS · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
+Craft CMS 4.0.0 before 4.18.9 and 5.0.0 before 5.11.2 contains an unauthenticated SQL injection vulnerability in the element search endpoint because the attribu…
 信号:</description>
-      <pubDate>Fri, 06 Nov 2026 13:04:12 +0000</pubDate>
+      <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]miniOrange SSO权限提升</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120844</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120844-2026-11-06</guid>
-      <description>CVE-2026-120844 · 🎯P1 重点关注 · 披露 2026-11-06 · 组件 NAS/存储 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
-Incorrect Privilege Assignment vulnerability in miniOrange OAuth Single Sign On – SSO (OAuth Client) miniorange-login-with-eve-online-google-facebook allows Pri…
+      <title>[critical]Babelfish TDS堆溢出致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119923</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119923-2026-11-06</guid>
+      <description>CVE-2026-119923 · 🎯P1 重点关注 · 披露 2026-11-06 · 组件 数据库 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
+A heap-based buffer overflow in the TDS prelogin parser in the Babelfish for PostgreSQL extension versions 1.0-1.5, 2.1-2.15, 3.1-3.12, 4.0-4.8, 5.1-5.4 and in …
 信号:</description>
-      <pubDate>Fri, 06 Nov 2026 13:04:12 +0000</pubDate>
+      <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Trail接口SSRF未授权访问内网</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-71495</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-71495-2026-11-06</guid>
+      <description>CVE-2026-71495 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 10.0 · 类型 SSRF · 难度 低(远程·免认证)
+Prior to 0.20.0, when PUBLIC_PRIVATE_INSTANCE is not set to true, the unauthenticated POST /api/v1/trail/download handler passes the attacker-controlled JSON ur…
+信号:</description>
+      <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]REX SSM文档命令注入提权root</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122193</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122193-2026-11-06</guid>
+      <description>CVE-2026-122193 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 命令注入(RCE) · 难度 低(远程·需低权限)
+OS command injection in the example SSM document provisioning script in Trusted Remote Execution (REX) before 2026-07-28 might allow an authenticated remote use…
+信号:</description>
+      <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD 快照恢复越权获宿主root</title>
+      <link>https://github.com/advisories/GHSA-47w9-6r3f-938g</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-47w9-6r3f-938g-2026-11-06</guid>
+      <description>GHSA-47w9-6r3f-938g · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 缺失授权(越权) · 难度 低(远程·需低权限)
+In practice, this allows a malicious actor to execute arbitrary commands on the host with root privileges.
+信号:</description>
+      <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD 镜像URL路径穿越写cron</title>
+      <link>https://github.com/advisories/GHSA-pjff-c2wc-f6jm</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-pjff-c2wc-f6jm-2026-11-06</guid>
+      <description>GHSA-pjff-c2wc-f6jm · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 输入校验缺失 · 难度 低(远程·需低权限)
+""" from __future__ import annotations import argparse import http.client import json import shlex import socket import ssl import sys import threading import t…
+信号:</description>
+      <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD 镜像输入校验缺失致文件读写</title>
+      <link>https://github.com/advisories/GHSA-fmc8-p6q7-75cc</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-fmc8-p6q7-75cc-2026-11-06</guid>
+      <description>GHSA-fmc8-p6q7-75cc · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 输入校验缺失 · 难度 低(远程·需低权限)
+""" from __future__ import annotations import argparse import json import os import shlex import sys import urllib.parse from pathlib import PurePosixPath from …
+信号:</description>
+      <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD 恶意镜像符号链接写宿主文件</title>
+      <link>https://github.com/advisories/GHSA-vghh-5rfx-xhq8</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-vghh-5rfx-xhq8-2026-11-06</guid>
+      <description>GHSA-vghh-5rfx-xhq8 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 CWE-73 · 难度 低(远程·需低权限)
+ metadata.yaml rootfs/ rootfs -&gt; /  In practice, this allows a malicious actor to access the host's filesystem with root privileges.
+信号:</description>
+      <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD 镜像目录穿越致任意文件篡改</title>
+      <link>https://github.com/advisories/GHSA-jpf8-86f3-wp38</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-jpf8-86f3-wp38-2026-11-06</guid>
+      <description>GHSA-jpf8-86f3-wp38 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 CWE-73 · 难度 低(远程·需低权限)
+In practice, this allows a malicious actor to access an arbitrary directory and edit arbitrary files in it.
+信号:</description>
+      <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD 镜像覆盖exec-output写文件</title>
+      <link>https://github.com/advisories/GHSA-9j25-mm2h-2f76</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-9j25-mm2h-2f76-2026-11-06</guid>
+      <description>GHSA-9j25-mm2h-2f76 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 CWE-73 · 难度 低(远程·需低权限)
+ Details When an image is unpacked, top-level symlinks are extracted as is; allowing for exec-output to be placed on disk.
+信号:</description>
+      <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]数据库启用xp_cmdshell致命令执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59105</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59105-2026-11-06</guid>
+      <description>CVE-2026-59105 · 🎯P1 重点关注 · 披露 2026-11-06 · 组件 数据库 · CVSS 9.8 · 类型 CWE-547/CWE-1391 · 难度 低(远程·免认证)
+The on-premise server installation also programmatically enables xp_cmdshell during routine operation, so sysadmin access escalates to operating-system command …
+信号:</description>
+      <pubDate>Fri, 06 Nov 2026 19:59:36 +0000</pubDate>
     </item>
   </channel>
 </rss>
