@@ -15937,5 +15937,332 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-11-06": {
+  "qualified": 31,
+  "critical": 26,
+  "kev": 0,
+  "repro_top": 0,
+  "kev_total": 1768,
+  "by_category": {
+   "未分类": 25,
+   "Web中间件": 2,
+   "容器/虚拟化": 1,
+   "开发库/依赖": 1,
+   "ERP/业务系统": 1,
+   "操作系统": 1
+  },
+  "items": [
+   {
+    "id": "CVE-2026-121953",
+    "title": "FreeRDP rdpgfx通道UAF致客户端失陷",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-121952",
+    "title": "FreeRDP代理位图缓存V2越界写入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-104269",
+    "title": "ModSecurity文件名解析差异可绕过WAF",
+    "tier": "high",
+    "category": "Web中间件",
+    "cvss": 8.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-73856",
+    "title": "ModSecurity响应类型大小写绕过阻断",
+    "tier": "high",
+    "category": "Web中间件",
+    "cvss": 8.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-123158",
+    "title": "OpenSSH sshd musl环境密码认证绕过",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-123200",
+    "title": "VRPN消息处理栈越界写入",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.5,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-123059",
+    "title": "BaSyx Helm图表明文存放Keycloak密钥",
+    "tier": "high",
+    "category": "容器/虚拟化",
+    "cvss": 7.5,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-83542",
+    "title": "Apache OFBiz匿名请求加载恶意widget致RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-117691",
+    "title": "Keycloak SAML签名绕过致账号接管",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-73100",
+    "title": "Apache Juneau请求头未脱敏写入日志",
+    "tier": "critical",
+    "category": "开发库/依赖",
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-73101",
+    "title": "Apache Juneau错误响应泄露内部异常",
+    "tier": "critical",
+    "category": "ERP/业务系统",
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-73116",
+    "title": "Apache Juneau RestClient重定向泄露凭",
+    "tier": "critical",
+    "category": null,
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-73117",
+    "title": "Apache Juneau响应头CRLF注入可分裂响应",
+    "tier": "critical",
+    "category": null,
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-96677",
+    "title": "Apache Juneau请求变量反射导致XSS",
+    "tier": "critical",
+    "category": null,
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-82907",
+    "title": "Apache OFBiz外部登录键可重放劫持会话",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-54143",
+    "title": "OpenHuman外部渠道消息注入持久任务",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-123198",
+    "title": "LMFDB render_knowl接口SSTI致RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102940",
+    "title": "OpenEMR低权限用户文档越权读写",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-77596",
+    "title": "共享流水线接口缺失授权可注入版本",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-123025",
+    "title": "OPNsense证书插件命令注入提权至root",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-48705",
+    "title": "MONAI Label恶意DICOM污染推理结果",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116785",
+    "title": "FreeSWITCH长度校验堆溢出致崩溃",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-54141",
+    "title": "AI Agent审批门绕过致命令执行",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-63774",
+    "title": "CVE-2026-63774",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.0,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116790",
+    "title": "FreeSWITCH媒体面认证欺骗",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-46350",
+    "title": "dcmjs DICOM数值校验缺失",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-100358",
+    "title": "SuiteCRM管理员PHP注入致RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-119344",
+    "title": "Cocos AI远程证明未绑定身份",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-111494",
+    "title": "MatchPoint安卓客户端证书校验失效",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-85076",
+    "title": "插件环境变量键冲突致权限提升",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-63017",
+    "title": "PowerSYSTEM Center越权访问",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   }
+  ]
  }
 }

@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-06T01:40:05+00:00",
- "count": 160,
+ "updated_at": "2026-11-06T03:38:43+00:00",
+ "count": 162,
  "count_recommended": 26,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -3259,6 +3259,42 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-83542",
+   "title": "Apache OFBiz匿名请求加载恶意widget致RCE",
+   "first_seen": "2026-11-06",
+   "last_seen": "2026-11-06",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-05",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "先上传恶意widget XML，再用匿名JSON覆盖mainDecoratorLocation加载",
+   "impact_scope": "公网ERP应用，未认证RCE风险高",
+   "action_zh": "升级至24.09.08；临时限制上传与匿名JSON路由",
+   "summary_zh": "未认证攻击者先multipart上传恶意widget XML，再用匿名JSON请求覆盖mainDecoratorLocation，触发加载并执行代码",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread.html/7b2syzksp7klt9fvhdg0olldvs2g83lz"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83542",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-102895",
    "title": "AI推理平台认证绕过可未授权RCE",
    "first_seen": "2026-11-05",
@@ -6109,6 +6145,46 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107194",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-117691",
+   "title": "Keycloak SAML签名绕过致账号接管",
+   "first_seen": "2026-11-06",
+   "last_seen": "2026-11-06",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-05",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权SAML HTTP-Redirect端点,构造未签名Response替换合法断言",
+   "impact_scope": "统一身份认证IdP,常暴露公网",
+   "action_zh": "升级至Red Hat修复版本;强制校验SAML断言签名",
+   "summary_zh": "未认证攻击者可提交伪造的未签名SAML消息,绕过签名校验后接管联邦用户账号。",
+   "category": null,
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/security/cve/CVE-2026-117691"
+    },
+    {
+     "label": "参考",
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2561977"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117691",
    "change_note": null
   },
   {

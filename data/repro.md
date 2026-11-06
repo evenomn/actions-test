@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-06 01:40 UTC · 共 **160** 条(强烈推荐 26 / 值得 134)
+**更新**: 2026-11-06 03:38 UTC · 共 **162** 条(强烈推荐 26 / 值得 136)
 
 ---
 
@@ -624,6 +624,14 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级到2.4.2；限制凭据目录访问并隔离节点
 参考: [参考](https://blog.btcpayserver.org/security-advisory-btcpay-server-2-4-2/) · [参考](https://www.binance.com/en/square/post/384812445203404) · [参考](https://www.vulncheck.com/advisories/btcpay-server-lnd-macaroon-credential-file-disclosure)
 
+### Apache OFBiz匿名请求加载恶意widget致RCE
+[CVE-2026-83542](https://nvd.nist.gov/vuln/detail/CVE-2026-83542) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-05 | 入库 2026-11-06
+未认证攻击者先multipart上传恶意widget XML，再用匿名JSON请求覆盖mainDecoratorLocation，触发加载并执行代码
+复现: 值得 — 先上传恶意widget XML，再用匿名JSON覆盖mainDecoratorLocation加载 · 影响面: 公网ERP应用，未认证RCE风险高
+处置: 升级至24.09.08；临时限制上传与匿名JSON路由
+影响: Apache(产品与版本待 NVD/厂商补充)
+参考: [参考](https://lists.apache.org/thread.html/7b2syzksp7klt9fvhdg0olldvs2g83lz)
+
 ### AI推理平台认证绕过可未授权RCE
 [CVE-2026-102895](https://nvd.nist.gov/vuln/detail/CVE-2026-102895) | P0 立即处置 | CVSS 9.8 | 披露 2026-11-04 | 入库 2026-11-05
 未认证攻击者可绕过认证获取管理员权限，并借YAML接口执行代码；已观测在野利用
@@ -1062,6 +1070,14 @@ PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy
 [CVE-2026-107194](https://nvd.nist.gov/vuln/detail/CVE-2026-107194) | CVSS 9.2 | 披露 2026-10-07 | 入库 2026-10-08
 复现: 值得
 参考: [参考](https://jakkaru.de/articles/sungrow-vulnerability-exposes-gigawatts-worldwide) · [参考](https://www.sungrowpower.com/en/products/cloud-software/isolarcloud)
+
+### Keycloak SAML签名绕过致账号接管
+[CVE-2026-117691](https://nvd.nist.gov/vuln/detail/CVE-2026-117691) | P1 重点关注 | CVSS 9.1 | 披露 2026-11-05 | 入库 2026-11-06
+未认证攻击者可提交伪造的未签名SAML消息,绕过签名校验后接管联邦用户账号。
+复现: 值得 — 未授权SAML HTTP-Redirect端点,构造未签名Response替换合法断言 · 影响面: 统一身份认证IdP,常暴露公网
+处置: 升级至Red Hat修复版本;强制校验SAML断言签名
+影响: Red Hat(产品与版本待 NVD/厂商补充)
+参考: [参考](https://access.redhat.com/security/cve/CVE-2026-117691) · [参考](https://bugzilla.redhat.com/show_bug.cgi?id=2561977)
 
 ### CWP 重定向后认证绕过
 [CVE-2026-73696](https://nvd.nist.gov/vuln/detail/CVE-2026-73696) | P1 重点关注 | CVSS 9.1 | 披露 2026-11-02 | 入库 2026-11-03
