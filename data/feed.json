@@ -1,186 +1,33 @@
 {
  "version": 3,
- "generated_at": "2026-11-07T15:47:37+00:00",
+ "generated_at": "2026-11-07T20:59:26+00:00",
  "lookback_hours": 5,
- "count": 2,
+ "count": 0,
  "stats": {
-  "total": 2,
-  "by_tier": {
-   "critical": 2
-  },
-  "by_urgency": {
-   "P1 重点关注": 2
-  },
-  "by_category": {
-   "未知": 2
-  },
+  "total": 0,
+  "by_tier": {},
+  "by_urgency": {},
+  "by_category": {},
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [
-  {
-   "id": "CVE-2026-123966",
-   "tier": "critical",
-   "title": "Tenda AC19堆溢出可远程触发",
-   "title_zh": "Tenda AC19堆溢出可远程触发",
-   "summary_zh": "远程攻击者向saveParentControlInfo接口的deviceId传入超长值触发堆溢出，可致代码执行",
-   "published": "2026-11-07T14:17:01.800",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "内存破坏",
-    "堆溢出"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/Tmzop/Tenda-AC19-saveParentControlInfo/blob/main/report.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-123966"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1035173"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至最新固件；将管理/goform接口移出公网并限制访问",
-   "repro_worthy": "一般",
-   "repro_note": "向/goform/saveParentControlInfo发POST，deviceId超长致堆溢出",
-   "impact_scope": "家用/SOHO路由器，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123966",
-   "description": "A vulnerability was determined in Tenda AC19 16.03.10.07. Affected by this issue is the function saveParentControlInfo of the file /goform/saveParentControlInfo. This manipulation of the argument deviceId causes heap-based buffer overflow. The attack is possible to be carried out remotely. The exploit has been publicly disclosed and may be utilized."
-  },
-  {
-   "id": "CVE-2026-123961",
-   "tier": "critical",
-   "title": "TOTOLINK CA300缓冲区溢出",
-   "title_zh": "TOTOLINK CA300缓冲区溢出",
-   "summary_zh": "远程攻击者向cstecgi.cgi的KeyStr参数提交超长数据触发溢出，可致设备被控",
-   "published": "2026-11-07T11:17:01.290",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "内存破坏",
-    "缓冲区溢出"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://lavender-bicycle-a5a.notion.site/TOTOLINK-CA300-PoE-setWiFiBasicConfig-3f953a41781f8098a6e8d808cb1a3ffd?source=copy_link"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-123961"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1033753"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级厂商修复固件；禁用外网管理面并限制cgi访问",
-   "repro_worthy": "一般",
-   "repro_note": "POST /cgi-bin/cstecgi.cgi调setWiFiBasicConfig，KeyStr超长",
-   "impact_scope": "SOHO路由/AP，管理面易暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123961",
-   "description": "A security vulnerability has been detected in TOTOLINK CA300-PoE 6.2c.884. This impacts the function setWiFiBasicConfig of the file /cgi-bin/cstecgi.cgi. The manipulation of the argument KeyStr leads to buffer overflow. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used."
-  }
- ],
+ "items": [],
  "media": [],
  "commits": [
   {
    "repo": "openssl/openssl",
-   "sha": "6cfe188ea9aea3515bb528ac234fbae76aa6588a",
-   "url": "https://github.com/openssl/openssl/commit/6cfe188ea9aea3515bb528ac234fbae76aa6588a",
-   "title": "crypto/bio/bss_dgram.c: initialise variable in BIO_CTRL_DGRAM_DETECT_PEER_ADDR",
-   "date": "2026-11-07T15:34:40",
+   "sha": "a957a4bfc0b9691b20c9036b6ecc110f89f8d15c",
+   "url": "https://github.com/openssl/openssl/commit/a957a4bfc0b9691b20c9036b6ecc110f89f8d15c",
+   "title": "crypto/ec/ec_key.c: Reject invalid group order during key generation",
+   "date": "2026-11-07T15:57:33",
    "score": 3,
    "matched": [
     "CVE"
    ],
-   "cve": "CVE-2026-88822"
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "a2011dbfc17f52ba4a15a3a1040992e3404e870f",
-   "url": "https://github.com/php/php-src/commit/a2011dbfc17f52ba4a15a3a1040992e3404e870f",
-   "title": "Fix use-after-free when pclose() closes a stream from its user filter",
-   "date": "2026-11-07T11:30:05",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "openbsd/src",
-   "sha": "f5a0d646edb010e349a6aea1c51ac670ae7c667a",
-   "url": "https://github.com/openbsd/src/commit/f5a0d646edb010e349a6aea1c51ac670ae7c667a",
-   "title": "pass an explicit size to rev_in_string",
-   "date": "2026-11-07T09:41:19",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/struts",
-   "sha": "39bef89be42ba680a8f6f14c53e345c3120732a9",
-   "url": "https://github.com/apache/struts/commit/39bef89be42ba680a8f6f14c53e345c3120732a9",
-   "title": "WW-5833 fix(rest): authorize nested container members at the depth ParametersInterceptor counts (#2091)",
-   "date": "2026-11-07T08:09:00",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "wireshark/wireshark",
-   "sha": "7b7b838ad5625fa74ebd0db02e54008b59716a35",
-   "url": "https://github.com/wireshark/wireshark/commit/7b7b838ad5625fa74ebd0db02e54008b59716a35",
-   "title": "IPMI: Add a synthetic capture and tests",
-   "date": "2026-11-07T07:23:48",
-   "score": 2,
-   "matched": [
-    "缓冲区溢出"
-   ],
-   "cve": null
+   "cve": "CVE-2026-107496"
   }
  ]
 }

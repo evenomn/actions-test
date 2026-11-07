@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-07 15:47 UTC · 共 **185** 条(强烈推荐 27 / 值得 158)
+**更新**: 2026-11-07 20:59 UTC · 共 **194** 条(强烈推荐 27 / 值得 167)
 
 ---
 
@@ -724,6 +724,51 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — ioos服务sub_416D88，group_id/group_name参数拼接命令 · 影响面: 无线AP/路由器，边界暴露面
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
+
+### CVE-2026-123218
+[CVE-2026-123218](https://nvd.nist.gov/vuln/detail/CVE-2026-123218) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295921)
+
+### CVE-2026-17362
+[CVE-2026-17362](https://nvd.nist.gov/vuln/detail/CVE-2026-17362) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-16720
+[CVE-2026-16720](https://nvd.nist.gov/vuln/detail/CVE-2026-16720) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17278
+[CVE-2026-17278](https://nvd.nist.gov/vuln/detail/CVE-2026-17278) | P1 重点关注 | ERP/业务系统 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-17301
+[CVE-2026-17301](https://nvd.nist.gov/vuln/detail/CVE-2026-17301) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17313
+[CVE-2026-17313](https://nvd.nist.gov/vuln/detail/CVE-2026-17313) | P1 重点关注 | ERP/业务系统 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-17340
+[CVE-2026-17340](https://nvd.nist.gov/vuln/detail/CVE-2026-17340) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-17360
+[CVE-2026-17360](https://nvd.nist.gov/vuln/detail/CVE-2026-17360) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-17408
+[CVE-2026-17408](https://nvd.nist.gov/vuln/detail/CVE-2026-17408) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
 
 ### BTCPay未授权读取LND凭据
 [CVE-2026-119757](https://nvd.nist.gov/vuln/detail/CVE-2026-119757) | P1 重点关注 | ERP/业务系统 | CVSS 9.8 | 披露 2026-11-05 | 入库 2026-11-06
