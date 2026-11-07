@@ -16264,5 +16264,260 @@
     "urgency": "P2 保持关注"
    }
   ]
+ },
+ "2026-11-07": {
+  "qualified": 24,
+  "critical": 22,
+  "kev": 0,
+  "repro_top": 0,
+  "kev_total": 1769,
+  "by_category": {
+   "Web中间件": 1,
+   "开发库/依赖": 1,
+   "未分类": 21,
+   "数据库": 1
+  },
+  "items": [
+   {
+    "id": "CVE-2026-123837",
+    "title": "IDEA 不受信项目WSL命令注入",
+    "tier": "high",
+    "category": "Web中间件",
+    "cvss": 7.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-119170",
+    "title": "Python hashlib FIPS 回归",
+    "tier": "high",
+    "category": "开发库/依赖",
+    "cvss": 8.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-122193",
+    "title": "AWS REX SSM 文档命令注入提权",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "GHSA-47w9-6r3f-938g",
+    "title": "LXD 快照越权致主机命令执行",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "GHSA-pjff-c2wc-f6jm",
+    "title": "LXD 镜像URL路径穿越致RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "GHSA-fmc8-p6q7-75cc",
+    "title": "LXD 镜像导入校验缺失致文件写入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "GHSA-vghh-5rfx-xhq8",
+    "title": "LXD 恶意镜像符号链接逃逸",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "GHSA-jpf8-86f3-wp38",
+    "title": "LXD 恶意镜像任意文件编辑",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "GHSA-9j25-mm2h-2f76",
+    "title": "LXD exec-output 符号链接文件写入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-54349",
+    "title": "SQL仪表盘变量替换致未认证SQL注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-63438",
+    "title": "2FAuth 认证绕过致管理员接管",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-63439",
+    "title": "2FAuth 未认证认证绕过",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-85295",
+    "title": "聊天服务 默认JWT密钥致认证绕过",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-59104",
+    "title": "无人机控制服务 未授权会话接管",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-123294",
+    "title": "JetBrains Hub 验证流程权限提升",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-123831",
+    "title": "CLion 安全模式Meson设置致代码执行",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-123832",
+    "title": "CLion 安全模式JSON编译库致代码执行",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-86044",
+    "title": "JupyterLab 重定向致令牌窃取RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-102530",
+    "title": "Welcome 渲染器XSS经IPC致RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-86005",
+    "title": "Chartbrew队列面板缺失认证",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-83493",
+    "title": "Red Hat CI工作流引入不可信代码",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-59105",
+    "title": "本地部署数据库 xp_cmdshell 提权",
+    "tier": "critical",
+    "category": "数据库",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-68935",
+    "title": "Chartbrew API连接SSRF探内网",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-123279",
+    "title": "Datalore只读协作者可执行代码",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }

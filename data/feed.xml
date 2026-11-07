@@ -3,81 +3,234 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 07 Nov 2026 00:59:23 +0000</pubDate>
-    <lastBuildDate>Sat, 07 Nov 2026 00:59:23 +0000</lastBuildDate>
+    <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    <lastBuildDate>Sat, 07 Nov 2026 03:11:30 +0000</lastBuildDate>
     <item>
-      <title>[critical]SonicOS SSLVPN认证绕过致MFA失效</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-19868</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-19868-2026-11-07</guid>
-      <description>CVE-2026-19868 · 🎯P0 立即处置 · 披露 2026-11-06 · 组件 边界设备/VPN · CVSS 7.5 · 类型 CWE-308 · 难度 低(远程·利用条件苛刻·免认证)
-An authentication enforcement vulnerability in SonicOS SSLVPN service may allow a user with valid credentials for an alternate authentication method to bypass S…
-信号: 🔥 KEV 在野利用,CISA 限期 2026-11-20</description>
-      <pubDate>Sat, 07 Nov 2026 00:59:23 +0000</pubDate>
+      <title>[high]IDEA 不受信项目WSL命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123837</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123837-2026-11-07</guid>
+      <description>CVE-2026-123837 · 🎯P2 保持关注 · 披露 2026-11-06 · 组件 Web中间件 · CVSS 7.8 · 类型 命令注入(RCE) · 难度 高(需本地访问·免认证·需用户交互)
+In JetBrains IntelliJ IDEA before 2026.3, 2026.2.1 command injection was possible in untrusted projects via Tomcat run configurations on WSL
+信号: 关注词:tomcat</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Entra设备注册IDOR越权提权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109469</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109469-2026-11-07</guid>
-      <description>CVE-2026-109469 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 10.0 · 类型 越权(IDOR) · 难度 低(远程·免认证)
-Authorization bypass through user-controlled key in Entra Device Registration allows an unauthorized attacker to elevate privileges over a network.
+      <title>[high]Python hashlib FIPS 回归</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119170</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119170-2026-11-07</guid>
+      <description>CVE-2026-119170 · 🎯P2 保持关注 · 披露 2026-11-06 · 组件 开发库/依赖 · CVSS 8.2 · 类型 CWE-693 · 难度 低(远程·利用条件苛刻·免认证)
+There was a regression in how FIPS algorithms were enforced for the hashlib module. Only users that are using OpenSSL in FIPS mode are affected.
+信号: 关注词:openssl</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AWS REX SSM 文档命令注入提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122193</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122193-2026-11-07</guid>
+      <description>CVE-2026-122193 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 命令注入(RCE) · 难度 低(远程·需低权限)
+OS command injection in the example SSM document provisioning script in Trusted Remote Execution (REX) before 2026-07-28 might allow an authenticated remote use…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 00:59:23 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Tracecat SAML断言未验签绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-58490</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-58490-2026-11-07</guid>
-      <description>CVE-2026-58490 · 🎯P1 重点关注 · 披露 2026-11-06 · 组件 容器/虚拟化 · CVSS 9.8 · 类型 签名校验错误 · 难度 低(远程·免认证)
-An unauthenticated attacker who can reach the SAML assertion consumer endpoint can submit a forged unsigned response for an existing Tracecat user email address…
+      <title>[critical]LXD 快照越权致主机命令执行</title>
+      <link>https://github.com/advisories/GHSA-47w9-6r3f-938g</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-47w9-6r3f-938g-2026-11-07</guid>
+      <description>GHSA-47w9-6r3f-938g · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 缺失授权(越权) · 难度 低(远程·需低权限)
+In practice, this allows a malicious actor to execute arbitrary commands on the host with root privileges.
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 00:59:23 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]SQL仪表盘变量替换SQL注入</title>
+      <title>[critical]LXD 镜像URL路径穿越致RCE</title>
+      <link>https://github.com/advisories/GHSA-pjff-c2wc-f6jm</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-pjff-c2wc-f6jm-2026-11-07</guid>
+      <description>GHSA-pjff-c2wc-f6jm · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 输入校验缺失 · 难度 低(远程·需低权限)
+""" from __future__ import annotations import argparse import http.client import json import shlex import socket import ssl import sys import threading import t…
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD 镜像导入校验缺失致文件写入</title>
+      <link>https://github.com/advisories/GHSA-fmc8-p6q7-75cc</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-fmc8-p6q7-75cc-2026-11-07</guid>
+      <description>GHSA-fmc8-p6q7-75cc · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 输入校验缺失 · 难度 低(远程·需低权限)
+""" from __future__ import annotations import argparse import json import os import shlex import sys import urllib.parse from pathlib import PurePosixPath from …
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD 恶意镜像符号链接逃逸</title>
+      <link>https://github.com/advisories/GHSA-vghh-5rfx-xhq8</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-vghh-5rfx-xhq8-2026-11-07</guid>
+      <description>GHSA-vghh-5rfx-xhq8 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 CWE-73 · 难度 低(远程·需低权限)
+ metadata.yaml rootfs/ rootfs -&gt; /  In practice, this allows a malicious actor to access the host's filesystem with root privileges.
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD 恶意镜像任意文件编辑</title>
+      <link>https://github.com/advisories/GHSA-jpf8-86f3-wp38</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-jpf8-86f3-wp38-2026-11-07</guid>
+      <description>GHSA-jpf8-86f3-wp38 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 CWE-73 · 难度 低(远程·需低权限)
+In practice, this allows a malicious actor to access an arbitrary directory and edit arbitrary files in it.
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]LXD exec-output 符号链接文件写入</title>
+      <link>https://github.com/advisories/GHSA-9j25-mm2h-2f76</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-9j25-mm2h-2f76-2026-11-07</guid>
+      <description>GHSA-9j25-mm2h-2f76 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 CWE-73 · 难度 低(远程·需低权限)
+ Details When an image is unpacked, top-level symlinks are extracted as is; allowing for exec-output to be placed on disk.
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]SQL仪表盘变量替换致未认证SQL注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-54349</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-54349-2026-11-07</guid>
       <description>CVE-2026-54349 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
 An unauthenticated user sends crafted URL filter values to a public or embedded chart backed by a stored SQL query.
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 00:59:23 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]2FAuth认证绕过可创建管理员</title>
+      <title>[critical]2FAuth 认证绕过致管理员接管</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-63438</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-63438-2026-11-07</guid>
       <description>CVE-2026-63438 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
 An unauthenticated remote client can therefore create an administrator on a fresh instance or impersonate and redirect email for a known account, exposing 2FA s…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 00:59:23 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]2FAuth认证绕过致账号接管</title>
+      <title>[critical]2FAuth 未认证认证绕过</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-63439</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-63439-2026-11-07</guid>
       <description>CVE-2026-63439 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
 2FAuth is a web app to manage Two-Factor Authentication (2FA) accounts and generate their security codes.
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 00:59:23 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]JWT默认密钥可伪造令牌绕过认证</title>
+      <title>[critical]聊天服务 默认JWT密钥致认证绕过</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85295</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85295-2026-11-07</guid>
       <description>CVE-2026-85295 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.8 · 类型 CWE-1394 · 难度 低(远程·免认证)
 The vulnerable surface is session JWT fallback in server/modules/verifyToken.js, verifyUser.js, getUserFromToken.js, and socketManager.js across the API and soc…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 00:59:23 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]无人机地面站3334端口未认证接管</title>
+      <title>[critical]无人机控制服务 未授权会话接管</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59104</link>
       <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59104-2026-11-07</guid>
       <description>CVE-2026-59104 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
 Because the service listens on all interfaces (0.0.0.0) without TLS by default, an unauthenticated remote attacker with network access to port 3334 can obtain a…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 00:59:23 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]JetBrains Hub 验证流程权限提升</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123294</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123294-2026-11-07</guid>
+      <description>CVE-2026-123294 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.6 · 类型 CWE-915 · 难度 低(远程·需低权限)
+In JetBrains Hub before 2026.2.52556 privilege escalation was possible by changing email authentication details during the verification flow
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]CLion 安全模式Meson设置致代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123831</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123831-2026-11-07</guid>
+      <description>CVE-2026-123831 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.6 · 类型 CWE-829 · 难度 低(远程·免认证·需用户交互)
+In JetBrains CLion before 2026.2, 2026.1.4 code execution was possible in Safe Mode via Meson project settings
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]CLion 安全模式JSON编译库致代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123832</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123832-2026-11-07</guid>
+      <description>CVE-2026-123832 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.6 · 类型 CWE-829 · 难度 低(远程·免认证·需用户交互)
+In JetBrains CLion before 2026.2 code execution was possible in Safe Mode via JSON compilation database
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]JupyterLab 重定向致令牌窃取RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-86044</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-86044-2026-11-07</guid>
+      <description>CVE-2026-86044 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.6 · 类型 开放重定向 · 难度 低(远程·免认证·需用户交互)
+In a local managed session using JupyterLab before 4.4.8, an attacker can place a crafted MathJax link in an untrusted notebook.
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Welcome 渲染器XSS经IPC致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102530</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102530-2026-11-07</guid>
+      <description>CVE-2026-102530 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.4 · 类型 XSS/代码注入(RCE) · 难度 低(远程·免认证·需用户交互)
+An attacker who convinces a user to submit a crafted URL can execute JavaScript in the Welcome renderer and abuse its privileged IPC bridge to execute arbitrary…
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Chartbrew队列面板缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-86005</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-86005-2026-11-07</guid>
+      <description>CVE-2026-86005 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.3 · 类型 缺失认证 · 难度 低(远程·免认证)
+A remote unauthenticated attacker reaches /apps/queues on a Chartbrew instance where Redis and BullMQ are enabled and a reverse proxy does not independently blo…
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Red Hat CI工作流引入不可信代码</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83493</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83493-2026-11-07</guid>
+      <description>CVE-2026-83493 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.1 · EPSS 0.2%,前 15% · 类型 CWE-829 · 难度 低(远程·免认证)
+A remote attacker could exploit a vulnerability in the pull_request_target workflow by submitting a specially crafted pull request.
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]本地部署数据库 xp_cmdshell 提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59105</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59105-2026-11-07</guid>
+      <description>CVE-2026-59105 · 🎯P2 保持关注 · 披露 2026-11-06 · 组件 数据库 · CVSS 9.8 · 类型 CWE-547/CWE-1391 · 难度 低(远程·免认证)
+The on-premise server installation also programmatically enables xp_cmdshell during routine operation, so sysadmin access escalates to operating-system command …
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Chartbrew API连接SSRF探内网</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-68935</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-68935-2026-11-07</guid>
+      <description>CVE-2026-68935 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.1 · 类型 SSRF · 难度 中(远程·需高权限)
+Successful exploitation allows requests to internal HTTP services reachable from the Chartbrew server, potentially disclosing information or triggering unauthor…
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Datalore只读协作者可执行代码</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123279</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123279-2026-11-07</guid>
+      <description>CVE-2026-123279 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.0 · 类型 授权错误 · 难度 中(远程·需低权限·需用户交互)
+In JetBrains Datalore before 2026.4 code execution was possible in a notebook's computation by view-only collaborators
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>今日要点</title>
+      <description>- 今日清单未标在野利用或勒索软件关联，勿据此判断已活跃攻击。
+- 批量公告趋势明显：LXD同一修复版本连发3条9.9分漏洞。
+- 最需立即处置：9.9分命令注入CVE-2026-122193，优先排查暴露面。
+- LXD越权与输入校验缺失均9.9分，升级至c5184be310b1修复版。
+- 另有多个9.8分认证绕过/SQL注入，建议同步紧急修补。</description>
+      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
     </item>
   </channel>
 </rss>
