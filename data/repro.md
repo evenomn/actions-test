@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-07 07:22 UTC · 共 **175** 条(强烈推荐 27 / 值得 148)
+**更新**: 2026-11-07 15:47 UTC · 共 **185** 条(强烈推荐 27 / 值得 158)
 
 ---
 
@@ -651,6 +651,56 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 
 ### CVE-2026-17158
 [CVE-2026-17158](https://nvd.nist.gov/vuln/detail/CVE-2026-17158) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17239
+[CVE-2026-17239](https://nvd.nist.gov/vuln/detail/CVE-2026-17239) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-17298
+[CVE-2026-17298](https://nvd.nist.gov/vuln/detail/CVE-2026-17298) | P1 重点关注 | ERP/业务系统 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17336
+[CVE-2026-17336](https://nvd.nist.gov/vuln/detail/CVE-2026-17336) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-17342
+[CVE-2026-17342](https://nvd.nist.gov/vuln/detail/CVE-2026-17342) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17354
+[CVE-2026-17354](https://nvd.nist.gov/vuln/detail/CVE-2026-17354) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-17359
+[CVE-2026-17359](https://nvd.nist.gov/vuln/detail/CVE-2026-17359) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17392
+[CVE-2026-17392](https://nvd.nist.gov/vuln/detail/CVE-2026-17392) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17399
+[CVE-2026-17399](https://nvd.nist.gov/vuln/detail/CVE-2026-17399) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17402
+[CVE-2026-17402](https://nvd.nist.gov/vuln/detail/CVE-2026-17402) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17410
+[CVE-2026-17410](https://nvd.nist.gov/vuln/detail/CVE-2026-17410) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
 复现: 值得
 参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
 
