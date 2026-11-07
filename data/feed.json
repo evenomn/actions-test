@@ -1,60 +1,50 @@
 {
  "version": 3,
- "generated_at": "2026-11-07T03:11:30+00:00",
- "lookback_hours": 24,
- "count": 24,
+ "generated_at": "2026-11-07T07:22:57+00:00",
+ "lookback_hours": 5,
+ "count": 29,
  "stats": {
-  "total": 24,
+  "total": 29,
   "by_tier": {
-   "critical": 22,
-   "high": 2
+   "critical": 29
   },
   "by_urgency": {
-   "P1 重点关注": 21,
-   "P2 保持关注": 3
+   "P1 重点关注": 29
   },
   "by_category": {
-   "未知": 21,
-   "Web中间件": 1,
-   "开发库/依赖": 1,
-   "数据库": 1
+   "未知": 22,
+   "ERP/业务系统": 7
   },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [
-  "- 今日清单未标在野利用或勒索软件关联，勿据此判断已活跃攻击。",
-  "- 批量公告趋势明显：LXD同一修复版本连发3条9.9分漏洞。",
-  "- 最需立即处置：9.9分命令注入CVE-2026-122193，优先排查暴露面。",
-  "- LXD越权与输入校验缺失均9.9分，升级至c5184be310b1修复版。",
-  "- 另有多个9.8分认证绕过/SQL注入，建议同步紧急修补。"
- ],
+ "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-123837",
-   "tier": "high",
-   "title": "IDEA 不受信项目WSL命令注入",
-   "title_zh": "IDEA 不受信项目WSL命令注入",
-   "summary_zh": "攻击者构造恶意项目，诱导开发者打开并通过WSL上的Tomcat运行配置触发命令注入，导致代码执行",
-   "published": "2026-11-06T17:17:22.097",
-   "cvss": 7.8,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "id": "CVE-2026-16884",
+   "tier": "critical",
+   "title": "未授权 XXE",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:22.440",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:L",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入(RCE)"
+    "XXE"
    ],
-   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "difficulty": "低(远程·免认证)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.jetbrains.com/privacy-security/issues-fixed/"
+     "url": "https://www.ibm.com/support/pages/node/7295635"
     }
    ],
    "poc": [],
@@ -63,46 +53,38 @@
    "kev": false,
    "kev_due": null,
    "ransomware": false,
-   "keyword_hit": "tomcat",
-   "urgency": "P2 保持关注",
-   "action_zh": "升级到 2026.3/2026.2.1，勿打开来源不明项目",
-   "repro_worthy": "一般",
-   "repro_note": "打开不受信项目后经WSL Tomcat运行配置注入命令",
-   "impact_scope": "本地开发终端，需用户交互",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123837",
-   "description": "In JetBrains IntelliJ IDEA before 2026.3, 2026.2.1 command injection was possible in untrusted projects via Tomcat run configurations on WSL"
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16884",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain sensitive information due to an XML external entity (XXE) injection."
   },
   {
-   "id": "CVE-2026-119170",
-   "tier": "high",
-   "title": "Python hashlib FIPS 回归",
-   "title_zh": "Python hashlib FIPS 回归",
-   "summary_zh": "仅影响OpenSSL FIPS模式下的Python 3.14.10，哈希算法强制策略回归，可绕过FIPS算法校验",
-   "published": "2026-11-06T15:17:12.073",
-   "cvss": 8.2,
-   "severity": "HIGH",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "id": "CVE-2026-16920",
+   "tier": "critical",
+   "title": "意图代理错误(混源下载)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:22.990",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-693"
+    "意图代理错误(混源下载)"
    ],
-   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
-   "affected": "Python(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/python/cpython/issues/160923"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/python/cpython/pull/160984"
-    },
-    {
-     "label": "参考",
-     "url": "https://mail.python.org/archives/list/security-announce@python.org/thread/PXVTTOBPUMFJSSUXN6XCS7FC5DZOSZXK/"
+     "url": "https://www.ibm.com/support/pages/node/7295635"
     }
    ],
    "poc": [],
@@ -111,22 +93,702 @@
    "kev": false,
    "kev_due": null,
    "ransomware": false,
-   "keyword_hit": "openssl",
-   "urgency": "P2 保持关注",
-   "action_zh": "升级至含修复的Python版本，或暂不在FIPS模式使用",
-   "repro_worthy": "一般",
-   "repro_note": "需OpenSSL FIPS模式下运行Python 3.14.10验证哈希算法",
-   "impact_scope": "特定FIPS合规环境，面窄",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119170",
-   "description": "There was a regression in how FIPS algorithms were enforced for the hashlib module. Only users that are using OpenSSL in FIPS mode are affected. Only Python 3.14.10 is affected, all other Python versions are unaffected."
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16920",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to bypass security restrictions due to a confused deputy vulnerability."
   },
   {
-   "id": "CVE-2026-122193",
+   "id": "CVE-2026-17049",
    "tier": "critical",
-   "title": "AWS REX SSM 文档命令注入提权",
-   "title_zh": "AWS REX SSM 文档命令注入提权",
-   "summary_zh": "获授权调用Rex-RO/RW SSM文档的远程用户可注入命令，以root在受管实例执行并绕过Cedar策略",
-   "published": "2026-11-06T17:17:20.313",
+   "title": "越权(IDOR)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:23.173",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17049",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information and modify arbitrary documents due to authorization bypass through user-controlled keys."
+  },
+  {
+   "id": "CVE-2026-17117",
+   "tier": "critical",
+   "title": "CWE-915",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:25.647",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-915"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17117",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to improperly controlled modification of object attributes. A user could set a field that should only be controlled by the system, which could lead to code execution."
+  },
+  {
+   "id": "CVE-2026-17132",
+   "tier": "critical",
+   "title": "SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:26.430",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17132",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary SQL commands due to improper neutralization of special elements used in an SQL command."
+  },
+  {
+   "id": "CVE-2026-17134",
+   "tier": "critical",
+   "title": "SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:26.630",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17134",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary SQL commands due to SQL injection."
+  },
+  {
+   "id": "CVE-2026-17146",
+   "tier": "critical",
+   "title": "JavaScript XSS",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:27.843",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "XSS"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17146",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary JavaScript and obtain sensitive information due to improper input validation."
+  },
+  {
+   "id": "CVE-2026-17147",
+   "tier": "critical",
+   "title": "路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:28.037",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17147",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code and perform unauthorized administrative actions due to a path traversal vulnerability."
+  },
+  {
+   "id": "CVE-2026-17150",
+   "tier": "critical",
+   "title": "CWE-184",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:28.230",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-184"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17150",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code and access sensitive information from other tenants due to insufficient input validation. Uploaded custom module content is not sufficiently validated before it is processed, which could allow code to run with access beyond the user's own tenant."
+  },
+  {
+   "id": "CVE-2026-17158",
+   "tier": "critical",
+   "title": "认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:28.853",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17158",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to gain elevated privileges due to improper authentication."
+  },
+  {
+   "id": "CVE-2026-17239",
+   "tier": "critical",
+   "title": "路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:32.657",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17239",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to a path traversal vulnerability."
+  },
+  {
+   "id": "CVE-2026-17298",
+   "tier": "critical",
+   "title": "SSRF",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:37.510",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SSRF"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17298",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to server-side request forgery."
+  },
+  {
+   "id": "CVE-2026-17336",
+   "tier": "critical",
+   "title": "SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:44.673",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17336",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary SQL commands due to improper neutralization of special elements used in an SQL command."
+  },
+  {
+   "id": "CVE-2026-17342",
+   "tier": "critical",
+   "title": "代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:45.943",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17342",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to improper control of generation of code."
+  },
+  {
+   "id": "CVE-2026-17354",
+   "tier": "critical",
+   "title": "路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:47.057",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17354",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to perform arbitrary file writes due to path traversal."
+  },
+  {
+   "id": "CVE-2026-17359",
+   "tier": "critical",
+   "title": "代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:48.017",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17359",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to improper control of generation of code. A user-supplied value can influence code that the product generates, which could lead to code execution."
+  },
+  {
+   "id": "CVE-2026-17392",
+   "tier": "critical",
+   "title": "LDAP CWE-90",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:54.113",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-90"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17392",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to gain unauthorized administrative access to other tenants due to LDAP injection. User-supplied input is not properly neutralized in directory queries, which could change the query and grant access beyond the user's own tenant."
+  },
+  {
+   "id": "CVE-2026-17399",
+   "tier": "critical",
+   "title": "任意文件上传",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:55.790",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "任意文件上传"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17399",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to insufficient validation of uploaded content. Content uploaded to the product is not sufficiently checked before it is processed, which could allow code to run on the server."
+  },
+  {
+   "id": "CVE-2026-17402",
+   "tier": "critical",
+   "title": "命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:56.460",
    "cvss": 9.9,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
@@ -142,11 +804,11 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://aws.amazon.com/security/security-bulletins/2026-173-aws/"
+     "url": "https://www.ibm.com/support/pages/node/7295635"
     },
     {
      "label": "参考",
-     "url": "https://github.com/trusted-remote-execution/trusted-remote-execution/security/advisories/GHSA-95g5-m242-wvhr"
+     "url": "https://www.ibm.com/support/pages/node/7295637"
     }
    ],
    "poc": [],
@@ -157,884 +819,80 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到 2026-07-28 之后版本并收紧SSM文档授权",
-   "repro_worthy": "一般",
-   "repro_note": "认证用户调用Rex-RO/RW SSM文档注入命令参数",
-   "impact_scope": "云端受管实例，需认证授权",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122193",
-   "description": "OS command injection in the example SSM document provisioning script in Trusted Remote Execution (REX) before 2026-07-28 might allow an authenticated remote user who is permitted to invoke the Rex-RO or Rex-RW SSM document to execute arbitrary commands as root on the managed instance, bypassing Cedar policy enforcement. To remediate this issue, users should delete any Rex-RO and Rex-RW SSM documents created from the example script, in each account and Region where it was run."
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17402",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary commands due to OS command injection. User-supplied input is not properly neutralized before it is passed to the operating system, which could allow commands to run on the underlying host."
   },
   {
-   "id": "GHSA-47w9-6r3f-938g",
+   "id": "CVE-2026-17410",
    "tier": "critical",
-   "title": "LXD 快照越权致主机命令执行",
-   "title_zh": "LXD 快照越权致主机命令执行",
-   "summary_zh": "本地构造恶意实例快照并移入受限项目后恢复，可在宿主机以root权限执行任意命令",
-   "published": "2026-11-06T19:51:26Z",
+   "title": "参数拼接注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:58.410",
    "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": null,
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "缺失授权(越权)"
+    "参数拼接注入"
    ],
    "difficulty": "低(远程·需低权限)",
    "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260630083100-c5184be310b1(修复: 0.0.0-20260630083100-c5184be310b1)",
-   "ghsa_url": "https://github.com/advisories/GHSA-47w9-6r3f-938g",
-   "refs": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
    "poc": [],
    "nuclei": false,
-   "patched": true,
+   "patched": null,
    "kev": false,
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到 c5184be310b1 之后版本",
-   "repro_worthy": "一般",
-   "repro_note": "需能创建实例并将快照移入受限项目后恢复",
-   "impact_scope": "容器/虚拟机宿主机，可提权root",
-   "link": "https://github.com/advisories/GHSA-47w9-6r3f-938g",
-   "description": "As snapshots can be moved from one server to another, a malicious instance+snapshot can be crafted locally, moved to a restricted project and the snapshot restored for arbitrary command execution. In practice, this allows a malicious actor to execute arbitrary commands on the host with root privileges."
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17410",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to access and modify other tenants' portal data due to improper neutralization of argument delimiters."
   },
   {
-   "id": "GHSA-pjff-c2wc-f6jm",
+   "id": "CVE-2026-123218",
    "tier": "critical",
-   "title": "LXD 镜像URL路径穿越致RCE",
-   "title_zh": "LXD 镜像URL路径穿越致RCE",
-   "summary_zh": "恶意镜像URL经路径穿越写入/etc/cron.d等位置，宿主机随后以root执行任意命令",
-   "published": "2026-11-06T19:36:55Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "输入校验缺失"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260630083100-c5184be310b1(修复: 0.0.0-20260630083100-c5184be310b1)",
-   "ghsa_url": "https://github.com/advisories/GHSA-pjff-c2wc-f6jm",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 c5184be310b1 之后版本",
-   "repro_worthy": "一般",
-   "repro_note": "创建实例时用直连镜像URL穿越写入/etc/cron.d",
-   "impact_scope": "容器/虚拟机宿主机，可提权root",
-   "link": "https://github.com/advisories/GHSA-pjff-c2wc-f6jm",
-   "description": "\"\"\" from __future__ import annotations import argparse import http.client import json import shlex import socket import ssl import sys import threading import time import urllib.parse from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer from typing import Any DEFAULT_SOCKET = \"/var/lib/incus/unix.socket\" DEFAULT_TRAVERSAL = \"../../../../etc/cron.d/incus-direct-image-url-rce\" class UnixHTTPConnection(http.client.HTTPConnection): def __init__(self, socket_path: str, timeout: int = 1…"
-  },
-  {
-   "id": "GHSA-fmc8-p6q7-75cc",
-   "tier": "critical",
-   "title": "LXD 镜像导入校验缺失致文件写入",
-   "title_zh": "LXD 镜像导入校验缺失致文件写入",
-   "summary_zh": "镜像导入接口参数校验缺失，可向宿主机任意路径写入文件，进而以root执行命令",
-   "published": "2026-11-06T19:36:37Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "输入校验缺失"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260630083100-c5184be310b1(修复: 0.0.0-20260630083100-c5184be310b1)",
-   "ghsa_url": "https://github.com/advisories/GHSA-fmc8-p6q7-75cc",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 c5184be310b1 之后版本",
-   "repro_worthy": "一般",
-   "repro_note": "通过镜像导入接口传入构造参数写入宿主机文件",
-   "impact_scope": "容器/虚拟机宿主机，可提权root",
-   "link": "https://github.com/advisories/GHSA-fmc8-p6q7-75cc",
-   "description": "\"\"\" from __future__ import annotations import argparse import json import os import shlex import sys import urllib.parse from pathlib import PurePosixPath from typing import Any import requests def q(value: str) -> str: return urllib.parse.quote(value, safe=\"\") def api(base: str, endpoint: str, **params: str) -> str: return base.rstrip(\"/\") + endpoint + (\"?\" + urllib.parse.urlencode(params) if params else \"\") def project_instance(project: str, instance: str) -> str: return instance if project ==…"
-  },
-  {
-   "id": "GHSA-vghh-5rfx-xhq8",
-   "tier": "critical",
-   "title": "LXD 恶意镜像符号链接逃逸",
-   "title_zh": "LXD 恶意镜像符号链接逃逸",
-   "summary_zh": "导入含顶层符号链接（rootfs指向/）的镜像，可读写宿主机任意文件并以root执行命令",
-   "published": "2026-11-06T19:36:07Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-73"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260630083100-c5184be310b1(修复: 0.0.0-20260630083100-c5184be310b1)",
-   "ghsa_url": "https://github.com/advisories/GHSA-vghh-5rfx-xhq8",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 c5184be310b1 之后版本",
-   "repro_worthy": "一般",
-   "repro_note": "导入metadata含rootfs->/符号链接的恶意镜像",
-   "impact_scope": "容器/虚拟机宿主机，可提权root",
-   "link": "https://github.com/advisories/GHSA-vghh-5rfx-xhq8",
-   "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-2q3f-q5pq-g8wv ### Summary A specially crafted image can be used to read or create/write arbitrary files on the host; possibly leading to arbitrary command execution. ``` metadata.yaml rootfs/ rootfs -> / ``` In practice, this allows a malicious actor to access the host's filesystem with root privileges."
-  },
-  {
-   "id": "GHSA-jpf8-86f3-wp38",
-   "tier": "critical",
-   "title": "LXD 恶意镜像任意文件编辑",
-   "title_zh": "LXD 恶意镜像任意文件编辑",
-   "summary_zh": "构造符号链接镜像后可访问宿主机任意目录并篡改文件，最终以root权限执行命令",
-   "published": "2026-11-06T18:53:57Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-73"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260203144152-d1c8ba15d160(修复: 0.0.0-20260203144152-d1c8ba15d160)",
-   "ghsa_url": "https://github.com/advisories/GHSA-jpf8-86f3-wp38",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 d1c8ba15d160 之后版本",
-   "repro_worthy": "一般",
-   "repro_note": "导入含构造符号链接的镜像后写入宿主机任意目录",
-   "impact_scope": "容器/虚拟机宿主机，可提权root",
-   "link": "https://github.com/advisories/GHSA-jpf8-86f3-wp38",
-   "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-vxp5-584q-c479 ### Summary A specially crafted image can be used to read or create/write arbitrary files on the host; possibly leading to arbitrary command execution. In practice, this allows a malicious actor to access an arbitrary directory and edit arbitrary files in it."
-  },
-  {
-   "id": "GHSA-9j25-mm2h-2f76",
-   "tier": "critical",
-   "title": "LXD exec-output 符号链接文件写入",
-   "title_zh": "LXD exec-output 符号链接文件写入",
-   "summary_zh": "镜像解包保留顶层符号链接，exec接口record-output输出目录被劫持，可向宿主机任意文件写入",
-   "published": "2026-11-06T18:45:51Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-73"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260626085134-124f90100640(修复: 0.0.0-20260626085134-124f90100640)",
-   "ghsa_url": "https://github.com/advisories/GHSA-9j25-mm2h-2f76",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 124f90100640 之后版本",
-   "repro_worthy": "一般",
-   "repro_note": "exec接口record-output参数配合镜像exec-output符号链接",
-   "impact_scope": "容器/虚拟机宿主机，可提权root",
-   "link": "https://github.com/advisories/GHSA-9j25-mm2h-2f76",
-   "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-48q5-w887-33wv ### Summary The `record-output` parameter of the `/instances/$name/exec` endpoint stores the output of the command in the `exec-output` directory of the instance. ### Details When an image is unpacked, top-level symlinks are extracted as is; allowing for `exec-output` to be placed on disk."
-  },
-  {
-   "id": "CVE-2026-54349",
-   "tier": "critical",
-   "title": "SQL仪表盘变量替换致未认证SQL注入",
-   "title_zh": "SQL仪表盘变量替换致未认证SQL注入",
-   "summary_zh": "未认证用户向公开/嵌入图表的URL过滤参数注入，可在存储SQL查询中执行任意语句",
-   "published": "2026-11-06T21:17:08.947",
+   "title": "IBM Aspera Faspex 未授权 授权错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T04:17:28.900",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/commit/f93d31ac586091f72a7eb97d89fa3b4db271bd24"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/releases/tag/v5.2.1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/security/advisories/GHSA-4wj7-9gq7-mrr2"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 5.2.1 或更高版本",
-   "repro_worthy": "一般",
-   "repro_note": "向公开/嵌入图表URL过滤参数注入，需存在公开图表",
-   "impact_scope": "面向公网的数据看板，数据泄露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-54349",
-   "description": "Prior to 5.2.1, SQL dashboard-variable substitution used attacker-controlled JavaScript replacement strings unsafely across SQL connectors and separately failed to escape backslashes for MySQL and MariaDB quoted contexts. An unauthenticated user sends crafted URL filter values to a public or embedded chart backed by a stored SQL query."
-  },
-  {
-   "id": "CVE-2026-63438",
-   "tier": "critical",
-   "title": "2FAuth 认证绕过致管理员接管",
-   "title_zh": "2FAuth 认证绕过致管理员接管",
-   "summary_zh": "未认证远程攻击者可在全新实例创建管理员，或劫持已知账户邮箱，窃取2FA密钥与后台权限",
-   "published": "2026-11-06T21:17:09.770",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/Bubka/2FAuth/commit/43873cbfba445926c7008b4291eeee67752af9e8"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/Bubka/2FAuth/commit/8a4c395cac97f8b70b4a822639a6ad8a816f927c"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/Bubka/2FAuth/commit/d9e58ac4a63fbd8a073e423567881c81a87915de"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到厂商修复版本，限制公网暴露并监控管理员创建",
-   "repro_worthy": "一般",
-   "repro_note": "未认证访问注册/邮箱验证接口创建管理员或改绑邮箱",
-   "impact_scope": "自建2FA管理Web应用，敏感凭证",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63438",
-   "description": "2FAuth is a web app to manage Two-Factor Authentication (2FA) accounts and generate their security codes. An unauthenticated remote client can therefore create an administrator on a fresh instance or impersonate and redirect email for a known account, exposing 2FA secrets and administrative functions."
-  },
-  {
-   "id": "CVE-2026-63439",
-   "tier": "critical",
-   "title": "2FAuth 未认证认证绕过",
-   "title_zh": "2FAuth 未认证认证绕过",
-   "summary_zh": "未认证远程攻击者可绕过认证，访问2FA密钥与管理员功能（细节尚未完全披露）",
-   "published": "2026-11-06T21:17:09.970",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/Bubka/2FAuth/commit/43873cbfba445926c7008b4291eeee67752af9e8"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/Bubka/2FAuth/releases/tag/v8.0.0"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/Bubka/2FAuth/security/advisories/GHSA-mh8r-74x2-r457"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到厂商修复版本，限制公网暴露",
-   "repro_worthy": "一般",
-   "repro_note": "未认证访问认证接口绕过校验，细节待披露",
-   "impact_scope": "自建2FA管理Web应用，敏感凭证",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63439",
-   "description": "2FAuth is a web app to manage Two-Factor Authentication (2FA) accounts and generate their security codes. Prior to 8.0.0, when AUTHENTICATION_GUARD=reverse-proxy-guard is enabled, ReverseProxyGuard::user() reads the default REMOTE_USER identity header, or a custom identity header selected by the AUTH_PROXY_HEADER_FOR_USER configuration setting, without confirming that the request originated from a configured trusted proxy."
-  },
-  {
-   "id": "CVE-2026-85295",
-   "tier": "critical",
-   "title": "聊天服务 默认JWT密钥致认证绕过",
-   "title_zh": "聊天服务 默认JWT密钥致认证绕过",
-   "summary_zh": "攻击者用默认CB_SECRET伪造HS256令牌指定目标用户ID，绕过API与Socket层认证",
-   "published": "2026-11-06T21:17:10.890",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-1394"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/commit/da8c71f156aaa13fbc7ead15a4726740fef2b3c5"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/releases/tag/v5.2.3"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/security/advisories/GHSA-qvv4-r3q6-8797"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "替换默认CB_SECRET为强随机值并升级版本",
-   "repro_worthy": "一般",
-   "repro_note": "以默认CB_SECRET签发HS256令牌指定目标用户ID",
-   "impact_scope": "聊天服务API与Socket接口",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85295",
-   "description": "The vulnerable surface is session JWT fallback in server/modules/verifyToken.js, verifyUser.js, getUserFromToken.js, and socketManager.js across the API and socket layer. A stock source or repository Docker Compose deployment retains a known, weak, or default CB_SECRET and an attacker submits a forged HS256 token decoding to a target user id."
-  },
-  {
-   "id": "CVE-2026-59104",
-   "tier": "critical",
-   "title": "无人机控制服务 未授权会话接管",
-   "title_zh": "无人机控制服务 未授权会话接管",
-   "summary_zh": "可访问3334端口的未认证攻击者可直接取得已认证会话，下发特权指令操控无人机与航线",
-   "published": "2026-11-06T22:17:59.043",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://offseq.com/en/research/ugcs-cve-2026-59104/"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.ugcs.com/"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "限制3334端口访问，启用TLS与认证后升级版本",
-   "repro_worthy": "一般",
-   "repro_note": "直连0.0.0.0:3334未认证取得会话后调用特权指令",
-   "impact_scope": "无人机地面控制服务，暴露内网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59104",
-   "description": "UgCS server before 6.2 contains an authentication bypass in the HCI protocol login handler (LoginHandler) exposed on TCP port 3334. Because the service listens on all interfaces (0.0.0.0) without TLS by default, an unauthenticated remote attacker with network access to port 3334 can obtain an authenticated session without knowing any credential and then issue privileged commands, including commanding connected drones and uploading flight routes."
-  },
-  {
-   "id": "CVE-2026-123294",
-   "tier": "critical",
-   "title": "JetBrains Hub 验证流程权限提升",
-   "title_zh": "JetBrains Hub 验证流程权限提升",
-   "summary_zh": "攻击者利用邮箱验证流程中篡改认证信息，可将账户提升至更高权限并接管他人身份",
-   "published": "2026-11-06T11:17:08.140",
-   "cvss": 9.6,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-915"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.jetbrains.com/privacy-security/issues-fixed/"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 2026.2.52556 或更高版本",
-   "repro_worthy": "一般",
-   "repro_note": "在邮箱验证流程中篡改认证绑定信息提权",
-   "impact_scope": "内网统一认证/账号中心",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123294",
-   "description": "In JetBrains Hub before 2026.2.52556 privilege escalation was possible by changing email authentication details during the verification flow"
-  },
-  {
-   "id": "CVE-2026-123831",
-   "tier": "critical",
-   "title": "CLion 安全模式Meson设置致代码执行",
-   "title_zh": "CLion 安全模式Meson设置致代码执行",
-   "summary_zh": "诱导用户打开恶意项目，其Meson项目设置在安全模式下仍可执行任意代码",
-   "published": "2026-11-06T17:17:21.240",
-   "cvss": 9.6,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-829"
-   ],
-   "difficulty": "低(远程·免认证·需用户交互)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.jetbrains.com/privacy-security/issues-fixed/"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 2026.2 或 2026.1.4",
-   "repro_worthy": "一般",
-   "repro_note": "打开含恶意Meson项目设置的工程触发执行",
-   "impact_scope": "本地开发终端，需用户交互",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123831",
-   "description": "In JetBrains CLion before 2026.2, 2026.1.4 code execution was possible in Safe Mode via Meson project settings"
-  },
-  {
-   "id": "CVE-2026-123832",
-   "tier": "critical",
-   "title": "CLion 安全模式JSON编译库致代码执行",
-   "title_zh": "CLion 安全模式JSON编译库致代码执行",
-   "summary_zh": "诱导用户打开含恶意JSON编译数据库的项目，安全模式下仍可执行任意代码",
-   "published": "2026-11-06T17:17:21.387",
-   "cvss": 9.6,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-829"
-   ],
-   "difficulty": "低(远程·免认证·需用户交互)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.jetbrains.com/privacy-security/issues-fixed/"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 2026.2 或更高版本",
-   "repro_worthy": "一般",
-   "repro_note": "打开含恶意JSON compilation database的工程",
-   "impact_scope": "本地开发终端，需用户交互",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123832",
-   "description": "In JetBrains CLion before 2026.2 code execution was possible in Safe Mode via JSON compilation database"
-  },
-  {
-   "id": "CVE-2026-86044",
-   "tier": "critical",
-   "title": "JupyterLab 重定向致令牌窃取RCE",
-   "title_zh": "JupyterLab 重定向致令牌窃取RCE",
-   "summary_zh": "诱导用户打开含恶意MathJax链接的不可信笔记本，窃取本地URL与令牌后经REST API执行代码",
-   "published": "2026-11-06T21:17:12.297",
-   "cvss": 9.6,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "开放重定向"
-   ],
-   "difficulty": "低(远程·免认证·需用户交互)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/jupyterlab/jupyterlab-desktop/commit/7f8f64ae796efae77d106612c95f0edd6c5dc273"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/jupyterlab/jupyterlab-desktop/releases/tag/v4.6.2-1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/jupyterlab/jupyterlab-desktop/security/advisories/GHSA-2mr8-962v-wc67"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 JupyterLab 4.4.8 或更高版本",
-   "repro_worthy": "一般",
-   "repro_note": "不可信笔记本中MathJax链接经getServerInfo窃取令牌",
-   "impact_scope": "数据分析环境，用户交互触发",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86044",
-   "description": "In a local managed session using JupyterLab before 4.4.8, an attacker can place a crafted MathJax link in an untrusted notebook. The site can call getServerInfo to obtain the local server URL and authentication token, then use the Jupyter REST API to create and trust a notebook that executes arbitrary code as the victim."
-  },
-  {
-   "id": "CVE-2026-102530",
-   "tier": "critical",
-   "title": "Welcome 渲染器XSS经IPC致RCE",
-   "title_zh": "Welcome 渲染器XSS经IPC致RCE",
-   "summary_zh": "诱导用户提交构造URL，在Welcome渲染器执行JS并滥用特权IPC桥以用户权限执行代码",
-   "published": "2026-11-06T21:17:05.510",
-   "cvss": 9.4,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "XSS",
-    "代码注入(RCE)"
-   ],
-   "difficulty": "低(远程·免认证·需用户交互)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/jupyterlab/jupyterlab-desktop/commit/f59fd4f61bc6a2ca89cf0d13dce5f60511eaef5d"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/jupyterlab/jupyterlab-desktop/releases/tag/v4.6.2-1"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/jupyterlab/jupyterlab-desktop/security/advisories/GHSA-vrj4-r4fw-9rfh"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到厂商修复版本，谨慎打开外部链接",
-   "repro_worthy": "一般",
-   "repro_note": "构造URL在Welcome渲染器触发XSS后调用IPC桥",
-   "impact_scope": "桌面客户端，需用户交互",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102530",
-   "description": "An attacker who convinces a user to submit a crafted URL can execute JavaScript in the Welcome renderer and abuse its privileged IPC bridge to execute arbitrary code with the user’s privileges. The Welcome view also unsafely renders RSS news-feed titles; exploitation through this separate input path requires control over content delivered through the application’s Jupyter Blog feed or its cached feed data, rather than submission of a remote-server URL."
-  },
-  {
-   "id": "CVE-2026-86005",
-   "tier": "critical",
-   "title": "Chartbrew队列面板缺失认证",
-   "title_zh": "Chartbrew队列面板缺失认证",
-   "summary_zh": "远程未授权攻击者可直连启用了Redis/BullMQ的Chartbrew的/apps/queues管理面板，操控队列任务并泄露数据",
-   "published": "2026-11-06T21:17:12.117",
-   "cvss": 9.3,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失认证"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/commit/91873ce25d2b76d7bb6de7c61f372d03d56cc4aa"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/releases/tag/v5.2.3"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/security/advisories/GHSA-w8g3-j8rf-qc5j"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复版本；临时在反向代理封禁/apps/queues并关闭BullMQ面板",
-   "repro_worthy": "一般",
-   "repro_note": "直接访问 /apps/queues；前置：Redis与BullMQ已启用、反代未拦截该路由",
-   "impact_scope": "内网BI报表平台，管理面暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86005",
-   "description": "The vulnerable surface is the Bull Board/BullMQ administration dashboard at /apps/queues. A remote unauthenticated attacker reaches /apps/queues on a Chartbrew instance where Redis and BullMQ are enabled and a reverse proxy does not independently block the route."
-  },
-  {
-   "id": "CVE-2026-83493",
-   "tier": "critical",
-   "title": "Red Hat CI工作流引入不可信代码",
-   "title_zh": "Red Hat CI工作流引入不可信代码",
-   "summary_zh": "能提交PR的攻击者利用pull_request_target工作流执行不可信代码，窃取SNYK_TOKEN及仓库写令牌",
-   "published": "2026-11-06T07:17:52.420",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-   "epss": 0.00238,
-   "epss_percentile": 0.14971,
-   "cwe_labels": [
-    "CWE-829"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://access.redhat.com/security/cve/CVE-2026-83493"
-    },
-    {
-     "label": "参考",
-     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2526349"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "轮换SNYK_TOKEN及仓库写令牌，收紧workflow权限与PR触发条件",
-   "repro_worthy": "一般",
-   "repro_note": "向目标仓库提交特制PR触发pull_request_target工作流，观察密钥外带",
-   "impact_scope": "代码托管CI流水线，供应链入口",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83493",
-   "description": "A remote attacker could exploit a vulnerability in the pull_request_target workflow by submitting a specially crafted pull request. This workflow processes untrusted code from the pull request author while operating with the base repository's sensitive secrets, such as the SNYK_TOKEN, and its default write token."
-  },
-  {
-   "id": "CVE-2026-59105",
-   "tier": "critical",
-   "title": "本地部署数据库 xp_cmdshell 提权",
-   "title_zh": "本地部署数据库 xp_cmdshell 提权",
-   "summary_zh": "拥有sysadmin权限者可借助自动启用的xp_cmdshell，在数据库服务器上执行操作系统命令",
-   "published": "2026-11-06T15:17:22.270",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-547",
-    "CWE-1391"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://offseq.com/en/research/jumis-cve-2026-59105/"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.mansjumis.lv/"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P2 保持关注",
-   "action_zh": "禁用xp_cmdshell并升级到厂商修复版本",
-   "repro_worthy": "一般",
-   "repro_note": "需sysadmin权限，调用xp_cmdshell执行系统命令",
-   "impact_scope": "数据库服务器，需高权限前置",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59105",
-   "description": "Jumis (formerly Tildes Jumis) creates and uses a Microsoft SQL Server login named ##Tilde_JumisAdmin## whose password is derived deterministically from a single non-secret input - the SQL Server name (@@servername). The on-premise server installation also programmatically enables xp_cmdshell during routine operation, so sysadmin access escalates to operating-system command execution on the database server."
-  },
-  {
-   "id": "CVE-2026-68935",
-   "tier": "critical",
-   "title": "Chartbrew API连接SSRF探内网",
-   "title_zh": "Chartbrew API连接SSRF探内网",
-   "summary_zh": "可创建API连接的用户可篡改allowPrivateHost字段，令服务端请求内网HTTP服务，造成信息泄露或未授权操作",
-   "published": "2026-11-06T22:17:59.390",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SSRF"
-   ],
-   "difficulty": "中(远程·需高权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/commit/78f49f4fc2781dc3f33f102b1daeddf22225bce4"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/releases/tag/v5.2.3"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/chartbrew/chartbrew/security/advisories/GHSA-4q3v-5r7x-58q2"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至5.2.2之后的修复版本，服务端强制忽略该字段的用户输入",
-   "repro_worthy": "一般",
-   "repro_note": "认证后在创建/更新API连接时注入allowPrivateHost=true并指向内网地址",
-   "impact_scope": "内网BI平台，可作内网探测跳板",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-68935",
-   "description": "In versions 4.8.5 through 5.2.2, API connection creation and update operations accept the internal allowPrivateHost field from user input. Successful exploitation allows requests to internal HTTP services reachable from the Chartbrew server, potentially disclosing information or triggering unauthorized actions depending on the target service."
-  },
-  {
-   "id": "CVE-2026-123279",
-   "tier": "critical",
-   "title": "Datalore只读协作者可执行代码",
-   "title_zh": "Datalore只读协作者可执行代码",
-   "summary_zh": "仅有查看权限的协作成员可在notebook计算单元中执行代码，导致服务端任意代码执行",
-   "published": "2026-11-06T11:17:06.140",
-   "cvss": 9.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
     "授权错误"
    ],
-   "difficulty": "中(远程·需低权限·需用户交互)",
+   "difficulty": "低(远程·免认证)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.jetbrains.com/privacy-security/issues-fixed/"
+     "url": "https://www.ibm.com/support/pages/node/7295921"
     }
    ],
    "poc": [],
@@ -1045,25 +903,381 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至 Datalore 2026.4 及以上版本",
-   "repro_worthy": "一般",
-   "repro_note": "以只读协作者身份打开notebook，在计算单元写入并运行代码",
-   "impact_scope": "数据分析平台，多用户协作内网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123279",
-   "description": "In JetBrains Datalore before 2026.4 code execution was possible in a notebook's computation by view-only collaborators"
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123218",
+   "description": "IBM Aspera Faspex 5.0.0 through 5.0.19 could allow an authorized user to craft a specific message to bypass user authorization and gain full administrative privileges."
+  },
+  {
+   "id": "CVE-2026-17362",
+   "tier": "critical",
+   "title": "未授权 缺失授权(越权)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T04:17:29.070",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失授权(越权)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17362",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to create, modify, or delete tenants due to missing authorization."
+  },
+  {
+   "id": "CVE-2026-16720",
+   "tier": "critical",
+   "title": "未授权 认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:21.883",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16720",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain valid access tokens for other users due to improper authentication. Authentication against a connected directory service is not sufficiently enforced, which could allow another user's identity to be assumed."
+  },
+  {
+   "id": "CVE-2026-17278",
+   "tier": "critical",
+   "title": "未授权 认证欺骗",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:33.440",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证欺骗"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17278",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to gain unauthorized access to sensitive API catalog and runtime configuration data due to improper authentication. Information supplied by the client is not sufficiently verified, which could allow a caller to appear as a trusted party."
+  },
+  {
+   "id": "CVE-2026-17301",
+   "tier": "critical",
+   "title": "未授权 签名校验错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:37.913",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "签名校验错误"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17301",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow an unauthenticated attacker to bypass authentication due to improper verification of a cryptographic signature."
+  },
+  {
+   "id": "CVE-2026-17313",
+   "tier": "critical",
+   "title": "未授权 认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:40.163",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17313",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain sensitive information and take control of gateway configuration due to authentication bypass via an alternate path."
+  },
+  {
+   "id": "CVE-2026-17340",
+   "tier": "critical",
+   "title": "未授权 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:45.510",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17340",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to execute arbitrary code due to a path traversal vulnerability."
+  },
+  {
+   "id": "CVE-2026-17360",
+   "tier": "critical",
+   "title": "未授权 硬编码凭据",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:48.197",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "硬编码凭据"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17360",
+   "description": "IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to gain full administrative control due to the use of hard-coded credentials."
+  },
+  {
+   "id": "CVE-2026-17408",
+   "tier": "critical",
+   "title": "未授权 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-07T05:18:57.917",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295635"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7295637"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17408",
+   "description": "IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to execute arbitrary code due to improper neutralization of special elements in an OS command."
   }
  ],
  "media": [],
  "commits": [
   {
    "repo": "wireshark/wireshark",
-   "sha": "97668c792676f95ca0239fc145c78dfd9fcfe22b",
-   "url": "https://github.com/wireshark/wireshark/commit/97668c792676f95ca0239fc145c78dfd9fcfe22b",
-   "title": "H1: Add a synthetic capture and tests",
-   "date": "2026-11-06T01:50:11",
+   "sha": "caa1144ca4c9a2d3d59e68c36a0d550715090eed",
+   "url": "https://github.com/wireshark/wireshark/commit/caa1144ca4c9a2d3d59e68c36a0d550715090eed",
+   "title": "IEEE1905: Fix MIC check buffer overflow and small length bugs",
+   "date": "2026-11-07T07:06:56",
    "score": 2,
    "matched": [
-    "格式串"
+    "缓冲区溢出"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "611bcc793fd8fce743fc6b3f784c0b9b8cf0d961",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/611bcc793fd8fce743fc6b3f784c0b9b8cf0d961",
+   "title": "avcodec/vc2enc: reject wavelet types the encoder does not implement",
+   "date": "2026-11-07T06:37:28",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "python/cpython",
+   "sha": "6c5596c7199792ea1e8cf26f65da8cd0023c0473",
+   "url": "https://github.com/python/cpython/commit/6c5596c7199792ea1e8cf26f65da8cd0023c0473",
+   "title": "GH-159101: Fix UAF when tp_finalize changes the base class (#159888)",
+   "date": "2026-11-07T06:23:41",
+   "score": 2,
+   "matched": [
+    "UAF"
    ],
    "cve": null
   }

@@ -3,234 +3,270 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
-    <lastBuildDate>Sat, 07 Nov 2026 03:11:30 +0000</lastBuildDate>
+    <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
+    <lastBuildDate>Sat, 07 Nov 2026 07:22:57 +0000</lastBuildDate>
     <item>
-      <title>[high]IDEA 不受信项目WSL命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123837</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123837-2026-11-07</guid>
-      <description>CVE-2026-123837 · 🎯P2 保持关注 · 披露 2026-11-06 · 组件 Web中间件 · CVSS 7.8 · 类型 命令注入(RCE) · 难度 高(需本地访问·免认证·需用户交互)
-In JetBrains IntelliJ IDEA before 2026.3, 2026.2.1 command injection was possible in untrusted projects via Tomcat run configurations on WSL
-信号: 关注词:tomcat</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]Python hashlib FIPS 回归</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119170</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119170-2026-11-07</guid>
-      <description>CVE-2026-119170 · 🎯P2 保持关注 · 披露 2026-11-06 · 组件 开发库/依赖 · CVSS 8.2 · 类型 CWE-693 · 难度 低(远程·利用条件苛刻·免认证)
-There was a regression in how FIPS algorithms were enforced for the hashlib module. Only users that are using OpenSSL in FIPS mode are affected.
-信号: 关注词:openssl</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]AWS REX SSM 文档命令注入提权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122193</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122193-2026-11-07</guid>
-      <description>CVE-2026-122193 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 命令注入(RCE) · 难度 低(远程·需低权限)
-OS command injection in the example SSM document provisioning script in Trusted Remote Execution (REX) before 2026-07-28 might allow an authenticated remote use…
+      <title>[critical]未授权 XXE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-16884</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-16884-2026-11-07</guid>
+      <description>CVE-2026-16884 · 🎯P1 重点关注 · 披露 2026-11-07 · 组件 ERP/业务系统 · CVSS 9.9 · 类型 XXE · 难度 低(远程·免认证)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain sensitive information due to an XML external entity (XXE) injection.
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]LXD 快照越权致主机命令执行</title>
-      <link>https://github.com/advisories/GHSA-47w9-6r3f-938g</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-47w9-6r3f-938g-2026-11-07</guid>
-      <description>GHSA-47w9-6r3f-938g · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 缺失授权(越权) · 难度 低(远程·需低权限)
-In practice, this allows a malicious actor to execute arbitrary commands on the host with root privileges.
+      <title>[critical]意图代理错误(混源下载)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-16920</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-16920-2026-11-07</guid>
+      <description>CVE-2026-16920 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 意图代理错误(混源下载) · 难度 低(远程·需低权限)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to bypass security restrictions due to a confused deputy vulnerability.
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]LXD 镜像URL路径穿越致RCE</title>
-      <link>https://github.com/advisories/GHSA-pjff-c2wc-f6jm</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-pjff-c2wc-f6jm-2026-11-07</guid>
-      <description>GHSA-pjff-c2wc-f6jm · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 输入校验缺失 · 难度 低(远程·需低权限)
-""" from __future__ import annotations import argparse import http.client import json import shlex import socket import ssl import sys import threading import t…
+      <title>[critical]越权(IDOR)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17049</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17049-2026-11-07</guid>
+      <description>CVE-2026-17049 · 🎯P1 重点关注 · 披露 2026-11-07 · 组件 ERP/业务系统 · CVSS 9.9 · 类型 越权(IDOR) · 难度 低(远程·需低权限)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information and modify arbitrary documents due to auth…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]LXD 镜像导入校验缺失致文件写入</title>
-      <link>https://github.com/advisories/GHSA-fmc8-p6q7-75cc</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-fmc8-p6q7-75cc-2026-11-07</guid>
-      <description>GHSA-fmc8-p6q7-75cc · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 输入校验缺失 · 难度 低(远程·需低权限)
-""" from __future__ import annotations import argparse import json import os import shlex import sys import urllib.parse from pathlib import PurePosixPath from …
+      <title>[critical]CWE-915</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17117</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17117-2026-11-07</guid>
+      <description>CVE-2026-17117 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 CWE-915 · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to improperly…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]LXD 恶意镜像符号链接逃逸</title>
-      <link>https://github.com/advisories/GHSA-vghh-5rfx-xhq8</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-vghh-5rfx-xhq8-2026-11-07</guid>
-      <description>GHSA-vghh-5rfx-xhq8 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 CWE-73 · 难度 低(远程·需低权限)
- metadata.yaml rootfs/ rootfs -&gt; /  In practice, this allows a malicious actor to access the host's filesystem with root privileges.
+      <title>[critical]SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17132</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17132-2026-11-07</guid>
+      <description>CVE-2026-17132 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 SQL注入 · 难度 低(远程·需低权限)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary SQL commands due to improper neutralization of specia…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]LXD 恶意镜像任意文件编辑</title>
-      <link>https://github.com/advisories/GHSA-jpf8-86f3-wp38</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-jpf8-86f3-wp38-2026-11-07</guid>
-      <description>GHSA-jpf8-86f3-wp38 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 CWE-73 · 难度 低(远程·需低权限)
-In practice, this allows a malicious actor to access an arbitrary directory and edit arbitrary files in it.
+      <title>[critical]SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17134</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17134-2026-11-07</guid>
+      <description>CVE-2026-17134 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 SQL注入 · 难度 低(远程·需低权限)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary SQL commands due to SQL injection.
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]LXD exec-output 符号链接文件写入</title>
-      <link>https://github.com/advisories/GHSA-9j25-mm2h-2f76</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#GHSA-9j25-mm2h-2f76-2026-11-07</guid>
-      <description>GHSA-9j25-mm2h-2f76 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.9 · 类型 CWE-73 · 难度 低(远程·需低权限)
- Details When an image is unpacked, top-level symlinks are extracted as is; allowing for exec-output to be placed on disk.
+      <title>[critical]JavaScript XSS</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17146</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17146-2026-11-07</guid>
+      <description>CVE-2026-17146 · 🎯P1 重点关注 · 披露 2026-11-07 · 组件 ERP/业务系统 · CVSS 9.9 · 类型 XSS · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary JavaScript and obtain …
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]SQL仪表盘变量替换致未认证SQL注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-54349</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-54349-2026-11-07</guid>
-      <description>CVE-2026-54349 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
-An unauthenticated user sends crafted URL filter values to a public or embedded chart backed by a stored SQL query.
+      <title>[critical]路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17147</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17147-2026-11-07</guid>
+      <description>CVE-2026-17147 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code and perform unaut…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]2FAuth 认证绕过致管理员接管</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-63438</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-63438-2026-11-07</guid>
-      <description>CVE-2026-63438 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
-An unauthenticated remote client can therefore create an administrator on a fresh instance or impersonate and redirect email for a known account, exposing 2FA s…
+      <title>[critical]CWE-184</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17150</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17150-2026-11-07</guid>
+      <description>CVE-2026-17150 · 🎯P1 重点关注 · 披露 2026-11-07 · 组件 ERP/业务系统 · CVSS 9.9 · 类型 CWE-184 · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code and access sensit…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]2FAuth 未认证认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-63439</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-63439-2026-11-07</guid>
-      <description>CVE-2026-63439 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
-2FAuth is a web app to manage Two-Factor Authentication (2FA) accounts and generate their security codes.
+      <title>[critical]认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17158</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17158-2026-11-07</guid>
+      <description>CVE-2026-17158 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 认证绕过 · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to gain elevated privileges due to improper…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]聊天服务 默认JWT密钥致认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85295</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85295-2026-11-07</guid>
-      <description>CVE-2026-85295 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.8 · 类型 CWE-1394 · 难度 低(远程·免认证)
-The vulnerable surface is session JWT fallback in server/modules/verifyToken.js, verifyUser.js, getUserFromToken.js, and socketManager.js across the API and soc…
+      <title>[critical]路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17239</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17239-2026-11-07</guid>
+      <description>CVE-2026-17239 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to a path traversal vulnerability.
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]无人机控制服务 未授权会话接管</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59104</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59104-2026-11-07</guid>
-      <description>CVE-2026-59104 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
-Because the service listens on all interfaces (0.0.0.0) without TLS by default, an unauthenticated remote attacker with network access to port 3334 can obtain a…
+      <title>[critical]SSRF</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17298</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17298-2026-11-07</guid>
+      <description>CVE-2026-17298 · 🎯P1 重点关注 · 披露 2026-11-07 · 组件 ERP/业务系统 · CVSS 9.9 · 类型 SSRF · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to obtain sensitive information due to serv…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]JetBrains Hub 验证流程权限提升</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123294</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123294-2026-11-07</guid>
-      <description>CVE-2026-123294 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.6 · 类型 CWE-915 · 难度 低(远程·需低权限)
-In JetBrains Hub before 2026.2.52556 privilege escalation was possible by changing email authentication details during the verification flow
+      <title>[critical]SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17336</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17336-2026-11-07</guid>
+      <description>CVE-2026-17336 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 SQL注入 · 难度 低(远程·需低权限)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary SQL commands due to improper neutralization of specia…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]CLion 安全模式Meson设置致代码执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123831</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123831-2026-11-07</guid>
-      <description>CVE-2026-123831 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.6 · 类型 CWE-829 · 难度 低(远程·免认证·需用户交互)
-In JetBrains CLion before 2026.2, 2026.1.4 code execution was possible in Safe Mode via Meson project settings
+      <title>[critical]代码注入(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17342</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17342-2026-11-07</guid>
+      <description>CVE-2026-17342 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to improper c…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]CLion 安全模式JSON编译库致代码执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123832</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123832-2026-11-07</guid>
-      <description>CVE-2026-123832 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.6 · 类型 CWE-829 · 难度 低(远程·免认证·需用户交互)
-In JetBrains CLion before 2026.2 code execution was possible in Safe Mode via JSON compilation database
+      <title>[critical]路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17354</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17354-2026-11-07</guid>
+      <description>CVE-2026-17354 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to perform arbitrary file writes due to path traversal.
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]JupyterLab 重定向致令牌窃取RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-86044</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-86044-2026-11-07</guid>
-      <description>CVE-2026-86044 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.6 · 类型 开放重定向 · 难度 低(远程·免认证·需用户交互)
-In a local managed session using JupyterLab before 4.4.8, an attacker can place a crafted MathJax link in an untrusted notebook.
+      <title>[critical]代码注入(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17359</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17359-2026-11-07</guid>
+      <description>CVE-2026-17359 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to improper c…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Welcome 渲染器XSS经IPC致RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102530</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102530-2026-11-07</guid>
-      <description>CVE-2026-102530 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.4 · 类型 XSS/代码注入(RCE) · 难度 低(远程·免认证·需用户交互)
-An attacker who convinces a user to submit a crafted URL can execute JavaScript in the Welcome renderer and abuse its privileged IPC bridge to execute arbitrary…
+      <title>[critical]LDAP CWE-90</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17392</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17392-2026-11-07</guid>
+      <description>CVE-2026-17392 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 CWE-90 · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to gain unauthorized administrative access …
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Chartbrew队列面板缺失认证</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-86005</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-86005-2026-11-07</guid>
-      <description>CVE-2026-86005 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.3 · 类型 缺失认证 · 难度 低(远程·免认证)
-A remote unauthenticated attacker reaches /apps/queues on a Chartbrew instance where Redis and BullMQ are enabled and a reverse proxy does not independently blo…
+      <title>[critical]任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17399</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17399-2026-11-07</guid>
+      <description>CVE-2026-17399 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 任意文件上传 · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary code due to insufficie…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Red Hat CI工作流引入不可信代码</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-83493</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-83493-2026-11-07</guid>
-      <description>CVE-2026-83493 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.1 · EPSS 0.2%,前 15% · 类型 CWE-829 · 难度 低(远程·免认证)
-A remote attacker could exploit a vulnerability in the pull_request_target workflow by submitting a specially crafted pull request.
+      <title>[critical]命令注入(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17402</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17402-2026-11-07</guid>
+      <description>CVE-2026-17402 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 命令注入(RCE) · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to execute arbitrary commands due to OS com…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]本地部署数据库 xp_cmdshell 提权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59105</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59105-2026-11-07</guid>
-      <description>CVE-2026-59105 · 🎯P2 保持关注 · 披露 2026-11-06 · 组件 数据库 · CVSS 9.8 · 类型 CWE-547/CWE-1391 · 难度 低(远程·免认证)
-The on-premise server installation also programmatically enables xp_cmdshell during routine operation, so sysadmin access escalates to operating-system command …
+      <title>[critical]参数拼接注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17410</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17410-2026-11-07</guid>
+      <description>CVE-2026-17410 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.9 · 类型 参数拼接注入 · 难度 低(远程·需低权限)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote authenticated attacker to access and modify other tenants' portal …
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Chartbrew API连接SSRF探内网</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-68935</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-68935-2026-11-07</guid>
-      <description>CVE-2026-68935 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.1 · 类型 SSRF · 难度 中(远程·需高权限)
-Successful exploitation allows requests to internal HTTP services reachable from the Chartbrew server, potentially disclosing information or triggering unauthor…
+      <title>[critical]IBM Aspera Faspex 未授权 授权错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123218</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123218-2026-11-07</guid>
+      <description>CVE-2026-123218 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.8 · 类型 授权错误 · 难度 低(远程·免认证)
+IBM Aspera Faspex 5.0.0 through 5.0.19 could allow an authorized user to craft a specific message to bypass user authorization and gain full administrative priv…
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Datalore只读协作者可执行代码</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123279</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123279-2026-11-07</guid>
-      <description>CVE-2026-123279 · 🎯P1 重点关注 · 披露 2026-11-06 · CVSS 9.0 · 类型 授权错误 · 难度 中(远程·需低权限·需用户交互)
-In JetBrains Datalore before 2026.4 code execution was possible in a notebook's computation by view-only collaborators
+      <title>[critical]未授权 缺失授权(越权)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17362</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17362-2026-11-07</guid>
+      <description>CVE-2026-17362 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.8 · 类型 缺失授权(越权) · 难度 低(远程·免认证)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to create, modify, or delete tenants due to missing authorization.
 信号:</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
     <item>
-      <title>今日要点</title>
-      <description>- 今日清单未标在野利用或勒索软件关联，勿据此判断已活跃攻击。
-- 批量公告趋势明显：LXD同一修复版本连发3条9.9分漏洞。
-- 最需立即处置：9.9分命令注入CVE-2026-122193，优先排查暴露面。
-- LXD越权与输入校验缺失均9.9分，升级至c5184be310b1修复版。
-- 另有多个9.8分认证绕过/SQL注入，建议同步紧急修补。</description>
-      <pubDate>Sat, 07 Nov 2026 03:11:30 +0000</pubDate>
+      <title>[critical]未授权 认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-16720</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-16720-2026-11-07</guid>
+      <description>CVE-2026-16720 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain valid access tokens for other users due to impr…
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 认证欺骗</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17278</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17278-2026-11-07</guid>
+      <description>CVE-2026-17278 · 🎯P1 重点关注 · 披露 2026-11-07 · 组件 ERP/业务系统 · CVSS 9.8 · 类型 认证欺骗 · 难度 低(远程·免认证)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to gain unauthorized access to sensitive API catalog and runtime configuration data due …
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 签名校验错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17301</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17301-2026-11-07</guid>
+      <description>CVE-2026-17301 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.8 · 类型 签名校验错误 · 难度 低(远程·免认证)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow an unauthenticated attacker to bypass authentication due to improper verifi…
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17313</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17313-2026-11-07</guid>
+      <description>CVE-2026-17313 · 🎯P1 重点关注 · 披露 2026-11-07 · 组件 ERP/业务系统 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to obtain sensitive information and take control of gateway configuration due to authent…
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17340</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17340-2026-11-07</guid>
+      <description>CVE-2026-17340 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.8 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to execute arbitrary code due to a path traversal vulnerability.
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 硬编码凭据</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17360</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17360-2026-11-07</guid>
+      <description>CVE-2026-17360 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.8 · 类型 硬编码凭据 · 难度 低(远程·免认证)
+IBM API Connect 12.1.0.0 through 12.1.1.2 could allow a remote attacker to gain full administrative control due to the use of hard-coded credentials.
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 命令注入(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17408</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17408-2026-11-07</guid>
+      <description>CVE-2026-17408 · 🎯P1 重点关注 · 披露 2026-11-07 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+IBM API Connect 10.0.8.0 through 10.0.8.12 and 12.1.0.0 through 12.1.1.2 could allow a remote attacker to execute arbitrary code due to improper neutralization …
+信号:</description>
+      <pubDate>Sat, 07 Nov 2026 07:22:57 +0000</pubDate>
     </item>
   </channel>
 </rss>

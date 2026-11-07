@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-07 03:11 UTC · 共 **165** 条(强烈推荐 27 / 值得 138)
+**更新**: 2026-11-07 07:22 UTC · 共 **175** 条(强烈推荐 27 / 值得 148)
 
 ---
 
@@ -603,6 +603,56 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### CVE-2026-16884
+[CVE-2026-16884](https://nvd.nist.gov/vuln/detail/CVE-2026-16884) | P1 重点关注 | ERP/业务系统 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-16920
+[CVE-2026-16920](https://nvd.nist.gov/vuln/detail/CVE-2026-16920) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-17049
+[CVE-2026-17049](https://nvd.nist.gov/vuln/detail/CVE-2026-17049) | P1 重点关注 | ERP/业务系统 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-17117
+[CVE-2026-17117](https://nvd.nist.gov/vuln/detail/CVE-2026-17117) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17132
+[CVE-2026-17132](https://nvd.nist.gov/vuln/detail/CVE-2026-17132) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-17134
+[CVE-2026-17134](https://nvd.nist.gov/vuln/detail/CVE-2026-17134) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
+
+### CVE-2026-17146
+[CVE-2026-17146](https://nvd.nist.gov/vuln/detail/CVE-2026-17146) | P1 重点关注 | ERP/业务系统 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17147
+[CVE-2026-17147](https://nvd.nist.gov/vuln/detail/CVE-2026-17147) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17150
+[CVE-2026-17150](https://nvd.nist.gov/vuln/detail/CVE-2026-17150) | P1 重点关注 | ERP/业务系统 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### CVE-2026-17158
+[CVE-2026-17158](https://nvd.nist.gov/vuln/detail/CVE-2026-17158) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
+复现: 值得
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
 
 ### WAVLINK WN553X1-B命令注入
 [CVE-2026-120231](https://nvd.nist.gov/vuln/detail/CVE-2026-120231) | P1 重点关注 | 边界设备/VPN | CVSS 9.9 | 披露 2026-11-01 | 入库 2026-11-01
