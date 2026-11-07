@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-06 19:59 UTC · 共 **164** 条(强烈推荐 26 / 值得 138)
+**更新**: 2026-11-07 00:59 UTC · 共 **165** 条(强烈推荐 27 / 值得 138)
 
 ---
 
@@ -79,6 +79,14 @@ PoC: [ApexBreach/CVE-2026-104935-Proof-of-concept 0★(仅README)](https://githu
 影响: apache struts、oracle siebel_e-billing
 PoC: [NVD exploit 引用](http://packetstormsecurity.com/files/136856/Apache-Struts-2.3.28-Dynamic-Method-Invocation-Remote-Code-Execution.html)
 参考: [参考](http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20160527-01-struts2-en) · [官方补丁](http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html) · [厂商通告](http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html)
+
+### SonicOS SSLVPN认证绕过致MFA失效
+[CVE-2026-19868](https://nvd.nist.gov/vuln/detail/CVE-2026-19868) | P0 立即处置 | 边界设备/VPN | CVSS 7.5 | 披露 2026-11-06 | 入库 2026-11-07
+🔥 KEV 在野利用,限期 2026-11-20
+持有备用认证方式有效凭据者可绕过SAML认证与MFA，远程登录SSLVPN获取内网访问权限
+复现: 强烈推荐 — 需具备备用认证方式的有效凭据，向SSLVPN登录接口提交以绕过SAML · 影响面: 边界SSL VPN设备，常暴露公网
+处置: 升级至SonicWall修复版本；临时禁用SSLVPN或强制SAML+MFA校验
+参考: [参考](https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0014) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-19868)
 
 ### Junos BIND TKEY查询拒绝服务
 [CVE-2015-5477](https://nvd.nist.gov/vuln/detail/CVE-2015-5477) | P0 立即处置 | 网络设备 | CVSS 7.5 | EPSS 91.8% | 披露 2015-07-29 | 入库 2026-10-10

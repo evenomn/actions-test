@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-06T19:59:36+00:00",
- "count": 164,
- "count_recommended": 26,
+ "updated_at": "2026-11-07T00:59:23+00:00",
+ "count": 165,
+ "count_recommended": 27,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -342,6 +342,46 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2016-3081",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-19868",
+   "title": "SonicOS SSLVPN认证绕过致MFA失效",
+   "first_seen": "2026-11-07",
+   "last_seen": "2026-11-07",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-06",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "需具备备用认证方式的有效凭据，向SSLVPN登录接口提交以绕过SAML",
+   "impact_scope": "边界SSL VPN设备，常暴露公网",
+   "action_zh": "升级至SonicWall修复版本；临时禁用SSLVPN或强制SAML+MFA校验",
+   "summary_zh": "持有备用认证方式有效凭据者可绕过SAML认证与MFA，远程登录SSLVPN获取内网访问权限",
+   "category": "边界设备/VPN",
+   "cvss": 7.5,
+   "epss": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-20",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0014"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-19868"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-19868",
    "change_note": null
   },
   {

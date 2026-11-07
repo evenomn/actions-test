@@ -1,35 +1,168 @@
 {
  "version": 3,
- "generated_at": "2026-11-06T19:59:36+00:00",
+ "generated_at": "2026-11-07T00:59:23+00:00",
  "lookback_hours": 5,
- "count": 11,
+ "count": 8,
  "stats": {
-  "total": 11,
+  "total": 8,
   "by_tier": {
-   "critical": 11
+   "critical": 8
   },
   "by_urgency": {
-   "P1 重点关注": 11
+   "P1 重点关注": 7,
+   "P0 立即处置": 1
   },
   "by_category": {
-   "未知": 8,
-   "数据库": 2,
-   "CMS": 1
+   "未知": 6,
+   "边界设备/VPN": 1,
+   "容器/虚拟化": 1
   },
-  "kev": 0,
+  "kev": 1,
   "with_poc": 0,
   "with_poc_source": 0,
-  "repro_recommended": 0
+  "repro_recommended": 1
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-123488",
+   "id": "CVE-2026-19868",
    "tier": "critical",
-   "title": "Craft CMS 未认证SQL注入",
-   "title_zh": "Craft CMS 未认证SQL注入",
-   "summary_zh": "未认证攻击者向element搜索端点注入attribute参数，可读取或篡改数据库，叠加语句还可能命令执行。",
-   "published": "2026-11-06T15:17:18.133",
+   "title": "SonicOS SSLVPN认证绕过致MFA失效",
+   "title_zh": "SonicOS SSLVPN认证绕过致MFA失效",
+   "summary_zh": "持有备用认证方式有效凭据者可绕过SAML认证与MFA，远程登录SSLVPN获取内网访问权限",
+   "published": "2026-11-06T19:17:48.437",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:L/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-308"
+   ],
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0014"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-19868"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-20",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至SonicWall修复版本；临时禁用SSLVPN或强制SAML+MFA校验",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "需具备备用认证方式的有效凭据，向SSLVPN登录接口提交以绕过SAML",
+   "impact_scope": "边界SSL VPN设备，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-19868",
+   "description": "An authentication enforcement vulnerability in SonicOS SSLVPN service may allow a user with valid credentials for an alternate authentication method to bypass SAML authentication controls. Successful exploitation may also bypass SAML-enforced multi-factor authentication (MFA)."
+  },
+  {
+   "id": "CVE-2026-109469",
+   "tier": "critical",
+   "title": "Entra设备注册IDOR越权提权",
+   "title_zh": "Entra设备注册IDOR越权提权",
+   "summary_zh": "远程未授权攻击者通过用户可控键值绕过授权校验，在设备注册中提升至更高权限",
+   "published": "2026-11-06T23:17:20.557",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109469"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注微软官方补丁，收紧设备注册授权策略并最小化权限",
+   "repro_worthy": "一般",
+   "repro_note": "构造携带他人可控键值的设备注册请求，需有效租户环境",
+   "impact_scope": "云身份平台，多租户身份体系",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109469",
+   "description": "Authorization bypass through user-controlled key in Entra Device Registration allows an unauthorized attacker to elevate privileges over a network."
+  },
+  {
+   "id": "CVE-2026-58490",
+   "tier": "critical",
+   "title": "Tracecat SAML断言未验签绕过",
+   "title_zh": "Tracecat SAML断言未验签绕过",
+   "summary_zh": "未认证攻击者向暴露的SAML ACS端点提交伪造未签名响应，冒用已知邮箱用户会话",
+   "published": "2026-11-06T20:17:23.253",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "签名校验错误"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/TracecatHQ/tracecat/commit/018258ba6a17c36cbfa7ca977526c34fb6afc35f"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/TracecatHQ/tracecat/commit/a97aafbfd667a6b9a3b7b524e1c1bfa9d8c59779"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/TracecatHQ/tracecat/commit/dab64eb7ac0eb2088783ca14f4cb2d058547bfff"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本；在代理层限制SAML ACS端点访问来源",
+   "repro_worthy": "一般",
+   "repro_note": "向SAML ACS端点提交未签名断言，需已知目标用户邮箱",
+   "impact_scope": "自托管SAML部署，ACS端点暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58490",
+   "description": "An unauthenticated attacker who can reach the SAML assertion consumer endpoint can submit a forged unsigned response for an existing Tracecat user email address and obtain that user’s session. Exploitation does not create users when SAML user creation is disabled and does not affect default Fargate or Helm deployments."
+  },
+  {
+   "id": "CVE-2026-54349",
+   "tier": "critical",
+   "title": "SQL仪表盘变量替换SQL注入",
+   "title_zh": "SQL仪表盘变量替换SQL注入",
+   "summary_zh": "未认证攻击者向公开或嵌入图表的URL筛选参数注入，可读取或篡改后端数据库",
+   "published": "2026-11-06T21:17:08.947",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -45,11 +178,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/craftcms/cms/security/advisories/GHSA-qcvp-ggx3-97r6"
+     "url": "https://github.com/chartbrew/chartbrew/commit/f93d31ac586091f72a7eb97d89fa3b4db271bd24"
     },
     {
      "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/craft-cms-4.0.0-before-4.18.9-sql-injection-via-element-search-endpoint"
+     "url": "https://github.com/chartbrew/chartbrew/releases/tag/v5.2.1"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/chartbrew/chartbrew/security/advisories/GHSA-4wj7-9gq7-mrr2"
     }
    ],
    "poc": [],
@@ -60,27 +197,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至4.18.9或5.11.2，或临时下线搜索接口",
-   "repro_worthy": "值得",
-   "repro_note": "未授权请求element搜索端点，篡改attribute参数注入",
-   "impact_scope": "对外CMS站点，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123488",
-   "description": "Craft CMS 4.0.0 before 4.18.9 and 5.0.0 before 5.11.2 contains an unauthenticated SQL injection vulnerability in the element search endpoint because the attribute parameter is concatenated into the query unsanitized and emulated PDO prepares allow stacked statements. Remote attackers can read and write the database, setting the admin flag or overwriting password hashes in the users table to gain administrator access."
+   "action_zh": "升级至5.2.1以上；避免对外公开嵌入式图表",
+   "repro_worthy": "一般",
+   "repro_note": "向公开/嵌入图表的URL筛选参数注入，需后端存有SQL查询",
+   "impact_scope": "内网BI看板，数据库可被读取",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-54349",
+   "description": "Prior to 5.2.1, SQL dashboard-variable substitution used attacker-controlled JavaScript replacement strings unsafely across SQL connectors and separately failed to escape backslashes for MySQL and MariaDB quoted contexts. An unauthenticated user sends crafted URL filter values to a public or embedded chart backed by a stored SQL query."
   },
   {
-   "id": "CVE-2026-119923",
+   "id": "CVE-2026-63438",
    "tier": "critical",
-   "title": "Babelfish TDS堆溢出致RCE",
-   "title_zh": "Babelfish TDS堆溢出致RCE",
-   "summary_zh": "未认证攻击者向TDS端口发送畸形prelogin包触发堆溢出，可以数据库进程用户身份执行任意系统命令。",
-   "published": "2026-11-06T19:17:39.360",
+   "title": "2FAuth认证绕过可创建管理员",
+   "title_zh": "2FAuth认证绕过可创建管理员",
+   "summary_zh": "未认证远程客户端可在全新实例上创建管理员，或冒用已知账号劫持邮件重置",
+   "published": "2026-11-06T21:17:09.770",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "堆溢出"
+    "认证绕过"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -89,15 +226,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://aws.amazon.com/security/security-bulletins/2026-166-aws/"
+     "url": "https://github.com/Bubka/2FAuth/commit/43873cbfba445926c7008b4291eeee67752af9e8"
     },
     {
      "label": "参考",
-     "url": "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_4_10_0__PG_16_14"
+     "url": "https://github.com/Bubka/2FAuth/commit/8a4c395cac97f8b70b4a822639a6ad8a816f927c"
     },
     {
      "label": "参考",
-     "url": "https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_5_6_0__PG_17_10"
+     "url": "https://github.com/Bubka/2FAuth/commit/d9e58ac4a63fbd8a073e423567881c81a87915de"
     }
    ],
    "poc": [],
@@ -108,330 +245,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级Babelfish/Aurora PostgreSQL至修复版本，限制TDS暴露",
-   "repro_worthy": "值得",
-   "repro_note": "未认证向TDS端口发送畸形prelogin包，构造长度字段溢出",
-   "impact_scope": "数据库TDS端口，常暴露内网或公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119923",
-   "description": "A heap-based buffer overflow in the TDS prelogin parser in the Babelfish for PostgreSQL extension versions 1.0-1.5, 2.1-2.15, 3.1-3.12, 4.0-4.8, 5.1-5.4 and in Amazon Aurora PostgreSQL with Babelfish might allow remote attackers to execute arbitrary OS commands as the database process user via a specially crafted malformed TDS prelogin packet to the TDS port. This record consolidates a related NULL-pointer-dereference finding in the same prelogin parser."
-  },
-  {
-   "id": "CVE-2026-71495",
-   "tier": "critical",
-   "title": "Trail接口SSRF未授权访问内网",
-   "title_zh": "Trail接口SSRF未授权访问内网",
-   "summary_zh": "未授权攻击者向/api/v1/trail/download提交任意url，服务端代发请求并回显，可探测内网与云元数据。",
-   "published": "2026-11-06T19:17:56.657",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SSRF"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/open-wanderer/wanderer/commit/c371337b3db1d2895b5cad651046ef0ad4dfc802"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/open-wanderer/wanderer/pull/1104"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/open-wanderer/wanderer/releases/tag/v0.20.0"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至0.20.0，未修复前下线该接口并限制出网",
+   "action_zh": "升级至厂商修复版本，限制实例暴露并核查异常管理员账号",
    "repro_worthy": "一般",
-   "repro_note": "未授权POST /api/v1/trail/download，url指向内网地址",
-   "impact_scope": "公网Web服务，可作内网探测跳板",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-71495",
-   "description": "Prior to 0.20.0, when PUBLIC_PRIVATE_INSTANCE is not set to true, the unauthenticated POST /api/v1/trail/download handler passes the attacker-controlled JSON url field directly to event.fetch() and returns the fetched response. This allows requests to internal services such as db:8090 and search:7700, cloud metadata addresses, and other network destinations, exposing returned data and permitting internal network reconnaissance or denial of service."
+   "repro_note": "未授权调用注册与邮件相关接口，全新实例可直接建管理员",
+   "impact_scope": "自建2FA管理应用，存有二次验证密钥",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63438",
+   "description": "2FAuth is a web app to manage Two-Factor Authentication (2FA) accounts and generate their security codes. An unauthenticated remote client can therefore create an administrator on a fresh instance or impersonate and redirect email for a known account, exposing 2FA secrets and administrative functions."
   },
   {
-   "id": "CVE-2026-122193",
+   "id": "CVE-2026-63439",
    "tier": "critical",
-   "title": "REX SSM文档命令注入提权root",
-   "title_zh": "REX SSM文档命令注入提权root",
-   "summary_zh": "持有Rex-RO/RW调用权限的远程用户构造SSM文档参数注入命令，以root在受管实例执行并绕过Cedar策略。",
-   "published": "2026-11-06T17:17:20.313",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入(RCE)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://aws.amazon.com/security/security-bulletins/2026-173-aws/"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/trusted-remote-execution/trusted-remote-execution/security/advisories/GHSA-95g5-m242-wvhr"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至2026-07-28后版本，收紧SSM文档调用权限",
-   "repro_worthy": "一般",
-   "repro_note": "需Rex-RO/RW权限，构造SSM文档参数注入命令",
-   "impact_scope": "运维执行通道，可横向至受管主机",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122193",
-   "description": "OS command injection in the example SSM document provisioning script in Trusted Remote Execution (REX) before 2026-07-28 might allow an authenticated remote user who is permitted to invoke the Rex-RO or Rex-RW SSM document to execute arbitrary commands as root on the managed instance, bypassing Cedar policy enforcement. To remediate this issue, users should delete any Rex-RO and Rex-RW SSM documents created from the example script, in each account and Region where it was run."
-  },
-  {
-   "id": "GHSA-47w9-6r3f-938g",
-   "tier": "critical",
-   "title": "LXD 快照恢复越权获宿主root",
-   "title_zh": "LXD 快照恢复越权获宿主root",
-   "summary_zh": "受限项目用户可构造恶意实例快照并迁移恢复，跨权限边界在宿主机以root执行任意命令。",
-   "published": "2026-11-06T19:51:26Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失授权(越权)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260630083100-c5184be310b1(修复: 0.0.0-20260630083100-c5184be310b1)",
-   "ghsa_url": "https://github.com/advisories/GHSA-47w9-6r3f-938g",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复提交c5184be及之后版本，限制快照迁移",
-   "repro_worthy": "一般",
-   "repro_note": "需受限项目API权限，构造恶意快照后恢复触发",
-   "impact_scope": "容器/虚机宿主管控面，内网高价值",
-   "link": "https://github.com/advisories/GHSA-47w9-6r3f-938g",
-   "description": "As snapshots can be moved from one server to another, a malicious instance+snapshot can be crafted locally, moved to a restricted project and the snapshot restored for arbitrary command execution. In practice, this allows a malicious actor to execute arbitrary commands on the host with root privileges."
-  },
-  {
-   "id": "GHSA-pjff-c2wc-f6jm",
-   "tier": "critical",
-   "title": "LXD 镜像URL路径穿越写cron",
-   "title_zh": "LXD 镜像URL路径穿越写cron",
-   "summary_zh": "具镜像导入权限的攻击者用穿越路径的image URL向宿主/etc/cron.d写入文件，进而以root执行命令。",
-   "published": "2026-11-06T19:36:55Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "输入校验缺失"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260630083100-c5184be310b1(修复: 0.0.0-20260630083100-c5184be310b1)",
-   "ghsa_url": "https://github.com/advisories/GHSA-pjff-c2wc-f6jm",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复提交c5184be及之后版本，限制镜像导入",
-   "repro_worthy": "一般",
-   "repro_note": "需镜像导入权限，构造含../的image URL写入cron.d",
-   "impact_scope": "容器/虚机宿主管控面，内网高价值",
-   "link": "https://github.com/advisories/GHSA-pjff-c2wc-f6jm",
-   "description": "\"\"\" from __future__ import annotations import argparse import http.client import json import shlex import socket import ssl import sys import threading import time import urllib.parse from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer from typing import Any DEFAULT_SOCKET = \"/var/lib/incus/unix.socket\" DEFAULT_TRAVERSAL = \"../../../../etc/cron.d/incus-direct-image-url-rce\" class UnixHTTPConnection(http.client.HTTPConnection): def __init__(self, socket_path: str, timeout: int = 1…"
-  },
-  {
-   "id": "GHSA-fmc8-p6q7-75cc",
-   "tier": "critical",
-   "title": "LXD 镜像输入校验缺失致文件读写",
-   "title_zh": "LXD 镜像输入校验缺失致文件读写",
-   "summary_zh": "具镜像导入权限的攻击者构造恶意镜像绕过路径校验，读写宿主任意文件，可能进一步执行命令。",
-   "published": "2026-11-06T19:36:37Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "输入校验缺失"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260630083100-c5184be310b1(修复: 0.0.0-20260630083100-c5184be310b1)",
-   "ghsa_url": "https://github.com/advisories/GHSA-fmc8-p6q7-75cc",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复提交c5184be及之后版本，限制镜像来源",
-   "repro_worthy": "一般",
-   "repro_note": "需镜像导入权限，构造恶意镜像触发路径处理缺陷",
-   "impact_scope": "容器/虚机宿主管控面，内网高价值",
-   "link": "https://github.com/advisories/GHSA-fmc8-p6q7-75cc",
-   "description": "\"\"\" from __future__ import annotations import argparse import json import os import shlex import sys import urllib.parse from pathlib import PurePosixPath from typing import Any import requests def q(value: str) -> str: return urllib.parse.quote(value, safe=\"\") def api(base: str, endpoint: str, **params: str) -> str: return base.rstrip(\"/\") + endpoint + (\"?\" + urllib.parse.urlencode(params) if params else \"\") def project_instance(project: str, instance: str) -> str: return instance if project ==…"
-  },
-  {
-   "id": "GHSA-vghh-5rfx-xhq8",
-   "tier": "critical",
-   "title": "LXD 恶意镜像符号链接写宿主文件",
-   "title_zh": "LXD 恶意镜像符号链接写宿主文件",
-   "summary_zh": "攻击者构造metadata中rootfs指向/的恶意镜像，解包时以root读写宿主任意文件，可导致命令执行。",
-   "published": "2026-11-06T19:36:07Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-73"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260630083100-c5184be310b1(修复: 0.0.0-20260630083100-c5184be310b1)",
-   "ghsa_url": "https://github.com/advisories/GHSA-vghh-5rfx-xhq8",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复提交c5184be及之后版本，禁止不可信镜像",
-   "repro_worthy": "一般",
-   "repro_note": "需导入权限，构造metadata.yaml中rootfs指向/的镜像",
-   "impact_scope": "容器/虚机宿主管控面，内网高价值",
-   "link": "https://github.com/advisories/GHSA-vghh-5rfx-xhq8",
-   "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-2q3f-q5pq-g8wv ### Summary A specially crafted image can be used to read or create/write arbitrary files on the host; possibly leading to arbitrary command execution. ``` metadata.yaml rootfs/ rootfs -> / ``` In practice, this allows a malicious actor to access the host's filesystem with root privileges."
-  },
-  {
-   "id": "GHSA-jpf8-86f3-wp38",
-   "tier": "critical",
-   "title": "LXD 镜像目录穿越致任意文件篡改",
-   "title_zh": "LXD 镜像目录穿越致任意文件篡改",
-   "summary_zh": "具镜像导入权限的攻击者利用镜像内目录穿越访问宿主任意目录，篡改文件并可能升级为命令执行。",
-   "published": "2026-11-06T18:53:57Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-73"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260203144152-d1c8ba15d160(修复: 0.0.0-20260203144152-d1c8ba15d160)",
-   "ghsa_url": "https://github.com/advisories/GHSA-jpf8-86f3-wp38",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复提交c5184be及之后版本，校验镜像路径",
-   "repro_worthy": "一般",
-   "repro_note": "需镜像导入权限，构造含目录穿越路径的镜像",
-   "impact_scope": "容器/虚机宿主管控面，内网高价值",
-   "link": "https://github.com/advisories/GHSA-jpf8-86f3-wp38",
-   "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-vxp5-584q-c479 ### Summary A specially crafted image can be used to read or create/write arbitrary files on the host; possibly leading to arbitrary command execution. In practice, this allows a malicious actor to access an arbitrary directory and edit arbitrary files in it."
-  },
-  {
-   "id": "GHSA-9j25-mm2h-2f76",
-   "tier": "critical",
-   "title": "LXD 镜像覆盖exec-output写文件",
-   "title_zh": "LXD 镜像覆盖exec-output写文件",
-   "summary_zh": "攻击者用恶意镜像将exec-output目录替换为符号链接，使exec记录输出落到宿主任意路径，实现文件写入。",
-   "published": "2026-11-06T18:45:51Z",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": null,
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-73"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "go:github.com/canonical/lxd < 0.0.0-20260626085134-124f90100640(修复: 0.0.0-20260626085134-124f90100640)",
-   "ghsa_url": "https://github.com/advisories/GHSA-9j25-mm2h-2f76",
-   "refs": [],
-   "poc": [],
-   "nuclei": false,
-   "patched": true,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至修复提交124f901及之后版本，限制镜像顶层链接",
-   "repro_worthy": "一般",
-   "repro_note": "需导入镜像并调用exec时带record-output参数",
-   "impact_scope": "容器/虚机宿主管控面，内网高价值",
-   "link": "https://github.com/advisories/GHSA-9j25-mm2h-2f76",
-   "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-48q5-w887-33wv ### Summary The `record-output` parameter of the `/instances/$name/exec` endpoint stores the output of the command in the `exec-output` directory of the instance. ### Details When an image is unpacked, top-level symlinks are extracted as is; allowing for `exec-output` to be placed on disk."
-  },
-  {
-   "id": "CVE-2026-59105",
-   "tier": "critical",
-   "title": "数据库启用xp_cmdshell致命令执行",
-   "title_zh": "数据库启用xp_cmdshell致命令执行",
-   "summary_zh": "安装程序在常规运行中即启用xp_cmdshell，已获sysadmin的数据库用户可直接以服务账户执行系统命令。",
-   "published": "2026-11-06T15:17:22.270",
+   "title": "2FAuth认证绕过致账号接管",
+   "title_zh": "2FAuth认证绕过致账号接管",
+   "summary_zh": "未认证远程攻击者可绕过认证逻辑，获取2FAuth账户及其二次验证密钥的访问权限",
+   "published": "2026-11-06T21:17:09.970",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-547",
-    "CWE-1391"
+    "认证绕过"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -440,11 +274,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://offseq.com/en/research/jumis-cve-2026-59105/"
+     "url": "https://github.com/Bubka/2FAuth/commit/43873cbfba445926c7008b4291eeee67752af9e8"
     },
     {
      "label": "参考",
-     "url": "https://www.mansjumis.lv/"
+     "url": "https://github.com/Bubka/2FAuth/releases/tag/v8.0.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Bubka/2FAuth/security/advisories/GHSA-mh8r-74x2-r457"
     }
    ],
    "poc": [],
@@ -455,56 +293,131 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "联系厂商获取修复版；非必要显式禁用xp_cmdshell",
+   "action_zh": "升级至厂商修复版本；限制实例公网暴露并轮换2FA密钥",
    "repro_worthy": "一般",
-   "repro_note": "需sysadmin账号，调用xp_cmdshell执行系统命令",
-   "impact_scope": "数据库服务器，内网核心资产",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59105",
-   "description": "Jumis (formerly Tildes Jumis) creates and uses a Microsoft SQL Server login named ##Tilde_JumisAdmin## whose password is derived deterministically from a single non-secret input - the SQL Server name (@@servername). The on-premise server installation also programmatically enables xp_cmdshell during routine operation, so sysadmin access escalates to operating-system command execution on the database server."
+   "repro_note": "未授权访问认证相关接口；官方公告未披露具体参数",
+   "impact_scope": "自建2FA管理Web应用，密钥敏感",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63439",
+   "description": "2FAuth is a web app to manage Two-Factor Authentication (2FA) accounts and generate their security codes. Prior to 8.0.0, when AUTHENTICATION_GUARD=reverse-proxy-guard is enabled, ReverseProxyGuard::user() reads the default REMOTE_USER identity header, or a custom identity header selected by the AUTH_PROXY_HEADER_FOR_USER configuration setting, without confirming that the request originated from a configured trusted proxy."
+  },
+  {
+   "id": "CVE-2026-85295",
+   "tier": "critical",
+   "title": "JWT默认密钥可伪造令牌绕过认证",
+   "title_zh": "JWT默认密钥可伪造令牌绕过认证",
+   "summary_zh": "攻击者利用默认弱CB_SECRET签发HS256令牌，冒充任意用户调用API与Socket接口",
+   "published": "2026-11-06T21:17:10.890",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-1394"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/chartbrew/chartbrew/commit/da8c71f156aaa13fbc7ead15a4726740fef2b3c5"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/chartbrew/chartbrew/releases/tag/v5.2.3"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/chartbrew/chartbrew/security/advisories/GHSA-qvv4-r3q6-8797"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "更换强随机CB_SECRET并升级修复版本，排查异常令牌",
+   "repro_worthy": "一般",
+   "repro_note": "用默认CB_SECRET签发HS256令牌，uid指向目标用户",
+   "impact_scope": "自建Docker Compose部署，API与Socket层",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85295",
+   "description": "The vulnerable surface is session JWT fallback in server/modules/verifyToken.js, verifyUser.js, getUserFromToken.js, and socketManager.js across the API and socket layer. A stock source or repository Docker Compose deployment retains a known, weak, or default CB_SECRET and an attacker submits a forged HS256 token decoding to a target user id."
+  },
+  {
+   "id": "CVE-2026-59104",
+   "tier": "critical",
+   "title": "无人机地面站3334端口未认证接管",
+   "title_zh": "无人机地面站3334端口未认证接管",
+   "summary_zh": "网络可达3334端口的未认证攻击者直接取得已认证会话，下发指令并上传航线",
+   "published": "2026-11-06T22:17:59.043",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://offseq.com/en/research/ugcs-cve-2026-59104/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.ugcs.com/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本；限制3334端口访问并启用TLS与认证",
+   "repro_worthy": "一般",
+   "repro_note": "直连目标3334端口（默认无TLS），无需凭据即可取得会话",
+   "impact_scope": "无人机地面控制服务，默认监听全网卡",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59104",
+   "description": "UgCS server before 6.2 contains an authentication bypass in the HCI protocol login handler (LoginHandler) exposed on TCP port 3334. Because the service listens on all interfaces (0.0.0.0) without TLS by default, an unauthenticated remote attacker with network access to port 3334 can obtain an authenticated session without knowing any credential and then issue privileged commands, including commanding connected drones and uploading flight routes."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "openbsd/src",
-   "sha": "c52a382c07bbb5f94c084831c32a13686973fe6d",
-   "url": "https://github.com/openbsd/src/commit/c52a382c07bbb5f94c084831c32a13686973fe6d",
-   "title": "Backport security fixes from zlib 1.4",
-   "date": "2026-11-06T15:30:25",
-   "score": 10,
+   "repo": "php/php-src",
+   "sha": "10709b6eabbe6958eb29e37c7a5906cc2dc9557f",
+   "url": "https://github.com/php/php-src/commit/10709b6eabbe6958eb29e37c7a5906cc2dc9557f",
+   "title": "Fix GH-22063: Stream filter chain UAF on self-removal during callback",
+   "date": "2026-11-06T22:04:10",
+   "score": 2,
    "matched": [
-    "CVE",
-    "越界读写",
-    "未初始化/内存破坏",
-    "安全修复",
-    "回合/回归"
-   ],
-   "cve": "CVE-2026-85091"
-  },
-  {
-   "repo": "elastic/elasticsearch",
-   "sha": "29f0b528ba29630bdb2a440792d6b8bfc051348f",
-   "url": "https://github.com/elastic/elasticsearch/commit/29f0b528ba29630bdb2a440792d6b8bfc051348f",
-   "title": "Update pnpm to v12.17.0 (#163580)",
-   "date": "2026-11-06T15:28:55",
-   "score": 4,
-   "matched": [
-    "安全修复",
-    "漏洞相关"
+    "UAF"
    ],
    "cve": null
   },
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "df17c970ee091a357a68880397f27d1d1f8dc7dd",
-   "url": "https://github.com/envoyproxy/envoy/commit/df17c970ee091a357a68880397f27d1d1f8dc7dd",
-   "title": "deps/cve: Ignore CVE-2026-72854 (msgpack-c unpacker, unused) (#49052)",
-   "date": "2026-11-06T14:09:50",
-   "score": 3,
+   "repo": "rust-lang/rust",
+   "sha": "c980177d81d16f843a500905ac98c0cf3af1fd8d",
+   "url": "https://github.com/rust-lang/rust/commit/c980177d81d16f843a500905ac98c0cf3af1fd8d",
+   "title": "Auto merge of #165533 - Muscraft:update-cargo, r=weihanglo",
+   "date": "2026-11-06T16:41:48",
+   "score": 2,
    "matched": [
-    "CVE"
+    "反序列化"
    ],
-   "cve": "CVE-2026-72854"
+   "cve": null
   }
  ]
 }
