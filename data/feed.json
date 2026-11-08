@@ -1,20 +1,19 @@
 {
  "version": 3,
- "generated_at": "2026-11-08T16:07:06+00:00",
+ "generated_at": "2026-11-08T21:15:22+00:00",
  "lookback_hours": 5,
- "count": 5,
+ "count": 3,
  "stats": {
-  "total": 5,
+  "total": 3,
   "by_tier": {
-   "critical": 5
+   "critical": 3
   },
   "by_urgency": {
-   "P1 重点关注": 5
+   "P1 重点关注": 3
   },
   "by_category": {
-   "未知": 3,
-   "CMS": 1,
-   "开发库/依赖": 1
+   "未知": 2,
+   "ERP/业务系统": 1
   },
   "kev": 0,
   "with_poc": 0,
@@ -24,19 +23,59 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-124427",
+   "id": "CVE-2026-107331",
    "tier": "critical",
-   "title": "Craft CMS GraphQL越权读条目",
-   "title_zh": "Craft CMS GraphQL越权读条目",
-   "summary_zh": "匿名GraphQL客户端借prev/next跨节读取隐藏条目字段，泄露内容。",
-   "published": "2026-11-08T14:18:08.517",
+   "title": "IBM DataStage 绝对路径遍历",
+   "title_zh": "IBM DataStage 绝对路径遍历",
+   "summary_zh": "已认证远程攻击者通过绝对路径遍历读取服务器任意文件，造成敏感信息泄露",
+   "published": "2026-11-08T17:16:35.550",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-36"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7294270"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至IBM官方修复版本，限制DataStage接口访问权限",
+   "repro_worthy": "一般",
+   "repro_note": "认证后向文件读取接口传入绝对路径参数（如../../）验证越权读取",
+   "impact_scope": "数据集成平台，内网核心数据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107331",
+   "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to obtain sensitive information due to an absolute-path traversal vulnerability."
+  },
+  {
+   "id": "CVE-2026-15266",
+   "tier": "critical",
+   "title": "IBM Concert 不安全命令执行",
+   "title_zh": "IBM Concert 不安全命令执行",
+   "summary_zh": "远程攻击者利用不安全的命令执行组件，在目标主机上以服务权限运行任意系统命令",
+   "published": "2026-11-08T18:17:02.450",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "缺失授权(越权)"
+    "命令注入(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -45,11 +84,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/craftcms/cms/security/advisories/GHSA-xpg7-m6gm-4xfh"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/craft-cms-5.0.0-before-5.11.2-graphql-schema-scope-bypass-via-prev-next"
+     "url": "https://www.ibm.com/support/pages/node/7294607"
     }
    ],
    "poc": [],
@@ -60,159 +95,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到5.11.2，限制GraphQL匿名访问",
+   "action_zh": "升级至IBM官方修复版本，收敛Concert管理接口暴露面",
    "repro_worthy": "一般",
-   "repro_note": "匿名GraphQL查询prev/next字段，需公开端点及可见条目",
-   "impact_scope": "公网CMS，内容越权泄露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124427",
-   "description": "Craft CMS from 5.0.0 before 5.11.2 contains an authorization bypass vulnerability that allows anonymous GraphQL clients to read out-of-scope section entries via prev/next fields. Attackers can chain next hops from one visible in-scope entry to enumerate entries and read titles, slugs, and custom-field content from withheld sections."
+   "repro_note": "定位接收外部输入并拼接系统命令的接口，注入命令回显验证",
+   "impact_scope": "内网安全运营平台，管理面暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-15266",
+   "description": "IBM Concert 1.0 through 3.0.1.1 contains components that allow potentially unsafe command execution, which could be exploited to run arbitrary system commands on the host."
   },
   {
-   "id": "CVE-2026-124440",
+   "id": "CVE-2026-6715",
    "tier": "critical",
-   "title": "Kyverno apiCall命名空间越权",
-   "title_zh": "Kyverno apiCall命名空间越权",
-   "summary_zh": "命名空间租户滥用apiCall路径编码绕过限制，发起跨命名空间或集群级API请求。",
-   "published": "2026-11-08T14:18:10.633",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "意图代理错误(混源下载)"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/kyverno/kyverno/security/advisories/GHSA-39w8-hv5g-f73w"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/kyverno-1.19.1-privilege-escalation-via-apicall-namespace-clamp-bypass"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到1.19.2，审查apiCall策略",
-   "repro_worthy": "一般",
-   "repro_note": "租户构造urlPath百分号转义，触发跨命名空间API请求",
-   "impact_scope": "K8s策略引擎，集群横向风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124440",
-   "description": "Kyverno from 1.19.1 before 1.19.2 contains an authorization bypass vulnerability in the apiCall namespace clamp that allows namespace tenants to issue cross-namespace and cluster-scoped API requests by appending malformed percent-escapes to urlPath. Attackers can create namespaced Policies whose apiCall runs as the admission-controller ServiceAccount to read other namespaces' resources and create mutating webhooks, escalating to cluster admin."
-  },
-  {
-   "id": "CVE-2026-124450",
-   "tier": "critical",
-   "title": "OpenEMR传真模块文件读写RCE",
-   "title_zh": "OpenEMR传真模块文件读写RCE",
-   "summary_zh": "低权限认证用户经fax/sms disposeDocument的file_path穿越读写文件，可窃取凭据并RCE。",
-   "published": "2026-11-08T14:18:12.260",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-73"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/openemr/openemr/security/advisories/GHSA-wf4w-mx2w-j4vv"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/openemr-before-8.3.0-arbitrary-file-read-write-via-disposedocument"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到8.3.0，校验file_path并限目录",
-   "repro_worthy": "一般",
-   "repro_note": "低权限调用disposeDocument，file_path穿越读写文件",
-   "impact_scope": "医疗EMR，数据库凭据与RCE",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124450",
-   "description": "OpenEMR before 8.3.0 contains a broken access control and path traversal vulnerability in the fax/sms module disposeDocument action via an unvalidated file_path parameter. Authenticated low-privilege users can read sqlconf.php to recover database credentials and write arbitrary files as the web user, enabling remote code execution."
-  },
-  {
-   "id": "CVE-2026-124469",
-   "tier": "critical",
-   "title": "OpenEMR药品库存SQL注入",
-   "title_zh": "OpenEMR药品库存SQL注入",
-   "summary_zh": "低权限认证用户向Fee Sheet药品库存warehouse参数注入，盲注窃取患者数据与bcrypt哈希。",
-   "published": "2026-11-08T14:18:15.130",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/openemr/openemr/security/advisories/GHSA-cg8c-2v5q-29g7"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/openemr-before-8.3.0-sql-injection-via-fee-sheet-warehouse-parameter"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到8.3.0，ORDER BY参数化",
-   "repro_worthy": "一般",
-   "repro_note": "低权限登录Fee Sheet，在warehouse参数注入ORDER BY子查询",
-   "impact_scope": "医疗EMR，患者数据与口令哈希",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124469",
-   "description": "OpenEMR before 8.3.0 contains an SQL injection vulnerability in the Fee Sheet drug-inventory lookup (DrugSalesService::sellDrug) that interpolates the prod[N][warehouse] POST field into an ORDER BY clause. Low-privileged authenticated users can submit Fee Sheet product lines with constant subqueries to run a time-based blind oracle, extracting patient data and users_secure bcrypt hashes."
-  },
-  {
-   "id": "CVE-2026-124445",
-   "tier": "critical",
-   "title": "OpenEMR服务令牌重放绕过认证",
-   "title_zh": "OpenEMR服务令牌重放绕过认证",
-   "summary_zh": "持有捕获service_auth令牌者可重放并爆破PIN，建立患者门户会话泄露PHI。",
-   "published": "2026-11-08T14:18:11.487",
+   "title": "IBM Concert 系统命令注入",
+   "title_zh": "IBM Concert 系统命令注入",
+   "summary_zh": "远程攻击者将未过滤输入拼接进系统命令，以服务权限执行任意命令控制主机",
+   "published": "2026-11-08T19:17:39.980",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-307"
+    "命令注入(RCE)"
    ],
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -221,11 +124,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/openemr/openemr/security/advisories/GHSA-xg3m-9pfq-c8r6"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/openemr-7.0.1-before-8.4.0-onetimeauth-token-replay-and-pin-brute-force"
+     "url": "https://www.ibm.com/support/pages/node/7294607"
     }
    ],
    "poc": [],
@@ -236,50 +135,49 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到8.4.0，启用一次性令牌与PIN限速",
+   "action_zh": "升级至IBM官方修复版本，限制外部对Concert服务的访问",
    "repro_worthy": "一般",
-   "repro_note": "持有service_auth令牌，重放或爆破login_pin",
-   "impact_scope": "医疗患者门户，PHI泄露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124445",
-   "description": "OpenEMR from 7.0.1 before 8.4.0 contains a flaw in src/Common/Auth/OneTimeAuth.php that ignores the enforce_onetime_use and max_access_count flags, never revokes consumed service_auth tokens, and checks login_pin without rate limiting or strict comparison. Attackers holding a captured token can replay it or brute-force the PIN to open patient-portal sessions exposing PHI."
+   "repro_note": "审计输入校验点，在命令拼接参数中注入延时或回连命令验证",
+   "impact_scope": "内网安全管理平台，需登录访问",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-6715",
+   "description": "IBM Concert 1.0 through 3.0.1.1 allows an attacker can supply crafted input that is incorporated into an operating system command without adequate validation or sanitization. Successful exploitation allows remote attackers to execute arbitrary commands on the underlying operating system with the privileges of the affected service."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "43a53812094b5e9ffd02bfce550eb1ad8c3c372d",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/43a53812094b5e9ffd02bfce550eb1ad8c3c372d",
-   "title": "avfilter/vsrc_mandelbrot: skip the inner coloring when no iteration ran",
-   "date": "2026-11-08T15:37:01",
-   "score": 4,
+   "repo": "curl/curl",
+   "sha": "bd4b600b0ce6124805ce2cfb2a7396326e0dc694",
+   "url": "https://github.com/curl/curl/commit/bd4b600b0ce6124805ce2cfb2a7396326e0dc694",
+   "title": "schannel: fail if there's no TLS enabled protocols",
+   "date": "2026-11-08T18:26:54",
+   "score": 2,
    "matched": [
-    "未初始化/内存破坏",
-    "安全修复"
+    "漏洞相关"
    ],
    "cve": null
   },
   {
-   "repo": "openssl/openssl",
-   "sha": "47de2567ec604c5ca8a9eb1a785bceef46e047c0",
-   "url": "https://github.com/openssl/openssl/commit/47de2567ec604c5ca8a9eb1a785bceef46e047c0",
-   "title": "Add test vectors for CVE-2026-95692",
-   "date": "2026-11-08T12:49:25",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-95692"
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "1080be28164859f1ea6191c9cb304e1a2b2cb633",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/1080be28164859f1ea6191c9cb304e1a2b2cb633",
-   "title": "avcodec/jpeg2000_parser: fix the tile-part length check",
-   "date": "2026-11-08T15:37:01",
+   "repo": "openbsd/src",
+   "sha": "3ccbab699b92dd6c8c084ef39ef892ce6e52c566",
+   "url": "https://github.com/openbsd/src/commit/3ccbab699b92dd6c8c084ef39ef892ce6e52c566",
+   "title": "Avoid use-after-free in IPv6 duplicate address detection.",
+   "date": "2026-11-08T16:41:35",
    "score": 2,
    "matched": [
-    "安全修复"
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openbsd/src",
+   "sha": "8d5be67d2d3961aa4d7ab3674ce793910d5b07bc",
+   "url": "https://github.com/openbsd/src/commit/8d5be67d2d3961aa4d7ab3674ce793910d5b07bc",
+   "title": "Make sure to bounds check the cursor column when moved by escape sequences,",
+   "date": "2026-11-08T15:15:06",
+   "score": 2,
+   "matched": [
+    "越界读写"
    ],
    "cve": null
   }
