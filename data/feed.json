@@ -1,43 +1,285 @@
 {
  "version": 3,
- "generated_at": "2026-11-08T07:33:44+00:00",
+ "generated_at": "2026-11-08T16:07:06+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 5,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 5,
+  "by_tier": {
+   "critical": 5
+  },
+  "by_urgency": {
+   "P1 重点关注": 5
+  },
+  "by_category": {
+   "未知": 3,
+   "CMS": 1,
+   "开发库/依赖": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2026-124427",
+   "tier": "critical",
+   "title": "Craft CMS GraphQL越权读条目",
+   "title_zh": "Craft CMS GraphQL越权读条目",
+   "summary_zh": "匿名GraphQL客户端借prev/next跨节读取隐藏条目字段，泄露内容。",
+   "published": "2026-11-08T14:18:08.517",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失授权(越权)"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/craftcms/cms/security/advisories/GHSA-xpg7-m6gm-4xfh"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/craft-cms-5.0.0-before-5.11.2-graphql-schema-scope-bypass-via-prev-next"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到5.11.2，限制GraphQL匿名访问",
+   "repro_worthy": "一般",
+   "repro_note": "匿名GraphQL查询prev/next字段，需公开端点及可见条目",
+   "impact_scope": "公网CMS，内容越权泄露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124427",
+   "description": "Craft CMS from 5.0.0 before 5.11.2 contains an authorization bypass vulnerability that allows anonymous GraphQL clients to read out-of-scope section entries via prev/next fields. Attackers can chain next hops from one visible in-scope entry to enumerate entries and read titles, slugs, and custom-field content from withheld sections."
+  },
+  {
+   "id": "CVE-2026-124440",
+   "tier": "critical",
+   "title": "Kyverno apiCall命名空间越权",
+   "title_zh": "Kyverno apiCall命名空间越权",
+   "summary_zh": "命名空间租户滥用apiCall路径编码绕过限制，发起跨命名空间或集群级API请求。",
+   "published": "2026-11-08T14:18:10.633",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "意图代理错误(混源下载)"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/kyverno/kyverno/security/advisories/GHSA-39w8-hv5g-f73w"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/kyverno-1.19.1-privilege-escalation-via-apicall-namespace-clamp-bypass"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到1.19.2，审查apiCall策略",
+   "repro_worthy": "一般",
+   "repro_note": "租户构造urlPath百分号转义，触发跨命名空间API请求",
+   "impact_scope": "K8s策略引擎，集群横向风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124440",
+   "description": "Kyverno from 1.19.1 before 1.19.2 contains an authorization bypass vulnerability in the apiCall namespace clamp that allows namespace tenants to issue cross-namespace and cluster-scoped API requests by appending malformed percent-escapes to urlPath. Attackers can create namespaced Policies whose apiCall runs as the admission-controller ServiceAccount to read other namespaces' resources and create mutating webhooks, escalating to cluster admin."
+  },
+  {
+   "id": "CVE-2026-124450",
+   "tier": "critical",
+   "title": "OpenEMR传真模块文件读写RCE",
+   "title_zh": "OpenEMR传真模块文件读写RCE",
+   "summary_zh": "低权限认证用户经fax/sms disposeDocument的file_path穿越读写文件，可窃取凭据并RCE。",
+   "published": "2026-11-08T14:18:12.260",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-73"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/openemr/openemr/security/advisories/GHSA-wf4w-mx2w-j4vv"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/openemr-before-8.3.0-arbitrary-file-read-write-via-disposedocument"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到8.3.0，校验file_path并限目录",
+   "repro_worthy": "一般",
+   "repro_note": "低权限调用disposeDocument，file_path穿越读写文件",
+   "impact_scope": "医疗EMR，数据库凭据与RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124450",
+   "description": "OpenEMR before 8.3.0 contains a broken access control and path traversal vulnerability in the fax/sms module disposeDocument action via an unvalidated file_path parameter. Authenticated low-privilege users can read sqlconf.php to recover database credentials and write arbitrary files as the web user, enabling remote code execution."
+  },
+  {
+   "id": "CVE-2026-124469",
+   "tier": "critical",
+   "title": "OpenEMR药品库存SQL注入",
+   "title_zh": "OpenEMR药品库存SQL注入",
+   "summary_zh": "低权限认证用户向Fee Sheet药品库存warehouse参数注入，盲注窃取患者数据与bcrypt哈希。",
+   "published": "2026-11-08T14:18:15.130",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/openemr/openemr/security/advisories/GHSA-cg8c-2v5q-29g7"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/openemr-before-8.3.0-sql-injection-via-fee-sheet-warehouse-parameter"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到8.3.0，ORDER BY参数化",
+   "repro_worthy": "一般",
+   "repro_note": "低权限登录Fee Sheet，在warehouse参数注入ORDER BY子查询",
+   "impact_scope": "医疗EMR，患者数据与口令哈希",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124469",
+   "description": "OpenEMR before 8.3.0 contains an SQL injection vulnerability in the Fee Sheet drug-inventory lookup (DrugSalesService::sellDrug) that interpolates the prod[N][warehouse] POST field into an ORDER BY clause. Low-privileged authenticated users can submit Fee Sheet product lines with constant subqueries to run a time-based blind oracle, extracting patient data and users_secure bcrypt hashes."
+  },
+  {
+   "id": "CVE-2026-124445",
+   "tier": "critical",
+   "title": "OpenEMR服务令牌重放绕过认证",
+   "title_zh": "OpenEMR服务令牌重放绕过认证",
+   "summary_zh": "持有捕获service_auth令牌者可重放并爆破PIN，建立患者门户会话泄露PHI。",
+   "published": "2026-11-08T14:18:11.487",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-307"
+   ],
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/openemr/openemr/security/advisories/GHSA-xg3m-9pfq-c8r6"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/openemr-7.0.1-before-8.4.0-onetimeauth-token-replay-and-pin-brute-force"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到8.4.0，启用一次性令牌与PIN限速",
+   "repro_worthy": "一般",
+   "repro_note": "持有service_auth令牌，重放或爆破login_pin",
+   "impact_scope": "医疗患者门户，PHI泄露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124445",
+   "description": "OpenEMR from 7.0.1 before 8.4.0 contains a flaw in src/Common/Auth/OneTimeAuth.php that ignores the enforce_onetime_use and max_access_count flags, never revokes consumed service_auth tokens, and checks login_pin without rate limiting or strict comparison. Attackers holding a captured token can replay it or brute-force the PIN to open patient-portal sessions exposing PHI."
+  }
+ ],
  "media": [],
  "commits": [
   {
-   "repo": "wireshark/wireshark",
-   "sha": "67c5d79e0dc265b6af52b32c367860964a005a4b",
-   "url": "https://github.com/wireshark/wireshark/commit/67c5d79e0dc265b6af52b32c367860964a005a4b",
-   "title": "MiWi: Add a synthetic capture and tests",
-   "date": "2026-11-08T02:34:16",
-   "score": 2,
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "43a53812094b5e9ffd02bfce550eb1ad8c3c372d",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/43a53812094b5e9ffd02bfce550eb1ad8c3c372d",
+   "title": "avfilter/vsrc_mandelbrot: skip the inner coloring when no iteration ran",
+   "date": "2026-11-08T15:37:01",
+   "score": 4,
    "matched": [
-    "缓冲区溢出"
+    "未初始化/内存破坏",
+    "安全修复"
    ],
    "cve": null
   },
   {
-   "repo": "wireshark/wireshark",
-   "sha": "118067f762a2e775747f7bae4f57113d87f153e2",
-   "url": "https://github.com/wireshark/wireshark/commit/118067f762a2e775747f7bae4f57113d87f153e2",
-   "title": "NBD: Fix heuristic return, query length and port range use",
-   "date": "2026-11-08T02:34:16",
+   "repo": "openssl/openssl",
+   "sha": "47de2567ec604c5ca8a9eb1a785bceef46e047c0",
+   "url": "https://github.com/openssl/openssl/commit/47de2567ec604c5ca8a9eb1a785bceef46e047c0",
+   "title": "Add test vectors for CVE-2026-95692",
+   "date": "2026-11-08T12:49:25",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-95692"
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "1080be28164859f1ea6191c9cb304e1a2b2cb633",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/1080be28164859f1ea6191c9cb304e1a2b2cb633",
+   "title": "avcodec/jpeg2000_parser: fix the tile-part length check",
+   "date": "2026-11-08T15:37:01",
    "score": 2,
    "matched": [
-    "未初始化/内存破坏"
+    "安全修复"
    ],
    "cve": null
   }

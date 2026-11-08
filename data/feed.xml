@@ -5,7 +5,52 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 08 Nov 2026 07:33:44 +0000</pubDate>
-    <lastBuildDate>Sun, 08 Nov 2026 07:33:44 +0000</lastBuildDate>
+    <pubDate>Sun, 08 Nov 2026 16:07:06 +0000</pubDate>
+    <lastBuildDate>Sun, 08 Nov 2026 16:07:06 +0000</lastBuildDate>
+    <item>
+      <title>[critical]Craft CMS GraphQL越权读条目</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124427</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124427-2026-11-08</guid>
+      <description>CVE-2026-124427 · 🎯P1 重点关注 · 披露 2026-11-08 · 组件 CMS · CVSS 9.8 · 类型 缺失授权(越权) · 难度 低(远程·免认证)
+Craft CMS from 5.0.0 before 5.11.2 contains an authorization bypass vulnerability that allows anonymous GraphQL clients to read out-of-scope section entries via…
+信号:</description>
+      <pubDate>Sun, 08 Nov 2026 16:07:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Kyverno apiCall命名空间越权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124440</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124440-2026-11-08</guid>
+      <description>CVE-2026-124440 · 🎯P1 重点关注 · 披露 2026-11-08 · 组件 开发库/依赖 · CVSS 9.9 · 类型 意图代理错误(混源下载) · 难度 低(远程·需低权限)
+Kyverno from 1.19.1 before 1.19.2 contains an authorization bypass vulnerability in the apiCall namespace clamp that allows namespace tenants to issue cross-nam…
+信号:</description>
+      <pubDate>Sun, 08 Nov 2026 16:07:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OpenEMR传真模块文件读写RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124450</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124450-2026-11-08</guid>
+      <description>CVE-2026-124450 · 🎯P1 重点关注 · 披露 2026-11-08 · CVSS 9.9 · 类型 CWE-73 · 难度 低(远程·需低权限)
+OpenEMR before 8.3.0 contains a broken access control and path traversal vulnerability in the fax/sms module disposeDocument action via an unvalidated file_path…
+信号:</description>
+      <pubDate>Sun, 08 Nov 2026 16:07:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OpenEMR药品库存SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124469</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124469-2026-11-08</guid>
+      <description>CVE-2026-124469 · 🎯P1 重点关注 · 披露 2026-11-08 · CVSS 9.9 · 类型 SQL注入 · 难度 低(远程·需低权限)
+OpenEMR before 8.3.0 contains an SQL injection vulnerability in the Fee Sheet drug-inventory lookup (DrugSalesService::sellDrug) that interpolates the prod[N][w…
+信号:</description>
+      <pubDate>Sun, 08 Nov 2026 16:07:06 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OpenEMR服务令牌重放绕过认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124445</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124445-2026-11-08</guid>
+      <description>CVE-2026-124445 · 🎯P1 重点关注 · 披露 2026-11-08 · CVSS 9.8 · 类型 CWE-307 · 难度 低(远程·免认证)
+Attackers holding a captured token can replay it or brute-force the PIN to open patient-portal sessions exposing PHI.
+信号:</description>
+      <pubDate>Sun, 08 Nov 2026 16:07:06 +0000</pubDate>
+    </item>
   </channel>
 </rss>
