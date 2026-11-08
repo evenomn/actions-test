@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-11-07T20:59:26+00:00",
+ "generated_at": "2026-11-08T00:48:19+00:00",
  "lookback_hours": 5,
  "count": 0,
  "stats": {
@@ -18,16 +18,53 @@
  "media": [],
  "commits": [
   {
-   "repo": "openssl/openssl",
-   "sha": "a957a4bfc0b9691b20c9036b6ecc110f89f8d15c",
-   "url": "https://github.com/openssl/openssl/commit/a957a4bfc0b9691b20c9036b6ecc110f89f8d15c",
-   "title": "crypto/ec/ec_key.c: Reject invalid group order during key generation",
-   "date": "2026-11-07T15:57:33",
+   "repo": "python/cpython",
+   "sha": "1798d4fb3ca0e1cd8f9e6ab0ac99a0a9fb1f7527",
+   "url": "https://github.com/python/cpython/commit/1798d4fb3ca0e1cd8f9e6ab0ac99a0a9fb1f7527",
+   "title": "gh-148891: prevent crash in HAMT caused by GC during traverse (#148928)",
+   "date": "2026-11-07T21:44:24",
    "score": 3,
    "matched": [
-    "CVE"
+    "UAF",
+    "崩溃"
    ],
-   "cve": "CVE-2026-107496"
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "b060566909d39884ee3a7205003e824421b448ed",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/b060566909d39884ee3a7205003e824421b448ed",
+   "title": "avfilter/dnn_backend_tf: free all output tensors of a request",
+   "date": "2026-11-08T00:02:27",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "wireshark/wireshark",
+   "sha": "e64dcdfe07ac1b9ea545a990714364892688c9a5",
+   "url": "https://github.com/wireshark/wireshark/commit/e64dcdfe07ac1b9ea545a990714364892688c9a5",
+   "title": "LBMSRS: Do not use an uninitialised source address",
+   "date": "2026-11-07T22:34:55",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "wireshark/wireshark",
+   "sha": "11c274921d2cb192f9c22a7c9b3769903d0d8610",
+   "url": "https://github.com/wireshark/wireshark/commit/11c274921d2cb192f9c22a7c9b3769903d0d8610",
+   "title": "IuUP: Add a synthetic capture and tests",
+   "date": "2026-11-07T21:14:29",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
   }
  ]
 }
