@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-08 00:48 UTC · 共 **194** 条(强烈推荐 27 / 值得 167)
+**更新**: 2026-11-08 02:41 UTC · 共 **175** 条(强烈推荐 29 / 值得 146)
 
 ---
 
@@ -131,6 +131,20 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 处置: 升级至18.11.13/19.3.6/19.4.3/19.5.1等修复版
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/633633) · [参考](https://hackerone.com/reports/4093475)
+
+### API Connect签名校验绕过
+[CVE-2026-17301](https://nvd.nist.gov/vuln/detail/CVE-2026-17301) | P0 立即处置 | CVSS 9.8 | EPSS 0.4% | 披露 2026-11-07 | 入库 2026-11-07
+未认证攻击者可构造签名校验缺陷的请求绕过认证，获得未授权访问。
+复现: 强烈推荐 — 构造签名校验缺陷的认证请求绕过认证 · 影响面: API网关认证入口，暴露公网
+处置: 立即升级至厂商修复版本；限制认证接口公网暴露
+参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
+
+### API Connect认证绕过控网关
+[CVE-2026-17313](https://nvd.nist.gov/vuln/detail/CVE-2026-17313) | P0 立即处置 | ERP/业务系统 | CVSS 9.8 | EPSS 0.8% | 披露 2026-11-07 | 入库 2026-11-07
+远程攻击者可走替代路径绕过认证，读取敏感信息并接管网关配置。
+复现: 强烈推荐 — 访问可绕过认证的替代路径，需可达管理接口 · 影响面: API网关管理面，敏感配置中心
+处置: 立即升级至厂商修复版本；限制管理面公网访问
+参考: [参考](https://www.ibm.com/support/pages/node/7295635)
 
 ### Juniper SSC 命令注入RCE
 [CVE-2026-103406](https://nvd.nist.gov/vuln/detail/CVE-2026-103406) | P1 重点关注 | 网络设备 | CVSS 9.8 | 披露 2026-10-28 | 入库 2026-10-28
@@ -619,91 +633,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得
 参考: [参考](https://www.ibm.com/support/pages/node/7295635)
 
-### CVE-2026-17117
-[CVE-2026-17117](https://nvd.nist.gov/vuln/detail/CVE-2026-17117) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17132
-[CVE-2026-17132](https://nvd.nist.gov/vuln/detail/CVE-2026-17132) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635)
-
-### CVE-2026-17134
-[CVE-2026-17134](https://nvd.nist.gov/vuln/detail/CVE-2026-17134) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635)
-
-### CVE-2026-17146
-[CVE-2026-17146](https://nvd.nist.gov/vuln/detail/CVE-2026-17146) | P1 重点关注 | ERP/业务系统 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17147
-[CVE-2026-17147](https://nvd.nist.gov/vuln/detail/CVE-2026-17147) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17150
-[CVE-2026-17150](https://nvd.nist.gov/vuln/detail/CVE-2026-17150) | P1 重点关注 | ERP/业务系统 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17158
-[CVE-2026-17158](https://nvd.nist.gov/vuln/detail/CVE-2026-17158) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17239
-[CVE-2026-17239](https://nvd.nist.gov/vuln/detail/CVE-2026-17239) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635)
-
-### CVE-2026-17298
-[CVE-2026-17298](https://nvd.nist.gov/vuln/detail/CVE-2026-17298) | P1 重点关注 | ERP/业务系统 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17336
-[CVE-2026-17336](https://nvd.nist.gov/vuln/detail/CVE-2026-17336) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635)
-
-### CVE-2026-17342
-[CVE-2026-17342](https://nvd.nist.gov/vuln/detail/CVE-2026-17342) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17354
-[CVE-2026-17354](https://nvd.nist.gov/vuln/detail/CVE-2026-17354) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635)
-
-### CVE-2026-17359
-[CVE-2026-17359](https://nvd.nist.gov/vuln/detail/CVE-2026-17359) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17392
-[CVE-2026-17392](https://nvd.nist.gov/vuln/detail/CVE-2026-17392) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17399
-[CVE-2026-17399](https://nvd.nist.gov/vuln/detail/CVE-2026-17399) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17402
-[CVE-2026-17402](https://nvd.nist.gov/vuln/detail/CVE-2026-17402) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17410
-[CVE-2026-17410](https://nvd.nist.gov/vuln/detail/CVE-2026-17410) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
 ### WAVLINK WN553X1-B命令注入
 [CVE-2026-120231](https://nvd.nist.gov/vuln/detail/CVE-2026-120231) | P1 重点关注 | 边界设备/VPN | CVSS 9.9 | 披露 2026-11-01 | 入库 2026-11-01
 远程攻击者经WN553X1-B管理面注入系统命令，可取得设备完全控制权，CVSS 9.9
@@ -725,49 +654,39 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
 
-### CVE-2026-123218
-[CVE-2026-123218](https://nvd.nist.gov/vuln/detail/CVE-2026-123218) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295921)
-
-### CVE-2026-17362
-[CVE-2026-17362](https://nvd.nist.gov/vuln/detail/CVE-2026-17362) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
+### API Connect租户越权操作
+[CVE-2026-17362](https://nvd.nist.gov/vuln/detail/CVE-2026-17362) | P1 重点关注 | CVSS 9.8 | EPSS 0.6% | 披露 2026-11-07 | 入库 2026-11-07
+远程攻击者可利用缺失授权直接创建、修改或删除租户，破坏多租户隔离。
+复现: 值得 — 直接调用租户管理接口执行创建/修改/删除操作 · 影响面: 多租户管理面，影响租户隔离
+处置: 升级至厂商修复版本；临时限制租户管理接口
 参考: [参考](https://www.ibm.com/support/pages/node/7295635)
 
-### CVE-2026-16720
-[CVE-2026-16720](https://nvd.nist.gov/vuln/detail/CVE-2026-16720) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17278
-[CVE-2026-17278](https://nvd.nist.gov/vuln/detail/CVE-2026-17278) | P1 重点关注 | ERP/业务系统 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
+### API Connect客户端认证欺骗
+[CVE-2026-17278](https://nvd.nist.gov/vuln/detail/CVE-2026-17278) | P1 重点关注 | ERP/业务系统 | CVSS 9.8 | EPSS 0.7% | 披露 2026-11-07 | 入库 2026-11-07
+远程攻击者可伪造客户端身份通过认证，访问API目录与运行时敏感配置。
+复现: 值得 — 伪造客户端身份信息访问敏感配置接口 · 影响面: API目录与运行时配置面
+处置: 升级至厂商修复版本；限制敏感配置接口访问
 参考: [参考](https://www.ibm.com/support/pages/node/7295635)
 
-### CVE-2026-17301
-[CVE-2026-17301](https://nvd.nist.gov/vuln/detail/CVE-2026-17301) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
-
-### CVE-2026-17313
-[CVE-2026-17313](https://nvd.nist.gov/vuln/detail/CVE-2026-17313) | P1 重点关注 | ERP/业务系统 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
+### API Connect路径遍历RCE
+[CVE-2026-17340](https://nvd.nist.gov/vuln/detail/CVE-2026-17340) | P0 立即处置 | CVSS 9.8 | EPSS 0.9% | 披露 2026-11-07 | 入库 2026-11-07
+远程攻击者可经路径遍历读取任意文件，并进一步执行代码控制服务。
+复现: 值得 — 经文件读取接口传入../路径参数，需可达服务 · 影响面: API网关文件接口，暴露服务面
+处置: 立即升级至厂商修复版本；限制文件接口访问
 参考: [参考](https://www.ibm.com/support/pages/node/7295635)
 
-### CVE-2026-17340
-[CVE-2026-17340](https://nvd.nist.gov/vuln/detail/CVE-2026-17340) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
+### API Connect硬编码凭据
+[CVE-2026-17360](https://nvd.nist.gov/vuln/detail/CVE-2026-17360) | P0 立即处置 | CVSS 9.8 | EPSS 0.6% | 披露 2026-11-07 | 入库 2026-11-07
+远程攻击者可利用产品内置硬编码凭据登录，获取完整管理员控制权。
+复现: 值得 — 利用内置硬编码凭据登录管理接口 · 影响面: API管理平台，管理员入口
+处置: 升级至修复版本；更换默认凭据并限制管理面
 参考: [参考](https://www.ibm.com/support/pages/node/7295635)
 
-### CVE-2026-17360
-[CVE-2026-17360](https://nvd.nist.gov/vuln/detail/CVE-2026-17360) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
-参考: [参考](https://www.ibm.com/support/pages/node/7295635)
-
-### CVE-2026-17408
-[CVE-2026-17408](https://nvd.nist.gov/vuln/detail/CVE-2026-17408) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-07 | 入库 2026-11-07
-复现: 值得
+### API Connect命令注入RCE
+[CVE-2026-17408](https://nvd.nist.gov/vuln/detail/CVE-2026-17408) | P0 立即处置 | CVSS 9.8 | EPSS 0.9% | 披露 2026-11-07 | 入库 2026-11-07
+远程攻击者可经API Connect接口注入系统命令，执行任意代码并控制服务。
+复现: 值得 — 经API Connect远程接口注入OS命令参数，需可达服务 · 影响面: API网关，常暴露于公网
+处置: 立即升级至厂商修复版本；限制管理面公网访问
 参考: [参考](https://www.ibm.com/support/pages/node/7295635) · [参考](https://www.ibm.com/support/pages/node/7295637)
 
 ### BTCPay未授权读取LND凭据
