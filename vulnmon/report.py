@@ -32,7 +32,7 @@ def en_summary(item: dict) -> str:
 def fmt_meta(item: dict) -> str:
     parts = []
     if item.get("urgency"):
-        parts.append(f"🎯{item['urgency']}")
+        parts.append(item["urgency"])
     if item.get("published"):
         # 披露日期很重要:编号年份 ≠ 披露时间(厂商预留编号可能隔几个月才公开)
         parts.append(f"披露 {str(item['published'])[:10]}")
@@ -79,27 +79,23 @@ def difficulty_brief(item: dict) -> str | None:
 
 
 def signals(item: dict) -> list[str]:
-    """强调信号:emoji 只用于 KEV/勒索两个最高优先级信号,其余文字。"""
+    """强调信号(纯文字,用于条目「状态」行与 RSS 描述)。"""
     out = []
     if item["kev"]:
-        due = f",CISA 限期 {item['kev_due']}" if item.get("kev_due") else ""
-        out.append(f"🔥 KEV 在野利用{due}")
+        due = f"(CISA 限期 {item['kev_due']})" if item.get("kev_due") else ""
+        out.append(f"KEV 在野利用{due}")
     if item["ransomware"]:
-        out.append("💀 勒索软件在野利用")
-    if item.get("vuln_class_hit"):
-        out.append(f"🎯 高价值:{item['vuln_class_hit']}")
-    if item.get("fame_term"):
-        out.append(f"知名组件:{item['fame_term']}")
+        out.append("勒索软件在野利用")
     if item.get("poc_links") or item["has_exploit_ref"]:
-        out.append("有PoC")
+        out.append("有 PoC")
     if item.get("analysis_hit"):
-        out.append("有技术分析")
+        out.append("已有技术分析")
     if item.get("nuclei"):
-        out.append("nuclei 模板")
+        out.append("nuclei 检测模板")
     if item.get("patched") is False:
         out.append("暂无官方修复")
     if item["keyword_hit"]:
-        out.append(f"关注词:{item['keyword_hit']}")
+        out.append(f"命中关注词 {item['keyword_hit']}")
     return out
 
 
@@ -132,11 +128,11 @@ def refs_line(item: dict) -> str | None:
 def digest_headline(items: list[dict], total_count: int, lookback_hours: int,
                     archive_name: str | None, stats: dict) -> str:
     if not items:
-        msg = f"过去 {lookback_hours} 小时无**新增**符合条件的高质量漏洞。"
+        msg = f"过去 {lookback_hours} 小时无新增符合条件的高价值漏洞。"
     else:
         n_critical = sum(1 for i in items if i["tier"] == "critical")
-        msg = (f"过去 {lookback_hours} 小时,按价值排序选出 {len(items)} 条"
-               f"(🔴 严重 {n_critical} / 🟠 高危 {len(items) - n_critical})")
+        msg = (f"过去 {lookback_hours} 小时按价值排序选出 {len(items)} 条:"
+               f"严重 {n_critical}、高危 {len(items) - n_critical}")
         if total_count > len(items):
             msg += f";今日共 {total_count} 条符合条件"
             if archive_name:
@@ -159,7 +155,7 @@ def commit_line(c: dict) -> str:
 
 
 def _commit_section(commits: list[dict], cap: int = 8) -> str:
-    lines = ["\n## 🔭 早期预警·重点项目安全提交",
+    lines = ["\n## 早期预警:重点项目安全提交",
              "*CVE 披露前的第一波信号,多为尚无编号的上游修复,涉及组件建议留意*"]
     lines.extend(commit_line(c) for c in commits[:cap])
     if len(commits) > cap:
@@ -174,7 +170,7 @@ def build_events_markdown(items: list[dict], now: datetime,
     """即时告警模板:紧凑单块,只放关键信息。"""
     stats = stats or {}
     lines = [f"# 高优漏洞即时告警 {now.strftime('%m-%d %H:%M')}",
-             f"过去数小时内 {len(items)} 条强信号漏洞(KEV/有PoC/P0/状态变化),详情见每日日报\n", "---"]
+             f"过去数小时 {len(items)} 条强信号漏洞(在野利用 / 有PoC / P0 / 状态变化),完整分析见每日日报\n", "---"]
     total_len = sum(len(l.encode()) for l in lines)
     for i in items:
         text = item_block_md(i)
@@ -193,69 +189,84 @@ def build_events_markdown(items: list[dict], now: datetime,
     return "\n".join(lines)
 
 
-def _props_line(item: dict) -> str:
-    """属性行:固定顺序的紧凑摘要(P | 组件 | CVSS | 类型 | 难度 | 复现)。"""
-    bits = []
+def item_block_md(item: dict, seq: int | None = None) -> str:
+    """单条漏洞区块:编号 + 严重度标题,元信息一行,标签字段行按固定顺序输出。
+
+    格式约定:不用 emoji;每行「标签: 内容」,顺序固定
+    (类型/利用条件 → 状态 → 影响 → 摘要 → 复现价值 → 处置建议 → 原文 → 资料),
+    没有的字段整行省略;同一信息只出现一次,保证一眼可扫。
+    """
+    tier = "严重" if item["tier"] == "critical" else "高危"
+    num = f"{seq}. " if seq else ""
+    lines = [f"\n### {num}【{tier}】{item_title(item)}"]
+
+    meta = [f"[{item['id']}]({item_link(item)})"]
+    if item["cvss"] is not None:
+        meta.append(f"CVSS {item['cvss']}")
     if item.get("urgency"):
-        bits.append(item["urgency"])
-    if item.get("category"):
-        bits.append(item["category"])
-    if item.get("cvss") is not None:
-        bits.append(f"CVSS {item['cvss']}")
+        meta.append(item["urgency"])
     if item.get("epss") is not None and item["epss"] >= 0.5:
-        bits.append(f"EPSS {round(item['epss'] * 100)}%")
-    if item["cwe_labels"]:
-        bits.append("/".join(item["cwe_labels"]))
-    diff = difficulty_brief(item)
-    if diff:
-        bits.append(diff)
-    repro = item.get("repro_worthy")
-    if repro in ("强烈推荐", "值得"):
-        bits.append(f"复现:{repro}")
-    return " | ".join(bits)
+        pct = f",前 {round(item['epss_percentile'] * 100)}%" \
+            if item.get("epss_percentile") is not None else ""
+        meta.append(f"EPSS {item['epss'] * 100:.0f}%{pct}")
+    if item.get("published"):
+        meta.append(f"披露 {str(item['published'])[:10]}")
+    lines.append(" · ".join(meta))
 
-
-def item_block_md(item: dict) -> str:
-    """单条漏洞的 Markdown 区块:标题行 + 属性行 + 信号行 + 内容子行。"""
-    star = "🔴" if item["tier"] == "critical" else "🟠"
     note = item.get("upgrade_note") or item.get("change_note")
-    block = [f"\n### {star} {item_title(item)}",
-             f"[{item['id']}]({item_link(item)})" +
-             (f" · {_props_line(item)}" if _props_line(item) else "")]
     if note:
-        block.append(f"> {note}")
+        lines.append(f"> {note}")
+
+    tech = []
+    vtype = item.get("vuln_class_hit") or "/".join(item.get("cwe_labels") or [])
+    if vtype:
+        tag = "(核心关注)" if item.get("vuln_class_hit") else ""
+        tech.append(f"类型: {vtype}{tag}")
+    diff = difficulty_brief(item)
+    grade = (item.get("difficulty") or "").split("(", 1)[0]
+    if diff:
+        tech.append(f"利用条件: {diff},难度{grade}")
+    elif grade:
+        tech.append(f"利用条件: 难度{grade}")
+    if tech:
+        lines.append(" | ".join(tech))
+
     sig = signals(item)
     if sig:
-        block.append(" | ".join(sig))
+        lines.append("状态: " + "、".join(sig))
+
+    affected = affected_line(item)
+    if affected:
+        cat = f",组件类别 {item['category']}" if item.get("category") else ""
+        lines.append(f"影响: {affected}{cat}")
+
     if item.get("summary_zh"):
-        block.append(item["summary_zh"])
+        lines.append(f"摘要: {item['summary_zh']}")
     elif item.get("desc_zh"):
-        block.append(item["desc_zh"][:120])
+        lines.append(f"摘要: {item['desc_zh'][:120]}")
+
     repro = item.get("repro_worthy")
     if repro and repro != "不建议":
         parts = []
         if item.get("repro_note"):
             parts.append(item["repro_note"])
         if item.get("impact_scope"):
-            parts.append(f"影响面: {item['impact_scope']}")
-        extra = " · ".join(parts)
-        block.append(f"复现: {repro}" + (f"({extra})" if extra else ""))
+            parts.append(f"影响面 {item['impact_scope']}")
+        lines.append("复现价值: " + repro + (" — " + ";".join(parts) if parts else ""))
+
     if item.get("action_zh"):
-        block.append(f"处置: {item['action_zh']}")
+        lines.append(f"处置建议: {item['action_zh']}")
+
     en = en_summary(item)
     if en:
-        block.append(f"原文: {en}")
-    affected = affected_line(item)
-    if affected:
-        warn = "(暂无官方修复)" if item.get("patched") is False else ""
-        block.append(f"影响{warn}: {affected}")
-    poc = poc_links_line(item)
-    if poc:
-        block.append(f"PoC: {poc}")
-    refs = refs_line(item)
-    if refs:
-        block.append(f"参考: {refs}")
-    return "\n".join(block) + "\n"
+        lines.append(f"原文: {en}")
+
+    links = [("NVD 详情", item_link(item))]
+    links += [(label, url) for label, url in (item.get("refs") or [])[:2]]
+    for url, label in list(item["poc_links"])[:2]:
+        links.append((f"PoC {label}", url))
+    lines.append("资料: " + " · ".join(f"[{l}]({u})" for l, u in links[:4]))
+    return "\n".join(lines) + "\n"
 
 
 def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
@@ -279,8 +290,8 @@ def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
     lines.append("---")
     total_len = sum(len(l.encode()) for l in lines)
 
-    for i in items:
-        text = item_block_md(i)
+    for idx, i in enumerate(items, 1):
+        text = item_block_md(i, seq=idx)
         if total_len + len(text.encode()) > max_bytes:
             lines.append("\n... 其余条目因篇幅截断,完整清单见仓库存档")
             break
@@ -296,7 +307,7 @@ def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
             total_len += len(commit_block.encode())
 
     if media:
-        lines.append("\n## 📡 资讯")
+        lines.append("\n## 资讯动态")
         for m in media[:5]:
             cve_tag = f"({', '.join(m['cves'])})" if m.get("cves") else ""
             lines.append(f"- [{m['title'][:60]}]({m['link']}) {cve_tag}")
@@ -306,33 +317,8 @@ def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
 
 
 def digest_line(i: dict) -> str:
-    """统一的日报条目块:主行(严重度+标题+CVE)+ 属性行 + 信号行 + 子行。
-
-    格式约定:emoji 只有 🔴🟠(严重度)和 🔥💀(在野利用/勒索)两种职责;
-    其余信息全部文字化,字段用 | 分隔,子行缩进两空格。
-    """
-    star = "🔴" if i["tier"] == "critical" else "🟠"
-    lines = [f"{star} **{item_title(i)}** · [{i['id']}]({item_link(i)})"]
-    props = _props_line(i)
-    if props:
-        lines.append(props)
-    sig = signals(i)
-    if sig:
-        lines.append(" | ".join(sig))
-    note = i.get("upgrade_note") or i.get("change_note")
-    if note:
-        lines.append(note)
-    poc = poc_links_line(i)
-    if poc:
-        lines.append(f"PoC: {poc}")
-    affected = affected_line(i)
-    if affected:
-        warn = "(暂无官方修复)" if i.get("patched") is False else ""
-        lines.append(f"影响{warn}: {affected}")
-    refs = refs_line(i)
-    if refs:
-        lines.append(f"参考: {refs}")
-    return "\n".join(lines)
+    """存档清单条目:与推送消息同一格式(item_block_md),不再维护两套样式。"""
+    return item_block_md(i).strip()
 
 
 def build_archive(qualified: list[dict], now: datetime) -> str:

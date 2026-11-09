@@ -45,25 +45,23 @@ def test_junk_words_no_longer_products():
 
 def test_digest_line_uniform():
     line = digest_line(mk())
-    # 块状结构:主行(严重度+标题+CVE),属性行(|分隔),信号行,子行
+    # 与推送消息同格式:标题行 + 元信息行 + 标签字段行
     out_lines = line.split("\n")
-    assert out_lines[0].startswith("🔴 **")
-    assert "[CVE-2026-88772]" in out_lines[0]
-    props = out_lines[1]
-    for field in ("P0 立即处置", "边界设备/VPN", "CVSS 9.5", "内存破坏", "远程·免认证",
-                  "复现:值得"):
-        assert field in props
-    assert props.index("P0 立即处置") < props.index("边界设备/VPN") < props.index("CVSS 9.5")
-    assert "🔥 KEV 在野利用" in line and "CISA 限期 2026-09-30" in line
-    assert "PoC: " in line and "有源码" in line
+    assert out_lines[0].startswith("### 【严重】")
+    assert "[CVE-2026-88772]" in out_lines[1]
+    for field in ("CVSS 9.5", "P0 立即处置"):
+        assert field in out_lines[1]
+    assert any(l.startswith("状态: KEV 在野利用") for l in out_lines)
+    assert "CISA 限期 2026-09-30" in line
+    assert any(l.startswith("影响: ") and "边界设备/VPN" in l for l in out_lines)
+    assert "有源码" in line
     # 字段缺失时整行省略,不输出「未知」占位噪音
     line2 = digest_line(mk(kev=False, poc_links=[], poc_quality=None, cvss=None,
                            cwe_labels=[], difficulty=None, category=None,
                            urgency=None))
     assert "未知" not in line2
-    # emoji 克制:全块只允许 🔴🟠🔥💀
-    banned = "🧪⚠️🎯💥⭐✅📌"
-    assert not any(c in line for c in banned)
+    # 推送格式零 emoji
+    assert not [c for c in line if 0x1F000 <= ord(c) or c in "🔴🟠🔥💀🎯💥📡"]
 
 
 def test_vector_detail():

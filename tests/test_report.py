@@ -32,22 +32,23 @@ def rich_item(cve_id="CVE-2026-1", **kw) -> dict:
 
 def test_item_block_contains_quality_fields():
     md = item_block_md(rich_item())
-    assert "🔥 KEV 在野利用,CISA 限期 2026-10-18" in md
-    assert "💀 勒索软件在野利用" in md
-    assert "nuclei 模板" in md
+    assert "【严重】" in md
+    assert "KEV 在野利用" in md and "CISA 限期 2026-10-18" in md
+    assert "勒索软件在野利用" in md
+    assert "nuclei 检测模板" in md
     assert "暂无官方修复" in md
     assert "x/poc 128★ (有源码)" in md
     assert "[厂商通告](https://example.com/advisory)" in md
     assert "EPSS 75%" in md
-    # emoji 克制:条目内只允许 🔴🟠🔥💀 四种
-    allowed = {"🔴", "🟠", "🔥", "💀"}
-    assert set(c for c in md if ord(c) > 0x2500 and c in "🧪⚠️🎯💥⭐✅📌") == set()
+    assert "[NVD 详情]" in md
+    # 推送格式零 emoji
+    assert not [c for c in md if 0x1F000 <= ord(c) or c in "🔴🟠🔥💀🎯📡🔭⚡📊📈💥"]
 
 
 def test_build_markdown_empty_day_with_stats():
     md = build_markdown([], 0, 48, NOW, None,
                         {"dedup_suppressed": 3, "kev_upgraded": 1})
-    assert "无**新增**" in md and "3" in md
+    assert "无新增" in md and "3" in md
 
 
 def test_build_markdown_with_briefing_and_urgency():
@@ -58,7 +59,7 @@ def test_build_markdown_with_briefing_and_urgency():
                         briefing="- 今日 KEV 新增 1 条在野利用")
     assert "## 今日要点" in md and "在野利用" in md
     assert "P0 立即处置" in md
-    assert "处置: 升级到 2.3.1" in md
+    assert "处置建议: 升级到 2.3.1" in md
 
 
 def test_build_markdown_repro_and_category():
@@ -69,8 +70,8 @@ def test_build_markdown_repro_and_category():
     item["impact_scope"] = "边界VPN设备,常暴露公网"
     item["category"] = "边界设备/VPN"
     md = build_markdown([item], 1, 48, NOW, None, {})
-    assert "复现: 强烈推荐" in md
-    assert "影响面: 边界VPN设备,常暴露公网" in md
+    assert "复现价值: 强烈推荐" in md
+    assert "影响面 边界VPN设备,常暴露公网" in md
     assert "默认配置可利用" in md
     assert "边界设备/VPN" in md
 

@@ -40,11 +40,11 @@ def _material_changes(prev: dict, item: dict) -> list[str]:
     if old_cvss is not None and new_cvss is not None:
         if abs(new_cvss - old_cvss) >= CVSS_CHANGE_DELTA:
             arrow = "升分" if new_cvss > old_cvss else "降分"
-            notes.append(f"📈 评分 {old_cvss}→{new_cvss}({arrow})")
+            notes.append(f"评分 {old_cvss}→{new_cvss}({arrow})")
     elif old_cvss is None and new_cvss is not None and new_cvss >= 9.0:
-        notes.append(f"📈 新增评分 {new_cvss}")
+        notes.append(f"新增评分 {new_cvss}")
     if not prev.get("exploit_ref") and item.get("has_exploit_ref"):
-        notes.append("💥 新增公开PoC引用")
+        notes.append("新增公开 PoC 引用")
     return notes
 
 

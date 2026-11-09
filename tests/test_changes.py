@@ -63,7 +63,7 @@ def test_new_exploit_ref_repush(monkeypatch):
                    exploit_ref_url="https://x/exploit")]
     final, _, stats = run({}, state, monkeypatch=monkeypatch, modified=modified)
     assert stats["changed"] == 1
-    assert "新增公开PoC引用" in final[0]["change_note"]
+    assert "新增公开 PoC 引用" in final[0]["change_note"]
 
 
 def test_unmodified_seen_stays_suppressed(monkeypatch):
