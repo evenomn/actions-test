@@ -46,6 +46,14 @@ focus_categories = [
   "OA/协同办公", "开发运维/CI", "视频监控", "安全设备",
 ]
 
+# 价值排序另内置两组固定加权(逻辑在 vulnmon/scoring.py 与 components.py):
+# - 高价值漏洞类型:任意文件读写/RCE/SQL注入/提权(+120~220),
+#   且 CVSS 过线即视为强信号(无 PoC 也入选)
+# - 组件知名度:全网级基础组件(openssh/nginx/fortinet/citrix/cisco 等 +260)、
+#   常见重点资产(tomcat/spring/jenkins/国产OA 等 +160);
+#   知名组件 8.0 分的排序分必然高于不出名组件 9.0 分(其余信号相同),
+#   避免再出现 regreSSHion(OpenSSH 8.1 分却震动全行业)被高分冷门条目压住的情况
+
 # AI 分析预算:价值排序前 N 条送 LLM 做逐条分析(优先级/复现价值/影响面),
 # 分析结果反过来参与最终入选排序。配了 LLM_API_KEY 才生效
 ai_analyze_limit = 30
@@ -77,6 +85,17 @@ exploitdb = true
 # nomi-sec/PoC-in-GitHub 数据集:社区按日维护的 CVE -> GitHub PoC 仓库映射,
 # raw 直拉、带 star 数,比 GitHub 搜索 API 稳定(推荐保持开启)
 poc_dataset = true
+
+# SecureWithUmer/Exploit-Index 数据集:另一个按日聚合的 CVE -> PoC 映射,
+# 带 PoC 仓库可信度标注(可信✓/未验证/存疑)并收录 Metasploit 模块引用,
+# 与 nomi-sec 数据集互补(nomi-sec 收新 CVE 快,Exploit-Index 来源更杂但多一层可信度)
+exploit_index = true
+
+# 内置技术分析资讯源:watchTowr Labs(labs.watchtowr.com,边界设备/企业软件
+# 利用研究,常伴随在野利用发布深度分析)+ sh3llc0d3.com(利用开发与 KEV 预警)。
+# 标题带 CVE 号的分析文章会挂到对应漏洞条目,并作为「有技术分析」信号
+# 参与价值排序(+180)。想只用自己的 feeds 就改成 false
+analysis_feeds = true
 
 # GitHub 搜索兜底:对数据集没命中的入选条目再搜一次(小预算,防限流)
 search_github_poc = true

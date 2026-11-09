@@ -21,7 +21,7 @@ def mk(cve_id, cvss=9.5, **kw) -> dict:
 
 
 def run(candidates, state, kev_map=None, cfg=None, dedup=True, fetch_missing=None,
-        ai_analyze_fn=None, monkeypatch=None, mode="daily"):
+        ai_analyze_fn=None, monkeypatch=None, mode="daily", analysis_by_cve=None):
     kev_map = kev_map or {}
     cfg = cfg or dict(DEFAULTS)
     if monkeypatch:
@@ -31,7 +31,7 @@ def run(candidates, state, kev_map=None, cfg=None, dedup=True, fetch_missing=Non
     return pipeline.enrich_and_filter(candidates, kev_map, state, cfg, NOW, LOOKBACK,
                                       fetch_missing=fetch_missing,
                                       ai_analyze_fn=ai_analyze_fn, dedup=dedup,
-                                      mode=mode)
+                                      mode=mode, analysis_by_cve=analysis_by_cve)
 
 
 def test_dedup_suppresses_pushed(monkeypatch):
@@ -234,3 +234,60 @@ def test_fallback_assignment_without_ai(monkeypatch):
                               state, monkeypatch=monkeypatch)
     assert final[0]["urgency"] == "P1 重点关注"
     assert final[0]["repro_worthy"] == "值得"
+
+
+def test_high_value_class_qualifies_without_poc(monkeypatch):
+    """高价值类型(文件读写/RCE/SQL注入/提权)是强信号:过线无 PoC 也入选。
+
+    参照 FortiMail 任意文件写(CVE-2026-104286)式漏洞——披露初期常常无 PoC。
+    """
+    traversal = mk("CVE-2026-1", cvss=7.5,
+                   desc="Path traversal allows writing arbitrary files.")
+    boring = mk("CVE-2026-2", cvss=8.0,
+                desc="An information disclosure vulnerability.")
+    state = {"version": 3, "seen": {}, "kev_ids": []}
+    final, qualified, _ = run({"CVE-2026-1": traversal, "CVE-2026-2": boring},
+                              state, monkeypatch=monkeypatch)
+    ids = [i["id"] for i in qualified]
+    assert ids == ["CVE-2026-1"]  # 高价值类型入选,普通信息泄露 8.0 无信号落选
+    assert qualified[0]["vuln_class_hit"] == "任意文件读写"
+
+
+def test_famous_high_value_ranks_first(monkeypatch):
+    """知名组件 8.0 + 高价值类型 > 不知名组件 9.5(其余信号相同)。"""
+    famous = mk("CVE-2026-1", cvss=8.0, products=["openbsd openssh"],
+                desc="allows remote code execution")
+    obscure = mk("CVE-2026-2", cvss=9.5, products=["acme tinylib"],
+                 desc="An information disclosure vulnerability.")
+    state = {"version": 3, "seen": {}, "kev_ids": []}
+    final, _, _ = run({"CVE-2026-1": famous, "CVE-2026-2": obscure}, state,
+                      monkeypatch=monkeypatch)
+    assert final[0]["id"] == "CVE-2026-1"
+    assert final[0]["fame_tier"] == 1 and final[0]["fame_term"] == "openssh"
+
+
+def test_analysis_feed_signal_attached(monkeypatch):
+    """内置分析源(watchTowr/sh3llc0d3)点名的 CVE:标记 + 挂参考链接 + 排序加权。"""
+    item = mk("CVE-2026-1", cvss=9.0, desc="A flaw.")
+    other = mk("CVE-2026-2", cvss=9.0, desc="A flaw.")
+    analysis = {"CVE-2026-1": {"title": "watchTowr: Pwning FortiMail",
+                               "link": "https://labs.watchtowr.com/x/",
+                               "analysis": True}}
+    state = {"version": 3, "seen": {}, "kev_ids": []}
+    final, qualified, _ = run({"CVE-2026-1": item, "CVE-2026-2": other}, state,
+                              analysis_by_cve=analysis, monkeypatch=monkeypatch)
+    got = {i["id"]: i for i in qualified}
+    assert got["CVE-2026-1"]["analysis_hit"] == ("watchTowr: Pwning FortiMail",
+                                                 "https://labs.watchtowr.com/x/")
+    assert ("技术分析", "https://labs.watchtowr.com/x/") in got["CVE-2026-1"]["refs"]
+    assert final[0]["id"] == "CVE-2026-1"  # 技术分析加权把它排到前面
+
+
+def test_event_worthy_famous_high_value(monkeypatch):
+    """events 模式:全网级组件的高价值类型漏洞无 PoC 也即时告警。"""
+    famous_rce = mk("CVE-2026-1", cvss=8.0, products=["fortinet fortimail"],
+                    desc="allows remote code execution")
+    state = {"version": 3, "seen": {}, "kev_ids": []}
+    final, _, _ = run({"CVE-2026-1": famous_rce}, state, mode="events",
+                      monkeypatch=monkeypatch)
+    assert len(final) == 1 and final[0]["id"] == "CVE-2026-1"

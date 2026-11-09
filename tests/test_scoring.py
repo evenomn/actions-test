@@ -2,9 +2,11 @@
 
 from vulnmon.config import DEFAULTS
 from vulnmon.models import new_item
-from vulnmon.scoring import (fallback_repro, is_open_source,
+from vulnmon.scoring import (fallback_repro, fallback_urgency, is_open_source,
                              is_third_party_extension, is_wordpress_plugin,
-                             item_haystack, match_keywords, priority, vendor_key)
+                             item_haystack, match_keywords, priority, vendor_key,
+                             vuln_class)
+from vulnmon.components import component_fame
 
 
 def mk(**kw) -> dict:
@@ -117,3 +119,82 @@ def test_priority_ranking():
 
 def test_item_haystack_lowercased():
     assert "wordpress plugin" in item_haystack(mk(products=["foo wordpress_plugin"]))
+
+
+# ---------------- 高价值漏洞类型(任意文件读写/RCE/SQL注入/提权) ----------------
+
+def test_vuln_class_detection():
+    # CWE 中文标签命中(models.CWE_LABELS)
+    assert vuln_class(mk(cwe_labels=["命令注入(RCE)"]))[0] == "RCE"
+    assert vuln_class(mk(cwe_labels=["SQL注入"]))[0] == "SQL注入"
+    assert vuln_class(mk(cwe_labels=["路径遍历/任意文件读取"]))[0] == "任意文件读写"
+    assert vuln_class(mk(cwe_labels=["权限提升"]))[0] == "提权"
+    # 描述英文关键词命中(多数 NVD 条目无 CWE 标签)
+    assert vuln_class(mk(desc="allows remote code execution"))[0] == "RCE"
+    assert vuln_class(mk(desc="An attacker can perform SQL injection via filters."))[0] == "SQL注入"
+    assert vuln_class(mk(desc="path traversal to write arbitrary files"))[0] == "任意文件读写"
+    assert vuln_class(mk(desc="allows local privilege escalation"))[0] == "提权"
+    # RCE 优先于其他类型(同时可读文件也可执行命令的注入型漏洞)
+    both = mk(desc="SQL injection leading to remote code execution")
+    assert vuln_class(both)[0] == "RCE"
+    # 非关注类型不命中
+    assert vuln_class(mk(desc="An information disclosure vulnerability.")) is None
+    assert vuln_class(mk(desc="Denial of service via crafted packets.")) is None
+
+
+def test_vuln_class_priority_bonus():
+    base = mk(cvss=8.0, desc="An information disclosure vulnerability.")
+    rce = mk(cvss=8.0, desc="allows unauthenticated remote code execution")
+    sqli = mk(cvss=8.0, desc="allows SQL injection")
+    assert priority(rce, DEFAULTS) > priority(sqli, DEFAULTS) > priority(base, DEFAULTS)
+
+
+# ---------------- 组件知名度(知名 8.0 > 不知名 9.0) ----------------
+
+def test_component_fame_tiers():
+    # tier1:全网级基础组件/边界大厂(CPE 产品字段命中)
+    assert component_fame(mk(products=["openbsd openssh"])) == (1, "openssh")
+    assert component_fame(mk(products=["fortinet fortimail"]))[0] == 1
+    assert component_fame(mk(products=["citrix netscaler"]))[0] == 1
+    # tier2:常见重点资产
+    assert component_fame(mk(products=["apache tomcat"])) == (2, "tomcat")
+    assert component_fame(mk(products=["jenkins jenkins"]))[0] == 2
+    # KEV 名称/GHSA 包名也能命中
+    assert component_fame(mk(kev_name="Ivanti Connect Secure ..."))[0] == 1
+    assert component_fame(mk(ghsa_ranges=["maven:org.springframework spring-core"]))[0] == 2
+    # 冷门组件不命中
+    assert component_fame(mk(products=["acme tinylib"])) is None
+    # 描述里随口提到不算(防误报):只看产品标识字段
+    assert component_fame(mk(desc="exploited via curl commands")) is None
+    # 短词必须词边界匹配:jgit ≠ git
+    assert component_fame(mk(ghsa_ranges=["pip:jgit"])) is None
+    assert component_fame(mk(products=["git git"])) == (1, "git")
+
+
+def test_famous_outranks_obscure():
+    """核心需求:出名组件的 8.0 评分 > 不出名组件的 9.0 评分(其余信号相同)。"""
+    famous = mk(cvss=8.0, products=["openbsd openssh"], desc="A flaw.")
+    obscure = mk(cvss=9.0, products=["acme tinylib"], desc="A flaw.")
+    assert priority(famous, DEFAULTS) > priority(obscure, DEFAULTS)
+    # tier2 同样要赢
+    famous2 = mk(cvss=8.0, products=["apache tomcat"], desc="A flaw.")
+    assert priority(famous2, DEFAULTS) > priority(obscure, DEFAULTS)
+    # 但证据更强的冷门组件(有 PoC)仍应排前:PoC 是更强的利用证据
+    obscure_poc = mk(cvss=9.0, products=["acme tinylib"], desc="A flaw.",
+                     poc_links=[("https://x", "poc")])
+    assert priority(obscure_poc, DEFAULTS) > priority(famous, DEFAULTS)
+
+
+def test_fallback_urgency_high_value_famous():
+    """无 AI 时:高价值类型 × 知名组件 → P1(regreSSHion 式漏洞不该是 P2)。"""
+    item = mk(cvss=8.1, products=["openbsd openssh"],
+              desc="An issue allowing remote code execution.")
+    assert fallback_urgency(item) == "P1 重点关注"
+    # 高价值类型但冷门组件、不足 8 分且无其他信号 → 仍 P2
+    item2 = mk(cvss=7.5, products=["acme tinylib"],
+               desc="An issue allowing remote code execution.")
+    assert fallback_urgency(item2) == "P2 保持关注"
+    # 高价值类型 ≥8 分即使冷门也升 P1
+    item3 = mk(cvss=8.5, products=["acme tinylib"],
+               desc="An issue allowing remote code execution.")
+    assert fallback_urgency(item3) == "P1 重点关注"

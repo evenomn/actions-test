@@ -5,6 +5,8 @@ from __future__ import annotations
 import re
 import urllib.parse
 
+from .components import FAME_BONUS, component_fame
+
 URGENCY_LEVELS = ("P0 立即处置", "P1 重点关注", "P2 保持关注")
 REPRO_LEVELS = ("强烈推荐", "值得", "一般", "不建议")
 
@@ -115,12 +117,63 @@ def is_wordpress_plugin(item: dict) -> bool:
     return is_third_party_extension(item)
 
 
+# 高价值漏洞类型(推送评分核心关注):任意文件读写 / RCE / SQL注入 / 提权。
+# 同时看 CWE 中文标签(models.CWE_LABELS)和描述英文关键词,命中其一即可;
+# 按列表顺序取第一个命中(RCE 优先于其他,一次注入型漏洞同时标了多个类型时)。
+HIGH_VALUE_CLASSES: list[tuple[str, int, tuple[str, ...], re.Pattern]] = [
+    ("RCE", 220,
+     ("RCE", "命令注入", "代码注入", "反序列化", "沙箱逃逸"),
+     re.compile(r"remote code execution|arbitrary code execution|command injection|"
+                r"code injection|deserializ|os command|sandbox escap", re.I)),
+    ("SQL注入", 150, ("SQL注入", "参数拼接注入"),
+     re.compile(r"sql\s+inject|stacked quer", re.I)),
+    ("任意文件读写", 150,
+     ("路径遍历", "任意文件读取", "任意文件上传", "文件链接绕过"),
+     re.compile(r"arbitrary file (read|write|upload|download|delet)|"
+                r"(path|directory) traversal", re.I)),
+    ("提权", 120, ("权限提升", "权限错误", "授权错误"),
+     re.compile(r"privilege escalation|elevation of privileg|gain(?:ing)? "
+                r"(?:elevated|administrative|root)", re.I)),
+]
+
+
+def vuln_class(item: dict) -> tuple[str, int] | None:
+    """识别高价值漏洞类型,返回 (类型名, 加权分);未命中返回 None。
+
+    管线预计算的 item["vuln_class_hit"/"vuln_class_bonus"] 优先,
+    保证展示与排序用同一份数据;直接调用(priority/测试)时现算。
+    """
+    if item.get("vuln_class_hit"):
+        return item["vuln_class_hit"], int(item.get("vuln_class_bonus") or 0)
+    labels = " ".join(item.get("cwe_labels") or [])
+    desc = item.get("desc") or ""
+    for name, bonus, cwe_words, pat in HIGH_VALUE_CLASSES:
+        if any(w in labels for w in cwe_words) or pat.search(desc):
+            return name, bonus
+    return None
+
+
+def fame_tier(item: dict) -> int:
+    """组件知名度层级(0=未命中/冷门,1=全网级基础组件,2=常见重点资产)。
+
+    同为 8 分,知名组件的加权(FAME_BONUS 260/160)远超冷门组件 9 分的
+    基础分差(10),保证「知名组件 8.0 > 不知名组件 9.0」(其余信号相同)。
+    """
+    if item.get("fame_tier") is not None:
+        return int(item["fame_tier"])
+    f = component_fame(item)
+    return f[0] if f else 0
+
+
 def fallback_urgency(item: dict) -> str:
-    """无 AI 时的确定性优先级:在野利用 → P0;有 PoC/高EPSS/9 分以上 → P1;其余 → P2。"""
+    """无 AI 时的确定性优先级:在野利用 → P0;有 PoC/高EPSS/9 分以上 → P1;
+    高价值类型(文件读写/RCE/SQL注入/提权)× 知名组件(或 ≥8 分)→ P1;其余 → P2。"""
     if item.get("kev"):
         return URGENCY_LEVELS[0]
     if item.get("poc_links") or item.get("has_exploit_ref") or \
             (item.get("epss") or 0) >= 0.1 or (item.get("cvss") or 0) >= 9.0:
+        return URGENCY_LEVELS[1]
+    if vuln_class(item) and (fame_tier(item) or (item.get("cvss") or 0) >= 8.0):
         return URGENCY_LEVELS[1]
     return URGENCY_LEVELS[2]
 
@@ -206,8 +259,10 @@ def vendor_key(item: dict) -> str:
 def priority(item: dict, cfg: dict) -> float:
     """价值排序:在野利用 > 有PoC > 命中关注词 > EPSS热度 > 分数。
 
-    加成项:利用难度低、有检测模板、暂无官方修复、AI 优先级与复现判定、
-    暴露面大的组件类别(边界设备/中间件/CMS/OA 等,见 config focus_categories)。
+    加成项:高价值漏洞类型(任意文件读写/RCE/SQL注入/提权)、组件知名度
+    (全网级基础组件/常见重点资产,保证知名组件 8.0 排在冷门组件 9.0 前)、
+    研究团队技术分析覆盖、利用难度低、有检测模板、暂无官方修复、
+    AI 优先级与复现判定、暴露面大的组件类别(见 config focus_categories)。
     """
     s = (item["cvss"] or 5.0) * 10
     if item["kev"]:
@@ -218,6 +273,12 @@ def priority(item: dict, cfg: dict) -> float:
         s += 500
     if item["keyword_hit"]:
         s += 400
+    vc = vuln_class(item)
+    if vc:
+        s += vc[1]
+    s += FAME_BONUS.get(fame_tier(item), 0)
+    if item.get("analysis_hit"):
+        s += 180  # watchTowr/sh3llc0d3 等研究团队已出深度利用分析
     if item["epss"]:
         if item["epss"] >= cfg["epss_threshold"]:
             s += 200

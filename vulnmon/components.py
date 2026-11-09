@@ -12,6 +12,8 @@
 
 from __future__ import annotations
 
+import re
+
 # 类别 -> 关键词列表。类别名即最终展示名,config 的 focus_categories 也用这些名字。
 CATEGORY_KEYWORDS: dict[str, list[str]] = {
     "边界设备/VPN": [
@@ -109,7 +111,62 @@ CATEGORY_KEYWORDS: dict[str, list[str]] = {
     ],
 }
 
-# 知名开源产品的上游源码仓库(CPE 厂商/产品 -> GitHub 仓库),
+# 组件知名度分层:同为 8 分,openssh/nginx/fortigate 这类装机量巨大的组件
+# 实际危害远超冷门组件的 9 分(参照 regreSSHion:OpenSSH CVSS 8.1 却震动全行业)。
+# 加权见 scoring.priority;只在产品标识字段(CPE/KEV 名称/GHSA 包名/厂商推断)
+# 里匹配,描述里随口提到 "curl" 之类的词不算,防误报。
+FAME_KEYWORDS: dict[int, list[str]] = {
+    1: [  # 全网级基础组件 / 边界安全大厂:一出事就是行业级事件
+        "fortinet", "fortigate", "fortios", "fortimail", "fortiweb", "fortimanager",
+        "ivanti", "pulse secure", "connect secure", "citrix", "netscaler",
+        "palo alto", "pan-os", "globalprotect", "sonicwall", "juniper", "junos",
+        "f5", "big-ip", "bigip", "check point", "checkpoint", "zscaler", "barracuda",
+        "vmware", "vsphere", "esxi", "vcenter",
+        "cisco", "microsoft exchange", "exchange server",
+        "openssh", "openssl", "nginx", "linux kernel", "sudo", "systemd", "git",
+        "curl", "libcurl", "bash", "openswan", "strongswan", "wireguard",
+    ],
+    2: [  # 常见企业资产 / HVV 高频目标
+        "tomcat", "weblogic", "websphere", "jboss", "wildfly", "struts",
+        "spring", "log4j", "jackson", "fastjson", "shiro", "dubbo", "ofbiz",
+        "jenkins", "gitlab", "gitea", "nexus", "harbor", "sonarqube",
+        "confluence", "jira", "bitbucket", "grafana", "zabbix",
+        "kubernetes", "docker", "rancher", "keycloak",
+        "redis", "mysql", "mariadb", "postgresql", "mongodb", "elasticsearch",
+        "wordpress", "drupal", "joomla", "zimbra", "coremail",
+        "nacos", "ruoyi", "若依", "jeecg", "致远", "seeyon", "通达", "tongda",
+        "泛微", "weaver", "e-cology", "用友", "yonyou", "金蝶", "kingdee",
+        "禅道", "zentaopms", "showdoc", "phpmyadmin", "solr", "activemq", "rocketmq",
+    ],
+}
+# 知名度加权分:tier1 必须保证「知名组件 8.0 > 冷门组件 9.0」(基础分差 10)
+FAME_BONUS = {1: 260, 2: 160}
+# 这些短词容易撞进包名/产品名(如 jgit/digitalio),必须词边界匹配
+_FAME_BOUNDARY_ONLY = {"git", "f5", "sudo"}
+_FAME_FLAT = sorted(
+    ((kw, tier) for tier, kws in FAME_KEYWORDS.items() for kw in kws),
+    key=lambda t: len(t[0]), reverse=True)
+
+
+def component_fame(item: dict) -> tuple[int, str] | None:
+    """返回 (知名度层级, 命中词):1=全网级基础组件,2=常见重点资产;未命中 None。"""
+    hay = " ".join([
+        " ".join(item.get("products", [])),
+        item.get("kev_name") or "",
+        " ".join(item.get("ghsa_ranges", [])),
+        item.get("vendor_hint") or "",
+    ]).lower()
+    if not hay.strip():
+        return None
+    for kw, tier in _FAME_FLAT:
+        if kw in _FAME_BOUNDARY_ONLY:
+            if re.search(rf"\b{re.escape(kw)}\b", hay):
+                return tier, kw
+        elif kw in hay:
+            return tier, kw
+    return None
+
+
 # 详情页「源码与资料」区用于给出门源码直达地址;未收录的走仓库搜索链接
 SOURCE_REPOS = {
     "nginx": "nginx/nginx", "httpd": "apache/httpd", "apache": "apache/httpd",

@@ -108,6 +108,10 @@ DEFAULTS = {
     "use_exploitdb": True,
     "search_github_poc": True,
     "use_poc_dataset": True,
+    # SecureWithUmer/Exploit-Index:CVE -> PoC 仓库(带可信度)+ Metasploit 模块
+    "use_exploit_index": True,
+    # 内置技术分析资讯源(watchTowr Labs / sh3llc0d3),参与价值排序
+    "analysis_feeds": True,
     "use_nuclei": True,
     # 早期预警:监控大项目安全相关提交(CVE 披露前的第一波信号)
     "use_commits": True,
@@ -179,6 +183,8 @@ def load_config(path: Path | None = None) -> dict:
         "use_exploitdb": bool(source.get("exploitdb", True)),
         "search_github_poc": bool(source.get("search_github_poc", True)),
         "use_poc_dataset": bool(source.get("poc_dataset", True)),
+        "use_exploit_index": bool(source.get("exploit_index", True)),
+        "analysis_feeds": bool(source.get("analysis_feeds", True)),
         "use_nuclei": bool(source.get("nuclei_templates", True)),
         "use_commits": bool(source.get("commits", True)),
         "commit_max": int(source.get("commit_max", DEFAULTS["commit_max"])),

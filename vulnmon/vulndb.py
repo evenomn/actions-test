@@ -163,6 +163,9 @@ def build_detail(item: dict) -> str:
     lines.append(f"- [GitHub 代码中搜索此 CVE](https://github.com/search?q={cid_q}&type=code)(找 PoC/利用片段)")
     lines.append(f"- [GitHub 安全通告检索](https://github.com/advisories?query={cid_q})")
     lines.append(f"- [分析文章检索](https://www.google.com/search?q={cid_q}+exploit+analysis)")
+    if item["id"].startswith("CVE-"):
+        # The HackerWire 按 CVE 号聚合各路媒体报道,链接固定可构造(免抓取)
+        lines.append(f"- [The HackerWire 漏洞新闻聚合](https://www.thehackerwire.com/vulnerability/{item['id']}/)")
     lines.append("")
 
     # 复现建议

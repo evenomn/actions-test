@@ -1,6 +1,6 @@
 # CVE Daily Monitor
 
-企业级漏洞情报平台:多源采集(NVD/GHSA/KEV/EPSS/PoC 数据集/nuclei/RSS)→ 规则引擎 + AI 分析师双重加工 → **即时告警 + 每日日报 + 每周复盘**三级节奏,推送到钉钉 / 飞书 / 企业微信 / Telegram / Slack,并输出 feed.json(带统计)/ RSS / HMAC 签名出站 Webhook。
+企业级漏洞情报平台:多源采集(NVD/GHSA/KEV/EPSS/PoC 数据集/Exploit-Index/nuclei/技术分析源)→ 规则引擎 + AI 分析师双重加工 → **即时告警 + 每日日报 + 每周复盘**三级节奏,推送到钉钉 / 飞书 / 企业微信 / Telegram / Slack,并输出 feed.json(带统计)/ RSS / HMAC 签名出站 Webhook。
 
 零第三方依赖(纯 Python 标准库),GitHub Actions 免费跑,零成本运维。
 
@@ -66,19 +66,24 @@ PoC: attacker/cve-poc ⭐128 · EDB-52311                        ← 真实可�
 - **人话标题**:优先 LLM 生成(配 `LLM_API_KEY`),否则启发式拼接「产品 + 未授权 + 漏洞类型」
 - **利用难度**:从 CVSS 向量推导(攻击路径/复杂度/权限/交互)
 - **影响与修复版本**:GHSA 包版本范围(含修复版本)优先,NVD CPE 约束兜底;已知受影响范围但无修复版本时,明确标出「⚠️暂无官方修复」
-- **PoC 双通道**:nomi-sec/PoC-in-GitHub 数据集(带 star 数)+ Exploit-DB + GitHub 搜索兜底
-- **武器化信号**:nuclei-templates 是否已有检测模板;KEV 条目附 CISA 修复截止日期与勒索软件标记
+- **PoC 三通道**:nomi-sec/PoC-in-GitHub 数据集(带 star 数)+ SecureWithUmer/Exploit-Index(带 PoC 仓库可信度标注 ✅可信/❓未验证/⚠️存疑,并收录 Metasploit 模块)+ Exploit-DB + GitHub 搜索兜底
+- **武器化信号**:nuclei-templates 是否已有检测模板;KEV 条目附 CISA 修复截止日期与勒索软件标记;watchTowr Labs / sh3llc0d3 等研究团队的技术分析覆盖
 
 ## 怎么控制「只推高价值」(核心逻辑)
 
-1. **入选资格**(满足其一):KEV 在野利用 / CVSS ≥ `direct_push_threshold`(9.0)/ CVSS ≥ 7.0 且命中强信号(EPSS≥0.1、有 PoC、命中关注词)
-2. **价值排序**:在野利用 > 有 PoC > 命中关注词 > EPSS 热度 > 分数,利用难度低、有检测模板、暂无修复再加成
+1. **入选资格**(满足其一):KEV 在野利用 / CVSS ≥ `direct_push_threshold`(9.0)/ CVSS ≥ 7.0 且命中强信号(EPSS≥0.1、有 PoC、命中关注词、**高价值漏洞类型**)
+2. **价值排序**:在野利用 > 有 PoC > 命中关注词 > EPSS 热度 > 分数,叠加三类核心加成:
+   - **高价值漏洞类型**:任意文件读写 / RCE / SQL注入 / 提权(+120~220)——危害类型优先于分数
+   - **组件知名度**:全网级基础组件(openssh/nginx/fortinet/citrix/cisco 等 +260)、常见重点资产(tomcat/spring/jenkins/国产OA 等 +160)。**知名组件 8.0 分必然排在不出名组件 9.0 分之前**(其余信号相同)——参照 regreSSHion(OpenSSH 8.1 分却震动全行业)的教训,分数高低 ≠ 危害大小
+   - **技术分析覆盖**:watchTowr Labs / sh3llc0d3 已出深度利用分析(+180)
+   利用难度低、有检测模板、暂无修复、AI 优先级/复现判定等继续叠加
 3. **三道闸门防刷屏**:每日总量上限 `max_push`;同厂商限量 `max_per_vendor`;`ignore_keywords` 拉黑灌水源
-4. **不丢情报**(v2):
+4. **即时告警强信号扩展**:全网级组件(fame tier1)的高价值类型漏洞即使无 PoC 也进即时告警,不等日报
+5. **不丢情报**(v2):
    - 达标但被上限截掉的漏洞次日**重新参选**,不会静默消失
    - 旧漏洞新入选 KEV → **升级重推**,标「此前已推送,现已确认在野利用」
    - 所有渠道推送失败时不写去重状态,下次运行自动重推(at-least-once)
-5. **完整清单存档**:当天所有符合条件的漏洞写入 `data/digest-日期.md` 随仓库提交
+6. **完整清单存档**:当天所有符合条件的漏洞写入 `data/digest-日期.md` 随仓库提交
 
 ## 数据源
 
@@ -90,7 +95,11 @@ PoC: attacker/cve-poc ⭐128 · EDB-52311                        ← 真实可�
 | [FIRST EPSS](https://www.first.org/epss/) | 未来 30 天被利用概率 |
 | [Exploit-DB](https://www.exploit-db.com/) | 公开 exploit 映射 |
 | [PoC-in-GitHub](https://github.com/nomi-sec/PoC-in-GitHub) | 社区维护的 CVE → PoC 仓库数据集(带 star) |
+| [Exploit-Index](https://github.com/SecureWithUmer/Exploit-Index) | CVE → PoC 仓库映射(PoC 可信度分层 ✅/❓/⚠️)+ Metasploit 模块收录 |
 | [nuclei-templates](https://github.com/projectdiscovery/nuclei-templates) | 公开检测模板覆盖(武器化信号) |
+| [watchTowr Labs](https://labs.watchtowr.com)(RSS) | 边界设备/企业软件的深度利用研究,「有技术分析」排序信号 |
+| [sh3llc0d3](https://sh3llc0d3.com)(RSS) | 利用开发研究与 KEV 预警,「有技术分析」排序信号 |
+| [The HackerWire](https://www.thehackerwire.com) | 按 CVE 号聚合的漏洞新闻页,详情页自动挂链接 |
 | GitHub Commits API(重点项目提交监控) | **早期预警**:CVE 披露前的第一波上游修复信号 |
 
 **早期预警(项目提交监控)**:多数高危漏洞在 NVD 收录前几小时到几天,修复
@@ -212,11 +221,12 @@ vulnmon/
     nvd.py kev.py ghsa.py     NVD(含变更数据) / CISA KEV / GitHub GHSA
     epss.py exploitdb.py      EPSS / Exploit-DB
     poc_github.py             PoC-in-GitHub 数据集 + 搜索兜底 + 源码核验
+    exploit_index.py          Exploit-Index 数据集(PoC 可信度 + Metasploit)
     nuclei.py                 nuclei-templates 覆盖
-    feeds.py                  RSS/Atom 资讯源(媒体/公众号转 RSS)
+    feeds.py                  RSS/Atom 资讯源(内置 watchTowr/sh3llc0d3 技术分析源)
   pipeline.py                 合并、资格判定、变更检测、去重(v3)、打分、上限截断
-  scoring.py                  关键词匹配、价值排序、厂商聚合、兜底判定
-  components.py               组件画像(15 类常用系统)
+  scoring.py                  关键词匹配、高价值类型/知名度加权、价值排序、兜底判定
+  components.py               组件画像(15 类常用系统 + 知名度分层)
   llm.py                      AI 分析师:逐条分析 + 今日简报 + 机翻兜底
   report.py                   日报/即时告警模板、feed.json(stats)、RSS、分块
   notify.py                   多渠道分发 + HMAC 出站 Webhook

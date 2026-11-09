@@ -16,6 +16,15 @@ from ..http import http_get
 
 CVE_RE = re.compile(r"CVE-\d{4}-\d{4,7}")
 
+# 内置「技术分析」资讯源(config [source] analysis_feeds 开关,默认开):
+# 安全研究团队的博客,常先于/伴随在野利用发布深度利用分析(多含可复现路径)。
+# 标题带 CVE 号的条目挂到对应漏洞上,并作为「有技术分析」信号参与价值排序。
+DEFAULT_ANALYSIS_FEEDS = [
+    "https://labs.watchtowr.com/rss/",  # watchTowr Labs:边界设备/企业软件利用研究
+    "https://sh3llc0d3.com/feed/",      # Shellcode:利用开发研究与 KEV 预警
+]
+
+
 
 def _parse_rss(root: ET.Element) -> list[dict]:
     out = []

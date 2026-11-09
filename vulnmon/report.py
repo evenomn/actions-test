@@ -86,8 +86,14 @@ def signals(item: dict) -> list[str]:
         out.append(f"🔥 KEV 在野利用{due}")
     if item["ransomware"]:
         out.append("💀 勒索软件在野利用")
+    if item.get("vuln_class_hit"):
+        out.append(f"🎯 高价值:{item['vuln_class_hit']}")
+    if item.get("fame_term"):
+        out.append(f"知名组件:{item['fame_term']}")
     if item.get("poc_links") or item["has_exploit_ref"]:
         out.append("有PoC")
+    if item.get("analysis_hit"):
+        out.append("有技术分析")
     if item.get("nuclei"):
         out.append("nuclei 模板")
     if item.get("patched") is False:
@@ -295,7 +301,7 @@ def build_markdown(items: list[dict], total_count: int, lookback_hours: int,
             cve_tag = f"({', '.join(m['cves'])})" if m.get("cves") else ""
             lines.append(f"- [{m['title'][:60]}]({m['link']}) {cve_tag}")
 
-    lines.append("\n---\n*数据源: NVD · GitHub GHSA · CISA KEV · EPSS · Exploit-DB · PoC-in-GitHub · nuclei-templates · 重点项目提交监控*")
+    lines.append("\n---\n*数据源: NVD · GitHub GHSA · CISA KEV · EPSS · Exploit-DB · PoC-in-GitHub · Exploit-Index · nuclei-templates · watchTowr Labs · sh3llc0d3 · 重点项目提交监控*")
     return "\n".join(lines)
 
 
@@ -386,6 +392,8 @@ def build_feed_json(qualified: list[dict], now: datetime, lookback_hours: int,
             "epss": item["epss"],
             "epss_percentile": item["epss_percentile"],
             "cwe_labels": item["cwe_labels"],
+            "vuln_class": item.get("vuln_class_hit"),
+            "fame_term": item.get("fame_term"),
             "difficulty": item["difficulty"],
             "products": item["products"],
             "affected": affected_line(item),

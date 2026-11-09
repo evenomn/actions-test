@@ -1,6 +1,7 @@
 """NVD 解析与 GHSA 合并。"""
 
 from vulnmon.config import DEFAULTS
+from vulnmon.sources.exploit_index import parse_exploit_md
 from vulnmon.sources.nvd import parse_cve
 from vulnmon.sources.ghsa import merge_ghsa
 from vulnmon.models import new_item
@@ -90,3 +91,57 @@ def test_merge_ghsa_low_score_skipped():
     candidates: dict[str, dict] = {}
     merge_ghsa(candidates, advisories, DEFAULTS)
     assert candidates == {}
+
+
+# Exploit-Index 单文件格式(真实样本结构,含可信度标注/脏数据/About 尾巴)
+EXPLOIT_INDEX_SAMPLE = """# CVE-2026-104286
+
+## Description
+FortiMail path traversal write.
+
+## Threat Intelligence
+- **EPSS Score**: 0.04573 (Percentile: 0.91674)
+- **CISA KEV**: Known Exploited Vulnerability (Added: 2026-10-01)
+
+## Proof of Concept Exploits
+### GitHub
+- [https://github.com/watchtowrlabs/fortimail-poc](https://github.com/watchtowrlabs/fortimail-poc) - ✅ Verified
+- [https://github.com/maxprog-svg/CVE-2026-104286](https://github.com/maxprog-svg/CVE-2026-104286) - ❓ Unknown
+- [https://github.com/shady/repo](https://github.com/shady/repo) - ⚠️ Suspicious
+- [https://github.com/https:/web.archive.org](https://github.com/https:/web.archive.org) - ❓ Unknown
+
+### Metasploit
+- `/modules/exploits/linux/http/fortimail_cve_2026_104286.rb`
+- `https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/linux/http/fortimail_cve_2026_104286.rb`
+
+
+---
+
+### About the Project
+**Exploit-Index** is a database. Not a PoC.
+"""
+
+
+def test_parse_exploit_md():
+    links = parse_exploit_md(EXPLOIT_INDEX_SAMPLE)
+    urls = [u for u, _ in links]
+    # GitHub 条目:可信度标注进 label,脏 URL(web.archive.org)被过滤
+    assert urls == [
+        "https://github.com/watchtowrlabs/fortimail-poc",
+        "https://github.com/maxprog-svg/CVE-2026-104286",
+        "https://github.com/shady/repo",
+        "https://github.com/rapid7/metasploit-framework/blob/master/modules/"
+        "exploits/linux/http/fortimail_cve_2026_104286.rb",
+    ]
+    labels = " | ".join(l for _, l in links)
+    assert "可信✓" in labels and "未验证" in labels and "存疑" in labels
+    assert "metasploit/fortimail_cve_2026_104286" in labels
+    # About 段落(仓库自介绍)不产生链接
+    assert not any("About" in l or "database" in l for _, l in links)
+
+
+def test_parse_exploit_md_no_poc_section():
+    # 无 PoC 段 / 空段都不是利用信号(文件覆盖几乎所有 CVE)
+    assert parse_exploit_md("# CVE-2026-1\n\n## Description\nnothing\n") == []
+    empty = "# CVE-2026-1\n\n## Proof of Concept Exploits\n\n---\n\n### About\n"
+    assert parse_exploit_md(empty) == []

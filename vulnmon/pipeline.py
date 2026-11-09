@@ -17,12 +17,13 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 
-from .components import classify
+from .components import classify, component_fame
 from .http import nvd_sleep
 from .models import is_cve, new_item
 from .scoring import (fallback_repro, fallback_urgency, is_open_source,
                       is_third_party_extension, item_haystack,
-                      match_keywords, priority, vendor_from_refs, vendor_key)
+                      match_keywords, priority, vendor_from_refs, vendor_key,
+                      vuln_class)
 from .scoring import is_wordpress_plugin  # 兼容旧名(= is_third_party_extension)
 from .sources.epss import fetch_epss
 from .sources.kev import apply_kev
@@ -49,7 +50,7 @@ def _material_changes(prev: dict, item: dict) -> list[str]:
 
 def detect_changes(candidates: dict[str, dict], seen: dict,
                    start: datetime, end: datetime,
-                   fetch_modified=None) -> list[dict]:
+                   fetch_modified=None, analysis_by_cve: dict | None = None) -> list[dict]:
     """变更检测:窗口内被 NVD 修改、且此前已见过的漏洞,发生实质变化则产出重推条目。
 
     返回带 change_note 的 item 列表;同时把没有实质变化的更新掉(由调用方写回)。
@@ -79,6 +80,7 @@ def detect_changes(candidates: dict[str, dict], seen: dict,
         m["category"] = classify(m)
         m["change_note"] = ";".join(notes)
         m["keyword_hit"] = match_keywords(m, [])  # 关键词由调用方补
+        _apply_meta(m, analysis_by_cve)
         changed.append(m)
     if n_touched:
         print(f"  变更检测: 窗口内 {n_touched} 个已见漏洞被修改,{len(changed)} 个实质变化", flush=True)
@@ -92,6 +94,25 @@ def _kev_date(entry: dict):
         return None
 
 
+def _apply_meta(item: dict, analysis_by_cve: dict | None = None) -> None:
+    """通用元数据富化:组件知名度、高价值漏洞类型、技术分析覆盖。
+
+    字段就地写入 item,供 priority()/signals() 展示与排序统一取用。
+    """
+    fame = component_fame(item)
+    item["fame_tier"] = fame[0] if fame else 0
+    item["fame_term"] = fame[1] if fame else None
+    vc = vuln_class(item)
+    if vc:
+        item["vuln_class_hit"], item["vuln_class_bonus"] = vc
+    hit = (analysis_by_cve or {}).get(item["id"])
+    if hit and not item.get("analysis_hit"):
+        item["analysis_hit"] = (hit.get("title") or "技术分析", hit.get("link"))
+        link = hit.get("link")
+        if link and link not in [u for _, u in item["refs"]]:
+            item["refs"].append(("技术分析", link))
+
+
 def _qualifies(item: dict, cfg: dict) -> bool:
     hay = item_haystack(item)
     if any(k in hay for k in cfg["ignore_keywords"]):
@@ -103,7 +124,10 @@ def _qualifies(item: dict, cfg: dict) -> bool:
     cvss = item["cvss"]
     epss_high = item["epss"] is not None and item["epss"] >= cfg["epss_threshold"]
     has_poc = item["has_exploit_ref"] or bool(item["poc_links"])
-    strong = item["kev"] or epss_high or has_poc or item["keyword_hit"]
+    # 高价值类型(任意文件读写/RCE/SQL注入/提权)本身即强信号:
+    # 过线分数 + 这四类即使无 PoC 也值得入选
+    strong = (item["kev"] or epss_high or has_poc or item["keyword_hit"]
+              or bool(vuln_class(item)))
     over_threshold = cvss is not None and cvss >= cfg["cvss_threshold"]
     direct = cvss is not None and cvss >= cfg["direct_push_threshold"]
     return item["kev"] or direct or (over_threshold and strong)
@@ -112,13 +136,15 @@ def _qualifies(item: dict, cfg: dict) -> bool:
 def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
                       cfg: dict, now: datetime, lookback: timedelta,
                       fetch_missing=None, ai_analyze_fn=None, dedup: bool = True,
-                      mode: str = "daily"):
+                      mode: str = "daily", analysis_by_cve: dict | None = None):
     """返回 (入选列表, 全部符合条件列表, 统计)。
 
     fetch_missing: KEV-only 条目补抓 NVD 详情的回调(注入便于测试)。
     ai_analyze_fn: AI 分析回调 (items) -> None,就地写入 urgency/repro 等字段;
     传 None 时用确定性兜底规则。
     mode: "daily" 全量日报 / "events" 只保留强信号即时告警。
+    analysis_by_cve: {cve: 资讯条目} — 内置分析源(watchTowr/sh3llc0d3 等)
+    点名的 CVE,标记「有技术分析」参与排序并挂参考链接。
     """
     seen = state.get("seen", {})
     window_date = (now - lookback).date()
@@ -135,10 +161,12 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
         if not item["products"]:
             # NVD「Awaiting Analysis」条目没有 CPE,用参考链接域名兜底识别厂商
             item["vendor_hint"] = vendor_from_refs(item.get("refs"))
+        _apply_meta(item, analysis_by_cve)
 
     # 变更检测(daily 且开启时):已见漏洞升分/新增PoC引用 → 重推
     if mode == "daily" and cfg.get("track_changes", True) and dedup:
-        changed = detect_changes(candidates, seen, now - lookback, now)
+        changed = detect_changes(candidates, seen, now - lookback, now,
+                                 analysis_by_cve=analysis_by_cve)
         for m in changed:
             m["keyword_hit"] = match_keywords(m, cfg["keywords"])
             entry = kev_map.get(m["id"])
@@ -210,6 +238,7 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
             item["keyword_hit"] = match_keywords(item, cfg["keywords"])
             if not item["products"]:
                 item["vendor_hint"] = vendor_from_refs(item.get("refs"))
+            _apply_meta(item, analysis_by_cve)
             item["tier"] = "critical"
             if item["id"] in upgrade_ids:
                 stats["kev_upgraded"] += 1
@@ -277,5 +306,9 @@ def _is_event_worthy(item: dict) -> bool:
     if item.get("urgency") == "P0 立即处置":
         return True
     if (item.get("cvss") or 0) >= 9.8 and (item.get("difficulty") or "").startswith("低"):
+        return True
+    # 全网级基础组件(openssh/fortinet/citrix 这类)的文件读写/RCE/SQL注入/提权:
+    # 危害不取决于分数,不等日报直接即时告警
+    if item.get("vuln_class_hit") and item.get("fame_tier") == 1:
         return True
     return False

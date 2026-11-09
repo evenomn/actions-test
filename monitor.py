@@ -2,7 +2,8 @@
 """企业级漏洞情报监控(v3)。
 
 数据源: NVD + GitHub GHSA + CISA KEV + FIRST EPSS + Exploit-DB
-        + PoC-in-GitHub 数据集(含源码核验) + nuclei-templates + RSS 资讯
+        + PoC-in-GitHub 数据集 + SecureWithUmer/Exploit-Index(含可信度标注)
+        + nuclei-templates + RSS 资讯(内置 watchTowr Labs / sh3llc0d3 技术分析源)
         + 重点项目提交监控(CVE 披露前的早期预警)
 输出:   即时告警(events) / 每日日报(daily) / 每周复盘(weekly)
         + data/ 存档 + feed.json(stats) + RSS + 出站 Webhook(HMAC 签名)
@@ -36,8 +37,9 @@ from vulnmon.report import (build_events_markdown, build_markdown, build_stats,
 from vulnmon.repro import write_repro
 from vulnmon.state import load_state, mark_seen, save_state
 from vulnmon.sources.commits import filter_new, scan_commit_signals
+from vulnmon.sources.exploit_index import fetch_exploit_index
 from vulnmon.sources.exploitdb import fetch_exploitdb
-from vulnmon.sources.feeds import fetch_feeds, filter_media
+from vulnmon.sources.feeds import DEFAULT_ANALYSIS_FEEDS, fetch_feeds, filter_media
 from vulnmon.sources.ghsa import fetch_ghsa, merge_ghsa
 from vulnmon.sources.kev import fetch_kev
 from vulnmon.sources.nuclei import fetch_nuclei_cves
@@ -98,7 +100,7 @@ def gather_candidates(cfg, lookback, now):
 
 
 def enrich_poc(items, cfg):
-    """PoC 富化:数据集优先,搜索兜底;入选条目做源码核验。"""
+    """PoC 富化:数据集优先(nomi-sec + Exploit-Index),搜索兜底;入选条目做源码核验。"""
     if not items:
         return
     missing = [i["id"] for i in items if is_cve(i["id"])]
@@ -112,6 +114,16 @@ def enrich_poc(items, cfg):
                     item["poc_links"].append((url, label))
             n_hit += bool(item["poc_links"])
         print(f"  {n_hit}/{len(items)} 条带公开 PoC", flush=True)
+    if cfg.get("use_exploit_index") and missing:
+        print("查询 Exploit-Index 数据集 ...", flush=True)
+        ei_map = fetch_exploit_index(missing)
+        n_ei = 0
+        for item in items:
+            for url, label in ei_map.get(item["id"], []):
+                if url not in [u for u, _ in item["poc_links"]]:
+                    item["poc_links"].append((url, label))
+            n_ei += bool(ei_map.get(item["id"]))
+        print(f"  {n_ei}/{len(items)} 条在 Exploit-Index 有收录", flush=True)
     if cfg["search_github_poc"]:
         need_search = [i for i in items if not i["poc_links"]][:8]
         if need_search:
@@ -135,11 +147,21 @@ def enrich_poc(items, cfg):
 
 
 def load_media(cfg, lookback, state, now, dedup):
-    """RSS 资讯:拉取、过滤、按链接去重;返回 (条目, 挂载用的 cve->link 映射)。"""
-    if not cfg["feeds"]:
+    """RSS 资讯:拉取、过滤、按链接去重;返回 (条目, 挂载用的 cve->条目 映射)。
+
+    内置分析源(watchTowr Labs/sh3llc0d3,[source] analysis_feeds 开关)与
+   用户自定义 feeds 合并拉取;内置源条目带 analysis=True 标记,
+    点名的 CVE 会作为「有技术分析」信号参与价值排序(见 pipeline._apply_meta)。
+    """
+    urls = list(cfg["feeds"])
+    if cfg.get("analysis_feeds", True):
+        urls += [u for u in DEFAULT_ANALYSIS_FEEDS if u not in urls]
+    if not urls:
         return [], {}
-    print(f"拉取 {len(cfg['feeds'])} 个 RSS 资讯源 ...", flush=True)
-    entries = fetch_feeds(cfg["feeds"], lookback)
+    print(f"拉取 {len(urls)} 个 RSS 资讯源(含技术分析源) ...", flush=True)
+    analysis_set = set(DEFAULT_ANALYSIS_FEEDS)
+    entries = [dict(e, analysis=e["feed_url"] in analysis_set)
+               for e in fetch_feeds(urls, lookback)]
     media_seen = state.setdefault("media_seen", {}) if dedup else {}
     fresh = []
     for e in entries:
@@ -149,12 +171,12 @@ def load_media(cfg, lookback, state, now, dedup):
         fresh.append(e)
         if dedup:
             media_seen[key] = now.date().isoformat()
-    media = filter_media(fresh, cfg["keywords"])
+    media = filter_media(fresh, cfg["keywords"], max_items=8)
     print(f"  资讯 {len(media)} 条(过滤前 {len(fresh)})", flush=True)
     by_cve = {}
     for m in media:
         for cid in m.get("cves", []):
-            by_cve.setdefault(cid, (m["title"], m["link"]))
+            by_cve.setdefault(cid, m)
     return media, by_cve
 
 
@@ -226,9 +248,14 @@ def main() -> int:
     dedup = not args.no_dedup
     ai_fn = ai_analyze if llm_available() else None
     state = load_state()
+    # 资讯源在筛选前拉取:内置分析源(watchTowr Labs/sh3llc0d3)点名的 CVE
+    # 标记「有技术分析」参与价值排序,而不是事后才挂链接
+    media, media_by_cve = load_media(cfg, lookback, state, now, dedup)
+    analysis_by_cve = {cid: e for cid, e in media_by_cve.items() if e.get("analysis")}
     items, qualified, stats = enrich_and_filter(
         candidates, kev_map, state, cfg, now, lookback,
-        ai_analyze_fn=ai_fn, dedup=dedup, mode=args.mode)
+        ai_analyze_fn=ai_fn, dedup=dedup, mode=args.mode,
+        analysis_by_cve=analysis_by_cve)
     dropped = max(len(qualified) - len(items), 0)
     n_repro = sum(1 for i in items if i.get("repro_worthy") in ("强烈推荐", "值得"))
     print(f"  符合条件 {len(qualified)} 条,入选 {len(items)} 条"
@@ -238,11 +265,11 @@ def main() -> int:
 
     enrich_poc(items, cfg)
 
-    media, media_by_cve = load_media(cfg, lookback, state, now, dedup)
-    for item in items:  # 资讯里点名的 CVE 挂一条媒体参考
+    for item in items:  # 用户自定义资讯源里点名的 CVE 挂一条媒体参考
         hit = media_by_cve.get(item["id"])
-        if hit and hit[1] not in [u for _, u in item["refs"]]:
-            item["refs"].append(("媒体分析", hit[1]))
+        if hit and not hit.get("analysis") and \
+                hit["link"] not in [u for _, u in item["refs"]]:
+            item["refs"].append(("媒体分析", hit["link"]))
 
     commits = load_commit_signals(cfg, lookback, state, now, dedup)
 
