@@ -3,9 +3,107 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 09 Nov 2026 01:02:27 +0000</pubDate>
-    <lastBuildDate>Mon, 09 Nov 2026 01:02:27 +0000</lastBuildDate>
+    <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    <lastBuildDate>Mon, 09 Nov 2026 02:57:31 +0000</lastBuildDate>
+    <item>
+      <title>[critical]WebSphere CSP配置不当绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-101117</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-101117-2026-11-09</guid>
+      <description>CVE-2026-101117 · 🎯P1 重点关注 · 披露 2026-11-08 · 组件 Web中间件 · CVSS 9.1 · 类型 CWE-16 · 难度 低(远程·免认证)
+IBM WebSphere Extreme Scale 8.6.1.0 through 8.6.2.2 could allow a remote attacker to bypass security restrictions due to improper Content Security Policy config…
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OpenEMR药品库存SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124469</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124469-2026-11-09</guid>
+      <description>CVE-2026-124469 · 🎯P1 重点关注 · 披露 2026-11-08 · CVSS 9.9 · 类型 SQL注入 · 难度 低(远程·需低权限)
+OpenEMR before 8.3.0 contains an SQL injection vulnerability in the Fee Sheet drug-inventory lookup (DrugSalesService::sellDrug) that interpolates the prod[N][w…
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OpenEMR服务令牌重放与PIN爆破</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124445</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124445-2026-11-09</guid>
+      <description>CVE-2026-124445 · 🎯P1 重点关注 · 披露 2026-11-08 · CVSS 9.8 · 类型 CWE-307 · 难度 低(远程·免认证)
+Attackers holding a captured token can replay it or brute-force the PIN to open patient-portal sessions exposing PHI.
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Melapress角色编辑器权限提升</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109900</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109900-2026-11-09</guid>
+      <description>CVE-2026-109900 · 🎯P1 重点关注 · 披露 2026-11-08 · CVSS 9.6 · 类型 CWE-266 · 难度 低(远程·免认证·需用户交互)
+Incorrect Privilege Assignment vulnerability in Melapress Melapress Role Editor melapress-role-editor allows Privilege Escalation.This issue affects Melapress R…
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]SunEditor文档头存储型XSS</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124493</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124493-2026-11-09</guid>
+      <description>CVE-2026-124493 · 🎯P1 重点关注 · 披露 2026-11-08 · CVSS 9.3 · 类型 XSS · 难度 低(远程·免认证·需用户交互)
+SunEditor before 3.4.0 contains a stored cross-site scripting vulnerability in the DocumentType constructor that injects header textContent into innerHTML witho…
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]SunEditor链接清洗绕过存储XSS</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124494</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124494-2026-11-09</guid>
+      <description>CVE-2026-124494 · 🎯P1 重点关注 · 披露 2026-11-08 · CVSS 9.3 · 类型 XSS · 难度 低(远程·免认证·需用户交互)
+Attackers can inject href values such as javascript&amp;colon; that pass the _isSafeURL() check but are decoded by browsers, executing JavaScript when victims click…
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Process Mining访问控制缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114464</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114464-2026-11-09</guid>
+      <description>CVE-2026-114464 · 🎯P1 重点关注 · 披露 2026-11-08 · 组件 ERP/业务系统 · CVSS 9.3 · 类型 访问控制缺失 · 难度 低(需相邻网络·免认证)
+IBM Process Mining 2.0.0 through 2.2.1 could allow a remote attacker to obtain sensitive information due to improper access control.
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]IBM Optim路径遍历文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-17466</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-17466-2026-11-09</guid>
+      <description>CVE-2026-17466 · 🎯P1 重点关注 · 披露 2026-11-08 · 组件 ERP/业务系统 · CVSS 9.1 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+IBM Optim 1.0.0, 1.1.0, and 1.2.0 could allow a remote authenticated attacker to obtain sensitive information due to path traversal.
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Frontend Admin权限分配错误提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119506</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119506-2026-11-09</guid>
+      <description>CVE-2026-119506 · 🎯P1 重点关注 · 披露 2026-11-09 · CVSS 9.1 · 类型 CWE-266 · 难度 低(远程·免认证)
+Incorrect Privilege Assignment vulnerability in DynamiApps Frontend Admin by DynamiApps acf-frontend-form-element allows Privilege Escalation.This issue affects…
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OpenEMR传真模块路径遍历RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124490</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124490-2026-11-09</guid>
+      <description>CVE-2026-124490 · 🎯P1 重点关注 · 披露 2026-11-08 · CVSS 9.1 · 类型 CWE-73 · 难度 中(远程·需高权限)
+OpenEMR before 8.3.0 contains a path traversal vulnerability in the RingCentral RCFaxClient disposeDocument() method of oe-module-faxsms that allows authenticat…
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>今日要点</title>
+      <description>- 10个高危均未见在野利用、勒索或POC标记
+- 批量公告含6个CVSS≥9.3，需统一排查
+- 首要处置CVE-2026-124469：SQL注入9.9
+- 其次关注CWE-307 9.8与CWE-266 9.6</description>
+      <pubDate>Mon, 09 Nov 2026 02:57:31 +0000</pubDate>
+    </item>
   </channel>
 </rss>

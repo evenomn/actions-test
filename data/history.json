@@ -17113,5 +17113,119 @@
     "urgency": "P1 重点关注"
    }
   ]
+ },
+ "2026-11-09": {
+  "qualified": 10,
+  "critical": 10,
+  "kev": 0,
+  "repro_top": 0,
+  "kev_total": 1769,
+  "by_category": {
+   "Web中间件": 1,
+   "未分类": 7,
+   "ERP/业务系统": 2
+  },
+  "items": [
+   {
+    "id": "CVE-2026-101117",
+    "title": "WebSphere CSP配置不当绕过",
+    "tier": "critical",
+    "category": "Web中间件",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124469",
+    "title": "OpenEMR药品库存SQL注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124445",
+    "title": "OpenEMR服务令牌重放与PIN爆破",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-109900",
+    "title": "Melapress角色编辑器权限提升",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124493",
+    "title": "SunEditor文档头存储型XSS",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124494",
+    "title": "SunEditor链接清洗绕过存储XSS",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-114464",
+    "title": "Process Mining访问控制缺失",
+    "tier": "critical",
+    "category": "ERP/业务系统",
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-17466",
+    "title": "IBM Optim路径遍历文件读取",
+    "tier": "critical",
+    "category": "ERP/业务系统",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-119506",
+    "title": "Frontend Admin权限分配错误提权",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124490",
+    "title": "OpenEMR传真模块路径遍历RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }
