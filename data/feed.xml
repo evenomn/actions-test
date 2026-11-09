@@ -5,17 +5,63 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 09 Nov 2026 08:10:49 +0000</pubDate>
-    <lastBuildDate>Mon, 09 Nov 2026 08:10:49 +0000</lastBuildDate>
+    <pubDate>Mon, 09 Nov 2026 19:56:04 +0000</pubDate>
+    <lastBuildDate>Mon, 09 Nov 2026 19:56:04 +0000</lastBuildDate>
     <item>
-      <title>[critical]DIR-878 路由器堆溢出远程代码执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124560</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124560-2026-11-09</guid>
-      <description>CVE-2026-124560 · 🎯P1 重点关注 · 披露 2026-11-09 · 组件 网络设备 · CVSS 9.8 · 类型 内存破坏/堆溢出 · 难度 低(远程·免认证)
-A vulnerability was found in D-Link DIR-878 1.20B05. The exploit has been made public and could be used.
-信号: 有PoC
-[Exploit-Index Zimo-666/DIR-878-cves(未验证)](https://github.com/Zimo-666/DIR-878-cves)</description>
-      <pubDate>Mon, 09 Nov 2026 08:10:49 +0000</pubDate>
+      <title>[critical]OpenSSH musl环境密码认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123158</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123158-2026-11-09</guid>
+      <description>CVE-2026-123158 · P0 立即处置 · 披露 2026-11-05 · 组件 操作系统 · CVSS 8.1 · EPSS 1.0%,前 63% · 类型 CWE-394 · 难度 低(远程·利用条件苛刻·免认证)
+sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretatio…
+信号: KEV 在野利用(CISA 限期 2026-11-12) | 有 PoC | 命中关注词 openssh
+[Exploit-Index 0xBlackash/CVE-2026-123158(未验证)(有源码)](https://github.com/0xBlackash/CVE-2026-123158) · [Exploit-Index Funcan/sshole(未验证)(有源码)](https://github.com/Funcan/sshole) · [Exploit-Index Galaxy-sc/CVE-2026-123158(未验证)](https://github.com/Galaxy-sc/CVE-2026-123158) · [github.com/predkambrij/sshhole-repro](https://github.com/predkambrij/sshhole-repro)</description>
+      <pubDate>Mon, 09 Nov 2026 19:56:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FreeSWITCH消息命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116779</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116779-2026-11-09</guid>
+      <description>CVE-2026-116779 · P0 立即处置 · 披露 2026-11-05 · CVSS 9.8 · EPSS 1.3%,前 71% · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+Selecting the api chat proto reached switch_api_execute(), allowing a peer whose MESSAGE was accepted to run FreeSWITCH API commands, including operating-system…
+信号: KEV 在野利用(CISA 限期 2026-11-12) | 有 PoC
+[Exploit-Index hackzuoji/freeswitch-cve-2026-116779-POC(未验证)(仅README)](https://github.com/hackzuoji/freeswitch-cve-2026-116779-POC)</description>
+      <pubDate>Mon, 09 Nov 2026 19:56:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]GPUStack认证绕过致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-102895</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-102895-2026-11-09</guid>
+      <description>CVE-2026-102895 · P0 立即处置 · 披露 2026-11-04 · CVSS 9.8 · EPSS 0.3%,前 26% · 类型 认证绕过/认证欺骗 · 难度 低(远程·免认证)
+The bypass allowed unauthenticated administrative access, including user and model changes, persistent administrator API-key creation, disclosure of worker and …
+信号: KEV 在野利用(CISA 限期 2026-11-12)</description>
+      <pubDate>Mon, 09 Nov 2026 19:56:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Redpanda Connect未认证RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123270</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123270-2026-11-09</guid>
+      <description>CVE-2026-123270 · P1 重点关注 · 披露 2026-11-09 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+Redpanda Connect versions 4.39 to 4.110 contain a missing authentication vulnerability that enables unauthenticated remote code execution (RCE).
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 19:56:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]多租户API密钥越权修改父域</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123800</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123800-2026-11-09</guid>
+      <description>CVE-2026-123800 · P1 重点关注 · 披露 2026-11-09 · CVSS 9.9 · 类型 越权(IDOR)/授权错误 · 难度 低(远程·需低权限)
+In a licensed multi-tenant deployment with multiple applications under one non-default connection URI domain and separate api_keys, an attacker holding one appl…
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 19:56:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Tasmota组消息堆越界写</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119756</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119756-2026-11-09</guid>
+      <description>CVE-2026-119756 · P1 重点关注 · 披露 2026-11-09 · CVSS 9.8 · 类型 CWE-805 · 难度 低(远程·免认证)
+Tasmota through 16.0.0, fixed in commit e97e1e4, contains a heap out-of-bounds write vulnerability in SendReceiveDeviceGroupMessage() that allows unauthenticate…
+信号:</description>
+      <pubDate>Mon, 09 Nov 2026 19:56:04 +0000</pubDate>
     </item>
   </channel>
 </rss>

@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-09T08:10:49+00:00",
+ "updated_at": "2026-11-09T19:56:04+00:00",
  "count": 176,
- "count_recommended": 29,
+ "count_recommended": 30,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -293,6 +293,67 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104935",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-123158",
+   "title": "OpenSSH musl环境密码认证绕过",
+   "first_seen": "2026-11-09",
+   "last_seen": "2026-11-09",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": true,
+   "published": "2026-11-05",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "针对musl无PAM的sshd，用256-1024字符密码尝试登录",
+   "impact_scope": "远程登录服务，公网暴露面广",
+   "action_zh": "升级OpenSSH至10.6p2或Alpine 3.21.10",
+   "summary_zh": "未认证攻击者可对musl无PAM的sshd用超长密码登录特定账户，获取访问权限。",
+   "category": "操作系统",
+   "cvss": 8.1,
+   "epss": 0.01014,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-12",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/0xBlackash/CVE-2026-123158",
+     "label": "Exploit-Index 0xBlackash/CVE-2026-123158(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/Funcan/sshole",
+     "label": "Exploit-Index Funcan/sshole(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/Galaxy-sc/CVE-2026-123158",
+     "label": "Exploit-Index Galaxy-sc/CVE-2026-123158(未验证)"
+    },
+    {
+     "url": "https://github.com/predkambrij/sshhole-repro",
+     "label": "NVD exploit 引用"
+    }
+   ],
+   "affected": "openbsd openssh <10.6; alpinelinux alpine_linux <3.21.10",
+   "patched": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/openssh/openssh-portable/commit/4353fdc43ef646c43a8dda7025cc1a898caf1482"
+    },
+    {
+     "label": "参考",
+     "url": "https://hachyderm.io/@damienmiller/117563026759098135"
+    },
+    {
+     "label": "厂商通告",
+     "url": "https://marc.info/?l=openssh-unix-dev&m=179388064263131&w=2"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123158",
    "change_note": null
   },
   {
@@ -3488,6 +3549,42 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-123270",
+   "title": "Redpanda Connect未认证RCE",
+   "first_seen": "2026-11-09",
+   "last_seen": "2026-11-09",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-09",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "访问未认证服务端点，提交可触发命令执行的请求",
+   "impact_scope": "数据流平台，内网服务面",
+   "action_zh": "关注厂商修复并升级，限制服务网络暴露",
+   "summary_zh": "未认证远程攻击者可利用缺失认证执行任意代码，完全控制Redpanda Connect。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/pagvac/redpanda-connect-unauth-rce"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123270",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-17362",
    "title": "API Connect租户越权操作",
    "first_seen": "2026-11-07",
@@ -3833,99 +3930,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119923",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-102895",
-   "title": "AI推理平台认证绕过可未授权RCE",
-   "first_seen": "2026-11-05",
-   "last_seen": "2026-11-05",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-04",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "值得",
-   "repro_note": "调用from-yaml接口提交恶意YAML创建后端",
-   "impact_scope": "AI推理平台，可致集群与密钥失陷",
-   "action_zh": "立即升级修复版本，轮换API密钥并排查异常管理员",
-   "summary_zh": "未认证攻击者可绕过认证获取管理员权限，并借YAML接口执行代码；已观测在野利用",
-   "category": null,
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/gpustack/gpustack/commit/53f42a6a553542974396d16a4ff6b12bcbedb48d"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/gpustack/gpustack/pull/5346"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/gpustack/gpustack/releases/tag/v2.2.0"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102895",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-116779",
-   "title": "FreeSWITCH API命令注入在野利用",
-   "first_seen": "2026-11-05",
-   "last_seen": "2026-11-05",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-05",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "值得",
-   "repro_note": "向FreeSWITCH发送MESSAGE并选择api chat协议",
-   "impact_scope": "VoIP边界设备，SIP端口暴露",
-   "action_zh": "立即升级修复版本；禁用api chat协议并限制不可信SIP对端",
-   "summary_zh": "被接受MESSAGE的SIP对端可选择api chat协议，以守护进程权限执行FreeSWITCH或系统命令",
-   "category": null,
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": "readme",
-   "poc": [
-    {
-     "url": "https://github.com/majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH-",
-     "label": "majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH- 1★(仅README)"
-    }
-   ],
-   "affected": null,
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/signalwire/freeswitch/commit/7015f6a73ab3d67fed5fbfc277ecfb88a74c2a86"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/signalwire/freeswitch/pull/3135"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/signalwire/freeswitch/releases/tag/v1.11.3"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116779",
    "change_note": null
   },
   {

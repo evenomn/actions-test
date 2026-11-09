@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-09 08:10 UTC · 共 **176** 条(强烈推荐 29 / 值得 147)
+**更新**: 2026-11-09 19:56 UTC · 共 **176** 条(强烈推荐 30 / 值得 146)
 
 ---
 
@@ -69,6 +69,16 @@ PoC: [watchtowrlabs/watchTowr-vs-f5-bigip-PreAuth-RCE-CVE-2026-94127 13★(有�
 影响: ivanti connect_secure >=25.1.0.0 <25.1.1.2; ivanti connect_secure >=25.1.2.0 <25.1.3.0
 PoC: [ApexBreach/CVE-2026-104935-Proof-of-concept 0★(仅README)](https://github.com/ApexBreach/CVE-2026-104935-Proof-of-concept)
 参考: [厂商通告](https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-104935)
+
+### OpenSSH musl环境密码认证绕过
+[CVE-2026-123158](https://nvd.nist.gov/vuln/detail/CVE-2026-123158) | P0 立即处置 | 操作系统 | CVSS 8.1 | EPSS 1.0% | 披露 2026-11-05 | 入库 2026-11-09
+🔥 KEV 在野利用,限期 2026-11-12 | PoC 源码可用 | 开源,可源码审计复现
+未认证攻击者可对musl无PAM的sshd用超长密码登录特定账户，获取访问权限。
+复现: 强烈推荐 — 针对musl无PAM的sshd，用256-1024字符密码尝试登录 · 影响面: 远程登录服务，公网暴露面广
+处置: 升级OpenSSH至10.6p2或Alpine 3.21.10
+影响: openbsd openssh <10.6; alpinelinux alpine_linux <3.21.10
+PoC: [Exploit-Index 0xBlackash/CVE-2026-123158(未验证)(有源码)](https://github.com/0xBlackash/CVE-2026-123158) · [Exploit-Index Funcan/sshole(未验证)(有源码)](https://github.com/Funcan/sshole) · [Exploit-Index Galaxy-sc/CVE-2026-123158(未验证)](https://github.com/Galaxy-sc/CVE-2026-123158) · [NVD exploit 引用](https://github.com/predkambrij/sshhole-repro)
+参考: [官方补丁](https://github.com/openssh/openssh-portable/commit/4353fdc43ef646c43a8dda7025cc1a898caf1482) · [参考](https://hachyderm.io/@damienmiller/117563026759098135) · [厂商通告](https://marc.info/?l=openssh-unix-dev&m=179388064263131&w=2)
 
 ### Struts2 DMI命令注入RCE
 [CVE-2016-3081](https://nvd.nist.gov/vuln/detail/CVE-2016-3081) | P0 立即处置 | Web框架 | CVSS 8.1 | EPSS 93.4% | 披露 2016-04-26 | 入库 2026-10-08
@@ -663,6 +673,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 PoC: [Exploit-Index Zimo-666/DIR-878-cves(未验证)](https://github.com/Zimo-666/DIR-878-cves)
 参考: [参考](https://github.com/Zimo-666/DIR-878-cves/tree/main/01-captcha-uid-heap-overflow) · [参考](https://vuldb.com/cve/CVE-2026-124560) · [参考](https://vuldb.com/submit/1035616)
 
+### Redpanda Connect未认证RCE
+[CVE-2026-123270](https://nvd.nist.gov/vuln/detail/CVE-2026-123270) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-09 | 入库 2026-11-09
+未认证远程攻击者可利用缺失认证执行任意代码，完全控制Redpanda Connect。
+复现: 值得 — 访问未认证服务端点，提交可触发命令执行的请求 · 影响面: 数据流平台，内网服务面
+处置: 关注厂商修复并升级，限制服务网络暴露
+参考: [参考](https://github.com/pagvac/redpanda-connect-unauth-rce)
+
 ### API Connect租户越权操作
 [CVE-2026-17362](https://nvd.nist.gov/vuln/detail/CVE-2026-17362) | P1 重点关注 | CVSS 9.8 | EPSS 0.6% | 披露 2026-11-07 | 入库 2026-11-07
 远程攻击者可利用缺失授权直接创建、修改或删除租户，破坏多租户隔离。
@@ -726,22 +743,6 @@ PoC: [Exploit-Index Zimo-666/DIR-878-cves(未验证)](https://github.com/Zimo-66
 复现: 值得 — 未认证向TDS端口发送畸形prelogin包，构造长度字段溢出 · 影响面: 数据库TDS端口，常暴露内网或公网
 处置: 升级Babelfish/Aurora PostgreSQL至修复版本，限制TDS暴露
 参考: [参考](https://aws.amazon.com/security/security-bulletins/2026-166-aws/) · [参考](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_4_10_0__PG_16_14) · [参考](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/tag/BABEL_5_6_0__PG_17_10)
-
-### AI推理平台认证绕过可未授权RCE
-[CVE-2026-102895](https://nvd.nist.gov/vuln/detail/CVE-2026-102895) | P0 立即处置 | CVSS 9.8 | 披露 2026-11-04 | 入库 2026-11-05
-未认证攻击者可绕过认证获取管理员权限，并借YAML接口执行代码；已观测在野利用
-复现: 值得 — 调用from-yaml接口提交恶意YAML创建后端 · 影响面: AI推理平台，可致集群与密钥失陷
-处置: 立即升级修复版本，轮换API密钥并排查异常管理员
-参考: [参考](https://github.com/gpustack/gpustack/commit/53f42a6a553542974396d16a4ff6b12bcbedb48d) · [参考](https://github.com/gpustack/gpustack/pull/5346) · [参考](https://github.com/gpustack/gpustack/releases/tag/v2.2.0)
-
-### FreeSWITCH API命令注入在野利用
-[CVE-2026-116779](https://nvd.nist.gov/vuln/detail/CVE-2026-116779) | P0 立即处置 | CVSS 9.8 | 披露 2026-11-05 | 入库 2026-11-05
-有PoC
-被接受MESSAGE的SIP对端可选择api chat协议，以守护进程权限执行FreeSWITCH或系统命令
-复现: 值得 — 向FreeSWITCH发送MESSAGE并选择api chat协议 · 影响面: VoIP边界设备，SIP端口暴露
-处置: 立即升级修复版本；禁用api chat协议并限制不可信SIP对端
-PoC: [majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH- 1★(仅README)](https://github.com/majidrahimi5020-lgtm/Poc-exploit-for-CVE-2026-116779-FreeSWITCH-)
-参考: [参考](https://github.com/signalwire/freeswitch/commit/7015f6a73ab3d67fed5fbfc277ecfb88a74c2a86) · [参考](https://github.com/signalwire/freeswitch/pull/3135) · [参考](https://github.com/signalwire/freeswitch/releases/tag/v1.11.3)
 
 ### LMDeploy反序列化未授权RCE
 [CVE-2026-119706](https://nvd.nist.gov/vuln/detail/CVE-2026-119706) | P1 重点关注 | CVSS 9.8 | 披露 2026-10-30 | 入库 2026-10-31

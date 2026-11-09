@@ -1,41 +1,312 @@
 {
  "version": 3,
- "generated_at": "2026-11-09T08:10:49+00:00",
+ "generated_at": "2026-11-09T19:56:04+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 6,
  "stats": {
-  "total": 1,
+  "total": 6,
   "by_tier": {
-   "critical": 1
+   "critical": 6
   },
   "by_urgency": {
-   "P1 重点关注": 1
+   "P0 立即处置": 3,
+   "P1 重点关注": 3
   },
   "by_category": {
-   "网络设备": 1
+   "未知": 5,
+   "操作系统": 1
   },
-  "kev": 0,
-  "with_poc": 1,
-  "with_poc_source": 0,
-  "repro_recommended": 0
+  "kev": 3,
+  "with_poc": 2,
+  "with_poc_source": 1,
+  "repro_recommended": 1
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-124560",
+   "id": "CVE-2026-123158",
    "tier": "critical",
-   "title": "DIR-878 路由器堆溢出远程代码执行",
-   "title_zh": "DIR-878 路由器堆溢出远程代码执行",
-   "summary_zh": "远程攻击者向设备发送特制数据包触发堆溢出，可能以高权限在设备上执行任意代码。",
-   "published": "2026-11-09T03:16:38.117",
+   "title": "OpenSSH musl环境密码认证绕过",
+   "title_zh": "OpenSSH musl环境密码认证绕过",
+   "summary_zh": "未认证攻击者可对musl无PAM的sshd用超长密码登录特定账户，获取访问权限。",
+   "published": "2026-11-05T16:17:47.110",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.01014,
+   "epss_percentile": 0.63482,
+   "cwe_labels": [
+    "CWE-394"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "openssh",
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [
+    "openbsd openssh",
+    "alpinelinux alpine_linux"
+   ],
+   "affected": "openbsd openssh <10.6; alpinelinux alpine_linux <3.21.10",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/openssh/openssh-portable/commit/4353fdc43ef646c43a8dda7025cc1a898caf1482"
+    },
+    {
+     "label": "参考",
+     "url": "https://hachyderm.io/@damienmiller/117563026759098135"
+    },
+    {
+     "label": "厂商通告",
+     "url": "https://marc.info/?l=openssh-unix-dev&m=179388064263131&w=2"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/0xBlackash/CVE-2026-123158",
+     "label": "Exploit-Index 0xBlackash/CVE-2026-123158(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/Funcan/sshole",
+     "label": "Exploit-Index Funcan/sshole(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/Galaxy-sc/CVE-2026-123158",
+     "label": "Exploit-Index Galaxy-sc/CVE-2026-123158(未验证)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-12",
+   "ransomware": false,
+   "keyword_hit": "openssh",
+   "urgency": "P0 立即处置",
+   "action_zh": "升级OpenSSH至10.6p2或Alpine 3.21.10",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "针对musl无PAM的sshd，用256-1024字符密码尝试登录",
+   "impact_scope": "远程登录服务，公网暴露面广",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123158",
+   "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux."
+  },
+  {
+   "id": "CVE-2026-116779",
+   "tier": "critical",
+   "title": "FreeSWITCH消息命令注入RCE",
+   "title_zh": "FreeSWITCH消息命令注入RCE",
+   "summary_zh": "可达peer发送MESSAGE触发FreeSWITCH api命令执行，导致配置泄露与RCE。",
+   "published": "2026-11-05T20:17:44.790",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.01299,
+   "epss_percentile": 0.70632,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "freeswitch freeswitch"
+   ],
+   "affected": "freeswitch freeswitch <1.11.3",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/signalwire/freeswitch/commit/7015f6a73ab3d67fed5fbfc277ecfb88a74c2a86"
+    },
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/signalwire/freeswitch/pull/3135"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/signalwire/freeswitch/releases/tag/v1.11.3"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/hackzuoji/freeswitch-cve-2026-116779-POC",
+     "label": "Exploit-Index hackzuoji/freeswitch-cve-2026-116779-POC(未验证)(仅README)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-12",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至1.11.3，限制MESSAGE来源并禁用API执行",
+   "repro_worthy": "一般",
+   "repro_note": "向FreeSWITCH发送可被接受的MESSAGE并选择api chat proto触发",
+   "impact_scope": "VoIP通信边界，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116779",
+   "description": "Selecting the api chat proto reached switch_api_execute(), allowing a peer whose MESSAGE was accepted to run FreeSWITCH API commands, including operating-system command sinks, with the daemon's privileges. The flaw permits configuration and credential disclosure, arbitrary call control, and command execution, and exploitation has been observed in the wild."
+  },
+  {
+   "id": "CVE-2026-102895",
+   "tier": "critical",
+   "title": "GPUStack认证绕过致RCE",
+   "title_zh": "GPUStack认证绕过致RCE",
+   "summary_zh": "未授权攻击者可绕过GPUStack认证获取管理员权限，并通过YAML接口执行代码。",
+   "published": "2026-11-04T22:17:44.613",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00331,
+   "epss_percentile": 0.2646,
+   "cwe_labels": [
+    "认证绕过",
+    "认证欺骗"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "gpustack gpustack"
+   ],
+   "affected": "gpustack gpustack <2.2.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/gpustack/gpustack/commit/53f42a6a553542974396d16a4ff6b12bcbedb48d"
+    },
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/gpustack/gpustack/pull/5346"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/gpustack/gpustack/releases/tag/v2.2.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-12",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至2.2.0，限制管理端点访问并轮换密钥",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问管理端点，调用YAML推理后端接口执行代码",
+   "impact_scope": "AI基础设施管理面，内网敏感",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102895",
+   "description": "The bypass allowed unauthenticated administrative access, including user and model changes, persistent administrator API-key creation, disclosure of worker and cloud-provider secrets, and code execution through POST /v2/inference-backends/from-yaml. Exploitation was observed in the wild against a 2.1.1 deployment."
+  },
+  {
+   "id": "CVE-2026-123270",
+   "tier": "critical",
+   "title": "Redpanda Connect未认证RCE",
+   "title_zh": "Redpanda Connect未认证RCE",
+   "summary_zh": "未认证远程攻击者可利用缺失认证执行任意代码，完全控制Redpanda Connect。",
+   "published": "2026-11-09T18:17:25.207",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "内存破坏",
-    "堆溢出"
+    "缺失认证"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/pagvac/redpanda-connect-unauth-rce"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "关注厂商修复并升级，限制服务网络暴露",
+   "repro_worthy": "值得",
+   "repro_note": "访问未认证服务端点，提交可触发命令执行的请求",
+   "impact_scope": "数据流平台，内网服务面",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123270",
+   "description": "Redpanda Connect versions 4.39 to 4.110 contain a missing authentication vulnerability that enables unauthenticated remote code execution (RCE). An unauthenticated attacker with network access to TCP/4195 can `POST` a malicious pipeline definition to `/streams/{id}` that includes code-executing processors such as `command`, `subprocess`, `ffi`, or unsafe `sql_raw`, thereby achieving arbitrary RCE on the host with the permissions of the Redpanda Connect service account."
+  },
+  {
+   "id": "CVE-2026-123800",
+   "tier": "critical",
+   "title": "多租户API密钥越权修改父域",
+   "title_zh": "多租户API密钥越权修改父域",
+   "summary_zh": "持有单个应用API密钥者可越权更新父域，突破多租户隔离。",
+   "published": "2026-11-09T19:16:46.647",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)",
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/supertokens/supertokens-core/commit/13c3de170dd40dd217db0f6bd2bded0948476a42"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/supertokens/supertokens-core/commit/1cc02b971f064c2fa2d9bc74b9e85795fdc6a7e5"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/supertokens/supertokens-core/commit/1d9dcb03ce0691d9b8abee48f86cc2729a6008cb"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "应用修复补丁，轮换API密钥并审计父域变更",
+   "repro_worthy": "一般",
+   "repro_note": "用某应用有效API key向父域CUD接口发更新请求",
+   "impact_scope": "多租户SaaS/API平台，租户隔离失效",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123800",
+   "description": "In a licensed multi-tenant deployment with multiple applications under one non-default connection URI domain and separate api_keys, an attacker holding one application's valid API key can update the parent domain because the CUD-target branch checks the domain without requiring the source application and tenant to be public."
+  },
+  {
+   "id": "CVE-2026-119756",
+   "tier": "critical",
+   "title": "Tasmota组消息堆越界写",
+   "title_zh": "Tasmota组消息堆越界写",
+   "summary_zh": "局域网未认证攻击者可发送构造Device Groups消息，造成Tasmota堆越界写。",
+   "published": "2026-11-09T18:17:22.320",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-805"
    ],
    "vuln_class": null,
    "fame_term": null,
@@ -46,23 +317,14 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/Zimo-666/DIR-878-cves/tree/main/01-captcha-uid-heap-overflow"
+     "url": "https://github.com/arendst/Tasmota/commit/e97e1e4f7e319a55caa1613aef1f25fc81bdb554"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-124560"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1035616"
+     "url": "https://www.vulncheck.com/advisories/tasmota-heap-out-of-bounds-write-via-device-groups-udp"
     }
    ],
-   "poc": [
-    {
-     "url": "https://github.com/Zimo-666/DIR-878-cves",
-     "label": "Exploit-Index Zimo-666/DIR-878-cves(未验证)"
-    }
-   ],
+   "poc": [],
    "nuclei": false,
    "patched": null,
    "kev": false,
@@ -70,28 +332,154 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "该型号已停止支持，建议替换设备并禁止管理面暴露公网",
-   "repro_worthy": "值得",
-   "repro_note": "向路由器监听服务发送超长或畸形数据包触发堆溢出，需网络可达",
-   "impact_scope": "SOHO 路由器，常暴露于公网边界",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124560",
-   "description": "A vulnerability was found in D-Link DIR-878 1.20B05. This affects the function GetCAPTCHAsetting of the file bin/prog.cgi of the component HNAP Handler. Performing a manipulation of the argument uid results in heap-based buffer overflow. The attack can be initiated remotely. The exploit has been made public and could be used. This vulnerability only affects products that are no longer supported by the maintainer."
+   "action_zh": "升级至修复提交e97e1e4，限制UDP 4447访问",
+   "repro_worthy": "一般",
+   "repro_note": "向UDP 4447发送构造Device Groups消息使log_remaining为负",
+   "impact_scope": "IoT设备局域网，同网可攻击",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119756",
+   "description": "Tasmota through 16.0.0, fixed in commit e97e1e4, contains a heap out-of-bounds write vulnerability in SendReceiveDeviceGroupMessage() that allows unauthenticated attackers on the local network to corrupt heap memory by sending crafted Device Groups messages over UDP port 4447 that cause the log_remaining counter to go negative and writes to exceed the fixed 512-byte buffer."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "openssl/openssl",
-   "sha": "54e283610044c828aab832000bbf3654e5abc9b5",
-   "url": "https://github.com/openssl/openssl/commit/54e283610044c828aab832000bbf3654e5abc9b5",
-   "title": "QUIC: covering CRYPTO frame retransmission may induce use-after-free in record layer",
-   "date": "2026-11-09T03:02:21",
+   "repo": "postgres/postgres",
+   "sha": "3bb99318e56c7048044fcf5e3e0f269fe00c9b54",
+   "url": "https://github.com/postgres/postgres/commit/3bb99318e56c7048044fcf5e3e0f269fe00c9b54",
+   "title": "find_or_make_matching_shared_tupledesc: Fix possible use-after-free.",
+   "date": "2026-11-09T14:20:30",
+   "score": 11,
+   "matched": [
+    "CVE",
+    "UAF",
+    "RCE",
+    "安全修复",
+    "漏洞相关"
+   ],
+   "cve": "CVE-2026-116304"
+  },
+  {
+   "repo": "postgres/postgres",
+   "sha": "4056493220e78027ecba88761c1d80947cd494d5",
+   "url": "https://github.com/postgres/postgres/commit/4056493220e78027ecba88761c1d80947cd494d5",
+   "title": "pg_restore: Fix out-of-bounds accesses and path traversal.",
+   "date": "2026-11-09T14:20:31",
+   "score": 9,
+   "matched": [
+    "CVE",
+    "越界读写",
+    "安全修复",
+    "路径遍历/任意文件"
+   ],
+   "cve": "CVE-2026-116314"
+  },
+  {
+   "repo": "postgres/postgres",
+   "sha": "4a95f56c04df0d22f15464d834f23bd730d10e59",
+   "url": "https://github.com/postgres/postgres/commit/4a95f56c04df0d22f15464d834f23bd730d10e59",
+   "title": "Harden some allocations against integer wraparound",
+   "date": "2026-11-09T14:20:33",
+   "score": 7,
+   "matched": [
+    "CVE",
+    "类型混淆/double free",
+    "安全修复"
+   ],
+   "cve": "CVE-2026-120139"
+  },
+  {
+   "repo": "postgres/postgres",
+   "sha": "6f6e4a955cdbef6b08e99dac1cb11d2405709c17",
+   "url": "https://github.com/postgres/postgres/commit/6f6e4a955cdbef6b08e99dac1cb11d2405709c17",
+   "title": "Fix type confusion with materialized set-returning functions",
+   "date": "2026-11-09T14:20:33",
+   "score": 7,
+   "matched": [
+    "CVE",
+    "类型混淆/double free",
+    "安全修复"
+   ],
+   "cve": "CVE-2026-120141"
+  },
+  {
+   "repo": "postgres/postgres",
+   "sha": "eb423d5987a70a7afc64d6f74b5ae724f1bd202e",
+   "url": "https://github.com/postgres/postgres/commit/eb423d5987a70a7afc64d6f74b5ae724f1bd202e",
+   "title": "Reject pseudo-type output parameters in SQL functions.",
+   "date": "2026-11-09T14:20:32",
+   "score": 7,
+   "matched": [
+    "CVE",
+    "RCE",
+    "安全修复"
+   ],
+   "cve": "CVE-2026-18447"
+  },
+  {
+   "repo": "postgres/postgres",
+   "sha": "016b63271fb794436255ae13917793486a6c450f",
+   "url": "https://github.com/postgres/postgres/commit/016b63271fb794436255ae13917793486a6c450f",
+   "title": "Replace typcache.c's buggy in_progress_list.",
+   "date": "2026-11-09T14:20:31",
+   "score": 7,
+   "matched": [
+    "CVE",
+    "安全修复",
+    "漏洞相关"
+   ],
+   "cve": "CVE-2026-120144"
+  },
+  {
+   "repo": "postgres/postgres",
+   "sha": "245eb832f88631c986a2dadad2cbe94f57089fd6",
+   "url": "https://github.com/postgres/postgres/commit/245eb832f88631c986a2dadad2cbe94f57089fd6",
+   "title": "Introduce attribute versioning to prevent unsafe deforming",
+   "date": "2026-11-09T14:20:33",
    "score": 5,
    "matched": [
     "CVE",
-    "UAF"
+    "类型混淆/double free"
    ],
-   "cve": "CVE-2026-95691"
+   "cve": "CVE-2026-6460"
+  },
+  {
+   "repo": "postgres/postgres",
+   "sha": "315c4e4e85f3fae5ebc3a62d69b5400138d307f9",
+   "url": "https://github.com/postgres/postgres/commit/315c4e4e85f3fae5ebc3a62d69b5400138d307f9",
+   "title": "Enforce view row visibility for INSERT ... ON CONFLICT target rows.",
+   "date": "2026-11-09T14:20:33",
+   "score": 5,
+   "matched": [
+    "CVE",
+    "安全修复"
+   ],
+   "cve": "CVE-2026-16237"
+  },
+  {
+   "repo": "postgres/postgres",
+   "sha": "b93d8a554da5d9da56dab632b54d31dd05beea49",
+   "url": "https://github.com/postgres/postgres/commit/b93d8a554da5d9da56dab632b54d31dd05beea49",
+   "title": "Avoid using a dangling pointer in expanded-record domain checks.",
+   "date": "2026-11-09T14:20:32",
+   "score": 5,
+   "matched": [
+    "CVE",
+    "RCE"
+   ],
+   "cve": "CVE-2026-120150"
+  },
+  {
+   "repo": "postgres/postgres",
+   "sha": "c2439a04353ccab618006f21df8698aa9cc31167",
+   "url": "https://github.com/postgres/postgres/commit/c2439a04353ccab618006f21df8698aa9cc31167",
+   "title": "Teach equalRowTypes() to safely handle dropped columns.",
+   "date": "2026-11-09T14:20:32",
+   "score": 5,
+   "matched": [
+    "CVE",
+    "RCE"
+   ],
+   "cve": "CVE-2026-120142"
   }
  ]
 }

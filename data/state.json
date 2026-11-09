@@ -9947,10 +9947,10 @@
    "exploit_ref": true
   },
   "CVE-2026-102895": {
-   "date": "2026-11-05",
+   "date": "2026-11-09",
    "pushed": true,
    "pushed_at": "2026-11-05T01:31:06+00:00",
-   "kev": false,
+   "kev": true,
    "cvss": 9.8,
    "last_mod": "",
    "exploit_ref": false
@@ -10352,10 +10352,10 @@
    "exploit_ref": false
   },
   "CVE-2026-116779": {
-   "date": "2026-11-05",
+   "date": "2026-11-09",
    "pushed": true,
    "pushed_at": "2026-11-05T20:45:08+00:00",
-   "kev": false,
+   "kev": true,
    "cvss": 9.8,
    "last_mod": "",
    "exploit_ref": false
@@ -10433,13 +10433,13 @@
    "exploit_ref": false
   },
   "CVE-2026-123158": {
-   "date": "2026-11-06",
+   "date": "2026-11-09",
    "pushed": true,
    "pushed_at": "2026-11-06T03:38:43+00:00",
-   "kev": false,
+   "kev": true,
    "cvss": 8.1,
    "last_mod": "",
-   "exploit_ref": false
+   "exploit_ref": true
   },
   "CVE-2026-123200": {
    "date": "2026-11-06",
@@ -11610,6 +11610,33 @@
    "cvss": 9.8,
    "last_mod": "",
    "exploit_ref": false
+  },
+  "CVE-2026-123270": {
+   "date": "2026-11-09",
+   "pushed": false,
+   "pushed_at": "",
+   "kev": false,
+   "cvss": 9.8,
+   "last_mod": "",
+   "exploit_ref": false
+  },
+  "CVE-2026-123800": {
+   "date": "2026-11-09",
+   "pushed": false,
+   "pushed_at": "",
+   "kev": false,
+   "cvss": 9.9,
+   "last_mod": "",
+   "exploit_ref": false
+  },
+  "CVE-2026-119756": {
+   "date": "2026-11-09",
+   "pushed": false,
+   "pushed_at": "",
+   "kev": false,
+   "cvss": 9.8,
+   "last_mod": "",
+   "exploit_ref": false
   }
  },
  "kev_ids": [],
@@ -12035,6 +12062,64 @@
   "openbsd/src@18057e8141": "2026-11-09",
   "envoyproxy/envoy@70a60076aa": "2026-11-09",
   "openbsd/src@899cf70d9c": "2026-11-09",
-  "openssl/openssl@54e2836100": "2026-11-09"
+  "openssl/openssl@54e2836100": "2026-11-09",
+  "postgres/postgres@3bb99318e5": "2026-11-09",
+  "postgres/postgres@4056493220": "2026-11-09",
+  "postgres/postgres@4a95f56c04": "2026-11-09",
+  "postgres/postgres@6f6e4a955c": "2026-11-09",
+  "postgres/postgres@eb423d5987": "2026-11-09",
+  "postgres/postgres@016b63271f": "2026-11-09",
+  "postgres/postgres@245eb832f8": "2026-11-09",
+  "postgres/postgres@315c4e4e85": "2026-11-09",
+  "postgres/postgres@b93d8a554d": "2026-11-09",
+  "postgres/postgres@c2439a0435": "2026-11-09",
+  "postgres/postgres@2f32e08adc": "2026-11-09",
+  "postgres/postgres@146771107c": "2026-11-09",
+  "postgres/postgres@f475710183": "2026-11-09",
+  "postgres/postgres@2d4995f797": "2026-11-09",
+  "postgres/postgres@60d3e3f1fe": "2026-11-09",
+  "postgres/postgres@d734426458": "2026-11-09",
+  "postgres/postgres@91ede17688": "2026-11-09",
+  "postgres/postgres@1ce3bce608": "2026-11-09",
+  "postgres/postgres@5b23669ea3": "2026-11-09",
+  "postgres/postgres@28e164e1de": "2026-11-09",
+  "postgres/postgres@e27929e3b6": "2026-11-09",
+  "postgres/postgres@7f854a31f7": "2026-11-09",
+  "postgres/postgres@bcb007a721": "2026-11-09",
+  "postgres/postgres@bc1fa1003f": "2026-11-09",
+  "postgres/postgres@832857532f": "2026-11-09",
+  "postgres/postgres@4a18e9b5f3": "2026-11-09",
+  "grafana/grafana@705dcb6613": "2026-11-09",
+  "postgres/postgres@f24a08ec13": "2026-11-09",
+  "postgres/postgres@4581711f38": "2026-11-09",
+  "postgres/postgres@b2f1afd9f1": "2026-11-09",
+  "postgres/postgres@7a910b4e15": "2026-11-09",
+  "postgres/postgres@ff2e66f495": "2026-11-09",
+  "postgres/postgres@08010fa4f4": "2026-11-09",
+  "postgres/postgres@abe3b910a1": "2026-11-09",
+  "postgres/postgres@7becf1984f": "2026-11-09",
+  "postgres/postgres@7c0735bd34": "2026-11-09",
+  "postgres/postgres@146e03e79a": "2026-11-09",
+  "postgres/postgres@05680d41cc": "2026-11-09",
+  "postgres/postgres@053e39d934": "2026-11-09",
+  "postgres/postgres@e6695e2a76": "2026-11-09",
+  "postgres/postgres@d41c9fad08": "2026-11-09",
+  "postgres/postgres@99c7967a79": "2026-11-09",
+  "postgres/postgres@398eb35f00": "2026-11-09",
+  "postgres/postgres@fffd8a41f3": "2026-11-09",
+  "postgres/postgres@3beee6e77c": "2026-11-09",
+  "postgres/postgres@7820c8c397": "2026-11-09",
+  "postgres/postgres@208ea05a51": "2026-11-09",
+  "postgres/postgres@7fad20ce33": "2026-11-09",
+  "postgres/postgres@41a3a980ee": "2026-11-09",
+  "postgres/postgres@1388b0fbd4": "2026-11-09",
+  "postgres/postgres@f22d6aba94": "2026-11-09",
+  "postgres/postgres@c8d128858d": "2026-11-09",
+  "postgres/postgres@27dfe0e341": "2026-11-09",
+  "postgres/postgres@4d93c03843": "2026-11-09",
+  "redis/redis@dda59d1f8e": "2026-11-09",
+  "php/php-src@ffe75c98a2": "2026-11-09",
+  "php/php-src@b3a8e07fe5": "2026-11-09",
+  "python/cpython@392d6d1e84": "2026-11-09"
  }
 }
