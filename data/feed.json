@@ -1,132 +1,44 @@
 {
  "version": 3,
- "generated_at": "2026-11-09T02:57:31+00:00",
- "lookback_hours": 24,
- "count": 10,
+ "generated_at": "2026-11-09T08:10:49+00:00",
+ "lookback_hours": 5,
+ "count": 1,
  "stats": {
-  "total": 10,
+  "total": 1,
   "by_tier": {
-   "critical": 10
+   "critical": 1
   },
   "by_urgency": {
-   "P1 重点关注": 10
+   "P1 重点关注": 1
   },
   "by_category": {
-   "未知": 7,
-   "ERP/业务系统": 2,
-   "Web中间件": 1
+   "网络设备": 1
   },
   "kev": 0,
-  "with_poc": 0,
+  "with_poc": 1,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [
-  "- 10个高危均未见在野利用、勒索或POC标记",
-  "- 批量公告含6个CVSS≥9.3，需统一排查",
-  "- 首要处置CVE-2026-124469：SQL注入9.9",
-  "- 其次关注CWE-307 9.8与CWE-266 9.6"
- ],
+ "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-101117",
+   "id": "CVE-2026-124560",
    "tier": "critical",
-   "title": "WebSphere CSP配置不当绕过",
-   "title_zh": "WebSphere CSP配置不当绕过",
-   "summary_zh": "远程攻击者可利用不当CSP配置绕过安全限制，可能导致敏感信息泄露或脚本执行",
-   "published": "2026-11-08T16:16:36.103",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-16"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7293764"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复版本；无法升级时收紧CSP策略",
-   "repro_worthy": "一般",
-   "repro_note": "需确认目标启用受影响CSP配置，构造绕过策略访问受限资源",
-   "impact_scope": "企业中间件，通常内网部署",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101117",
-   "description": "IBM WebSphere Extreme Scale 8.6.1.0 through 8.6.2.2 could allow a remote attacker to bypass security restrictions due to improper Content Security Policy configuration."
-  },
-  {
-   "id": "CVE-2026-124469",
-   "tier": "critical",
-   "title": "OpenEMR药品库存SQL注入",
-   "title_zh": "OpenEMR药品库存SQL注入",
-   "summary_zh": "低权限认证用户向Fee Sheet的warehouse参数注入SQL，可盲注窃取患者数据和密码哈希",
-   "published": "2026-11-08T14:18:15.130",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/openemr/openemr/security/advisories/GHSA-cg8c-2v5q-29g7"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/openemr-before-8.3.0-sql-injection-via-fee-sheet-warehouse-parameter"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至OpenEMR 8.3.0或更高版本，限制低权限账号",
-   "repro_worthy": "一般",
-   "repro_note": "低权限登录，向Fee Sheet的warehouse参数注入ORDER BY",
-   "impact_scope": "医疗业务系统，含大量PHI",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124469",
-   "description": "OpenEMR before 8.3.0 contains an SQL injection vulnerability in the Fee Sheet drug-inventory lookup (DrugSalesService::sellDrug) that interpolates the prod[N][warehouse] POST field into an ORDER BY clause. Low-privileged authenticated users can submit Fee Sheet product lines with constant subqueries to run a time-based blind oracle, extracting patient data and users_secure bcrypt hashes."
-  },
-  {
-   "id": "CVE-2026-124445",
-   "tier": "critical",
-   "title": "OpenEMR服务令牌重放与PIN爆破",
-   "title_zh": "OpenEMR服务令牌重放与PIN爆破",
-   "summary_zh": "持有泄露service_auth令牌者可重放并爆破PIN，接管患者门户会话并泄露PHI",
-   "published": "2026-11-08T14:18:11.487",
+   "title": "DIR-878 路由器堆溢出远程代码执行",
+   "title_zh": "DIR-878 路由器堆溢出远程代码执行",
+   "summary_zh": "远程攻击者向设备发送特制数据包触发堆溢出，可能以高权限在设备上执行任意代码。",
+   "published": "2026-11-09T03:16:38.117",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-307"
+    "内存破坏",
+    "堆溢出"
    ],
+   "vuln_class": null,
+   "fame_term": null,
    "difficulty": "低(远程·免认证)",
    "products": [],
    "affected": null,
@@ -134,98 +46,23 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/openemr/openemr/security/advisories/GHSA-xg3m-9pfq-c8r6"
+     "url": "https://github.com/Zimo-666/DIR-878-cves/tree/main/01-captcha-uid-heap-overflow"
     },
     {
      "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/openemr-7.0.1-before-8.4.0-onetimeauth-token-replay-and-pin-brute-force"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至OpenEMR 8.4.0；轮换service_auth令牌并启用限速",
-   "repro_worthy": "一般",
-   "repro_note": "需持有已泄露service_auth令牌，重放并暴力尝试login_pin",
-   "impact_scope": "医疗门户，暴露患者隐私数据",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124445",
-   "description": "OpenEMR from 7.0.1 before 8.4.0 contains a flaw in src/Common/Auth/OneTimeAuth.php that ignores the enforce_onetime_use and max_access_count flags, never revokes consumed service_auth tokens, and checks login_pin without rate limiting or strict comparison. Attackers holding a captured token can replay it or brute-force the PIN to open patient-portal sessions exposing PHI."
-  },
-  {
-   "id": "CVE-2026-109900",
-   "tier": "critical",
-   "title": "Melapress角色编辑器权限提升",
-   "title_zh": "Melapress角色编辑器权限提升",
-   "summary_zh": "低权限用户可借错误权限分配提升为管理员，进而完全控制WordPress站点",
-   "published": "2026-11-08T16:16:36.773",
-   "cvss": 9.6,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-266"
-   ],
-   "difficulty": "低(远程·免认证·需用户交互)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/plugin/melapress-role-editor/vulnerability/wordpress-melapress-role-editor-plugin-1-3-0-privilege-escalation-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级Melapress Role Editor至1.3.1+；无法升级则停用插件",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress插件，站点权限风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109900",
-   "description": "Incorrect Privilege Assignment vulnerability in Melapress Melapress Role Editor melapress-role-editor allows Privilege Escalation.This issue affects Melapress Role Editor: from n/a through 1.3.0."
-  },
-  {
-   "id": "CVE-2026-124493",
-   "tier": "critical",
-   "title": "SunEditor文档头存储型XSS",
-   "title_zh": "SunEditor文档头存储型XSS",
-   "summary_zh": "攻击者可向文档标题存入实体编码HTML，编辑器初始化时执行脚本并窃取会话",
-   "published": "2026-11-08T14:18:19.130",
-   "cvss": 9.3,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "XSS"
-   ],
-   "difficulty": "低(远程·免认证·需用户交互)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/JiHong88/suneditor/security/advisories/GHSA-h9pq-57qf-vvfh"
+     "url": "https://vuldb.com/cve/CVE-2026-124560"
     },
     {
      "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/suneditor-before-3.4.0-stored-xss-via-documenttype-header-textcontent"
+     "url": "https://vuldb.com/submit/1035616"
     }
    ],
-   "poc": [],
+   "poc": [
+    {
+     "url": "https://github.com/Zimo-666/DIR-878-cves",
+     "label": "Exploit-Index Zimo-666/DIR-878-cves(未验证)"
+    }
+   ],
    "nuclei": false,
    "patched": null,
    "kev": false,
@@ -233,247 +70,28 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级SunEditor至3.4.0；过滤h1-h6标题中的HTML实体",
-   "repro_worthy": "一般",
-   "repro_note": "在document:header模式向h1-h6标题写入实体编码HTML",
-   "impact_scope": "富文本编辑器组件，影响Web前端",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124493",
-   "description": "SunEditor before 3.4.0 contains a stored cross-site scripting vulnerability in the DocumentType constructor that injects header textContent into innerHTML without HTML escaping. Attackers can store entity-encoded HTML in h1-h6 headers that executes JavaScript when editors using document:header mode initialize, enabling session cookie theft."
-  },
-  {
-   "id": "CVE-2026-124494",
-   "tier": "critical",
-   "title": "SunEditor链接清洗绕过存储XSS",
-   "title_zh": "SunEditor链接清洗绕过存储XSS",
-   "summary_zh": "攻击者存入javascript&colon;链接绕过URL校验，受害者点击后执行脚本窃取Cookie",
-   "published": "2026-11-08T14:18:19.277",
-   "cvss": 9.3,
-   "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "XSS"
-   ],
-   "difficulty": "低(远程·免认证·需用户交互)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/JiHong88/suneditor/security/advisories/GHSA-v4jx-8pj6-w4w8"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/suneditor-before-3.4.0-stored-xss-via-colon-entity-sanitizer-bypass"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至SunEditor 3.4.0；修复前禁用链接清洗或严格校验href",
-   "repro_worthy": "一般",
-   "repro_note": "在可编辑链接中写入javascript&colon;，诱导点击触发XSS",
-   "impact_scope": "富文本编辑器组件，影响Web前端",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124494",
-   "description": "SunEditor before 3.4.0 contains a stored cross-site scripting vulnerability because the html.clean() sanitizer's _normalizeURL() function decodes named entities like &colon; to an empty string. Attackers can inject href values such as javascript&colon; that pass the _isSafeURL() check but are decoded by browsers, executing JavaScript when victims click stored links."
-  },
-  {
-   "id": "CVE-2026-114464",
-   "tier": "critical",
-   "title": "Process Mining访问控制缺失",
-   "title_zh": "Process Mining访问控制缺失",
-   "summary_zh": "远程攻击者可利用错误访问控制读取敏感信息，造成业务数据泄露",
-   "published": "2026-11-08T17:16:36.583",
-   "cvss": 9.3,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "访问控制缺失"
-   ],
-   "difficulty": "低(需相邻网络·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7294875"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至IBM修复版本；临时限制Process Mining网络访问",
-   "repro_worthy": "一般",
-   "repro_note": "访问受影响接口，利用缺失的权限校验读取敏感数据",
-   "impact_scope": "ERP分析系统，内网业务数据",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114464",
-   "description": "IBM Process Mining 2.0.0 through 2.2.1 could allow a remote attacker to obtain sensitive information due to improper access control."
-  },
-  {
-   "id": "CVE-2026-17466",
-   "tier": "critical",
-   "title": "IBM Optim路径遍历文件读取",
-   "title_zh": "IBM Optim路径遍历文件读取",
-   "summary_zh": "远程认证攻击者通过路径遍历读取任意文件，可能泄露配置与敏感数据",
-   "published": "2026-11-08T18:17:03.303",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:L",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "路径遍历/任意文件读取"
-   ],
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.ibm.com/support/pages/node/7289719"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至IBM修复版本；限制认证账号文件访问权限",
-   "repro_worthy": "一般",
-   "repro_note": "认证后向文件相关接口传入../路径，读取任意文件",
-   "impact_scope": "企业数据管理平台，内网部署",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17466",
-   "description": "IBM Optim 1.0.0, 1.1.0, and 1.2.0 could allow a remote authenticated attacker to obtain sensitive information due to path traversal."
-  },
-  {
-   "id": "CVE-2026-119506",
-   "tier": "critical",
-   "title": "Frontend Admin权限分配错误提权",
-   "title_zh": "Frontend Admin权限分配错误提权",
-   "summary_zh": "低权限用户可利用错误权限分配提升权限，进而控制WordPress站点",
-   "published": "2026-11-09T01:17:01.197",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-266"
-   ],
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/plugin/acf-frontend-form-element/vulnerability/wordpress-frontend-admin-by-dynamiapps-plugin-3-30-1-privilege-escalation-vulnerability?_s_id=cve"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级Frontend Admin至3.30.2+；无法升级则停用插件",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "WordPress插件，站点权限风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119506",
-   "description": "Incorrect Privilege Assignment vulnerability in DynamiApps Frontend Admin by DynamiApps acf-frontend-form-element allows Privilege Escalation.This issue affects Frontend Admin by DynamiApps: from n/a through 3.30.1."
-  },
-  {
-   "id": "CVE-2026-124490",
-   "tier": "critical",
-   "title": "OpenEMR传真模块路径遍历RCE",
-   "title_zh": "OpenEMR传真模块路径遍历RCE",
-   "summary_zh": "认证攻击者通过file_path遍历读写任意文件，可窃取凭据并写入WebShell执行代码",
-   "published": "2026-11-08T14:18:18.667",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-73"
-   ],
-   "difficulty": "中(远程·需高权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/openemr/openemr/security/advisories/GHSA-38jw-pwgq-9hpj"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/openemr-before-8.3.0-arbitrary-file-read-write-via-oe-module-faxsms-disposedocument"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至OpenEMR 8.3.0；限制传真模块账号与文件权限",
-   "repro_worthy": "一般",
-   "repro_note": "认证后经disposeDocument的file_path读写文件",
-   "impact_scope": "医疗系统传真模块，可写Web目录",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124490",
-   "description": "OpenEMR before 8.3.0 contains a path traversal vulnerability in the RingCentral RCFaxClient disposeDocument() method of oe-module-faxsms that allows authenticated attackers to read and write arbitrary files via the file_path parameter. Attackers can use action=download to read credentials and source code, or action=setup with base64 content to write web-executable files for code execution."
+   "action_zh": "该型号已停止支持，建议替换设备并禁止管理面暴露公网",
+   "repro_worthy": "值得",
+   "repro_note": "向路由器监听服务发送超长或畸形数据包触发堆溢出，需网络可达",
+   "impact_scope": "SOHO 路由器，常暴露于公网边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124560",
+   "description": "A vulnerability was found in D-Link DIR-878 1.20B05. This affects the function GetCAPTCHAsetting of the file bin/prog.cgi of the component HNAP Handler. Performing a manipulation of the argument uid results in heap-based buffer overflow. The attack can be initiated remotely. The exploit has been made public and could be used. This vulnerability only affects products that are no longer supported by the maintainer."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "envoyproxy/envoy",
-   "sha": "70a60076aaa1fb8eb9444c45ee3ad5e5fb740193",
-   "url": "https://github.com/envoyproxy/envoy/commit/70a60076aaa1fb8eb9444c45ee3ad5e5fb740193",
-   "title": "feat: impl apply_on_stream_done for local rate limit (#48530)",
-   "date": "2026-11-09T02:05:13",
-   "score": 2,
+   "repo": "openssl/openssl",
+   "sha": "54e283610044c828aab832000bbf3654e5abc9b5",
+   "url": "https://github.com/openssl/openssl/commit/54e283610044c828aab832000bbf3654e5abc9b5",
+   "title": "QUIC: covering CRYPTO frame retransmission may induce use-after-free in record layer",
+   "date": "2026-11-09T03:02:21",
+   "score": 5,
    "matched": [
-    "安全修复"
+    "CVE",
+    "UAF"
    ],
-   "cve": null
-  },
-  {
-   "repo": "openbsd/src",
-   "sha": "899cf70d9c894452e434ba8d97e13e411204cc4b",
-   "url": "https://github.com/openbsd/src/commit/899cf70d9c894452e434ba8d97e13e411204cc4b",
-   "title": "drm/radeon: avoid double free in r600 DPM cleanup",
-   "date": "2026-11-09T01:59:41",
-   "score": 2,
-   "matched": [
-    "类型混淆/double free"
-   ],
-   "cve": null
+   "cve": "CVE-2026-95691"
   }
  ]
 }

@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-09T02:57:31+00:00",
- "count": 175,
+ "updated_at": "2026-11-09T08:10:49+00:00",
+ "count": 176,
  "count_recommended": 29,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -3436,6 +3436,55 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120228",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-124560",
+   "title": "DIR-878 路由器堆溢出远程代码执行",
+   "first_seen": "2026-11-09",
+   "last_seen": "2026-11-09",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-09",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "向路由器监听服务发送超长或畸形数据包触发堆溢出，需网络可达",
+   "impact_scope": "SOHO 路由器，常暴露于公网边界",
+   "action_zh": "该型号已停止支持，建议替换设备并禁止管理面暴露公网",
+   "summary_zh": "远程攻击者向设备发送特制数据包触发堆溢出，可能以高权限在设备上执行任意代码。",
+   "category": "网络设备",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "unknown",
+   "poc": [
+    {
+     "url": "https://github.com/Zimo-666/DIR-878-cves",
+     "label": "Exploit-Index Zimo-666/DIR-878-cves(未验证)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Zimo-666/DIR-878-cves/tree/main/01-captcha-uid-heap-overflow"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-124560"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1035616"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124560",
    "change_note": null
   },
   {
