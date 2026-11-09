@@ -48,7 +48,8 @@ focus_categories = [
 
 # 价值排序另内置两组固定加权(逻辑在 vulnmon/scoring.py 与 components.py):
 # - 高价值漏洞类型:任意文件读写/RCE/SQL注入/提权(+120~220),
-#   且 CVSS 过线即视为强信号(无 PoC 也入选)
+#   以及危害严重的未授权访问(认证绕过/缺失认证/默认凭据,需 CVSS>=9.0
+#   或远程免认证才算,+120);命中即 CVSS 过线视为强信号(无 PoC 也入选)
 # - 组件知名度:全网级基础组件(openssh/nginx/fortinet/citrix/cisco 等 +260)、
 #   常见重点资产(tomcat/spring/jenkins/国产OA 等 +160);
 #   知名组件 8.0 分的排序分必然高于不出名组件 9.0 分(其余信号相同),

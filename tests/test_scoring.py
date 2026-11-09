@@ -142,6 +142,32 @@ def test_vuln_class_detection():
     assert vuln_class(mk(desc="Denial of service via crafted packets.")) is None
 
 
+def test_vuln_class_unauthorized_access():
+    """第五类:危害严重的未授权访问 —— 认证绕过/缺失认证/越权/默认凭据。"""
+    # 高分认证绕过 → 命中
+    item = mk(cvss=9.8,
+              desc="An authentication bypass allows admin access without credentials.")
+    assert vuln_class(item) == ("未授权访问", 120)
+    # CWE 标签:远程免认证的中分认证绕过(网关管理接口绕过的典型形态)→ 命中
+    item2 = mk(cvss=8.2, difficulty="低(远程·免认证)", cwe_labels=["认证绕过"])
+    assert vuln_class(item2) == ("未授权访问", 120)
+    # 默认凭据 / 越权(IDOR) 标签
+    assert vuln_class(mk(cvss=9.1, cwe_labels=["默认凭据"]))[0] == "未授权访问"
+    assert vuln_class(mk(cvss=9.1, cwe_labels=["缺失授权(越权)"]))[0] == "未授权访问"
+    # 不严重的不算:低分、又非远程免认证的越权(灌水大头)
+    item3 = mk(cvss=6.5, cwe_labels=["越权(IDOR)"])
+    assert vuln_class(item3) is None
+    item4 = mk(cvss=7.2, difficulty="中(需低权限·远程)", cwe_labels=["认证绕过"])
+    assert vuln_class(item4) is None
+    # 带 RCE 后果的描述归 RCE(顺序优先,不算未授权访问)
+    item5 = mk(cvss=9.8, desc="Authentication bypass leading to remote code execution.")
+    assert vuln_class(item5)[0] == "RCE"
+    # 排序加权:与提权同级,低于 SQL注入/文件读写
+    base = mk(cvss=8.0, desc="A flaw.")
+    unauth = mk(cvss=9.8, desc="An authentication bypass allows admin access.")
+    assert priority(unauth, DEFAULTS) > priority(base, DEFAULTS)
+
+
 def test_vuln_class_priority_bonus():
     base = mk(cvss=8.0, desc="An information disclosure vulnerability.")
     rce = mk(cvss=8.0, desc="allows unauthenticated remote code execution")

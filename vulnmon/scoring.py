@@ -117,7 +117,9 @@ def is_wordpress_plugin(item: dict) -> bool:
     return is_third_party_extension(item)
 
 
-# 高价值漏洞类型(推送评分核心关注):任意文件读写 / RCE / SQL注入 / 提权。
+# 高价值漏洞类型(推送评分核心关注):任意文件读写 / RCE / SQL注入 / 提权 /
+# 危害严重的未授权访问。前四类无条件加权;未授权访问(CWE/描述命中)只有在
+# 「危害严重」时才算:CVSS >= 9.0,或远程免认证(网关管理接口绕过的典型形态)。
 # 同时看 CWE 中文标签(models.CWE_LABELS)和描述英文关键词,命中其一即可;
 # 按列表顺序取第一个命中(RCE 优先于其他,一次注入型漏洞同时标了多个类型时)。
 HIGH_VALUE_CLASSES: list[tuple[str, int, tuple[str, ...], re.Pattern]] = [
@@ -131,10 +133,31 @@ HIGH_VALUE_CLASSES: list[tuple[str, int, tuple[str, ...], re.Pattern]] = [
      ("路径遍历", "任意文件读取", "任意文件上传", "文件链接绕过"),
      re.compile(r"arbitrary file (read|write|upload|download|delet)|"
                 r"(path|directory) traversal", re.I)),
-    ("提权", 120, ("权限提升", "权限错误", "授权错误"),
+    ("提权", 120, ("权限提升", "权限错误"),
      re.compile(r"privilege escalation|elevation of privileg|gain(?:ing)? "
-                r"(?:elevated|administrative|root)", re.I)),
+                r"(?:elevated|root|system|administrative) privileg", re.I)),
 ]
+
+# 未授权访问类(第五类,需严重才算):认证绕过/缺失认证/越权/默认凭据
+UNAUTH_CWE_WORDS = ("认证绕过", "认证欺骗", "缺失认证", "缺失授权",
+                    "访问控制缺失", "越权", "授权错误", "默认凭据")
+UNAUTH_RE = re.compile(
+    r"authenticat\w+ bypass|bypass\w* (?:the )?authenticat\w+|missing authentication|"
+    r"without authentication|unauthorized (?:access|admin)|broken access control|"
+    r"access control (?:flaw|issue|weakness|vulnerability)|default credentials?",
+    re.I)
+UNAUTH_BONUS = 120
+
+
+def _unauth_severe(item: dict) -> bool:
+    """未授权访问的「危害严重」门槛:高分,或远程免认证低难度。
+
+    低分 + 需交互/需登录的越权不在核心关注范围(灌水大头)。
+    """
+    if (item.get("cvss") or 0) >= 9.0:
+        return True
+    diff = item.get("difficulty") or ""
+    return diff.startswith("低") and "免认证" in diff
 
 
 def vuln_class(item: dict) -> tuple[str, int] | None:
@@ -147,9 +170,19 @@ def vuln_class(item: dict) -> tuple[str, int] | None:
         return item["vuln_class_hit"], int(item.get("vuln_class_bonus") or 0)
     labels = " ".join(item.get("cwe_labels") or [])
     desc = item.get("desc") or ""
-    for name, bonus, cwe_words, pat in HIGH_VALUE_CLASSES:
-        if any(w in labels for w in cwe_words) or pat.search(desc):
+    # 第一轮:CWE 标签优先(标签比描述关键词权威,如 Ivanti 认证绕过描述里的
+    # "gain administrative access" 不是本地提权)
+    for name, bonus, cwe_words, _pat in HIGH_VALUE_CLASSES:
+        if any(w in labels for w in cwe_words):
             return name, bonus
+    if any(w in labels for w in UNAUTH_CWE_WORDS) and _unauth_severe(item):
+        return "未授权访问", UNAUTH_BONUS
+    # 第二轮:描述关键词兜底(多数 NVD「Awaiting Analysis」条目没有 CWE 标签)
+    for name, bonus, _cwe_words, pat in HIGH_VALUE_CLASSES:
+        if pat.search(desc):
+            return name, bonus
+    if UNAUTH_RE.search(desc) and _unauth_severe(item):
+        return "未授权访问", UNAUTH_BONUS
     return None
 
 
@@ -167,7 +200,7 @@ def fame_tier(item: dict) -> int:
 
 def fallback_urgency(item: dict) -> str:
     """无 AI 时的确定性优先级:在野利用 → P0;有 PoC/高EPSS/9 分以上 → P1;
-    高价值类型(文件读写/RCE/SQL注入/提权)× 知名组件(或 ≥8 分)→ P1;其余 → P2。"""
+    高价值类型(文件读写/RCE/SQL注入/提权/严重未授权访问)× 知名组件(或 ≥8 分)→ P1;其余 → P2。"""
     if item.get("kev"):
         return URGENCY_LEVELS[0]
     if item.get("poc_links") or item.get("has_exploit_ref") or \

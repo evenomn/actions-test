@@ -124,8 +124,8 @@ def _qualifies(item: dict, cfg: dict) -> bool:
     cvss = item["cvss"]
     epss_high = item["epss"] is not None and item["epss"] >= cfg["epss_threshold"]
     has_poc = item["has_exploit_ref"] or bool(item["poc_links"])
-    # 高价值类型(任意文件读写/RCE/SQL注入/提权)本身即强信号:
-    # 过线分数 + 这四类即使无 PoC 也值得入选
+    # 高价值类型(任意文件读写/RCE/SQL注入/提权/严重的未授权访问)本身即强信号:
+    # 过线分数 + 这些类型即使无 PoC 也值得入选
     strong = (item["kev"] or epss_high or has_poc or item["keyword_hit"]
               or bool(vuln_class(item)))
     over_threshold = cvss is not None and cvss >= cfg["cvss_threshold"]
@@ -307,8 +307,8 @@ def _is_event_worthy(item: dict) -> bool:
         return True
     if (item.get("cvss") or 0) >= 9.8 and (item.get("difficulty") or "").startswith("低"):
         return True
-    # 全网级基础组件(openssh/fortinet/citrix 这类)的文件读写/RCE/SQL注入/提权:
-    # 危害不取决于分数,不等日报直接即时告警
+    # 全网级基础组件(openssh/fortinet/citrix 这类)的高价值类型
+    # (文件读写/RCE/SQL注入/提权/严重未授权访问):危害不取决于分数,不等日报直接即时告警
     if item.get("vuln_class_hit") and item.get("fame_tier") == 1:
         return True
     return False
