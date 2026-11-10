@@ -5,7 +5,442 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 10 Nov 2026 13:38:16 +0000</pubDate>
-    <lastBuildDate>Tue, 10 Nov 2026 13:38:16 +0000</lastBuildDate>
+    <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    <lastBuildDate>Tue, 10 Nov 2026 22:25:52 +0000</lastBuildDate>
+    <item>
+      <title>[critical]BroadWorks XXE 未授权读文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-20320</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-20320-2026-11-10</guid>
+      <description>CVE-2026-20320 · P0 立即处置 · 披露 2026-08-19 · 组件 ERP/业务系统 · CVSS 7.5 · EPSS 0.4%,前 33% · 类型 XXE · 难度 低(远程·免认证)
+A vulnerability in the Open Client Interface (OCI) XML Parser of Cisco BroadWorks could allow an unauthenticated, remote attacker to read sensitive configuratio…
+信号: KEV 在野利用(CISA 限期 2026-11-24) | 有 PoC
+[malbearlabs.com/posts/operation-snowball](https://malbearlabs.com/posts/operation-snowball-inside-an-autonomous-ai-intrusion-campaign)</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Barracuda ESG 认证绕过改配置</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116606</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116606-2026-11-10</guid>
+      <description>CVE-2026-116606 · P0 立即处置 · 披露 2026-11-02 · CVSS 9.3 · EPSS 1.6%,前 76% · 类型 认证绕过 · 难度 低(远程·免认证)
+An authentication bypass in Barracuda Email Security Gateway versions earlier than 9.4.0.030 allows an unauthenticated remote attacker to invoke a configuration…
+信号: KEV 在野利用(CISA 限期 2026-11-13) | 有 PoC
+[Exploit-Index mandiant/Vulnerability-Disclosures(未验证)(仅README)](https://github.com/mandiant/Vulnerability-Disclosures)</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Barracuda时区命令注入提权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111560</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111560-2026-11-10</guid>
+      <description>CVE-2026-111560 · P0 立即处置 · 披露 2026-11-02 · CVSS 8.6 · EPSS 1.1%,前 65% · 类型 命令注入(RCE) · 难度 中(远程·需高权限)
+Improper neutralization of shell metacharacters in the timezone configuration field in certain Barracuda appliance products using common Barracuda code allows a…
+信号: KEV 在野利用(CISA 限期 2026-11-13) | 有 PoC
+[Exploit-Index mandiant/Vulnerability-Disclosures(未验证)(仅README)](https://github.com/mandiant/Vulnerability-Disclosures)</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Webtop转码器 文件类型限制绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-111793</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-111793-2026-11-10</guid>
+      <description>CVE-2026-111793 · P0 立即处置 · 披露 2026-10-16 · 组件 Web中间件 · CVSS 4.3 · EPSS 0.3%,前 20% · 类型 CWE-669 · 难度 低(远程·需低权限)
+This may allow an authenticated user to process and convert unintended document types if bypassing the Webmail experience.
+信号: KEV 在野利用(CISA 限期 2026-11-24)</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Chrome XML UAF 沙箱内RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-125350</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-125350-2026-11-10</guid>
+      <description>CVE-2026-125350 · P0 立即处置 · 披露 2026-11-10 · CVSS 8.8 · 类型 释放后重用(UAF) · 难度 低(远程·免认证·需用户交互)
+Use after free in XML in Google Chrome prior to 157.0.8103.50 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page.
+信号: KEV 在野利用(CISA 限期 2026-11-24)</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Outlook UI未警示导致欺骗</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124194</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124194-2026-11-10</guid>
+      <description>CVE-2026-124194 · P0 立即处置 · 披露 2026-11-10 · CVSS 6.5 · 类型 CWE-356 · 难度 低(远程·免认证·需用户交互)
+Product ui does not warn user of unsafe actions in Microsoft Office Outlook allows an unauthorized attacker to perform spoofing over a network.
+信号: KEV 在野利用(CISA 限期 2026-11-24)</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]FortiAnalyzer 路径遍历读文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2025-61625</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2025-61625-2026-11-10</guid>
+      <description>CVE-2025-61625 · P1 重点关注 · 披露 2026-11-10 · 组件 边界设备/VPN · CVSS 8.1 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+An improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.4, FortiAnalyzer 7.4…
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect 未授权 路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121351</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121351-2026-11-10</guid>
+      <description>CVE-2026-121351 · P1 重点关注 · 披露 2026-11-10 · CVSS 10.0 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+Adobe Connect is affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could lead to arbitrary file s…
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect 路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121354</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121354-2026-11-10</guid>
+      <description>CVE-2026-121354 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+Adobe Connect is affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could lead to arbitrary file s…
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121894</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121894-2026-11-10</guid>
+      <description>CVE-2026-121894 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 SQL注入 · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary SQL commands, potentially gaining elevated access or control over the victim's a…
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121896</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121896-2026-11-10</guid>
+      <description>CVE-2026-121896 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 SQL注入 · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121898</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121898-2026-11-10</guid>
+      <description>CVE-2026-121898 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 SQL注入 · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect 路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121906</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121906-2026-11-10</guid>
+      <description>CVE-2026-121906 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+Adobe Connect is affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could lead to arbitrary file s…
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121908</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121908-2026-11-10</guid>
+      <description>CVE-2026-121908 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 SQL注入 · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect CRLF注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121353</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121353-2026-11-10</guid>
+      <description>CVE-2026-121353 · P1 重点关注 · 披露 2026-11-10 · CVSS 10.0 · 类型 CRLF注入 · 难度 低(远程·免认证)
+Adobe Connect is affected by an Improper Neutralization of CRLF Sequences ('CRLF Injection') vulnerability that could result in arbitrary code execution in the …
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect 未授权 授权错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121352</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121352-2026-11-10</guid>
+      <description>CVE-2026-121352 · P1 重点关注 · 披露 2026-11-10 · CVSS 10.0 · 类型 授权错误 · 难度 低(远程·免认证)
+An attacker could exploit this vulnerability to gain unauthorized access to sensitive resources.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect 未授权 SSRF</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121356</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121356-2026-11-10</guid>
+      <description>CVE-2026-121356 · P1 重点关注 · 披露 2026-11-10 · CVSS 10.0 · 类型 SSRF · 难度 低(远程·免认证)
+Adobe Connect is affected by a Server-Side Request Forgery (SSRF) vulnerability that could result in privilege escalation.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect 未授权 SSRF</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121889</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121889-2026-11-10</guid>
+      <description>CVE-2026-121889 · P1 重点关注 · 披露 2026-11-10 · CVSS 10.0 · 类型 SSRF · 难度 低(远程·免认证)
+Adobe Connect is affected by a Server-Side Request Forgery (SSRF) vulnerability that could result in privilege escalation.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AEM 代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113579</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113579-2026-11-10</guid>
+      <description>CVE-2026-113579 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe AEM代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113580</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113580-2026-11-10</guid>
+      <description>CVE-2026-113580 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect XXE致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121887</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121887-2026-11-10</guid>
+      <description>CVE-2026-121887 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 XXE · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Connect代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121892</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121892-2026-11-10</guid>
+      <description>CVE-2026-121892 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Azure DevOps 认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109467</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109467-2026-11-10</guid>
+      <description>CVE-2026-109467 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 认证绕过 · 难度 低(远程·需低权限)
+Improper authentication in Azure DevOps allows an authorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Incorrect 授权错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120002</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120002-2026-11-10</guid>
+      <description>CVE-2026-120002 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 授权错误 · 难度 低(远程·需低权限)
+Incorrect authorization in Microsoft Office SharePoint allows an authorized attacker to elevate privileges over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Experience Manager 授权错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114371</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114371-2026-11-10</guid>
+      <description>CVE-2026-114371 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 授权错误 · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Experience Manager 授权错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119017</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119017-2026-11-10</guid>
+      <description>CVE-2026-119017 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.9 · 类型 授权错误 · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Arista EOS BGP栈溢出可RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121289</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121289-2026-11-10</guid>
+      <description>CVE-2026-121289 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
+Due to the nature of the vulnerability, it may also be possible for a sophisticated attacker to achieve arbitrary code execution, which could compromise the con…
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Missing 未授权 缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119990</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119990-2026-11-10</guid>
+      <description>CVE-2026-119990 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+Missing authentication for critical function in Azure OpenAI allows an unauthorized attacker to elevate privileges over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Windows Kerberos 未授权 认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85844</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85844-2026-11-10</guid>
+      <description>CVE-2026-85844 · P1 重点关注 · 披露 2026-11-10 · 组件 操作系统 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+Authentication bypass using an alternate path or channel in Windows Kerberos allows an unauthorized attacker to elevate privileges over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126065</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126065-2026-11-10</guid>
+      <description>CVE-2026-126065 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+TO statement through the search API to create or overwrite attacker-controlled files at service-process-writable locations, creating a conditional escalation to…
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Rails 未授权 初始化不安全(默认凭据)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126082</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126082-2026-11-10</guid>
+      <description>CVE-2026-126082 · P1 重点关注 · 披露 2026-11-10 · 组件 Web框架 · CVSS 9.8 · 类型 初始化不安全(默认凭据) · 难度 低(远程·免认证)
+Prior to 8.1.4.1 and 8.0.5.2, a Rails application that processes attachments with ImageMagick may allow an unauthenticated attacker to write arbitrary files on …
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-125297</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-125297-2026-11-10</guid>
+      <description>CVE-2026-125297 · P1 重点关注 · 披露 2026-11-10 · 组件 开发库/依赖 · CVSS 9.8 · 类型 缺失认证/缺失授权(越权) · 难度 低(远程·免认证)
+A remote, unauthenticated attacker could provision a new account with administrative privileges or take over existing accounts, and perform other administrative…
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]mongoose CWE-943</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-125120</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-125120-2026-11-10</guid>
+      <description>CVE-2026-125120 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.8 · EPSS 0.6%,前 47% · 类型 CWE-943 · 难度 低(远程·免认证)
+ Impact sanitizeFilter is Mongoose's mechanism for protecting against query selector injection attacks.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Heap-based 未授权 堆溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112967</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112967-2026-11-10</guid>
+      <description>CVE-2026-112967 · P1 重点关注 · 披露 2026-11-10 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
+Heap-based buffer overflow in Windows Xbox Live Networking Service allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Azure Managed Grafana 未授权 SSRF</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114160</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114160-2026-11-10</guid>
+      <description>CVE-2026-114160 · P1 重点关注 · 披露 2026-11-10 · 组件 监控运维 · CVSS 9.8 · 类型 SSRF · 难度 低(远程·免认证)
+No cwe for this issue in Azure Managed Grafana allows an unauthorized attacker to elevate privileges over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Out-of-bounds 未授权 越界写入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116928</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116928-2026-11-10</guid>
+      <description>CVE-2026-116928 · P1 重点关注 · 披露 2026-11-10 · 组件 操作系统 · CVSS 9.8 · 类型 越界写入 · 难度 低(远程·免认证)
+Out-of-bounds write in Microsoft Windows Search Component allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Heap-based 未授权 堆溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116945</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116945-2026-11-10</guid>
+      <description>CVE-2026-116945 · P1 重点关注 · 披露 2026-11-10 · 组件 数据库 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
+Heap-based buffer overflow in SQL Server allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Out-of-bounds 未授权 越界写入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-119958</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-119958-2026-11-10</guid>
+      <description>CVE-2026-119958 · P1 重点关注 · 披露 2026-11-10 · 组件 操作系统 · CVSS 9.8 · 类型 越界写入 · 难度 低(远程·免认证)
+Out-of-bounds write in Windows LDAP - Lightweight Directory Access Protocol allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Heap-based 未授权 堆溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-66801</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-66801-2026-11-10</guid>
+      <description>CVE-2026-66801 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
+Heap-based buffer overflow in Xbox allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Double 未授权 CWE-415</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88218</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88218-2026-11-10</guid>
+      <description>CVE-2026-88218 · P1 重点关注 · 披露 2026-11-10 · 组件 操作系统 · CVSS 9.8 · 类型 CWE-415 · 难度 低(远程·免认证)
+Double free in Windows DNS allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Release 未授权 CWE-763</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88234</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88234-2026-11-10</guid>
+      <description>CVE-2026-88234 · P1 重点关注 · 披露 2026-11-10 · 组件 操作系统 · CVSS 9.8 · 类型 CWE-763 · 难度 低(远程·免认证)
+Release of invalid pointer or reference in Windows iSCSI allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Out-of-bounds 未授权 越界读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-88243</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-88243-2026-11-10</guid>
+      <description>CVE-2026-88243 · P1 重点关注 · 披露 2026-11-10 · 组件 操作系统 · CVSS 9.8 · 类型 越界读取 · 难度 低(远程·免认证)
+Out-of-bounds read in Windows DHCP Server allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Stack-based 未授权 栈溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-95882</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-95882-2026-11-10</guid>
+      <description>CVE-2026-95882 · P1 重点关注 · 披露 2026-11-10 · 组件 操作系统 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
+Stack-based buffer overflow in Windows Microsoft DirectMusic allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Double 未授权 CWE-415</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-95901</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-95901-2026-11-10</guid>
+      <description>CVE-2026-95901 · P1 重点关注 · 披露 2026-11-10 · 组件 操作系统 · CVSS 9.8 · 类型 CWE-415 · 难度 低(远程·免认证)
+Double free in Windows Microsoft DirectMusic allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Integer 未授权 整数溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96067</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96067-2026-11-10</guid>
+      <description>CVE-2026-96067 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.8 · 类型 整数溢出 · 难度 低(远程·免认证)
+Integer overflow or wraparound in Microsoft Color Management allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Heap-based 未授权 堆溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96078</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96078-2026-11-10</guid>
+      <description>CVE-2026-96078 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.8 · 类型 堆溢出/CWE-191 · 难度 低(远程·免认证)
+Heap-based buffer overflow in Microsoft Color Management allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Heap-based 未授权 堆溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96157</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96157-2026-11-10</guid>
+      <description>CVE-2026-96157 · P1 重点关注 · 披露 2026-11-10 · 组件 操作系统 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
+Heap-based buffer overflow in Microsoft Windows Media Foundation allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AsiaInfo Business Support System 未授权 签名校验错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-125298</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-125298-2026-11-10</guid>
+      <description>CVE-2026-125298 · P1 重点关注 · 披露 2026-11-10 · CVSS 9.8 · 类型 签名校验错误 · 难度 低(远程·免认证)
+A remote, unauthenticated attacker could forge a well-formed JWT without a valid signature and use it to execute privileged actions.
+信号:</description>
+      <pubDate>Tue, 10 Nov 2026 22:25:52 +0000</pubDate>
+    </item>
   </channel>
 </rss>

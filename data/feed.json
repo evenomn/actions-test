@@ -1,57 +1,2271 @@
 {
  "version": 3,
- "generated_at": "2026-11-10T13:38:16+00:00",
+ "generated_at": "2026-11-10T22:25:52+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 48,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
-  "kev": 0,
-  "with_poc": 0,
+  "total": 48,
+  "by_tier": {
+   "critical": 47,
+   "high": 1
+  },
+  "by_urgency": {
+   "P1 重点关注": 42,
+   "P0 立即处置": 6
+  },
+  "by_category": {
+   "未知": 31,
+   "操作系统": 10,
+   "ERP/业务系统": 1,
+   "Web中间件": 1,
+   "边界设备/VPN": 1,
+   "Web框架": 1,
+   "开发库/依赖": 1,
+   "监控运维": 1,
+   "数据库": 1
+  },
+  "kev": 6,
+  "with_poc": 3,
   "with_poc_source": 0,
-  "repro_recommended": 0
+  "repro_recommended": 2
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2026-20320",
+   "tier": "critical",
+   "title": "BroadWorks XXE 未授权读文件",
+   "title_zh": "BroadWorks XXE 未授权读文件",
+   "summary_zh": "未授权远程攻击者可利用OCI XML解析器读取系统敏感配置文件",
+   "published": "2026-08-19T17:18:40.433",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+   "epss": 0.00385,
+   "epss_percentile": 0.32917,
+   "cwe_labels": [
+    "XXE"
+   ],
+   "vuln_class": null,
+   "fame_term": "cisco",
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "cisco broadworks_application_delivery_platform",
+    "cisco broadworks_application_server",
+    "cisco broadworks_profile_server",
+    "cisco broadworks_xtended_services_platform"
+   ],
+   "affected": "cisco broadworks_application_delivery_platform <ri.2026.07; cisco broadworks_application_server <2026.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-bworks-xxe-uwUd7CEt"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-20320"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-24",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至Cisco BroadWorks修复版本",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "向OCI XML解析端点提交外部实体载荷读取文件",
+   "impact_scope": "统一通信平台，常暴露企业网络",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-20320",
+   "description": "A vulnerability in the Open Client Interface (OCI) XML Parser of Cisco BroadWorks could allow an unauthenticated, remote attacker to read sensitive configuration information on an affected system. A successful exploit could allow the attacker to view sensitive files from the filesystem with the privileges of the Cisco BroadWorks user."
+  },
+  {
+   "id": "CVE-2026-116606",
+   "tier": "critical",
+   "title": "Barracuda ESG 认证绕过改配置",
+   "title_zh": "Barracuda ESG 认证绕过改配置",
+   "summary_zh": "未授权远程攻击者可调用配置导入恢复恶意备份，篡改设备全局配置",
+   "published": "2026-11-02T13:17:37.017",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.01602,
+   "epss_percentile": 0.76026,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "barracuda",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-116606"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/mandiant/Vulnerability-Disclosures",
+     "label": "Exploit-Index mandiant/Vulnerability-Disclosures(未验证)(仅README)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-13",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至9.4.0.030或更高版本",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问配置导入接口，提交构造备份包恢复",
+   "impact_scope": "邮件安全网关，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116606",
+   "description": "An authentication bypass in Barracuda Email Security Gateway versions earlier than 9.4.0.030 allows an unauthenticated remote attacker to invoke a configuration-import function and restore a crafted, compatible backup archive, resulting in unauthorized modification of the appliance’s global configuration."
+  },
+  {
+   "id": "CVE-2026-111560",
+   "tier": "critical",
+   "title": "Barracuda时区命令注入提权",
+   "title_zh": "Barracuda时区命令注入提权",
+   "summary_zh": "已认证管理员可在时区配置注入命令，以root权限执行OS命令",
+   "published": "2026-11-02T13:17:35.190",
+   "cvss": 8.6,
+   "severity": "HIGH",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.0106,
+   "epss_percentile": 0.6483,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "barracuda",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0041.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111560"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/mandiant/Vulnerability-Disclosures",
+     "label": "Exploit-Index mandiant/Vulnerability-Disclosures(未验证)(仅README)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-13",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商修复版本；限制管理员权限",
+   "repro_worthy": "一般",
+   "repro_note": "管理员登录后篡改时区字段注入OS命令",
+   "impact_scope": "安全设备管理面，需高权限登录",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111560",
+   "description": "Improper neutralization of shell metacharacters in the timezone configuration field in certain Barracuda appliance products using common Barracuda code allows an authenticated administrator to inject OS commands that execute with root privileges when the crafted timezone value is subsequently processed."
+  },
+  {
+   "id": "CVE-2026-111793",
+   "tier": "critical",
+   "title": "Webtop转码器 文件类型限制绕过",
+   "title_zh": "Webtop转码器 文件类型限制绕过",
+   "summary_zh": "认证用户可绕过Webmail限制，使转码器处理非预期文件类型",
+   "published": "2026-10-16T19:17:05.680",
+   "cvss": 4.3,
+   "severity": "MEDIUM",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+   "epss": 0.00274,
+   "epss_percentile": 0.19971,
+   "cwe_labels": [
+    "CWE-669"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [
+    "openwave webtop_media_transcoder"
+   ],
+   "affected": "openwave webtop_media_transcoder <1.1.22.0",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/GISOpenwave/security-advisories-public/blob/main/CAN-2026-2032674.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://openwave.ai"
+    },
+    {
+     "label": "参考",
+     "url": "https://jvn.jp/en/vu/JVNVU93403064/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-24",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至1.1.22.0或更高版本",
+   "repro_worthy": "一般",
+   "repro_note": "认证用户绕过Webmail直接调用转码接口上传非允许类型",
+   "impact_scope": "Webmail转码组件，需认证访问",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111793",
+   "description": "Openwave Webtop Media Transcoder does not enforce administrator-defined file type restrictions to restrict the file-types to be converted. This may allow an authenticated user to process and convert unintended document types if bypassing the Webmail experience."
+  },
+  {
+   "id": "CVE-2026-125350",
+   "tier": "critical",
+   "title": "Chrome XML UAF 沙箱内RCE",
+   "title_zh": "Chrome XML UAF 沙箱内RCE",
+   "summary_zh": "远程攻击者通过恶意HTML触发UAF，在Chrome沙箱内执行代码",
+   "published": "2026-11-10T18:17:35.237",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [
+    "google chrome"
+   ],
+   "affected": "google chrome <157.0.8103.50",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_018223192.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/582442907"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-125350"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-24",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级Chrome至157.0.8103.50或更高",
+   "repro_worthy": "一般",
+   "repro_note": "构造恶意HTML触发XML释放后重用，需用户访问",
+   "impact_scope": "终端浏览器，用户访问即可能触发",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125350",
+   "description": "Use after free in XML in Google Chrome prior to 157.0.8103.50 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)"
+  },
+  {
+   "id": "CVE-2026-124194",
+   "tier": "critical",
+   "title": "Outlook UI未警示导致欺骗",
+   "title_zh": "Outlook UI未警示导致欺骗",
+   "summary_zh": "攻击者通过网络诱导用户在Outlook执行不安全操作，造成欺骗",
+   "published": "2026-11-10T19:20:48.180",
+   "cvss": 6.5,
+   "severity": "MEDIUM",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-356"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [
+    "microsoft 365_apps",
+    "microsoft office_2021",
+    "microsoft office_2024"
+   ],
+   "affected": "microsoft 365_apps、microsoft office_2021、microsoft office_2024",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124194"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-124194"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-24",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "安装微软最新Office安全更新",
+   "repro_worthy": "一般",
+   "repro_note": "诱导用户点击Outlook不安全操作，UI未告警",
+   "impact_scope": "邮件客户端，依赖用户交互",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124194",
+   "description": "Product ui does not warn user of unsafe actions in Microsoft Office Outlook allows an unauthorized attacker to perform spoofing over a network."
+  },
+  {
+   "id": "CVE-2025-61625",
+   "tier": "high",
+   "title": "FortiAnalyzer 路径遍历读文件",
+   "title_zh": "FortiAnalyzer 路径遍历读文件",
+   "summary_zh": "攻击者可利用路径遍历读取FortiAnalyzer/FortiManager受限目录外文件",
+   "published": "2026-11-10T20:17:20.203",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-190"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至Fortinet公告修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "访问FortiManager/FortiAnalyzer文件接口构造遍历参数",
+   "impact_scope": "网管/日志管理设备，内网高权限",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-61625",
+   "description": "An improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.4, FortiAnalyzer 7.4.0 through 7.4.7, FortiAnalyzer 7.2.0 through 7.2.11, FortiManager 7.6.0 through 7.6.4, FortiManager 7.4.0 through 7.4.7, FortiManager 7.2.0 through 7.2.11, FortiManager Cloud 7.6.0 through 7.6.4, FortiManager Cloud 7.4.1 through 7.4.7, FortiManager Cloud 7.2.1 through 7.2.10 may allow an authenticated attacker whose profile only has read…"
+  },
+  {
+   "id": "CVE-2026-121351",
+   "tier": "critical",
+   "title": "Adobe Connect 未授权 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:24.910",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121351",
+   "description": "Adobe Connect is affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could lead to arbitrary file system read. An attacker could exploit this vulnerability to access sensitive files and directories outside the intended access scope. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121354",
+   "tier": "critical",
+   "title": "Adobe Connect 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:25.373",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121354",
+   "description": "Adobe Connect is affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could lead to arbitrary file system read. An attacker could exploit this vulnerability to access sensitive files and directories outside the intended access scope. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121894",
+   "tier": "critical",
+   "title": "Adobe SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:26.650",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121894",
+   "description": "Adobe Connect is affected by an Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary SQL commands, potentially gaining elevated access or control over the victim's account or session. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121896",
+   "tier": "critical",
+   "title": "Adobe Connect SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:26.773",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121896",
+   "description": "Adobe Connect is affected by an Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121898",
+   "tier": "critical",
+   "title": "Adobe Connect SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:26.897",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121898",
+   "description": "Adobe Connect is affected by an Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121906",
+   "tier": "critical",
+   "title": "Adobe Connect 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:27.400",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121906",
+   "description": "Adobe Connect is affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could lead to arbitrary file system read. An attacker could exploit this vulnerability to access sensitive files and directories outside the intended access scope. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121908",
+   "tier": "critical",
+   "title": "Adobe Connect SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:27.533",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121908",
+   "description": "Adobe Connect is affected by an Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121353",
+   "tier": "critical",
+   "title": "Adobe Connect CRLF注入",
+   "title_zh": "Adobe Connect CRLF注入",
+   "summary_zh": "攻击者通过CRLF注入利用Adobe Connect，可能以当前用户执行任意代码",
+   "published": "2026-11-10T22:18:25.217",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CRLF注入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe Connect至厂商修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "向Adobe Connect接口注入CRLF序列，触发代码执行",
+   "impact_scope": "在线会议/协作系统，常暴露内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121353",
+   "description": "Adobe Connect is affected by an Improper Neutralization of CRLF Sequences ('CRLF Injection') vulnerability that could result in arbitrary code execution in the context of the current user, potentially gaining elevated access or control over the victim's account or session. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121352",
+   "tier": "critical",
+   "title": "Adobe Connect 未授权 授权错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:25.060",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121352",
+   "description": "Adobe Connect is affected by an Incorrect Authorization vulnerability that could result in privilege escalation. An attacker could exploit this vulnerability to gain unauthorized access to sensitive resources. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121356",
+   "tier": "critical",
+   "title": "Adobe Connect 未授权 SSRF",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:25.637",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SSRF"
+   ],
+   "vuln_class": "提权",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121356",
+   "description": "Adobe Connect is affected by a Server-Side Request Forgery (SSRF) vulnerability that could result in privilege escalation. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121889",
+   "tier": "critical",
+   "title": "Adobe Connect 未授权 SSRF",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:26.180",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SSRF"
+   ],
+   "vuln_class": "提权",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121889",
+   "description": "Adobe Connect is affected by a Server-Side Request Forgery (SSRF) vulnerability that could result in privilege escalation. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-113579",
+   "tier": "critical",
+   "title": "AEM 代码注入RCE",
+   "title_zh": "AEM 代码注入RCE",
+   "summary_zh": "低权限攻击者可通过网络向AEM注入代码，执行任意命令",
+   "published": "2026-11-10T22:18:22.360",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/experience-manager/apsb26-189.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级AEM至修复版本，限制低权账户",
+   "repro_worthy": "一般",
+   "repro_note": "低权限用户向AEM接口注入代码触发命令执行",
+   "impact_scope": "内容管理平台，内网高价值",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113579",
+   "description": "Adobe Experience Manager is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-113580",
+   "tier": "critical",
+   "title": "Adobe AEM代码注入RCE",
+   "title_zh": "Adobe AEM代码注入RCE",
+   "summary_zh": "低权限攻击者无需交互，可向AEM注入代码执行任意命令，完全控制应用。",
+   "published": "2026-11-10T22:18:22.493",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/experience-manager/apsb26-189.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe修复版本；限制低权账号与代码执行面",
+   "repro_worthy": "一般",
+   "repro_note": "需低权账号登录AEM，定位可注入代码的组件/接口并构造参数",
+   "impact_scope": "企业内容管理平台，常部署内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113580",
+   "description": "Adobe Experience Manager is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121887",
+   "tier": "critical",
+   "title": "Adobe Connect XXE致RCE",
+   "title_zh": "Adobe Connect XXE致RCE",
+   "summary_zh": "低权限攻击者无需交互，利用XXE解析缺陷执行任意代码，控制会议系统。",
+   "published": "2026-11-10T22:18:26.060",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "XXE"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe修复版本；禁用外部实体并限制低权账号",
+   "repro_worthy": "一般",
+   "repro_note": "需低权账号访问Connect，向XML接口提交外部实体载荷",
+   "impact_scope": "在线会议/培训系统，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121887",
+   "description": "Adobe Connect is affected by an Improper Restriction of XML External Entity Reference ('XXE') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121892",
+   "tier": "critical",
+   "title": "Adobe Connect代码注入RCE",
+   "title_zh": "Adobe Connect代码注入RCE",
+   "summary_zh": "低权限攻击者无需交互，可注入并执行任意代码，控制Connect服务。",
+   "published": "2026-11-10T22:18:26.520",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/connect/apsb26-191.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe修复版本；限制低权账号与注入入口",
+   "repro_worthy": "一般",
+   "repro_note": "需低权账号登录Connect，定位代码注入入口并提交构造参数",
+   "impact_scope": "在线会议/培训系统，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121892",
+   "description": "Adobe Connect is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-109467",
+   "tier": "critical",
+   "title": "Azure DevOps 认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:18:15.890",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109467"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109467",
+   "description": "Improper authentication in Azure DevOps allows an authorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-120002",
+   "tier": "critical",
+   "title": "Incorrect 授权错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:20:26.080",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-120002"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120002",
+   "description": "Incorrect authorization in Microsoft Office SharePoint allows an authorized attacker to elevate privileges over a network."
+  },
+  {
+   "id": "CVE-2026-114371",
+   "tier": "critical",
+   "title": "Adobe Experience Manager 授权错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:22.617",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/experience-manager/apsb26-189.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114371",
+   "description": "Adobe Experience Manager is affected by an Incorrect Authorization vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-119017",
+   "tier": "critical",
+   "title": "Adobe Experience Manager 授权错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:24.520",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/experience-manager/apsb26-189.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119017",
+   "description": "Adobe Experience Manager is affected by an Incorrect Authorization vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-121289",
+   "tier": "critical",
+   "title": "Arista EOS BGP栈溢出可RCE",
+   "title_zh": "Arista EOS BGP栈溢出可RCE",
+   "summary_zh": "网络攻击者向启用BGP的设备发送特制报文，可致BGP进程崩溃，或进一步执行代码。",
+   "published": "2026-11-10T20:18:54.283",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.arista.com/en/support/advisories-notices/security-advisory/25030-security-advisory-0208"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级EOS修复版本；限制BGP对等体并配置ACL",
+   "repro_worthy": "一般",
+   "repro_note": "需EOS启用BGP且可达，向BGP会话发送特制报文触发栈溢出",
+   "impact_scope": "路由器/交换机，网络边界与核心",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121289",
+   "description": "On affected platforms running Arista EOS with BGP configured, a specially crafted packet can cause the BGP agent to crash. Due to the nature of the vulnerability, it may also be possible for a sophisticated attacker to achieve arbitrary code execution, which could compromise the confidentiality and integrity of the affected system."
+  },
+  {
+   "id": "CVE-2026-119990",
+   "tier": "critical",
+   "title": "Missing 未授权 缺失认证",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:20:24.280",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119990"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119990",
+   "description": "Missing authentication for critical function in Azure OpenAI allows an unauthorized attacker to elevate privileges over a network."
+  },
+  {
+   "id": "CVE-2026-85844",
+   "tier": "critical",
+   "title": "Windows Kerberos 未授权 认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:21:25.653",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85844"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85844",
+   "description": "Authentication bypass using an alternate path or channel in Windows Kerberos allows an unauthorized attacker to elevate privileges over a network."
+  },
+  {
+   "id": "CVE-2026-126065",
+   "tier": "critical",
+   "title": "未授权 认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T21:19:24.310",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/openobserve/openobserve/commit/46678ea8daba94c3904286471794f80c5a74ecea"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/openobserve/openobserve/commit/dc5c657002d97e9e29726cefcadec49cae755e1a"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/openobserve/openobserve/pull/15054"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126065",
+   "description": "SSO-provisioned and migration-created users can have this state, allowing an unauthenticated attacker who knows an affected user's email address and organization to authenticate on protected non-ingestion API routes with the victim's role and permissions. TO statement through the search API to create or overwrite attacker-controlled files at service-process-writable locations, creating a conditional escalation to pre-authentication remote code execution."
+  },
+  {
+   "id": "CVE-2026-126082",
+   "tier": "critical",
+   "title": "Rails 未授权 初始化不安全(默认凭据)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T21:19:26.980",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "初始化不安全(默认凭据)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/rails/rails/commit/468aa9a93fc98f5476b6821770f4ccfcb7f7d328"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/rails/rails/commit/ea8c40121ce53a3d0255cd4eb6d13bfe3bc01776"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/rails/rails/releases/tag/v8.0.5.2"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126082",
+   "description": "Prior to 8.1.4.1 and 8.0.5.2, a Rails application that processes attachments with ImageMagick may allow an unauthenticated attacker to write arbitrary files on the server and, when attachments are stored with the Disk service, to read arbitrary files readable by the application process. Those files typically include secret_key_base and credentials for external systems, which may in turn allow escalation to remote code execution or lateral movement to those systems."
+  },
+  {
+   "id": "CVE-2026-125297",
+   "tier": "critical",
+   "title": "未授权 缺失认证",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:30.080",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证",
+    "缺失授权(越权)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/trevorkaon/vulnerability-security-research/blob/main/advisories/asiainfo/CVE-2026-125297.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-313-03.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.asiainfo.eu/cloudbss"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125297",
+   "description": "AsiaInfo Business Support System (BSS) 9.2.0 through 9.2.40 accepts unauthenticated requests via the management API '/bss/sysmgnt/api/'. A remote, unauthenticated attacker could provision a new account with administrative privileges or take over existing accounts, and perform other administrative actions. Fixed in 9.2.41."
+  },
+  {
+   "id": "CVE-2026-125120",
+   "tier": "critical",
+   "title": "mongoose CWE-943",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:37:32Z",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": null,
+   "epss": 0.00566,
+   "epss_percentile": 0.4731,
+   "cwe_labels": [
+    "CWE-943"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "npm:mongoose < 6.13.11(修复: 6.13.11); npm:mongoose >= 7.0.0, < 7.8.12(修复: 7.8.12)",
+   "ghsa_url": "https://github.com/advisories/GHSA-pcrw-h46h-c93h",
+   "refs": [],
+   "poc": [],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125120",
+   "description": "### Impact `sanitizeFilter` is Mongoose's mechanism for protecting against query selector injection attacks. In older versions of Mongoose, `sanitizeFilter` was not applied for `countDocuments()` queries."
+  },
+  {
+   "id": "CVE-2026-112967",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:18:46.937",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-112967"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112967",
+   "description": "Heap-based buffer overflow in Windows Xbox Live Networking Service allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-114160",
+   "tier": "critical",
+   "title": "Azure Managed Grafana 未授权 SSRF",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:19:09.527",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SSRF"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-114160"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114160",
+   "description": "No cwe for this issue in Azure Managed Grafana allows an unauthorized attacker to elevate privileges over a network."
+  },
+  {
+   "id": "CVE-2026-116928",
+   "tier": "critical",
+   "title": "Out-of-bounds 未授权 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:19:21.287",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-116928"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116928",
+   "description": "Out-of-bounds write in Microsoft Windows Search Component allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-116945",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:19:27.737",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-116945"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116945",
+   "description": "Heap-based buffer overflow in SQL Server allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-119958",
+   "tier": "critical",
+   "title": "Out-of-bounds 未授权 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:20:19.857",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-119958"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119958",
+   "description": "Out-of-bounds write in Windows LDAP - Lightweight Directory Access Protocol allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-66801",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:21:17.250",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-66801"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-66801",
+   "description": "Heap-based buffer overflow in Xbox allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-88218",
+   "tier": "critical",
+   "title": "Double 未授权 CWE-415",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:21:28.907",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-415"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-88218"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88218",
+   "description": "Double free in Windows DNS allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-88234",
+   "tier": "critical",
+   "title": "Release 未授权 CWE-763",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:21:32.247",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-763"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-88234"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88234",
+   "description": "Release of invalid pointer or reference in Windows iSCSI allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-88243",
+   "tier": "critical",
+   "title": "Out-of-bounds 未授权 越界读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:21:33.783",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界读取"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-88243"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88243",
+   "description": "Out-of-bounds read in Windows DHCP Server allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-95882",
+   "tier": "critical",
+   "title": "Stack-based 未授权 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:21:41.527",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-95882"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-95882",
+   "description": "Stack-based buffer overflow in Windows Microsoft DirectMusic allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-95901",
+   "tier": "critical",
+   "title": "Double 未授权 CWE-415",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:21:43.510",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-415"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-95901"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-95901",
+   "description": "Double free in Windows Microsoft DirectMusic allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-96067",
+   "tier": "critical",
+   "title": "Integer 未授权 整数溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:22:04.777",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "整数溢出"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96067"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96067",
+   "description": "Integer overflow or wraparound in Microsoft Color Management allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-96078",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:22:06.210",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出",
+    "CWE-191"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96078"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96078",
+   "description": "Heap-based buffer overflow in Microsoft Color Management allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-96157",
+   "tier": "critical",
+   "title": "Heap-based 未授权 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T19:22:13.027",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96157"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96157",
+   "description": "Heap-based buffer overflow in Microsoft Windows Media Foundation allows an unauthorized attacker to execute code over a network."
+  },
+  {
+   "id": "CVE-2026-125298",
+   "tier": "critical",
+   "title": "AsiaInfo Business Support System 未授权 签名校验错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-10T22:18:30.240",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "签名校验错误"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/trevorkaon/vulnerability-security-research/blob/main/advisories/asiainfo/CVE-2026-125298.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-313-03.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.asiainfo.eu/cloudbss"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125298",
+   "description": "AsiaInfo Business Support System (BSS) 9.2.0 through 9.2.40 does not correctly verify cryptographic signatures for JSON Web Tokens (JWT). A remote, unauthenticated attacker could forge a well-formed JWT without a valid signature and use it to execute privileged actions. Fixed in 9.2.41."
+  }
+ ],
  "media": [],
  "commits": [
   {
-   "repo": "haproxy/haproxy",
-   "sha": "b9145640c5fb427db53768f9b8da2c4ada218956",
-   "url": "https://github.com/haproxy/haproxy/commit/b9145640c5fb427db53768f9b8da2c4ada218956",
-   "title": "BUG/MINOR: mjson: fix out-of-bounds reads on malformed JSON paths",
-   "date": "2026-11-10T06:46:58",
-   "score": 2,
+   "repo": "golang/go",
+   "sha": "0f3a7ffe1d520cfeab6f2ecb7431c228d8667c68",
+   "url": "https://github.com/golang/go/commit/0f3a7ffe1d520cfeab6f2ecb7431c228d8667c68",
+   "title": "cmd/go, cmd/compile: unquote //go:cgo_ldflag and bound slice removal",
+   "date": "2026-11-10T19:39:11",
+   "score": 5,
    "matched": [
-    "越界读写"
+    "CVE",
+    "RCE"
    ],
-   "cve": null
+   "cve": "CVE-2026-97043"
   },
   {
-   "repo": "php/php-src",
-   "sha": "beae627b5d1e3350b83fd2391c18103a0369921a",
-   "url": "https://github.com/php/php-src/commit/beae627b5d1e3350b83fd2391c18103a0369921a",
-   "title": "8.6: Fix UAF of the default stream context in the stream error code (#25321)",
-   "date": "2026-11-10T06:41:34",
-   "score": 2,
+   "repo": "golang/go",
+   "sha": "5e49f9f6ea7b9a3edc2e810244b9df28de2b02c8",
+   "url": "https://github.com/golang/go/commit/5e49f9f6ea7b9a3edc2e810244b9df28de2b02c8",
+   "title": "cmd/cgo, cmd/compile, cmd/link: validate cgo_import_dynamic library names",
+   "date": "2026-11-10T19:39:04",
+   "score": 5,
    "matched": [
-    "UAF"
+    "CVE",
+    "路径遍历/任意文件"
    ],
-   "cve": null
+   "cve": "CVE-2026-97042"
   },
   {
-   "repo": "openbsd/src",
-   "sha": "b0b2b1ffe9fdfbc83a3f863d866a44044d883aea",
-   "url": "https://github.com/openbsd/src/commit/b0b2b1ffe9fdfbc83a3f863d866a44044d883aea",
-   "title": "Do not allow TIOCSCTTY, TIOCNOTTY, or TIOCSPGRP on the pty master.  Return",
-   "date": "2026-11-10T06:23:26",
-   "score": 2,
+   "repo": "golang/go",
+   "sha": "ac38fc8f9f1f201a35733674d2de1a6cde237cac",
+   "url": "https://github.com/golang/go/commit/ac38fc8f9f1f201a35733674d2de1a6cde237cac",
+   "title": "cmd/go: disallow -gen-* and -gnat* in flag allowlists",
+   "date": "2026-11-10T19:14:09",
+   "score": 5,
    "matched": [
-    "UAF"
+    "CVE",
+    "RCE"
    ],
-   "cve": null
+   "cve": "CVE-2026-97035"
+  },
+  {
+   "repo": "rust-lang/rust",
+   "sha": "7177d8bddceb2a87218534a9a6fc7fb78f2e3800",
+   "url": "https://github.com/rust-lang/rust/commit/7177d8bddceb2a87218534a9a6fc7fb78f2e3800",
+   "title": "Rollup merge of #165575 - Amanieu:musl-1.2.6, r=cuviper",
+   "date": "2026-11-10T14:23:21",
+   "score": 5,
+   "matched": [
+    "CVE",
+    "缓冲区溢出"
+   ],
+   "cve": "CVE-2026-6042"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "705bd8c632adcb9efbc8253e15d53413c7edcd9a",
+   "url": "https://github.com/golang/go/commit/705bd8c632adcb9efbc8253e15d53413c7edcd9a",
+   "title": "net/http: prevent HTTP/1 server crash due to MaxBytesReader header race",
+   "date": "2026-11-10T19:10:38",
+   "score": 4,
+   "matched": [
+    "CVE",
+    "崩溃"
+   ],
+   "cve": "CVE-2026-97054"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "acf40c53264fce205e341a51e32fe59c29d92114",
+   "url": "https://github.com/golang/go/commit/acf40c53264fce205e341a51e32fe59c29d92114",
+   "title": "cmd/compile, cmd/link: validate cgo symbol names and prevent export overwrite",
+   "date": "2026-11-10T19:38:58",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-97041"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "acae995a452e47f70d46c78d35890f2fbf2eebdc",
+   "url": "https://github.com/golang/go/commit/acae995a452e47f70d46c78d35890f2fbf2eebdc",
+   "title": "cmd/go, cmd/link: reject .syso files with Go object or unrecognized formats",
+   "date": "2026-11-10T19:38:50",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-97040"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "9235af6608ac86d4ad41ba8c34ab1a4eeda6d4c1",
+   "url": "https://github.com/golang/go/commit/9235af6608ac86d4ad41ba8c34ab1a4eeda6d4c1",
+   "title": "cmd/go: disallow pkg-config local .pc paths and inspect cgoCPPFLAGS",
+   "date": "2026-11-10T19:38:42",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-97039"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "c28cd57a63edcae3661849c9bfd331376b38f0c8",
+   "url": "https://github.com/golang/go/commit/c28cd57a63edcae3661849c9bfd331376b38f0c8",
+   "title": "cmd/go: validate .syso and linker input files against scripts and embedded options",
+   "date": "2026-11-10T19:38:35",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-97038"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "715a0a443b568c8747b6f5d4d20f305199c6bfe9",
+   "url": "https://github.com/golang/go/commit/715a0a443b568c8747b6f5d4d20f305199c6bfe9",
+   "title": "cmd/go: validate split -Wl, next-arg flags and linker script targets",
+   "date": "2026-11-10T19:38:28",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-97037"
   }
  ]
 }

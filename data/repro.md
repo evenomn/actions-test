@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-10 13:38 UTC · 共 **178** 条(强烈推荐 32 / 值得 146)
+**更新**: 2026-11-10 22:25 UTC · 共 **179** 条(强烈推荐 33 / 值得 146)
 
 ---
 
@@ -60,6 +60,15 @@ PoC: [NVD exploit 引用](https://github.com/nola-milkin/poc_exploits/blob/maste
 PoC: [watchtowrlabs/watchTowr-vs-f5-bigip-PreAuth-RCE-CVE-2026-94127 13★(有源码)](https://github.com/watchtowrlabs/watchTowr-vs-f5-bigip-PreAuth-RCE-CVE-2026-94127) · [FurkanKAYAPINAR/CVE-2026-94127 0★(有源码)](https://github.com/FurkanKAYAPINAR/CVE-2026-94127)
 参考: [厂商通告](https://my.f5.com/manage/s/article/K000162605)
 
+### Barracuda ESG 认证绕过改配置
+[CVE-2026-116606](https://nvd.nist.gov/vuln/detail/CVE-2026-116606) | P0 立即处置 | CVSS 9.3 | EPSS 1.6% | 披露 2026-11-02 | 入库 2026-11-03
+🔥 KEV 在野利用,限期 2026-11-13 | 有PoC
+未授权远程攻击者可调用配置导入恢复恶意备份，篡改设备全局配置
+复现: 强烈推荐 — 未授权访问配置导入接口，提交构造备份包恢复 · 影响面: 邮件安全网关，常暴露公网
+处置: 升级至9.4.0.030或更高版本
+PoC: [Exploit-Index mandiant/Vulnerability-Disclosures(未验证)(仅README)](https://github.com/mandiant/Vulnerability-Disclosures)
+参考: [参考](https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md) · [参考](https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-116606)
+
 ### Ivanti ICS 认证欺骗致远程RCE
 [CVE-2026-104935](https://nvd.nist.gov/vuln/detail/CVE-2026-104935) | P0 立即处置 | 边界设备/VPN | CVSS 8.6 | 披露 2026-10-13 | 入库 2026-10-13
 🔥 KEV 在野利用,限期 2026-10-16 | 有PoC
@@ -89,6 +98,16 @@ PoC: [Exploit-Index 0xBlackash/CVE-2026-123158(未验证)(有源码)](https://gi
 影响: apache struts、oracle siebel_e-billing
 PoC: [NVD exploit 引用](http://packetstormsecurity.com/files/136856/Apache-Struts-2.3.28-Dynamic-Method-Invocation-Remote-Code-Execution.html)
 参考: [参考](http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20160527-01-struts2-en) · [官方补丁](http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html) · [厂商通告](http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html)
+
+### BroadWorks XXE 未授权读文件
+[CVE-2026-20320](https://nvd.nist.gov/vuln/detail/CVE-2026-20320) | P0 立即处置 | ERP/业务系统 | CVSS 7.5 | EPSS 0.4% | 披露 2026-08-19 | 入库 2026-11-10
+🔥 KEV 在野利用,限期 2026-11-24 | 有PoC
+未授权远程攻击者可利用OCI XML解析器读取系统敏感配置文件
+复现: 强烈推荐 — 向OCI XML解析端点提交外部实体载荷读取文件 · 影响面: 统一通信平台，常暴露企业网络
+处置: 升级至Cisco BroadWorks修复版本
+影响: cisco broadworks_application_delivery_platform <ri.2026.07; cisco broadworks_application_server <2026.0
+PoC: [NVD exploit 引用](https://malbearlabs.com/posts/operation-snowball-inside-an-autonomous-ai-intrusion-campaign)
+参考: [厂商通告](https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-bworks-xxe-uwUd7CEt) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-20320)
 
 ### SonicOS SSLVPN认证绕过致MFA失效
 [CVE-2026-19868](https://nvd.nist.gov/vuln/detail/CVE-2026-19868) | P0 立即处置 | 边界设备/VPN | CVSS 7.5 | 披露 2026-11-06 | 入库 2026-11-07
@@ -250,13 +269,6 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://gi
 复现: 强烈推荐 — 未授权直接调用设备LUA函数接口，绕过正常API流程执行系统命令 · 影响面: 蜂窝/工业路由设备，常暴露公网
 处置: 升级至厂商修复版本；停止设备Web/API端口对内网外暴露
 参考: [参考](https://www.teltonika-networks.com/support/security-centre?report=CVE-2026-82104)
-
-### Barracuda ESG 认证绕过配置导入
-[CVE-2026-116606](https://nvd.nist.gov/vuln/detail/CVE-2026-116606) | P1 重点关注 | CVSS 9.3 | 披露 2026-11-02 | 入库 2026-11-03
-未认证攻击者可调用配置导入恢复恶意备份，篡改邮件网关全局配置并持久化。
-复现: 强烈推荐 — 未授权访问配置导入接口，上传兼容恶意备份触发恢复 · 影响面: 边界邮件安全网关，常暴露公网
-处置: 升级至 9.4.0.030，临时禁用配置导入功能
-参考: [参考](https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md) · [参考](https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection)
 
 ### Secure Access 认证绕过改配置
 [CVE-2026-116769](https://nvd.nist.gov/vuln/detail/CVE-2026-116769) | P1 重点关注 | CVSS 9.3 | 披露 2026-11-02 | 入库 2026-11-03

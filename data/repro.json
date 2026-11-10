@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-10T13:38:16+00:00",
- "count": 178,
- "count_recommended": 32,
+ "updated_at": "2026-11-10T22:25:52+00:00",
+ "count": 179,
+ "count_recommended": 33,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -251,6 +251,55 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-116606",
+   "title": "Barracuda ESG 认证绕过改配置",
+   "first_seen": "2026-11-03",
+   "last_seen": "2026-11-10",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-02",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问配置导入接口，提交构造备份包恢复",
+   "impact_scope": "邮件安全网关，常暴露公网",
+   "action_zh": "升级至9.4.0.030或更高版本",
+   "summary_zh": "未授权远程攻击者可调用配置导入恢复恶意备份，篡改设备全局配置",
+   "category": null,
+   "cvss": 9.3,
+   "epss": 0.01602,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-13",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "readme",
+   "poc": [
+    {
+     "url": "https://github.com/mandiant/Vulnerability-Disclosures",
+     "label": "Exploit-Index mandiant/Vulnerability-Disclosures(未验证)(仅README)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-116606"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116606",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-104935",
    "title": "Ivanti ICS 认证欺骗致远程RCE",
    "first_seen": "2026-10-13",
@@ -403,6 +452,51 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2016-3081",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-20320",
+   "title": "BroadWorks XXE 未授权读文件",
+   "first_seen": "2026-11-10",
+   "last_seen": "2026-11-10",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-08-19",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "向OCI XML解析端点提交外部实体载荷读取文件",
+   "impact_scope": "统一通信平台，常暴露企业网络",
+   "action_zh": "升级至Cisco BroadWorks修复版本",
+   "summary_zh": "未授权远程攻击者可利用OCI XML解析器读取系统敏感配置文件",
+   "category": "ERP/业务系统",
+   "cvss": 7.5,
+   "epss": 0.00385,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-24",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [
+    {
+     "url": "https://malbearlabs.com/posts/operation-snowball-inside-an-autonomous-ai-intrusion-campaign",
+     "label": "NVD exploit 引用"
+    }
+   ],
+   "affected": "cisco broadworks_application_delivery_platform <ri.2026.07; cisco broadworks_application_server <2026.0",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-bworks-xxe-uwUd7CEt"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-20320"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-20320",
    "change_note": null
   },
   {
@@ -1215,46 +1309,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82104",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-116606",
-   "title": "Barracuda ESG 认证绕过配置导入",
-   "first_seen": "2026-11-03",
-   "last_seen": "2026-11-03",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-02",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "未授权访问配置导入接口，上传兼容恶意备份触发恢复",
-   "impact_scope": "边界邮件安全网关，常暴露公网",
-   "action_zh": "升级至 9.4.0.030，临时禁用配置导入功能",
-   "summary_zh": "未认证攻击者可调用配置导入恢复恶意备份，篡改邮件网关全局配置并持久化。",
-   "category": null,
-   "cvss": 9.3,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116606",
    "change_note": null
   },
   {
