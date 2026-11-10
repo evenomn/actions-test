@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-09 19:56 UTC · 共 **176** 条(强烈推荐 30 / 值得 146)
+**更新**: 2026-11-10 03:39 UTC · 共 **179** 条(强烈推荐 32 / 值得 147)
 
 ---
 
@@ -125,6 +125,20 @@ PoC: [HackSpeak/CVE-2026-67279 5★(有源码)](https://github.com/HackSpeak/CVE
 影响: strapi strapi >=3.2.1 <4.8.0
 PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-Hakimi/CVE-2023-22894) · [maxntv/CVE-2023-22894-PoC 0★(有源码)](https://github.com/maxntv/CVE-2023-22894-PoC) · [NVD exploit 引用](https://www.ghostccamm.com/blog/multi_strapi_vulns/)
 参考: [参考](https://github.com/strapi/strapi/releases) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-22894)
+
+### OA协同办公签名校验认证绕过
+[CVE-2026-120017](https://nvd.nist.gov/vuln/detail/CVE-2026-120017) | P1 重点关注 | OA/协同办公 | CVSS 10.0 | 披露 2026-11-10 | 入库 2026-11-10
+未认证攻击者提交构造数据绕过签名校验，冒充任意用户含管理员，致系统失陷。
+复现: 强烈推荐 — 向未认证签名校验入口提交伪造数据，验证任意用户冒充 · 影响面: OA/协同办公,未认证入口风险
+处置: 升级至厂商修复版本；启用签名强校验并限制OA公网暴露。
+参考: [参考](https://me.sap.com/notes/3849308) · [参考](https://url.sap/sapsecuritypatchday)
+
+### OA协同办公未认证内存破坏RCE
+[CVE-2026-76964](https://nvd.nist.gov/vuln/detail/CVE-2026-76964) | P1 重点关注 | OA/协同办公 | CVSS 10.0 | 披露 2026-11-10 | 入库 2026-11-10
+未认证攻击者发送构造网络流量触发内存破坏，可能执行任意代码并完全控制系统。
+复现: 强烈推荐 — 向未认证网络入口发送构造流量，观察内存破坏与代码执行迹象 · 影响面: OA/协同办公,网络入口暴露
+处置: 升级至修复版本；限制OA网络入口并监测异常内存破坏流量。
+参考: [参考](https://me.sap.com/notes/3778530) · [参考](https://url.sap/sapsecuritypatchday)
 
 ### AAD App Proxy认证绕过提权
 [CVE-2026-97785](https://nvd.nist.gov/vuln/detail/CVE-2026-97785) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-22 | 入库 2026-10-23
@@ -470,6 +484,13 @@ PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/ho
 处置: 升级至 FortiOS 7.6.5 或 7.4.10 及以上版本，并排查入侵痕迹
 影响: fortinet fortios >=6.4.0 <7.4.10; fortinet fortios >=7.6.0 <7.6.5
 参考: [厂商通告](https://fortiguard.fortinet.com/psirt/FG-IR-26-122) · [参考](https://cert-portal.siemens.com/productcert/html/ssa-975644.html) · [参考](https://unit42.paloaltonetworks.com/fortimanager-cve-2024-47575-peerstitch-malware/#post-188095-_guyq53ar8k05)
+
+### D-Link M60 MQTT硬编码凭据
+[CVE-2026-125086](https://nvd.nist.gov/vuln/detail/CVE-2026-125086) | P1 重点关注 | 网络设备 | CVSS 10.0 | 披露 2026-11-10 | 入库 2026-11-10
+远程攻击者可使用emDaemon MQTT Broker硬编码凭据接入，可能操纵MQTT消息
+复现: 值得 — 连接emDaemon MQTT服务并使用固件内硬编码凭据；需端口可达 · 影响面: 网络设备，MQTT服务可能暴露公网
+处置: 升级D-Link修复固件；限制MQTT端口访问并改凭据
+参考: [参考](https://github.com/XueDugu/dlink-m60-easymesh-mqtt-credential-evidence) · [参考](https://vuldb.com/cve/CVE-2026-125086) · [参考](https://vuldb.com/submit/1042370)
 
 ### Linksys路由器ping参数命令注入
 [CVE-2026-121932](https://nvd.nist.gov/vuln/detail/CVE-2026-121932) | P1 重点关注 | CVSS 10.0 | 披露 2026-11-04 | 入库 2026-11-04

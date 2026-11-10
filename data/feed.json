@@ -1,281 +1,106 @@
 {
  "version": 3,
- "generated_at": "2026-11-09T19:56:04+00:00",
+ "generated_at": "2026-11-10T03:39:26+00:00",
  "lookback_hours": 5,
- "count": 6,
+ "count": 15,
  "stats": {
-  "total": 6,
+  "total": 15,
   "by_tier": {
-   "critical": 6
+   "critical": 15
   },
   "by_urgency": {
-   "P0 立即处置": 3,
-   "P1 重点关注": 3
+   "P1 重点关注": 14,
+   "P0 立即处置": 1
   },
   "by_category": {
-   "未知": 5,
-   "操作系统": 1
+   "未知": 6,
+   "OA/协同办公": 5,
+   "ERP/业务系统": 2,
+   "网络设备": 1,
+   "数据库": 1
   },
-  "kev": 3,
-  "with_poc": 2,
-  "with_poc_source": 1,
-  "repro_recommended": 1
+  "kev": 1,
+  "with_poc": 0,
+  "with_poc_source": 0,
+  "repro_recommended": 2
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-123158",
+   "id": "CVE-2026-123218",
    "tier": "critical",
-   "title": "OpenSSH musl环境密码认证绕过",
-   "title_zh": "OpenSSH musl环境密码认证绕过",
-   "summary_zh": "未认证攻击者可对musl无PAM的sshd用超长密码登录特定账户，获取访问权限。",
-   "published": "2026-11-05T16:17:47.110",
-   "cvss": 8.1,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.01014,
-   "epss_percentile": 0.63482,
-   "cwe_labels": [
-    "CWE-394"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": "openssh",
-   "difficulty": "低(远程·利用条件苛刻·免认证)",
-   "products": [
-    "openbsd openssh",
-    "alpinelinux alpine_linux"
-   ],
-   "affected": "openbsd openssh <10.6; alpinelinux alpine_linux <3.21.10",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "官方补丁",
-     "url": "https://github.com/openssh/openssh-portable/commit/4353fdc43ef646c43a8dda7025cc1a898caf1482"
-    },
-    {
-     "label": "参考",
-     "url": "https://hachyderm.io/@damienmiller/117563026759098135"
-    },
-    {
-     "label": "厂商通告",
-     "url": "https://marc.info/?l=openssh-unix-dev&m=179388064263131&w=2"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/0xBlackash/CVE-2026-123158",
-     "label": "Exploit-Index 0xBlackash/CVE-2026-123158(未验证)(有源码)"
-    },
-    {
-     "url": "https://github.com/Funcan/sshole",
-     "label": "Exploit-Index Funcan/sshole(未验证)(有源码)"
-    },
-    {
-     "url": "https://github.com/Galaxy-sc/CVE-2026-123158",
-     "label": "Exploit-Index Galaxy-sc/CVE-2026-123158(未验证)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-11-12",
-   "ransomware": false,
-   "keyword_hit": "openssh",
-   "urgency": "P0 立即处置",
-   "action_zh": "升级OpenSSH至10.6p2或Alpine 3.21.10",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "针对musl无PAM的sshd，用256-1024字符密码尝试登录",
-   "impact_scope": "远程登录服务，公网暴露面广",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123158",
-   "description": "sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux."
-  },
-  {
-   "id": "CVE-2026-116779",
-   "tier": "critical",
-   "title": "FreeSWITCH消息命令注入RCE",
-   "title_zh": "FreeSWITCH消息命令注入RCE",
-   "summary_zh": "可达peer发送MESSAGE触发FreeSWITCH api命令执行，导致配置泄露与RCE。",
-   "published": "2026-11-05T20:17:44.790",
+   "title": "Aspera Faspex授权绕过提权",
+   "title_zh": "Aspera Faspex授权绕过提权",
+   "summary_zh": "已认证用户构造特定消息绕过授权，获得完整管理员权限。",
+   "published": "2026-11-07T04:17:28.900",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.01299,
-   "epss_percentile": 0.70632,
+   "epss": 0.00396,
+   "epss_percentile": 0.34123,
    "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
-   ],
-   "vuln_class": "RCE",
-   "fame_term": null,
-   "difficulty": "低(远程·免认证)",
-   "products": [
-    "freeswitch freeswitch"
-   ],
-   "affected": "freeswitch freeswitch <1.11.3",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "官方补丁",
-     "url": "https://github.com/signalwire/freeswitch/commit/7015f6a73ab3d67fed5fbfc277ecfb88a74c2a86"
-    },
-    {
-     "label": "官方补丁",
-     "url": "https://github.com/signalwire/freeswitch/pull/3135"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/signalwire/freeswitch/releases/tag/v1.11.3"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/hackzuoji/freeswitch-cve-2026-116779-POC",
-     "label": "Exploit-Index hackzuoji/freeswitch-cve-2026-116779-POC(未验证)(仅README)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-11-12",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至1.11.3，限制MESSAGE来源并禁用API执行",
-   "repro_worthy": "一般",
-   "repro_note": "向FreeSWITCH发送可被接受的MESSAGE并选择api chat proto触发",
-   "impact_scope": "VoIP通信边界，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116779",
-   "description": "Selecting the api chat proto reached switch_api_execute(), allowing a peer whose MESSAGE was accepted to run FreeSWITCH API commands, including operating-system command sinks, with the daemon's privileges. The flaw permits configuration and credential disclosure, arbitrary call control, and command execution, and exploitation has been observed in the wild."
-  },
-  {
-   "id": "CVE-2026-102895",
-   "tier": "critical",
-   "title": "GPUStack认证绕过致RCE",
-   "title_zh": "GPUStack认证绕过致RCE",
-   "summary_zh": "未授权攻击者可绕过GPUStack认证获取管理员权限，并通过YAML接口执行代码。",
-   "published": "2026-11-04T22:17:44.613",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.00331,
-   "epss_percentile": 0.2646,
-   "cwe_labels": [
-    "认证绕过",
-    "认证欺骗"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": null,
-   "difficulty": "低(远程·免认证)",
-   "products": [
-    "gpustack gpustack"
-   ],
-   "affected": "gpustack gpustack <2.2.0",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "官方补丁",
-     "url": "https://github.com/gpustack/gpustack/commit/53f42a6a553542974396d16a4ff6b12bcbedb48d"
-    },
-    {
-     "label": "官方补丁",
-     "url": "https://github.com/gpustack/gpustack/pull/5346"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/gpustack/gpustack/releases/tag/v2.2.0"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-11-12",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至2.2.0，限制管理端点访问并轮换密钥",
-   "repro_worthy": "一般",
-   "repro_note": "未授权访问管理端点，调用YAML推理后端接口执行代码",
-   "impact_scope": "AI基础设施管理面，内网敏感",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102895",
-   "description": "The bypass allowed unauthenticated administrative access, including user and model changes, persistent administrator API-key creation, disclosure of worker and cloud-provider secrets, and code execution through POST /v2/inference-backends/from-yaml. Exploitation was observed in the wild against a 2.1.1 deployment."
-  },
-  {
-   "id": "CVE-2026-123270",
-   "tier": "critical",
-   "title": "Redpanda Connect未认证RCE",
-   "title_zh": "Redpanda Connect未认证RCE",
-   "summary_zh": "未认证远程攻击者可利用缺失认证执行任意代码，完全控制Redpanda Connect。",
-   "published": "2026-11-09T18:17:25.207",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失认证"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": null,
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/pagvac/redpanda-connect-unauth-rce"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "关注厂商修复并升级，限制服务网络暴露",
-   "repro_worthy": "值得",
-   "repro_note": "访问未认证服务端点，提交可触发命令执行的请求",
-   "impact_scope": "数据流平台，内网服务面",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123270",
-   "description": "Redpanda Connect versions 4.39 to 4.110 contain a missing authentication vulnerability that enables unauthenticated remote code execution (RCE). An unauthenticated attacker with network access to TCP/4195 can `POST` a malicious pipeline definition to `/streams/{id}` that includes code-executing processors such as `command`, `subprocess`, `ffi`, or unsafe `sql_raw`, thereby achieving arbitrary RCE on the host with the permissions of the Redpanda Connect service account."
-  },
-  {
-   "id": "CVE-2026-123800",
-   "tier": "critical",
-   "title": "多租户API密钥越权修改父域",
-   "title_zh": "多租户API密钥越权修改父域",
-   "summary_zh": "持有单个应用API密钥者可越权更新父域，突破多租户隔离。",
-   "published": "2026-11-09T19:16:46.647",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "越权(IDOR)",
     "授权错误"
    ],
    "vuln_class": "未授权访问",
    "fame_term": null,
-   "difficulty": "低(远程·需低权限)",
+   "difficulty": "低(远程·免认证)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/supertokens/supertokens-core/commit/13c3de170dd40dd217db0f6bd2bded0948476a42"
+     "url": "https://www.ibm.com/support/pages/node/7295921"
     },
     {
      "label": "参考",
-     "url": "https://github.com/supertokens/supertokens-core/commit/1cc02b971f064c2fa2d9bc74b9e85795fdc6a7e5"
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-123218"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-12",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商修复版本，限制Faspex访问并审计管理员账号。",
+   "repro_worthy": "一般",
+   "repro_note": "已认证用户向消息接口提交构造内容，验证授权绕过与管理员权限获取",
+   "impact_scope": "企业文件传输平台,常暴露内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123218",
+   "description": "IBM Aspera Faspex 5.0.0 through 5.0.19 could allow an authorized user to craft a specific message to bypass user authorization and gain full administrative privileges."
+  },
+  {
+   "id": "CVE-2026-120017",
+   "tier": "critical",
+   "title": "OA协同办公签名校验认证绕过",
+   "title_zh": "OA协同办公签名校验认证绕过",
+   "summary_zh": "未认证攻击者提交构造数据绕过签名校验，冒充任意用户含管理员，致系统失陷。",
+   "published": "2026-11-10T01:17:16.803",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "签名校验错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://me.sap.com/notes/3849308"
     },
     {
      "label": "参考",
-     "url": "https://github.com/supertokens/supertokens-core/commit/1d9dcb03ce0691d9b8abee48f86cc2729a6008cb"
+     "url": "https://url.sap/sapsecuritypatchday"
     }
    ],
    "poc": [],
@@ -286,27 +111,27 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "应用修复补丁，轮换API密钥并审计父域变更",
-   "repro_worthy": "一般",
-   "repro_note": "用某应用有效API key向父域CUD接口发更新请求",
-   "impact_scope": "多租户SaaS/API平台，租户隔离失效",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123800",
-   "description": "In a licensed multi-tenant deployment with multiple applications under one non-default connection URI domain and separate api_keys, an attacker holding one application's valid API key can update the parent domain because the CUD-target branch checks the domain without requiring the source application and tenant to be public."
+   "action_zh": "升级至厂商修复版本；启用签名强校验并限制OA公网暴露。",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "向未认证签名校验入口提交伪造数据，验证任意用户冒充",
+   "impact_scope": "OA/协同办公,未认证入口风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120017",
+   "description": "An unauthenticated attacker could submit specially crafted data to bypass authentication and impersonate arbitrary users, including privileged accounts. Successful exploitation could cause a full system compromise, with the impact potentially extending to connected components and systems beyond the affected system."
   },
   {
-   "id": "CVE-2026-119756",
+   "id": "CVE-2026-76964",
    "tier": "critical",
-   "title": "Tasmota组消息堆越界写",
-   "title_zh": "Tasmota组消息堆越界写",
-   "summary_zh": "局域网未认证攻击者可发送构造Device Groups消息，造成Tasmota堆越界写。",
-   "published": "2026-11-09T18:17:22.320",
-   "cvss": 9.8,
+   "title": "OA协同办公未认证内存破坏RCE",
+   "title_zh": "OA协同办公未认证内存破坏RCE",
+   "summary_zh": "未认证攻击者发送构造网络流量触发内存破坏，可能执行任意代码并完全控制系统。",
+   "published": "2026-11-10T01:17:20.240",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-805"
+    "CWE-1287"
    ],
    "vuln_class": null,
    "fame_term": null,
@@ -317,11 +142,11 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/arendst/Tasmota/commit/e97e1e4f7e319a55caa1613aef1f25fc81bdb554"
+     "url": "https://me.sap.com/notes/3778530"
     },
     {
      "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/tasmota-heap-out-of-bounds-write-via-device-groups-udp"
+     "url": "https://url.sap/sapsecuritypatchday"
     }
    ],
    "poc": [],
@@ -332,154 +157,612 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至修复提交e97e1e4，限制UDP 4447访问",
+   "action_zh": "升级至修复版本；限制OA网络入口并监测异常内存破坏流量。",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "向未认证网络入口发送构造流量，观察内存破坏与代码执行迹象",
+   "impact_scope": "OA/协同办公,网络入口暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76964",
+   "description": "SAP NetWeaver Application Server ABAP does not sufficiently validate certain network input processed by an internal component. An unauthenticated attacker could send specially crafted network traffic to trigger a memory corruption condition in the affected functionality. Successful exploitation could allow the attacker to execute arbitrary code and fully compromise the system, resulting in a high impact on confidentiality, integrity and availability of the system."
+  },
+  {
+   "id": "CVE-2026-109795",
+   "tier": "critical",
+   "title": "OA协同办公代码注入RCE",
+   "title_zh": "OA协同办公代码注入RCE",
+   "summary_zh": "低权限攻击者经远程接口发送构造输入注入代码，可完全控制受影响系统。",
+   "published": "2026-11-10T01:17:13.330",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://me.sap.com/notes/3834842"
+    },
+    {
+     "label": "参考",
+     "url": "https://url.sap/sapsecuritypatchday"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "应用厂商修复版本；限制远程接口访问，审计低权限账号。",
    "repro_worthy": "一般",
-   "repro_note": "向UDP 4447发送构造Device Groups消息使log_remaining为负",
-   "impact_scope": "IoT设备局域网，同网可攻击",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119756",
-   "description": "Tasmota through 16.0.0, fixed in commit e97e1e4, contains a heap out-of-bounds write vulnerability in SendReceiveDeviceGroupMessage() that allows unauthenticated attackers on the local network to corrupt heap memory by sending crafted Device Groups messages over UDP port 4447 that cause the log_remaining counter to go negative and writes to exceed the fixed 512-byte buffer."
+   "repro_note": "通过远程接口向低权限账号可控参数注入代码，验证命令执行回显",
+   "impact_scope": "OA/协同办公系统,内网高暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109795",
+   "description": "SAP NetWeaver does not perform necessary authorization checks and lacks sufficient input validation in certain remote-enabled functionality. An attacker with low privileges could send specially crafted input through a remote interface to inject and execute arbitrary code within the affected system. Successful exploitation could extend the attacker's reach beyond the vulnerable component, resulting in a high impact on confidentiality, integrity and availability."
+  },
+  {
+   "id": "CVE-2026-109803",
+   "tier": "critical",
+   "title": "OA协同办公XSLT代码执行",
+   "title_zh": "OA协同办公XSLT代码执行",
+   "summary_zh": "已认证且可访问功能的用户触发恶意XSL转换，在应用上下文执行任意代码。",
+   "published": "2026-11-10T01:17:14.477",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://me.sap.com/notes/3809153"
+    },
+    {
+     "label": "参考",
+     "url": "https://url.sap/sapsecuritypatchday"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本；禁用不必要的XSL转换并限制功能访问权限。",
+   "repro_worthy": "一般",
+   "repro_note": "已认证用户提交恶意XSL内容至受影响功能，观察应用上下文代码执行",
+   "impact_scope": "OA/协同办公系统,内网高暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109803",
+   "description": "SAP NetWeaver Knowledge Management (XML Forms) does not sufficiently restrict the selection of XSL transformations processed by the affected functionality. Under certain conditions, an authenticated user with access to the affected functionality could cause an unauthorized XSL transformation to be processed, potentially leading to arbitrary code execution in the application context. Successful exploitation could impact the confidentiality, integrity, and availability of the application."
+  },
+  {
+   "id": "CVE-2026-76965",
+   "tier": "critical",
+   "title": "OA协同办公低权限命令执行",
+   "title_zh": "OA协同办公低权限命令执行",
+   "summary_zh": "低权限攻击者调用受影响功能，可在主机执行任意系统命令并影响周边资源。",
+   "published": "2026-11-10T01:17:20.387",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-749"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://me.sap.com/notes/3792735"
+    },
+    {
+     "label": "参考",
+     "url": "https://url.sap/sapsecuritypatchday"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级修复版本；最小化低权限账号并审计系统命令调用。",
+   "repro_worthy": "一般",
+   "repro_note": "以低权限账号调用受影响功能，提交系统命令并观察主机执行",
+   "impact_scope": "OA/协同办公,低权限入口",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76965",
+   "description": "SAP NetWeaver Application Server ABAP and ABAP Platform does not perform necessary authorization checks for certain internal functionality. An attacker with low privileges could invoke affected functionality to execute arbitrary operating system commands on the underlying host. Successful exploitation could impact resources beyond the vulnerable component, resulting in a high impact on confidentiality, integrity and availability of the system."
+  },
+  {
+   "id": "CVE-2026-115934",
+   "tier": "critical",
+   "title": "craft.search前台SQL注入提权",
+   "title_zh": "craft.search前台SQL注入提权",
+   "summary_zh": "未认证攻击者在使用craft.search的前台搜索接口注入SQL，堆叠查询可提权至管理员。",
+   "published": "2026-11-09T23:17:12.470",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/craftcms/cms"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/craftcms/cms/releases/tag/5.11.2"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/craftcms/cms/security/advisories/GHSA-qcvp-ggx3-97r6"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级craft.search；对搜索参数参数化查询并限制数据库权限。",
+   "repro_worthy": "一般",
+   "repro_note": "向craft.search前台搜索的attribute参数注入堆叠SQL，验证管理员提权",
+   "impact_scope": "Web搜索前台,数据库权限面",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115934",
+   "description": "An unauthenticated SQL injection can occur on the front end of any site that uses craft.search to perform a search, allowing stacked query execution and enabling escalation to an administrator. Impact * SQL injection — The attribute parameter is concatenated into the query unsanitized, and because PDO runs with emulated prepares, stacked statements execute."
+  },
+  {
+   "id": "CVE-2026-89103",
+   "tier": "critical",
+   "title": "SAP Gateway默认ACL授权错误",
+   "title_zh": "SAP Gateway默认ACL授权错误",
+   "summary_zh": "外部攻击者利用SAP Gateway默认高权限ACL，被错误归类为内部应用服务器。",
+   "published": "2026-11-10T01:17:21.013",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://me.sap.com/notes/3798345"
+    },
+    {
+     "label": "参考",
+     "url": "https://url.sap/sapsecuritypatchday"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "应用SAP补丁；复核Gateway ACL默认权限并限制外部访问。",
+   "repro_worthy": "一般",
+   "repro_note": "从外部网络访问SAP Gateway，观察ACL将外部源识别为内部服务器",
+   "impact_scope": "SAP Gateway,企业ERP边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-89103",
+   "description": "SAP Gateway activates the default Access Control List with high privileges allowing categorization of external attacker as internal application server. As a result an unauthenticated attacker with network access to the SAP Gateway could exploit this weakness to potentially perform unauthorized actions within the application environment, resulting in a high impact on the confidentiality, integrity, and availability of the affected system."
+  },
+  {
+   "id": "CVE-2026-125370",
+   "tier": "critical",
+   "title": "Kubero硬编码JWT密钥认证绕过",
+   "title_zh": "Kubero硬编码JWT密钥认证绕过",
+   "summary_zh": "未认证攻击者在JWT_SECRET未设置时用硬编码回退密钥伪造管理员令牌，接管系统。",
+   "published": "2026-11-10T00:17:09.237",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-321"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/kubero-dev/kubero"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/kubero-dev/kubero/blob/bcb52376b19347b8c36bc445ddf3e4bff4a5c168/server/src/auth/strategies/jwt.strategy.ts#L13-L32"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/kubero-dev/kubero/issues/786"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Kubero；设置强JWT_SECRET并禁用硬编码回退密钥。",
+   "repro_worthy": "一般",
+   "repro_note": "在未设置JWT_SECRET环境用硬编码密钥伪造管理员JWT访问API",
+   "impact_scope": "Kubernetes管理平台,内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125370",
+   "description": "Kubero 3.0.0 through 3.1.1 contains an authentication bypass vulnerability that allows unauthenticated remote attackers to forge administrative JWTs by using a hardcoded fallback signing secret when JWT_SECRET is unset. Attackers can sign tokens with arbitrary role, userGroups and permissions claims, which JwtStrategy.validate() trusts without a database lookup, to take control of pipelines, applications, users and API tokens."
+  },
+  {
+   "id": "CVE-2026-125383",
+   "tier": "critical",
+   "title": "WHMS硬编码JWT认证绕过",
+   "title_zh": "WHMS硬编码JWT认证绕过",
+   "summary_zh": "未认证攻击者利用appsettings.json硬编码JWT密钥伪造任意用户管理员令牌，控制整个API。",
+   "published": "2026-11-10T00:17:11.510",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-321"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/go2ismail/Asp.Net-Core-Inventory-Order-Management-System"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/go2ismail/Asp.Net-Core-Inventory-Order-Management-System/blob/v9.20250118/Presentation/ASPNET/appsettings.json#L38-L44"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/go2ismail/Asp.Net-Core-Inventory-Order-Management-System/commit/65609b5b88cb4f156e8164f33b8db8c63f5c125b"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级WHMS；替换硬编码JWT密钥、签发者与受众并轮换令牌。",
+   "repro_worthy": "一般",
+   "repro_note": "用appsettings.json硬编码密钥签发管理员JWT，请求受保护API验证",
+   "impact_scope": "库存订单系统,企业内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125383",
+   "description": "INDOTALENT WHMS (Asp.Net-Core-Inventory-Order-Management-System) before 10.20261109 contains an authentication bypass vulnerability caused by a hard-coded JWT signing key, issuer and audience in appsettings.json. Unauthenticated remote attackers can forge tokens for any user ID and role that the Tokens/DI.cs validator trusts, gaining administrator access to the entire API."
+  },
+  {
+   "id": "CVE-2026-125384",
+   "tier": "critical",
+   "title": "WHMS默认管理员凭据",
+   "title_zh": "WHMS默认管理员凭据",
+   "summary_zh": "未认证攻击者使用默认管理员账号admin@root.com/123456登录，完全控制未改密部署。",
+   "published": "2026-11-10T00:17:11.667",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "默认凭据"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/go2ismail/Asp.Net-Core-Inventory-Order-Management-System"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/go2ismail/Asp.Net-Core-Inventory-Order-Management-System/blob/v9.20250118/Infrastructure/Infrastructure/SeedManager/Systems/UserAdminSeeder.cs"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/go2ismail/Asp.Net-Core-Inventory-Order-Management-System/commit/65609b5b88cb4f156e8164f33b8db8c63f5c125b"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级WHMS；立即修改默认管理员密码并禁用默认账号。",
+   "repro_worthy": "一般",
+   "repro_note": "访问登录接口使用admin@root.com/123456，验证管理员权限",
+   "impact_scope": "库存订单系统,企业内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125384",
+   "description": "INDOTALENT WHMS before 10.20261109 contains a default credentials vulnerability that allows unauthenticated attackers to gain administrator access because UserAdminSeeder creates admin@root.com with password 123456. Attackers can log in with these credentials, which carry every admin role and no forced password change, to fully control deployments that kept them."
+  },
+  {
+   "id": "CVE-2026-125086",
+   "tier": "critical",
+   "title": "D-Link M60 MQTT硬编码凭据",
+   "title_zh": "D-Link M60 MQTT硬编码凭据",
+   "summary_zh": "远程攻击者可使用emDaemon MQTT Broker硬编码凭据接入，可能操纵MQTT消息",
+   "published": "2026-11-10T01:17:19.640",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-259",
+    "硬编码凭据"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/XueDugu/dlink-m60-easymesh-mqtt-credential-evidence"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-125086"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1042370"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级D-Link修复固件；限制MQTT端口访问并改凭据",
+   "repro_worthy": "值得",
+   "repro_note": "连接emDaemon MQTT服务并使用固件内硬编码凭据；需端口可达",
+   "impact_scope": "网络设备，MQTT服务可能暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125086",
+   "description": "A vulnerability has been found in D-Link M60 1.12.B01. Impacted is the function system of the file /etc/emDaemon/mosquitto.conf of the component emDaemon MQTT Broker. Such manipulation leads to hard-coded credentials. The attack can be executed remotely. The exploit has been disclosed to the public and may be used."
+  },
+  {
+   "id": "CVE-2026-125120",
+   "tier": "critical",
+   "title": "Mongoose 未授权 CWE-943",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-09T23:17:22.587",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-943"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Automattic/mongoose/commit/7e912af3fac52cb0eea4cd71e24d65318916831a"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Automattic/mongoose/commit/8b10d5760bb181f5bf5d01495cde161c8aed0557"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Automattic/mongoose/commit/b1df045aab076b740fdaec14a15a44c694b85b7d"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125120",
+   "description": "Prior to 6.13.11, 7.8.12, 8.24.3, and 9.9.2, Mongoose countDocuments() does not apply the configured sanitizeFilter query selector injection defense. An application that enables sanitizeFilter and passes attacker-controlled filter values to countDocuments() can therefore process query operator objects as operators rather than literal values, causing the count to include documents that should not match and potentially undermining authorization or application logic based on that count."
+  },
+  {
+   "id": "CVE-2026-124600",
+   "tier": "critical",
+   "title": "GV-Face明文HTTP传输凭据",
+   "title_zh": "GV-Face明文HTTP传输凭据",
+   "summary_zh": "网络路径攻击者可嗅探GV-Face未加密HTTP流量，获取用户凭据与认证数据",
+   "published": "2026-11-10T01:17:18.467",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-319"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://dlcdn.geovision.com.tw/TechNotice/CyberSecurity/2026/Security_Advisory_GV-Eye-2026-09-01.pdf"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "启用HTTPS并升级固件；隔离设备管理网络",
+   "repro_worthy": "一般",
+   "repro_note": "抓取设备HTTP认证流量即可验证；需中间人/镜像网络",
+   "impact_scope": "人脸识别终端，常接入内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124600",
+   "description": "GV-Face transmits sensitive user credentials and related authentication data over unencrypted HTTP connections. The HTTP traffic is not encrypted, an attacker with the ability to intercept network traffic."
+  },
+  {
+   "id": "CVE-2026-89126",
+   "tier": "critical",
+   "title": "ERP业务系统堆溢出远程RCE",
+   "title_zh": "ERP业务系统堆溢出远程RCE",
+   "summary_zh": "未认证攻击者可发送特制网络流量触发堆溢出，可能执行任意代码并完全控制系统",
+   "published": "2026-11-10T01:17:22.420",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://me.sap.com/notes/3778556"
+    },
+    {
+     "label": "参考",
+     "url": "https://url.sap/sapsecuritypatchday"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级厂商修复版本；临时限制受影响服务网络访问",
+   "repro_worthy": "一般",
+   "repro_note": "向受影响ERP服务发送特制网络流量触发堆溢出；需定位端口",
+   "impact_scope": "ERP业务系统，核心业务与数据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-89126",
+   "description": "SAP Web Dispatcher does not sufficiently validate certain network input processed by an internal component. An unauthenticated attacker could send specially crafted network traffic to trigger a memory corruption condition in the affected functionality. Successful exploitation could allow the attacker to execute arbitrary code and fully compromise the system, resulting in a high impact on confidentiality, integrity and availability of the system."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "postgres/postgres",
-   "sha": "3bb99318e56c7048044fcf5e3e0f269fe00c9b54",
-   "url": "https://github.com/postgres/postgres/commit/3bb99318e56c7048044fcf5e3e0f269fe00c9b54",
-   "title": "find_or_make_matching_shared_tupledesc: Fix possible use-after-free.",
-   "date": "2026-11-09T14:20:30",
-   "score": 11,
+   "repo": "wireshark/wireshark",
+   "sha": "300a14f14b4f97417e2425543667fd415b9382cb",
+   "url": "https://github.com/wireshark/wireshark/commit/300a14f14b4f97417e2425543667fd415b9382cb",
+   "title": "Livewire: Fix remaining use-after-free with repeated HWID/PSID",
+   "date": "2026-11-10T02:30:41",
+   "score": 2,
    "matched": [
-    "CVE",
-    "UAF",
-    "RCE",
-    "安全修复",
-    "漏洞相关"
+    "UAF"
    ],
-   "cve": "CVE-2026-116304"
+   "cve": null
   },
   {
-   "repo": "postgres/postgres",
-   "sha": "4056493220e78027ecba88761c1d80947cd494d5",
-   "url": "https://github.com/postgres/postgres/commit/4056493220e78027ecba88761c1d80947cd494d5",
-   "title": "pg_restore: Fix out-of-bounds accesses and path traversal.",
-   "date": "2026-11-09T14:20:31",
-   "score": 9,
+   "repo": "php/php-src",
+   "sha": "febae1cbfd98b23a41b18bea014fb8b7c9a60eda",
+   "url": "https://github.com/php/php-src/commit/febae1cbfd98b23a41b18bea014fb8b7c9a60eda",
+   "title": "Fix use-after-free when a string offset warning releases the string (GH-25329)",
+   "date": "2026-11-09T22:04:55",
+   "score": 2,
    "matched": [
-    "CVE",
-    "越界读写",
-    "安全修复",
-    "路径遍历/任意文件"
+    "UAF"
    ],
-   "cve": "CVE-2026-116314"
-  },
-  {
-   "repo": "postgres/postgres",
-   "sha": "4a95f56c04df0d22f15464d834f23bd730d10e59",
-   "url": "https://github.com/postgres/postgres/commit/4a95f56c04df0d22f15464d834f23bd730d10e59",
-   "title": "Harden some allocations against integer wraparound",
-   "date": "2026-11-09T14:20:33",
-   "score": 7,
-   "matched": [
-    "CVE",
-    "类型混淆/double free",
-    "安全修复"
-   ],
-   "cve": "CVE-2026-120139"
-  },
-  {
-   "repo": "postgres/postgres",
-   "sha": "6f6e4a955cdbef6b08e99dac1cb11d2405709c17",
-   "url": "https://github.com/postgres/postgres/commit/6f6e4a955cdbef6b08e99dac1cb11d2405709c17",
-   "title": "Fix type confusion with materialized set-returning functions",
-   "date": "2026-11-09T14:20:33",
-   "score": 7,
-   "matched": [
-    "CVE",
-    "类型混淆/double free",
-    "安全修复"
-   ],
-   "cve": "CVE-2026-120141"
-  },
-  {
-   "repo": "postgres/postgres",
-   "sha": "eb423d5987a70a7afc64d6f74b5ae724f1bd202e",
-   "url": "https://github.com/postgres/postgres/commit/eb423d5987a70a7afc64d6f74b5ae724f1bd202e",
-   "title": "Reject pseudo-type output parameters in SQL functions.",
-   "date": "2026-11-09T14:20:32",
-   "score": 7,
-   "matched": [
-    "CVE",
-    "RCE",
-    "安全修复"
-   ],
-   "cve": "CVE-2026-18447"
-  },
-  {
-   "repo": "postgres/postgres",
-   "sha": "016b63271fb794436255ae13917793486a6c450f",
-   "url": "https://github.com/postgres/postgres/commit/016b63271fb794436255ae13917793486a6c450f",
-   "title": "Replace typcache.c's buggy in_progress_list.",
-   "date": "2026-11-09T14:20:31",
-   "score": 7,
-   "matched": [
-    "CVE",
-    "安全修复",
-    "漏洞相关"
-   ],
-   "cve": "CVE-2026-120144"
-  },
-  {
-   "repo": "postgres/postgres",
-   "sha": "245eb832f88631c986a2dadad2cbe94f57089fd6",
-   "url": "https://github.com/postgres/postgres/commit/245eb832f88631c986a2dadad2cbe94f57089fd6",
-   "title": "Introduce attribute versioning to prevent unsafe deforming",
-   "date": "2026-11-09T14:20:33",
-   "score": 5,
-   "matched": [
-    "CVE",
-    "类型混淆/double free"
-   ],
-   "cve": "CVE-2026-6460"
-  },
-  {
-   "repo": "postgres/postgres",
-   "sha": "315c4e4e85f3fae5ebc3a62d69b5400138d307f9",
-   "url": "https://github.com/postgres/postgres/commit/315c4e4e85f3fae5ebc3a62d69b5400138d307f9",
-   "title": "Enforce view row visibility for INSERT ... ON CONFLICT target rows.",
-   "date": "2026-11-09T14:20:33",
-   "score": 5,
-   "matched": [
-    "CVE",
-    "安全修复"
-   ],
-   "cve": "CVE-2026-16237"
-  },
-  {
-   "repo": "postgres/postgres",
-   "sha": "b93d8a554da5d9da56dab632b54d31dd05beea49",
-   "url": "https://github.com/postgres/postgres/commit/b93d8a554da5d9da56dab632b54d31dd05beea49",
-   "title": "Avoid using a dangling pointer in expanded-record domain checks.",
-   "date": "2026-11-09T14:20:32",
-   "score": 5,
-   "matched": [
-    "CVE",
-    "RCE"
-   ],
-   "cve": "CVE-2026-120150"
-  },
-  {
-   "repo": "postgres/postgres",
-   "sha": "c2439a04353ccab618006f21df8698aa9cc31167",
-   "url": "https://github.com/postgres/postgres/commit/c2439a04353ccab618006f21df8698aa9cc31167",
-   "title": "Teach equalRowTypes() to safely handle dropped columns.",
-   "date": "2026-11-09T14:20:32",
-   "score": 5,
-   "matched": [
-    "CVE",
-    "RCE"
-   ],
-   "cve": "CVE-2026-120142"
+   "cve": null
   }
  ]
 }

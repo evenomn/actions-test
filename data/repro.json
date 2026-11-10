@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-09T19:56:04+00:00",
- "count": 176,
- "count_recommended": 30,
+ "updated_at": "2026-11-10T03:39:26+00:00",
+ "count": 179,
+ "count_recommended": 32,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -601,6 +601,86 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2023-22894",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-120017",
+   "title": "OA协同办公签名校验认证绕过",
+   "first_seen": "2026-11-10",
+   "last_seen": "2026-11-10",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-10",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "向未认证签名校验入口提交伪造数据，验证任意用户冒充",
+   "impact_scope": "OA/协同办公,未认证入口风险",
+   "action_zh": "升级至厂商修复版本；启用签名强校验并限制OA公网暴露。",
+   "summary_zh": "未认证攻击者提交构造数据绕过签名校验，冒充任意用户含管理员，致系统失陷。",
+   "category": "OA/协同办公",
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://me.sap.com/notes/3849308"
+    },
+    {
+     "label": "参考",
+     "url": "https://url.sap/sapsecuritypatchday"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120017",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-76964",
+   "title": "OA协同办公未认证内存破坏RCE",
+   "first_seen": "2026-11-10",
+   "last_seen": "2026-11-10",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-10",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "向未认证网络入口发送构造流量，观察内存破坏与代码执行迹象",
+   "impact_scope": "OA/协同办公,网络入口暴露",
+   "action_zh": "升级至修复版本；限制OA网络入口并监测异常内存破坏流量。",
+   "summary_zh": "未认证攻击者发送构造网络流量触发内存破坏，可能执行任意代码并完全控制系统。",
+   "category": "OA/协同办公",
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://me.sap.com/notes/3778530"
+    },
+    {
+     "label": "参考",
+     "url": "https://url.sap/sapsecuritypatchday"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76964",
    "change_note": null
   },
   {
@@ -2333,6 +2413,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-61624",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-125086",
+   "title": "D-Link M60 MQTT硬编码凭据",
+   "first_seen": "2026-11-10",
+   "last_seen": "2026-11-10",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-10",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "连接emDaemon MQTT服务并使用固件内硬编码凭据；需端口可达",
+   "impact_scope": "网络设备，MQTT服务可能暴露公网",
+   "action_zh": "升级D-Link修复固件；限制MQTT端口访问并改凭据",
+   "summary_zh": "远程攻击者可使用emDaemon MQTT Broker硬编码凭据接入，可能操纵MQTT消息",
+   "category": "网络设备",
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/XueDugu/dlink-m60-easymesh-mqtt-credential-evidence"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-125086"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1042370"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125086",
    "change_note": null
   },
   {
