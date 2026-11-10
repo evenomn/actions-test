@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-10 03:39 UTC · 共 **179** 条(强烈推荐 32 / 值得 147)
+**更新**: 2026-11-10 04:46 UTC · 共 **178** 条(强烈推荐 32 / 值得 146)
 
 ---
 
@@ -485,13 +485,6 @@ PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/ho
 影响: fortinet fortios >=6.4.0 <7.4.10; fortinet fortios >=7.6.0 <7.6.5
 参考: [厂商通告](https://fortiguard.fortinet.com/psirt/FG-IR-26-122) · [参考](https://cert-portal.siemens.com/productcert/html/ssa-975644.html) · [参考](https://unit42.paloaltonetworks.com/fortimanager-cve-2024-47575-peerstitch-malware/#post-188095-_guyq53ar8k05)
 
-### D-Link M60 MQTT硬编码凭据
-[CVE-2026-125086](https://nvd.nist.gov/vuln/detail/CVE-2026-125086) | P1 重点关注 | 网络设备 | CVSS 10.0 | 披露 2026-11-10 | 入库 2026-11-10
-远程攻击者可使用emDaemon MQTT Broker硬编码凭据接入，可能操纵MQTT消息
-复现: 值得 — 连接emDaemon MQTT服务并使用固件内硬编码凭据；需端口可达 · 影响面: 网络设备，MQTT服务可能暴露公网
-处置: 升级D-Link修复固件；限制MQTT端口访问并改凭据
-参考: [参考](https://github.com/XueDugu/dlink-m60-easymesh-mqtt-credential-evidence) · [参考](https://vuldb.com/cve/CVE-2026-125086) · [参考](https://vuldb.com/submit/1042370)
-
 ### Linksys路由器ping参数命令注入
 [CVE-2026-121932](https://nvd.nist.gov/vuln/detail/CVE-2026-121932) | P1 重点关注 | CVSS 10.0 | 披露 2026-11-04 | 入库 2026-11-04
 攻击者可远程向wizard接口的ping_ip参数注入系统命令，以高权限执行任意指令控制设备。
@@ -685,6 +678,16 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
 
+### Jpom查询条件注入认证绕过致RCE
+[CVE-2026-120201](https://nvd.nist.gov/vuln/detail/CVE-2026-120201) | P1 重点关注 | CVSS 9.8 | EPSS 2.2% | 披露 2026-10-31 | 入库 2026-11-10
+有PoC
+未认证者向JPOM-USER-TOKEN头注入'is not null'绕过认证取得超管权限，再经脚本功能执行命令。
+复现: 值得 — JPOM-USER-TOKEN头填is not null提权后调脚本接口执行 · 影响面: 内网运维平台,常暴露公网
+处置: 升级至2.11.13，并排查异常超管登录与脚本执行
+影响: dromara jpom >=2.10.0 <2.11.13
+PoC: [NVD exploit 引用](https://github.com/dromara/Jpom/issues/121)
+参考: [参考](https://github.com/dromara/Jpom) · [参考](https://github.com/dromara/Jpom/blob/v2.11.12/modules/server/src/main/java/org/dromara/jpom/common/interceptor/LoginInterceptor.java#L146) · [参考](https://www.vulncheck.com/advisories/jpom-2.10.0-through-2.11.12-authentication-bypass-via-jpom-user-token-header)
+
 ### DIR-878 路由器堆溢出远程代码执行
 [CVE-2026-124560](https://nvd.nist.gov/vuln/detail/CVE-2026-124560) | P1 重点关注 | 网络设备 | CVSS 9.8 | 披露 2026-11-09 | 入库 2026-11-09
 有PoC
@@ -693,13 +696,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 该型号已停止支持，建议替换设备并禁止管理面暴露公网
 PoC: [Exploit-Index Zimo-666/DIR-878-cves(未验证)](https://github.com/Zimo-666/DIR-878-cves)
 参考: [参考](https://github.com/Zimo-666/DIR-878-cves/tree/main/01-captcha-uid-heap-overflow) · [参考](https://vuldb.com/cve/CVE-2026-124560) · [参考](https://vuldb.com/submit/1035616)
-
-### Redpanda Connect未认证RCE
-[CVE-2026-123270](https://nvd.nist.gov/vuln/detail/CVE-2026-123270) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-09 | 入库 2026-11-09
-未认证远程攻击者可利用缺失认证执行任意代码，完全控制Redpanda Connect。
-复现: 值得 — 访问未认证服务端点，提交可触发命令执行的请求 · 影响面: 数据流平台，内网服务面
-处置: 关注厂商修复并升级，限制服务网络暴露
-参考: [参考](https://github.com/pagvac/redpanda-connect-unauth-rce)
 
 ### API Connect租户越权操作
 [CVE-2026-17362](https://nvd.nist.gov/vuln/detail/CVE-2026-17362) | P1 重点关注 | CVSS 9.8 | EPSS 0.6% | 披露 2026-11-07 | 入库 2026-11-07

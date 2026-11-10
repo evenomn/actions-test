@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-10T03:39:26+00:00",
- "count": 179,
+ "updated_at": "2026-11-10T04:46:18+00:00",
+ "count": 178,
  "count_recommended": 32,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -2416,50 +2416,6 @@
    "change_note": null
   },
   {
-   "id": "CVE-2026-125086",
-   "title": "D-Link M60 MQTT硬编码凭据",
-   "first_seen": "2026-11-10",
-   "last_seen": "2026-11-10",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-10",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "连接emDaemon MQTT服务并使用固件内硬编码凭据；需端口可达",
-   "impact_scope": "网络设备，MQTT服务可能暴露公网",
-   "action_zh": "升级D-Link修复固件；限制MQTT端口访问并改凭据",
-   "summary_zh": "远程攻击者可使用emDaemon MQTT Broker硬编码凭据接入，可能操纵MQTT消息",
-   "category": "网络设备",
-   "cvss": 10.0,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/XueDugu/dlink-m60-easymesh-mqtt-credential-evidence"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-125086"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1042370"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125086",
-   "change_note": null
-  },
-  {
    "id": "CVE-2026-121932",
    "title": "Linksys路由器ping参数命令注入",
    "first_seen": "2026-11-04",
@@ -3624,6 +3580,55 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-120201",
+   "title": "Jpom查询条件注入认证绕过致RCE",
+   "first_seen": "2026-11-10",
+   "last_seen": "2026-11-10",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-31",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "JPOM-USER-TOKEN头填is not null提权后调脚本接口执行",
+   "impact_scope": "内网运维平台,常暴露公网",
+   "action_zh": "升级至2.11.13，并排查异常超管登录与脚本执行",
+   "summary_zh": "未认证者向JPOM-USER-TOKEN头注入'is not null'绕过认证取得超管权限，再经脚本功能执行命令。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": 0.02215,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [
+    {
+     "url": "https://github.com/dromara/Jpom/issues/121",
+     "label": "NVD exploit 引用"
+    }
+   ],
+   "affected": "dromara jpom >=2.10.0 <2.11.13",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/dromara/Jpom"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/dromara/Jpom/blob/v2.11.12/modules/server/src/main/java/org/dromara/jpom/common/interceptor/LoginInterceptor.java#L146"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/jpom-2.10.0-through-2.11.12-authentication-bypass-via-jpom-user-token-header"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120201",
+   "change_note": "新增公开 PoC 引用"
+  },
+  {
    "id": "CVE-2026-124560",
    "title": "DIR-878 路由器堆溢出远程代码执行",
    "first_seen": "2026-11-09",
@@ -3670,42 +3675,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124560",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-123270",
-   "title": "Redpanda Connect未认证RCE",
-   "first_seen": "2026-11-09",
-   "last_seen": "2026-11-09",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-09",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "访问未认证服务端点，提交可触发命令执行的请求",
-   "impact_scope": "数据流平台，内网服务面",
-   "action_zh": "关注厂商修复并升级，限制服务网络暴露",
-   "summary_zh": "未认证远程攻击者可利用缺失认证执行任意代码，完全控制Redpanda Connect。",
-   "category": null,
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/pagvac/redpanda-connect-unauth-rce"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123270",
    "change_note": null
   },
   {
