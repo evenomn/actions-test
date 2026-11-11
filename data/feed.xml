@@ -5,25 +5,25 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 11 Nov 2026 07:52:28 +0000</pubDate>
-    <lastBuildDate>Wed, 11 Nov 2026 07:52:28 +0000</lastBuildDate>
+    <pubDate>Wed, 11 Nov 2026 17:17:28 +0000</pubDate>
+    <lastBuildDate>Wed, 11 Nov 2026 17:17:28 +0000</lastBuildDate>
     <item>
-      <title>[critical]Nitrite反序列化远程代码执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-64678</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-64678-2026-11-11</guid>
-      <description>CVE-2026-64678 · P1 重点关注 · 披露 2026-11-11 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-This path deserializes stored values using NitriteDataType.deserialize(byte[]), which passes the raw bytes directly to java.io.ObjectInputStream.readObject() vi…
+      <title>[critical]Red Hat 命名空间SQL注入泄凭据</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-110697</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-110697-2026-11-11</guid>
+      <description>CVE-2026-110697 · P1 重点关注 · 披露 2026-11-11 · CVSS 9.9 · 类型 SQL注入 · 难度 低(远程·需低权限)
+An attacker who creates a namespace containing an underscore character can match and retrieve robot accounts and their decrypted authentication tokens from othe…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 07:52:28 +0000</pubDate>
+      <pubDate>Wed, 11 Nov 2026 17:17:28 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]AstroBlocks硬编码密钥会话伪造</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-64682</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-64682-2026-11-11</guid>
-      <description>CVE-2026-64682 · P1 重点关注 · 披露 2026-11-11 · CVSS 9.8 · 类型 CWE-321/硬编码凭据 · 难度 低(远程·免认证)
-An attacker who knows the public fallback value (readable in the published package) can forge a valid session token with role: "owner" and obtain full administr…
+      <title>[critical]Red Hat Quay未授权签名密钥注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123710</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123710-2026-11-11</guid>
+      <description>CVE-2026-123710 · P1 重点关注 · 披露 2026-11-11 · 组件 操作系统 · CVSS 9.8 · 类型 CWE-1287 · 难度 低(远程·免认证)
+An unauthenticated client can obtain an anonymous registry token with an audience it controls, present that token to the service key rotation endpoint, and inst…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 07:52:28 +0000</pubDate>
+      <pubDate>Wed, 11 Nov 2026 17:17:28 +0000</pubDate>
     </item>
   </channel>
 </rss>

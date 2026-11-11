@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-11T07:52:28+00:00",
- "count": 183,
+ "updated_at": "2026-11-11T17:17:28+00:00",
+ "count": 184,
  "count_recommended": 35,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -3792,6 +3792,46 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121653",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-123710",
+   "title": "Red Hat Quay未授权签名密钥注入",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-11",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "获取可控audience匿名令牌，调用服务密钥轮换端点安装自有签名密钥",
+   "impact_scope": "容器镜像仓库，私有镜像泄露",
+   "action_zh": "升级Red Hat Quay修复版本；限制密钥轮换端点并轮换签名密钥",
+   "summary_zh": "未认证攻击者可借匿名令牌向密钥轮换端点注入自有签名密钥，读写私有镜像并替换标签",
+   "category": "操作系统",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/security/cve/CVE-2026-123710"
+    },
+    {
+     "label": "参考",
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2568072"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123710",
    "change_note": null
   },
   {

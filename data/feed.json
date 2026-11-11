@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-11-11T07:52:28+00:00",
+ "generated_at": "2026-11-11T17:17:28+00:00",
  "lookback_hours": 5,
  "count": 2,
  "stats": {
@@ -12,7 +12,8 @@
    "P1 重点关注": 2
   },
   "by_category": {
-   "未知": 2
+   "未知": 1,
+   "操作系统": 1
   },
   "kev": 0,
   "with_poc": 0,
@@ -22,34 +23,34 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-64678",
+   "id": "CVE-2026-110697",
    "tier": "critical",
-   "title": "Nitrite反序列化远程代码执行",
-   "title_zh": "Nitrite反序列化远程代码执行",
-   "summary_zh": "能写入存储值的攻击者构造恶意字节流，触发ObjectInputStream反序列化执行任意代码",
-   "published": "2026-11-11T05:19:51.937",
-   "cvss": 9.8,
+   "title": "Red Hat 命名空间SQL注入泄凭据",
+   "title_zh": "Red Hat 命名空间SQL注入泄凭据",
+   "summary_zh": "攻击者创建含下划线命名空间，通过SQL注入匹配其他租户机器人账号及解密令牌，窃取镜像权限",
+   "published": "2026-11-11T17:17:14.897",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "反序列化(RCE)"
+    "SQL注入"
    ],
-   "vuln_class": "RCE",
+   "vuln_class": "SQL注入",
    "fame_term": null,
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
-   "affected": null,
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/nitrite/nitrite-java/releases/tag/v4.4.1"
+     "url": "https://access.redhat.com/security/cve/CVE-2026-110697"
     },
     {
      "label": "参考",
-     "url": "https://github.com/nitrite/nitrite-java/security/advisories/GHSA-9297-g93h-86gg"
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2552237"
     }
    ],
    "poc": [],
@@ -60,47 +61,42 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至修复版本；禁止反序列化不可信数据并启用类型白名单",
+   "action_zh": "升级受影响Red Hat产品；隔离租户并轮换机器人账号令牌",
    "repro_worthy": "一般",
-   "repro_note": "需可控写入Nitrite存储值，触发deserialize读取恶意字节",
-   "impact_scope": "内嵌Java数据库，影响集成该库的应用",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-64678",
-   "description": "This path deserializes stored values using NitriteDataType.deserialize(byte[]), which passes the raw bytes directly to java.io.ObjectInputStream.readObject() via a custom NitriteObjectInputStream subclass. That subclass overrides only readClassDescriptor() — solely to remap a handful of known legacy class names to their current equivalents — and implements no class allowlist, blocklist, or ObjectInputFilter (JEP 290)."
+   "repro_note": "创建含下划线命名空间，观察查询是否返回他租户robot账号及令牌",
+   "impact_scope": "多租户镜像仓库，跨租户凭据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110697",
+   "description": "A flaw was found in Quay where the robot account listing function constructs a SQL LIKE pattern from user-controlled namespace names without escaping wildcard metacharacters. An attacker who creates a namespace containing an underscore character can match and retrieve robot accounts and their decrypted authentication tokens from other tenants' namespaces, leading to cross-tenant credential theft and unauthorized image operations."
   },
   {
-   "id": "CVE-2026-64682",
+   "id": "CVE-2026-123710",
    "tier": "critical",
-   "title": "AstroBlocks硬编码密钥会话伪造",
-   "title_zh": "AstroBlocks硬编码密钥会话伪造",
-   "summary_zh": "攻击者用发布包中公开的默认回退密钥伪造role=owner令牌，免认证接管CMS后台",
-   "published": "2026-11-11T05:19:52.120",
+   "title": "Red Hat Quay未授权签名密钥注入",
+   "title_zh": "Red Hat Quay未授权签名密钥注入",
+   "summary_zh": "未认证攻击者可借匿名令牌向密钥轮换端点注入自有签名密钥，读写私有镜像并替换标签",
+   "published": "2026-11-11T15:17:18.340",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-321",
-    "硬编码凭据"
+    "CWE-1287"
    ],
    "vuln_class": null,
    "fame_term": null,
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": null,
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/NauelG/astro-blocks/commit/fd83bf0b37a756363f718e134c16e448da09a74d"
+     "url": "https://access.redhat.com/security/cve/CVE-2026-123710"
     },
     {
      "label": "参考",
-     "url": "https://github.com/NauelG/astro-blocks/pull/51"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/NauelG/astro-blocks/releases/tag/v3.4.0"
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2568072"
     }
    ],
    "poc": [],
@@ -111,27 +107,137 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复时先更换回退密钥并轮换会话签名密钥",
-   "repro_worthy": "一般",
-   "repro_note": "从公开包读取fallback密钥，按格式签名role=owner令牌访问后台",
-   "impact_scope": "Astro站点CMS后台，中小站点常用",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-64682",
-   "description": "AstroBlocks is a block-first CMS for Astro projects. Prior to version 3.4.0, admin session tokens can be forged due to a hard-coded fallback JWT secret and a mismatched environment variable name. An attacker who knows the public fallback value (readable in the published package) can forge a valid session token with role: \"owner\" and obtain full administrative control of the CMS — creating/deleting content, users, media, redirects, and configuration. This issue has been patched in version 3.4.0."
+   "action_zh": "升级Red Hat Quay修复版本；限制密钥轮换端点并轮换签名密钥",
+   "repro_worthy": "值得",
+   "repro_note": "获取可控audience匿名令牌，调用服务密钥轮换端点安装自有签名密钥",
+   "impact_scope": "容器镜像仓库，私有镜像泄露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123710",
+   "description": "A flaw was found in Red Hat Quay. An unauthenticated client can obtain an anonymous registry token with an audience it controls, present that token to the service key rotation endpoint, and install its own approved signing key with no expiry. Registry tokens signed with that key are accepted for any repository, allowing read and write access to private images and replacement of repository tags."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "openbsd/src",
-   "sha": "74cae5319bcfd71213aaa25772e365d7e14ce906",
-   "url": "https://github.com/openbsd/src/commit/74cae5319bcfd71213aaa25772e365d7e14ce906",
-   "title": "drm/panic: Do not use un-escaped URL as format string",
-   "date": "2026-11-11T02:43:44",
-   "score": 2,
+   "repo": "nodejs/node",
+   "sha": "633df2896fef9c5ddbfd01fb90db12fad6568f98",
+   "url": "https://github.com/nodejs/node/commit/633df2896fef9c5ddbfd01fb90db12fad6568f98",
+   "title": "tls: fix remotely reachable TLS server crash",
+   "date": "2026-11-11T16:33:40",
+   "score": 4,
    "matched": [
-    "格式串"
+    "CVE",
+    "崩溃"
    ],
-   "cve": null
+   "cve": "CVE-2026-126051"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "ab6a046cc296e30e999e4b4063467cc989979534",
+   "url": "https://github.com/nodejs/node/commit/ab6a046cc296e30e999e4b4063467cc989979534",
+   "title": "permission: do not leak denied descendants in recursive fs.watch",
+   "date": "2026-11-11T16:33:39",
+   "score": 4,
+   "matched": [
+    "CVE",
+    "泄露"
+   ],
+   "cve": "CVE-2026-123829"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "c207dbf0a2bf6831c84b19e799be2c12abb69f02",
+   "url": "https://github.com/nodejs/node/commit/c207dbf0a2bf6831c84b19e799be2c12abb69f02",
+   "title": "2026-11-11, Version 26.13.1 'Lithium' (LTS)",
+   "date": "2026-11-11T16:33:40",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-123863"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "0d6d38f1e5370e9bdd289b6d87da0e57e6f942f4",
+   "url": "https://github.com/nodejs/node/commit/0d6d38f1e5370e9bdd289b6d87da0e57e6f942f4",
+   "title": "http2: retain streams during pending writes",
+   "date": "2026-11-11T16:33:39",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-123874"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "3f3c59317ece53db4b8c8aef19a1d3c6ad5bf654",
+   "url": "https://github.com/nodejs/node/commit/3f3c59317ece53db4b8c8aef19a1d3c6ad5bf654",
+   "title": "http2: charge inbound DATA retained by streams to maxSessionMemory",
+   "date": "2026-11-11T16:33:39",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-123868"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "5ebf6adc4bf92318c5954124bde9aacceb2f572e",
+   "url": "https://github.com/nodejs/node/commit/5ebf6adc4bf92318c5954124bde9aacceb2f572e",
+   "title": "tls: disable resumption for mTLS with no session id context",
+   "date": "2026-11-11T16:33:39",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-123872"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "20fd568f00072a10dbbfbb7145481a3cf56ae45d",
+   "url": "https://github.com/nodejs/node/commit/20fd568f00072a10dbbfbb7145481a3cf56ae45d",
+   "title": "https: isolate Agent TLS policy keys",
+   "date": "2026-11-11T16:33:39",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-123877"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "519c65ec6a1c9d4553b6bcac2144f511c8a3c8bd",
+   "url": "https://github.com/nodejs/node/commit/519c65ec6a1c9d4553b6bcac2144f511c8a3c8bd",
+   "title": "http: redact proxy credentials in invalid proxy URL errors",
+   "date": "2026-11-11T16:33:39",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-123871"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "9c6e6efa33b32862097534103f2c1b8784a11724",
+   "url": "https://github.com/nodejs/node/commit/9c6e6efa33b32862097534103f2c1b8784a11724",
+   "title": "http2: retain buffers until socket writes finish",
+   "date": "2026-11-11T16:33:38",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-123866"
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "a69953c0c11ac9fd4bc860a529a87747bb130713",
+   "url": "https://github.com/nodejs/node/commit/a69953c0c11ac9fd4bc860a529a87747bb130713",
+   "title": "tls: apply the CA of SNI contexts without a certificate",
+   "date": "2026-11-11T16:33:38",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-123867"
   }
  ]
 }

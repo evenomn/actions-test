@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-11 07:52 UTC · 共 **183** 条(强烈推荐 35 / 值得 148)
+**更新**: 2026-11-11 17:17 UTC · 共 **184** 条(强烈推荐 35 / 值得 149)
 
 ---
 
@@ -723,6 +723,14 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级至2024 SU8；限制EPM管理端口暴露面
 影响: Ivanti(产品与版本待 NVD/厂商补充)
 参考: [参考](https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Endpoint-Manager-EPM-November-2026?language=en_US)
+
+### Red Hat Quay未授权签名密钥注入
+[CVE-2026-123710](https://nvd.nist.gov/vuln/detail/CVE-2026-123710) | P1 重点关注 | 操作系统 | CVSS 9.8 | 披露 2026-11-11 | 入库 2026-11-11
+未认证攻击者可借匿名令牌向密钥轮换端点注入自有签名密钥，读写私有镜像并替换标签
+复现: 值得 — 获取可控audience匿名令牌，调用服务密钥轮换端点安装自有签名密钥 · 影响面: 容器镜像仓库，私有镜像泄露
+处置: 升级Red Hat Quay修复版本；限制密钥轮换端点并轮换签名密钥
+影响: Red Hat(产品与版本待 NVD/厂商补充)
+参考: [参考](https://access.redhat.com/security/cve/CVE-2026-123710) · [参考](https://bugzilla.redhat.com/show_bug.cgi?id=2568072)
 
 ### Jpom查询条件注入认证绕过致RCE
 [CVE-2026-120201](https://nvd.nist.gov/vuln/detail/CVE-2026-120201) | P1 重点关注 | CVSS 9.8 | EPSS 2.2% | 披露 2026-10-31 | 入库 2026-11-10
