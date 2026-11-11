@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-11T17:17:28+00:00",
- "count": 184,
- "count_recommended": 35,
+ "updated_at": "2026-11-11T23:32:57+00:00",
+ "count": 194,
+ "count_recommended": 39,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -894,6 +894,42 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-126147",
+   "title": "FortiMail路径遍历未授权执行命令",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-11",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权请求触发路径遍历并注入命令；针对Web接口",
+   "impact_scope": "邮件安全网关，常暴露公网",
+   "action_zh": "按Fortinet公告升级FortiMail；限制管理接口暴露。",
+   "summary_zh": "未授权攻击者通过构造请求利用FortiMail路径遍历，可能执行任意命令或代码。",
+   "category": "边界设备/VPN",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-199"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126147",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-17301",
    "title": "API Connect签名校验绕过",
    "first_seen": "2026-11-07",
@@ -1384,6 +1420,42 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-126253",
+   "title": "FortiOS认证绕过可未授权利用",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-11",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权向FortiOS发送构造请求触发认证绕过",
+   "impact_scope": "防火墙边界设备，常暴露",
+   "action_zh": "按Fortinet公告升级FortiOS修复版。",
+   "summary_zh": "未授权攻击者通过构造请求触发FortiOS认证绕过，并广播LSA。",
+   "category": "边界设备/VPN",
+   "cvss": 9.3,
+   "epss": null,
+   "difficulty": "低(需相邻网络·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-267"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126253",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-116769",
    "title": "Secure Access 认证绕过改配置",
    "first_seen": "2026-11-03",
@@ -1494,6 +1566,78 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91403",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-126160",
+   "title": "FortiMail认证缺陷可越权操作隔离邮件",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-11",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权请求隔离释放接口，构造目标邮箱及消息ID参数",
+   "impact_scope": "邮件边界网关,常暴露公网",
+   "action_zh": "升级至厂商公告修复版本；限制隔离释放接口暴露",
+   "summary_zh": "未授权攻击者可构造隔离释放请求，越权释放或删除任意邮箱隔离邮件。",
+   "category": "边界设备/VPN",
+   "cvss": 8.2,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-212"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126160",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-126151",
+   "title": "FortiMail认证算法缺陷致账号接管",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-11",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权构造认证请求，利用算法实现缺陷伪造/接管账号",
+   "impact_scope": "邮件网关,账号接管风险",
+   "action_zh": "升级至厂商公告修复版本；限制邮件接口暴露并监控异常登录",
+   "summary_zh": "未授权远程攻击者构造请求利用认证算法缺陷，可提升权限并接管账号。",
+   "category": "边界设备/VPN",
+   "cvss": 7.5,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-203"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126151",
    "change_note": null
   },
   {
@@ -3835,6 +3979,42 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-126262",
+   "title": "FortiAnalyzer SQL注入高危",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-11",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问FortiAnalyzer/Manager接口构造SQLi",
+   "impact_scope": "日志管理/管理平台，内网核心",
+   "action_zh": "按Fortinet公告升级FortiAnalyzer/Manager修复版。",
+   "summary_zh": "未授权攻击者可向FortiAnalyzer/FortiManager接口构造SQL注入，可能执行任意代码命令。",
+   "category": "边界设备/VPN",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-276"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126262",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-120201",
    "title": "Jpom查询条件注入认证绕过致RCE",
    "first_seen": "2026-11-10",
@@ -5521,6 +5701,42 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-126164",
+   "title": "FortiMail未授权SQL注入执行命令",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-11",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权构造请求触发FortiMail SQL注入",
+   "impact_scope": "邮件安全网关，常暴露公网",
+   "action_zh": "按Fortinet公告升级FortiMail修复版。",
+   "summary_zh": "未授权攻击者向FortiMail构造请求触发SQL注入，可能执行任意代码或命令。",
+   "category": "边界设备/VPN",
+   "cvss": 9.4,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-216"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126164",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-19759",
    "title": "CVE-2026-19759",
    "first_seen": "2026-10-08",
@@ -7038,6 +7254,150 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107194",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-126155",
+   "title": "FortiMail IBE会话劫持未授权",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-11",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权构造HTTP请求获取IBE收件人会话",
+   "impact_scope": "邮件安全网关IBE模块",
+   "action_zh": "按Fortinet公告升级FortiMail；限制IBE暴露面。",
+   "summary_zh": "未授权攻击者通过构造HTTP请求获取任意IBE收件人会话，读取或发送加密邮件。",
+   "category": "边界设备/VPN",
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-207"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126155",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-126156",
+   "title": "FortiMail IBE账户接管未授权",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-11",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权构造HTTP请求接管IBE收件人账户",
+   "impact_scope": "邮件安全网关IBE模块",
+   "action_zh": "按Fortinet公告升级FortiMail；限制IBE暴露面。",
+   "summary_zh": "未授权攻击者通过构造HTTP请求接管任意IBE收件人账户。",
+   "category": "边界设备/VPN",
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-208"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126156",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-126157",
+   "title": "FortiMail IBE认证绕过未授权",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-11",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权构造HTTP请求绕过IBE认证",
+   "impact_scope": "邮件安全网关IBE模块",
+   "action_zh": "按Fortinet公告升级FortiMail；限制IBE暴露面。",
+   "summary_zh": "未授权攻击者通过构造HTTP请求绕过认证，访问其他用户安全邮箱。",
+   "category": "边界设备/VPN",
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-209"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126157",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-126251",
+   "title": "FortiAuth未授权认证绕过",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-11",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权请求触发授权绕过并访问受保护功能",
+   "impact_scope": "认证服务器，身份基础设施",
+   "action_zh": "按Fortinet公告升级FortiAuthenticator修复版。",
+   "summary_zh": "未授权攻击者可绕过FortiAuthenticator认证检查，获得未授权访问。",
+   "category": "边界设备/VPN",
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-265"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126251",
    "change_note": null
   },
   {

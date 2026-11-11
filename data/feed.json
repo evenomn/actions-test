@@ -1,102 +1,602 @@
 {
  "version": 3,
- "generated_at": "2026-11-11T17:17:28+00:00",
+ "generated_at": "2026-11-11T23:32:57+00:00",
  "lookback_hours": 5,
- "count": 2,
+ "count": 52,
  "stats": {
-  "total": 2,
+  "total": 52,
   "by_tier": {
-   "critical": 2
+   "high": 34,
+   "critical": 18
   },
   "by_urgency": {
-   "P1 重点关注": 2
+   "P1 重点关注": 34,
+   "P0 立即处置": 13,
+   "P2 保持关注": 5
   },
   "by_category": {
-   "未知": 1,
-   "操作系统": 1
+   "边界设备/VPN": 48,
+   "数据库": 2,
+   "未知": 2
   },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
-  "repro_recommended": 0
+  "repro_recommended": 4
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-110697",
+   "id": "CVE-2026-126147",
    "tier": "critical",
-   "title": "Red Hat 命名空间SQL注入泄凭据",
-   "title_zh": "Red Hat 命名空间SQL注入泄凭据",
-   "summary_zh": "攻击者创建含下划线命名空间，通过SQL注入匹配其他租户机器人账号及解密令牌，窃取镜像权限",
-   "published": "2026-11-11T17:17:14.897",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "vuln_class": "SQL注入",
-   "fame_term": null,
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://access.redhat.com/security/cve/CVE-2026-110697"
-    },
-    {
-     "label": "参考",
-     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2552237"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级受影响Red Hat产品；隔离租户并轮换机器人账号令牌",
-   "repro_worthy": "一般",
-   "repro_note": "创建含下划线命名空间，观察查询是否返回他租户robot账号及令牌",
-   "impact_scope": "多租户镜像仓库，跨租户凭据",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110697",
-   "description": "A flaw was found in Quay where the robot account listing function constructs a SQL LIKE pattern from user-controlled namespace names without escaping wildcard metacharacters. An attacker who creates a namespace containing an underscore character can match and retrieve robot accounts and their decrypted authentication tokens from other tenants' namespaces, leading to cross-tenant credential theft and unauthorized image operations."
-  },
-  {
-   "id": "CVE-2026-123710",
-   "tier": "critical",
-   "title": "Red Hat Quay未授权签名密钥注入",
-   "title_zh": "Red Hat Quay未授权签名密钥注入",
-   "summary_zh": "未认证攻击者可借匿名令牌向密钥轮换端点注入自有签名密钥，读写私有镜像并替换标签",
-   "published": "2026-11-11T15:17:18.340",
+   "title": "FortiMail路径遍历未授权执行命令",
+   "title_zh": "FortiMail路径遍历未授权执行命令",
+   "summary_zh": "未授权攻击者通过构造请求利用FortiMail路径遍历，可能执行任意命令或代码。",
+   "published": "2026-11-11T22:17:11.880",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-1287"
+    "路径遍历/任意文件读取"
    ],
-   "vuln_class": null,
-   "fame_term": null,
+   "vuln_class": "任意文件读写",
+   "fame_term": "fortinet",
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://access.redhat.com/security/cve/CVE-2026-123710"
-    },
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-199"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "按Fortinet公告升级FortiMail；限制管理接口暴露。",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权请求触发路径遍历并注入命令；针对Web接口",
+   "impact_scope": "邮件安全网关，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126147",
+   "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to execute unauthorized code or commands via crafted requests."
+  },
+  {
+   "id": "CVE-2026-126253",
+   "tier": "critical",
+   "title": "FortiOS认证绕过可未授权利用",
+   "title_zh": "FortiOS认证绕过可未授权利用",
+   "summary_zh": "未授权攻击者通过构造请求触发FortiOS认证绕过，并广播LSA。",
+   "published": "2026-11-11T22:17:25.347",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-305"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(需相邻网络·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
     {
      "label": "参考",
-     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2568072"
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-267"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "按Fortinet公告升级FortiOS修复版。",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权向FortiOS发送构造请求触发认证绕过",
+   "impact_scope": "防火墙边界设备，常暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126253",
+   "description": "A authentication bypass by primary weakness vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow an unauthenticated attacker to broadcast LSA via specially crafted request"
+  },
+  {
+   "id": "CVE-2026-126160",
+   "tier": "high",
+   "title": "FortiMail认证缺陷可越权操作隔离邮件",
+   "title_zh": "FortiMail认证缺陷可越权操作隔离邮件",
+   "summary_zh": "未授权攻击者可构造隔离释放请求，越权释放或删除任意邮箱隔离邮件。",
+   "published": "2026-11-11T22:17:13.990",
+   "cvss": 8.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-212"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商公告修复版本；限制隔离释放接口暴露",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权请求隔离释放接口，构造目标邮箱及消息ID参数",
+   "impact_scope": "邮件边界网关,常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126160",
+   "description": "A improper authentication vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to escalate privileges and release or delete quarantined messages for arbitrary mailboxes via a crafted quarantine release requests."
+  },
+  {
+   "id": "CVE-2026-126151",
+   "tier": "high",
+   "title": "FortiMail认证算法缺陷致账号接管",
+   "title_zh": "FortiMail认证算法缺陷致账号接管",
+   "summary_zh": "未授权远程攻击者构造请求利用认证算法缺陷，可提升权限并接管账号。",
+   "published": "2026-11-11T22:17:12.720",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-303"
+   ],
+   "vuln_class": "提权",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-203"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商公告修复版本；限制邮件接口暴露并监控异常登录",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权构造认证请求，利用算法实现缺陷伪造/接管账号",
+   "impact_scope": "邮件网关,账号接管风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126151",
+   "description": "A incorrect implementation of authentication algorithm vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to gain elevation of privilege (account takeover) via a crafted request."
+  },
+  {
+   "id": "CVE-2026-126262",
+   "tier": "critical",
+   "title": "FortiAnalyzer SQL注入高危",
+   "title_zh": "FortiAnalyzer SQL注入高危",
+   "summary_zh": "未授权攻击者可向FortiAnalyzer/FortiManager接口构造SQL注入，可能执行任意代码命令。",
+   "published": "2026-11-11T22:17:26.343",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-276"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "按Fortinet公告升级FortiAnalyzer/Manager修复版。",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问FortiAnalyzer/Manager接口构造SQLi",
+   "impact_scope": "日志管理/管理平台，内网核心",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126262",
+   "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12 may allow an unauthenticated attacker who has access to the oftp port to execute code or command on the system via crafted…"
+  },
+  {
+   "id": "CVE-2026-126164",
+   "tier": "critical",
+   "title": "FortiMail未授权SQL注入执行命令",
+   "title_zh": "FortiMail未授权SQL注入执行命令",
+   "summary_zh": "未授权攻击者向FortiMail构造请求触发SQL注入，可能执行任意代码或命令。",
+   "published": "2026-11-11T22:17:14.537",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-216"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "按Fortinet公告升级FortiMail修复版。",
+   "repro_worthy": "值得",
+   "repro_note": "未授权构造请求触发FortiMail SQL注入",
+   "impact_scope": "邮件安全网关，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126164",
+   "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to execute unauthorized code or commands via crafted requests."
+  },
+  {
+   "id": "CVE-2026-126148",
+   "tier": "critical",
+   "title": "FortiMail HA命令注入未授权RCE",
+   "title_zh": "FortiMail HA命令注入未授权RCE",
+   "summary_zh": "未授权攻击者可向FortiMail HA join-request发送构造包注入OS命令，导致远程代码执行。",
+   "published": "2026-11-11T22:17:12.010",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-200"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "按Fortinet公告升级；限制HA join-request来源。",
+   "repro_worthy": "一般",
+   "repro_note": "向HA join-request发送构造包；需启用HA",
+   "impact_scope": "邮件安全网关，常暴露邮件端口",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126148",
+   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6 may allow an unauthenticated attacker to execute unauthorized code or commands via crafted HA join-request packets."
+  },
+  {
+   "id": "CVE-2026-126155",
+   "tier": "critical",
+   "title": "FortiMail IBE会话劫持未授权",
+   "title_zh": "FortiMail IBE会话劫持未授权",
+   "summary_zh": "未授权攻击者通过构造HTTP请求获取任意IBE收件人会话，读取或发送加密邮件。",
+   "published": "2026-11-11T22:17:13.323",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-207"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "按Fortinet公告升级FortiMail；限制IBE暴露面。",
+   "repro_worthy": "值得",
+   "repro_note": "未授权构造HTTP请求获取IBE收件人会话",
+   "impact_scope": "邮件安全网关IBE模块",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126155",
+   "description": "A incorrect authorization vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to obtain an authenticated IBE webmail session as any IBE recipient and read or send their encrypted mail via crafted HTTP requests."
+  },
+  {
+   "id": "CVE-2026-126156",
+   "tier": "critical",
+   "title": "FortiMail IBE账户接管未授权",
+   "title_zh": "FortiMail IBE账户接管未授权",
+   "summary_zh": "未授权攻击者通过构造HTTP请求接管任意IBE收件人账户。",
+   "published": "2026-11-11T22:17:13.450",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-208"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "按Fortinet公告升级FortiMail；限制IBE暴露面。",
+   "repro_worthy": "值得",
+   "repro_note": "未授权构造HTTP请求接管IBE收件人账户",
+   "impact_scope": "邮件安全网关IBE模块",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126156",
+   "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to take over an arbitrary IBE recipient account via crafted HTTP requests."
+  },
+  {
+   "id": "CVE-2026-126157",
+   "tier": "critical",
+   "title": "FortiMail IBE认证绕过未授权",
+   "title_zh": "FortiMail IBE认证绕过未授权",
+   "summary_zh": "未授权攻击者通过构造HTTP请求绕过认证，访问其他用户安全邮箱。",
+   "published": "2026-11-11T22:17:13.587",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-209"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "按Fortinet公告升级FortiMail；限制IBE暴露面。",
+   "repro_worthy": "值得",
+   "repro_note": "未授权构造HTTP请求绕过IBE认证",
+   "impact_scope": "邮件安全网关IBE模块",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126157",
+   "description": "A improper authentication vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to gain access to other users' secure email accounts via crafted HTTP requests."
+  },
+  {
+   "id": "CVE-2026-126251",
+   "tier": "critical",
+   "title": "FortiAuth未授权认证绕过",
+   "title_zh": "FortiAuth未授权认证绕过",
+   "summary_zh": "未授权攻击者可绕过FortiAuthenticator认证检查，获得未授权访问。",
+   "published": "2026-11-11T22:17:25.087",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-265"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "按Fortinet公告升级FortiAuthenticator修复版。",
+   "repro_worthy": "值得",
+   "repro_note": "未授权请求触发授权绕过并访问受保护功能",
+   "impact_scope": "认证服务器，身份基础设施",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126251",
+   "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an attacker to bypass authentication and gain unauthorized access."
+  },
+  {
+   "id": "CVE-2026-126184",
+   "tier": "high",
+   "title": "Forti管理平台认证欺骗绕过",
+   "title_zh": "Forti管理平台认证欺骗绕过",
+   "summary_zh": "未授权攻击者可通过伪造身份绕过认证，访问FortiAnalyzer/FortiManager管理功能。",
+   "published": "2026-11-11T22:17:17.603",
+   "cvss": 8.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证欺骗"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-229"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至厂商公告修复版本；限制管理接口访问来源",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问管理接口，伪造认证字段/身份头绕过校验",
+   "impact_scope": "网管/日志分析平台,内网高价值",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126184",
+   "description": "A authentication bypass by spoofing vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiM…"
+  },
+  {
+   "id": "CVE-2026-126259",
+   "tier": "critical",
+   "title": "FortiOS HA缺失认证可获超管",
+   "title_zh": "FortiOS HA缺失认证可获超管",
+   "summary_zh": "未授权攻击者在特定HA/自动扩展配置下发送构造HA包，可以超级管理员执行命令。",
+   "published": "2026-11-11T22:17:26.200",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-273"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "按Fortinet公告升级FortiOS；核查HA/自动扩展配置。",
+   "repro_worthy": "一般",
+   "repro_note": "向HA FGSP接口发构造包；需启用同步配置",
+   "impact_scope": "防火墙HA/自动扩展环境",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126259",
+   "description": "A missing authentication for critical function vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow an unauthenticated attacker with HA FGSP + standalone-config-sync, or autoscale to execute command as super admin via crafted HA packets."
+  },
+  {
+   "id": "CVE-2026-126144",
+   "tier": "high",
+   "title": "FortiMail等命令注入RCE",
+   "title_zh": "FortiMail等命令注入RCE",
+   "summary_zh": "攻击者可利用FortiMail、FortiRecorder、FortiVoice命令注入缺陷执行任意OS命令。",
+   "published": "2026-11-11T22:17:11.400",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-196"
     }
    ],
    "poc": [],
@@ -107,137 +607,1728 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级Red Hat Quay修复版本；限制密钥轮换端点并轮换签名密钥",
+   "action_zh": "按Fortinet公告升级FortiMail/Recorder/Voice修复版。",
+   "repro_worthy": "一般",
+   "repro_note": "向受影响产品命令处理接口提交构造参数",
+   "impact_scope": "邮件/录音/语音网关，边界暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126144",
+   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.4, FortiMail 7.4.0 through 7.4.6, FortiMail 7.2 all versions, FortiRecorder 7.6.0 through 7.6.2, FortiRecorder 7.2.0 through 7.2.12, FortiRecorder 7.0.0 through 7.0.6, FortiVoice 8.0.0 through 8.0.1, FortiVoice 7.4.0 through 7.4.2, FortiVoice 7.2.0 through 7.2.5, FortiVoice 7.0.0 through 7.0.8 may allow an authenticated …"
+  },
+  {
+   "id": "CVE-2026-126263",
+   "tier": "critical",
+   "title": "FortiMail认证后SQL注入",
+   "title_zh": "FortiMail认证后SQL注入",
+   "summary_zh": "已认证攻击者可向FortiMail构造请求实施SQL注入，进而执行未授权代码或命令。",
+   "published": "2026-11-11T22:17:26.520",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-277"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "按Fortinet公告升级FortiMail修复版。",
+   "repro_worthy": "一般",
+   "repro_note": "认证后向FortiMail请求参数注入SQL",
+   "impact_scope": "邮件安全网关，内网/边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126263",
+   "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.4, FortiMail 7.4.0 through 7.4.6 may allow an authenticated attacker to execute unauthorized code or commands via specifically crafted requests."
+  },
+  {
+   "id": "CVE-2026-126175",
+   "tier": "high",
+   "title": "FortiAnalyzer SQL注入多版本",
+   "title_zh": "FortiAnalyzer SQL注入多版本",
+   "summary_zh": "攻击者可利用FortiAnalyzer/Manager及云版SQL注入执行未授权代码命令。",
+   "published": "2026-11-11T22:17:15.747",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-221"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "按Fortinet公告升级FortiAnalyzer/Manager及云版。",
+   "repro_worthy": "一般",
+   "repro_note": "管理接口SQL注入；确认认证与版本条件",
+   "impact_scope": "日志/管理平台，内网横向",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126175",
+   "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.2 through 7.2.12, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.2 through 7.2.13, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.2 through 7.2.12, FortiManager Cloud 7.6.0 through 7.6.7, FortiManage…"
+  },
+  {
+   "id": "CVE-2026-126241",
+   "tier": "high",
+   "title": "FortiAuth认证后SQL注入",
+   "title_zh": "FortiAuth认证后SQL注入",
+   "summary_zh": "已认证攻击者可向FortiAuthenticator发起SQL注入，在底层数据库执行任意SQL命令。",
+   "published": "2026-11-11T22:17:23.753",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-256"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "按Fortinet公告升级FortiAuthenticator修复版。",
+   "repro_worthy": "一般",
+   "repro_note": "认证后向FortiAuthenticator接口注入SQL",
+   "impact_scope": "认证服务器，身份基础设施",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126241",
+   "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an authenticated attacker to execute unauthorized SQL commands on the underlying database."
+  },
+  {
+   "id": "CVE-2026-126252",
+   "tier": "high",
+   "title": "FortiAuth认证后SQL注入RCE",
+   "title_zh": "FortiAuth认证后SQL注入RCE",
+   "summary_zh": "已认证攻击者可通过HTTP请求对FortiAuthenticator实施SQL注入并执行未授权命令。",
+   "published": "2026-11-11T22:17:25.220",
+   "cvss": 8.3,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-266"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "按Fortinet公告升级FortiAuthenticator修复版。",
+   "repro_worthy": "一般",
+   "repro_note": "认证后通过HTTP请求触发SQL注入",
+   "impact_scope": "认证服务器，身份基础设施",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126252",
+   "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an authenticated attacker to execute unauthorized code or commands via http requests"
+  },
+  {
+   "id": "CVE-2026-126153",
+   "tier": "high",
+   "title": "FortiMail路径遍历未授权命令执行",
+   "title_zh": "FortiMail路径遍历未授权命令执行",
+   "summary_zh": "未授权攻击者通过构造请求利用FortiMail路径遍历，可能执行未授权命令。",
+   "published": "2026-11-11T22:17:13.050",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-205"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "按Fortinet公告升级FortiMail修复版。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权构造请求触发路径遍历命令执行",
+   "impact_scope": "邮件安全网关，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126153",
+   "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to execute unauthorized commands via crafted requests."
+  },
+  {
+   "id": "CVE-2026-126255",
+   "tier": "high",
+   "title": "FortiOS路径遍历未授权访问",
+   "title_zh": "FortiOS路径遍历未授权访问",
+   "summary_zh": "未授权攻击者可利用FortiOS/FortiPAM路径遍历缺陷访问受限目录文件。",
+   "published": "2026-11-11T22:17:25.623",
+   "cvss": 7.4,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-24"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-269"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "按Fortinet公告升级FortiOS/FortiPAM修复版。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权构造../filedir路径请求读取受限文件",
+   "impact_scope": "防火墙与特权访问设备",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126255",
+   "description": "A path traversal: '../filedir' vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13, FortiPAM 1.6 all versions, FortiPAM 1.5 all versions, FortiPAM 1.4 all versions, FortiPAM 1.3 all versions, FortiPAM 1.2 all versions, FortiPAM 1.1 all versions, FortiPAM 1.0 all versions may allow an unauthenticated attacker to bypass authentication via specially crafted credentials."
+  },
+  {
+   "id": "CVE-2026-126229",
+   "tier": "critical",
+   "title": "Fortinet FortiAnalyzer 越权(IDOR)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:21.447",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-244"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
    "repro_worthy": "值得",
-   "repro_note": "获取可控audience匿名令牌，调用服务密钥轮换端点安装自有签名密钥",
-   "impact_scope": "容器镜像仓库，私有镜像泄露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123710",
-   "description": "A flaw was found in Red Hat Quay. An unauthenticated client can obtain an anonymous registry token with an audience it controls, present that token to the service key rotation endpoint, and install its own approved signing key with no expiry. Registry tokens signed with that key are accepted for any repository, allowing read and write access to private images and replacement of repository tags."
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126229",
+   "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2 all versions, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2 all versions, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2 all versions, For…"
+  },
+  {
+   "id": "CVE-2026-126257",
+   "tier": "critical",
+   "title": "FortiAuth硬编码口令绕过",
+   "title_zh": "FortiAuth硬编码口令绕过",
+   "summary_zh": "未授权攻击者在特定条件下利用硬编码口令绕过凭据校验并获得访问。",
+   "published": "2026-11-11T22:17:25.930",
+   "cvss": 9.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-259"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-271"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "按Fortinet公告升级FortiAuthenticator修复版。",
+   "repro_worthy": "一般",
+   "repro_note": "硬编码口令绕过需特定外部条件",
+   "impact_scope": "认证服务器，身份基础设施",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126257",
+   "description": "A use of hard-coded password vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to bypass credential validation in certain circumstances outside of the attacker's control and gain unauthorized access."
+  },
+  {
+   "id": "CVE-2026-126238",
+   "tier": "high",
+   "title": "FortiAuth未授权功能越权",
+   "title_zh": "FortiAuth未授权功能越权",
+   "summary_zh": "未授权攻击者可绕过FortiAuthenticator授权检查，访问受限功能。",
+   "published": "2026-11-11T22:17:23.313",
+   "cvss": 8.6,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-253"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "按Fortinet公告升级FortiAuthenticator修复版。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权请求绕过授权访问受限功能",
+   "impact_scope": "认证服务器，身份基础设施",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126238",
+   "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to bypass authorization checks and gain unauthorized access to restricted functionality."
+  },
+  {
+   "id": "CVE-2026-126250",
+   "tier": "high",
+   "title": "Forti认证器未授权DoS",
+   "title_zh": "Forti认证器未授权DoS",
+   "summary_zh": "未授权攻击者发送特制HTTP请求即可触发拒绝服务，影响认证服务可用性。",
+   "published": "2026-11-11T22:17:24.960",
+   "cvss": 8.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-264"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商公告修复版本；限制HTTP接口暴露并限流",
+   "repro_worthy": "一般",
+   "repro_note": "未授权向HTTP接口发送特制请求，触发服务异常",
+   "impact_scope": "认证服务器,常暴露内网/边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126250",
+   "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to cause a denial of service via HTTP requests."
+  },
+  {
+   "id": "CVE-2026-126170",
+   "tier": "critical",
+   "title": "Fortinet FortiAnalyzer 未授权 CWE-116",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:15.340",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-116"
+   ],
+   "vuln_class": null,
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-219"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126170",
+   "description": "A improper encoding or escaping of output vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.2, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer Cloud 8.0.1 through 8.0.2, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer-BigData 7.6.0 through 7.6.2, FortiManager 8.0.0 through 8.0.2, FortiManager 7.6.0 through 7.6.7, FortiManager Cloud 8.0.1 through 8.0.2, FortiManager Cloud 7.6.0 through 7.6.7 may allow an unauthenticated attacker to execute unauthorized code or commands via a speci…"
+  },
+  {
+   "id": "CVE-2026-126159",
+   "tier": "high",
+   "title": "FortiMail隔离邮件IDOR",
+   "title_zh": "FortiMail隔离邮件IDOR",
+   "summary_zh": "未授权攻击者构造隔离释放请求，越权释放或删除任意邮箱隔离邮件。",
+   "published": "2026-11-11T22:17:13.857",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-211"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商公告修复版本；限制隔离释放接口暴露",
+   "repro_worthy": "一般",
+   "repro_note": "未授权调用隔离释放接口，替换邮箱/消息ID越权操作",
+   "impact_scope": "邮件网关,隔离邮件数据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126159",
+   "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to release or delete quarantined messages for arbitrary mailboxes via a crafted quarantine release request."
+  },
+  {
+   "id": "CVE-2026-126242",
+   "tier": "high",
+   "title": "Forti认证器授权错误可绕过认证",
+   "title_zh": "Forti认证器授权错误可绕过认证",
+   "summary_zh": "攻击者可在取得特定ID与数据后绕过认证，获得未授权访问及身份冒用。",
+   "published": "2026-11-11T22:17:23.893",
+   "cvss": 7.4,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-257"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商公告修复版本；限制认证接口并加强凭据校验",
+   "repro_worthy": "一般",
+   "repro_note": "需先取得特定ID与数据，再构造认证请求绕过校验",
+   "impact_scope": "认证服务器,身份冒用风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126242",
+   "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an attacker to bypass authentication and gain unauthorized access. Full impersonation however requires the attacker to obtain pre-required id and data via other means."
+  },
+  {
+   "id": "CVE-2026-126179",
+   "tier": "high",
+   "title": "Fortinet FortiAnalyzer 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:16.587",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-224"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126179",
+   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager…"
+  },
+  {
+   "id": "CVE-2026-126182",
+   "tier": "high",
+   "title": "Fortinet FortiManager 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:17.133",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-227"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126182",
+   "description": "A improper control of generation of code ('code injection') vulnerability in Fortinet FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4.11, FortiManager Cloud 7.2.1 through 7.2.12 may allow a remote authenticated attacker to execute unauthorized code or commands via crafted HTTP requests."
+  },
+  {
+   "id": "CVE-2026-126185",
+   "tier": "high",
+   "title": "Fortinet FortiAnalyzer 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:17.830",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-230"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126185",
+   "description": "A improper control of generation of code ('code injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.0 through 7.6.7, F…"
+  },
+  {
+   "id": "CVE-2026-126226",
+   "tier": "high",
+   "title": "Fortinet FortiAnalyzer 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:20.793",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-241"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126226",
+   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager…"
+  },
+  {
+   "id": "CVE-2026-126231",
+   "tier": "high",
+   "title": "Fortinet FortiAnalyzer 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:21.930",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-246"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126231",
+   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2 all versions, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2 all versions, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2 all versions, FortiManager Clo…"
+  },
+  {
+   "id": "CVE-2026-126236",
+   "tier": "high",
+   "title": "Fortinet FortiAnalyzer 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:22.960",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-251"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126236",
+   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 …"
+  },
+  {
+   "id": "CVE-2026-126166",
+   "tier": "high",
+   "title": "Fortinet FortiMail 参数拼接注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:14.803",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "参数拼接注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-218"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126166",
+   "description": "A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated remote attacker with domain admin or admin privileges to delete users of other tenant domains on a paired FortiAuthenticator, execute arbitrary code as root or arbitrary CLI commands, and read or write arbitrary files as root via crafted HTTP…"
+  },
+  {
+   "id": "CVE-2026-126168",
+   "tier": "high",
+   "title": "Fortinet FortiMail 参数拼接注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:15.067",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "参数拼接注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-218"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126168",
+   "description": "A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated remote attacker with domain admin or admin privileges to delete users of other tenant domains on a paired FortiAuthenticator, execute arbitrary code as root or arbitrary CLI commands, and read or write arbitrary files as root via crafted HTTP…"
+  },
+  {
+   "id": "CVE-2026-126169",
+   "tier": "high",
+   "title": "Fortinet FortiMail 参数拼接注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:15.200",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "参数拼接注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-218"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126169",
+   "description": "A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated remote attacker with domain admin or admin privileges to delete users of other tenant domains on a paired FortiAuthenticator, execute arbitrary code as root or arbitrary CLI commands, and read or write arbitrary files as root via crafted HTTP…"
+  },
+  {
+   "id": "CVE-2026-126219",
+   "tier": "high",
+   "title": "Fortinet FortiAnalyzer 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:19.610",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-236"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126219",
+   "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager Cloud 8.0.0, FortiManager Cloud 7.6.0 through 7.6.7, FortiManager Cloud 7.4.1 through 7.4…"
+  },
+  {
+   "id": "CVE-2026-126222",
+   "tier": "high",
+   "title": "Fortinet FortiAnalyzer 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:20.100",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-237"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126222",
+   "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.3 through 7.6.7, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.3 through 7.6.7, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.3 through 7.6.7, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.3 through 7.6.7 may allow an authenticated attacker with admin privileges to execute unauthorized code or comm…"
+  },
+  {
+   "id": "CVE-2026-126224",
+   "tier": "high",
+   "title": "Fortinet FortiAnalyzer 参数拼接注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:20.437",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "参数拼接注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-239"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126224",
+   "description": "A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 t…"
+  },
+  {
+   "id": "CVE-2026-126233",
+   "tier": "high",
+   "title": "Fortinet FortiAnalyzer 任意文件上传",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:22.377",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "任意文件上传"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-248"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126233",
+   "description": "A unrestricted upload of file with dangerous type vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager …"
+  },
+  {
+   "id": "CVE-2026-126235",
+   "tier": "high",
+   "title": "Fortinet FortiAnalyzer 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:22.753",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-250"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126235",
+   "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.2 through 7.6.7, FortiAnalyzer 7.4.7 through 7.4.11, FortiAnalyzer 7.2.10 through 7.2.12, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.2 through 7.6.7, FortiManager 7.4…"
+  },
+  {
+   "id": "CVE-2026-126213",
+   "tier": "high",
+   "title": "FortiAnalyzer SQL注入低分",
+   "title_zh": "FortiAnalyzer SQL注入低分",
+   "summary_zh": "攻击者可利用FortiAnalyzer/Manager及云版SQL注入缺陷影响数据或执行命令。",
+   "published": "2026-11-11T22:17:18.457",
+   "cvss": 7.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-233"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "按Fortinet公告升级FortiAnalyzer/Manager及云版。",
+   "repro_worthy": "一般",
+   "repro_note": "管理接口SQL注入；确认认证与版本条件",
+   "impact_scope": "日志/管理平台，内网核心",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126213",
+   "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4 all versions, FortiAnalyzer 7.2 all versions, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 …"
+  },
+  {
+   "id": "CVE-2026-126145",
+   "tier": "high",
+   "title": "FortiMail系统时间命令注入",
+   "title_zh": "FortiMail系统时间命令注入",
+   "summary_zh": "具系统时间读写权限的管理员可注入OS命令，以root执行任意代码。",
+   "published": "2026-11-11T22:17:11.580",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-197"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "升级至厂商公告修复版本；最小化管理员权限",
+   "repro_worthy": "一般",
+   "repro_note": "已认证管理员调用系统时间配置，注入命令参数",
+   "impact_scope": "邮件网关,已认证管理员",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126145",
+   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated administrator with system-time read-write access to execute unauthorized code or commands as root."
+  },
+  {
+   "id": "CVE-2026-126146",
+   "tier": "high",
+   "title": "FortiMail/Recorder命令注入",
+   "title_zh": "FortiMail/Recorder命令注入",
+   "summary_zh": "已认证高权限攻击者可注入命令，在FortiMail或FortiRecorder执行未授权代码。",
+   "published": "2026-11-11T22:17:11.720",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-198"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "升级FortiMail/Recorder至修复版本；最小化管理员权限",
+   "repro_worthy": "一般",
+   "repro_note": "已认证高权限调用命令接口，构造恶意参数执行",
+   "impact_scope": "邮件/录像管理设备,高权限",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126146",
+   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.4, FortiMail 7.4.0 through 7.4.6, FortiMail 7.2.0 through 7.2.9, FortiRecorder 7.6.0, FortiRecorder 7.2.0 through 7.2.11, FortiRecorder 7.0.0 through 7.0.6 may allow an authenticated privileged attacker to execute unauthorized code or commands via a specifically crafted archive account configuration."
+  },
+  {
+   "id": "CVE-2026-126158",
+   "tier": "high",
+   "title": "FortiMail HTTP命令注入RCE",
+   "title_zh": "FortiMail HTTP命令注入RCE",
+   "summary_zh": "已认证管理员可通过特制HTTP请求注入OS命令，以root执行任意代码。",
+   "published": "2026-11-11T22:17:13.723",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-210"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "升级至厂商公告修复版本；最小化管理员权限",
+   "repro_worthy": "一般",
+   "repro_note": "已认证管理员向HTTP接口注入OS命令参数",
+   "impact_scope": "邮件网关,已认证管理员",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126158",
+   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1 may allow an authenticated administrator to execute unauthorized code or commands as root via specially crafted HTTP requests."
+  },
+  {
+   "id": "CVE-2026-126167",
+   "tier": "high",
+   "title": "FortiMail域管命令注入",
+   "title_zh": "FortiMail域管命令注入",
+   "summary_zh": "已认证域管或管理员可注入命令，删除其他租户用户并执行任意操作。",
+   "published": "2026-11-11T22:17:14.940",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-218"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "升级至厂商公告修复版本；限制域管权限并审计租户操作",
+   "repro_worthy": "一般",
+   "repro_note": "已认证域管调用用户管理接口，注入恶意命令参数",
+   "impact_scope": "邮件网关,域管高权限",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126167",
+   "description": "A improper neutralization of special elements used in a command ('command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated remote attacker with domain admin or admin privileges to delete users of other tenant domains on a paired FortiAuthenticator, execute arbitrary code as root or arbitrary CLI commands, and read or write arbitrary files as root via crafted HTT…"
+  },
+  {
+   "id": "CVE-2026-126211",
+   "tier": "high",
+   "title": "Fortinet FortiAnalyzer 权限提升",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:18.100",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升"
+   ],
+   "vuln_class": "提权",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-231"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126211",
+   "description": "A improper privilege management vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.1 through 7.6.7, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.1 through 7.6.8, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.1 through 7.6.7, FortiManager Cloud 8.0.0 through 8.0.1, FortiManager Cloud 7.6.1 through 7.6.8 may allow an authenticated privileged attacker to elevate their privileges via crafted JSON-RPC request."
+  },
+  {
+   "id": "CVE-2026-126249",
+   "tier": "high",
+   "title": "Fortinet FortiAuthenticator 权限提升",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:24.823",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升"
+   ],
+   "vuln_class": "提权",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-263"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126249",
+   "description": "A improper privilege management vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an authenticated attacker to escalate privileges."
+  },
+  {
+   "id": "CVE-2026-67449",
+   "tier": "critical",
+   "title": "TUS 未授权 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:28.257",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取",
+    "缺失认证"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Portabase/portabase/commit/8dcb406790728fbdbf758ec88bf000af79498fc1"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Portabase/portabase/pull/355"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Portabase/portabase/releases/tag/1.21.2"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67449",
+   "description": "Portabase is a database backup and restore tool for PostgreSQL, MySQL, MsSQL, MariaDB, Firebird SQL, SQLite, MongoDB, Redis, Files and Docker Volume. Prior to version 1.21.2, a path traversal in the TUS upload webhook handler (app/api/tus/hooks/route.ts) allowed an unauthenticated attacker to overwrite arbitrary files under the private data directory, including /data/private/keys/master_key.bin (the AES-256-GCM master key). This issue has been patched in version 1.21.2."
+  },
+  {
+   "id": "CVE-2026-126768",
+   "tier": "critical",
+   "title": "OpsTree REMS 未授权 认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:37.140",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/neelkotnis/4676fe10859d84900025cf52188dae46"
+    },
+    {
+     "label": "参考",
+     "url": "https://opstree.com/rems-ai-powered-observability/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/opstree-rems-through-1.0.0-authentication-bypass-via-is-local-auth-flag"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126768",
+   "description": "OpsTree REMS through 1.0.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to obtain valid JWTs by setting the client-controlled is_local_auth field. Attackers can send a POST /api/v1/user/login/ request for the admin account with an invalid password and is_local_auth true to gain SuperUser administrative access."
+  },
+  {
+   "id": "CVE-2026-126797",
+   "tier": "critical",
+   "title": "NextScan 未授权 CWE-321",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T21:16:43.027",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-321"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/tongcheng-security-team/NextScan/blob/v1.2.0/docker/docker-compose.yaml"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/tongcheng-security-team/NextScan/issues/48"
+    },
+    {
+     "label": "参考",
+     "url": "https://hub.docker.com/r/lysec/ns-admin"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126797",
+   "description": "NextScan 1.1.0 through 1.2.0 contains an authentication bypass vulnerability in ns-admin that allows unauthenticated attackers to forge administrator tokens using a hardcoded JWT signing key. Attackers can sign an HS256 X-Access-Token carrying the public super administrator role ID to gain full access to user management, scan tasks and stored vulnerability results."
+  },
+  {
+   "id": "CVE-2026-126812",
+   "tier": "critical",
+   "title": "Unauthenticated 未授权 CWE-258",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T21:16:45.690",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-258"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/blob/v4.3.6/docker-examples/database.env"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/blob/v4.3.6/docker-examples/docker-compose-smtp.yml#L14-L24"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/blueprintue/blueprintue-self-hosted-edition/commit/e6a6e1d4c2f22efbbabf9fb31ec479544405b469"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126812",
+   "description": "blueprintUE Self-Hosted Edition before 4.3.7 contains an insecure default configuration in its Docker Compose examples that sets MYSQL_ALLOW_EMPTY_PASSWORD=yes in database.env and publishes MariaDB on port 3306. Unauthenticated attackers reaching the Docker host on port 3306 can log in as root without a password to read, modify, or delete user accounts, blueprints, and all databases."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "nodejs/node",
-   "sha": "633df2896fef9c5ddbfd01fb90db12fad6568f98",
-   "url": "https://github.com/nodejs/node/commit/633df2896fef9c5ddbfd01fb90db12fad6568f98",
-   "title": "tls: fix remotely reachable TLS server crash",
-   "date": "2026-11-11T16:33:40",
-   "score": 4,
+   "repo": "php/php-src",
+   "sha": "8eb02dbaa339613075d1c9db9f130eb7e4c8af73",
+   "url": "https://github.com/php/php-src/commit/8eb02dbaa339613075d1c9db9f130eb7e4c8af73",
+   "title": "Fix GH-13230: phpdbg use-after-free at shutdown",
+   "date": "2026-11-11T22:41:27",
+   "score": 2,
    "matched": [
-    "CVE",
-    "崩溃"
+    "UAF"
    ],
-   "cve": "CVE-2026-126051"
+   "cve": null
   },
   {
-   "repo": "nodejs/node",
-   "sha": "ab6a046cc296e30e999e4b4063467cc989979534",
-   "url": "https://github.com/nodejs/node/commit/ab6a046cc296e30e999e4b4063467cc989979534",
-   "title": "permission: do not leak denied descendants in recursive fs.watch",
-   "date": "2026-11-11T16:33:39",
-   "score": 4,
+   "repo": "php/php-src",
+   "sha": "0dbc4a7953a8aca38d0cf04fa4fb4ac076f00419",
+   "url": "https://github.com/php/php-src/commit/0dbc4a7953a8aca38d0cf04fa4fb4ac076f00419",
+   "title": "Update NEWS for use-after-free fixes in ext/openssl",
+   "date": "2026-11-11T18:48:09",
+   "score": 2,
    "matched": [
-    "CVE",
-    "泄露"
+    "UAF"
    ],
-   "cve": "CVE-2026-123829"
+   "cve": null
   },
   {
-   "repo": "nodejs/node",
-   "sha": "c207dbf0a2bf6831c84b19e799be2c12abb69f02",
-   "url": "https://github.com/nodejs/node/commit/c207dbf0a2bf6831c84b19e799be2c12abb69f02",
-   "title": "2026-11-11, Version 26.13.1 'Lithium' (LTS)",
-   "date": "2026-11-11T16:33:40",
-   "score": 3,
+   "repo": "php/php-src",
+   "sha": "34c2d2840ba901f4c4d1f7a4574b7c1ff1cc3601",
+   "url": "https://github.com/php/php-src/commit/34c2d2840ba901f4c4d1f7a4574b7c1ff1cc3601",
+   "title": "ext/openssl: fix use after free when `session_new_cb` callback closes stream",
+   "date": "2026-11-11T18:44:10",
+   "score": 2,
    "matched": [
-    "CVE"
+    "UAF"
    ],
-   "cve": "CVE-2026-123863"
+   "cve": null
   },
   {
-   "repo": "nodejs/node",
-   "sha": "0d6d38f1e5370e9bdd289b6d87da0e57e6f942f4",
-   "url": "https://github.com/nodejs/node/commit/0d6d38f1e5370e9bdd289b6d87da0e57e6f942f4",
-   "title": "http2: retain streams during pending writes",
-   "date": "2026-11-11T16:33:39",
-   "score": 3,
+   "repo": "php/php-src",
+   "sha": "010d6e2277dc7bce68627f541e638412425e4aef",
+   "url": "https://github.com/php/php-src/commit/010d6e2277dc7bce68627f541e638412425e4aef",
+   "title": "ext/openssl: fix use after free when `session_get_cb` callback closes stream",
+   "date": "2026-11-11T18:44:10",
+   "score": 2,
    "matched": [
-    "CVE"
+    "UAF"
    ],
-   "cve": "CVE-2026-123874"
+   "cve": null
   },
   {
-   "repo": "nodejs/node",
-   "sha": "3f3c59317ece53db4b8c8aef19a1d3c6ad5bf654",
-   "url": "https://github.com/nodejs/node/commit/3f3c59317ece53db4b8c8aef19a1d3c6ad5bf654",
-   "title": "http2: charge inbound DATA retained by streams to maxSessionMemory",
-   "date": "2026-11-11T16:33:39",
-   "score": 3,
+   "repo": "php/php-src",
+   "sha": "97ce0bf86bfcbebb865f15f594d2f05da908dccd",
+   "url": "https://github.com/php/php-src/commit/97ce0bf86bfcbebb865f15f594d2f05da908dccd",
+   "title": "ext/openssl: fix use after free when `psk_server_cb` callback closes stream",
+   "date": "2026-11-11T18:44:09",
+   "score": 2,
    "matched": [
-    "CVE"
+    "UAF"
    ],
-   "cve": "CVE-2026-123868"
+   "cve": null
   },
   {
-   "repo": "nodejs/node",
-   "sha": "5ebf6adc4bf92318c5954124bde9aacceb2f572e",
-   "url": "https://github.com/nodejs/node/commit/5ebf6adc4bf92318c5954124bde9aacceb2f572e",
-   "title": "tls: disable resumption for mTLS with no session id context",
-   "date": "2026-11-11T16:33:39",
-   "score": 3,
+   "repo": "php/php-src",
+   "sha": "8309d9f12e9a9caac9be9c7e8c6f11100eae0e6b",
+   "url": "https://github.com/php/php-src/commit/8309d9f12e9a9caac9be9c7e8c6f11100eae0e6b",
+   "title": "ext/openssl: fix use after free when `psk_client_cb` callback closes stream",
+   "date": "2026-11-11T18:44:09",
+   "score": 2,
    "matched": [
-    "CVE"
+    "UAF"
    ],
-   "cve": "CVE-2026-123872"
+   "cve": null
   },
   {
-   "repo": "nodejs/node",
-   "sha": "20fd568f00072a10dbbfbb7145481a3cf56ae45d",
-   "url": "https://github.com/nodejs/node/commit/20fd568f00072a10dbbfbb7145481a3cf56ae45d",
-   "title": "https: isolate Agent TLS policy keys",
-   "date": "2026-11-11T16:33:39",
-   "score": 3,
+   "repo": "php/php-src",
+   "sha": "e60f0c28a15dd30e7144f9a15522578da47c38f8",
+   "url": "https://github.com/php/php-src/commit/e60f0c28a15dd30e7144f9a15522578da47c38f8",
+   "title": "ext/openssl: fix use after free when `early_data_cb` callback closes stream",
+   "date": "2026-11-11T18:43:52",
+   "score": 2,
    "matched": [
-    "CVE"
+    "UAF"
    ],
-   "cve": "CVE-2026-123877"
-  },
-  {
-   "repo": "nodejs/node",
-   "sha": "519c65ec6a1c9d4553b6bcac2144f511c8a3c8bd",
-   "url": "https://github.com/nodejs/node/commit/519c65ec6a1c9d4553b6bcac2144f511c8a3c8bd",
-   "title": "http: redact proxy credentials in invalid proxy URL errors",
-   "date": "2026-11-11T16:33:39",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-123871"
-  },
-  {
-   "repo": "nodejs/node",
-   "sha": "9c6e6efa33b32862097534103f2c1b8784a11724",
-   "url": "https://github.com/nodejs/node/commit/9c6e6efa33b32862097534103f2c1b8784a11724",
-   "title": "http2: retain buffers until socket writes finish",
-   "date": "2026-11-11T16:33:38",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-123866"
-  },
-  {
-   "repo": "nodejs/node",
-   "sha": "a69953c0c11ac9fd4bc860a529a87747bb130713",
-   "url": "https://github.com/nodejs/node/commit/a69953c0c11ac9fd4bc860a529a87747bb130713",
-   "title": "tls: apply the CA of SNI contexts without a certificate",
-   "date": "2026-11-11T16:33:38",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-123867"
+   "cve": null
   }
  ]
 }
