@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-10 22:25 UTC · 共 **179** 条(强烈推荐 33 / 值得 146)
+**更新**: 2026-11-11 02:59 UTC · 共 **183** 条(强烈推荐 35 / 值得 148)
 
 ---
 
@@ -175,6 +175,14 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/633633) · [参考](https://hackerone.com/reports/4093475)
 
+### FortiManager未授权RCE
+[CVE-2026-126261](https://nvd.nist.gov/vuln/detail/CVE-2026-126261) | P1 重点关注 | 边界设备/VPN | CVSS 9.8 | 披露 2026-11-10 | 入库 2026-11-11
+未授权攻击者只要可达FGFM端口，即可发送特制报文执行代码或命令，完全接管FortiManager。
+复现: 强烈推荐 — 直连FGFM端口发送特制报文，无需认证即可触发命令执行 · 影响面: 边界管理设备，FGFM端口常暴露
+处置: 按厂商公告升级修复版本，并限制FGFM端口仅对可信设备开放
+影响: Fortinet(产品与版本待 NVD/厂商补充)
+参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-275)
+
 ### API Connect签名校验绕过
 [CVE-2026-17301](https://nvd.nist.gov/vuln/detail/CVE-2026-17301) | P0 立即处置 | CVSS 9.8 | EPSS 0.4% | 披露 2026-11-07 | 入库 2026-11-07
 未认证攻击者可构造签名校验缺陷的请求绕过认证，获得未授权访问。
@@ -262,6 +270,14 @@ PoC 源码可用
 影响: Citrix(产品与版本待 NVD/厂商补充)
 PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker)
 参考: [参考](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697191)
+
+### Ivanti CSA缺失认证致证书篡改
+[CVE-2026-121683](https://nvd.nist.gov/vuln/detail/CVE-2026-121683) | P1 重点关注 | 边界设备/VPN | CVSS 9.4 | 披露 2026-11-10 | 入库 2026-11-11
+远程未授权攻击者可访问CSA 5.0.8相关接口，增删任意受信任EPM Core证书，劫持信任链。
+复现: 强烈推荐 — 直接调用CSA的EPM Core证书管理接口，不带认证即可增删证书 · 影响面: 安全运维边界设备，常暴露公网
+处置: 升级Ivanti CSA修复版本，并审计EPM Core受信任证书列表
+影响: Ivanti(产品与版本待 NVD/厂商补充)
+参考: [参考](https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-CSA-CVE-2026-121683?language=en_US)
 
 ### Teltonika RUTOS未授权命令执行
 [CVE-2026-82104](https://nvd.nist.gov/vuln/detail/CVE-2026-82104) | P1 重点关注 | CVSS 9.4 | EPSS 0.4% | 披露 2026-10-30 | 入库 2026-10-31
@@ -391,6 +407,16 @@ PoC: [adriyansyah-mf/cve-2026-110447 0★(有源码)](https://github.com/adriyan
 影响: adobe commerce <2.4.4; adobe commerce_b2b <1.3.3
 PoC: [dinosn/cve-2026-71362-magento-lab 5★(有源码)](https://github.com/dinosn/cve-2026-71362-magento-lab)
 参考: [厂商通告](https://helpx.adobe.com/security/products/magento/apsb26-92.html)
+
+### Chrome XML UAF致沙箱内代码执行
+[CVE-2026-125350](https://nvd.nist.gov/vuln/detail/CVE-2026-125350) | P0 立即处置 | CVSS 8.8 | 披露 2026-11-10 | 入库 2026-11-11
+🔥 KEV 在野利用,限期 2026-11-24 | PoC 源码可用 | 开源,可源码审计复现
+远程攻击者诱导用户打开特制HTML页面，触发XML释放后重用，在沙箱内执行任意代码。
+复现: 值得 — 特制HTML页面触发XML对象UAF，需渲染进程环境验证 · 影响面: 桌面浏览器，用户量大且常联网
+处置: 升级Chrome至157.0.8103.50或更高版本
+影响: google chrome <157.0.8103.50
+PoC: [ashrafzaryouh/CVE-2026-125350 1★(仅README)](https://github.com/ashrafzaryouh/CVE-2026-125350) · [Frostmoon39206/CVE-2026-125350-PoC 0★(有源码)](https://github.com/Frostmoon39206/CVE-2026-125350-PoC)
+参考: [厂商通告](https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_018223192.html) · [参考](https://issues.chromium.org/issues/582442907) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-125350)
 
 ### 微软Windows Shell命令注入漏洞
 [CVE-2026-96951](https://nvd.nist.gov/vuln/detail/CVE-2026-96951) | P0 立即处置 | 操作系统 | CVSS 8.8 | 披露 2026-10-13 | 入库 2026-10-13
@@ -689,6 +715,14 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — ioos服务sub_416D88，group_id/group_name参数拼接命令 · 影响面: 无线AP/路由器，边界暴露面
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
+
+### Ivanti EPM核心SQL注入RCE
+[CVE-2026-121653](https://nvd.nist.gov/vuln/detail/CVE-2026-121653) | P1 重点关注 | 边界设备/VPN | CVSS 9.8 | 披露 2026-11-10 | 入库 2026-11-11
+未授权远程攻击者向EPM核心SQL参数注入语句，进而以服务权限执行代码。
+复现: 值得 — 未授权访问EPM核心SQL参数，注入后执行系统命令 · 影响面: 内网终端管理服务器，控制面高价值
+处置: 升级至2024 SU8；限制EPM管理端口暴露面
+影响: Ivanti(产品与版本待 NVD/厂商补充)
+参考: [参考](https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Endpoint-Manager-EPM-November-2026?language=en_US)
 
 ### Jpom查询条件注入认证绕过致RCE
 [CVE-2026-120201](https://nvd.nist.gov/vuln/detail/CVE-2026-120201) | P1 重点关注 | CVSS 9.8 | EPSS 2.2% | 披露 2026-10-31 | 入库 2026-11-10

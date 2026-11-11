@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-10T22:25:52+00:00",
- "count": 179,
- "count_recommended": 33,
+ "updated_at": "2026-11-11T02:59:25+00:00",
+ "count": 183,
+ "count_recommended": 35,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -858,6 +858,42 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-126261",
+   "title": "FortiManager未授权RCE",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-10",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "直连FGFM端口发送特制报文，无需认证即可触发命令执行",
+   "impact_scope": "边界管理设备，FGFM端口常暴露",
+   "action_zh": "按厂商公告升级修复版本，并限制FGFM端口仅对可信设备开放",
+   "summary_zh": "未授权攻击者只要可达FGFM端口，即可发送特制报文执行代码或命令，完全接管FortiManager。",
+   "category": "边界设备/VPN",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-275"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126261",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-17301",
    "title": "API Connect签名校验绕过",
    "first_seen": "2026-11-07",
@@ -1273,6 +1309,42 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107406",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-121683",
+   "title": "Ivanti CSA缺失认证致证书篡改",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-10",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "直接调用CSA的EPM Core证书管理接口，不带认证即可增删证书",
+   "impact_scope": "安全运维边界设备，常暴露公网",
+   "action_zh": "升级Ivanti CSA修复版本，并审计EPM Core受信任证书列表",
+   "summary_zh": "远程未授权攻击者可访问CSA 5.0.8相关接口，增删任意受信任EPM Core证书，劫持信任链。",
+   "category": "边界设备/VPN",
+   "cvss": 9.4,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Ivanti(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-CSA-CVE-2026-121683?language=en_US"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121683",
    "change_note": null
   },
   {
@@ -1912,6 +1984,59 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-71362",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-125350",
+   "title": "Chrome XML UAF致沙箱内代码执行",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": true,
+   "published": "2026-11-10",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "特制HTML页面触发XML对象UAF，需渲染进程环境验证",
+   "impact_scope": "桌面浏览器，用户量大且常联网",
+   "action_zh": "升级Chrome至157.0.8103.50或更高版本",
+   "summary_zh": "远程攻击者诱导用户打开特制HTML页面，触发XML释放后重用，在沙箱内执行任意代码。",
+   "category": null,
+   "cvss": 8.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "kev": true,
+   "kev_due": "2026-11-24",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/ashrafzaryouh/CVE-2026-125350",
+     "label": "ashrafzaryouh/CVE-2026-125350 1★(仅README)"
+    },
+    {
+     "url": "https://github.com/Frostmoon39206/CVE-2026-125350-PoC",
+     "label": "Frostmoon39206/CVE-2026-125350-PoC 0★(有源码)"
+    }
+   ],
+   "affected": "google chrome <157.0.8103.50",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_018223192.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://issues.chromium.org/issues/582442907"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-125350"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125350",
    "change_note": null
   },
   {
@@ -3631,6 +3756,42 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120228",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-121653",
+   "title": "Ivanti EPM核心SQL注入RCE",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-10",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问EPM核心SQL参数，注入后执行系统命令",
+   "impact_scope": "内网终端管理服务器，控制面高价值",
+   "action_zh": "升级至2024 SU8；限制EPM管理端口暴露面",
+   "summary_zh": "未授权远程攻击者向EPM核心SQL参数注入语句，进而以服务权限执行代码。",
+   "category": "边界设备/VPN",
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Ivanti(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Endpoint-Manager-EPM-November-2026?language=en_US"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121653",
    "change_note": null
   },
   {
