@@ -3,459 +3,470 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    <lastBuildDate>Wed, 11 Nov 2026 23:32:57 +0000</lastBuildDate>
-    <item>
-      <title>[critical]FortiMail路径遍历未授权执行命令</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126147</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126147-2026-11-11</guid>
-      <description>CVE-2026-126147 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.8 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
-A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 throug…
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]FortiOS认证绕过可未授权利用</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126253</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126253-2026-11-11</guid>
-      <description>CVE-2026-126253 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.3 · 类型 CWE-305 · 难度 低(需相邻网络·免认证)
-A authentication bypass by primary weakness vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, Fo…
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]FortiMail认证缺陷可越权操作隔离邮件</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126160</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126160-2026-11-11</guid>
-      <description>CVE-2026-126160 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 8.2 · 类型 认证绕过 · 难度 低(远程·免认证)
-A improper authentication vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 a…
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]FortiMail认证算法缺陷致账号接管</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126151</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126151-2026-11-11</guid>
-      <description>CVE-2026-126151 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.5 · 类型 CWE-303 · 难度 低(远程·免认证)
-A incorrect implementation of authentication algorithm vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 t…
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]FortiAnalyzer SQL注入高危</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126262</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126262-2026-11-11</guid>
-      <description>CVE-2026-126262 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
-A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyze…
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]FortiMail未授权SQL注入执行命令</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126164</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126164-2026-11-11</guid>
-      <description>CVE-2026-126164 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.4 · 类型 SQL注入 · 难度 低(远程·免认证)
-A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 …
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
+    <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    <lastBuildDate>Thu, 12 Nov 2026 04:12:30 +0000</lastBuildDate>
     <item>
       <title>[critical]FortiMail HA命令注入未授权RCE</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126148</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126148-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126148-2026-11-12</guid>
       <description>CVE-2026-126148 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
 A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail …
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+信号: 有 PoC
+[googlesky/CVE-2026-126148 0★(有源码)](https://github.com/googlesky/CVE-2026-126148)</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]FortiMail IBE会话劫持未授权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126155</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126155-2026-11-11</guid>
-      <description>CVE-2026-126155 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.1 · 类型 授权错误 · 难度 低(远程·免认证)
-A incorrect authorization vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 a…
+      <title>[critical]FortiMail SQL注入未授权命令执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126164</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126164-2026-11-12</guid>
+      <description>CVE-2026-126164 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.4 · 类型 SQL注入 · 难度 低(远程·免认证)
+A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 …
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]FortiMail IBE账户接管未授权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126156</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126156-2026-11-11</guid>
-      <description>CVE-2026-126156 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.1 · 类型 越权(IDOR) · 难度 低(远程·免认证)
-A authorization bypass through user-controlled key vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 throu…
+      <title>[critical]Fortinet管理组件SQL注入未授权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126262</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126262-2026-11-12</guid>
+      <description>CVE-2026-126262 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
+A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyze…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]FortiMail IBE认证绕过未授权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126157</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126157-2026-11-11</guid>
-      <description>CVE-2026-126157 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.1 · 类型 认证绕过 · 难度 低(远程·免认证)
-A improper authentication vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 a…
+      <title>[high]FortiMail 路径遍历未授权命令执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126153</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126153-2026-11-12</guid>
+      <description>CVE-2026-126153 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.5 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 throug…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]FortiAuth未授权认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126251</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126251-2026-11-11</guid>
-      <description>CVE-2026-126251 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.1 · 类型 授权错误 · 难度 低(远程·免认证)
-A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an attacker to byp…
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]Forti管理平台认证欺骗绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126184</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126184-2026-11-11</guid>
-      <description>CVE-2026-126184 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 8.2 · 类型 认证欺骗 · 难度 低(远程·免认证)
-A authentication bypass by spoofing vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through …
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]FortiOS HA缺失认证可获超管</title>
+      <title>[critical]FortiOS HA缺失认证可超级管理员执行</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126259</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126259-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126259-2026-11-12</guid>
       <description>CVE-2026-126259 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
 A missing authentication for critical function vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]FortiMail等命令注入RCE</title>
+      <title>[critical]FortiMail IBE授权错误未授权会话</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126155</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126155-2026-11-12</guid>
+      <description>CVE-2026-126155 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.1 · 类型 授权错误 · 难度 低(远程·免认证)
+A incorrect authorization vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 a…
+信号:</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FortiMail IBE越权未授权接管账号</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126156</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126156-2026-11-12</guid>
+      <description>CVE-2026-126156 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.1 · 类型 越权(IDOR) · 难度 低(远程·免认证)
+A authorization bypass through user-controlled key vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 throu…
+信号:</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FortiMail认证缺陷未授权访问邮箱</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126157</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126157-2026-11-12</guid>
+      <description>CVE-2026-126157 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.1 · 类型 认证绕过 · 难度 低(远程·免认证)
+A improper authentication vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 a…
+信号:</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FortiAuth授权错误认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126251</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126251-2026-11-12</guid>
+      <description>CVE-2026-126251 · P0 立即处置 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.1 · 类型 授权错误 · 难度 低(远程·免认证)
+A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an attacker to byp…
+信号:</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]FortiMail认证算法账户接管</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126151</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126151-2026-11-12</guid>
+      <description>CVE-2026-126151 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.5 · 类型 CWE-303 · 难度 低(远程·免认证)
+A incorrect implementation of authentication algorithm vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 t…
+信号:</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Fortinet多产品命令注入高危</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126144</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126144-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126144-2026-11-12</guid>
       <description>CVE-2026-126144 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 8.8 · 类型 命令注入(RCE) · 难度 低(远程·需低权限)
 A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail …
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]FortiMail认证后SQL注入</title>
+      <title>[high]FortiAuth授权错误未授权访问功能</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126238</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126238-2026-11-12</guid>
+      <description>CVE-2026-126238 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 8.6 · 类型 授权错误 · 难度 低(远程·免认证)
+A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated…
+信号:</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]FortiMail SQL注入认证后RCE</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126263</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126263-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126263-2026-11-12</guid>
       <description>CVE-2026-126263 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
 A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 …
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]FortiAnalyzer SQL注入多版本</title>
+      <title>[high]FortiAnalyzer SQL注入高危</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126175</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126175-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126175-2026-11-12</guid>
       <description>CVE-2026-126175 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 8.8 · 类型 SQL注入 · 难度 低(远程·需低权限)
 A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyze…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]FortiAuth认证后SQL注入</title>
+      <title>[high]FortiAuth SQL注入执行SQL</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126241</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126241-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126241-2026-11-12</guid>
       <description>CVE-2026-126241 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 8.8 · 类型 SQL注入 · 难度 低(远程·需低权限)
 A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAu…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]FortiAuth认证后SQL注入RCE</title>
+      <title>[high]FortiAuth SQL注入认证后命令执行</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126252</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126252-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126252-2026-11-12</guid>
       <description>CVE-2026-126252 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 8.3 · 类型 SQL注入 · 难度 低(远程·需低权限)
 A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAu…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]FortiMail路径遍历未授权命令执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126153</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126153-2026-11-11</guid>
-      <description>CVE-2026-126153 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.5 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
-A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 throug…
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]FortiOS路径遍历未授权访问</title>
+      <title>[high]FortiOS路径遍历未授权读取</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126255</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126255-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126255-2026-11-12</guid>
       <description>CVE-2026-126255 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.4 · 类型 CWE-24 · 难度 低(远程·利用条件苛刻·免认证)
 A path traversal: '../filedir' vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 t…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[critical]Fortinet FortiAnalyzer 越权(IDOR)</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126229</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126229-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126229-2026-11-12</guid>
       <description>CVE-2026-126229 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.1 · 类型 越权(IDOR) · 难度 中(远程·需高权限)
 A authorization bypass through user-controlled key vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]FortiAuth硬编码口令绕过</title>
+      <title>[critical]FortiAuth硬编码密码可认证绕过</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126257</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126257-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126257-2026-11-12</guid>
       <description>CVE-2026-126257 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.0 · 类型 CWE-259 · 难度 低(远程·利用条件苛刻·免认证)
 A use of hard-coded password vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthentica…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]FortiAuth未授权功能越权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126238</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126238-2026-11-11</guid>
-      <description>CVE-2026-126238 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 8.6 · 类型 授权错误 · 难度 低(远程·免认证)
-A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated…
+      <title>[critical]Authlib 未授权 输入校验缺失</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-96760</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-96760-2026-11-12</guid>
+      <description>CVE-2026-96760 · P1 重点关注 · 披露 2026-09-28 · CVSS 9.8 · EPSS 0.4%,前 38% · 类型 输入校验缺失/签名校验错误 · 难度 低(远程·免认证)
+Authlib (v1.8.0 and below) contains a signature verification bypass vulnerability.
+信号: 有 PoC
+[Exploit-Index advisories/GHSA-6v38-4h7w-rj9h(未验证)](https://github.com/advisories/GHSA-6v38-4h7w-rj9h) · [Exploit-Index uziii2208/CVE-2026-96760(未验证)(有源码)](https://github.com/uziii2208/CVE-2026-96760)</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]FortiAnalyzer认证欺骗绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126184</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126184-2026-11-12</guid>
+      <description>CVE-2026-126184 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 8.2 · 类型 认证欺骗 · 难度 低(远程·免认证)
+A authentication bypass by spoofing vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through …
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]Forti认证器未授权DoS</title>
+      <title>[high]Forti认证器授权错误DoS</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126250</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126250-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126250-2026-11-12</guid>
       <description>CVE-2026-126250 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 8.2 · 类型 授权错误 · 难度 低(远程·免认证)
 A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[critical]Fortinet FortiAnalyzer 未授权 CWE-116</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126170</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126170-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126170-2026-11-12</guid>
       <description>CVE-2026-126170 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.8 · 类型 CWE-116 · 难度 低(远程·免认证)
 A improper encoding or escaping of output vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.2, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer Cloud 8.…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]FortiMail隔离邮件IDOR</title>
+      <title>[critical]Fortinet FortiOS CWE-197</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126254</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126254-2026-11-12</guid>
+      <description>CVE-2026-126254 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.6 · 类型 CWE-197 · 难度 低(远程·需低权限)
+A numeric truncation error vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 throu…
+信号:</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]FortiMail隔离邮件越权操作</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126159</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126159-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126159-2026-11-12</guid>
       <description>CVE-2026-126159 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.5 · 类型 越权(IDOR) · 难度 低(远程·免认证)
 A authorization bypass through user-controlled key vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 throu…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]Forti认证器授权错误可绕过认证</title>
+      <title>[high]Forti认证器认证绕过</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126242</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126242-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126242-2026-11-12</guid>
       <description>CVE-2026-126242 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.4 · 类型 授权错误 · 难度 低(远程·利用条件苛刻·免认证)
 A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an attacker to byp…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]Fortinet FortiAnalyzer 命令注入(RCE)</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126179</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126179-2026-11-11</guid>
-      <description>CVE-2026-126179 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 命令注入(RCE) · 难度 中(远程·需高权限)
-A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 …
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiManager 代码注入(RCE)</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126182</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126182-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126182-2026-11-12</guid>
       <description>CVE-2026-126182 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 代码注入(RCE) · 难度 中(远程·需高权限)
 A improper control of generation of code ('code injection') vulnerability in Fortinet FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiM…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiAnalyzer 代码注入(RCE)</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126185</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126185-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126185-2026-11-12</guid>
       <description>CVE-2026-126185 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 代码注入(RCE) · 难度 中(远程·需高权限)
 A improper control of generation of code ('code injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, Fort…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiAnalyzer 命令注入(RCE)</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126226</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126226-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126226-2026-11-12</guid>
       <description>CVE-2026-126226 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 命令注入(RCE) · 难度 中(远程·需高权限)
 A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 …
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiAnalyzer 命令注入(RCE)</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126231</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126231-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126231-2026-11-12</guid>
       <description>CVE-2026-126231 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 命令注入(RCE) · 难度 中(远程·需高权限)
 A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 …
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiAnalyzer 命令注入(RCE)</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126236</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126236-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126236-2026-11-12</guid>
       <description>CVE-2026-126236 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 命令注入(RCE) · 难度 中(远程·需高权限)
 A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiA…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Fortinet FortiMail 未授权 CWE-640</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126150</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126150-2026-11-12</guid>
+      <description>CVE-2026-126150 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 9.1 · 类型 CWE-640 · 难度 低(远程·免认证)
+A weak password recovery mechanism for forgotten password vulnerability in Fortinet FortiMail 8.0.0, FortiMail 7.6.0 through 7.6.5, FortiMail 7.4.0 through 7.4.…
+信号:</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]GitLab证书校验缺陷可加载替代文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126609</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126609-2026-11-12</guid>
+      <description>CVE-2026-126609 · P2 保持关注 · 披露 2026-11-11 · 组件 邮件系统 · CVSS 7.5 · 类型 证书校验缺陷 · 难度 中(远程·利用条件苛刻·需低权限)
+When every byte of the name outside ASCII also reads as UTF-8 - for example U+00C3 U+00A9, the bytes C3 A9 on code page 1252, which are U+00E9 in UTF-8 - the da…
+信号: 命中关注词 openssl</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]GitLab证书校验缺陷本地文件劫持</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126621</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126621-2026-11-12</guid>
+      <description>CVE-2026-126621 · P2 保持关注 · 披露 2026-11-11 · 组件 邮件系统 · CVSS 7.5 · 类型 证书校验缺陷 · 难度 中(远程·利用条件苛刻·需低权限)
+When every byte of a configured name outside ASCII also reads as UTF-8 - for example U+00C3 U+00A9, the bytes C3 A9, which are U+00E9 in UTF-8 - the server used…
+信号: 命中关注词 openssl</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Progressive Robot SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126617</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126617-2026-11-12</guid>
+      <description>CVE-2026-126617 · P1 重点关注 · 披露 2026-11-11 · 组件 邮件系统 · CVSS 8.8 · 类型 SQL注入 · 难度 低(远程·需低权限)
+SQL injection in the database layer of Progressive Robot hMailServer 6.0.0-B1 through 6.2.18, when the server uses MySQL/MariaDB or PostgreSQL, allows a remote …
+信号:</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiMail 参数拼接注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126166</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126166-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126166-2026-11-12</guid>
       <description>CVE-2026-126166 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 参数拼接注入 · 难度 中(远程·需高权限)
 A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 th…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiMail 参数拼接注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126168</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126168-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126168-2026-11-12</guid>
       <description>CVE-2026-126168 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 参数拼接注入 · 难度 中(远程·需高权限)
 A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 th…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiMail 参数拼接注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126169</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126169-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126169-2026-11-12</guid>
       <description>CVE-2026-126169 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 参数拼接注入 · 难度 中(远程·需高权限)
 A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 th…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiAnalyzer 路径遍历/任意文件读取</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126219</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126219-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126219-2026-11-12</guid>
       <description>CVE-2026-126219 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 路径遍历/任意文件读取 · 难度 中(远程·需高权限)
 A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiAnalyzer 路径遍历/任意文件读取</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126222</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126222-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126222-2026-11-12</guid>
       <description>CVE-2026-126222 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 路径遍历/任意文件读取 · 难度 中(远程·需高权限)
 A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiAnalyzer 参数拼接注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126224</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126224-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126224-2026-11-12</guid>
       <description>CVE-2026-126224 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 参数拼接注入 · 难度 中(远程·需高权限)
 A improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through …
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiAnalyzer 任意文件上传</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126233</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126233-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126233-2026-11-12</guid>
       <description>CVE-2026-126233 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 任意文件上传 · 难度 中(远程·需高权限)
 A unrestricted upload of file with dangerous type vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer …
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiAnalyzer 路径遍历/任意文件读取</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126235</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126235-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126235-2026-11-12</guid>
       <description>CVE-2026-126235 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 路径遍历/任意文件读取 · 难度 中(远程·需高权限)
 A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]FortiAnalyzer SQL注入低分</title>
+      <title>[high]FortiAnalyzer SQL注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126213</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126213-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126213-2026-11-12</guid>
       <description>CVE-2026-126213 · P2 保持关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.1 · 类型 SQL注入 · 难度 低(远程·需低权限)
 A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyze…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]FortiMail系统时间命令注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126145</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126145-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126145-2026-11-12</guid>
       <description>CVE-2026-126145 · P2 保持关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 命令注入(RCE) · 难度 中(远程·需高权限)
 A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail …
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]FortiMail/Recorder命令注入</title>
+      <title>[high]FortiMail命令注入提权</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126146</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126146-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126146-2026-11-12</guid>
       <description>CVE-2026-126146 · P2 保持关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 命令注入(RCE) · 难度 中(远程·需高权限)
 A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail …
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]FortiMail HTTP命令注入RCE</title>
+      <title>[high]FortiMail管理员命令注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126158</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126158-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126158-2026-11-12</guid>
       <description>CVE-2026-126158 · P2 保持关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 命令注入(RCE) · 难度 中(远程·需高权限)
 A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1 may allow a…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]FortiMail域管命令注入</title>
+      <title>[high]FortiMail多租户命令注入</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126167</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126167-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126167-2026-11-12</guid>
       <description>CVE-2026-126167 · P2 保持关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 命令注入 · 难度 中(远程·需高权限)
 A improper neutralization of special elements used in a command ('command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 t…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]FortiAnalyzer命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126179</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126179-2026-11-12</guid>
+      <description>CVE-2026-126179 · P2 保持关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 命令注入(RCE) · 难度 中(远程·需高权限)
+A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 …
+信号:</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
       <title>[high]Fortinet FortiAnalyzer 权限提升</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126211</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126211-2026-11-11</guid>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126211-2026-11-12</guid>
       <description>CVE-2026-126211 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 权限提升 · 难度 中(远程·需高权限)
 A improper privilege management vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.1 through 7.6.7, FortiAnalyzer Cloud 8.0.0 throug…
 信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
     <item>
-      <title>[high]Fortinet FortiAuthenticator 权限提升</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126249</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126249-2026-11-11</guid>
-      <description>CVE-2026-126249 · P1 重点关注 · 披露 2026-11-11 · 组件 边界设备/VPN · CVSS 7.2 · 类型 权限提升 · 难度 中(远程·需高权限)
-A improper privilege management vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an authentic…
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]TUS 未授权 路径遍历/任意文件读取</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-67449</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-67449-2026-11-11</guid>
-      <description>CVE-2026-67449 · P1 重点关注 · 披露 2026-11-11 · 组件 数据库 · CVSS 9.8 · 类型 路径遍历/任意文件读取/缺失认证 · 难度 低(远程·免认证)
-Prior to version 1.21.2, a path traversal in the TUS upload webhook handler (app/api/tus/hooks/route.ts) allowed an unauthenticated attacker to overwrite arbitr…
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]OpsTree REMS 未授权 认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126768</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126768-2026-11-11</guid>
-      <description>CVE-2026-126768 · P1 重点关注 · 披露 2026-11-11 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
-OpsTree REMS through 1.0.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to obtain valid JWTs by setting the client-cont…
-信号:</description>
-      <pubDate>Wed, 11 Nov 2026 23:32:57 +0000</pubDate>
+      <title>今日要点</title>
+      <description>- 清单未见KEV或勒索标记，暂无在野利用确证；Fortinet RCE有PoC需防扩散。
+- 最需处置CVE-2026-78287：CVSS10代码注入RCE，立即补丁。
+- Fortinet边界VPN批量高危，RCE/SQLi集中，优先排查暴露面并升级。
+- GitLab邮件系统与CI证书校验缺陷批量公告，需统一修复基线。
+- CMS路径遍历9.1、反序列化RCE9.0纳入首轮修复，防数据泄露。</description>
+      <pubDate>Thu, 12 Nov 2026 04:12:30 +0000</pubDate>
     </item>
   </channel>
 </rss>

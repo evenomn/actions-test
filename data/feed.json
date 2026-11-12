@@ -1,47 +1,60 @@
 {
  "version": 3,
- "generated_at": "2026-11-11T23:32:57+00:00",
- "lookback_hours": 5,
- "count": 52,
+ "generated_at": "2026-11-12T04:12:30+00:00",
+ "lookback_hours": 24,
+ "count": 129,
  "stats": {
-  "total": 52,
+  "total": 129,
   "by_tier": {
-   "high": 34,
-   "critical": 18
+   "high": 100,
+   "critical": 29
   },
   "by_urgency": {
-   "P1 重点关注": 34,
-   "P0 立即处置": 13,
-   "P2 保持关注": 5
+   "P1 重点关注": 73,
+   "P2 保持关注": 47,
+   "P0 立即处置": 9
   },
   "by_category": {
-   "边界设备/VPN": 48,
+   "未知": 62,
+   "边界设备/VPN": 47,
+   "开发运维/CI": 5,
+   "开发库/依赖": 5,
+   "邮件系统": 4,
    "数据库": 2,
-   "未知": 2
+   "CMS": 1,
+   "容器/虚拟化": 1,
+   "Web框架": 1,
+   "操作系统": 1
   },
   "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
-  "repro_recommended": 4
+  "with_poc": 2,
+  "with_poc_source": 2,
+  "repro_recommended": 3
  },
- "briefing": [],
+ "briefing": [
+  "- 清单未见KEV或勒索标记，暂无在野利用确证；Fortinet RCE有PoC需防扩散。",
+  "- 最需处置CVE-2026-78287：CVSS10代码注入RCE，立即补丁。",
+  "- Fortinet边界VPN批量高危，RCE/SQLi集中，优先排查暴露面并升级。",
+  "- GitLab邮件系统与CI证书校验缺陷批量公告，需统一修复基线。",
+  "- CMS路径遍历9.1、反序列化RCE9.0纳入首轮修复，防数据泄露。"
+ ],
  "items": [
   {
-   "id": "CVE-2026-126147",
+   "id": "CVE-2026-126148",
    "tier": "critical",
-   "title": "FortiMail路径遍历未授权执行命令",
-   "title_zh": "FortiMail路径遍历未授权执行命令",
-   "summary_zh": "未授权攻击者通过构造请求利用FortiMail路径遍历，可能执行任意命令或代码。",
-   "published": "2026-11-11T22:17:11.880",
+   "title": "FortiMail HA命令注入未授权RCE",
+   "title_zh": "FortiMail HA命令注入未授权RCE",
+   "summary_zh": "未授权攻击者向FortiMail发送特制HA加入请求包，可注入系统命令执行任意代码。",
+   "published": "2026-11-11T22:17:12.010",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "路径遍历/任意文件读取"
+    "命令注入(RCE)"
    ],
-   "vuln_class": "任意文件读写",
+   "vuln_class": "RCE",
    "fame_term": "fortinet",
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -50,52 +63,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-199"
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-200"
     }
    ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Fortinet公告升级FortiMail；限制管理接口暴露。",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "未授权请求触发路径遍历并注入命令；针对Web接口",
-   "impact_scope": "邮件安全网关，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126147",
-   "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to execute unauthorized code or commands via crafted requests."
-  },
-  {
-   "id": "CVE-2026-126253",
-   "tier": "critical",
-   "title": "FortiOS认证绕过可未授权利用",
-   "title_zh": "FortiOS认证绕过可未授权利用",
-   "summary_zh": "未授权攻击者通过构造请求触发FortiOS认证绕过，并广播LSA。",
-   "published": "2026-11-11T22:17:25.347",
-   "cvss": 9.3,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-305"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": "fortinet",
-   "difficulty": "低(需相邻网络·免认证)",
-   "products": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
+   "poc": [
     {
-     "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-267"
+     "url": "https://github.com/googlesky/CVE-2026-126148",
+     "label": "googlesky/CVE-2026-126148 0★(有源码)"
     }
    ],
-   "poc": [],
    "nuclei": false,
    "patched": null,
    "kev": false,
@@ -103,145 +79,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P0 立即处置",
-   "action_zh": "按Fortinet公告升级FortiOS修复版。",
+   "action_zh": "升级至Fortinet公告修复版本；限制HA加入接口暴露",
    "repro_worthy": "强烈推荐",
-   "repro_note": "未授权向FortiOS发送构造请求触发认证绕过",
-   "impact_scope": "防火墙边界设备，常暴露",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126253",
-   "description": "A authentication bypass by primary weakness vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow an unauthenticated attacker to broadcast LSA via specially crafted request"
-  },
-  {
-   "id": "CVE-2026-126160",
-   "tier": "high",
-   "title": "FortiMail认证缺陷可越权操作隔离邮件",
-   "title_zh": "FortiMail认证缺陷可越权操作隔离邮件",
-   "summary_zh": "未授权攻击者可构造隔离释放请求，越权释放或删除任意邮箱隔离邮件。",
-   "published": "2026-11-11T22:17:13.990",
-   "cvss": 8.2,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": "fortinet",
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-212"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至厂商公告修复版本；限制隔离释放接口暴露",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "未授权请求隔离释放接口，构造目标邮箱及消息ID参数",
-   "impact_scope": "邮件边界网关,常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126160",
-   "description": "A improper authentication vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to escalate privileges and release or delete quarantined messages for arbitrary mailboxes via a crafted quarantine release requests."
-  },
-  {
-   "id": "CVE-2026-126151",
-   "tier": "high",
-   "title": "FortiMail认证算法缺陷致账号接管",
-   "title_zh": "FortiMail认证算法缺陷致账号接管",
-   "summary_zh": "未授权远程攻击者构造请求利用认证算法缺陷，可提升权限并接管账号。",
-   "published": "2026-11-11T22:17:12.720",
-   "cvss": 7.5,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "CWE-303"
-   ],
-   "vuln_class": "提权",
-   "fame_term": "fortinet",
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-203"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至厂商公告修复版本；限制邮件接口暴露并监控异常登录",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "未授权构造认证请求，利用算法实现缺陷伪造/接管账号",
-   "impact_scope": "邮件网关,账号接管风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126151",
-   "description": "A incorrect implementation of authentication algorithm vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to gain elevation of privilege (account takeover) via a crafted request."
-  },
-  {
-   "id": "CVE-2026-126262",
-   "tier": "critical",
-   "title": "FortiAnalyzer SQL注入高危",
-   "title_zh": "FortiAnalyzer SQL注入高危",
-   "summary_zh": "未授权攻击者可向FortiAnalyzer/FortiManager接口构造SQL注入，可能执行任意代码命令。",
-   "published": "2026-11-11T22:17:26.343",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "vuln_class": "SQL注入",
-   "fame_term": "fortinet",
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-276"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Fortinet公告升级FortiAnalyzer/Manager修复版。",
-   "repro_worthy": "值得",
-   "repro_note": "未授权访问FortiAnalyzer/Manager接口构造SQLi",
-   "impact_scope": "日志管理/管理平台，内网核心",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126262",
-   "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12 may allow an unauthenticated attacker who has access to the oftp port to execute code or command on the system via crafted…"
+   "repro_note": "入口为HA join-request报文；需HA相关功能可达",
+   "impact_scope": "邮件网关，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126148",
+   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6 may allow an unauthenticated attacker to execute unauthorized code or commands via crafted HA join-request packets."
   },
   {
    "id": "CVE-2026-126164",
    "tier": "critical",
-   "title": "FortiMail未授权SQL注入执行命令",
-   "title_zh": "FortiMail未授权SQL注入执行命令",
-   "summary_zh": "未授权攻击者向FortiMail构造请求触发SQL注入，可能执行任意代码或命令。",
+   "title": "FortiMail SQL注入未授权命令执行",
+   "title_zh": "FortiMail SQL注入未授权命令执行",
+   "summary_zh": "未授权攻击者经特制请求触发FortiMail SQL注入，可执行未授权代码或命令。",
    "published": "2026-11-11T22:17:14.537",
    "cvss": 9.4,
    "severity": "CRITICAL",
@@ -271,29 +121,29 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P0 立即处置",
-   "action_zh": "按Fortinet公告升级FortiMail修复版。",
-   "repro_worthy": "值得",
-   "repro_note": "未授权构造请求触发FortiMail SQL注入",
-   "impact_scope": "邮件安全网关，常暴露公网",
+   "action_zh": "升级FortiMail至厂商修复版本；限制管理接口暴露",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权HTTP请求触发SQL注入；位于FortiMail Web接口",
+   "impact_scope": "邮件网关，常暴露公网",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126164",
    "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to execute unauthorized code or commands via crafted requests."
   },
   {
-   "id": "CVE-2026-126148",
+   "id": "CVE-2026-126262",
    "tier": "critical",
-   "title": "FortiMail HA命令注入未授权RCE",
-   "title_zh": "FortiMail HA命令注入未授权RCE",
-   "summary_zh": "未授权攻击者可向FortiMail HA join-request发送构造包注入OS命令，导致远程代码执行。",
-   "published": "2026-11-11T22:17:12.010",
+   "title": "Fortinet管理组件SQL注入未授权",
+   "title_zh": "Fortinet管理组件SQL注入未授权",
+   "summary_zh": "未授权攻击者可经特制请求触发FortiAnalyzer/FortiManager SQL注入，执行数据库命令。",
+   "published": "2026-11-11T22:17:26.343",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入(RCE)"
+    "SQL注入"
    ],
-   "vuln_class": "RCE",
+   "vuln_class": "SQL注入",
    "fame_term": "fortinet",
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -302,7 +152,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-200"
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-276"
     }
    ],
    "poc": [],
@@ -313,197 +163,29 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P0 立即处置",
-   "action_zh": "按Fortinet公告升级；限制HA join-request来源。",
-   "repro_worthy": "一般",
-   "repro_note": "向HA join-request发送构造包；需启用HA",
-   "impact_scope": "邮件安全网关，常暴露邮件端口",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126148",
-   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6 may allow an unauthenticated attacker to execute unauthorized code or commands via crafted HA join-request packets."
-  },
-  {
-   "id": "CVE-2026-126155",
-   "tier": "critical",
-   "title": "FortiMail IBE会话劫持未授权",
-   "title_zh": "FortiMail IBE会话劫持未授权",
-   "summary_zh": "未授权攻击者通过构造HTTP请求获取任意IBE收件人会话，读取或发送加密邮件。",
-   "published": "2026-11-11T22:17:13.323",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "授权错误"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": "fortinet",
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-207"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Fortinet公告升级FortiMail；限制IBE暴露面。",
+   "action_zh": "升级FortiAnalyzer/FortiManager至厂商修复版",
    "repro_worthy": "值得",
-   "repro_note": "未授权构造HTTP请求获取IBE收件人会话",
-   "impact_scope": "邮件安全网关IBE模块",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126155",
-   "description": "A incorrect authorization vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to obtain an authenticated IBE webmail session as any IBE recipient and read or send their encrypted mail via crafted HTTP requests."
+   "repro_note": "未授权请求触发SQL注入；关注FortiAnalyzer/Manager管理接口",
+   "impact_scope": "安全管理和分析设备，常内网暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126262",
+   "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12 may allow an unauthenticated attacker who has access to the oftp port to execute code or command on the system via crafted…"
   },
   {
-   "id": "CVE-2026-126156",
-   "tier": "critical",
-   "title": "FortiMail IBE账户接管未授权",
-   "title_zh": "FortiMail IBE账户接管未授权",
-   "summary_zh": "未授权攻击者通过构造HTTP请求接管任意IBE收件人账户。",
-   "published": "2026-11-11T22:17:13.450",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "越权(IDOR)"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": "fortinet",
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-208"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Fortinet公告升级FortiMail；限制IBE暴露面。",
-   "repro_worthy": "值得",
-   "repro_note": "未授权构造HTTP请求接管IBE收件人账户",
-   "impact_scope": "邮件安全网关IBE模块",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126156",
-   "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to take over an arbitrary IBE recipient account via crafted HTTP requests."
-  },
-  {
-   "id": "CVE-2026-126157",
-   "tier": "critical",
-   "title": "FortiMail IBE认证绕过未授权",
-   "title_zh": "FortiMail IBE认证绕过未授权",
-   "summary_zh": "未授权攻击者通过构造HTTP请求绕过认证，访问其他用户安全邮箱。",
-   "published": "2026-11-11T22:17:13.587",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": "fortinet",
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-209"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Fortinet公告升级FortiMail；限制IBE暴露面。",
-   "repro_worthy": "值得",
-   "repro_note": "未授权构造HTTP请求绕过IBE认证",
-   "impact_scope": "邮件安全网关IBE模块",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126157",
-   "description": "A improper authentication vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to gain access to other users' secure email accounts via crafted HTTP requests."
-  },
-  {
-   "id": "CVE-2026-126251",
-   "tier": "critical",
-   "title": "FortiAuth未授权认证绕过",
-   "title_zh": "FortiAuth未授权认证绕过",
-   "summary_zh": "未授权攻击者可绕过FortiAuthenticator认证检查，获得未授权访问。",
-   "published": "2026-11-11T22:17:25.087",
-   "cvss": 9.1,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "授权错误"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": "fortinet",
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-265"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "按Fortinet公告升级FortiAuthenticator修复版。",
-   "repro_worthy": "值得",
-   "repro_note": "未授权请求触发授权绕过并访问受保护功能",
-   "impact_scope": "认证服务器，身份基础设施",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126251",
-   "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an attacker to bypass authentication and gain unauthorized access."
-  },
-  {
-   "id": "CVE-2026-126184",
+   "id": "CVE-2026-126153",
    "tier": "high",
-   "title": "Forti管理平台认证欺骗绕过",
-   "title_zh": "Forti管理平台认证欺骗绕过",
-   "summary_zh": "未授权攻击者可通过伪造身份绕过认证，访问FortiAnalyzer/FortiManager管理功能。",
-   "published": "2026-11-11T22:17:17.603",
-   "cvss": 8.2,
+   "title": "FortiMail 路径遍历未授权命令执行",
+   "title_zh": "FortiMail 路径遍历未授权命令执行",
+   "summary_zh": "未授权攻击者通过特制请求利用FortiMail路径遍历，执行未授权命令。",
+   "published": "2026-11-11T22:17:13.050",
+   "cvss": 7.5,
    "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "认证欺骗"
+    "路径遍历/任意文件读取"
    ],
-   "vuln_class": "未授权访问",
+   "vuln_class": "任意文件读写",
    "fame_term": "fortinet",
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -512,7 +194,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-229"
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-205"
     }
    ],
    "poc": [],
@@ -523,19 +205,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P0 立即处置",
-   "action_zh": "升级至厂商公告修复版本；限制管理接口访问来源",
+   "action_zh": "升级FortiMail修复版本；限制Web接口访问",
    "repro_worthy": "值得",
-   "repro_note": "未授权访问管理接口，伪造认证字段/身份头绕过校验",
-   "impact_scope": "网管/日志分析平台,内网高价值",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126184",
-   "description": "A authentication bypass by spoofing vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiM…"
+   "repro_note": "未授权请求触发路径遍历；关注FortiMail Web文件接口",
+   "impact_scope": "邮件网关，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126153",
+   "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to execute unauthorized commands via crafted requests."
   },
   {
    "id": "CVE-2026-126259",
    "tier": "critical",
-   "title": "FortiOS HA缺失认证可获超管",
-   "title_zh": "FortiOS HA缺失认证可获超管",
-   "summary_zh": "未授权攻击者在特定HA/自动扩展配置下发送构造HA包，可以超级管理员执行命令。",
+   "title": "FortiOS HA缺失认证可超级管理员执行",
+   "title_zh": "FortiOS HA缺失认证可超级管理员执行",
+   "summary_zh": "未授权攻击者在HA FGSP或自动扩展场景发送特制HA包，以超级管理员执行命令。",
    "published": "2026-11-11T22:17:26.200",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -565,19 +247,229 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P0 立即处置",
-   "action_zh": "按Fortinet公告升级FortiOS；核查HA/自动扩展配置。",
-   "repro_worthy": "一般",
-   "repro_note": "向HA FGSP接口发构造包；需启用同步配置",
-   "impact_scope": "防火墙HA/自动扩展环境",
+   "action_zh": "升级FortiOS修复版本；禁用非必要HA FGSP/自动扩展",
+   "repro_worthy": "值得",
+   "repro_note": "需启用HA FGSP+standalone-config-sync或自动扩展；发HA包",
+   "impact_scope": "防火墙边界与云自动扩展环境",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126259",
    "description": "A missing authentication for critical function vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow an unauthenticated attacker with HA FGSP + standalone-config-sync, or autoscale to execute command as super admin via crafted HA packets."
   },
   {
+   "id": "CVE-2026-126155",
+   "tier": "critical",
+   "title": "FortiMail IBE授权错误未授权会话",
+   "title_zh": "FortiMail IBE授权错误未授权会话",
+   "summary_zh": "未授权攻击者经特制HTTP请求获取任意IBE收件人已认证Webmail会话，读写加密邮件。",
+   "published": "2026-11-11T22:17:13.323",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-207"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级FortiMail修复版本；限制IBE Webmail暴露",
+   "repro_worthy": "值得",
+   "repro_note": "需启用IBE Webmail；未授权HTTP请求伪造收件人会话",
+   "impact_scope": "邮件网关IBE加密邮件场景",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126155",
+   "description": "A incorrect authorization vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to obtain an authenticated IBE webmail session as any IBE recipient and read or send their encrypted mail via crafted HTTP requests."
+  },
+  {
+   "id": "CVE-2026-126156",
+   "tier": "critical",
+   "title": "FortiMail IBE越权未授权接管账号",
+   "title_zh": "FortiMail IBE越权未授权接管账号",
+   "summary_zh": "未授权攻击者通过用户可控键值越权，接管任意IBE收件人账号。",
+   "published": "2026-11-11T22:17:13.450",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-208"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级FortiMail修复版本；检查IBE账号异常",
+   "repro_worthy": "值得",
+   "repro_note": "需IBE收件人；篡改HTTP请求用户键值接管账号",
+   "impact_scope": "邮件网关IBE账号，敏感通信",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126156",
+   "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to take over an arbitrary IBE recipient account via crafted HTTP requests."
+  },
+  {
+   "id": "CVE-2026-126157",
+   "tier": "critical",
+   "title": "FortiMail认证缺陷未授权访问邮箱",
+   "title_zh": "FortiMail认证缺陷未授权访问邮箱",
+   "summary_zh": "未授权攻击者经特制HTTP请求绕过认证，访问其他用户安全邮箱账户。",
+   "published": "2026-11-11T22:17:13.587",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-209"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级FortiMail修复版本；监控异常邮箱访问",
+   "repro_worthy": "值得",
+   "repro_note": "未授权HTTP请求绕过认证；需目标邮箱账户",
+   "impact_scope": "邮件网关，敏感邮件数据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126157",
+   "description": "A improper authentication vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to gain access to other users' secure email accounts via crafted HTTP requests."
+  },
+  {
+   "id": "CVE-2026-126251",
+   "tier": "critical",
+   "title": "FortiAuth授权错误认证绕过",
+   "title_zh": "FortiAuth授权错误认证绕过",
+   "summary_zh": "攻击者可利用FortiAuthenticator授权检查缺陷绕过认证，获取未授权访问。",
+   "published": "2026-11-11T22:17:25.087",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-265"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级FortiAuthenticator修复版本；审计异常登录",
+   "repro_worthy": "值得",
+   "repro_note": "未授权请求触发授权检查缺陷；关注认证接口",
+   "impact_scope": "身份认证基础设施，内网核心",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126251",
+   "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an attacker to bypass authentication and gain unauthorized access."
+  },
+  {
+   "id": "CVE-2026-126151",
+   "tier": "high",
+   "title": "FortiMail认证算法账户接管",
+   "title_zh": "FortiMail认证算法账户接管",
+   "summary_zh": "未认证远程攻击者可构造特制请求利用认证算法缺陷，接管账户。",
+   "published": "2026-11-11T22:17:12.720",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-303"
+   ],
+   "vuln_class": "提权",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-203"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级FortiMail至厂商修复版本，排查异常登录",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "向认证接口发送特制请求，利用算法校验缺陷接管账户",
+   "impact_scope": "邮件系统，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126151",
+   "description": "A incorrect implementation of authentication algorithm vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated remote attacker to gain elevation of privilege (account takeover) via a crafted request."
+  },
+  {
    "id": "CVE-2026-126144",
    "tier": "high",
-   "title": "FortiMail等命令注入RCE",
-   "title_zh": "FortiMail等命令注入RCE",
-   "summary_zh": "攻击者可利用FortiMail、FortiRecorder、FortiVoice命令注入缺陷执行任意OS命令。",
+   "title": "Fortinet多产品命令注入高危",
+   "title_zh": "Fortinet多产品命令注入高危",
+   "summary_zh": "攻击者可借特制请求在FortiMail、FortiRecorder、FortiVoice注入系统命令。",
    "published": "2026-11-11T22:17:11.400",
    "cvss": 8.8,
    "severity": "HIGH",
@@ -607,19 +499,61 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Fortinet公告升级FortiMail/Recorder/Voice修复版。",
+   "action_zh": "升级FortiMail/FortiRecorder/FortiVoice至修复版",
    "repro_worthy": "一般",
-   "repro_note": "向受影响产品命令处理接口提交构造参数",
-   "impact_scope": "邮件/录音/语音网关，边界暴露",
+   "repro_note": "需确认受影响产品与命令注入入口；构造请求验证",
+   "impact_scope": "邮件/语音/录像设备，内网多见",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126144",
    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.4, FortiMail 7.4.0 through 7.4.6, FortiMail 7.2 all versions, FortiRecorder 7.6.0 through 7.6.2, FortiRecorder 7.2.0 through 7.2.12, FortiRecorder 7.0.0 through 7.0.6, FortiVoice 8.0.0 through 8.0.1, FortiVoice 7.4.0 through 7.4.2, FortiVoice 7.2.0 through 7.2.5, FortiVoice 7.0.0 through 7.0.8 may allow an authenticated …"
   },
   {
+   "id": "CVE-2026-126238",
+   "tier": "high",
+   "title": "FortiAuth授权错误未授权访问功能",
+   "title_zh": "FortiAuth授权错误未授权访问功能",
+   "summary_zh": "未授权攻击者可绕过FortiAuthenticator授权检查，访问受限功能。",
+   "published": "2026-11-11T22:17:23.313",
+   "cvss": 8.6,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-253"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级FortiAuthenticator修复版本；限制管理接口",
+   "repro_worthy": "值得",
+   "repro_note": "未授权请求绕过授权检查；定位受限功能入口",
+   "impact_scope": "身份认证基础设施，内网核心",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126238",
+   "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to bypass authorization checks and gain unauthorized access to restricted functionality."
+  },
+  {
    "id": "CVE-2026-126263",
    "tier": "critical",
-   "title": "FortiMail认证后SQL注入",
-   "title_zh": "FortiMail认证后SQL注入",
-   "summary_zh": "已认证攻击者可向FortiMail构造请求实施SQL注入，进而执行未授权代码或命令。",
+   "title": "FortiMail SQL注入认证后RCE",
+   "title_zh": "FortiMail SQL注入认证后RCE",
+   "summary_zh": "已认证攻击者向FortiMail发送特制请求，利用SQL注入执行未授权代码或命令。",
    "published": "2026-11-11T22:17:26.520",
    "cvss": 9.8,
    "severity": "CRITICAL",
@@ -649,19 +583,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Fortinet公告升级FortiMail修复版。",
+   "action_zh": "升级FortiMail修复版本；审计高权限账号",
    "repro_worthy": "一般",
-   "repro_note": "认证后向FortiMail请求参数注入SQL",
-   "impact_scope": "邮件安全网关，内网/边界",
+   "repro_note": "需FortiMail认证会话；构造SQL注入请求验证",
+   "impact_scope": "邮件网关，认证后横向风险",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126263",
    "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.4, FortiMail 7.4.0 through 7.4.6 may allow an authenticated attacker to execute unauthorized code or commands via specifically crafted requests."
   },
   {
    "id": "CVE-2026-126175",
    "tier": "high",
-   "title": "FortiAnalyzer SQL注入多版本",
-   "title_zh": "FortiAnalyzer SQL注入多版本",
-   "summary_zh": "攻击者可利用FortiAnalyzer/Manager及云版SQL注入执行未授权代码命令。",
+   "title": "FortiAnalyzer SQL注入高危",
+   "title_zh": "FortiAnalyzer SQL注入高危",
+   "summary_zh": "攻击者可经特制请求触发FortiAnalyzer/FortiManager SQL注入，执行未授权数据库命令。",
    "published": "2026-11-11T22:17:15.747",
    "cvss": 8.8,
    "severity": "HIGH",
@@ -691,19 +625,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Fortinet公告升级FortiAnalyzer/Manager及云版。",
+   "action_zh": "升级FortiAnalyzer/Manager及Cloud修复版",
    "repro_worthy": "一般",
-   "repro_note": "管理接口SQL注入；确认认证与版本条件",
-   "impact_scope": "日志/管理平台，内网横向",
+   "repro_note": "需确认具体接口与权限；构造SQL注入请求验证",
+   "impact_scope": "安全分析管理设备，内网为主",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126175",
    "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.2 through 7.2.12, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.2 through 7.2.13, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.2 through 7.2.12, FortiManager Cloud 7.6.0 through 7.6.7, FortiManage…"
   },
   {
    "id": "CVE-2026-126241",
    "tier": "high",
-   "title": "FortiAuth认证后SQL注入",
-   "title_zh": "FortiAuth认证后SQL注入",
-   "summary_zh": "已认证攻击者可向FortiAuthenticator发起SQL注入，在底层数据库执行任意SQL命令。",
+   "title": "FortiAuth SQL注入执行SQL",
+   "title_zh": "FortiAuth SQL注入执行SQL",
+   "summary_zh": "已认证攻击者利用FortiAuthenticator SQL注入，在底层数据库执行未授权SQL命令。",
    "published": "2026-11-11T22:17:23.753",
    "cvss": 8.8,
    "severity": "HIGH",
@@ -733,19 +667,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Fortinet公告升级FortiAuthenticator修复版。",
+   "action_zh": "升级FortiAuthenticator修复版本；最小化账号权限",
    "repro_worthy": "一般",
-   "repro_note": "认证后向FortiAuthenticator接口注入SQL",
-   "impact_scope": "认证服务器，身份基础设施",
+   "repro_note": "需认证会话；向管理接口提交特制参数触发SQL注入",
+   "impact_scope": "身份认证基础设施，内网核心",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126241",
    "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an authenticated attacker to execute unauthorized SQL commands on the underlying database."
   },
   {
    "id": "CVE-2026-126252",
    "tier": "high",
-   "title": "FortiAuth认证后SQL注入RCE",
-   "title_zh": "FortiAuth认证后SQL注入RCE",
-   "summary_zh": "已认证攻击者可通过HTTP请求对FortiAuthenticator实施SQL注入并执行未授权命令。",
+   "title": "FortiAuth SQL注入认证后命令执行",
+   "title_zh": "FortiAuth SQL注入认证后命令执行",
+   "summary_zh": "已认证攻击者经HTTP请求触发FortiAuthenticator SQL注入，执行未授权代码或命令。",
    "published": "2026-11-11T22:17:25.220",
    "cvss": 8.3,
    "severity": "HIGH",
@@ -775,61 +709,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Fortinet公告升级FortiAuthenticator修复版。",
+   "action_zh": "升级FortiAuthenticator至修复版本",
    "repro_worthy": "一般",
-   "repro_note": "认证后通过HTTP请求触发SQL注入",
-   "impact_scope": "认证服务器，身份基础设施",
+   "repro_note": "需认证；HTTP请求参数触发SQL注入并尝试命令执行",
+   "impact_scope": "身份认证基础设施，内网核心",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126252",
    "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an authenticated attacker to execute unauthorized code or commands via http requests"
   },
   {
-   "id": "CVE-2026-126153",
-   "tier": "high",
-   "title": "FortiMail路径遍历未授权命令执行",
-   "title_zh": "FortiMail路径遍历未授权命令执行",
-   "summary_zh": "未授权攻击者通过构造请求利用FortiMail路径遍历，可能执行未授权命令。",
-   "published": "2026-11-11T22:17:13.050",
-   "cvss": 7.5,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "路径遍历/任意文件读取"
-   ],
-   "vuln_class": "任意文件读写",
-   "fame_term": "fortinet",
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-205"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "按Fortinet公告升级FortiMail修复版。",
-   "repro_worthy": "一般",
-   "repro_note": "未授权构造请求触发路径遍历命令执行",
-   "impact_scope": "邮件安全网关，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126153",
-   "description": "A improper limitation of a pathname to a restricted directory ('path traversal') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to execute unauthorized commands via crafted requests."
-  },
-  {
    "id": "CVE-2026-126255",
    "tier": "high",
-   "title": "FortiOS路径遍历未授权访问",
-   "title_zh": "FortiOS路径遍历未授权访问",
-   "summary_zh": "未授权攻击者可利用FortiOS/FortiPAM路径遍历缺陷访问受限目录文件。",
+   "title": "FortiOS路径遍历未授权读取",
+   "title_zh": "FortiOS路径遍历未授权读取",
+   "summary_zh": "未授权攻击者可构造../filedir路径遍历FortiOS/FortiPAM文件目录，读取敏感文件。",
    "published": "2026-11-11T22:17:25.623",
    "cvss": 7.4,
    "severity": "HIGH",
@@ -859,10 +751,10 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Fortinet公告升级FortiOS/FortiPAM修复版。",
+   "action_zh": "升级FortiOS/FortiPAM修复版本；过滤路径参数",
    "repro_worthy": "一般",
-   "repro_note": "未授权构造../filedir路径请求读取受限文件",
-   "impact_scope": "防火墙与特权访问设备",
+   "repro_note": "未授权请求携带../filedir路径参数；需目标文件路径",
+   "impact_scope": "防火墙与特权访问设备，边界常见",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126255",
    "description": "A path traversal: '../filedir' vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13, FortiPAM 1.6 all versions, FortiPAM 1.5 all versions, FortiPAM 1.4 all versions, FortiPAM 1.3 all versions, FortiPAM 1.2 all versions, FortiPAM 1.1 all versions, FortiPAM 1.0 all versions may allow an unauthenticated attacker to bypass authentication via specially crafted credentials."
   },
@@ -911,9 +803,9 @@
   {
    "id": "CVE-2026-126257",
    "tier": "critical",
-   "title": "FortiAuth硬编码口令绕过",
-   "title_zh": "FortiAuth硬编码口令绕过",
-   "summary_zh": "未授权攻击者在特定条件下利用硬编码口令绕过凭据校验并获得访问。",
+   "title": "FortiAuth硬编码密码可认证绕过",
+   "title_zh": "FortiAuth硬编码密码可认证绕过",
+   "summary_zh": "未授权攻击者在特定非可控情形下利用硬编码密码绕过凭据校验，获取未授权访问。",
    "published": "2026-11-11T22:17:25.930",
    "cvss": 9.0,
    "severity": "CRITICAL",
@@ -943,27 +835,87 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Fortinet公告升级FortiAuthenticator修复版。",
+   "action_zh": "升级FortiAuthenticator修复版本；排查异常凭据",
    "repro_worthy": "一般",
-   "repro_note": "硬编码口令绕过需特定外部条件",
-   "impact_scope": "认证服务器，身份基础设施",
+   "repro_note": "需满足特定环境条件；验证硬编码凭据校验绕过",
+   "impact_scope": "身份认证基础设施，内网核心",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126257",
    "description": "A use of hard-coded password vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to bypass credential validation in certain circumstances outside of the attacker's control and gain unauthorized access."
   },
   {
-   "id": "CVE-2026-126238",
+   "id": "CVE-2026-96760",
+   "tier": "critical",
+   "title": "Authlib 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-09-28T20:17:11.703",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00433,
+   "epss_percentile": 0.37908,
+   "cwe_labels": [
+    "输入校验缺失",
+    "签名校验错误"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/authlib/authlib"
+    },
+    {
+     "label": "参考",
+     "url": "https://kb.cert.org/vuls/id/762428"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.kb.cert.org/vuls/id/762428"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/advisories/GHSA-6v38-4h7w-rj9h",
+     "label": "Exploit-Index advisories/GHSA-6v38-4h7w-rj9h(未验证)"
+    },
+    {
+     "url": "https://github.com/uziii2208/CVE-2026-96760",
+     "label": "Exploit-Index uziii2208/CVE-2026-96760(未验证)(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96760",
+   "description": "Authlib (v1.8.0 and below) contains a signature verification bypass vulnerability. The JsonWebSignature.deserialize_json() method accepts a JSON Serialization JWS object and returns the payload as successfully verified without checking for a signature and without requiring a cryptographic key."
+  },
+  {
+   "id": "CVE-2026-126184",
    "tier": "high",
-   "title": "FortiAuth未授权功能越权",
-   "title_zh": "FortiAuth未授权功能越权",
-   "summary_zh": "未授权攻击者可绕过FortiAuthenticator授权检查，访问受限功能。",
-   "published": "2026-11-11T22:17:23.313",
-   "cvss": 8.6,
+   "title": "FortiAnalyzer认证欺骗绕过",
+   "title_zh": "FortiAnalyzer认证欺骗绕过",
+   "summary_zh": "攻击者可伪造认证信息绕过验证，获取FortiAnalyzer/FortiManager管理权限。",
+   "published": "2026-11-11T22:17:17.603",
+   "cvss": 8.2,
    "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "授权错误"
+    "认证欺骗"
    ],
    "vuln_class": "未授权访问",
    "fame_term": "fortinet",
@@ -974,7 +926,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-253"
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-229"
     }
    ],
    "poc": [],
@@ -985,19 +937,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "按Fortinet公告升级FortiAuthenticator修复版。",
+   "action_zh": "升级FortiAnalyzer/FortiManager至厂商修复版本",
    "repro_worthy": "一般",
-   "repro_note": "未授权请求绕过授权访问受限功能",
-   "impact_scope": "认证服务器，身份基础设施",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126238",
-   "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to bypass authorization checks and gain unauthorized access to restricted functionality."
+   "repro_note": "伪造认证断言访问管理接口，需确认受影响版本",
+   "impact_scope": "安全管理设备，内网横向跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126184",
+   "description": "A authentication bypass by spoofing vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12, FortiM…"
   },
   {
    "id": "CVE-2026-126250",
    "tier": "high",
-   "title": "Forti认证器未授权DoS",
-   "title_zh": "Forti认证器未授权DoS",
-   "summary_zh": "未授权攻击者发送特制HTTP请求即可触发拒绝服务，影响认证服务可用性。",
+   "title": "Forti认证器授权错误DoS",
+   "title_zh": "Forti认证器授权错误DoS",
+   "summary_zh": "未认证攻击者可发送特制HTTP请求触发授权错误，导致FortiAuthenticator拒绝服务。",
    "published": "2026-11-11T22:17:24.960",
    "cvss": 8.2,
    "severity": "HIGH",
@@ -1027,10 +979,10 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商公告修复版本；限制HTTP接口暴露并限流",
+   "action_zh": "升级FortiAuthenticator至修复版本，限制接口暴露",
    "repro_worthy": "一般",
-   "repro_note": "未授权向HTTP接口发送特制请求，触发服务异常",
-   "impact_scope": "认证服务器,常暴露内网/边界",
+   "repro_note": "未授权HTTP请求触发授权校验异常，导致服务不可用",
+   "impact_scope": "认证服务器，拒绝服务影响登录",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126250",
    "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to cause a denial of service via HTTP requests."
   },
@@ -1077,11 +1029,53 @@
    "description": "A improper encoding or escaping of output vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.2, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer Cloud 8.0.1 through 8.0.2, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer-BigData 7.6.0 through 7.6.2, FortiManager 8.0.0 through 8.0.2, FortiManager 7.6.0 through 7.6.7, FortiManager Cloud 8.0.1 through 8.0.2, FortiManager Cloud 7.6.0 through 7.6.7 may allow an unauthenticated attacker to execute unauthorized code or commands via a speci…"
   },
   {
+   "id": "CVE-2026-126254",
+   "tier": "critical",
+   "title": "Fortinet FortiOS CWE-197",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:25.490",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-197"
+   ],
+   "vuln_class": null,
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-268"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126254",
+   "description": "A numeric truncation error vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow a configured ibgp neighbor to send malicious/malformed attributes to all connected routers via a specially crafted request"
+  },
+  {
    "id": "CVE-2026-126159",
    "tier": "high",
-   "title": "FortiMail隔离邮件IDOR",
-   "title_zh": "FortiMail隔离邮件IDOR",
-   "summary_zh": "未授权攻击者构造隔离释放请求，越权释放或删除任意邮箱隔离邮件。",
+   "title": "FortiMail隔离邮件越权操作",
+   "title_zh": "FortiMail隔离邮件越权操作",
+   "summary_zh": "未认证攻击者可构造隔离释放请求，越权释放或删除任意邮箱隔离邮件。",
    "published": "2026-11-11T22:17:13.857",
    "cvss": 7.5,
    "severity": "HIGH",
@@ -1111,19 +1105,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商公告修复版本；限制隔离释放接口暴露",
+   "action_zh": "升级FortiMail修复版本，限制隔离接口访问",
    "repro_worthy": "一般",
-   "repro_note": "未授权调用隔离释放接口，替换邮箱/消息ID越权操作",
-   "impact_scope": "邮件网关,隔离邮件数据",
+   "repro_note": "构造隔离释放请求并篡改邮箱/邮件标识，未授权操作",
+   "impact_scope": "邮件隔离区，数据篡改风险",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126159",
    "description": "A authorization bypass through user-controlled key vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an unauthenticated attacker to release or delete quarantined messages for arbitrary mailboxes via a crafted quarantine release request."
   },
   {
    "id": "CVE-2026-126242",
    "tier": "high",
-   "title": "Forti认证器授权错误可绕过认证",
-   "title_zh": "Forti认证器授权错误可绕过认证",
-   "summary_zh": "攻击者可在取得特定ID与数据后绕过认证，获得未授权访问及身份冒用。",
+   "title": "Forti认证器认证绕过",
+   "title_zh": "Forti认证器认证绕过",
+   "summary_zh": "攻击者可绕过认证获取未授权访问，完整冒充需先取得ID等数据。",
    "published": "2026-11-11T22:17:23.893",
    "cvss": 7.4,
    "severity": "HIGH",
@@ -1153,54 +1147,12 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商公告修复版本；限制认证接口并加强凭据校验",
+   "action_zh": "升级FortiAuthenticator至修复版本，加强审计",
    "repro_worthy": "一般",
-   "repro_note": "需先取得特定ID与数据，再构造认证请求绕过校验",
-   "impact_scope": "认证服务器,身份冒用风险",
+   "repro_note": "利用授权校验缺陷绕过认证，完整冒充需先取得ID数据",
+   "impact_scope": "认证服务器，账户冒用风险",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126242",
    "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an attacker to bypass authentication and gain unauthorized access. Full impersonation however requires the attacker to obtain pre-required id and data via other means."
-  },
-  {
-   "id": "CVE-2026-126179",
-   "tier": "high",
-   "title": "Fortinet FortiAnalyzer 命令注入(RCE)",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-11-11T22:17:16.587",
-   "cvss": 7.2,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入(RCE)"
-   ],
-   "vuln_class": "RCE",
-   "fame_term": "fortinet",
-   "difficulty": "中(远程·需高权限)",
-   "products": [],
-   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-224"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "一般",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126179",
-   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager…"
   },
   {
    "id": "CVE-2026-126182",
@@ -1411,6 +1363,186 @@
    "impact_scope": null,
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126236",
    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 …"
+  },
+  {
+   "id": "CVE-2026-126150",
+   "tier": "critical",
+   "title": "Fortinet FortiMail 未授权 CWE-640",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:12.543",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-640"
+   ],
+   "vuln_class": null,
+   "fame_term": "fortinet",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-202"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126150",
+   "description": "A weak password recovery mechanism for forgotten password vulnerability in Fortinet FortiMail 8.0.0, FortiMail 7.6.0 through 7.6.5, FortiMail 7.4.0 through 7.4.7, FortiMail 7.2.0 through 7.2.9 may allow an unauthenticated attacker to reset the password of an arbitrary IBE webmail user and take over their account via specially crafted HTTP requests."
+  },
+  {
+   "id": "CVE-2026-126609",
+   "tier": "high",
+   "title": "GitLab证书校验缺陷可加载替代文件",
+   "title_zh": "GitLab证书校验缺陷可加载替代文件",
+   "summary_zh": "本地攻击者可创建非ASCII同名文件，诱使服务端校验替代证书链。",
+   "published": "2026-11-11T09:17:12.687",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "证书校验缺陷"
+   ],
+   "vuln_class": null,
+   "fame_term": "gitlab",
+   "difficulty": "中(远程·利用条件苛刻·需低权限)",
+   "products": [],
+   "affected": "GitLab(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.8"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.com/hmailserver/hmailserver/-/work_items/114"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "openssl",
+   "urgency": "P2 保持关注",
+   "action_zh": "升级GitLab修复版本；限制本地目录写入权限",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "GitLab服务器本地权限场景",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126609",
+   "description": "When every byte of the name outside ASCII also reads as UTF-8 - for example U+00C3 U+00A9, the bytes C3 A9 on code page 1252, which are U+00E9 in UTF-8 - the database server's certificate was checked against the file at that other name whenever one was there, which allows a local attacker who can create that file but cannot change the configured one, as any user can by default beside a file an administrator keeps under ProgramData, or beside a folder directly under the system drive's root whose …"
+  },
+  {
+   "id": "CVE-2026-126621",
+   "tier": "high",
+   "title": "GitLab证书校验缺陷本地文件劫持",
+   "title_zh": "GitLab证书校验缺陷本地文件劫持",
+   "summary_zh": "本地攻击者可创建非ASCII同名字符文件，使服务端读取攻击者证书。",
+   "published": "2026-11-11T09:17:14.277",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "证书校验缺陷"
+   ],
+   "vuln_class": null,
+   "fame_term": "gitlab",
+   "difficulty": "中(远程·利用条件苛刻·需低权限)",
+   "products": [],
+   "affected": "GitLab(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.8"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.com/hmailserver/hmailserver/-/work_items/115"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "openssl",
+   "urgency": "P2 保持关注",
+   "action_zh": "升级GitLab修复版本；限制本地目录写入权限",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "GitLab服务器本地权限场景",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126621",
+   "description": "When every byte of a configured name outside ASCII also reads as UTF-8 - for example U+00C3 U+00A9, the bytes C3 A9, which are U+00E9 in UTF-8 - the server used the file at that other name whenever one was there, which allows a local attacker who can create that file or its folder but cannot change the configured one, as any user can by default beside a file an administrator keeps under ProgramData, to have a port that logs on by client certificate (from 6.2.25) accept certificates from a certif…"
+  },
+  {
+   "id": "CVE-2026-126617",
+   "tier": "high",
+   "title": "Progressive Robot SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T09:17:13.860",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": "gitlab",
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "GitLab(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.2.19"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.com/hmailserver/hmailserver/-/work_items/101"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126617",
+   "description": "SQL injection in the database layer of Progressive Robot hMailServer 6.0.0-B1 through 6.2.18, when the server uses MySQL/MariaDB or PostgreSQL, allows a remote attacker to alter SQL statements the server runs."
   },
   {
    "id": "CVE-2026-126166",
@@ -1751,9 +1883,9 @@
   {
    "id": "CVE-2026-126213",
    "tier": "high",
-   "title": "FortiAnalyzer SQL注入低分",
-   "title_zh": "FortiAnalyzer SQL注入低分",
-   "summary_zh": "攻击者可利用FortiAnalyzer/Manager及云版SQL注入缺陷影响数据或执行命令。",
+   "title": "FortiAnalyzer SQL注入",
+   "title_zh": "FortiAnalyzer SQL注入",
+   "summary_zh": "攻击者可经特制请求触发FortiAnalyzer/FortiAnalyzer Cloud SQL注入，影响数据机密性。",
    "published": "2026-11-11T22:17:18.457",
    "cvss": 7.1,
    "severity": "HIGH",
@@ -1783,10 +1915,10 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P2 保持关注",
-   "action_zh": "按Fortinet公告升级FortiAnalyzer/Manager及云版。",
+   "action_zh": "升级FortiAnalyzer及Cloud修复版本",
    "repro_worthy": "一般",
-   "repro_note": "管理接口SQL注入；确认认证与版本条件",
-   "impact_scope": "日志/管理平台，内网核心",
+   "repro_note": "需确认入口与权限；构造SQL注入参数验证",
+   "impact_scope": "安全分析平台，内网为主",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126213",
    "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4 all versions, FortiAnalyzer 7.2 all versions, FortiAnalyzer Cloud 8.0.0 through 8.0.1, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0 through 8.0.1, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 …"
   },
@@ -1795,7 +1927,7 @@
    "tier": "high",
    "title": "FortiMail系统时间命令注入",
    "title_zh": "FortiMail系统时间命令注入",
-   "summary_zh": "具系统时间读写权限的管理员可注入OS命令，以root执行任意代码。",
+   "summary_zh": "具备系统时间读写权限的管理员可注入OS命令，以root执行任意代码。",
    "published": "2026-11-11T22:17:11.580",
    "cvss": 7.2,
    "severity": "HIGH",
@@ -1825,19 +1957,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P2 保持关注",
-   "action_zh": "升级至厂商公告修复版本；最小化管理员权限",
+   "action_zh": "升级FortiMail至修复版本，限制管理员权限",
    "repro_worthy": "一般",
-   "repro_note": "已认证管理员调用系统时间配置，注入命令参数",
-   "impact_scope": "邮件网关,已认证管理员",
+   "repro_note": "管理员在系统时间参数注入命令，需高权限",
+   "impact_scope": "邮件系统管理面，提权控设备",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126145",
    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated administrator with system-time read-write access to execute unauthorized code or commands as root."
   },
   {
    "id": "CVE-2026-126146",
    "tier": "high",
-   "title": "FortiMail/Recorder命令注入",
-   "title_zh": "FortiMail/Recorder命令注入",
-   "summary_zh": "已认证高权限攻击者可注入命令，在FortiMail或FortiRecorder执行未授权代码。",
+   "title": "FortiMail命令注入提权",
+   "title_zh": "FortiMail命令注入提权",
+   "summary_zh": "已认证高权限攻击者可注入OS命令，在FortiMail/FortiRecorder执行未授权操作。",
    "published": "2026-11-11T22:17:11.720",
    "cvss": 7.2,
    "severity": "HIGH",
@@ -1867,18 +1999,18 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P2 保持关注",
-   "action_zh": "升级FortiMail/Recorder至修复版本；最小化管理员权限",
+   "action_zh": "升级受影响产品至修复版本，收紧管理员权限",
    "repro_worthy": "一般",
-   "repro_note": "已认证高权限调用命令接口，构造恶意参数执行",
-   "impact_scope": "邮件/录像管理设备,高权限",
+   "repro_note": "已认证高权限入口提交特制参数注入命令",
+   "impact_scope": "邮件/录像管理设备，高权限利用",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126146",
    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.4, FortiMail 7.4.0 through 7.4.6, FortiMail 7.2.0 through 7.2.9, FortiRecorder 7.6.0, FortiRecorder 7.2.0 through 7.2.11, FortiRecorder 7.0.0 through 7.0.6 may allow an authenticated privileged attacker to execute unauthorized code or commands via a specifically crafted archive account configuration."
   },
   {
    "id": "CVE-2026-126158",
    "tier": "high",
-   "title": "FortiMail HTTP命令注入RCE",
-   "title_zh": "FortiMail HTTP命令注入RCE",
+   "title": "FortiMail管理员命令注入",
+   "title_zh": "FortiMail管理员命令注入",
    "summary_zh": "已认证管理员可通过特制HTTP请求注入OS命令，以root执行任意代码。",
    "published": "2026-11-11T22:17:13.723",
    "cvss": 7.2,
@@ -1909,19 +2041,19 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P2 保持关注",
-   "action_zh": "升级至厂商公告修复版本；最小化管理员权限",
+   "action_zh": "升级FortiMail 8.0.x至修复版本，限制管理面",
    "repro_worthy": "一般",
-   "repro_note": "已认证管理员向HTTP接口注入OS命令参数",
-   "impact_scope": "邮件网关,已认证管理员",
+   "repro_note": "管理员HTTP请求参数注入命令，需已认证",
+   "impact_scope": "邮件系统管理面，获取root",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126158",
    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1 may allow an authenticated administrator to execute unauthorized code or commands as root via specially crafted HTTP requests."
   },
   {
    "id": "CVE-2026-126167",
    "tier": "high",
-   "title": "FortiMail域管命令注入",
-   "title_zh": "FortiMail域管命令注入",
-   "summary_zh": "已认证域管或管理员可注入命令，删除其他租户用户并执行任意操作。",
+   "title": "FortiMail多租户命令注入",
+   "title_zh": "FortiMail多租户命令注入",
+   "summary_zh": "已认证域管理员或管理员可注入命令，删除配对认证器其他租户用户并执行任意操作。",
    "published": "2026-11-11T22:17:14.940",
    "cvss": 7.2,
    "severity": "HIGH",
@@ -1951,12 +2083,54 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P2 保持关注",
-   "action_zh": "升级至厂商公告修复版本；限制域管权限并审计租户操作",
+   "action_zh": "升级FortiMail/FortiAuthenticator至修复版本",
    "repro_worthy": "一般",
-   "repro_note": "已认证域管调用用户管理接口，注入恶意命令参数",
-   "impact_scope": "邮件网关,域管高权限",
+   "repro_note": "域管理员在配对认证器参数注入命令，需高权限",
+   "impact_scope": "邮件与认证联动，跨租户风险",
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126167",
    "description": "A improper neutralization of special elements used in a command ('command injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.2, FortiMail 7.6.0 through 7.6.6, FortiMail 7.4.0 through 7.4.8, FortiMail 7.2 all versions may allow an authenticated remote attacker with domain admin or admin privileges to delete users of other tenant domains on a paired FortiAuthenticator, execute arbitrary code as root or arbitrary CLI commands, and read or write arbitrary files as root via crafted HTT…"
+  },
+  {
+   "id": "CVE-2026-126179",
+   "tier": "high",
+   "title": "FortiAnalyzer命令注入",
+   "title_zh": "FortiAnalyzer命令注入",
+   "summary_zh": "具备访问权限的攻击者可注入OS命令，在FortiAnalyzer/FortiManager执行任意代码。",
+   "published": "2026-11-11T22:17:16.587",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "fortinet",
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Fortinet(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-224"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "升级FortiAnalyzer/FortiManager至修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "通过可访问的配置接口注入命令，需相应权限",
+   "impact_scope": "安全分析管理设备，横向控制风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126179",
+   "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiAnalyzer 8.0.0, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiAnalyzer Cloud 8.0.0, FortiAnalyzer Cloud 7.6.0 through 7.6.7, FortiAnalyzer Cloud 7.4.1 through 7.4.11, FortiAnalyzer Cloud 7.2.1 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager…"
   },
   {
    "id": "CVE-2026-126211",
@@ -2043,6 +2217,490 @@
    "description": "A improper privilege management vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an authenticated attacker to escalate privileges."
   },
   {
+   "id": "CVE-2026-126537",
+   "tier": "critical",
+   "title": "WordPress 未授权 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T13:17:23.810",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://ninjaforms.com/extensions/file-uploads/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/3670e2aa-6d8e-4ba5-ab65-49bd2a3dcacc?source=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126537",
+   "description": "The Ninja Forms - File Uploads add-on for WordPress is vulnerable to Arbitrary File Deletion (and arbitrary file read via S3/Dropbox/Google Drive exfiltration) in versions up to, and including, 3.3.36. This makes it possible for unauthenticated attackers to delete arbitrary files on the affected site's server which may make remote code execution possible — specifically, deleting wp-config.php forces WordPress into its setup screen, enabling full site takeover."
+  },
+  {
+   "id": "CVE-2026-126612",
+   "tier": "high",
+   "title": "Windows 文件链接绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T09:17:13.110",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "文件链接绕过"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": "gitlab",
+   "difficulty": "高(需本地访问·需低权限)",
+   "products": [],
+   "affected": "GitLab(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.8"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.com/hmailserver/hmailserver/-/work_items/78"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cve.org/CVERecord?id=CVE-2026-107571"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126612",
+   "description": "Improper link resolution in the Windows installer of Progressive Robot hMailServer 6.0.0 through 6.3.7 allows a local authenticated user to run code as the mail server's service account or as an administrator when the path to the program folder passes through a junction, a symbolic link or a mount point that the user controls or that every user may change, such as a junction made at the root of a drive, which takes the root's permissions, or through a folder that every user may rename."
+  },
+  {
+   "id": "CVE-2026-78287",
+   "tier": "critical",
+   "title": "Generation 未授权 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T11:17:21.293",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/staggs/vulnerability/wordpress-staggs-plugin-3-3-0-remote-code-execution-rce-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-78287",
+   "description": "Improper Control of Generation of Code ('Code Injection') vulnerability in Staggs STAGGS staggs allows Remote Code Inclusion.This issue affects STAGGS: from n/a through 3.3.0."
+  },
+  {
+   "id": "CVE-2026-126325",
+   "tier": "critical",
+   "title": "PTC Windchill 未授权 输入校验缺失",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T15:17:22.510",
+   "cvss": 9.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "输入校验缺失",
+    "反序列化(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ptc.com/en/support/article/CS483249"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126325",
+   "description": "A critical remote code execution (RCE) vulnerability has been reported in PTC Windchill and PTC FlexPLM. The vulnerability may be exploited through the deserialization of untrusted data."
+  },
+  {
+   "id": "CVE-2026-65982",
+   "tier": "high",
+   "title": "未授权 空指针解引用",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T21:16:46.903",
+   "cvss": 8.7,
+   "severity": "HIGH",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "空指针解引用"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/winshining/nginx-http-flv-module/security/advisories/GHSA-8mc6-jrxv-29g9"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.chtsecurity.com/news/b15d7b24-0a5e-4962-8b52-e4754e5af4f8?lang=en"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "nginx",
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65982",
+   "description": "nginx-http-flv-module is a media streaming server based on nginx-rtmp-module. Prior to version 1.2.14, if a server received an HTTP/1.0 request without a header Host, which was permitted by HTTP core of Nginx, then r->headers_in.host was NULL, nginx-http-flv-module used r->headers_in.host->value to make a pseudo tcUrl, so NULL-pointer dereference happened. This issue has been patched in version 1.2.14."
+  },
+  {
+   "id": "CVE-2026-126051",
+   "tier": "high",
+   "title": "Node.js 未授权 空指针解引用",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:36.600",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "空指针解引用"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Node.js(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cna.openjsf.org/security-advisories.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "openssl",
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126051",
+   "description": "A deferred-callback use-after-destroy in Node.js TLS server handshake handling allows a remote, unauthenticated attacker to terminate the server process."
+  },
+  {
+   "id": "CVE-2026-91880",
+   "tier": "high",
+   "title": "未授权 证书校验缺陷",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:48.063",
+   "cvss": 8.9,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "证书校验缺陷"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-in/000515434/dsa-2026-433-security-update-for-dell-terraform-provider-for-dell-storage-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91880",
+   "description": "Dell Terraform Provider for PowerFlex, versions 1.5.0 through 1.8.0, contains an Improper Certificate Validation vulnerability in the SSH client component.Terraform PowerFlex provider uses ssh.InsecureIgnoreHostKey() as the default SSH host key callback. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to information exposure and unauthorized access."
+  },
+  {
+   "id": "CVE-2026-91873",
+   "tier": "high",
+   "title": "未授权 证书校验缺陷",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:47.230",
+   "cvss": 8.7,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "证书校验缺陷"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-in/000515420/dsa-2026-432-security-update-for-dell-ansible-server-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91873",
+   "description": "Dell OpenManage Ansible Modules, versions 2.1.2 through 10.0.3, contains an Improper Certificate Validation vulnerability in the iDRACRedfishAPI component. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to information exposure and unauthorized access."
+  },
+  {
+   "id": "CVE-2026-91874",
+   "tier": "high",
+   "title": "未授权 证书校验缺陷",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:47.373",
+   "cvss": 8.7,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "证书校验缺陷"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-in/000515420/dsa-2026-432-security-update-for-dell-ansible-server-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91874",
+   "description": "Dell OpenManage Ansible Modules, versions 5.0.0 through 10.0.3, contains an Improper Certificate Validation vulnerability in the iDRACConnection component. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to information exposure and unauthorized access."
+  },
+  {
+   "id": "CVE-2026-91875",
+   "tier": "high",
+   "title": "Dell OpenManage Ansible Modules 未授权 证书校验缺陷",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:47.513",
+   "cvss": 8.7,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "证书校验缺陷"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-in/000515420/dsa-2026-432-security-update-for-dell-ansible-server-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91875",
+   "description": "Dell OpenManage Ansible Modules, versions 9.2.0 through 10.0.3, contains an Improper Certificate Validation vulnerability in the SessionAPI component. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to information exposure and unauthorized access."
+  },
+  {
+   "id": "CVE-2026-111000",
+   "tier": "high",
+   "title": "Grafana 权限提升",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T15:17:14.503",
+   "cvss": 7.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升",
+    "授权错误"
+   ],
+   "vuln_class": "提权",
+   "fame_term": "grafana",
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Grafana(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://grafana.com/security/security-advisories/cve-2026-111000"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111000",
+   "description": "A user with the Editor role who can edit a folder can move it, through the folders resource API, under a folder they administer, and so gain Admin on the moved folder and its contents, including the right to change their permissions. The legacy folder move API refuses the same move (improper privilege management)."
+  },
+  {
    "id": "CVE-2026-67449",
    "tier": "critical",
    "title": "TUS 未授权 路径遍历/任意文件读取",
@@ -2092,6 +2750,132 @@
    "impact_scope": null,
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67449",
    "description": "Portabase is a database backup and restore tool for PostgreSQL, MySQL, MsSQL, MariaDB, Firebird SQL, SQLite, MongoDB, Redis, Files and Docker Volume. Prior to version 1.21.2, a path traversal in the TUS upload webhook handler (app/api/tus/hooks/route.ts) allowed an unauthenticated attacker to overwrite arbitrary files under the private data directory, including /data/private/keys/master_key.bin (the AES-256-GCM master key). This issue has been patched in version 1.21.2."
+  },
+  {
+   "id": "CVE-2026-118965",
+   "tier": "critical",
+   "title": "Checkmk 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T11:17:13.080",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://checkmk.com/werk/22120"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118965",
+   "description": "Path traversal in the discovered host label synchronization in Checkmk <2.5.0p19, <2.4.0p40 and 2.3.0 (EOL) allows an attacker in control of a remote site in a distributed monitoring setup to write arbitrary files on the central site and thereby execute code as the central site user."
+  },
+  {
+   "id": "CVE-2026-120495",
+   "tier": "critical",
+   "title": "Synthetic Monitoring 路径遍历",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T11:17:13.433",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://checkmk.com/werk/22624"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120495",
+   "description": "Path traversal in the Synthetic Monitoring \"Robotmk\" test service of Checkmk <2.5.0p19, <2.4.0p40, and 2.3.0 (EOL) allows an attacker who controls the agent output of a monitored host's check output for a host to inject a crafted robot output to define the contents and location for the generated HTML log, leading to code execution as the site user."
+  },
+  {
+   "id": "CVE-2026-121374",
+   "tier": "critical",
+   "title": "Argument 参数拼接注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T11:17:14.377",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "参数拼接注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://checkmk.com/werk/17994"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121374",
+   "description": "Argument injection in the Kubernetes special agent in Checkmk <2.5.0p19, <2.4.0p40, and 2.3.0 (EOL) allows a user with permission to edit rules in at least one folder to write files to arbitrary locations writable by the site user via crafted node roles in the \"Exclude nodes based on their role\" rule option, leading to code execution as the site user."
   },
   {
    "id": "CVE-2026-126768",
@@ -2194,6 +2978,1019 @@
    "description": "NextScan 1.1.0 through 1.2.0 contains an authentication bypass vulnerability in ns-admin that allows unauthenticated attackers to forge administrator tokens using a hardcoded JWT signing key. Attackers can sign an HS256 X-Access-Token carrying the public super administrator role ID to gain full access to user management, scan tasks and stored vulnerability results."
   },
   {
+   "id": "CVE-2026-65840",
+   "tier": "critical",
+   "title": "HOST_MODE 越权(IDOR)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:43.937",
+   "cvss": 9.6,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越权(IDOR)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/getfider/fider/releases/tag/v0.36.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/getfider/fider/security/advisories/GHSA-vxjw-gv4f-vq58"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65840",
+   "description": "Fider is a feedback portal for feature requests and suggestions. Prior to version 0.36.0, in multi-tenant mode (HOST_MODE=multi), an attacker can use an email verification key issued by Tenant A to authenticate as the same email address on Tenant B. This completely bypasses tenant isolation and allows unauthorized account takeover across tenants. Single-host deployments (HOST_MODE=single, the default) are NOT affected. This issue has been patched in version 0.36.0."
+  },
+  {
+   "id": "CVE-2026-85632",
+   "tier": "critical",
+   "title": "Missing 未授权 缺失认证",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T15:17:25.163",
+   "cvss": 9.1,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证",
+    "CWE-354"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://siberguvenlik.gov.tr/guvenlik-bildirimleri/detay/tr-26-1520"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85632",
+   "description": "Missing authentication for critical function and Improper validation of integrity check value vulnerability in Sipay Electronic Money and Payment Services Inc. WooCommerce Virtual POS Module allows Authentication Bypass and Application API Message Manipulation via Man-in-the-Middle. This issue affects WooCommerce Virtual POS Module: from 26.8.3 before 26.9.1."
+  },
+  {
+   "id": "CVE-2026-67543",
+   "tier": "high",
+   "title": "Python 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:28.997",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)",
+    "权限提升"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/heymrun/heym/commit/2155057f4153a1e3a7b789d104f7fa96e92964e5"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/heymrun/heym/commit/28bb2901e4dea128ac493f67ee9478d230b7a3d7"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/heymrun/heym/releases/tag/0.0.70"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67543",
+   "description": "The skill executor (skill_python_executor.py) runs skill Python via a local backend subprocess with no Docker isolation — only a 512 MB RLIMIT and a 7-key env denylist — so a skill executes inside the backend execution context, with filesystem access, network egress, and non-denylisted environment variables that should not be exposed to untrusted/shared skills. In the shipped Docker config (backend runs as root + /var/run/docker.sock mounted), this escalates to host root."
+  },
+  {
+   "id": "CVE-2026-67544",
+   "tier": "high",
+   "title": "Popen 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:29.180",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/heymrun/heym/commit/d2fd46c07754c4ed3e80b521aa54cc276039849b"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/heymrun/heym/releases/tag/0.0.71"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/heymrun/heym/security/advisories/GHSA-mp23-7m6r-jfw4"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67544",
+   "description": "This string is written to a temporary .py file and executed directly by the backend process via subprocess.Popen([sys.executable, script_path]) with no sandboxing, AST validation, or role gate. Any authenticated user — including a freshly registered account — can achieve full remote code execution (RCE) on the backend host, running as the service process user (observed as root in the default Docker deployment)."
+  },
+  {
+   "id": "CVE-2026-67546",
+   "tier": "high",
+   "title": "POST 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:29.533",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/heymrun/heym/commit/22b8ee60eb92128cf4ff04a9b6c0e1b62bf25a01"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/heymrun/heym/commit/6c6213f88dfa8b2a70d23a9a271171241e910904"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/heymrun/heym/releases/tag/v0.0.75"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67546",
+   "description": "Prior to version 0.0.75, the same POST /api/mcp/fetch-tools endpoint (any authenticated user, lowest role) also accepts the stdio transport, which spawns the attacker-supplied command with attacker-supplied args and an environment merged over os.environ. The process executes on the shared backend host before MCP protocol validation fails — so side effects fire regardless of whether the command speaks MCP."
+  },
+  {
+   "id": "CVE-2026-67547",
+   "tier": "high",
+   "title": "Python 缺失授权(越权)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:29.710",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失授权(越权)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/jaylfc/taOS/commit/8998d85190424d5e843880b4ca256e79b653a304"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/jaylfc/taOS/releases/tag/v1.0.0-beta.23"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/jaylfc/taOS/security/advisories/GHSA-h24f-gp4c-8qjm"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67547",
+   "description": "Any authenticated non-admin user can supply attacker-controlled Python code in the request body and have it executed as the taOS backend process user on the host, achieving full remote code execution with no privilege escalation required beyond a valid (non-admin) session."
+  },
+  {
+   "id": "CVE-2026-65820",
+   "tier": "high",
+   "title": "未授权 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T18:19:47.940",
+   "cvss": 8.7,
+   "severity": "HIGH",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/aeon-toolkit/aeon/commit/99261e1355c89a316bf0824bb03f855c6aadae8f"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/aeon-toolkit/aeon/pull/3394"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/aeon-toolkit/aeon/security/advisories/GHSA-mhg2-mc45-wrjr"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65820",
+   "description": "In this configuration, fork-controlled code could be checked out and executed in a privileged context. This created a potential token exposure and repository write path if an attacker submitted a malicious fork pull request designed to execute during the privileged workflow run."
+  },
+  {
+   "id": "CVE-2026-91871",
+   "tier": "high",
+   "title": "Dell Ansible Storage 未授权 证书校验缺陷",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T18:19:53.223",
+   "cvss": 7.4,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "证书校验缺陷"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-au/000515361/dsa-2026-431-security-update-for-dell-ansible-storage-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91871",
+   "description": "Dell Ansible Storage for PowerStore, versions prior to 3.9.0, contains an Improper Certificate Validation vulnerability in the API client component. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to information exposure and unauthorized access."
+  },
+  {
+   "id": "CVE-2026-12062",
+   "tier": "high",
+   "title": "Zoho Corporation ManageEngine ADAudit SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T08:17:17.960",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "ManageEngine(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.manageengine.com/products/active-directory-audit/cve-2026-12062.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-12062",
+   "description": "Zoho Corporation ManageEngine ADAudit Plus versions below 8703 are vulnerable to an authenticated SQL injection vulnerability in ADAudit Plus Reports API."
+  },
+  {
+   "id": "CVE-2026-76981",
+   "tier": "high",
+   "title": "Zoho Corporation ManageEngine ADAudit SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T08:17:18.760",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "ManageEngine(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.manageengine.com/log-management/advisory/CVE-2026-92905.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76981",
+   "description": "Zoho Corporation ManageEngine ADAudit Plus versions below 8711 are vulnerable to an authenticated second order SQL injection vulnerability affecting ADAudit Plus custom reports module."
+  },
+  {
+   "id": "CVE-2026-107662",
+   "tier": "high",
+   "title": "Revive Adserver SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T18:18:24.690",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://hackerone.com/reports/3896779"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107662",
+   "description": "Blind SQL injection in Revive Adserver 6.0.8 and earlier allows an authenticated manager restricted to one agency to extract arbitrary database values through the banner-zone.php and campaign-zone.php administration pages. Permission checks and database queries obtain identifiers through inconsistent request-input precedence, allowing an authorized numeric identifier to pass validation while a different, attacker-controlled value reaches an SQL query."
+  },
+  {
+   "id": "CVE-2026-126804",
+   "tier": "high",
+   "title": "WWBN AVideo 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T21:16:44.173",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/WWBN/AVideo/blob/v29.7.1/plugin/ADs/ADs.php#L194-L219"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/WWBN/AVideo/blob/v29.7.1/plugin/ADs/deleteImage.json.php#L53-L63"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/WWBN/AVideo/commit/c2b99663d6442e2182a0f3ab95ea6731a193b301"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126804",
+   "description": "WWBN AVideo 12.4 through 29.7.1 contains a path traversal vulnerability in the ADs plugin deleteImage.json.php that allows authenticated users with custom ads to delete arbitrary files. Attackers can set the unvalidated is_regular_user parameter to another user's id or ../ sequences to delete other users' ads or files like videos/configuration.php, taking the site offline and re-exposing the installer."
+  },
+  {
+   "id": "CVE-2026-112174",
+   "tier": "critical",
+   "title": "Iperius Backup CWE-250",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T10:16:42.960",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-250"
+   ],
+   "vuln_class": "提权",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.incibe.es/en/incibe-cert/notices/aviso/privilege-escalation-enters-iperius-backup"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112174",
+   "description": "Local privilege escalation vulnerability in Iperius Backup 8.8.3, due to insufficient separation between the graphical user interface running with elevated privileges and local users with low privileges. This allows commands to be executed with SYSTEM or Administrator privileges, depending on the application’s context, and compromises the affected Windows system."
+  },
+  {
+   "id": "CVE-2026-122044",
+   "tier": "high",
+   "title": "Philips Hue Bridge Pro CWE-693",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:11.247",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-693"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(需相邻网络·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-892/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122044",
+   "description": "This vulnerability allows network-adjacent attackers to bypass authentication on affected installations of Philips Hue Bridge Pro. An attacker can leverage this vulnerability to bypass authentication on the system."
+  },
+  {
+   "id": "CVE-2026-65843",
+   "tier": "high",
+   "title": "JavaScript 未授权 缺失认证",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:44.120",
+   "cvss": 8.7,
+   "severity": "HIGH",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/ForbesLindesay/sync-rpc/commit/ffccfe5bc39ad2e291a79c9e5afe6155ad311f07"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ForbesLindesay/sync-rpc/security/advisories/GHSA-2x86-cf3f-86gw"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65843",
+   "description": "sync-rpc runs asynchronous commands synchronously by putting them in a separate proces. Prior to version 1.3.7, if an attacker could guess the correct port and it was not blocked via a firewall, it was possible to load and execute arbitrary JavaScript files stored on the server running sync-rpc. This issue has been patched in version 1.3.7."
+  },
+  {
+   "id": "CVE-2026-65965",
+   "tier": "high",
+   "title": "未授权 CWE-285",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T21:16:46.410",
+   "cvss": 8.7,
+   "severity": "HIGH",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-285",
+    "缺失授权(越权)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/3xpyth0n/ideon/commit/ed58ca7a70543c7fc4ebfef59a2ca34e480e44d1"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/3xpyth0n/ideon/releases/tag/v0.9.4"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/3xpyth0n/ideon/security/advisories/GHSA-v3qr-4v8m-29rh"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65965",
+   "description": "ideon is a self-hosted visual workspace. Prior to version 0.9.4, several project mutation endpoints under /api/projects/[id]/* resolve the caller's project role but never enforce it, so a user who was granted only the read-only viewer role on a project can perform write operations on that project."
+  },
+  {
+   "id": "CVE-2026-106137",
+   "tier": "high",
+   "title": "未授权 CWE-362",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T18:18:24.160",
+   "cvss": 8.6,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-362",
+    "CWE-401"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.telerik.com/aspnet-mvc/documentation/knowledge-base/kb-security-class-factory-cve-2026-106137"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106137",
+   "description": "The dictionary lookup and insertion are not atomic, and case variations in aggregate descriptors can produce distinct retained types even though member resolution is case-insensitive. An unauthenticated remote attacker can exploit this if the application exposes an aggregation endpoint that is reachable without authentication, by submitting concurrent or repeated crafted requests."
+  },
+  {
+   "id": "CVE-2026-106156",
+   "tier": "high",
+   "title": "未授权 资源耗尽(DoS)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T18:18:24.423",
+   "cvss": 8.6,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "资源耗尽(DoS)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.telerik.com/aspnet-core-ui/documentation/knowledge-base/kb-security-uncontrolled-resource-consumption-cve-2026-106156"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106156",
+   "description": "In Progress® Telerik® UI for ASP.NET Core versions `2015.1.318` through `2026.3.811`, repeated server-side aggregation requests, with or without grouping, cause dynamic assemblies and load contexts to be retained, resulting in accumulating process memory consumption. An unauthenticated remote attacker can exploit this if the application exposes an aggregation endpoint that is reachable without authentication."
+  },
+  {
+   "id": "CVE-2026-65952",
+   "tier": "high",
+   "title": "Lenovo XClarity Essentials OneCLI 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:27.917",
+   "cvss": 8.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "中(远程·利用条件苛刻·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.lenovo.com/us/en/solutions/ht116433"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65952",
+   "description": "Improper neutralization of special elements used in an OS command in the remote SSH operation functionality of Lenovo XClarity Essentials OneCLI 5.5.0 for Linux could allow an attacker to execute arbitrary OS commands with the privileges of the configured SSH account on a managed server by supplying a specially crafted remote path."
+  },
+  {
+   "id": "CVE-2026-64855",
+   "tier": "high",
+   "title": "There 未授权 证书校验缺陷",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T16:17:25.370",
+   "cvss": 8.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "证书校验缺陷",
+    "签名校验错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/hitoshyamamoto/soapbar/pull/71"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/hitoshyamamoto/soapbar/releases/tag/v0.13.0"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/hitoshyamamoto/soapbar/security/advisories/GHSA-859w-52fx-hcm6"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-64855",
+   "description": "There was no CA-chain validation, no issuer/subject allowlist, and no pinning. An attacker who mints their own certificate, signs a forged envelope, and embeds that certificate in the token passes verification."
+  },
+  {
+   "id": "CVE-2026-126774",
+   "tier": "high",
+   "title": "MDX 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:37.937",
+   "cvss": 8.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "中(远程·利用条件苛刻·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/tinacms/tinacms/blob/%40tinacms/mdx%400.60.3/packages/%40tinacms/mdx/src/stringify/acorn.ts#L81"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/tinacms/tinacms/commit/19285c6deeee52c380e8b2fdeafedc9530dc0618"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/tinacms/tinacms/pull/7958"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126774",
+   "description": "@tinacms/mdx before 2.4.2 contains a code injection vulnerability in its MDX serializer, which writes rich-text values into MDX expressions without escaping them. Authenticated content editors can save crafted values that break out of list field or highlightColor expressions in the stored .mdx file, executing JavaScript in visitors' browsers or on build and server-side rendering hosts."
+  },
+  {
+   "id": "CVE-2026-126815",
+   "tier": "high",
+   "title": "Pre-account 未授权 认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T20:17:07.540",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.grayback.es/advisories"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.grayback.es/en/advisories"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126815",
+   "description": "Pre-account hijacking in the authentication flow in Lagarto Chivato 0.4.1 and earlier on Web allows remote unauthenticated attackers to take over arbitrary accounts via a password planted on an unregistered email address that becomes valid upon the victim’s first passwordless login."
+  },
+  {
    "id": "CVE-2026-126812",
    "tier": "critical",
    "title": "Unauthenticated 未授权 CWE-258",
@@ -2242,91 +4039,1775 @@
    "impact_scope": null,
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126812",
    "description": "blueprintUE Self-Hosted Edition before 4.3.7 contains an insecure default configuration in its Docker Compose examples that sets MYSQL_ALLOW_EMPTY_PASSWORD=yes in database.env and publishes MariaDB on port 3306. Unauthenticated attackers reaching the Docker host on port 3306 can log in as root without a password to read, modify, or delete user accounts, blueprints, and all databases."
+  },
+  {
+   "id": "CVE-2026-124741",
+   "tier": "high",
+   "title": "DHCPv6 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T11:17:17.233",
+   "cvss": 7.6,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(需相邻网络·免认证)",
+   "products": [],
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/security/cve/CVE-2026-124741"
+    },
+    {
+     "label": "参考",
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2571617"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124741",
+   "description": "A flaw was found in BusyBox. The udhcpc6 DHCPv6 client does not properly validate the size of network options sent by a server before copying them into memory. A malicious DHCPv6 server on the local network can exploit this flaw by sending a crafted reply, triggering a stack-based buffer overflow. This vulnerability could allow an attacker to achieve arbitrary code execution with root privileges or cause a denial of service (DoS) crash."
+  },
+  {
+   "id": "CVE-2026-64670",
+   "tier": "critical",
+   "title": "Edit 未授权 XSS",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T05:19:51.527",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "XSS",
+    "CWE-116"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/walinejs/waline/security/advisories/GHSA-crj3-q72p-ggqm"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-64670",
+   "description": "In versions 3.15.2 and prior, @waline/client renders the comment editor's live preview with marked and no sanitizer (utils/markdown.ts), and the preview is injected with v-html. So an administrator who clicks Edit on an attacker's comment renders that attacker's raw HTML in their own session: an unauthenticated commenter achieves privilege-escalation stored XSS against a moderator with a single Edit click."
+  },
+  {
+   "id": "CVE-2026-118632",
+   "tier": "high",
+   "title": "Philips Hue Bridge Pro SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:10.190",
+   "cvss": 8.0,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "中(需相邻网络·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-891/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118632",
+   "description": "Philips Hue Bridge Pro SQL Injection Remote Code Execution Vulnerability. This vulnerability allows network-adjacent attackers to execute arbitrary code on affected installations of Philips Hue Bridge Pro."
+  },
+  {
+   "id": "CVE-2026-65971",
+   "tier": "high",
+   "title": "From SQL注入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:28.090",
+   "cvss": 7.6,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Power-Components/livewire-powergrid/commit/13d047bf1637e82926e6914aa3ca0f29a4c9704a"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Power-Components/livewire-powergrid/releases/tag/v6.10.4"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Power-Components/livewire-powergrid/security/advisories/GHSA-7fgc-3h6c-698r"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65971",
+   "description": "Livewire PowerGrid creates data tables based on Laravel Livewire library. From version 6.0.0 to before version 6.10.4, the public Livewire property sortDirection is interpolated verbatim into a raw SQL ORDER BY clause and is not restricted to asc/desc, allowing arbitrary SQL injection through POST /livewire/update. This issue has been patched in version 6.10.4."
+  },
+  {
+   "id": "CVE-2026-114556",
+   "tier": "high",
+   "title": "MailEnable. An 未授权 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:08.277",
+   "cvss": 7.4,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-869/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114556",
+   "description": "This vulnerability allows remote attackers to create arbitrary files on affected installations of MailEnable. An attacker can leverage this in conjunction with other vulnerabilities to execute code in the context of SYSTEM."
+  },
+  {
+   "id": "CVE-2026-77882",
+   "tier": "high",
+   "title": "Lenovo System Update 反序列化(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T17:17:20.130",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.lenovo.com/us/en/downloads/ds012808"
+    },
+    {
+     "label": "参考",
+     "url": "https://support.lenovo.com/us/en/product_security/LEN-232748"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77882",
+   "description": "A deserialization of untrusted data vulnerability was discovered in Lenovo System Update that could allow a local authenticated user to execute code with elevated privileges."
+  },
+  {
+   "id": "CVE-2026-108472",
+   "tier": "high",
+   "title": "Red Hat 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:29.070",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·需低权限)",
+   "products": [],
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/security/cve/CVE-2026-108472"
+    },
+    {
+     "label": "参考",
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2548925"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/11/11/27"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108472",
+   "description": "A flaw was found in the xfs_admin utility in xfsprogs. The tool does not properly validate user-supplied parameters, allowing operating system command injection. A local attacker can exploit this issue by providing crafted input arguments, which may result in arbitrary command execution and local privilege escalation depending on how xfs_admin is executed."
+  },
+  {
+   "id": "CVE-2025-10935",
+   "tier": "high",
+   "title": "User 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:08.107",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-887/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-10935",
+   "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of libilbm. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file."
+  },
+  {
+   "id": "CVE-2026-114558",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer OPJU 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:08.417",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114558"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-886/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114558",
+   "description": "OriginLab Origin Viewer OPJU File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer."
+  },
+  {
+   "id": "CVE-2026-114559",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer OGG 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:08.560",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114559"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-876/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114559",
+   "description": "OriginLab Origin Viewer OGG File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer."
+  },
+  {
+   "id": "CVE-2026-114560",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer OPJ 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:08.700",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114560"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-877/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114560",
+   "description": "OriginLab Origin Viewer OPJ File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer."
+  },
+  {
+   "id": "CVE-2026-114561",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer OPJU 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:08.843",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114561"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-878/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114561",
+   "description": "OriginLab Origin Viewer OPJU File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer."
+  },
+  {
+   "id": "CVE-2026-114562",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer OGWU 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:08.980",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114562"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-879/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114562",
+   "description": "OriginLab Origin Viewer OGWU File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer."
+  },
+  {
+   "id": "CVE-2026-114563",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer. User 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:09.110",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114563"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-880/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114563",
+   "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file."
+  },
+  {
+   "id": "CVE-2026-114564",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer OGG 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:09.250",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114564"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-881/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114564",
+   "description": "OriginLab Origin Viewer OGG File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer."
+  },
+  {
+   "id": "CVE-2026-114565",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer OGG 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:09.397",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114565"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-882/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114565",
+   "description": "OriginLab Origin Viewer OGG File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer."
+  },
+  {
+   "id": "CVE-2026-114566",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer. User 内存破坏",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:09.527",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114566"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-883/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114566",
+   "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file."
+  },
+  {
+   "id": "CVE-2026-114567",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer OGWU 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:09.657",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114567"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-884/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114567",
+   "description": "OriginLab Origin Viewer OGWU File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer."
+  },
+  {
+   "id": "CVE-2026-114568",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer. User 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:09.783",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114568"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-885/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114568",
+   "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file."
+  },
+  {
+   "id": "CVE-2026-114569",
+   "tier": "high",
+   "title": "OriginLab Origin Viewer. User 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:09.917",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://docs.originlab.com/cve/CVE-2026-114569"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-875/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114569",
+   "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of OriginLab Origin Viewer. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file."
+  },
+  {
+   "id": "CVE-2026-121741",
+   "tier": "high",
+   "title": "Trimble SketchUp SKP File 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:10.323",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-893/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121741",
+   "description": "Trimble SketchUp SKP File Parsing Use-After-Free Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Trimble SketchUp."
+  },
+  {
+   "id": "CVE-2026-121742",
+   "tier": "high",
+   "title": "Ashlar-Vellum Cobalt XE File 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:10.447",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-874/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121742",
+   "description": "Ashlar-Vellum Cobalt XE File Parsing Use-After-Free Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Ashlar-Vellum Cobalt."
+  },
+  {
+   "id": "CVE-2026-121743",
+   "tier": "high",
+   "title": "Ashlar-Vellum Cobalt. User 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:10.600",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-873/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121743",
+   "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of Ashlar-Vellum Cobalt. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file."
+  },
+  {
+   "id": "CVE-2026-121744",
+   "tier": "high",
+   "title": "Ashlar-Vellum Cobalt. User 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:10.763",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-870/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121744",
+   "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of Ashlar-Vellum Cobalt. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file."
+  },
+  {
+   "id": "CVE-2026-121752",
+   "tier": "high",
+   "title": "Ashlar-Vellum Cobalt. User 堆溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:10.907",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "堆溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-871/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121752",
+   "description": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of Ashlar-Vellum Cobalt. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file."
+  },
+  {
+   "id": "CVE-2026-121753",
+   "tier": "high",
+   "title": "Ashlar-Vellum Cobalt XE File 释放后重用(UAF)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:11.093",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-872/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121753",
+   "description": "Ashlar-Vellum Cobalt XE File Parsing Use-After-Free Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Ashlar-Vellum Cobalt."
+  },
+  {
+   "id": "CVE-2026-124737",
+   "tier": "high",
+   "title": "TFTP 未授权 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T10:16:43.620",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "中(远程·利用条件苛刻·免认证·需用户交互)",
+   "products": [],
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/security/cve/CVE-2026-124737"
+    },
+    {
+     "label": "参考",
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2571607"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124737",
+   "description": "A malicious TFTP server can exploit this issue by sending standard-sized network packets during a transfer, causing a heap buffer overflow. This flaw allows an attacker to achieve arbitrary code execution or cause a Denial of Service (DoS) by crashing the application."
+  },
+  {
+   "id": "CVE-2026-126769",
+   "tier": "high",
+   "title": "OpsTree REMS 未授权 缺失认证",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:37.293",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/neelkotnis/3fc4a8587179a8691ed89056ea7df076"
+    },
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/neelkotnis/493d542098b328570f821dc152146732"
+    },
+    {
+     "label": "参考",
+     "url": "https://opstree.com/rems-ai-powered-observability/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126769",
+   "description": "OpsTree REMS through 1.0.0 contains a missing authentication vulnerability that allows unauthenticated remote attackers to access Governance API endpoints, including /api/v1/databases. Attackers can send requests without an Authorization header, or with invalid or tampered JWT tokens, to retrieve stored database hosts, usernames, and passwords."
+  },
+  {
+   "id": "CVE-2026-126777",
+   "tier": "high",
+   "title": "Traccar 未授权 认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:38.497",
+   "cvss": 7.4,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/traccar/traccar/blob/v3.15/src/org/traccar/database/LdapProvider.java#L163-L169"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/traccar/traccar/blob/v6.16.0/src/main/java/org/traccar/database/LdapProvider.java#L171-L176"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/traccar/traccar/commit/552c31f2097dbed9edef7cfe174c50b16febdc21"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126777",
+   "description": "Traccar 3.15 before 6.17.0 contains an authentication bypass vulnerability in LdapProvider.login() that fails to reject empty passwords, causing LDAP binds to be performed as unauthenticated binds when LDAP authentication is enabled. Unauthenticated attackers who know a valid username can log in via POST /api/session or HTTP Basic authentication with an empty password against directories that permit unauthenticated binds, obtaining sessions for any account including administrators."
+  },
+  {
+   "id": "CVE-2026-126795",
+   "tier": "high",
+   "title": "ToolJet 未授权 认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-12T03:17:11.400",
+   "cvss": 7.3,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过",
+    "缺失认证"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/ToolJet/ToolJet/"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ToolJet/ToolJet/commit/af8f17a745621ae418f1743440f63d315e8b8643"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ToolJet/ToolJet/pull/18851"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126795",
+   "description": "A vulnerability was determined in ToolJet up to 3.20.256-lts/3.21.93-beta. The exploit has been publicly disclosed and may be utilized."
+  },
+  {
+   "id": "CVE-2026-65949",
+   "tier": "high",
+   "title": "Lenovo XClarity Integrator 命令注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T22:17:27.373",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)",
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.lenovo.com/us/en/solutions/ht507549-lenovo-xclarity-integrator-for-microsoft-windows-admin-center-v21"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65949",
+   "description": "Improper neutralization of special elements used in an OS command in Lenovo XClarity Integrator for Microsoft Windows Admin Center 5.1.1 and 5.2.0 allows an authenticated remote attacker to execute arbitrary PowerShell commands by submitting a crafted hostname."
+  },
+  {
+   "id": "CVE-2026-125637",
+   "tier": "high",
+   "title": "Konflux UI 代码注入(RCE)",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T23:17:10.750",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/security/cve/CVE-2026-125637"
+    },
+    {
+     "label": "参考",
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2569294"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125637",
+   "description": "A flaw was found in the Konflux UI proxy. An authenticated user with permissions to modify the custom resource can inject malicious configuration directives to bypass authentication and authorization controls, potentially exposing internal backend services."
+  },
+  {
+   "id": "CVE-2026-123747",
+   "tier": "high",
+   "title": "Red Hat 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:30.467",
+   "cvss": 7.3,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:C/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "高(远程·利用条件苛刻·需高权限·需用户交互)",
+   "products": [],
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/security/cve/CVE-2026-123747"
+    },
+    {
+     "label": "参考",
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2568110"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/11/11/9"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123747",
+   "description": "A flaw was found in pappl-retrofit. The application fails to properly sanitize user-supplied filenames when handling the upload and deletion of PostScript Printer Description (PPD) files. A remote, unauthenticated attacker can exploit this directory traversal flaw by submitting filenames containing path traversal sequences. This allows the attacker to upload or delete arbitrary files on the system, which can result in data corruption, denial of service, or arbitrary command execution."
+  },
+  {
+   "id": "CVE-2026-91151",
+   "tier": "high",
+   "title": "Red Hat 文件链接绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T20:17:10.557",
+   "cvss": 7.3,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "文件链接绕过"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·需低权限·需用户交互)",
+   "products": [],
+   "affected": "Red Hat(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/security/cve/CVE-2026-91151"
+    },
+    {
+     "label": "参考",
+     "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2478404"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/cockpit-project/cockpit/commit/4796b28be064a90e32262cec85be7839e6198e23"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91151",
+   "description": "A local authenticated user with control over a target account's home directory can exploit a privileged symlink dereference vulnerability in the `ssh-add-public-key.sh` helper. This allows the attacker to arbitrarily change file ownership and modes, potentially leading to local privilege escalation and impacting the integrity, confidentiality, and availability of the system."
+  },
+  {
+   "id": "CVE-2026-116633",
+   "tier": "high",
+   "title": "Lenovo Tablets CWE-926",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T17:17:16.180",
+   "cvss": 7.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-926"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.lenovo.com/us/en/product_security/LEN-220237"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116633",
+   "description": "A potential vulnerability was reported in some Lenovo Tablets that could allow a third-party application to perform an arbitrary file write with elevated privileges."
+  },
+  {
+   "id": "CVE-2026-126780",
+   "tier": "high",
+   "title": "Webmin 权限提升",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:38.993",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升"
+   ],
+   "vuln_class": "提权",
+   "fame_term": null,
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/webmin/webmin/blob/2.670/acl/save_group.cgi#L83"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/webmin/webmin/commit/be54ba38c3b86a3647a62327e1de81d5d0db098a"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/webmin/webmin/commit/c861e308f4ee4cff1795ccc7621fc75623e1bb90"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126780",
+   "description": "Webmin through 2.670 contains a privilege escalation vulnerability in acl/save_group.cgi that allows delegated administrators to grant unauthorized modules by submitting arbitrary module lists in the mod parameter. Attackers with Webmin Users module access can create or edit groups holding modules like Command Shell and assign themselves membership to execute commands as root."
+  },
+  {
+   "id": "CVE-2026-76079",
+   "tier": "high",
+   "title": "Probo 权限提升",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T19:17:44.727",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升",
+    "授权错误"
+   ],
+   "vuln_class": "提权",
+   "fame_term": null,
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/getprobo/probo/commit/eb9274f2cd7101f89c21c18f6d7a3570f95aff32"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/getprobo/probo/pull/1475"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/getprobo/probo/releases/tag/probod%2Fv0.224.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76079",
+   "description": "Probo is a self-hostable governance, risk, and compliance (GRC) platform built for engineering and security teams. Prior to version 0.224.0, an organization ADMIN can mint an OWNER membership via createUser, bypassing the owner-only set-owner authorization gate. This issue has been patched in version 0.224.0."
+  },
+  {
+   "id": "CVE-2026-126803",
+   "tier": "high",
+   "title": "Rote 权限提升",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-11T21:16:44.007",
+   "cvss": 7.2,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升"
+   ],
+   "vuln_class": "提权",
+   "fame_term": null,
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Rabithua/Rote/blob/v2.6.0/server/route/v2/admin.ts#L86-L146"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Rabithua/Rote/commit/865d69fceb9c1f1a0d30923fae7cef072a38b22b"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Rabithua/Rote/pull/420"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": null,
+   "repro_worthy": "一般",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126803",
+   "description": "Rote through 2.6.0 contains a privilege escalation vulnerability that allows authenticated admins to obtain super_admin rights by reading or overwriting JWT signing secrets via /v2/api/admin/settings. Attackers can retrieve the unmasked jwtSecret from the security settings group and forge HS256 tokens for the super administrator to change user roles and escalate their own account."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "php/php-src",
-   "sha": "8eb02dbaa339613075d1c9db9f130eb7e4c8af73",
-   "url": "https://github.com/php/php-src/commit/8eb02dbaa339613075d1c9db9f130eb7e4c8af73",
-   "title": "Fix GH-13230: phpdbg use-after-free at shutdown",
-   "date": "2026-11-11T22:41:27",
+   "repo": "wireshark/wireshark",
+   "sha": "a0ab51c632e661349203f60700a818f9414b5038",
+   "url": "https://github.com/wireshark/wireshark/commit/a0ab51c632e661349203f60700a818f9414b5038",
+   "title": "PROFINET: Key the per-AR station info by AR UUID in its own map",
+   "date": "2026-11-12T01:10:00",
    "score": 2,
    "matched": [
-    "UAF"
+    "未初始化/内存破坏"
    ],
    "cve": null
   },
   {
-   "repo": "php/php-src",
-   "sha": "0dbc4a7953a8aca38d0cf04fa4fb4ac076f00419",
-   "url": "https://github.com/php/php-src/commit/0dbc4a7953a8aca38d0cf04fa4fb4ac076f00419",
-   "title": "Update NEWS for use-after-free fixes in ext/openssl",
-   "date": "2026-11-11T18:48:09",
+   "repo": "rust-lang/rust",
+   "sha": "ee8268e23d0e2e308b52e4f63df69afb69bc61a4",
+   "url": "https://github.com/rust-lang/rust/commit/ee8268e23d0e2e308b52e4f63df69afb69bc61a4",
+   "title": "Auto merge of #165820 - Muscraft:update-cargo, r=weihanglo",
+   "date": "2026-11-11T21:10:05",
    "score": 2,
    "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "34c2d2840ba901f4c4d1f7a4574b7c1ff1cc3601",
-   "url": "https://github.com/php/php-src/commit/34c2d2840ba901f4c4d1f7a4574b7c1ff1cc3601",
-   "title": "ext/openssl: fix use after free when `session_new_cb` callback closes stream",
-   "date": "2026-11-11T18:44:10",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "010d6e2277dc7bce68627f541e638412425e4aef",
-   "url": "https://github.com/php/php-src/commit/010d6e2277dc7bce68627f541e638412425e4aef",
-   "title": "ext/openssl: fix use after free when `session_get_cb` callback closes stream",
-   "date": "2026-11-11T18:44:10",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "97ce0bf86bfcbebb865f15f594d2f05da908dccd",
-   "url": "https://github.com/php/php-src/commit/97ce0bf86bfcbebb865f15f594d2f05da908dccd",
-   "title": "ext/openssl: fix use after free when `psk_server_cb` callback closes stream",
-   "date": "2026-11-11T18:44:09",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "8309d9f12e9a9caac9be9c7e8c6f11100eae0e6b",
-   "url": "https://github.com/php/php-src/commit/8309d9f12e9a9caac9be9c7e8c6f11100eae0e6b",
-   "title": "ext/openssl: fix use after free when `psk_client_cb` callback closes stream",
-   "date": "2026-11-11T18:44:09",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "php/php-src",
-   "sha": "e60f0c28a15dd30e7144f9a15522578da47c38f8",
-   "url": "https://github.com/php/php-src/commit/e60f0c28a15dd30e7144f9a15522578da47c38f8",
-   "title": "ext/openssl: fix use after free when `early_data_cb` callback closes stream",
-   "date": "2026-11-11T18:43:52",
-   "score": 2,
-   "matched": [
-    "UAF"
+    "反序列化"
    ],
    "cve": null
   }

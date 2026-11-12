@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-11 23:32 UTC · 共 **194** 条(强烈推荐 39 / 值得 155)
+**更新**: 2026-11-12 04:12 UTC · 共 **197** 条(强烈推荐 41 / 值得 156)
 
 ---
 
@@ -175,6 +175,16 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/633633) · [参考](https://hackerone.com/reports/4093475)
 
+### FortiMail HA命令注入未授权RCE
+[CVE-2026-126148](https://nvd.nist.gov/vuln/detail/CVE-2026-126148) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | 披露 2026-11-11 | 入库 2026-11-12
+PoC 源码可用
+未授权攻击者向FortiMail发送特制HA加入请求包，可注入系统命令执行任意代码。
+复现: 强烈推荐 — 入口为HA join-request报文；需HA相关功能可达 · 影响面: 邮件网关，常暴露公网
+处置: 升级至Fortinet公告修复版本；限制HA加入接口暴露
+影响: Fortinet(产品与版本待 NVD/厂商补充)
+PoC: [googlesky/CVE-2026-126148 0★(有源码)](https://github.com/googlesky/CVE-2026-126148)
+参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-200)
+
 ### FortiManager未授权RCE
 [CVE-2026-126261](https://nvd.nist.gov/vuln/detail/CVE-2026-126261) | P1 重点关注 | 边界设备/VPN | CVSS 9.8 | 披露 2026-11-10 | 入库 2026-11-11
 未授权攻击者只要可达FGFM端口，即可发送特制报文执行代码或命令，完全接管FortiManager。
@@ -279,6 +289,14 @@ PoC 源码可用
 PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://github.com/ThomasPoppelgaard/netscaler-ctx697096-checker)
 参考: [参考](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697191)
 
+### FortiMail SQL注入未授权命令执行
+[CVE-2026-126164](https://nvd.nist.gov/vuln/detail/CVE-2026-126164) | P0 立即处置 | 边界设备/VPN | CVSS 9.4 | 披露 2026-11-11 | 入库 2026-11-11
+未授权攻击者经特制请求触发FortiMail SQL注入，可执行未授权代码或命令。
+复现: 强烈推荐 — 未授权HTTP请求触发SQL注入；位于FortiMail Web接口 · 影响面: 邮件网关，常暴露公网
+处置: 升级FortiMail至厂商修复版本；限制管理接口暴露
+影响: Fortinet(产品与版本待 NVD/厂商补充)
+参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-216)
+
 ### Ivanti CSA缺失认证致证书篡改
 [CVE-2026-121683](https://nvd.nist.gov/vuln/detail/CVE-2026-121683) | P1 重点关注 | 边界设备/VPN | CVSS 9.4 | 披露 2026-11-10 | 入库 2026-11-11
 远程未授权攻击者可访问CSA 5.0.8相关接口，增删任意受信任EPM Core证书，劫持信任链。
@@ -335,11 +353,11 @@ PoC: [joedayz/cve-2026-114820-java-scan 0★(仅README)](https://github.com/joed
 影响: Fortinet(产品与版本待 NVD/厂商补充)
 参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-212)
 
-### FortiMail认证算法缺陷致账号接管
-[CVE-2026-126151](https://nvd.nist.gov/vuln/detail/CVE-2026-126151) | P0 立即处置 | 边界设备/VPN | CVSS 7.5 | 披露 2026-11-11 | 入库 2026-11-11
-未授权远程攻击者构造请求利用认证算法缺陷，可提升权限并接管账号。
-复现: 强烈推荐 — 未授权构造认证请求，利用算法实现缺陷伪造/接管账号 · 影响面: 邮件网关,账号接管风险
-处置: 升级至厂商公告修复版本；限制邮件接口暴露并监控异常登录
+### FortiMail认证算法账户接管
+[CVE-2026-126151](https://nvd.nist.gov/vuln/detail/CVE-2026-126151) | P1 重点关注 | 边界设备/VPN | CVSS 7.5 | 披露 2026-11-11 | 入库 2026-11-11
+未认证远程攻击者可构造特制请求利用认证算法缺陷，接管账户。
+复现: 强烈推荐 — 向认证接口发送特制请求，利用算法校验缺陷接管账户 · 影响面: 邮件系统，常暴露公网
+处置: 升级FortiMail至厂商修复版本，排查异常登录
 影响: Fortinet(产品与版本待 NVD/厂商补充)
 参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-203)
 
@@ -748,6 +766,29 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
 
+### Fortinet管理组件SQL注入未授权
+[CVE-2026-126262](https://nvd.nist.gov/vuln/detail/CVE-2026-126262) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | 披露 2026-11-11 | 入库 2026-11-11
+未授权攻击者可经特制请求触发FortiAnalyzer/FortiManager SQL注入，执行数据库命令。
+复现: 值得 — 未授权请求触发SQL注入；关注FortiAnalyzer/Manager管理接口 · 影响面: 安全管理和分析设备，常内网暴露
+处置: 升级FortiAnalyzer/FortiManager至厂商修复版
+影响: Fortinet(产品与版本待 NVD/厂商补充)
+参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-276)
+
+### CVE-2026-96760
+[CVE-2026-96760](https://nvd.nist.gov/vuln/detail/CVE-2026-96760) | P1 重点关注 | CVSS 9.8 | EPSS 0.4% | 披露 2026-09-28 | 入库 2026-11-12
+PoC 源码可用
+复现: 值得
+PoC: [Exploit-Index advisories/GHSA-6v38-4h7w-rj9h(未验证)](https://github.com/advisories/GHSA-6v38-4h7w-rj9h) · [Exploit-Index uziii2208/CVE-2026-96760(未验证)(有源码)](https://github.com/uziii2208/CVE-2026-96760)
+参考: [参考](https://github.com/authlib/authlib) · [参考](https://kb.cert.org/vuls/id/762428) · [参考](https://www.kb.cert.org/vuls/id/762428)
+
+### FortiOS HA缺失认证可超级管理员执行
+[CVE-2026-126259](https://nvd.nist.gov/vuln/detail/CVE-2026-126259) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | 披露 2026-11-11 | 入库 2026-11-12
+未授权攻击者在HA FGSP或自动扩展场景发送特制HA包，以超级管理员执行命令。
+复现: 值得 — 需启用HA FGSP+standalone-config-sync或自动扩展；发HA包 · 影响面: 防火墙边界与云自动扩展环境
+处置: 升级FortiOS修复版本；禁用非必要HA FGSP/自动扩展
+影响: Fortinet(产品与版本待 NVD/厂商补充)
+参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-273)
+
 ### Ivanti EPM核心SQL注入RCE
 [CVE-2026-121653](https://nvd.nist.gov/vuln/detail/CVE-2026-121653) | P1 重点关注 | 边界设备/VPN | CVSS 9.8 | 披露 2026-11-10 | 入库 2026-11-11
 未授权远程攻击者向EPM核心SQL参数注入语句，进而以服务权限执行代码。
@@ -763,14 +804,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级Red Hat Quay修复版本；限制密钥轮换端点并轮换签名密钥
 影响: Red Hat(产品与版本待 NVD/厂商补充)
 参考: [参考](https://access.redhat.com/security/cve/CVE-2026-123710) · [参考](https://bugzilla.redhat.com/show_bug.cgi?id=2568072)
-
-### FortiAnalyzer SQL注入高危
-[CVE-2026-126262](https://nvd.nist.gov/vuln/detail/CVE-2026-126262) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | 披露 2026-11-11 | 入库 2026-11-11
-未授权攻击者可向FortiAnalyzer/FortiManager接口构造SQL注入，可能执行任意代码命令。
-复现: 值得 — 未授权访问FortiAnalyzer/Manager接口构造SQLi · 影响面: 日志管理/管理平台，内网核心
-处置: 按Fortinet公告升级FortiAnalyzer/Manager修复版。
-影响: Fortinet(产品与版本待 NVD/厂商补充)
-参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-276)
 
 ### Jpom查询条件注入认证绕过致RCE
 [CVE-2026-120201](https://nvd.nist.gov/vuln/detail/CVE-2026-120201) | P1 重点关注 | CVSS 9.8 | EPSS 2.2% | 披露 2026-10-31 | 入库 2026-11-10
@@ -1073,14 +1106,6 @@ PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy
 复现: 值得
 参考: [参考](https://portal.perforce.com/s/cve/a91Qi000003FDw5IAG/authentication-bypass-via-blank-auth-token-in-p4search)
 
-### FortiMail未授权SQL注入执行命令
-[CVE-2026-126164](https://nvd.nist.gov/vuln/detail/CVE-2026-126164) | P0 立即处置 | 边界设备/VPN | CVSS 9.4 | 披露 2026-11-11 | 入库 2026-11-11
-未授权攻击者向FortiMail构造请求触发SQL注入，可能执行任意代码或命令。
-复现: 值得 — 未授权构造请求触发FortiMail SQL注入 · 影响面: 邮件安全网关，常暴露公网
-处置: 按Fortinet公告升级FortiMail修复版。
-影响: Fortinet(产品与版本待 NVD/厂商补充)
-参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-216)
-
 ### CVE-2026-19759
 [CVE-2026-19759](https://nvd.nist.gov/vuln/detail/CVE-2026-19759) | CVSS 9.4 | 披露 2026-09-28 | 入库 2026-10-08
 复现: 值得
@@ -1286,35 +1311,35 @@ PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy
 复现: 值得
 参考: [参考](https://jakkaru.de/articles/sungrow-vulnerability-exposes-gigawatts-worldwide) · [参考](https://www.sungrowpower.com/en/products/cloud-software/isolarcloud)
 
-### FortiMail IBE会话劫持未授权
+### FortiMail IBE授权错误未授权会话
 [CVE-2026-126155](https://nvd.nist.gov/vuln/detail/CVE-2026-126155) | P0 立即处置 | 边界设备/VPN | CVSS 9.1 | 披露 2026-11-11 | 入库 2026-11-11
-未授权攻击者通过构造HTTP请求获取任意IBE收件人会话，读取或发送加密邮件。
-复现: 值得 — 未授权构造HTTP请求获取IBE收件人会话 · 影响面: 邮件安全网关IBE模块
-处置: 按Fortinet公告升级FortiMail；限制IBE暴露面。
+未授权攻击者经特制HTTP请求获取任意IBE收件人已认证Webmail会话，读写加密邮件。
+复现: 值得 — 需启用IBE Webmail；未授权HTTP请求伪造收件人会话 · 影响面: 邮件网关IBE加密邮件场景
+处置: 升级FortiMail修复版本；限制IBE Webmail暴露
 影响: Fortinet(产品与版本待 NVD/厂商补充)
 参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-207)
 
-### FortiMail IBE账户接管未授权
+### FortiMail IBE越权未授权接管账号
 [CVE-2026-126156](https://nvd.nist.gov/vuln/detail/CVE-2026-126156) | P0 立即处置 | 边界设备/VPN | CVSS 9.1 | 披露 2026-11-11 | 入库 2026-11-11
-未授权攻击者通过构造HTTP请求接管任意IBE收件人账户。
-复现: 值得 — 未授权构造HTTP请求接管IBE收件人账户 · 影响面: 邮件安全网关IBE模块
-处置: 按Fortinet公告升级FortiMail；限制IBE暴露面。
+未授权攻击者通过用户可控键值越权，接管任意IBE收件人账号。
+复现: 值得 — 需IBE收件人；篡改HTTP请求用户键值接管账号 · 影响面: 邮件网关IBE账号，敏感通信
+处置: 升级FortiMail修复版本；检查IBE账号异常
 影响: Fortinet(产品与版本待 NVD/厂商补充)
 参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-208)
 
-### FortiMail IBE认证绕过未授权
+### FortiMail认证缺陷未授权访问邮箱
 [CVE-2026-126157](https://nvd.nist.gov/vuln/detail/CVE-2026-126157) | P0 立即处置 | 边界设备/VPN | CVSS 9.1 | 披露 2026-11-11 | 入库 2026-11-11
-未授权攻击者通过构造HTTP请求绕过认证，访问其他用户安全邮箱。
-复现: 值得 — 未授权构造HTTP请求绕过IBE认证 · 影响面: 邮件安全网关IBE模块
-处置: 按Fortinet公告升级FortiMail；限制IBE暴露面。
+未授权攻击者经特制HTTP请求绕过认证，访问其他用户安全邮箱账户。
+复现: 值得 — 未授权HTTP请求绕过认证；需目标邮箱账户 · 影响面: 邮件网关，敏感邮件数据
+处置: 升级FortiMail修复版本；监控异常邮箱访问
 影响: Fortinet(产品与版本待 NVD/厂商补充)
 参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-209)
 
-### FortiAuth未授权认证绕过
+### FortiAuth授权错误认证绕过
 [CVE-2026-126251](https://nvd.nist.gov/vuln/detail/CVE-2026-126251) | P0 立即处置 | 边界设备/VPN | CVSS 9.1 | 披露 2026-11-11 | 入库 2026-11-11
-未授权攻击者可绕过FortiAuthenticator认证检查，获得未授权访问。
-复现: 值得 — 未授权请求触发授权绕过并访问受保护功能 · 影响面: 认证服务器，身份基础设施
-处置: 按Fortinet公告升级FortiAuthenticator修复版。
+攻击者可利用FortiAuthenticator授权检查缺陷绕过认证，获取未授权访问。
+复现: 值得 — 未授权请求触发授权检查缺陷；关注认证接口 · 影响面: 身份认证基础设施，内网核心
+处置: 升级FortiAuthenticator修复版本；审计异常登录
 影响: Fortinet(产品与版本待 NVD/厂商补充)
 参考: [参考](https://fortiguard.fortinet.com/psirt/FG-IR-26-265)
 
