@@ -5,35 +5,16 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 12 Nov 2026 08:28:53 +0000</pubDate>
-    <lastBuildDate>Thu, 12 Nov 2026 08:28:53 +0000</lastBuildDate>
+    <pubDate>Thu, 12 Nov 2026 17:39:29 +0000</pubDate>
+    <lastBuildDate>Thu, 12 Nov 2026 17:39:29 +0000</lastBuildDate>
     <item>
-      <title>[critical]DSM Auth接口SQL注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-76954</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-76954-2026-11-12</guid>
-      <description>CVE-2026-76954 · P0 立即处置 · 披露 2026-11-12 · 组件 NAS/存储 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
-An improper neutralization of special elements used in an SQL command vulnerability in the Auth API in Synology DiskStation Manager (DSM) before 7.2.1-69057-13,…
-信号: 有 PoC
-[ansonhsu-ai/synology-dsm-cve-2026-76954-ste 0★(仅README)](https://github.com/ansonhsu-ai/synology-dsm-cve-2026-76954-ste)</description>
-      <pubDate>Thu, 12 Nov 2026 08:28:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]DSM rsync认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-85101</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-85101-2026-11-12</guid>
-      <description>CVE-2026-85101 · P0 立即处置 · 披露 2026-11-12 · 组件 NAS/存储 · CVSS 8.6 · 类型 认证绕过 · 难度 低(远程·免认证)
-An authentication bypass using an alternate path or channel vulnerability in the rsync in Synology DiskStation Manager (DSM) before 7.2.1-69057-13, 7.2.2-72806-…
+      <title>[critical]NetScaler Console认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120869</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120869-2026-11-12</guid>
+      <description>CVE-2026-120869 · P1 重点关注 · 披露 2026-11-12 · 组件 边界设备/VPN · CVSS 9.3 · 难度 低(远程·免认证)
+An unauthenticated attacker can bypass authentication controls to access restricted resources on the Citrix NetScaler Console appliance
 信号:</description>
-      <pubDate>Thu, 12 Nov 2026 08:28:53 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]M365 Manager Plus越权RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-12591</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-12591-2026-11-12</guid>
-      <description>CVE-2026-12591 · P1 重点关注 · 披露 2026-11-12 · CVSS 9.9 · 类型 缺失授权(越权) · 难度 低(远程·需低权限)
-Zohocorp ManageEngine M365 Manager Plus versions below 4818 is affected by an authenticated technician may exploit insufficient permission validation in the del…
-信号:</description>
-      <pubDate>Thu, 12 Nov 2026 08:28:53 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 17:39:29 +0000</pubDate>
     </item>
   </channel>
 </rss>

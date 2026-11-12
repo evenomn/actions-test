@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-12T08:28:53+00:00",
- "count": 197,
- "count_recommended": 41,
+ "updated_at": "2026-11-12T17:39:29+00:00",
+ "count": 198,
+ "count_recommended": 42,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -1494,6 +1494,42 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82104",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-120869",
+   "title": "NetScaler Console认证绕过",
+   "first_seen": "2026-11-12",
+   "last_seen": "2026-11-12",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-12",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问Console管理Web接口，构造绕过路径访问受限资源",
+   "impact_scope": "边界VPN/网关管理设备，常暴露公网",
+   "action_zh": "升级至厂商修复版本，临时限制Console管理面访问",
+   "summary_zh": "未认证攻击者可绕过认证访问受限资源，可能导致配置泄露或篡改。",
+   "category": "边界设备/VPN",
+   "cvss": 9.3,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "Citrix(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697320"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120869",
    "change_note": null
   },
   {

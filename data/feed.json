@@ -1,143 +1,49 @@
 {
  "version": 3,
- "generated_at": "2026-11-12T08:28:53+00:00",
+ "generated_at": "2026-11-12T17:39:29+00:00",
  "lookback_hours": 5,
- "count": 3,
+ "count": 1,
  "stats": {
-  "total": 3,
+  "total": 1,
   "by_tier": {
-   "critical": 2,
-   "high": 1
+   "critical": 1
   },
   "by_urgency": {
-   "P0 立即处置": 2,
    "P1 重点关注": 1
   },
   "by_category": {
-   "NAS/存储": 2,
-   "未知": 1
+   "边界设备/VPN": 1
   },
   "kev": 0,
-  "with_poc": 1,
+  "with_poc": 0,
   "with_poc_source": 0,
-  "repro_recommended": 0
+  "repro_recommended": 1
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-76954",
+   "id": "CVE-2026-120869",
    "tier": "critical",
-   "title": "DSM Auth接口SQL注入",
-   "title_zh": "DSM Auth接口SQL注入",
-   "summary_zh": "未认证远程攻击者经Auth API注入SQL，读写任意文件或DoS",
-   "published": "2026-11-12T04:17:20.407",
-   "cvss": 9.8,
+   "title": "NetScaler Console认证绕过",
+   "title_zh": "NetScaler Console认证绕过",
+   "summary_zh": "未认证攻击者可绕过认证访问受限资源，可能导致配置泄露或篡改。",
+   "published": "2026-11-12T14:17:23.990",
+   "cvss": 9.3,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
    "epss": null,
    "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "vuln_class": "SQL注入",
-   "fame_term": null,
+   "cwe_labels": [],
+   "vuln_class": "未授权访问",
+   "fame_term": "citrix",
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Synology(产品与版本待 NVD/厂商补充)",
+   "affected": "Citrix(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_19"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/ansonhsu-ai/synology-dsm-cve-2026-76954-ste",
-     "label": "ansonhsu-ai/synology-dsm-cve-2026-76954-ste 0★(仅README)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至 7.4.1-90080-1 或对应分支修复版",
-   "repro_worthy": "一般",
-   "repro_note": "未授权访问DSM Auth API，构造SQL注入参数",
-   "impact_scope": "NAS管理面，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76954",
-   "description": "An improper neutralization of special elements used in an SQL command vulnerability in the Auth API in Synology DiskStation Manager (DSM) before 7.2.1-69057-13, 7.2.2-72806-10, 7.3.2-86009-5, and 7.4.1-90080-1 allows remote attackers to read or write arbitrary files and conduct denial-of-service attacks."
-  },
-  {
-   "id": "CVE-2026-85101",
-   "tier": "high",
-   "title": "DSM rsync认证绕过",
-   "title_zh": "DSM rsync认证绕过",
-   "summary_zh": "远程攻击者经rsync备用路径绕过认证，读特定文件、写任意文件或DoS",
-   "published": "2026-11-12T04:17:21.617",
-   "cvss": 8.6,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": null,
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Synology(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_19"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至 7.3.2-86009-5/7.4.1-90080-1",
-   "repro_worthy": "一般",
-   "repro_note": "访问rsync服务，利用备用路径绕过认证",
-   "impact_scope": "NAS rsync服务，可能暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85101",
-   "description": "An authentication bypass using an alternate path or channel vulnerability in the rsync in Synology DiskStation Manager (DSM) before 7.2.1-69057-13, 7.2.2-72806-10, 7.3.2-86009-5, and 7.4.1-90080-1 allows remote attackers to read specific files, write arbitrary files, and conduct limited denial-of-service attacks."
-  },
-  {
-   "id": "CVE-2026-12591",
-   "tier": "critical",
-   "title": "M365 Manager Plus越权RCE",
-   "title_zh": "M365 Manager Plus越权RCE",
-   "summary_zh": "认证技术员利用委派管理权限校验不足，越权并可能远程执行代码",
-   "published": "2026-11-12T07:16:47.260",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失授权(越权)"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": null,
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": "ManageEngine(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.manageengine.com/microsoft-365-management-reporting/CVE-2026-12591.html"
+     "url": "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697320"
     }
    ],
    "poc": [],
@@ -148,36 +54,136 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至 4818 及以上版本",
-   "repro_worthy": "一般",
-   "repro_note": "以技术员登录委派管理接口，构造越权操作",
-   "impact_scope": "企业云管理平台，内网高权限",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-12591",
-   "description": "Zohocorp ManageEngine M365 Manager Plus versions below 4818 is affected by an authenticated technician may exploit insufficient permission validation in the delegated administration interface to escalate privileges beyond their intended scope, which could result in remote code execution during administrative processing."
+   "action_zh": "升级至厂商修复版本，临时限制Console管理面访问",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问Console管理Web接口，构造绕过路径访问受限资源",
+   "impact_scope": "边界VPN/网关管理设备，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120869",
+   "description": "An unauthenticated attacker can bypass authentication controls to access restricted resources on the Citrix NetScaler Console appliance"
   }
  ],
- "media": [
+ "media": [],
+ "commits": [
   {
-   "title": "Siemens SSA-970803 Discloses SIMATIC WinCC and PCS 7 NTLM Relay Session Hijack Vulnerability",
-   "link": "https://sh3llc0d3.com/blog/siemens-ssa-970803-discloses-simatic-wincc-and-pcs-7-ntlm-relay-session-hijack-vulnerability/",
-   "cves": [
-    "CVE-2026-58114"
-   ]
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "b30a035bfa0c717c44a93f9d6062a211b11bdbd4",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/b30a035bfa0c717c44a93f9d6062a211b11bdbd4",
+   "title": "libswscale/ppc/swscale_vsx: fix heap buffer overflow in WRITERGB for RGB24/BGR24",
+   "date": "2026-11-12T17:13:56",
+   "score": 4,
+   "matched": [
+    "越界读写",
+    "缓冲区溢出"
+   ],
+   "cve": null
   },
   {
-   "title": "GPUStack CVE-2026-102895 Unauthenticated Admin Bypass Actively Exploited to Hijack AI GPU Clusters",
-   "link": "https://sh3llc0d3.com/blog/gpustack-cve-2026-102895-unauthenticated-admin-bypass-actively-exploited-to-hijack-ai-gpu-clusters/",
-   "cves": [
-    "CVE-2026-102895"
-   ]
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "fa8919fd4ad74912316f294716486ef24af97a93",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/fa8919fd4ad74912316f294716486ef24af97a93",
+   "title": "avcodec/iff: allocate the plane buffer zeroed",
+   "date": "2026-11-12T17:36:16",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
   },
   {
-   "title": "OpenSSH SSHole CVE-2026-123158 Pre-Auth Password Bypass Hits Alpine Linux and musl Containers",
-   "link": "https://sh3llc0d3.com/blog/openssh-sshole-cve-2026-123158-pre-auth-password-bypass-hits-alpine-linux-and-musl-containers/",
-   "cves": [
-    "CVE-2026-123158"
-   ]
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "695b89c675ada6b40d0e35aeef5233c930b95dce",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/695b89c675ada6b40d0e35aeef5233c930b95dce",
+   "title": "avcodec/iff: clear the HAM palette table",
+   "date": "2026-11-12T17:36:16",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "8d4ce7d3d592d93719f248bc7d746715837a5c4a",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/8d4ce7d3d592d93719f248bc7d746715837a5c4a",
+   "title": "avcodec/iff: clear the mask palette table",
+   "date": "2026-11-12T17:36:16",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "python/cpython",
+   "sha": "8b85375e9e72f6de9f1cad498a99658c3a2ad91c",
+   "url": "https://github.com/python/cpython/commit/8b85375e9e72f6de9f1cad498a99658c3a2ad91c",
+   "title": "gh-112564: Fix UAF for gc debug print (gh-160662)",
+   "date": "2026-11-12T17:32:01",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "3bbfc3bd77c2d6e55de35ac3d5d97e9dc592dad6",
+   "url": "https://github.com/haproxy/haproxy/commit/3bbfc3bd77c2d6e55de35ac3d5d97e9dc592dad6",
+   "title": "BUG/MINOR: tcpcheck: fix out-of-bounds reads on short MySQL error packets",
+   "date": "2026-11-12T17:20:31",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "elastic/elasticsearch",
+   "sha": "90d11d170e2a75f7db5de48bfca29a9e7b97f7fa",
+   "url": "https://github.com/elastic/elasticsearch/commit/90d11d170e2a75f7db5de48bfca29a9e7b97f7fa",
+   "title": "Add sealed Blob interface (#165390)",
+   "date": "2026-11-12T16:18:43",
+   "score": 2,
+   "matched": [
+    "反序列化"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/ofbiz-framework",
+   "sha": "dd5f186acec4c993394c00ed0aec41949166450a",
+   "url": "https://github.com/apache/ofbiz-framework/commit/dd5f186acec4c993394c00ed0aec41949166450a",
+   "title": "Clarify administrative-level permissions in SECURITY.md and enhance confidentiality guidelines for reporting security is",
+   "date": "2026-11-12T16:12:34",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "envoyproxy/envoy",
+   "sha": "f8d13779c08f5151b9ab04e89341dbcddc310acf",
+   "url": "https://github.com/envoyproxy/envoy/commit/f8d13779c08f5151b9ab04e89341dbcddc310acf",
+   "title": "deps: Update QUICHE to 9917bea (#49197)",
+   "date": "2026-11-12T15:17:22",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "827354038df8b6fb4603116ecc85ec2d54478cd5",
+   "url": "https://github.com/haproxy/haproxy/commit/827354038df8b6fb4603116ecc85ec2d54478cd5",
+   "title": "BUG/MAJOR: quic: don't reference a retired CID from a NEW_CONNECTION_ID frame",
+   "date": "2026-11-12T09:42:55",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
   }
- ],
- "commits": []
+ ]
 }

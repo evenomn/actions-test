@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-12 08:28 UTC · 共 **197** 条(强烈推荐 41 / 值得 156)
+**更新**: 2026-11-12 17:39 UTC · 共 **198** 条(强烈推荐 42 / 值得 156)
 
 ---
 
@@ -311,6 +311,14 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://gi
 复现: 强烈推荐 — 未授权直接调用设备LUA函数接口，绕过正常API流程执行系统命令 · 影响面: 蜂窝/工业路由设备，常暴露公网
 处置: 升级至厂商修复版本；停止设备Web/API端口对内网外暴露
 参考: [参考](https://www.teltonika-networks.com/support/security-centre?report=CVE-2026-82104)
+
+### NetScaler Console认证绕过
+[CVE-2026-120869](https://nvd.nist.gov/vuln/detail/CVE-2026-120869) | P1 重点关注 | 边界设备/VPN | CVSS 9.3 | 披露 2026-11-12 | 入库 2026-11-12
+未认证攻击者可绕过认证访问受限资源，可能导致配置泄露或篡改。
+复现: 强烈推荐 — 未授权访问Console管理Web接口，构造绕过路径访问受限资源 · 影响面: 边界VPN/网关管理设备，常暴露公网
+处置: 升级至厂商修复版本，临时限制Console管理面访问
+影响: Citrix(产品与版本待 NVD/厂商补充)
+参考: [参考](https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697320)
 
 ### FortiOS认证绕过可未授权利用
 [CVE-2026-126253](https://nvd.nist.gov/vuln/detail/CVE-2026-126253) | P0 立即处置 | 边界设备/VPN | CVSS 9.3 | 披露 2026-11-11 | 入库 2026-11-11
