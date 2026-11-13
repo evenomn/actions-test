@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-13 01:58 UTC · 共 **200** 条(强烈推荐 42 / 值得 158)
+**更新**: 2026-11-13 03:34 UTC · 共 **201** 条(强烈推荐 42 / 值得 159)
 
 ---
 
@@ -1335,6 +1335,14 @@ PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy
 [CVE-2026-107194](https://nvd.nist.gov/vuln/detail/CVE-2026-107194) | CVSS 9.2 | 披露 2026-10-07 | 入库 2026-10-08
 复现: 值得
 参考: [参考](https://jakkaru.de/articles/sungrow-vulnerability-exposes-gigawatts-worldwide) · [参考](https://www.sungrowpower.com/en/products/cloud-software/isolarcloud)
+
+### Aspire Dashboard未授权删遥测
+[CVE-2026-118740](https://nvd.nist.gov/vuln/detail/CVE-2026-118740) | P1 重点关注 | ERP/业务系统 | CVSS 9.1 | EPSS 0.9% | 披露 2026-11-12 | 入库 2026-11-13
+开源,可源码审计复现
+未认证攻击者可通过NotFound路由删除遥测数据，影响监控与诊断信息完整性。
+复现: 值得 — 未授权请求Dashboard的NotFound路由触发删除，观察遥测变化。 · 影响面: 开发诊断面板，常暴露内网
+处置: 升级到13.6.5；临时限制Dashboard访问或禁用删除接口。
+影响: nuget:Aspire.Dashboard.Sdk.linux-x64 < 13.6.5(修复: 13.6.5); nuget:Aspire.Dashboard.Sdk.linux-arm64 < 13.6.5(修复: 13.6.5)
 
 ### FortiMail IBE授权错误未授权会话
 [CVE-2026-126155](https://nvd.nist.gov/vuln/detail/CVE-2026-126155) | P0 立即处置 | 边界设备/VPN | CVSS 9.1 | 披露 2026-11-11 | 入库 2026-11-11

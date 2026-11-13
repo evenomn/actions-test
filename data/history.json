@@ -21981,5 +21981,622 @@
     "urgency": "P2 保持关注"
    }
   ]
+ },
+ "2026-11-13": {
+  "qualified": 60,
+  "critical": 22,
+  "kev": 1,
+  "repro_top": 0,
+  "kev_total": 1779,
+  "by_category": {
+   "未分类": 37,
+   "OA/协同办公": 1,
+   "边界设备/VPN": 6,
+   "ERP/业务系统": 4,
+   "操作系统": 2,
+   "数据库": 10
+  },
+  "items": [
+   {
+    "id": "CVE-2026-111560",
+    "title": "Barracuda邮件网关时区命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 7.2,
+    "kev": true,
+    "repro": "一般",
+    "urgency": "P0 立即处置"
+   },
+   {
+    "id": "CVE-2026-126997",
+    "title": "JeecgBoot SSRF可探测内网",
+    "tier": "high",
+    "category": "OA/协同办公",
+    "cvss": 7.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-107412",
+    "title": "NetScaler内存溢出拒绝服务",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 9.5,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120868",
+    "title": "NetScaler数据包处理内存溢出",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107407",
+    "title": "NetScaler SMPP流量内存溢出",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107408",
+    "title": "NetScaler DNS/DoH内存破坏",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107409",
+    "title": "NetScaler DoH内存破坏拒绝服务",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107410",
+    "title": "NetScaler Push内存溢出拒绝服务",
+    "tier": "critical",
+    "category": "边界设备/VPN",
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124002",
+    "title": "XWEB EVO登录未授权命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124010",
+    "title": "XWEB EVO CGI参数命令注入",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-90908",
+    "title": "Payara JMX/RMI认证绕过RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-118740",
+    "title": "Aspire Dashboard未授权删遥测",
+    "tier": "critical",
+    "category": "ERP/业务系统",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-19422",
+    "title": "CVE-2026-19422",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124014",
+    "title": "CVE-2026-124014",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-19421",
+    "title": "ManageEngine DDI命令注入",
+    "tier": "high",
+    "category": "操作系统",
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-75869",
+    "title": "ManageEngine DDI越权命令注入",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116314",
+    "title": "pg_restore恶意归档RCE",
+    "tier": "high",
+    "category": "数据库",
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116326",
+    "title": "PostgreSQL plperl异常RCE",
+    "tier": "high",
+    "category": "数据库",
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124013",
+    "title": "未知组件未过滤参数命令注入",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-127208",
+    "title": "datamodel代码注入RCE",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124007",
+    "title": "XWEB EVO密码字段命令注入",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-12507",
+    "title": "CVE-2026-12507",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-116318",
+    "title": "pg_dump转储SQL注入",
+    "tier": "high",
+    "category": "数据库",
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-126197",
+    "title": "数据库MCP查询SQL注入可越权",
+    "tier": "high",
+    "category": "数据库",
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-18379",
+    "title": "Red Hat仓库管理路径遍历",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-126196",
+    "title": "数据库查询组件SQL注入绕过只读",
+    "tier": "high",
+    "category": "数据库",
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-68548",
+    "title": "管理路径大小写绕过认证",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-110003",
+    "title": "Payara管理REST认证绕过",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-127016",
+    "title": "MISP外部工具管理未授权访问",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-127046",
+    "title": "MISP外部工具密钥信息泄露",
+    "tier": "critical",
+    "category": "ERP/业务系统",
+    "cvss": 9.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-125285",
+    "title": "CVE-2026-125285",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-120145",
+    "title": "CVE-2026-120145",
+    "tier": "high",
+    "category": "数据库",
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-106146",
+    "title": "CVE-2026-106146",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-106154",
+    "title": "CVE-2026-106154",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.6,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-82977",
+    "title": "CVE-2026-82977",
+    "tier": "high",
+    "category": "ERP/业务系统",
+    "cvss": 8.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124006",
+    "title": "CVE-2026-124006",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-127277",
+    "title": "CVE-2026-127277",
+    "tier": "critical",
+    "category": null,
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-124004",
+    "title": "CVE-2026-124004",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-107360",
+    "title": "CVE-2026-107360",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.6,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-106475",
+    "title": "Grafana ES数据源代理越权",
+    "tier": "high",
+    "category": "数据库",
+    "cvss": 7.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-116325",
+    "title": "CVE-2026-116325",
+    "tier": "high",
+    "category": "数据库",
+    "cvss": 8.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-127283",
+    "title": "Food Ordering后台任意文件上传",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-127284",
+    "title": "Food Ordering多参数SQL注入",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-124701",
+    "title": "CVE-2026-124701",
+    "tier": "high",
+    "category": "ERP/业务系统",
+    "cvss": 7.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-124703",
+    "title": "CVE-2026-124703",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-124704",
+    "title": "CVE-2026-124704",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-124003",
+    "title": "CVE-2026-124003",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-126982",
+    "title": "CVE-2026-126982",
+    "tier": "high",
+    "category": "数据库",
+    "cvss": 7.5,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-8333",
+    "title": "CVE-2026-8333",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "值得",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-127278",
+    "title": "CVE-2026-127278",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-127279",
+    "title": "CVE-2026-127279",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-127281",
+    "title": "CVE-2026-127281",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-127286",
+    "title": "CVE-2026-127286",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-124008",
+    "title": "CVE-2026-124008",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-124009",
+    "title": "CVE-2026-124009",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2025-0043",
+    "title": "CVE-2025-0043",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-120153",
+    "title": "CVE-2026-120153",
+    "tier": "high",
+    "category": "数据库",
+    "cvss": 7.2,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-123039",
+    "title": "CVE-2026-123039",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-92083",
+    "title": "CVE-2026-92083",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-107484",
+    "title": "CVE-2026-107484",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   }
+  ]
  }
 }
