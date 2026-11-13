@@ -1,49 +1,62 @@
 {
  "version": 3,
- "generated_at": "2026-11-12T17:39:29+00:00",
+ "generated_at": "2026-11-13T01:58:41+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 3,
  "stats": {
-  "total": 1,
+  "total": 3,
   "by_tier": {
-   "critical": 1
+   "critical": 3
   },
   "by_urgency": {
-   "P1 重点关注": 1
+   "P1 重点关注": 3
   },
   "by_category": {
-   "边界设备/VPN": 1
+   "安全设备": 1,
+   "Web框架": 1,
+   "未知": 1
   },
   "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
-  "repro_recommended": 1
+  "with_poc": 1,
+  "with_poc_source": 1,
+  "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-120869",
+   "id": "CVE-2026-127275",
    "tier": "critical",
-   "title": "NetScaler Console认证绕过",
-   "title_zh": "NetScaler Console认证绕过",
-   "summary_zh": "未认证攻击者可绕过认证访问受限资源，可能导致配置泄露或篡改。",
-   "published": "2026-11-12T14:17:23.990",
-   "cvss": 9.3,
+   "title": "Linksys EA8100认证绕过",
+   "title_zh": "Linksys EA8100认证绕过",
+   "summary_zh": "攻击者无需认证即可绕过EA8100管理界面登录，完全控制路由器配置与网络流量。",
+   "published": "2026-11-13T00:20:14.083",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
-   "cwe_labels": [],
+   "cwe_labels": [
+    "认证绕过",
+    "缺失认证"
+   ],
    "vuln_class": "未授权访问",
-   "fame_term": "citrix",
+   "fame_term": null,
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Citrix(产品与版本待 NVD/厂商补充)",
+   "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX697320"
+     "url": "https://github.com/geo-chen/oss/blob/main/Linksys.md#finding-3-unauthenticated-write-access-to-remote-management-pairing-state-and-unsecured-wifi-warning-flag"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-127275"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1040997"
     }
    ],
    "poc": [],
@@ -54,134 +67,105 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复版本，临时限制Console管理面访问",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "未授权访问Console管理Web接口，构造绕过路径访问受限资源",
-   "impact_scope": "边界VPN/网关管理设备，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120869",
-   "description": "An unauthenticated attacker can bypass authentication controls to access restricted resources on the Citrix NetScaler Console appliance"
+   "action_zh": "升级EA8100固件；临时关闭远程管理并限制管理网段访问。",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问管理Web接口，构造绕过登录校验的请求进入后台。",
+   "impact_scope": "家用/小型办公无线路由器，网络边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-127275",
+   "description": "A vulnerability was determined in Linksys EA8100 1.0.3.216940. This issue affects the function SetRemoteSetting/SetUnsecuredWiFiWarning of the file ui_server.lua of the component JNAP API. This manipulation of the argument isEnabled/enabled causes missing authentication. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-122006",
+   "tier": "critical",
+   "title": "ActiveStorage任意文件读写",
+   "title_zh": "ActiveStorage任意文件读写",
+   "summary_zh": "未授权攻击者经附件处理链路借ImageMagick在服务端任意写文件，并可读取应用可读文件。",
+   "published": "2026-11-12T23:46:51Z",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": null,
+   "epss": 0.00741,
+   "epss_percentile": 0.55143,
+   "cwe_labels": [
+    "初始化不安全(默认凭据)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "rubygems:activestorage >= 8.1.0.beta1, < 8.1.4.1(修复: 8.1.4.1); rubygems:activestorage < 8.0.5.2(修复: 8.0.5.2)",
+   "ghsa_url": "https://github.com/advisories/GHSA-f3w6-w445-fwh9",
+   "refs": [],
+   "poc": [
+    {
+     "url": "https://github.com/charlie-goldenowl/cve-2026-122006-check",
+     "label": "charlie-goldenowl/cve-2026-122006-check 0★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到8.1.4.1或8.0.5.2；限制ImageMagick处理不可信附件。",
+   "repro_worthy": "值得",
+   "repro_note": "提交触发附件处理的请求，经ImageMagick写入恶意文件，需应用处理附件。",
+   "impact_scope": "Rails Web应用附件处理，公网可达",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122006",
+   "description": "### Impact A Rails application that processes attachments with ImageMagick may allow an unauthenticated attacker to write arbitrary files on the server and, when attachments are stored with the Disk service, to read arbitrary files readable by the application process. Those files typically include `secret_key_base` and credentials for external systems, which may in turn allow escalation to remote code execution or lateral movement to those systems."
+  },
+  {
+   "id": "CVE-2026-100397",
+   "tier": "critical",
+   "title": "Rucio挑战令牌认证绕过",
+   "title_zh": "Rucio挑战令牌认证绕过",
+   "summary_zh": "未授权攻击者伪造账号请求头获取任意账号（含管理员）挑战令牌，进而通过API认证。",
+   "published": "2026-11-13T01:09:54Z",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": null,
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过",
+    "CWE-305"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "pip:rucio >= 1.14.0.post1, < 35.9.1(修复: 35.9.1); pip:rucio >= 36.0.0rc1, < 38.6.1(修复: 38.6.1)",
+   "ghsa_url": "https://github.com/advisories/GHSA-x585-4vv8-2mh2",
+   "refs": [],
+   "poc": [],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级到35.9.1或38.6.1，并校验挑战令牌请求来源。",
+   "repro_worthy": "值得",
+   "repro_note": "未授权调用挑战令牌接口，伪造账号相关请求头取得管理员令牌后调用API。",
+   "impact_scope": "科研数据管理平台API，内网服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-100397",
+   "description": "Because challenge tokens are generated based on an account name provided via headers without requiring prior authentication, an unauthenticated attacker can request a valid \"challenge\" token for any account (including administrative ones) and use it to authenticate against other API endpoints."
   }
  ],
  "media": [],
  "commits": [
   {
    "repo": "FFmpeg/FFmpeg",
-   "sha": "b30a035bfa0c717c44a93f9d6062a211b11bdbd4",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/b30a035bfa0c717c44a93f9d6062a211b11bdbd4",
-   "title": "libswscale/ppc/swscale_vsx: fix heap buffer overflow in WRITERGB for RGB24/BGR24",
-   "date": "2026-11-12T17:13:56",
-   "score": 4,
-   "matched": [
-    "越界读写",
-    "缓冲区溢出"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "fa8919fd4ad74912316f294716486ef24af97a93",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/fa8919fd4ad74912316f294716486ef24af97a93",
-   "title": "avcodec/iff: allocate the plane buffer zeroed",
-   "date": "2026-11-12T17:36:16",
+   "sha": "51fc17901a3b0252f1cbe02c84bacf91b7ab412a",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/51fc17901a3b0252f1cbe02c84bacf91b7ab412a",
+   "title": "avcodec/mjpegdec: reject lossless RCT scans that do not code all components",
+   "date": "2026-11-13T00:06:50",
    "score": 2,
    "matched": [
     "未初始化/内存破坏"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "695b89c675ada6b40d0e35aeef5233c930b95dce",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/695b89c675ada6b40d0e35aeef5233c930b95dce",
-   "title": "avcodec/iff: clear the HAM palette table",
-   "date": "2026-11-12T17:36:16",
-   "score": 2,
-   "matched": [
-    "未初始化/内存破坏"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "8d4ce7d3d592d93719f248bc7d746715837a5c4a",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/8d4ce7d3d592d93719f248bc7d746715837a5c4a",
-   "title": "avcodec/iff: clear the mask palette table",
-   "date": "2026-11-12T17:36:16",
-   "score": 2,
-   "matched": [
-    "未初始化/内存破坏"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "python/cpython",
-   "sha": "8b85375e9e72f6de9f1cad498a99658c3a2ad91c",
-   "url": "https://github.com/python/cpython/commit/8b85375e9e72f6de9f1cad498a99658c3a2ad91c",
-   "title": "gh-112564: Fix UAF for gc debug print (gh-160662)",
-   "date": "2026-11-12T17:32:01",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "haproxy/haproxy",
-   "sha": "3bbfc3bd77c2d6e55de35ac3d5d97e9dc592dad6",
-   "url": "https://github.com/haproxy/haproxy/commit/3bbfc3bd77c2d6e55de35ac3d5d97e9dc592dad6",
-   "title": "BUG/MINOR: tcpcheck: fix out-of-bounds reads on short MySQL error packets",
-   "date": "2026-11-12T17:20:31",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "elastic/elasticsearch",
-   "sha": "90d11d170e2a75f7db5de48bfca29a9e7b97f7fa",
-   "url": "https://github.com/elastic/elasticsearch/commit/90d11d170e2a75f7db5de48bfca29a9e7b97f7fa",
-   "title": "Add sealed Blob interface (#165390)",
-   "date": "2026-11-12T16:18:43",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "apache/ofbiz-framework",
-   "sha": "dd5f186acec4c993394c00ed0aec41949166450a",
-   "url": "https://github.com/apache/ofbiz-framework/commit/dd5f186acec4c993394c00ed0aec41949166450a",
-   "title": "Clarify administrative-level permissions in SECURITY.md and enhance confidentiality guidelines for reporting security is",
-   "date": "2026-11-12T16:12:34",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "envoyproxy/envoy",
-   "sha": "f8d13779c08f5151b9ab04e89341dbcddc310acf",
-   "url": "https://github.com/envoyproxy/envoy/commit/f8d13779c08f5151b9ab04e89341dbcddc310acf",
-   "title": "deps: Update QUICHE to 9917bea (#49197)",
-   "date": "2026-11-12T15:17:22",
-   "score": 2,
-   "matched": [
-    "安全修复"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "haproxy/haproxy",
-   "sha": "827354038df8b6fb4603116ecc85ec2d54478cd5",
-   "url": "https://github.com/haproxy/haproxy/commit/827354038df8b6fb4603116ecc85ec2d54478cd5",
-   "title": "BUG/MAJOR: quic: don't reference a retired CID from a NEW_CONNECTION_ID frame",
-   "date": "2026-11-12T09:42:55",
-   "score": 2,
-   "matched": [
-    "UAF"
    ],
    "cve": null
   }

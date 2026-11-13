@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-12 17:39 UTC · 共 **198** 条(强烈推荐 42 / 值得 156)
+**更新**: 2026-11-13 01:58 UTC · 共 **200** 条(强烈推荐 42 / 值得 158)
 
 ---
 
@@ -773,6 +773,23 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — ioos服务sub_416D88，group_id/group_name参数拼接命令 · 影响面: 无线AP/路由器，边界暴露面
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
+
+### ActiveStorage任意文件读写
+[CVE-2026-122006](https://nvd.nist.gov/vuln/detail/CVE-2026-122006) | P1 重点关注 | Web框架 | CVSS 9.8 | EPSS 0.7% | 披露 2026-11-12 | 入库 2026-11-13
+PoC 源码可用
+未授权攻击者经附件处理链路借ImageMagick在服务端任意写文件，并可读取应用可读文件。
+复现: 值得 — 提交触发附件处理的请求，经ImageMagick写入恶意文件，需应用处理附件。 · 影响面: Rails Web应用附件处理，公网可达
+处置: 升级到8.1.4.1或8.0.5.2；限制ImageMagick处理不可信附件。
+影响: rubygems:activestorage >= 8.1.0.beta1, < 8.1.4.1(修复: 8.1.4.1); rubygems:activestorage < 8.0.5.2(修复: 8.0.5.2)
+PoC: [charlie-goldenowl/cve-2026-122006-check 0★(有源码)](https://github.com/charlie-goldenowl/cve-2026-122006-check)
+
+### Rucio挑战令牌认证绕过
+[CVE-2026-100397](https://nvd.nist.gov/vuln/detail/CVE-2026-100397) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-13 | 入库 2026-11-13
+开源,可源码审计复现
+未授权攻击者伪造账号请求头获取任意账号（含管理员）挑战令牌，进而通过API认证。
+复现: 值得 — 未授权调用挑战令牌接口，伪造账号相关请求头取得管理员令牌后调用API。 · 影响面: 科研数据管理平台API，内网服务
+处置: 升级到35.9.1或38.6.1，并校验挑战令牌请求来源。
+影响: pip:rucio >= 1.14.0.post1, < 35.9.1(修复: 35.9.1); pip:rucio >= 36.0.0rc1, < 38.6.1(修复: 38.6.1)
 
 ### Fortinet管理组件SQL注入未授权
 [CVE-2026-126262](https://nvd.nist.gov/vuln/detail/CVE-2026-126262) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | 披露 2026-11-11 | 入库 2026-11-11

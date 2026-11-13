@@ -5,16 +5,35 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 12 Nov 2026 17:39:29 +0000</pubDate>
-    <lastBuildDate>Thu, 12 Nov 2026 17:39:29 +0000</lastBuildDate>
+    <pubDate>Fri, 13 Nov 2026 01:58:41 +0000</pubDate>
+    <lastBuildDate>Fri, 13 Nov 2026 01:58:41 +0000</lastBuildDate>
     <item>
-      <title>[critical]NetScaler Console认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120869</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120869-2026-11-12</guid>
-      <description>CVE-2026-120869 · P1 重点关注 · 披露 2026-11-12 · 组件 边界设备/VPN · CVSS 9.3 · 难度 低(远程·免认证)
-An unauthenticated attacker can bypass authentication controls to access restricted resources on the Citrix NetScaler Console appliance
+      <title>[critical]Linksys EA8100认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-127275</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-127275-2026-11-13</guid>
+      <description>CVE-2026-127275 · P1 重点关注 · 披露 2026-11-13 · 组件 安全设备 · CVSS 10.0 · 类型 认证绕过/缺失认证 · 难度 低(远程·免认证)
+A vulnerability was determined in Linksys EA8100 1.0.3.216940. The exploit has been publicly disclosed and may be utilized.
 信号:</description>
-      <pubDate>Thu, 12 Nov 2026 17:39:29 +0000</pubDate>
+      <pubDate>Fri, 13 Nov 2026 01:58:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ActiveStorage任意文件读写</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-122006</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-122006-2026-11-13</guid>
+      <description>CVE-2026-122006 · P1 重点关注 · 披露 2026-11-12 · 组件 Web框架 · CVSS 9.8 · EPSS 0.7%,前 55% · 类型 初始化不安全(默认凭据) · 难度 低(远程·免认证)
+ Impact A Rails application that processes attachments with ImageMagick may allow an unauthenticated attacker to write arbitrary files on the server and, whe…
+信号: 有 PoC
+[charlie-goldenowl/cve-2026-122006-check 0★(有源码)](https://github.com/charlie-goldenowl/cve-2026-122006-check)</description>
+      <pubDate>Fri, 13 Nov 2026 01:58:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Rucio挑战令牌认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-100397</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-100397-2026-11-13</guid>
+      <description>CVE-2026-100397 · P1 重点关注 · 披露 2026-11-13 · CVSS 9.8 · 类型 认证绕过/CWE-305 · 难度 低(远程·免认证)
+Because challenge tokens are generated based on an account name provided via headers without requiring prior authentication, an unauthenticated attacker can req…
+信号:</description>
+      <pubDate>Fri, 13 Nov 2026 01:58:41 +0000</pubDate>
     </item>
   </channel>
 </rss>
