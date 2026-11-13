@@ -40,6 +40,8 @@ def fmt_meta(item: dict) -> str:
         parts.append(f"组件 {item['category']}")
     if item["cvss"] is not None:
         parts.append(f"CVSS {item['cvss']}")
+    else:
+        parts.append("CVSS 待定(NVD 未评分)")
     if item["epss"] is not None:
         pct = f",前 {round(item['epss_percentile'] * 100)}%" if item.get("epss_percentile") is not None else ""
         parts.append(f"EPSS {item['epss'] * 100:.1f}%{pct}")
@@ -203,6 +205,8 @@ def item_block_md(item: dict, seq: int | None = None) -> str:
     meta = [f"[{item['id']}]({item_link(item)})"]
     if item["cvss"] is not None:
         meta.append(f"CVSS {item['cvss']}")
+    else:
+        meta.append("CVSS 待定(NVD 未评分)")
     if item.get("urgency"):
         meta.append(item["urgency"])
     if item.get("epss") is not None and item["epss"] >= 0.5:

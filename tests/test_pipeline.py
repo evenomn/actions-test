@@ -291,3 +291,28 @@ def test_event_worthy_famous_high_value(monkeypatch):
     final, _, _ = run({"CVE-2026-1": famous_rce}, state, mode="events",
                       monkeypatch=monkeypatch)
     assert len(final) == 1 and final[0]["id"] == "CVE-2026-1"
+
+
+def test_unscored_awaiting_analysis_urgent(monkeypatch):
+    """NVD 未评分(Awaiting Analysis)的「知名组件 × 高价值类型」不等分直接入选,
+    并按 critical 处置 + events 即时告警。
+
+    参照 Apache httpd mod_http2 RCE(CVE-2026-119618):披露两天 NVD 仍无
+    评分、无 CPE,靠厂商通告域名 + 描述缩写 RCE 即应识别——旧逻辑无分数
+    直接丢弃,且不记 seen,NVD 补分后变更检测也捞不回,永久漏报。
+    """
+    unscored = mk("CVE-2026-1", cvss=None,
+                  desc="Concurrent Execution using Shared Resource vulnerability in "
+                       "Apache HTTP Server's mod_http2 can lead to RCE.",
+                  refs=[("厂商通告",
+                         "https://httpd.apache.org/security/vulnerabilities_24.html")])
+    plain_unscored = mk("CVE-2026-2", cvss=None,
+                        desc="A vulnerability in Acme TinyLib.")
+    state = {"version": 3, "seen": {}, "kev_ids": []}
+    final, qualified, _ = run({"CVE-2026-1": unscored, "CVE-2026-2": plain_unscored},
+                              state, monkeypatch=monkeypatch, mode="events")
+    assert [i["id"] for i in qualified] == ["CVE-2026-1"]  # 冷门未评分仍不入选
+    got = final[0]
+    assert got["fame_tier"] == 1 and got["vuln_class_hit"] == "RCE"
+    assert got["tier"] == "critical"  # 未评分但全网级×高危类型 → @所有人
+    assert len(final) == 1  # events 模式即时告警

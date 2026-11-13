@@ -20,10 +20,10 @@ from datetime import datetime, timedelta
 from .components import classify, component_fame
 from .http import nvd_sleep
 from .models import is_cve, new_item
-from .scoring import (fallback_repro, fallback_urgency, is_open_source,
-                      is_third_party_extension, item_haystack,
-                      match_keywords, priority, vendor_from_refs, vendor_key,
-                      vuln_class)
+from .scoring import (fame_tier, fallback_repro, fallback_urgency,
+                      is_open_source, is_third_party_extension,
+                      item_haystack, match_keywords, priority,
+                      vendor_from_refs, vendor_key, vuln_class)
 from .scoring import is_wordpress_plugin  # 兼容旧名(= is_third_party_extension)
 from .sources.epss import fetch_epss
 from .sources.kev import apply_kev
@@ -130,7 +130,13 @@ def _qualifies(item: dict, cfg: dict) -> bool:
               or bool(vuln_class(item)))
     over_threshold = cvss is not None and cvss >= cfg["cvss_threshold"]
     direct = cvss is not None and cvss >= cfg["direct_push_threshold"]
-    return item["kev"] or direct or (over_threshold and strong)
+    # NVD「Awaiting Analysis」未评分条目:高价值类型(RCE/文件读写/SQL注入/提权)
+    # × (知名组件/关键词/PoC) 也视为合格。厂商公告常先于 NVD 评分数日
+    # (如 Apache httpd mod_http2 RCE 披露两天仍无评分),这类漏洞的危害
+    # 不取决于分数,不能等 NVD 补分后才第一次看见
+    unscored = (cvss is None and bool(vuln_class(item))
+                and (fame_tier(item) or item["keyword_hit"] or has_poc))
+    return item["kev"] or direct or (over_threshold and strong) or unscored
 
 
 def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
@@ -193,7 +199,13 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
             elif not prev.get("pushed", True):
                 stats["requeued"] += 1  # 上次被截掉,今日重新参选
         if _qualifies(item, cfg):
-            item["tier"] = "critical" if (item["kev"] or (item["cvss"] is not None and item["cvss"] >= 9.0)) else "high"
+            # 未评分但「全网级组件 × 高价值类型」按严重处置(@所有人),
+            # 与 _is_event_worthy 的即时告警口径一致
+            item["tier"] = "critical" if (
+                item["kev"]
+                or (item["cvss"] is not None and item["cvss"] >= 9.0)
+                or (item["cvss"] is None and bool(vuln_class(item))
+                    and fame_tier(item) == 1)) else "high"
             qualified.append(item)
 
     # 旧漏洞新入选 KEV:不在本次发布窗口内,但 KEV 的 dateAdded 在窗口内
@@ -253,8 +265,11 @@ def enrich_and_filter(candidates: dict[str, dict], kev_map: dict, state: dict,
         for i in qualified:
             if i["id"] in epss_map:
                 i["epss"], i["epss_percentile"] = epss_map[i["id"]]
-                # EPSS 高热度是补强信号,复核一遍入选资格
-                if not i["kev"] and (i["cvss"] or 0) < cfg["direct_push_threshold"]:
+                # EPSS 高热度是补强信号,复核一遍入选资格。
+                # cvss 为 None(未评分但凭「高价值类型×知名组件」入选)的除外:
+                # 复核按分数兜底,对无分条目会把 (cvss or 0) 当 0 误杀
+                if not i["kev"] and i["cvss"] is not None \
+                        and i["cvss"] < cfg["direct_push_threshold"]:
                     if i["epss"] < cfg["epss_threshold"] and not (
                             (i["cvss"] or 0) >= cfg["cvss_threshold"] and
                             (i["has_exploit_ref"] or i["poc_links"] or i["keyword_hit"] or i["kev"])):

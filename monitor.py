@@ -265,6 +265,13 @@ def main() -> int:
 
     enrich_poc(items, cfg)
 
+    # NVD 未评分(Awaiting Analysis)但未入选的候选也记入 seen(pushed=False):
+    # 否则发布窗口滑走后,NVD 补分触发的变更检测因「从未见过」而永久跳过它。
+    # 记账后 NVD 补到 ≥9.0 分会以「新增评分」状态变化重推,≥7.0 分次日重新参选
+    qids = {q["id"] for q in qualified}
+    unscored_rest = [i for i in candidates.values()
+                     if i.get("cvss") is None and i["id"] not in qids]
+
     for item in items:  # 用户自定义资讯源里点名的 CVE 挂一条媒体参考
         hit = media_by_cve.get(item["id"])
         if hit and not hit.get("analysis") and \
@@ -324,7 +331,7 @@ def main() -> int:
     if not items and not (commits and args.mode == "events"):
         if args.mode == "events" or not cfg["notify_empty"]:
             print("无符合条件漏洞,跳过推送", flush=True)
-            mark_seen(state, qualified, now, set())
+            mark_seen(state, qualified + unscored_rest, now, set())
             save_state(state, cfg["retention_days"], now)
             return 0
 
@@ -356,9 +363,10 @@ def main() -> int:
         print("完成: no-dedup 模式,已推送但不更新状态", flush=True)
         return 0
 
-    mark_seen(state, qualified, now, {i["id"] for i in items})
+    mark_seen(state, qualified + unscored_rest, now, {i["id"] for i in items})
     save_state(state, cfg["retention_days"], now)
-    print(f"完成: 推送 {len(items)} 条,标记 {len(qualified)} 条", flush=True)
+    print(f"完成: 推送 {len(items)} 条,标记 {len(qualified)} 条"
+          f"(另记账 {len(unscored_rest)} 条未评分待补)", flush=True)
     return 0
 
 

@@ -125,7 +125,8 @@ def is_wordpress_plugin(item: dict) -> bool:
 HIGH_VALUE_CLASSES: list[tuple[str, int, tuple[str, ...], re.Pattern]] = [
     ("RCE", 220,
      ("RCE", "命令注入", "代码注入", "反序列化", "沙箱逃逸"),
-     re.compile(r"remote code execution|arbitrary code execution|command injection|"
+     # \bRCE\b:CNA 原文常只写缩写("can lead to RCE"),不写全称
+     re.compile(r"\brce\b|remote code execution|arbitrary code execution|command injection|"
                 r"code injection|deserializ|os command|sandbox escap", re.I)),
     ("SQL注入", 150, ("SQL注入", "参数拼接注入"),
      re.compile(r"sql\s+inject|stacked quer", re.I)),
@@ -297,7 +298,9 @@ def priority(item: dict, cfg: dict) -> float:
     研究团队技术分析覆盖、利用难度低、有检测模板、暂无官方修复、
     AI 优先级与复现判定、暴露面大的组件类别(见 config focus_categories)。
     """
-    s = (item["cvss"] or 5.0) * 10
+    # 未评分条目按 9.0 起步:能入选的未评分条目必是「高价值类型×知名组件/关注词」,
+    # 不应因 NVD 未打分被压到低分冷门条目之后(Apache httpd RCE 曾因此被丢弃)
+    s = (item["cvss"] if item["cvss"] is not None else 9.0) * 10
     if item["kev"]:
         s += 1000
     if item["ransomware"]:

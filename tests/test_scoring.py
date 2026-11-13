@@ -224,3 +224,30 @@ def test_fallback_urgency_high_value_famous():
     item3 = mk(cvss=8.5, products=["acme tinylib"],
                desc="An issue allowing remote code execution.")
     assert fallback_urgency(item3) == "P1 重点关注"
+
+
+def test_rce_acronym_matched():
+    """CNA 原文常只写缩写:"can lead to RCE" 不写全称也要识别(Apache mod_http2 式)。"""
+    assert vuln_class(mk(desc="Heap corruption can lead to RCE.")) == ("RCE", 220)
+    assert vuln_class(mk(desc="...allows remote code execution.")) == ("RCE", 220)
+    # 词边界保护:tracer 这类单词不能误命中
+    assert vuln_class(mk(desc="A tracing issue in the tracer module.")) is None
+
+
+def test_fame_vendor_hint_exact():
+    """未评分(Awaiting Analysis)条目无 CPE:厂商通告域名推断的 vendor_hint
+    精确命中按 tier1;有 CPE 时以产品标识为准,apache tomcat 不被厂商名抬级。"""
+    assert component_fame(mk(vendor_hint="Apache")) == (1, "apache")
+    assert component_fame(mk(products=["apache tomcat"])) == (2, "tomcat")
+    # CPE 产品名 http_server(下划线)与文本全称都能命中 tier1
+    assert component_fame(mk(products=["apache http_server"]))[0] == 1
+    assert component_fame(mk(kev_name="Apache HTTP Server mod_http2 ..."))[0] == 1
+
+
+def test_priority_unscored_not_buried():
+    """未评分但入选的条目按 9.0 起步:不被低分冷门条目压住(曾因此被整条丢弃)。"""
+    unscored_urgent = mk(cvss=None, vendor_hint="Apache",
+                         desc="...can lead to RCE.")
+    scored_boring = mk(cvss=9.5, products=["acme tinylib"],
+                       desc="An information disclosure vulnerability.")
+    assert priority(unscored_urgent, DEFAULTS) > priority(scored_boring, DEFAULTS)

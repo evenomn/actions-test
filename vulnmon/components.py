@@ -53,7 +53,8 @@ CATEGORY_KEYWORDS: dict[str, list[str]] = {
     "Web中间件": [
         "weblogic", "websphere", "jboss", "wildfly", "tomcat", "jetty", "undertow",
         "resin", "iis", "haproxy", "traefik", "kong", "apisix", "envoy", "lighttpd",
-        "httpd", "nginx unit", "openresty", "caddy", "coldfusion", "webtop",
+        "httpd", "apache http server", "nginx unit", "openresty", "caddy", "coldfusion",
+        "webtop",
     ],
     "Web框架": [
         "spring framework", "spring security", "springboot", "spring boot", "spring cloud",
@@ -123,6 +124,9 @@ FAME_KEYWORDS: dict[int, list[str]] = {
         "f5", "big-ip", "bigip", "check point", "checkpoint", "zscaler", "barracuda",
         "vmware", "vsphere", "esxi", "vcenter",
         "cisco", "microsoft exchange", "exchange server",
+        # Apache httpd 三种形态:文本全称 / 通告域名与 CPE vendor/product
+        # (apache http_server,下划线) / 惯用简称
+        "apache http server", "http_server", "httpd",
         "openssh", "openssl", "nginx", "linux kernel", "sudo", "systemd", "git",
         "curl", "libcurl", "bash", "openswan", "strongswan", "wireguard",
     ],
@@ -141,6 +145,10 @@ FAME_KEYWORDS: dict[int, list[str]] = {
 }
 # 知名度加权分:tier1 必须保证「知名组件 8.0 > 冷门组件 9.0」(基础分差 10)
 FAME_BONUS = {1: 260, 2: 160}
+# 厂商名精确匹配表(键为 REF_VENDOR_MAP 推断出的 vendor_hint 小写):
+# 只收录「厂商名≈旗舰基础组件」的;Red Hat/Debian 这类发行版厂商不发漏
+# 洞只打包,不在此列(否则每个内核/包漏洞都会被抬成全网级)
+FAME_VENDOR_EXACT = {"apache": 1}
 # 这些短词容易撞进包名/产品名(如 jgit/digitalio),必须词边界匹配
 _FAME_BOUNDARY_ONLY = {"git", "f5", "sudo"}
 _FAME_FLAT = sorted(
@@ -158,6 +166,14 @@ def component_fame(item: dict) -> tuple[int, str] | None:
     ]).lower()
     if not hay.strip():
         return None
+    if not item.get("products"):
+        # NVD「Awaiting Analysis」条目没有 CPE,但厂商通告域名推断的
+        # vendor_hint 是权威标识(如 httpd.apache.org → Apache)。
+        # 「apache」这类覆盖多条产品线的厂商名只做精确匹配、不当子串关键词:
+        # 否则 apache tomcat 会被误抬成 tier1
+        vh = (item.get("vendor_hint") or "").lower().strip()
+        if vh in FAME_VENDOR_EXACT:
+            return FAME_VENDOR_EXACT[vh], vh
     for kw, tier in _FAME_FLAT:
         if kw in _FAME_BOUNDARY_ONLY:
             if re.search(rf"\b{re.escape(kw)}\b", hay):
