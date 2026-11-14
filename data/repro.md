@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-14 01:31 UTC · 共 **202** 条(强烈推荐 42 / 值得 160)
+**更新**: 2026-11-14 03:31 UTC · 共 **201** 条(强烈推荐 42 / 值得 159)
 
 ---
 
@@ -790,13 +790,6 @@ PoC: [charlie-goldenowl/cve-2026-122006-check 0★(有源码)](https://github.co
 复现: 值得 — 未授权调用挑战令牌接口，伪造账号相关请求头取得管理员令牌后调用API。 · 影响面: 科研数据管理平台API，内网服务
 处置: 升级到35.9.1或38.6.1，并校验挑战令牌请求来源。
 影响: pip:rucio >= 1.14.0.post1, < 35.9.1(修复: 35.9.1); pip:rucio >= 36.0.0rc1, < 38.6.1(修复: 38.6.1)
-
-### sysPass 未授权重装接管
-[CVE-2026-129110](https://nvd.nist.gov/vuln/detail/CVE-2026-129110) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-13 | 入库 2026-11-13
-未授权攻击者 POST install/install 重新安装实例，重置管理员并接管密码库
-复现: 值得 — 未授权 POST install/install 触发重装流程 · 影响面: 内网密码管理系统，高价值
-处置: 升级修复版本；封禁 install 路由访问
-参考: [参考](https://github.com/OpusProjects/sysPass/pull/360) · [参考](https://github.com/nuxsmin/sysPass) · [参考](https://github.com/nuxsmin/sysPass/blob/3.2.11/app/modules/web/Controllers/InstallController.php#L80-L110)
 
 ### Fortinet管理组件SQL注入未授权
 [CVE-2026-126262](https://nvd.nist.gov/vuln/detail/CVE-2026-126262) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | 披露 2026-11-11 | 入库 2026-11-11

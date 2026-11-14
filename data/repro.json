@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-14T01:31:09+00:00",
- "count": 202,
+ "updated_at": "2026-11-14T03:31:42+00:00",
+ "count": 201,
  "count_recommended": 42,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -4080,50 +4080,6 @@
    "patched": true,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-100397",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-129110",
-   "title": "sysPass 未授权重装接管",
-   "first_seen": "2026-11-13",
-   "last_seen": "2026-11-13",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-13",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "未授权 POST install/install 触发重装流程",
-   "impact_scope": "内网密码管理系统，高价值",
-   "action_zh": "升级修复版本；封禁 install 路由访问",
-   "summary_zh": "未授权攻击者 POST install/install 重新安装实例，重置管理员并接管密码库",
-   "category": null,
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/OpusProjects/sysPass/pull/360"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/nuxsmin/sysPass"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/nuxsmin/sysPass/blob/3.2.11/app/modules/web/Controllers/InstallController.php#L80-L110"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129110",
    "change_note": null
   },
   {
