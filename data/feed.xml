@@ -5,71 +5,16 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 13 Nov 2026 20:32:52 +0000</pubDate>
-    <lastBuildDate>Fri, 13 Nov 2026 20:32:52 +0000</lastBuildDate>
+    <pubDate>Sat, 14 Nov 2026 01:31:09 +0000</pubDate>
+    <lastBuildDate>Sat, 14 Nov 2026 01:31:09 +0000</lastBuildDate>
     <item>
-      <title>[critical]Gaia OS 套接字本地提权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123039</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123039-2026-11-13</guid>
-      <description>CVE-2026-123039 · P0 立即处置 · 披露 2026-11-12 · CVSS 7.8 · EPSS 1.3%,前 70% · 类型 权限错误/缺失授权(越权) · 难度 高(需本地访问·需低权限)
-An authenticated local user can send a command to the socket and have it executed as root.
-信号: KEV 在野利用(CISA 限期 2026-11-16) | 有 PoC
-[googlesky/CVE-2026-123039 3★(有源码)](https://github.com/googlesky/CVE-2026-123039)</description>
-      <pubDate>Fri, 13 Nov 2026 20:32:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]UnrealIRCd 标签注入命令执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114713</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114713-2026-11-13</guid>
-      <description>CVE-2026-114713 · P0 立即处置 · 披露 2026-11-08 · CVSS 8.6 · EPSS 0.3%,前 23% · 类型 CWE-140 · 难度 低(远程·免认证)
-The labeled-response module in UnrealIRCd 6.0.0 before 6.2.7.1 does not escape the IRCv3 "label" message tag when echoing it into replies, which allows any user…
-信号: KEV 在野利用(CISA 限期 2026-11-16)</description>
-      <pubDate>Fri, 13 Nov 2026 20:32:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]APISIX JWE解密认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124679</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124679-2026-11-13</guid>
-      <description>CVE-2026-124679 · P1 重点关注 · 披露 2026-11-13 · 组件 Web中间件 · CVSS 7.8 · 类型 认证欺骗 · 难度 低(远程·免认证)
-Authentication bypass by spoofing vulnerability in Apache APISIX.
+      <title>[critical]VITEC EZ TV 未授权任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-82504</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-82504-2026-11-14</guid>
+      <description>CVE-2026-82504 · P1 重点关注 · 披露 2026-11-13 · 组件 Web框架 · CVSS 9.8 · 类型 缺失认证/任意文件上传 · 难度 低(远程·免认证)
+VITEC EZ TV Platform Server before 8.5.0 contains an unrestricted file upload vulnerability in the upload handler that allows unauthenticated remote attackers t…
 信号:</description>
-      <pubDate>Fri, 13 Nov 2026 20:32:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]IntegraURI 未授权反序列化RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-63079</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-63079-2026-11-13</guid>
-      <description>CVE-2026-63079 · P1 重点关注 · 披露 2026-11-13 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-A remote unauthenticated attacker can send a malicious serialized gadget payload (such as a ysoserial.net TypeConfuseDelegate chain) to the IntegraURI object en…
-信号:</description>
-      <pubDate>Fri, 13 Nov 2026 20:32:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]sysPass 未授权重装接管</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129110</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129110-2026-11-13</guid>
-      <description>CVE-2026-129110 · P1 重点关注 · 披露 2026-11-13 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
-sysPass 3.0.1 through 3.2.11 contains an authentication bypass vulnerability that allows unauthenticated attackers to reinstall an already-installed instance by…
-信号:</description>
-      <pubDate>Fri, 13 Nov 2026 20:32:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]NginxPulse 未授权SQL注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129171</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129171-2026-11-13</guid>
-      <description>CVE-2026-129171 · P1 重点关注 · 披露 2026-11-13 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
-NginxPulse 1.5.0 before 1.6.26 contains an unauthenticated sql injection vulnerability that allows remote attackers to append SQL via the id and locationType pa…
-信号:</description>
-      <pubDate>Fri, 13 Nov 2026 20:32:52 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Jet Admin Cloud Platform 未授权 信息泄露</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123965</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123965-2026-11-13</guid>
-      <description>CVE-2026-123965 · P1 重点关注 · 披露 2026-11-13 · CVSS 9.9 · 类型 信息泄露 · 难度 低(远程·免认证)
-A prompt injection vulnerability in all versions of Jet Admin Cloud Platform allows a remote attacker with a free account to expose sensitive .env configuration…
-信号:</description>
-      <pubDate>Fri, 13 Nov 2026 20:32:52 +0000</pubDate>
+      <pubDate>Sat, 14 Nov 2026 01:31:09 +0000</pubDate>
     </item>
   </channel>
 </rss>

@@ -1,189 +1,43 @@
 {
  "version": 3,
- "generated_at": "2026-11-13T20:32:52+00:00",
+ "generated_at": "2026-11-14T01:31:09+00:00",
  "lookback_hours": 5,
- "count": 7,
+ "count": 1,
  "stats": {
-  "total": 7,
+  "total": 1,
   "by_tier": {
-   "critical": 6,
-   "high": 1
+   "critical": 1
   },
   "by_urgency": {
-   "P1 重点关注": 5,
-   "P0 立即处置": 2
+   "P1 重点关注": 1
   },
   "by_category": {
-   "未知": 6,
-   "Web中间件": 1
+   "Web框架": 1
   },
-  "kev": 2,
-  "with_poc": 1,
-  "with_poc_source": 1,
+  "kev": 0,
+  "with_poc": 0,
+  "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-123039",
+   "id": "CVE-2026-82504",
    "tier": "critical",
-   "title": "Gaia OS 套接字本地提权",
-   "title_zh": "Gaia OS 套接字本地提权",
-   "summary_zh": "本地已认证用户可向全局可写套接字发送命令，由 root 执行任意指令",
-   "published": "2026-11-12T14:17:24.233",
-   "cvss": 7.8,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.01274,
-   "epss_percentile": 0.70349,
-   "cwe_labels": [
-    "权限错误",
-    "缺失授权(越权)"
-   ],
-   "vuln_class": "提权",
-   "fame_term": "check point",
-   "difficulty": "高(需本地访问·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://support.checkpoint.com/results/sk/sk1000362"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-123039"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/googlesky/CVE-2026-123039",
-     "label": "googlesky/CVE-2026-123039 3★(有源码)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-11-16",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "收紧本地账户权限，等待厂商补丁并升级",
-   "repro_worthy": "不建议",
-   "repro_note": null,
-   "impact_scope": "安全网关管理面，需本地账户",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123039",
-   "description": "The Gaia OS DynamicCLI daemon runs as root and listens on a world-writable local socket (/tmp/dynamic_socket) without authenticating connecting processes. An authenticated local user can send a command to the socket and have it executed as root."
-  },
-  {
-   "id": "CVE-2026-114713",
-   "tier": "critical",
-   "title": "UnrealIRCd 标签注入命令执行",
-   "title_zh": "UnrealIRCd 标签注入命令执行",
-   "summary_zh": "联网任意用户可注入未转义的 label 标签，以服务器权限执行跨服命令",
-   "published": "2026-11-08T03:16:33.410",
-   "cvss": 8.6,
-   "severity": "HIGH",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N",
-   "epss": 0.00302,
-   "epss_percentile": 0.23297,
-   "cwe_labels": [
-    "CWE-140"
-   ],
-   "vuln_class": null,
-   "fame_term": null,
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://forums.unrealircd.org/viewtopic.php?t=9487"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.unrealircd.org/"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.unrealircd.org/index/news"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-11-16",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级到 6.2.7.1 及以上",
-   "repro_worthy": "一般",
-   "repro_note": "在≥2台互联服务器环境向 label 标签注入 S2S 指令",
-   "impact_scope": "公网 IRC 网络互联服务器",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114713",
-   "description": "The labeled-response module in UnrealIRCd 6.0.0 before 6.2.7.1 does not escape the IRCv3 \"label\" message tag when echoing it into replies, which allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority."
-  },
-  {
-   "id": "CVE-2026-124679",
-   "tier": "high",
-   "title": "APISIX JWE解密认证绕过",
-   "title_zh": "APISIX JWE解密认证绕过",
-   "summary_zh": "当 strict:false 且 forward_header 与令牌头不同时，未授权客户端可伪造网关切明文绕过认证",
-   "published": "2026-11-13T18:17:31.393",
-   "cvss": 7.8,
-   "severity": "HIGH",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:L/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证欺骗"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": "apache",
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://lists.apache.org/thread/jmktj1o0rrxf1rdbptk0j3c4h0vdws96"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级修复版本；临时改用 strict:true",
-   "repro_worthy": "一般",
-   "repro_note": "路由启用 jwe-decrypt strict:false，伪造 forward_header 值",
-   "impact_scope": "API 网关，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124679",
-   "description": "Authentication bypass by spoofing vulnerability in Apache APISIX. On routes using jwe-decrypt with strict: false and a forward_header distinct from the token header an unauthenticated client can supply the value the upstream treats as gateway-decrypted plaintext."
-  },
-  {
-   "id": "CVE-2026-63079",
-   "tier": "critical",
-   "title": "IntegraURI 未授权反序列化RCE",
-   "title_zh": "IntegraURI 未授权反序列化RCE",
-   "summary_zh": "未授权攻击者向 IntegraURI 对象端点提交序列化 gadget，以 SYSTEM 权限控制主机",
-   "published": "2026-11-13T16:19:30.253",
+   "title": "VITEC EZ TV 未授权任意文件上传",
+   "title_zh": "VITEC EZ TV 未授权任意文件上传",
+   "summary_zh": "未认证远程攻击者通过 X-FILENAME 请求头指定文件名即可上传任意文件，无需类型校验，可上传后门控制服务器",
+   "published": "2026-11-13T21:17:48.030",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "反序列化(RCE)"
+    "缺失认证",
+    "任意文件上传"
    ],
-   "vuln_class": "RCE",
+   "vuln_class": "任意文件读写",
    "fame_term": null,
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -192,15 +46,11 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://gist.github.com/VAMorales/b981c0062a9a7e8942439f97246669b6"
+     "url": "https://www.vitec.com/dl/vitec-ez-tv-platform-datasheet"
     },
     {
      "label": "参考",
-     "url": "https://rbh-access.com/software/integra32/"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.vulncheck.com/advisories/rbh-integra32-net-remoting-deserialization-rce"
+     "url": "https://www.vulncheck.com/advisories/vitec-ez-tv-platform-server-unauthenticated-file-upload-via-uploadhandler-ashx"
     }
    ],
    "poc": [],
@@ -211,249 +61,14 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级厂商修复版本；禁用不可信反序列化",
+   "action_zh": "升级 EZ TV Platform Server 至 8.5.0 及以上，并限制上传目录执行权限",
    "repro_worthy": "一般",
-   "repro_note": "未授权向 IntegraURI 对象端点提交 ysoserial.net 载荷",
-   "impact_scope": ".NET 业务系统，可内网横向",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63079",
-   "description": "A remote unauthenticated attacker can send a malicious serialized gadget payload (such as a ysoserial.net TypeConfuseDelegate chain) to the IntegraURI object endpoint, or exploit MarshalByRefObject/MarshalByValue unmarshalling for arbitrary file read/write and SMB/NTLMv2 credential coercion, to achieve remote code execution as NT AUTHORITY\\SYSTEM and fully compromise the host."
-  },
-  {
-   "id": "CVE-2026-129110",
-   "tier": "critical",
-   "title": "sysPass 未授权重装接管",
-   "title_zh": "sysPass 未授权重装接管",
-   "summary_zh": "未授权攻击者 POST install/install 重新安装实例，重置管理员并接管密码库",
-   "published": "2026-11-13T16:19:00.543",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "缺失认证"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": null,
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/OpusProjects/sysPass/pull/360"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/nuxsmin/sysPass"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/nuxsmin/sysPass/blob/3.2.11/app/modules/web/Controllers/InstallController.php#L80-L110"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级修复版本；封禁 install 路由访问",
-   "repro_worthy": "值得",
-   "repro_note": "未授权 POST install/install 触发重装流程",
-   "impact_scope": "内网密码管理系统，高价值",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129110",
-   "description": "sysPass 3.0.1 through 3.2.11 contains an authentication bypass vulnerability that allows unauthenticated attackers to reinstall an already-installed instance by POSTing to the install/install handler, which never checks isInstalled(). Attackers can overwrite config.xml, point the application at an attacker-controlled database, create an administrator account, and plant serialized PublicLink gadget chains triggered via account/viewLink to execute commands."
-  },
-  {
-   "id": "CVE-2026-129171",
-   "tier": "critical",
-   "title": "NginxPulse 未授权SQL注入",
-   "title_zh": "NginxPulse 未授权SQL注入",
-   "summary_zh": "未授权攻击者经 /api/stats 的 id 与 locationType 注入 SQL，可读库并读写服务器文件",
-   "published": "2026-11-13T18:17:42.530",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "SQL注入"
-   ],
-   "vuln_class": "SQL注入",
-   "fame_term": null,
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/likaia/nginxpulse/blob/0d41264ae441ddfcb595551f2e2f374f707dae22/internal/analytics/overall_stats.go#L219-L224"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/likaia/nginxpulse/blob/0d41264ae441ddfcb595551f2e2f374f707dae22/internal/analytics/stats.go#L217-L221"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/likaia/nginxpulse/commit/f9416bea3be892a394cd24a6d4a2afbd8397e926"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到 1.6.26；参数白名单校验",
-   "repro_worthy": "一般",
-   "repro_note": "未授权请求 /api/stats/:type，id/locationType 注入 SQL",
-   "impact_scope": "日志分析面板，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129171",
-   "description": "NginxPulse 1.5.0 before 1.6.26 contains an unauthenticated sql injection vulnerability that allows remote attackers to append SQL via the id and locationType parameters of /api/stats/:type. Attackers can close the quoted table-name identifier and use error-based output to read database contents, and read or write server files via PostgreSQL superuser functions."
-  },
-  {
-   "id": "CVE-2026-123965",
-   "tier": "critical",
-   "title": "Jet Admin Cloud Platform 未授权 信息泄露",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-11-13T18:17:30.933",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:L",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "信息泄露"
-   ],
-   "vuln_class": null,
-   "fame_term": null,
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-317-01.json"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cve.org/CVERecord?id=CVE-2026-123965"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.jetadmin.io/"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123965",
-   "description": "A prompt injection vulnerability in all versions of Jet Admin Cloud Platform allows a remote attacker with a free account to expose sensitive .env configuration files and exfiltrate critical credentials. Mitigated via sandbox component around October 29, 2026."
+   "repro_note": "未授权访问上传处理接口，在 X-FILENAME 头指定目标文件名",
+   "impact_scope": "流媒体/视频播出服务器，常暴露网络",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82504",
+   "description": "VITEC EZ TV Platform Server before 8.5.0 contains an unrestricted file upload vulnerability in the upload handler that allows unauthenticated remote attackers to upload arbitrary files by supplying a target filename in the X-FILENAME request header with no authentication or file type validation required."
   }
  ],
  "media": [],
- "commits": [
-  {
-   "repo": "qemu/qemu",
-   "sha": "325b8b75d508468f3d443673017acb0eba08e844",
-   "url": "https://github.com/qemu/qemu/commit/325b8b75d508468f3d443673017acb0eba08e844",
-   "title": "nbd/server: Reject rather than assert on non-compliant NBD_OPT_SET_META_CONTEXT",
-   "date": "2026-11-13T14:02:09",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-125683"
-  },
-  {
-   "repo": "qemu/qemu",
-   "sha": "3ec7bb19359c9368ac3e1556ffb156ab5f915ea3",
-   "url": "https://github.com/qemu/qemu/commit/3ec7bb19359c9368ac3e1556ffb156ab5f915ea3",
-   "title": "nbd/server: Reject rather than assert on non-compliant BLOCK_STATUS",
-   "date": "2026-11-13T14:02:09",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-124559"
-  },
-  {
-   "repo": "ImageMagick/ImageMagick",
-   "sha": "1360d45eeee6ce2e6f7a895911ffb7485c0c1a70",
-   "url": "https://github.com/ImageMagick/ImageMagick/commit/1360d45eeee6ce2e6f7a895911ffb7485c0c1a70",
-   "title": "Fixed possible out of bounds write in ShearRotateImage (GHSA-8xm2-q8hq-m68q)",
-   "date": "2026-11-13T19:36:06",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "golang/go",
-   "sha": "f2858e6cd2ce4c43a1f18bc081ba620b09dcefa5",
-   "url": "https://github.com/golang/go/commit/f2858e6cd2ce4c43a1f18bc081ba620b09dcefa5",
-   "title": "runtime: trim nil interface hashes on wasm",
-   "date": "2026-11-13T18:22:32",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "django/django",
-   "sha": "c57c20ff4e8b98b21fa85029614f36c933830790",
-   "url": "https://github.com/django/django/commit/c57c20ff4e8b98b21fa85029614f36c933830790",
-   "title": "Fixed #37442 -- Fixed JSONL deserialization of Unicode line separators.",
-   "date": "2026-11-13T16:46:14",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "haproxy/haproxy",
-   "sha": "1078013590e26ca1c3e0ca265a38b018638de05d",
-   "url": "https://github.com/haproxy/haproxy/commit/1078013590e26ca1c3e0ca265a38b018638de05d",
-   "title": "BUG/MINOR: quic: remove CID on BE conn alloc failure",
-   "date": "2026-11-13T15:48:10",
-   "score": 2,
-   "matched": [
-    "UAF"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "sqlite/sqlite",
-   "sha": "70db356a868264d3b8b56801f00d4872333f6f56",
-   "url": "https://github.com/sqlite/sqlite/commit/70db356a868264d3b8b56801f00d4872333f6f56",
-   "title": "In the CLI, \".open --deserialize\" with no arguments should open an",
-   "date": "2026-11-13T13:39:34",
-   "score": 2,
-   "matched": [
-    "反序列化"
-   ],
-   "cve": null
-  }
- ]
+ "commits": []
 }
