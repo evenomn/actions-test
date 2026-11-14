@@ -1,109 +1,20 @@
 {
  "version": 3,
- "generated_at": "2026-11-14T12:20:36+00:00",
+ "generated_at": "2026-11-14T18:46:23+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 0,
  "stats": {
-  "total": 1,
-  "by_tier": {
-   "critical": 1
-  },
-  "by_urgency": {
-   "P1 重点关注": 1
-  },
-  "by_category": {
-   "未知": 1
-  },
+  "total": 0,
+  "by_tier": {},
+  "by_urgency": {},
+  "by_category": {},
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [
-  {
-   "id": "CVE-2026-129250",
-   "tier": "critical",
-   "title": "Edimax路由器PPTP参数栈溢出",
-   "title_zh": "Edimax路由器PPTP参数栈溢出",
-   "summary_zh": "远程攻击者向PPTP配置接口pptpUserName传入超长数据触发溢出，可致设备崩溃甚至代码执行",
-   "published": "2026-11-14T12:17:44.240",
-   "cvss": 9.9,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "内存破坏",
-    "缓冲区溢出"
-   ],
-   "vuln_class": null,
-   "fame_term": null,
-   "difficulty": "低(远程·需低权限)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://lavender-bicycle-a5a.notion.site/EDIMAX-BR6478ACV2-formPPTPSetup-3f953a41781f8017b959ec7b4df6b3ad?source=copy_link"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-129250"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1033650"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "厂商未回应，暂无官方修复；禁止管理界面暴露公网并关注固件更新",
-   "repro_worthy": "一般",
-   "repro_note": "需登录管理界面访问formPPTPSetup，向pptpUserName提交超长数据",
-   "impact_scope": "SMB/家用路由器，管理面常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129250",
-   "description": "A security vulnerability has been detected in Edimax BR6478ACV2 1.23. The impacted element is the function formPPTPSetup of the file webs. The manipulation of the argument pptpUserName leads to buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
-  }
- ],
- "media": [
-  {
-   "title": "VulnCheck Discloses 14 Unpatched Copeland XWEB EVO Cold-Chain Flaws Under Active Exploitation",
-   "link": "https://sh3llc0d3.com/blog/vulncheck-discloses-14-unpatched-copeland-xweb-evo-cold-chain-flaws-under-active-exploitation/",
-   "cves": []
-  }
- ],
- "commits": [
-  {
-   "repo": "openssl/openssl",
-   "sha": "7174737196dfc563c14719f51f7187dfda90dbe3",
-   "url": "https://github.com/openssl/openssl/commit/7174737196dfc563c14719f51f7187dfda90dbe3",
-   "title": "Fix PEM_X509_INFO_read_bio_ex() failure with a caller-supplied stack",
-   "date": "2026-11-14T04:07:29",
-   "score": 3,
-   "matched": [
-    "CVE"
-   ],
-   "cve": "CVE-2026-107493"
-  },
-  {
-   "repo": "FFmpeg/FFmpeg",
-   "sha": "604ef3784d6fae44baf62fdbe9b3e4e5cfc3c681",
-   "url": "https://github.com/FFmpeg/FFmpeg/commit/604ef3784d6fae44baf62fdbe9b3e4e5cfc3c681",
-   "title": "avcodec/cbs_h266: do not reject an OLS without output layers",
-   "date": "2026-11-14T06:39:20",
-   "score": 2,
-   "matched": [
-    "越界读写"
-   ],
-   "cve": null
-  }
- ]
+ "items": [],
+ "media": [],
+ "commits": []
 }
