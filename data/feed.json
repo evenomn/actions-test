@@ -1,31 +1,368 @@
 {
  "version": 3,
- "generated_at": "2026-11-15T07:58:09+00:00",
+ "generated_at": "2026-11-15T16:28:23+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 6,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 6,
+  "by_tier": {
+   "critical": 6
+  },
+  "by_urgency": {
+   "P1 重点关注": 6
+  },
+  "by_category": {
+   "未知": 6
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
- "media": [],
+ "items": [
+  {
+   "id": "CVE-2026-122662",
+   "tier": "critical",
+   "title": "文档库Pro反序列化RCE",
+   "title_zh": "文档库Pro反序列化RCE",
+   "summary_zh": "可访问插件入口的攻击者可提交恶意序列化数据触发对象注入，可能导致远程代码执行",
+   "published": "2026-11-15T14:17:20.507",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/document-library-pro/vulnerability/wordpress-document-library-pro-plugin-4-2-2-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级该插件至 4.2.2 或更高版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件，站点组件",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122662",
+   "description": "Deserialization of Untrusted Data vulnerability in Barn2 Plugins Document Library Pro document-library-pro allows Object Injection.This issue affects Document Library Pro: from n/a before 4.2.2."
+  },
+  {
+   "id": "CVE-2026-129450",
+   "tier": "critical",
+   "title": "Vigor2960路径遍历文件读取",
+   "title_zh": "Vigor2960路径遍历文件读取",
+   "summary_zh": "可访问设备管理接口的攻击者可通过 option 参数路径穿越读取任意文件，泄露敏感信息",
+   "published": "2026-11-15T12:17:20.913",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0016-authenticated-dowebbackup-path-traversal-clobber"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-129450"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级 Vigor2960 至厂商修复版本，限制管理面访问",
+   "repro_worthy": "一般",
+   "repro_note": "访问设备管理接口，构造 option 路径穿越读取文件",
+   "impact_scope": "边界路由器，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129450",
+   "description": "A vulnerability was detected in DrayTek Vigor2960 1.5.1.6. The manipulation of the argument option results in path traversal."
+  },
+  {
+   "id": "CVE-2026-129451",
+   "tier": "critical",
+   "title": "路由器路径遍历任意文件读取",
+   "title_zh": "路由器路径遍历任意文件读取",
+   "summary_zh": "攻击者可通过 filename 参数构造路径穿越读取设备文件，导致敏感信息泄露",
+   "published": "2026-11-15T13:16:58.600",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0017-authenticated-app-guest-export-path-traversal-write-delete"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-129451"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级受影响路由器固件，限制管理接口访问",
+   "repro_worthy": "一般",
+   "repro_note": "向文件接口传入含 ../ 的 filename 参数读取文件",
+   "impact_scope": "边界路由器，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129451",
+   "description": "This manipulation of the argument filename causes path traversal. The exploit has been published and may be used."
+  },
+  {
+   "id": "CVE-2026-125769",
+   "tier": "critical",
+   "title": "表单集成插件权限提升",
+   "title_zh": "表单集成插件权限提升",
+   "summary_zh": "低权限攻击者可利用错误权限分配提升权限，可能接管WordPress站点管理",
+   "published": "2026-11-15T14:17:24.813",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-266"
+   ],
+   "vuln_class": "提权",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/advanced-form-integration/vulnerability/wordpress-advanced-form-integration-plugin-2-11-3-privilege-escalation-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级该插件至 2.11.3 以上版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress表单插件，提权",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125769",
+   "description": "Incorrect Privilege Assignment vulnerability in Nasir Ahmed Advanced Form Integration advanced-form-integration allows Privilege Escalation.This issue affects Advanced Form Integration: from n/a through 2.11.3."
+  },
+  {
+   "id": "CVE-2026-129453",
+   "tier": "critical",
+   "title": "Vigor2960堆溢出RCE",
+   "title_zh": "Vigor2960堆溢出RCE",
+   "summary_zh": "攻击者可通过网络请求触发堆溢出，可能造成设备崩溃或远程代码执行",
+   "published": "2026-11-15T14:17:26.583",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏",
+    "堆溢出"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0020-authenticated-check-file-exist-direct-cgi-core"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-129453"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级 Vigor2960 固件至修复版本，限制管理面访问",
+   "repro_worthy": "一般",
+   "repro_note": "向设备网络服务发送畸形请求触发堆溢出，入口待确认",
+   "impact_scope": "边界路由器，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129453",
+   "description": "A vulnerability was found in DrayTek Vigor2960 1.5.1.6. The exploit has been made public and could be used."
+  },
+  {
+   "id": "CVE-2026-125795",
+   "tier": "critical",
+   "title": "Estatik PHP本地文件包含",
+   "title_zh": "Estatik PHP本地文件包含",
+   "summary_zh": "可访问插件入口的攻击者可控制include文件名包含本地文件，可能泄露或执行代码",
+   "published": "2026-11-15T15:16:47.163",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SSRF(文件包含)"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/estatik/vulnerability/wordpress-estatik-plugin-4-3-6-local-file-inclusion-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级该插件至 4.3.6 以上版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress房产插件，文件包含",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125795",
+   "description": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion') vulnerability in Estatik Estatik estatik allows PHP Local File Inclusion.This issue affects Estatik: from n/a through 4.3.6."
+  }
+ ],
+ "media": [
+  {
+   "title": "TRENDnet TEW-657BRM Router Receives CVSS 10.0 Advisory for Unauthenticated mini_httpd setup.cgi OOB Write",
+   "link": "https://sh3llc0d3.com/blog/trendnet-tew-657brm-router-receives-cvss-100-advisory-for-unauthenticated-mini_httpd-setupcgi-oob-write/",
+   "cves": [
+    "CVE-2026-129351"
+   ]
+  },
+  {
+   "title": "Perl JSON::XS Incremental Parser Heap Out-of-Bounds Write Patched in Version 4.05",
+   "link": "https://sh3llc0d3.com/blog/perl-jsonxs-incremental-parser-heap-out-of-bounds-write-patched-in-version-405/",
+   "cves": [
+    "CVE-2026-129114"
+   ]
+  },
+  {
+   "title": "Open-Source AiSOC Framework Exposes Internal Enrichment API via Unauthenticated Next.js Console Rewrites",
+   "link": "https://sh3llc0d3.com/blog/open-source-aisoc-framework-exposes-internal-enrichment-api-via-unauthenticated-nextjs-console-rewrites/",
+   "cves": [
+    "CVE-2026-129129"
+   ]
+  },
+  {
+   "title": "WordPress Chatterbug Forms Plugin Suffers Critical Unauthenticated Arbitrary PHP File Upload",
+   "link": "https://sh3llc0d3.com/blog/wordpress-chatterbug-forms-plugin-suffers-critical-unauthenticated-arbitrary-php-file-upload/",
+   "cves": [
+    "CVE-2026-125055"
+   ]
+  }
+ ],
  "commits": [
   {
-   "repo": "openbsd/src",
-   "sha": "ee78a990a3e5cb6a1bb71035a03708248ec9a072",
-   "url": "https://github.com/openbsd/src/commit/ee78a990a3e5cb6a1bb71035a03708248ec9a072",
-   "title": "vfs: set cn_pnbuf to NULL after pool_put in vfs_generic_abortop. This",
-   "date": "2026-11-15T01:58:37",
+   "repo": "ImageMagick/ImageMagick",
+   "sha": "a5c0257c30a932e74620b4ad937adaadeeb2a3c0",
+   "url": "https://github.com/ImageMagick/ImageMagick/commit/a5c0257c30a932e74620b4ad937adaadeeb2a3c0",
+   "title": "fixed a rare but possible use after free",
+   "date": "2026-11-15T16:14:00",
    "score": 2,
    "matched": [
     "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/httpd",
+   "sha": "feedd4c4f24285be913f4fa7c59312b26babe1ba",
+   "url": "https://github.com/apache/httpd/commit/feedd4c4f24285be913f4fa7c59312b26babe1ba",
+   "title": "mod_http3 lifetime security fixes (#1036)",
+   "date": "2026-11-15T09:12:14",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "wireshark/wireshark",
+   "sha": "ecab84c0ab98c70278397119cd7e34ff3ce5f235",
+   "url": "https://github.com/wireshark/wireshark/commit/ecab84c0ab98c70278397119cd7e34ff3ce5f235",
+   "title": "BT-DHT: rework the error handling",
+   "date": "2026-11-15T08:49:27",
+   "score": 2,
+   "matched": [
+    "越界读写"
    ],
    "cve": null
   }
