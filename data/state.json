@@ -1,15 +1,6 @@
 {
  "version": 3,
  "seen": {
-  "CVE-2026-21589": {
-   "date": "2026-10-15",
-   "pushed": true,
-   "pushed_at": "2026-10-06T03:19:11+00:00",
-   "kev": true,
-   "cvss": 7.5,
-   "last_mod": "",
-   "exploit_ref": false
-  },
   "CVE-2026-107806": {
    "date": "2026-10-21",
    "pushed": true,
@@ -145,24 +136,6 @@
    "last_mod": "",
    "exploit_ref": false
   },
-  "CVE-2026-94603": {
-   "date": "2026-10-15",
-   "pushed": true,
-   "pushed_at": "2026-10-13",
-   "kev": false,
-   "cvss": 10.0,
-   "last_mod": "",
-   "exploit_ref": false
-  },
-  "CVE-2026-77459": {
-   "date": "2026-10-15",
-   "pushed": true,
-   "pushed_at": "2026-10-13",
-   "kev": false,
-   "cvss": 9.9,
-   "last_mod": "",
-   "exploit_ref": false
-  },
   "CVE-2026-104252": {
    "date": "2026-10-24",
    "pushed": true,
@@ -196,60 +169,6 @@
    "pushed_at": "2026-10-14T20:48:11+00:00",
    "kev": true,
    "cvss": 7.2,
-   "last_mod": "",
-   "exploit_ref": false
-  },
-  "CVE-2026-77524": {
-   "date": "2026-10-15",
-   "pushed": true,
-   "pushed_at": "2026-10-14",
-   "kev": false,
-   "cvss": 9.9,
-   "last_mod": "",
-   "exploit_ref": false
-  },
-  "CVE-2026-110911": {
-   "date": "2026-10-15",
-   "pushed": true,
-   "pushed_at": "2026-10-15T05:59:03+00:00",
-   "kev": false,
-   "cvss": 9.8,
-   "last_mod": "",
-   "exploit_ref": false
-  },
-  "CVE-2026-109694": {
-   "date": "2026-10-15",
-   "pushed": true,
-   "pushed_at": "2026-10-15T14:14:58+00:00",
-   "kev": false,
-   "cvss": 9.8,
-   "last_mod": "",
-   "exploit_ref": false
-  },
-  "CVE-2026-109686": {
-   "date": "2026-10-15",
-   "pushed": true,
-   "pushed_at": "2026-10-15T14:14:58+00:00",
-   "kev": false,
-   "cvss": 9.8,
-   "last_mod": "",
-   "exploit_ref": false
-  },
-  "CVE-2026-109892": {
-   "date": "2026-10-15",
-   "pushed": true,
-   "pushed_at": "2026-10-15T14:14:58+00:00",
-   "kev": false,
-   "cvss": 9.8,
-   "last_mod": "",
-   "exploit_ref": false
-  },
-  "CVE-2026-110958": {
-   "date": "2026-10-15",
-   "pushed": true,
-   "pushed_at": "2026-10-15T20:25:25+00:00",
-   "kev": false,
-   "cvss": 10.0,
    "last_mod": "",
    "exploit_ref": false
   },
@@ -14359,6 +14278,33 @@
   "CVE-2011-10042": {
    "date": "2026-11-14",
    "pushed": false,
+   "pushed_at": "2026-11-14",
+   "kev": false,
+   "cvss": null,
+   "last_mod": "",
+   "exploit_ref": false
+  },
+  "CVE-2026-129351": {
+   "date": "2026-11-15",
+   "pushed": true,
+   "pushed_at": "2026-11-15T01:07:56+00:00",
+   "kev": false,
+   "cvss": 10.0,
+   "last_mod": "",
+   "exploit_ref": false
+  },
+  "CVE-2026-129353": {
+   "date": "2026-11-15",
+   "pushed": true,
+   "pushed_at": "2026-11-15T01:07:56+00:00",
+   "kev": false,
+   "cvss": 10.0,
+   "last_mod": "",
+   "exploit_ref": false
+  },
+  "CVE-2015-10149": {
+   "date": "2026-11-15",
+   "pushed": false,
    "pushed_at": "",
    "kev": false,
    "cvss": null,
@@ -14380,14 +14326,6 @@
   "https://sh3llc0d3.com/blog/mior-and-skyfall-attacks-break-amd-sev-snp-confidential-vm-isolation-across-epyc-hosts/": "2026-11-14"
  },
  "commit_seen": {
-  "FFmpeg/FFmpeg@b192fc29d6": "2026-10-15",
-  "FFmpeg/FFmpeg@cdfad4aed8": "2026-10-15",
-  "FFmpeg/FFmpeg@0c058a0855": "2026-10-15",
-  "openbsd/src@422e5b9a59": "2026-10-15",
-  "qemu/qemu@1ce27ff81a": "2026-10-15",
-  "qemu/qemu@add117df64": "2026-10-15",
-  "openbsd/src@63cc4862b9": "2026-10-15",
-  "envoyproxy/envoy@b8e0e4224c": "2026-10-15",
   "FFmpeg/FFmpeg@b2f8ebcd27": "2026-10-16",
   "envoyproxy/envoy@92f4a4b19e": "2026-10-16",
   "FFmpeg/FFmpeg@3e6cd5e760": "2026-10-16",
@@ -14855,6 +14793,7 @@
   "haproxy/haproxy@1078013590": "2026-11-13",
   "sqlite/sqlite@70db356a86": "2026-11-13",
   "openssl/openssl@7174737196": "2026-11-14",
-  "FFmpeg/FFmpeg@604ef3784d": "2026-11-14"
+  "FFmpeg/FFmpeg@604ef3784d": "2026-11-14",
+  "sqlite/sqlite@e5cb4b0957": "2026-11-15"
  }
 }

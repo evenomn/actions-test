@@ -1,20 +1,143 @@
 {
  "version": 3,
- "generated_at": "2026-11-14T18:46:23+00:00",
+ "generated_at": "2026-11-15T01:07:56+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 2,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 2,
+  "by_tier": {
+   "critical": 2
+  },
+  "by_urgency": {
+   "P1 重点关注": 2
+  },
+  "by_category": {
+   "Web中间件": 1,
+   "网络设备": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2026-129351",
+   "tier": "critical",
+   "title": "Web中间件越界写入内存破坏",
+   "title_zh": "Web中间件越界写入内存破坏",
+   "summary_zh": "远程攻击者可通过构造请求触发越界写入，造成内存破坏，可能导致崩溃或代码执行。",
+   "published": "2026-11-14T23:16:47.753",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏",
+    "越界写入"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/ruanyi101/router-firmware-security-advisories/blob/main/router-firmware-GitHub-advisories/advisories/TRENDnet-TEW-657BRM-mini_httpd.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-129351"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1043518"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "部署厂商修复版本；无法升级时限制接口访问并启用内存防护",
+   "repro_worthy": "一般",
+   "repro_note": "需先确认受影响Web中间件及触发越界写入的接口参数",
+   "impact_scope": "Web中间件，可能暴露于公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129351",
+   "description": "Such manipulation leads to out-of-bounds write. The exploit has been disclosed publicly and may be used."
+  },
+  {
+   "id": "CVE-2026-129353",
+   "tier": "critical",
+   "title": "D-Link DIR-600L认证接口栈溢出",
+   "title_zh": "D-Link DIR-600L认证接口栈溢出",
+   "summary_zh": "远程攻击者可通过authentication.cgi的id/password参数提交超长数据，触发栈溢出并可能执行代码。",
+   "published": "2026-11-15T00:16:51.120",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏",
+    "栈溢出"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/ruanyi101/router-firmware-security-advisories/blob/main/router-firmware-GitHub-advisories/advisories/D-Link-DIR-600L-authentication-cgi.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-129353"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1043523"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至官方修复版本，或禁用远程管理并限制管理接口访问",
+   "repro_worthy": "一般",
+   "repro_note": "访问/authentication.cgi，向id或password参数提交超长数据",
+   "impact_scope": "D-Link老旧路由器，常暴露于公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129353",
+   "description": "A vulnerability was detected in D-Link DIR-600L 2.17/2.17b02. Affected by this vulnerability is the function authenticationcgi_main of the file authentication.cgi. Performing a manipulation of the argument id/password results in stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit is now public and may be used."
+  }
+ ],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "sqlite/sqlite",
+   "sha": "e5cb4b09573aeb53cbb28983be7234e42c48c07a",
+   "url": "https://github.com/sqlite/sqlite/commit/e5cb4b09573aeb53cbb28983be7234e42c48c07a",
+   "title": "Improve robustness of RBU against SQL injection attackes coming from",
+   "date": "2026-11-15T00:55:04",
+   "score": 2,
+   "matched": [
+    "注入"
+   ],
+   "cve": null
+  }
+ ]
 }
