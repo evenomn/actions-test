@@ -23317,5 +23317,79 @@
     "urgency": "P2 保持关注"
    }
   ]
+ },
+ "2026-11-15": {
+  "qualified": 6,
+  "critical": 4,
+  "kev": 0,
+  "repro_top": 0,
+  "kev_total": 1781,
+  "by_category": {
+   "未分类": 4,
+   "ERP/业务系统": 1,
+   "网络设备": 1
+  },
+  "items": [
+   {
+    "id": "CVE-2026-129433",
+    "title": "Dokploy服务名命令注入RCE",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.9,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-129464",
+    "title": "Zr.Admin.NET路径遍历读文件",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-129262",
+    "title": "ERP系统DiyFileUpload任意上传",
+    "tier": "high",
+    "category": "ERP/业务系统",
+    "cvss": 7.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-129354",
+    "title": "DIR-600L HNAP处理器栈溢出",
+    "tier": "critical",
+    "category": "网络设备",
+    "cvss": 10.0,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-129258",
+    "title": "Tenda AC18固件升级校验缺失",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-129352",
+    "title": "TEW-657BRM路由器栈溢出",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }
