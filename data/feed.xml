@@ -3,71 +3,9 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Sun, 15 Nov 2026 03:03:37 +0000</pubDate>
-    <lastBuildDate>Sun, 15 Nov 2026 03:03:37 +0000</lastBuildDate>
-    <item>
-      <title>[critical]Dokploy服务名命令注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129433</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129433-2026-11-15</guid>
-      <description>CVE-2026-129433 · P1 重点关注 · 披露 2026-11-14 · CVSS 9.9 · 类型 命令注入(RCE) · 难度 低(远程·需低权限)
-Dokploy before 0.31.1 contains an OS command injection vulnerability in getComposeContainerCommand() that allows authenticated organization members to execute s…
-信号:</description>
-      <pubDate>Sun, 15 Nov 2026 03:03:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]Zr.Admin.NET路径遍历读文件</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129464</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129464-2026-11-15</guid>
-      <description>CVE-2026-129464 · P1 重点关注 · 披露 2026-11-15 · CVSS 8.8 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
-Zr.Admin.NET commit 0ee1ab8 through commit eb9228a contains a path traversal vulnerability that allows any logged-in user to read arbitrary server files via the…
-信号:</description>
-      <pubDate>Sun, 15 Nov 2026 03:03:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>[high]ERP系统DiyFileUpload任意上传</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129262</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129262-2026-11-15</guid>
-      <description>CVE-2026-129262 · P1 重点关注 · 披露 2026-11-14 · 组件 ERP/业务系统 · CVSS 7.3 · 类型 访问控制缺失/任意文件上传 · 难度 低(远程·免认证)
-Affected by this vulnerability is the function DiyFileUpload of the file /ws.asmx. Remote exploitation of the attack is possible.
-信号:</description>
-      <pubDate>Sun, 15 Nov 2026 03:03:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]DIR-600L HNAP处理器栈溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129354</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129354-2026-11-15</guid>
-      <description>CVE-2026-129354 · P1 重点关注 · 披露 2026-11-15 · 组件 网络设备 · CVSS 10.0 · 类型 内存破坏/栈溢出 · 难度 低(远程·免认证)
-The attack can be executed remotely. The exploit has been published and may be used.
-信号:</description>
-      <pubDate>Sun, 15 Nov 2026 03:03:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Tenda AC18固件升级校验缺失</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129258</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129258-2026-11-15</guid>
-      <description>CVE-2026-129258 · P1 重点关注 · 披露 2026-11-14 · CVSS 9.1 · 类型 数据真实性验证缺失 · 难度 中(远程·需高权限)
-A vulnerability was identified in Tenda AC18 15.03.05.05_multi/15.03.05.19 Build 6318.
-信号:</description>
-      <pubDate>Sun, 15 Nov 2026 03:03:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]TEW-657BRM路由器栈溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129352</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129352-2026-11-15</guid>
-      <description>CVE-2026-129352 · P1 重点关注 · 披露 2026-11-14 · CVSS 9.1 · 类型 内存破坏/栈溢出 · 难度 中(远程·需高权限)
-A vulnerability was detected in TRENDnet TEW-657BRM 1.00.1. The exploit is now public and may be used.
-信号:</description>
-      <pubDate>Sun, 15 Nov 2026 03:03:37 +0000</pubDate>
-    </item>
-    <item>
-      <title>今日要点</title>
-      <description>- 立即处置CVE-2026-129354：网络设备栈溢出，优先隔离暴露面。
-- 次优先CVE-2026-129433：命令注入RCE 9.9，排查对外接口。
-- 未见在野利用及勒索软件关联，但高危漏洞仍需按暴露面优先处置。
-- 本次批量披露6个漏洞，高危集中在网络设备与ERP/业务系统，呈集中公告趋势。</description>
-      <pubDate>Sun, 15 Nov 2026 03:03:37 +0000</pubDate>
-    </item>
+    <pubDate>Sun, 15 Nov 2026 07:58:09 +0000</pubDate>
+    <lastBuildDate>Sun, 15 Nov 2026 07:58:09 +0000</lastBuildDate>
   </channel>
 </rss>
