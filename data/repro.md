@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-17 04:01 UTC · 共 **201** 条(强烈推荐 42 / 值得 159)
+**更新**: 2026-11-17 05:13 UTC · 共 **202** 条(强烈推荐 42 / 值得 160)
 
 ---
 
@@ -580,6 +580,13 @@ PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/ho
 处置: 升级至 FortiOS 7.6.5 或 7.4.10 及以上版本，并排查入侵痕迹
 影响: fortinet fortios >=6.4.0 <7.4.10; fortinet fortios >=7.6.0 <7.6.5
 参考: [厂商通告](https://fortiguard.fortinet.com/psirt/FG-IR-26-122) · [参考](https://cert-portal.siemens.com/productcert/html/ssa-975644.html) · [参考](https://unit42.paloaltonetworks.com/fortimanager-cve-2024-47575-peerstitch-malware/#post-188095-_guyq53ar8k05)
+
+### 3DEXPERIENCE启动器反序列化RCE
+[CVE-2026-93664](https://nvd.nist.gov/vuln/detail/CVE-2026-93664) | P1 重点关注 | CVSS 10.0 | 披露 2026-11-16 | 入库 2026-11-17
+未授权攻击者向Station Launcher提交恶意序列化数据即可远程执行代码
+复现: 值得 — 向启动器服务发送构造的序列化对象，观察反序列化执行链 · 影响面: 企业PLM平台全线版本，客户端与服务端
+处置: 联系厂商获取修复版本，隔离启动器相关端口访问
+参考: [参考](https://www.3ds.com/trust-center/security/security-advisories/cve-2026-93664)
 
 ### Linksys路由器ping参数命令注入
 [CVE-2026-121932](https://nvd.nist.gov/vuln/detail/CVE-2026-121932) | P1 重点关注 | CVSS 10.0 | 披露 2026-11-04 | 入库 2026-11-04

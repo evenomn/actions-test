@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-17T04:01:37+00:00",
- "count": 201,
+ "updated_at": "2026-11-17T05:13:49+00:00",
+ "count": 202,
  "count_recommended": 42,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -2849,6 +2849,42 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-61624",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-93664",
+   "title": "3DEXPERIENCE启动器反序列化RCE",
+   "first_seen": "2026-11-17",
+   "last_seen": "2026-11-17",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-16",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "向启动器服务发送构造的序列化对象，观察反序列化执行链",
+   "impact_scope": "企业PLM平台全线版本，客户端与服务端",
+   "action_zh": "联系厂商获取修复版本，隔离启动器相关端口访问",
+   "summary_zh": "未授权攻击者向Station Launcher提交恶意序列化数据即可远程执行代码",
+   "category": null,
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.3ds.com/trust-center/security/security-advisories/cve-2026-93664"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-93664",
    "change_note": null
   },
   {
