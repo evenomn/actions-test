@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-17 05:13 UTC · 共 **202** 条(强烈推荐 42 / 值得 160)
+**更新**: 2026-11-17 14:42 UTC · 共 **203** 条(强烈推荐 42 / 值得 161)
 
 ---
 
@@ -780,6 +780,14 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — ioos服务sub_416D88，group_id/group_name参数拼接命令 · 影响面: 无线AP/路由器，边界暴露面
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
+
+### Apache Roller反序列化RCE
+[CVE-2026-129448](https://nvd.nist.gov/vuln/detail/CVE-2026-129448) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-17 | 入库 2026-11-17
+未认证攻击者向XML-RPC端点提交含恶意扩展类型的序列化数据，即可以服务权限执行任意代码
+复现: 值得 — 未授权向XML-RPC端点提交携带恶意vendor扩展类型的序列化对象 · 影响面: 开源博客/CMS，常暴露于公网
+处置: 升级至官方修复版本；无法升级时关闭XML-RPC端点
+影响: Apache(产品与版本待 NVD/厂商补充)
+参考: [参考](https://github.com/apache/roller/pull/171) · [参考](https://lists.apache.org/thread.html/lnz4s26tv6hdo03wngtdbpfj4hg4gtds) · [参考](https://lists.apache.org/thread/cc0jck13nb9vvcmzxzwotr6n16mx28z9)
 
 ### ActiveStorage任意文件读写
 [CVE-2026-122006](https://nvd.nist.gov/vuln/detail/CVE-2026-122006) | P1 重点关注 | Web框架 | CVSS 9.8 | EPSS 0.7% | 披露 2026-11-12 | 入库 2026-11-13
