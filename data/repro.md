@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-18 08:40 UTC · 共 **204** 条(强烈推荐 42 / 值得 162)
+**更新**: 2026-11-18 18:14 UTC · 共 **210** 条(强烈推荐 43 / 值得 167)
 
 ---
 
@@ -174,6 +174,13 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 处置: 升级至18.11.13/19.3.6/19.4.3/19.5.1等修复版
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/633633) · [参考](https://hackerone.com/reports/4093475)
+
+### 泛微E-cology任意文件上传RCE
+[CVE-2021-48023](https://nvd.nist.gov/vuln/detail/CVE-2021-48023) | P0 立即处置 | OA/协同办公 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
+未认证攻击者向exportImport上传JSP文件并访问fileTransfer路径，执行任意代码
+复现: 强烈推荐 — 未授权POST uploadOperation.jsp上传JSP并访问 · 影响面: OA系统，常暴露公网/内网
+处置: 升级至修复版本；临时禁用exportImport或限制访问
+参考: [参考](https://github.com/Ershu1/2021_Hvv/blob/main/%E6%B3%9B%E5%BE%AEOAV9%20%E5%89%8D%E5%8F%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md) · [参考](https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/oa/%E6%B3%9B%E5%BE%AEOA/%E6%B3%9B%E5%BE%AEOA%20E-Cology%20uploadOperation.jsp%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md) · [参考](https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/weaver/oa-v9-uploads-file.yaml)
 
 ### FortiMail HA命令注入未授权RCE
 [CVE-2026-126148](https://nvd.nist.gov/vuln/detail/CVE-2026-126148) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | 披露 2026-11-11 | 入库 2026-11-12
@@ -788,6 +795,45 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — ioos服务sub_416D88，group_id/group_name参数拼接命令 · 影响面: 无线AP/路由器，边界暴露面
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
+
+### BIG-IP栈溢出可致DoS或RCE
+[CVE-2026-116953](https://nvd.nist.gov/vuln/detail/CVE-2026-116953) | P0 立即处置 | 开发库/依赖 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
+未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码
+复现: 值得 — 入口为BIG-IP对外服务，发送特制请求触发栈溢出 · 影响面: 边界负载设备，常暴露公网
+处置: 立即升级BIG-IP至F5修复版本，按公告加固
+影响: F5(产品与版本待 NVD/厂商补充)
+参考: [参考](https://my.f5.com/manage/s/article/K000163941)
+
+### BIG-IP栈溢出可致DoS或RCE
+[CVE-2026-120285](https://nvd.nist.gov/vuln/detail/CVE-2026-120285) | P0 立即处置 | 开发库/依赖 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
+未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码
+复现: 值得 — 入口为BIG-IP对外服务，发送特制请求触发栈溢出 · 影响面: 边界负载设备，常暴露公网
+处置: 立即升级BIG-IP至F5修复版本，按公告加固
+影响: F5(产品与版本待 NVD/厂商补充)
+参考: [参考](https://my.f5.com/manage/s/article/K000163939)
+
+### BIG-IP栈溢出可致DoS或RCE
+[CVE-2026-120292](https://nvd.nist.gov/vuln/detail/CVE-2026-120292) | P0 立即处置 | 开发库/依赖 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
+未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码
+复现: 值得 — 入口为BIG-IP对外服务，发送特制请求触发栈溢出 · 影响面: 边界负载设备，常暴露公网
+处置: 立即升级BIG-IP至F5修复版本，按公告加固
+影响: F5(产品与版本待 NVD/厂商补充)
+参考: [参考](https://my.f5.com/manage/s/article/K000163940)
+
+### BIG-IP栈溢出可致DoS或RCE
+[CVE-2026-123637](https://nvd.nist.gov/vuln/detail/CVE-2026-123637) | P0 立即处置 | 开发库/依赖 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
+未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码
+复现: 值得 — 入口为BIG-IP对外服务，发送特制请求触发栈溢出 · 影响面: 边界负载设备，常暴露公网
+处置: 立即升级BIG-IP至F5修复版本，按公告加固
+影响: F5(产品与版本待 NVD/厂商补充)
+参考: [参考](https://my.f5.com/manage/s/article/K000163937)
+
+### ThinkPHP5 _method覆盖RCE
+[CVE-2019-25782](https://nvd.nist.gov/vuln/detail/CVE-2019-25782) | P1 重点关注 | Web框架 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
+未授权攻击者通过POST _method=__construct覆盖filter，注入system执行命令
+复现: 值得 — POST ?s=captcha，_method覆盖filter为system · 影响面: 流行PHP框架，广泛部署于Web业务
+处置: 升级至5.0.24以上；过滤_method与filter参数
+参考: [参考](https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/thinkphp/thinkphp-5023-rce.yaml) · [参考](https://github.com/top-think/framework/commit/4a4b5e64fa4c46f851b4004005bff5f3196de003) · [参考](https://github.com/vulhub/vulhub/tree/master/thinkphp/5.0.23-rce)
 
 ### Apache Roller反序列化RCE
 [CVE-2026-129448](https://nvd.nist.gov/vuln/detail/CVE-2026-129448) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-17 | 入库 2026-11-17

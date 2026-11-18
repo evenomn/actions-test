@@ -5,7 +5,270 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 18 Nov 2026 08:40:47 +0000</pubDate>
-    <lastBuildDate>Wed, 18 Nov 2026 08:40:47 +0000</lastBuildDate>
+    <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    <lastBuildDate>Wed, 18 Nov 2026 18:14:24 +0000</lastBuildDate>
+    <item>
+      <title>[high]NGINX邮件代理UAF可致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-113425</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-113425-2026-11-18</guid>
+      <description>CVE-2026-113425 · P1 重点关注 · 披露 2026-11-18 · CVSS 8.1 · 类型 释放后重用(UAF) · 难度 低(远程·利用条件苛刻·免认证)
+Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.
+信号: 有 PoC | 命中关注词 nginx
+[LLCForge/CVE-2026-113425 0★(有源码)](https://github.com/LLCForge/CVE-2026-113425)</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]NGINX释放后重用漏洞可致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123634</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123634-2026-11-18</guid>
+      <description>CVE-2026-123634 · P1 重点关注 · 披露 2026-11-18 · CVSS 8.1 · 类型 释放后重用(UAF) · 难度 低(远程·利用条件苛刻·免认证)
+An attacker may also be able to execute code if Address Space Layout Randomization (ASLR) is disabled or the attacker can bypass ASLR.
+信号: 有 PoC | 命中关注词 nginx
+[LLCForge/CVE-2026-123634 0★(有源码)](https://github.com/LLCForge/CVE-2026-123634)</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]BIG-IP栈溢出可致DoS或RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116953</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116953-2026-11-18</guid>
+      <description>CVE-2026-116953 · P0 立即处置 · 披露 2026-11-18 · 组件 开发库/依赖 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
+This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]BIG-IP栈溢出可致DoS或RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120285</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120285-2026-11-18</guid>
+      <description>CVE-2026-120285 · P0 立即处置 · 披露 2026-11-18 · 组件 开发库/依赖 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
+This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]BIG-IP栈溢出可致DoS或RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120292</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120292-2026-11-18</guid>
+      <description>CVE-2026-120292 · P0 立即处置 · 披露 2026-11-18 · 组件 开发库/依赖 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
+This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]BIG-IP栈溢出可致DoS或RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123637</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123637-2026-11-18</guid>
+      <description>CVE-2026-123637 · P0 立即处置 · 披露 2026-11-18 · 组件 开发库/依赖 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
+This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]泛微E-cology任意文件上传RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2021-48023</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2021-48023-2026-11-18</guid>
+      <description>CVE-2021-48023 · P0 立即处置 · 披露 2026-11-18 · 组件 OA/协同办公 · CVSS 9.8 · 类型 任意文件上传 · 难度 低(远程·免认证)
+Weaver E-cology 9.0 contains an unrestricted file upload vulnerability in /page/exportImport/uploadOperation.jsp that allows unauthenticated attackers to upload…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]BIG-IP DNS::scrape栈溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120722</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120722-2026-11-18</guid>
+      <description>CVE-2026-120722 · P1 重点关注 · 披露 2026-11-18 · 组件 开发库/依赖 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
+This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]BIG-IP PEM命令iRule栈溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-121805</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-121805-2026-11-18</guid>
+      <description>CVE-2026-121805 · P1 重点关注 · 披露 2026-11-18 · 组件 开发库/依赖 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
+This vulnerability allows a remote unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may perform RCE.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TeamCity Perforce设置RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-132231</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-132231-2026-11-18</guid>
+      <description>CVE-2026-132231 · P1 重点关注 · 披露 2026-11-18 · 组件 开发运维/CI · CVSS 9.9 · 类型 CWE-1289 · 难度 低(远程·需低权限)
+In JetBrains TeamCity before 2026.1.3, 2025.11.7 remote code execution was possible via best-fit character mapping in Perforce settings
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ThinkPHP5 _method覆盖RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2019-25782</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2019-25782-2026-11-18</guid>
+      <description>CVE-2019-25782 · P1 重点关注 · 披露 2026-11-18 · 组件 Web框架 · CVSS 9.8 · 类型 CWE-470 · 难度 低(远程·免认证)
+ThinkPHP 5.0.0 before 5.0.24 contains a code injection vulnerability that allows unauthenticated attackers to execute commands by setting _method=__construct in…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TeamCity Perforce参数注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-132232</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-132232-2026-11-18</guid>
+      <description>CVE-2026-132232 · P1 重点关注 · 披露 2026-11-18 · 组件 开发运维/CI · CVSS 9.9 · 类型 参数拼接注入 · 难度 低(远程·需低权限)
+In JetBrains TeamCity before 2026.1.3, 2025.11.7 remote code execution was possible via argument injection in Perforce settings
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TeamCity构建属性注入路径遍历RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-132233</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-132233-2026-11-18</guid>
+      <description>CVE-2026-132233 · P1 重点关注 · 披露 2026-11-18 · 组件 开发运维/CI · CVSS 9.9 · 类型 路径遍历 · 难度 低(远程·需低权限)
+In JetBrains TeamCity before 2026.1.3, 2025.11.7 remote code execution was possible via build attribute injection
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]TeamCity Mercurial参数注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-132234</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-132234-2026-11-18</guid>
+      <description>CVE-2026-132234 · P1 重点关注 · 披露 2026-11-18 · 组件 开发运维/CI · CVSS 9.9 · 类型 参数拼接注入 · 难度 低(远程·需低权限)
+In JetBrains TeamCity before 2026.1.3, 2025.11.7 remote code execution was possible via argument injection in Mercurial VCS root settings
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Unauthenticated 未授权 任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2018-25443</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2018-25443-2026-11-18</guid>
+      <description>CVE-2018-25443 · P1 重点关注 · 披露 2026-11-18 · CVSS 9.8 · 类型 任意文件上传 · 难度 低(远程·免认证)
+Unauthenticated attackers can supply a source[] URL like x.jpg?.aspx to retain a malicious extension and write an executable .aspx file for remote code executio…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2023-54422</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2023-54422-2026-11-18</guid>
+      <description>CVE-2023-54422 · P1 重点关注 · 披露 2026-11-18 · CVSS 9.8 · 类型 任意文件上传 · 难度 低(远程·免认证)
+iDocView before 13.10.1_20231115 contains an unrestricted file upload vulnerability in the /html/2word endpoint that allows unauthenticated attackers to write a…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]GET 未授权 路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-63189</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-63189-2026-11-18</guid>
+      <description>CVE-2026-63189 · P1 重点关注 · 披露 2026-11-18 · CVSS 9.8 · 类型 路径遍历/任意文件读取/信息泄露 · 难度 低(远程·免认证)
+Prior to 1.11.5, the unauthenticated GET /api/v1/view/ route in server/src/routes/api/v1/view/root.ts resolves its attacker-controlled wildcard path without no…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]PowerStore SDNAS命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116448</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116448-2026-11-18</guid>
+      <description>CVE-2026-116448 · P1 重点关注 · 披露 2026-11-18 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+Dell PowerStore SDNAS contains an OS Command Injection vulnerability that could allow an attacker with internal network access to execute arbitrary commands as …
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ThinkPHP PATH_INFO代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2012-20007</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2012-20007-2026-11-18</guid>
+      <description>CVE-2012-20007 · P1 重点关注 · 披露 2026-11-18 · 组件 Web框架 · CVSS 9.8 · 类型 代码注入(RCE) · 难度 低(远程·免认证)
+Unauthenticated attackers can send crafted requests to index.php with a malicious 's' parameter containing PHP expressions to execute arbitrary code on the serv…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]OpenSNS 分享接口代码注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2021-48025</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2021-48025-2026-11-18</guid>
+      <description>CVE-2021-48025 · P1 重点关注 · 披露 2026-11-18 · CVSS 9.8 · 类型 CWE-470 · 难度 低(远程·免认证)
+OpenSNS 3.2.1 contains an unauthenticated code injection vulnerability in the shareBox method of ShareController that allows attackers to invoke arbitrary model…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]nginxWebUI 大小写绕过认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2023-54419</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2023-54419-2026-11-18</guid>
+      <description>CVE-2023-54419 · P1 重点关注 · 披露 2026-11-18 · CVSS 9.8 · 类型 大小写处理不一致 · 难度 低(远程·免认证)
+nginxWebUI 3.0.0 before 3.5.8 contains an authentication bypass vulnerability that allows unauthenticated attackers to reach the /AdminPage/conf/runCmd endpoint…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]PowerStore SDNAS命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116449</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116449-2026-11-18</guid>
+      <description>CVE-2026-116449 · P1 重点关注 · 披露 2026-11-18 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+Dell PowerStore SDNAS contains an OS Command Injection vulnerability that could allow an attacker with internal network access to execute arbitrary commands as …
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Ruby mustache模板沙箱逃逸RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-130001</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-130001-2026-11-18</guid>
+      <description>CVE-2026-130001 · P1 重点关注 · 披露 2026-11-18 · 组件 ERP/业务系统 · CVSS 9.8 · 类型 沙箱逃逸 · 难度 低(远程·免认证)
+ Summary Mustache template engine for Ruby in versions 1.1.2 and earlier allows remote attackers to achieve arbitrary code execution through accessing specifi…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]POST 未授权 缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2022-51027</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2022-51027-2026-11-18</guid>
+      <description>CVE-2022-51027 · P1 重点关注 · 披露 2026-11-18 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+Attackers can upload a malicious jar via POST /plugin/add and invoke it through POST /plugin/customMethod using the 'entry' and 'request' parameters, which are …
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Dagu 未授权 缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126752</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126752-2026-11-18</guid>
+      <description>CVE-2026-126752 · P1 重点关注 · 披露 2026-11-18 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+Dagu 1.23.0 before 2.0.0 defaults auth.mode to none, allowing unauthenticated attackers to execute OS commands through the /api/v2/dag-runs endpoint.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ArangoDB 未授权 认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126755</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126755-2026-11-18</guid>
+      <description>CVE-2026-126755 · P1 重点关注 · 披露 2026-11-18 · 组件 开发库/依赖 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+ArangoDB before 3.12.11 contains an authentication bypass vulnerability caused by a parser differential between the raw path authentication gate and the URL-dec…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Vulnerabilities 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-95787</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-95787-2026-11-18</guid>
+      <description>CVE-2026-95787 · P1 重点关注 · 披露 2026-11-18 · CVSS 10.0 · 难度 低(远程·免认证)
+Vulnerabilities in the PAPI protocol of AOS-10 could allow an unauthenticated remote attacker to circumvent existing authentication controls.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Dell PowerStore SDNAS 未授权 越界写入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116446</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116446-2026-11-18</guid>
+      <description>CVE-2026-116446 · P1 重点关注 · 披露 2026-11-18 · CVSS 9.8 · 类型 越界写入 · 难度 低(远程·免认证)
+Dell PowerStore SDNAS contains an out-of-bounds memory vulnerability in the NAS NFS service that an unauthenticated remote attacker could exploit to cause a den…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Dell PowerStore SDNAS 未授权 栈溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116443</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116443-2026-11-18</guid>
+      <description>CVE-2026-116443 · P1 重点关注 · 披露 2026-11-18 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
+Dell PowerStore SDNAS contains a stack-based buffer overflow in the NAS TFTP service that could allow an unauthenticated remote attacker to cause a denial of se…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 18:14:24 +0000</pubDate>
+    </item>
   </channel>
 </rss>

@@ -1,20 +1,1466 @@
 {
  "version": 3,
- "generated_at": "2026-11-18T08:40:47+00:00",
+ "generated_at": "2026-11-18T18:14:24+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 29,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 29,
+  "by_tier": {
+   "critical": 27,
+   "high": 2
+  },
+  "by_urgency": {
+   "P1 重点关注": 24,
+   "P0 立即处置": 5
+  },
+  "by_category": {
+   "未知": 14,
+   "开发库/依赖": 7,
+   "开发运维/CI": 4,
+   "Web框架": 2,
+   "OA/协同办公": 1,
+   "ERP/业务系统": 1
+  },
   "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
-  "repro_recommended": 0
+  "with_poc": 2,
+  "with_poc_source": 2,
+  "repro_recommended": 1
  },
  "briefing": [],
- "items": [],
- "media": [],
- "commits": []
+ "items": [
+  {
+   "id": "CVE-2026-113425",
+   "tier": "high",
+   "title": "NGINX邮件代理UAF可致RCE",
+   "title_zh": "NGINX邮件代理UAF可致RCE",
+   "summary_zh": "未认证攻击者向邮件代理发送特制流量触发UAF，可崩溃worker，特定条件下执行代码",
+   "published": "2026-11-18T16:17:59.493",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "f5",
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": "F5(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://my.f5.com/manage/s/article/K000163931"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/LLCForge/CVE-2026-113425",
+     "label": "LLCForge/CVE-2026-113425 0★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "nginx",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级NGINX至修复版本；无法升级时关闭mail proxy",
+   "repro_worthy": "一般",
+   "repro_note": "入口为已启用的mail proxy服务，发送特制邮件协议流量触发worker UAF",
+   "impact_scope": "邮件代理服务，可能暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113425",
+   "description": "When NGINX Plus or NGINX Open Source is configured as a mail proxy, undisclosed traffic can cause a use-after-free in an nginx worker process. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR."
+  },
+  {
+   "id": "CVE-2026-123634",
+   "tier": "high",
+   "title": "NGINX释放后重用漏洞可致RCE",
+   "title_zh": "NGINX释放后重用漏洞可致RCE",
+   "summary_zh": "未认证攻击者可触发NGINX worker释放后重用，致崩溃、内存破坏，特定条件下RCE",
+   "published": "2026-11-18T16:18:04.353",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "释放后重用(UAF)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "f5",
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": "F5(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://my.f5.com/manage/s/article/K000163925"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/LLCForge/CVE-2026-123634",
+     "label": "LLCForge/CVE-2026-123634 0★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "nginx",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级NGINX至官方修复版本，关注F5安全公告",
+   "repro_worthy": "一般",
+   "repro_note": "向NGINX服务发送特制流量触发worker UAF，RCE需ASLR禁用或绕过",
+   "impact_scope": "Web/代理服务，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123634",
+   "description": "An attacker may also be able to execute code if Address Space Layout Randomization (ASLR) is disabled or the attacker can bypass ASLR. Impact: An attacker could leverage this vulnerability to crash the NGINX worker process, corrupt its memory, or perform remote code execution (RCE) Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated."
+  },
+  {
+   "id": "CVE-2026-116953",
+   "tier": "critical",
+   "title": "BIG-IP栈溢出可致DoS或RCE",
+   "title_zh": "BIG-IP栈溢出可致DoS或RCE",
+   "summary_zh": "未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码",
+   "published": "2026-11-18T16:18:00.197",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "f5",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "F5(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://my.f5.com/manage/s/article/K000163941"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "立即升级BIG-IP至F5修复版本，按公告加固",
+   "repro_worthy": "值得",
+   "repro_note": "入口为BIG-IP对外服务，发送特制请求触发栈溢出",
+   "impact_scope": "边界负载设备，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116953",
+   "description": "Description: When an iRule that processes client traffic using the GENERICMESSAGE::route command is configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE). This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE."
+  },
+  {
+   "id": "CVE-2026-120285",
+   "tier": "critical",
+   "title": "BIG-IP栈溢出可致DoS或RCE",
+   "title_zh": "BIG-IP栈溢出可致DoS或RCE",
+   "summary_zh": "未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码",
+   "published": "2026-11-18T16:18:01.957",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "f5",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "F5(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://my.f5.com/manage/s/article/K000163939"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "立即升级BIG-IP至F5修复版本，按公告加固",
+   "repro_worthy": "值得",
+   "repro_note": "入口为BIG-IP对外服务，发送特制请求触发栈溢出",
+   "impact_scope": "边界负载设备，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120285",
+   "description": "Description When an HTTP profile and an iRule containing the PSC::ip_address command are configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE). This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE."
+  },
+  {
+   "id": "CVE-2026-120292",
+   "tier": "critical",
+   "title": "BIG-IP栈溢出可致DoS或RCE",
+   "title_zh": "BIG-IP栈溢出可致DoS或RCE",
+   "summary_zh": "未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码",
+   "published": "2026-11-18T16:18:02.110",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "f5",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "F5(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://my.f5.com/manage/s/article/K000163940"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "立即升级BIG-IP至F5修复版本，按公告加固",
+   "repro_worthy": "值得",
+   "repro_note": "入口为BIG-IP对外服务，发送特制请求触发栈溢出",
+   "impact_scope": "边界负载设备，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120292",
+   "description": "Description: When an HTTP profile and an iRule using the MR::message route command are configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE) Impact: Traffic is disrupted while the TMM process restarts. This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE."
+  },
+  {
+   "id": "CVE-2026-123637",
+   "tier": "critical",
+   "title": "BIG-IP栈溢出可致DoS或RCE",
+   "title_zh": "BIG-IP栈溢出可致DoS或RCE",
+   "summary_zh": "未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码",
+   "published": "2026-11-18T16:18:04.500",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "f5",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "F5(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://my.f5.com/manage/s/article/K000163937"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "立即升级BIG-IP至F5修复版本，按公告加固",
+   "repro_worthy": "值得",
+   "repro_note": "入口为BIG-IP对外服务，发送特制请求触发栈溢出",
+   "impact_scope": "边界负载设备，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123637",
+   "description": "When BIG-IP APM is provisioned and a per-request policy that includes the Client Information agent and Endpoint Security agents is applied to a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE). This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may allow the attacker to perform RCE."
+  },
+  {
+   "id": "CVE-2021-48023",
+   "tier": "critical",
+   "title": "泛微E-cology任意文件上传RCE",
+   "title_zh": "泛微E-cology任意文件上传RCE",
+   "summary_zh": "未认证攻击者向exportImport上传JSP文件并访问fileTransfer路径，执行任意代码",
+   "published": "2026-11-18T16:17:50.763",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "任意文件上传"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Ershu1/2021_Hvv/blob/main/%E6%B3%9B%E5%BE%AEOAV9%20%E5%89%8D%E5%8F%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/oa/%E6%B3%9B%E5%BE%AEOA/%E6%B3%9B%E5%BE%AEOA%20E-Cology%20uploadOperation.jsp%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/weaver/oa-v9-uploads-file.yaml"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至修复版本；临时禁用exportImport或限制访问",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权POST uploadOperation.jsp上传JSP并访问",
+   "impact_scope": "OA系统，常暴露公网/内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2021-48023",
+   "description": "Weaver E-cology 9.0 contains an unrestricted file upload vulnerability in /page/exportImport/uploadOperation.jsp that allows unauthenticated attackers to upload arbitrary JSP files. Attackers can send a crafted multipart POST request with a JSP webshell written to /page/exportImport/fileTransfer/ to achieve remote code execution. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-20."
+  },
+  {
+   "id": "CVE-2026-120722",
+   "tier": "critical",
+   "title": "BIG-IP DNS::scrape栈溢出",
+   "title_zh": "BIG-IP DNS::scrape栈溢出",
+   "summary_zh": "未认证攻击者向启用DNS::scrape iRule的虚拟服务发特制请求，致TMM终止并可能RCE",
+   "published": "2026-11-18T16:18:03.150",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "f5",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "F5(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://my.f5.com/manage/s/article/K000163945"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级BIG-IP至F5修复版本；临时移除相关iRule",
+   "repro_worthy": "一般",
+   "repro_note": "入口为启用DNS::scrape命令iRule的虚拟服务，发送特制DNS请求",
+   "impact_scope": "边界负载设备，配置依赖较高",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120722",
+   "description": "Description: When an iRule that processes client traffic using the DNS::scrape command is configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE). This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system."
+  },
+  {
+   "id": "CVE-2026-121805",
+   "tier": "critical",
+   "title": "BIG-IP PEM命令iRule栈溢出",
+   "title_zh": "BIG-IP PEM命令iRule栈溢出",
+   "summary_zh": "未认证攻击者向启用PEM::subscriber iRule的虚拟服务发特制请求，致TMM终止并可能RCE",
+   "published": "2026-11-18T16:18:03.607",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "f5",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "F5(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://my.f5.com/manage/s/article/K000163946"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级BIG-IP至F5修复版本；临时移除相关iRule",
+   "repro_worthy": "一般",
+   "repro_note": "入口为启用PEM::subscriber命令iRule的虚拟服务，发特制请求",
+   "impact_scope": "边界负载设备，配置依赖较高",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121805",
+   "description": "Description: When an iRule that processes client traffic using the PEM::subscriber command is configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE). This vulnerability allows a remote unauthenticated attacker to cause a denial-of-service (DoS) on the BIG-IP system and may perform RCE."
+  },
+  {
+   "id": "CVE-2026-132231",
+   "tier": "critical",
+   "title": "TeamCity Perforce设置RCE",
+   "title_zh": "TeamCity Perforce设置RCE",
+   "summary_zh": "可配置Perforce设置者利用字符映射缺陷执行代码，导致TeamCity服务器失陷",
+   "published": "2026-11-18T17:17:44.593",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-1289"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.jetbrains.com/privacy-security/issues-fixed/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2026.1.3或2025.11.7",
+   "repro_worthy": "一般",
+   "repro_note": "入口为Perforce设置，需配置权限，利用best-fit字符映射注入代码",
+   "impact_scope": "CI/CD服务器，源码与构建凭证",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132231",
+   "description": "In JetBrains TeamCity before 2026.1.3, 2025.11.7 remote code execution was possible via best-fit character mapping in Perforce settings"
+  },
+  {
+   "id": "CVE-2019-25782",
+   "tier": "critical",
+   "title": "ThinkPHP5 _method覆盖RCE",
+   "title_zh": "ThinkPHP5 _method覆盖RCE",
+   "summary_zh": "未授权攻击者通过POST _method=__construct覆盖filter，注入system执行命令",
+   "published": "2026-11-18T16:17:48.667",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-470"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/thinkphp/thinkphp-5023-rce.yaml"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/top-think/framework/commit/4a4b5e64fa4c46f851b4004005bff5f3196de003"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/vulhub/vulhub/tree/master/thinkphp/5.0.23-rce"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至5.0.24以上；过滤_method与filter参数",
+   "repro_worthy": "值得",
+   "repro_note": "POST ?s=captcha，_method覆盖filter为system",
+   "impact_scope": "流行PHP框架，广泛部署于Web业务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2019-25782",
+   "description": "ThinkPHP 5.0.0 before 5.0.24 contains a code injection vulnerability that allows unauthenticated attackers to execute commands by setting _method=__construct in POST data to overwrite the Request filter property. Attackers can send POST requests to endpoints reached via ?s=captcha or ?s=index/index/index with filter[]=system and server[REQUEST_METHOD] values to execute arbitrary system commands. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14."
+  },
+  {
+   "id": "CVE-2026-132232",
+   "tier": "critical",
+   "title": "TeamCity Perforce参数注入",
+   "title_zh": "TeamCity Perforce参数注入",
+   "summary_zh": "具备Perforce设置权限者可注入参数执行任意代码，导致TeamCity服务器被控制",
+   "published": "2026-11-18T17:17:44.733",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "参数拼接注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.jetbrains.com/privacy-security/issues-fixed/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2026.1.3或2025.11.7",
+   "repro_worthy": "一般",
+   "repro_note": "入口为Perforce VCS设置，需配置权限，构造参数注入执行命令",
+   "impact_scope": "CI/CD服务器，构建与凭证风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132232",
+   "description": "In JetBrains TeamCity before 2026.1.3, 2025.11.7 remote code execution was possible via argument injection in Perforce settings"
+  },
+  {
+   "id": "CVE-2026-132233",
+   "tier": "critical",
+   "title": "TeamCity构建属性注入路径遍历RCE",
+   "title_zh": "TeamCity构建属性注入路径遍历RCE",
+   "summary_zh": "攻击者可注入构建属性并利用路径遍历执行代码，导致TeamCity服务器失陷",
+   "published": "2026-11-18T17:17:44.853",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.jetbrains.com/privacy-security/issues-fixed/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2026.1.3或2025.11.7",
+   "repro_worthy": "一般",
+   "repro_note": "入口为构建属性配置，需相应权限，构造路径遍历影响执行流程",
+   "impact_scope": "CI/CD服务器，构建链高风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132233",
+   "description": "In JetBrains TeamCity before 2026.1.3, 2025.11.7 remote code execution was possible via build attribute injection"
+  },
+  {
+   "id": "CVE-2026-132234",
+   "tier": "critical",
+   "title": "TeamCity Mercurial参数注入",
+   "title_zh": "TeamCity Mercurial参数注入",
+   "summary_zh": "具备Mercurial VCS根设置权限者可注入参数执行代码，导致TeamCity被控制",
+   "published": "2026-11-18T17:17:44.980",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "参数拼接注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.jetbrains.com/privacy-security/issues-fixed/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至2026.1.3或2025.11.7",
+   "repro_worthy": "一般",
+   "repro_note": "入口为Mercurial VCS根设置，需配置权限，构造参数注入执行命令",
+   "impact_scope": "CI/CD服务器，构建与凭证风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132234",
+   "description": "In JetBrains TeamCity before 2026.1.3, 2025.11.7 remote code execution was possible via argument injection in Mercurial VCS root settings"
+  },
+  {
+   "id": "CVE-2018-25443",
+   "tier": "critical",
+   "title": "Unauthenticated 未授权 任意文件上传",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-18T16:17:48.500",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "任意文件上传"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/fex-team/ueditor/blob/v1.4.3.3/net/App_Code/CrawlerHandler.cs"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/other/ueditor-file-upload.yaml"
+    },
+    {
+     "label": "参考",
+     "url": "https://web.archive.org/web/20190612114715/https://www.freebuf.com/vuls/181814.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2018-25443",
+   "description": "Baidu UEditor 1.4.0 through 1.4.3.3 contains an unrestricted file upload vulnerability in the catchimage action of /ueditor/net/controller.ashx that only validates the Content-Type header. Unauthenticated attackers can supply a source[] URL like x.jpg?.aspx to retain a malicious extension and write an executable .aspx file for remote code execution. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-17."
+  },
+  {
+   "id": "CVE-2023-54422",
+   "tier": "critical",
+   "title": "未授权 任意文件上传",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-18T16:17:54.023",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "任意文件上传"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/idoc/idocview-2word-fileupload.yaml"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.secrss.com/articles/60990"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/idocview-13.10-1-20231115-unrestricted-file-upload-rce-via-html-2word"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2023-54422",
+   "description": "iDocView before 13.10.1_20231115 contains an unrestricted file upload vulnerability in the /html/2word endpoint that allows unauthenticated attackers to write arbitrary files by supplying a malicious url parameter. Attackers can send a crafted GET request with the url parameter to download linked resources with an unsanitized path and unblocked .jsp extension, achieving remote code execution. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-11-22."
+  },
+  {
+   "id": "CVE-2026-63189",
+   "tier": "critical",
+   "title": "GET 未授权 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-18T16:18:16.520",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取",
+    "信息泄露"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/n4ze3m/dialoqbase/commit/c9d128c58997d91d9786b54a0fd626206ce0f4f9"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/n4ze3m/dialoqbase/pull/317"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/n4ze3m/dialoqbase/releases/tag/v1.11.5"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-63189",
+   "description": "Prior to 1.11.5, the unauthenticated GET /api/v1/view/* route in server/src/routes/api/v1/view/root.ts resolves its attacker-controlled wildcard path without normalization or containment, allowing traversal outside the intended uploads directory and arbitrary server file reads. Reading environment files can disclose DB_SECRET_KEY, the application’s JWT signing key, which permits forged administrator tokens and takeover of bots, conversations, integrations, and stored third-party credentials."
+  },
+  {
+   "id": "CVE-2026-116448",
+   "tier": "critical",
+   "title": "PowerStore SDNAS命令注入",
+   "title_zh": "PowerStore SDNAS命令注入",
+   "summary_zh": "内网攻击者可在NAS节点注入OS命令，以root权限执行任意命令",
+   "published": "2026-11-18T15:17:33.083",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000527640/dsa-2026-479-dell-powerstore-t-security-update-for-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "应用Dell官方补丁；限制内网访问NAS管理面",
+   "repro_worthy": "一般",
+   "repro_note": "需内网访问SDNAS；向存在命令拼接的参数注入",
+   "impact_scope": "企业存储NAS，内网高价值节点",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116448",
+   "description": "Dell PowerStore SDNAS contains an OS Command Injection vulnerability that could allow an attacker with internal network access to execute arbitrary commands as root on the NAS node."
+  },
+  {
+   "id": "CVE-2012-20007",
+   "tier": "critical",
+   "title": "ThinkPHP PATH_INFO代码执行",
+   "title_zh": "ThinkPHP PATH_INFO代码执行",
+   "summary_zh": "未授权攻击者可构造s参数触发preg_replace /e，执行任意PHP代码",
+   "published": "2026-11-18T16:17:47.560",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "http://web.archive.org/web/20140201221754/http://www.jb51.net:80/softjc/43550.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/thinkphp/thinkphp-2-rce.yaml"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/vulhub/vulhub/tree/master/thinkphp/2-rce"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至安全版本；禁用Lite模式并过滤s参数",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问 index.php?s=恶意PHP表达式",
+   "impact_scope": "老版本PHP框架，常见于遗留Web系统",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2012-20007",
+   "description": "ThinkPHP 2.0 through 2.2 and 3.0 Lite mode contains an eval injection vulnerability in the Dispatcher PATH_INFO parsing, which uses preg_replace with the /e modifier and a double-quoted replacement. Unauthenticated attackers can send crafted requests to index.php with a malicious 's' parameter containing PHP expressions to execute arbitrary code on the server. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14."
+  },
+  {
+   "id": "CVE-2021-48025",
+   "tier": "critical",
+   "title": "OpenSNS 分享接口代码注入",
+   "title_zh": "OpenSNS 分享接口代码注入",
+   "summary_zh": "未授权攻击者可构造shareBox请求调用任意模型方法，最终执行代码",
+   "published": "2026-11-18T16:17:50.927",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-470"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/cms/OpenSNS/OpenSNS%20Application%20ShareController.class.php%20%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/other/opensns-rce.yaml"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/opensns-3.2.1-unauthenticated-rce-via-weibo-share-sharebox"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至官方修复版本；限制shareBox接口访问",
+   "repro_worthy": "一般",
+   "repro_note": "未授权GET /index.php?s=weibo/Share/shareBox",
+   "impact_scope": "社交CMS，暴露于公网或内网业务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2021-48025",
+   "description": "OpenSNS 3.2.1 contains an unauthenticated code injection vulnerability in the shareBox method of ShareController that allows attackers to invoke arbitrary model methods via the query parameter. Attackers can send crafted GET requests to /index.php?s=weibo/Share/shareBox abusing parse_str and ShareModel::getInfo to reach Schedule::runSchedule and execute code through assert. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-14."
+  },
+  {
+   "id": "CVE-2023-54419",
+   "tier": "critical",
+   "title": "nginxWebUI 大小写绕过认证",
+   "title_zh": "nginxWebUI 大小写绕过认证",
+   "summary_zh": "未授权攻击者用大小写变体路径绕过登录，访问runCmd接口",
+   "published": "2026-11-18T16:17:53.547",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "大小写处理不一致"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/cym1102/nginxWebUI/commit/6b8c9bceb0d210632a35cd324db6b43caf442a23"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/other/nginxwebui-runcmd-rce.yaml"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/qingchenhh/qc_poc/blob/main/Goby/nginxWebUI_runCmd_rce.go"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至3.5.8以上；限制管理面板访问",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问 /AdminPage/conf/runCmd；大小写变体绕过过滤",
+   "impact_scope": "Nginx管理面板，常暴露于运维网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2023-54419",
+   "description": "nginxWebUI 3.0.0 before 3.5.8 contains an authentication bypass vulnerability that allows unauthenticated attackers to reach the /AdminPage/conf/runCmd endpoint by using a case-variant path that evades the case-sensitive /adminPage/ login filter. Attackers can pass OS commands through the cmd parameter, which are executed via /bin/sh with insufficient filtering of & and $() characters, achieving remote code execution."
+  },
+  {
+   "id": "CVE-2026-116449",
+   "tier": "critical",
+   "title": "PowerStore SDNAS命令注入",
+   "title_zh": "PowerStore SDNAS命令注入",
+   "summary_zh": "内网攻击者可在NAS节点注入OS命令，以root权限执行任意命令",
+   "published": "2026-11-18T16:17:59.947",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000527640/dsa-2026-479-dell-powerstore-t-security-update-for-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "应用Dell官方补丁；限制内网访问NAS管理面",
+   "repro_worthy": "一般",
+   "repro_note": "需内网访问SDNAS；向存在命令拼接的参数注入",
+   "impact_scope": "企业存储NAS，内网高价值节点",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116449",
+   "description": "Dell PowerStore SDNAS contains an OS Command Injection vulnerability that could allow an attacker with internal network access to execute arbitrary commands as root on the NAS node."
+  },
+  {
+   "id": "CVE-2026-130001",
+   "tier": "critical",
+   "title": "Ruby mustache模板沙箱逃逸RCE",
+   "title_zh": "Ruby mustache模板沙箱逃逸RCE",
+   "summary_zh": "可控制模板的攻击者访问内置方法逃逸沙箱，执行任意代码",
+   "published": "2026-11-18T16:28:29Z",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": null,
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "沙箱逃逸"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "rubygems:mustache <= 1.1.2(修复: 1.1.3)",
+   "ghsa_url": "https://github.com/advisories/GHSA-5hrj-7fc3-cmx9",
+   "refs": [],
+   "poc": [],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至mustache 1.1.3；禁止渲染不可信模板",
+   "repro_worthy": "一般",
+   "repro_note": "需应用渲染攻击者可控模板；访问特定内置方法",
+   "impact_scope": "Ruby模板引擎，影响不可信模板场景",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130001",
+   "description": "## Summary Mustache template engine for Ruby in versions 1.1.2 and earlier allows remote attackers to achieve arbitrary code execution through accessing specific built-in methods in an attacker-supplied template. ## Details Mustache is often suggested as a safe simple template language to avoid SSTI vulnerabilities.[^1] [^2] Mustache for Ruby up to version 1.1.2 did not properly restrict method access which allowed chaining multiple built-in methods to achieve arbitrary code execution."
+  },
+  {
+   "id": "CVE-2022-51027",
+   "tier": "critical",
+   "title": "POST 未授权 缺失认证",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-18T16:17:51.580",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/metersphere/metersphere/commit/07155cf833"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/metersphere/metersphere-plugin-rce.yaml"
+    },
+    {
+     "label": "参考",
+     "url": "https://web.archive.org/web/20220706000509/https://y4er.com/post/metersphere-plugincontroller-pre-auth-rce/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2022-51027",
+   "description": "MeterSphere versions 1.13.0 before 1.14.7 and 1.15.0 before 1.16.4 contain a pre-authentication code injection vulnerability due to the /plugin/** endpoints being exposed with anonymous access. Attackers can upload a malicious jar via POST /plugin/add and invoke it through POST /plugin/customMethod using the 'entry' and 'request' parameters, which are passed to Class.forName and method invocation for remote code execution."
+  },
+  {
+   "id": "CVE-2026-126752",
+   "tier": "critical",
+   "title": "Dagu 未授权 缺失认证",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-18T16:18:08.590",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/dagucloud/dagu/commit/c0e7cf7e1cfc3a52af8a9fb2da1ca911a9958649"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/dagucloud/dagu/pull/1688"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/dagucloud/dagu/security/advisories/GHSA-6qr9-g2xw-cw92"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126752",
+   "description": "Dagu 1.23.0 before 2.0.0 defaults auth.mode to none, allowing unauthenticated attackers to execute OS commands through the /api/v2/dag-runs endpoint. Attackers can send a POST request with an inline spec defining steps containing arbitrary shell commands to achieve remote code execution. Exploitation evidence was first observed by the Shadowserver Foundation on 2026-03-11."
+  },
+  {
+   "id": "CVE-2026-126755",
+   "tier": "critical",
+   "title": "ArangoDB 未授权 认证绕过",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-18T16:18:09.083",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/arangodb/arangodb/security/advisories/GHSA-rrgq-978q-36mq"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/arangodb/arangodb-auth-bypass.yaml"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.pruva.dev/reproductions/REPRO-2026-00355"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126755",
+   "description": "ArangoDB before 3.12.11 contains an authentication bypass vulnerability caused by a parser differential between the raw path authentication gate and the URL-decoded dispatch logic. Attackers can send requests with a %5f-encoded leading underscore to endpoints like /_db/_system/%5fapi/simple/first-example to reach /_api/* actions as superuser without authentication. Exploitation evidence was first observed by the Shadowserver Foundation on 2026-09-16."
+  },
+  {
+   "id": "CVE-2026-95787",
+   "tier": "critical",
+   "title": "Vulnerabilities 未授权 Critical",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-18T14:17:45.533",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05162en_us&docLocale=en_US"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-95787",
+   "description": "Vulnerabilities in the PAPI protocol of AOS-10 could allow an unauthenticated remote attacker to circumvent existing authentication controls. Successful exploitation could allow an attacker to gain administrative access, modify system configurations, and access or manipulate sensitive data."
+  },
+  {
+   "id": "CVE-2026-116446",
+   "tier": "critical",
+   "title": "Dell PowerStore SDNAS 未授权 越界写入",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-18T15:17:32.780",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "越界写入"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000527640/dsa-2026-479-dell-powerstore-t-security-update-for-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116446",
+   "description": "Dell PowerStore SDNAS contains an out-of-bounds memory vulnerability in the NAS NFS service that an unauthenticated remote attacker could exploit to cause a denial of service."
+  },
+  {
+   "id": "CVE-2026-116443",
+   "tier": "critical",
+   "title": "Dell PowerStore SDNAS 未授权 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-18T16:17:59.803",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000527640/dsa-2026-479-dell-powerstore-t-security-update-for-multiple-vulnerabilities"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116443",
+   "description": "Dell PowerStore SDNAS contains a stack-based buffer overflow in the NAS TFTP service that could allow an unauthenticated remote attacker to cause a denial of service or potential code execution."
+  }
+ ],
+ "media": [
+  {
+   "title": "NGINX HTTP/2 Remote Code Execution (Nginx2root): Dissecting Flow-Control Underflow CVE-2026-123007 and UAF CVE-2026-123633",
+   "link": "https://sh3llc0d3.com/blog/nginx-http2-remote-code-execution-nginx2root-dissecting-flow-control-underflow-cve-2026-123007-and-uaf-cve-2026-123633/",
+   "cves": [
+    "CVE-2026-123007",
+    "CVE-2026-123633"
+   ]
+  },
+  {
+   "title": "NocoDB Formula Parser SQL Injection (CVE-2026-130689) Enables Creator-to-Super-Admin Escalation",
+   "link": "https://sh3llc0d3.com/blog/nocodb-formula-parser-sql-injection-cve-2026-130689-enables-creator-to-super-admin-escalation/",
+   "cves": [
+    "CVE-2026-130689"
+   ]
+  },
+  {
+   "title": "LAN Management System (LMS) Pre-Auth Helpdesk and Client Ticket Upload RCE (CVE-2026-129961 & CVE-2026-127142) Exposes ISP Infrastructure",
+   "link": "https://sh3llc0d3.com/blog/lan-management-system-lms-pre-auth-helpdesk-and-client-ticket-upload-rce-cve-2026-129961-cve-2026-127142-exposes-isp-infrastructure/",
+   "cves": [
+    "CVE-2026-129961",
+    "CVE-2026-127142"
+   ]
+  }
+ ],
+ "commits": [
+  {
+   "repo": "envoyproxy/envoy",
+   "sha": "df64fa419d2ef3f3656285b74013e943081a7fdb",
+   "url": "https://github.com/envoyproxy/envoy/commit/df64fa419d2ef3f3656285b74013e943081a7fdb",
+   "title": "deps/cve: Ignore CVE-2026-130065 (msgpack-c vrefbuffer, unused) (#49375)",
+   "date": "2026-11-18T14:18:19",
+   "score": 5,
+   "matched": [
+    "CVE",
+    "缓冲区溢出"
+   ],
+   "cve": "CVE-2026-130065"
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "9236b332d009622010f53fd151a79feabd7c848f",
+   "url": "https://github.com/haproxy/haproxy/commit/9236b332d009622010f53fd151a79feabd7c848f",
+   "title": "REGTESTS: quic: NEW_CONNECTION_ID must not reference a retired CID",
+   "date": "2026-11-18T17:00:24",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openbsd/src",
+   "sha": "ca46a089ae10e1d184f94f168cda8b7ff05ea6ef",
+   "url": "https://github.com/openbsd/src/commit/ca46a089ae10e1d184f94f168cda8b7ff05ea6ef",
+   "title": "Update to zlib 1.4",
+   "date": "2026-11-18T14:27:03",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "a6e272469c560d2815f4d99f6687872cd47b6289",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/a6e272469c560d2815f4d99f6687872cd47b6289",
+   "title": "avfilter/vf_lcevc: keep the output frame while LCEVCdec holds its picture",
+   "date": "2026-11-18T12:53:45",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "FFmpeg/FFmpeg",
+   "sha": "8f4c7f7df5184dfe530f494ac38efcb0bfc36235",
+   "url": "https://github.com/FFmpeg/FFmpeg/commit/8f4c7f7df5184dfe530f494ac38efcb0bfc36235",
+   "title": "avcodec/libxevd: do not free an access unit packet a decoded picture references",
+   "date": "2026-11-18T12:53:45",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "elastic/elasticsearch",
+   "sha": "8afcc8a7e3a5e980e2d217d3ba22ec1c482b84cb",
+   "url": "https://github.com/elastic/elasticsearch/commit/8afcc8a7e3a5e980e2d217d3ba22ec1c482b84cb",
+   "title": "ESQL: Fix PromQL views and unmapped_fields scoping (#165887)",
+   "date": "2026-11-18T11:54:52",
+   "score": 2,
+   "matched": [
+    "反序列化"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/ofbiz-framework",
+   "sha": "1bb7f614e2ed1e86bf81379a4f203a03d12bbc9e",
+   "url": "https://github.com/apache/ofbiz-framework/commit/1bb7f614e2ed1e86bf81379a4f203a03d12bbc9e",
+   "title": "Reject compile-time annotations and dynamic-dispatch escapes in sandboxed Groovy",
+   "date": "2026-11-18T10:51:53",
+   "score": 2,
+   "matched": [
+    "RCE"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "b6daef35e5d9f52e556a767975b7930ab37b9aa7",
+   "url": "https://github.com/haproxy/haproxy/commit/b6daef35e5d9f52e556a767975b7930ab37b9aa7",
+   "title": "BUG/MINOR: ssl: exclude wolfSSL from custom extension support",
+   "date": "2026-11-18T10:34:44",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  }
+ ]
 }
