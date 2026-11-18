@@ -3,396 +3,469 @@
   <channel>
     <title>CVE 漏洞监控日报</title>
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
-    <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
+    <description>过去 24 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    <lastBuildDate>Tue, 17 Nov 2026 23:53:18 +0000</lastBuildDate>
+    <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    <lastBuildDate>Wed, 18 Nov 2026 04:42:07 +0000</lastBuildDate>
     <item>
-      <title>[critical]Puppet报告处理反序列化RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115731</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115731-2026-11-17</guid>
-      <description>CVE-2026-115731 · P0 立即处置 · 披露 2026-11-03 · 组件 开发运维/CI · CVSS 9.9 · EPSS 0.4%,前 31% · 类型 代码注入(RCE)/反序列化(RCE) · 难度 低(远程·需低权限)
-Deserialization of untrusted data in the report-processing code of Puppet, as used by Puppet Server, in the affected releases, allows a client that holds any CA…
-信号: KEV 在野利用(CISA 限期 2026-12-01)</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <title>[critical]OpenEMR药品库存查询SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124469</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124469-2026-11-18</guid>
+      <description>CVE-2026-124469 · P1 重点关注 · 披露 2026-11-08 · CVSS 9.9 · EPSS 0.3%,前 24% · 类型 SQL注入 · 难度 低(远程·需低权限)
+OpenEMR before 8.3.0 contains an SQL injection vulnerability in the Fee Sheet drug-inventory lookup (DrugSalesService::sellDrug) that interpolates the prod[N][w…
+信号: 有 PoC
+[Exploit-Index openemr/openemr(未验证)(有源码)](https://github.com/openemr/openemr) · [github.com/openemr/openemr/security/advi](https://github.com/openemr/openemr/security/advisories/GHSA-cg8c-2v5q-29g7)</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]53AIHub未授权初始化接口致接管</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-130856</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-130856-2026-11-17</guid>
-      <description>CVE-2026-130856 · P1 重点关注 · 披露 2026-11-17 · 组件 安全设备 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
-53AIHub before 0.5.5 contains a missing authentication vulnerability that allows remote unauthenticated attackers to reinitialize installed instances by calling…
+      <title>[critical]OpenEMR传真模块路径遍历RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124490</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124490-2026-11-18</guid>
+      <description>CVE-2026-124490 · P1 重点关注 · 披露 2026-11-08 · CVSS 9.1 · EPSS 0.4%,前 30% · 类型 CWE-73 · 难度 中(远程·需高权限)
+OpenEMR before 8.3.0 contains a path traversal vulnerability in the RingCentral RCFaxClient disposeDocument() method of oe-module-faxsms that allows authenticat…
+信号: 有 PoC
+[Exploit-Index openemr/openemr(未验证)(有源码)](https://github.com/openemr/openemr) · [github.com/openemr/openemr/security/advi](https://github.com/openemr/openemr/security/advisories/GHSA-38jw-pwgq-9hpj)</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Jira服务管理数据中心认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21601</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21601-2026-11-18</guid>
+      <description>CVE-2026-21601 · P1 重点关注 · 披露 2026-11-17 · 组件 OA/协同办公 · CVSS 8.7 · 类型 认证绕过 · 难度 低(远程·免认证)
+This BASM (Broken Authentication &amp; Session Management) vulnerability, with a CVSS Score of 8.7, allows an unauthenticated attacker to perform actions as another…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Jira软件数据中心未认证路径遍历</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21590</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21590-2026-11-18</guid>
+      <description>CVE-2026-21590 · P1 重点关注 · 披露 2026-11-17 · 组件 ERP/业务系统 · CVSS 8.7 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7, allows a remote unauthenticated attacker to read files from the Jira web app…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Bamboo未认证路径遍历读文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21594</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21594-2026-11-18</guid>
+      <description>CVE-2026-21594 · P1 重点关注 · 披露 2026-11-17 · CVSS 8.7 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Bamboo未认证路径遍历泄敏感文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21598</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21598-2026-11-18</guid>
+      <description>CVE-2026-21598 · P1 重点关注 · 披露 2026-11-17 · CVSS 8.7 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Atlassian未认证路径遍历泄资产</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21605</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21605-2026-11-18</guid>
+      <description>CVE-2026-21605 · P1 重点关注 · 披露 2026-11-17 · CVSS 8.7 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Atlassian路径遍历越权读资源</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21606</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21606-2026-11-18</guid>
+      <description>CVE-2026-21606 · P1 重点关注 · 披露 2026-11-17 · CVSS 8.7 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Atlassian路径遍历泄露Web文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21607</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21607-2026-11-18</guid>
+      <description>CVE-2026-21607 · P1 重点关注 · 披露 2026-11-17 · CVSS 8.7 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 8.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Atlassian未认证路径遍历读配置</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21592</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21592-2026-11-18</guid>
+      <description>CVE-2026-21592 · P1 重点关注 · 披露 2026-11-17 · CVSS 7.7 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 7.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]GitLab Wiki页面存储型XSS</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105739</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105739-2026-11-18</guid>
+      <description>CVE-2026-105739 · P2 保持关注 · 披露 2026-11-17 · 组件 开发运维/CI · CVSS 8.7 · EPSS 0.3%,前 21% · 类型 XSS · 难度 中(远程·需低权限·需用户交互)
+GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain con…
+信号: 命中关注词 gitlab</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]GitLab错误追踪页存储型XSS</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-108153</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-108153-2026-11-18</guid>
+      <description>CVE-2026-108153 · P2 保持关注 · 披露 2026-11-17 · 组件 开发运维/CI · CVSS 8.7 · EPSS 0.3%,前 21% · 类型 XSS · 难度 中(远程·需低权限·需用户交互)
+GitLab has remediated an issue in GitLab CE/EE affecting all versions from 16.1 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain con…
+信号: 命中关注词 gitlab</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]GitLab流水线授权竞态越权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-18241</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-18241-2026-11-18</guid>
+      <description>CVE-2026-18241 · P2 保持关注 · 披露 2026-11-17 · 组件 开发运维/CI · CVSS 8.2 · EPSS 0.3%,前 18% · 类型 授权错误 · 难度 中(远程·利用条件苛刻·需低权限)
+GitLab has remediated an issue in GitLab CE/EE affecting all versions from 9.3 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain cond…
+信号: 命中关注词 gitlab</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]GitLab代理跨命名空间读K8s密钥</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-97187</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-97187-2026-11-18</guid>
+      <description>CVE-2026-97187 · P2 保持关注 · 披露 2026-11-17 · 组件 开发运维/CI · CVSS 7.6 · EPSS 0.3%,前 19% · 类型 授权错误 · 难度 中(远程·需高权限)
+GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.6 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain con…
+信号: 命中关注词 gitlab</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Bamboo数据中心权限提升</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21591</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21591-2026-11-18</guid>
+      <description>CVE-2026-21591 · P2 保持关注 · 披露 2026-11-17 · 组件 开发运维/CI · CVSS 7.4 · 类型 权限提升 · 难度 高(远程·利用条件苛刻·需高权限)
+This PrivEsc (Privilege Escalation) vulnerability, with a CVSS Score of 7.4, allows an authenticated attacker to perform actions as a higher-privileged user.
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Jira Data Center存储型XSS（8.4）</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21603</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21603-2026-11-18</guid>
+      <description>CVE-2026-21603 · P1 重点关注 · 披露 2026-11-17 · 组件 OA/协同办公 · CVSS 8.4 · 类型 XSS · 难度 中(远程·需低权限·需用户交互)
+This Stored XSS vulnerability, with a CVSS Score of 8.4, allows an authenticated attacker to execute arbitrary HTML or JavaScript code on a victims browser.
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Atlassian产品授权不当致未授权访问</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21595</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21595-2026-11-18</guid>
+      <description>CVE-2026-21595 · P1 重点关注 · 披露 2026-11-17 · 组件 开发运维/CI · CVSS 7.6 · 类型 CWE-285 · 难度 中(需相邻网络·利用条件苛刻·免认证)
+This Improper Authorization vulnerability, with a CVSS Score of 7.6, allows an unauthenticated attacker to gain unintended access and can lead to the exposure o…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]QUIC服务端流状态泄漏致DoS</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124709</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124709-2026-11-18</guid>
+      <description>CVE-2026-124709 · P2 保持关注 · 披露 2026-11-17 · 组件 安全设备 · CVSS 7.5 · EPSS 0.2%,前 9% · 类型 CWE-401 · 难度 低(远程·免认证)
+The severity is Low because growth is slow, needs a long-lived connection, and causes no memory corruption or disclosure.
+信号: 命中关注词 openssl</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Atlassian路径遍历可任意读写文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21599</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21599-2026-11-18</guid>
+      <description>CVE-2026-21599 · P1 重点关注 · 披露 2026-11-17 · CVSS 7.5 · 类型 路径遍历/任意文件读取 · 难度 高(远程·利用条件苛刻·需高权限)
+This Path Traversal (Arbitrary Read/Write) vulnerability, with a CVSS Score of 7.5 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Atlassian授权不当致越权访问</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21609</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21609-2026-11-18</guid>
+      <description>CVE-2026-21609 · P2 保持关注 · 披露 2026-11-17 · 组件 OA/协同办公 · CVSS 7.1 · EPSS 0.5%,前 42% · 类型 CWE-285 · 难度 低(远程·需低权限)
+This Improper Authorization vulnerability, with a CVSS Score of 7.1, allows an authenticated attacker to gain unintended access and can lead to the exposure of …
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]hookshot未捕获异常致服务崩溃</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-62267</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-62267-2026-11-18</guid>
+      <description>CVE-2026-62267 · P2 保持关注 · 披露 2026-11-17 · 组件 开发运维/CI · CVSS 7.1 · 类型 CWE-248 · 难度 低(远程·需低权限)
+Bridge event handling calls botClient.getEvent() for the parent event without catching the resulting M_NOT_FOUND error, allowing the rejected request to escape …
+信号: 命中关注词 gitlab</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Perl会话库会话ID命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2011-10042</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2011-10042-2026-11-18</guid>
+      <description>CVE-2011-10042 · P1 重点关注 · 披露 2026-11-14 · CVSS 9.8 · EPSS 0.9%,前 61% · 类型 CRLF注入 · 难度 低(远程·免认证)
+HTTP::Session versions before 0.43 for Perl allow memcached command injection via unfiltered session ids in HTTP::Session::Store::Memcached.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WebLogic TopLink未认证RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91569</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91569-2026-11-17</guid>
-      <description>CVE-2026-91569 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 10.0 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebLogic Server.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <title>[high]Atlassian命令注入可执行任意命令</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21593</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21593-2026-11-18</guid>
+      <description>CVE-2026-21593 · P2 保持关注 · 披露 2026-11-17 · CVSS 7.7 · 类型 命令注入(RCE) · 难度 中(远程·利用条件苛刻·需低权限)
+This OS Command Injection vulnerability, with a CVSS Score of 7.7 and a CVSS Vector of CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N allows an…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WebLogic Core未认证RCE</title>
+      <title>[high]PingAuthorize网关超时信息泄露</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-80322</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-80322-2026-11-18</guid>
+      <description>CVE-2026-80322 · P1 重点关注 · 披露 2026-11-17 · CVSS 8.3 · 类型 CWE-201/CWE-226 · 难度 低(远程·利用条件苛刻·免认证)
+This behaviour affects all releases and primarily risks unauthorized information disclosure between separate requests.
+信号: 命中关注词 exchange</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle WebLogic Server 未授权 认证绕过</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91456</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91456-2026-11-17</guid>
-      <description>CVE-2026-91456 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.8 · 难度 低(远程·免认证)
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91456-2026-11-18</guid>
+      <description>CVE-2026-91456 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
 Easily exploitable vulnerability allows unauthenticated attacker with network access via SOAP to compromise Oracle WebLogic Server.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WebLogic T3未认证RCE</title>
+      <title>[critical]Oracle WebLogic Server 未授权 缺失认证</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91470</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91470-2026-11-17</guid>
-      <description>CVE-2026-91470 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.8 · 难度 低(远程·免认证)
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91470-2026-11-18</guid>
+      <description>CVE-2026-91470 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
 Easily exploitable vulnerability allows unauthenticated attacker with network access via T3, IIOP to compromise Oracle WebLogic Server.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WebLogic TopLink未认证RCE</title>
+      <title>[critical]Oracle WebLogic Server 未授权 缺失认证</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91570</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91570-2026-11-17</guid>
-      <description>CVE-2026-91570 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.8 · 难度 低(远程·免认证)
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91570-2026-11-18</guid>
+      <description>CVE-2026-91570 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
 Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebLogic Server.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WebLogic TopLink未认证RCE</title>
+      <title>[critical]Oracle WebLogic Server 未授权 缺失认证</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91583</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91583-2026-11-17</guid>
-      <description>CVE-2026-91583 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.8 · 难度 低(远程·免认证)
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91583-2026-11-18</guid>
+      <description>CVE-2026-91583 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
 Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebLogic Server.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WebLogic TopLink未认证RCE</title>
+      <title>[critical]Oracle WebLogic Server 未授权 缺失认证</title>
       <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91585</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91585-2026-11-17</guid>
-      <description>CVE-2026-91585 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.8 · 难度 低(远程·免认证)
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91585-2026-11-18</guid>
+      <description>CVE-2026-91585 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
 Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle WebLogic Server.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Access Manager认证引擎绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91500</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91500-2026-11-17</guid>
-      <description>CVE-2026-91500 · P1 重点关注 · 披露 2026-11-17 · CVSS 10.0 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Access Manager.
+      <title>[critical]PeopleSoft Enterprise PeopleTools 未授权 缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114862</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114862-2026-11-18</guid>
+      <description>CVE-2026-114862 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.1 · 类型 缺失认证 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise PeopleSoft Enterprise PeopleTools.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Access Manager认证引擎绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91510</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91510-2026-11-17</guid>
-      <description>CVE-2026-91510 · P1 重点关注 · 披露 2026-11-17 · CVSS 10.0 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Access Manager.
+      <title>[critical]Dancer会话ID未校验致路径遍历</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2015-10149</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2015-10149-2026-11-18</guid>
+      <description>CVE-2015-10149 · P1 重点关注 · 披露 2026-11-14 · CVSS 9.8 · EPSS 0.4%,前 31% · 类型 CWE-1286 · 难度 低(远程·免认证)
+A remote attacker may cause path traversal or injection in a session engine that uses the id in a file path, cache command or query without checking it.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]ZoneMinder配置项命令注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-28273</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-28273-2026-11-17</guid>
-      <description>CVE-2026-28273 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.9 · 类型 缺失授权(越权) · 难度 低(远程·需低权限)
-An attacker can set ZM_PATH_FFMPEG to a command-bearing value and trigger an exec() sink in web/views/image.php or web/includes/Event.php by requesting frame ex…
+      <title>[critical]Axis2/C未授权XML解析越界读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124023</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124023-2026-11-18</guid>
+      <description>CVE-2026-124023 · P1 重点关注 · 披露 2026-11-12 · 组件 视频监控 · CVSS 9.1 · EPSS 0.2%,前 14% · 类型 越界读取 · 难度 低(远程·免认证)
+Out-of-bounds Read vulnerability in the Guththila XML parser wrapper of Apache Axis2/C.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]BISHENG硬编码JWT密钥致认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-130840</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-130840-2026-11-17</guid>
-      <description>CVE-2026-130840 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 类型 CWE-321 · 难度 低(远程·免认证)
-BISHENG before 3.0.0 contains an authentication bypass vulnerability that allows unauthenticated remote attackers to impersonate administrators by abusing a har…
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <title>[high]Bamboo数据中心安全配置错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21600</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21600-2026-11-18</guid>
+      <description>CVE-2026-21600 · P2 保持关注 · 披露 2026-11-17 · 组件 开发运维/CI · CVSS 8.9 · 类型 缺失授权(越权) · 难度 高(远程·利用条件苛刻·利用条件苛刻·需高权限)
+This Security Misconfiguration vulnerability, with a CVSS Score of 8.9, allows an authenticated attacker to to get into the system utilizing loopholes exposed f…
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Atomic Server邀请接口缺失认证</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-69157</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-69157-2026-11-17</guid>
-      <description>CVE-2026-69157 · P1 重点关注 · 披露 2026-11-17 · 组件 Web框架 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
-construct_invite_redirect in server/src/plugins/invite.rs discards the redeemer identity, so an unauthenticated request containing an attacker-controlled public…
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <title>[high]Jira Data Center存储型XSS（7.4）</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-21602</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-21602-2026-11-18</guid>
+      <description>CVE-2026-21602 · P2 保持关注 · 披露 2026-11-17 · 组件 OA/协同办公 · CVSS 7.4 · 类型 XSS · 难度 高(远程·利用条件苛刻·需低权限·需用户交互)
+This Stored XSS vulnerability, with a CVSS Score of 7.4, allows an authenticated attacker to execute arbitrary HTML or JavaScript code on a victims browser.
+信号: 命中关注词 atlassian</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WeGIA支付接口缺失授权可篡改账单</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61675</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61675-2026-11-17</guid>
-      <description>CVE-2026-61675 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 类型 缺失授权(越权) · 难度 低(远程·免认证)
-An unauthenticated remote requester can supply a payment identifier, payment date, and paid value to mark arbitrary payment records as paid or otherwise modify …
+      <title>[critical]Zenoh 未授权 栈溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-130603</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-130603-2026-11-18</guid>
+      <description>CVE-2026-130603 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.3 · 类型 栈溢出/堆溢出 · 难度 低(远程·免认证)
+A remote attacker able to deliver crafted timestamp-bearing Zenoh messages through an accepted transport can cause memory corruption and denial of service, with…
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WeGIA收费登记接口缺失会话校验</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61676</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61676-2026-11-17</guid>
-      <description>CVE-2026-61676 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 类型 缺失授权(越权) · 难度 低(远程·免认证)
-An unauthenticated remote requester who supplies valid billing parameters can create arbitrary billing entries, enabling financial data manipulation and operati…
+      <title>[critical]Broadcom AutoSys Workload Automation 未授权 命令注入(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126552</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126552-2026-11-18</guid>
+      <description>CVE-2026-126552 · P1 重点关注 · 披露 2026-11-17 · 组件 操作系统 · CVSS 9.3 · 类型 命令注入(RCE)/缺失认证 · 难度 低(远程·免认证)
+Missing Authentication for Critical Function, OS Command Injection vulnerability in Broadcom AutoSys Workload Automation (Workload Control Center (WCC) modules)…
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WeGIA会员接口缺失授权可篡改档案</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61677</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61677-2026-11-17</guid>
-      <description>CVE-2026-61677 · P1 重点关注 · 披露 2026-11-17 · 组件 ERP/业务系统 · CVSS 9.8 · 类型 缺失授权(越权) · 难度 低(远程·免认证)
-An unauthenticated remote requester who supplies a target member identifier and replacement member fields can modify arbitrary member records, corrupt personal …
+      <title>[critical]Deserialization 未授权 反序列化(RCE)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126553</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126553-2026-11-18</guid>
+      <description>CVE-2026-126553 · P1 重点关注 · 披露 2026-11-17 · 组件 操作系统 · CVSS 9.3 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in Broadcom AutoSys Workload Automation (Workload Control Center (WCC) modules) on Windows, Linux allows Object …
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]WeGIA收费生成接口缺失会话校验</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-61680</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-61680-2026-11-17</guid>
-      <description>CVE-2026-61680 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
-Prior to 3.8.6, web/html/socio/sistema/cadastro_cobrancas_geracao.php performs privileged charge-generation operations without checking for an authenticated ses…
+      <title>[critical]Perl 未授权 堆溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129114</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129114-2026-11-18</guid>
+      <description>CVE-2026-129114 · P1 重点关注 · 披露 2026-11-14 · CVSS 9.8 · EPSS 0.2%,前 10% · 类型 堆溢出/CWE-193 · 难度 低(远程·免认证)
+A peer streaming data to an incr_parse consumer, choosing how the input is split into reads, can cause a one-byte heap out-of-bounds write.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]arize-phoenix CWE-134</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-53998</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-53998-2026-11-17</guid>
-      <description>CVE-2026-53998 · P1 重点关注 · 披露 2026-11-17 · CVSS 10.0 · EPSS 0.4%,前 30% · 类型 CWE-134/信息泄露 · 难度 低(远程·免认证)
-- Summary A format string injection vulnerability in the applyChatTemplate GraphQL endpoint allows an attacker to read server-side environment variables, crypto…
+      <title>[critical]Software 未授权 越界写入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-74911</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-74911-2026-11-18</guid>
+      <description>CVE-2026-74911 · P1 重点关注 · 披露 2026-11-13 · CVSS 9.8 · EPSS 0.2%,前 5% · 类型 越界写入 · 难度 低(远程·免认证)
+Software installed and run as a non-privileged user may conduct improper GPU system calls to the execution of an error path that triggers an OOB read &amp; write.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Oracle Business Intelligence Enterprise 未授权 Critic</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114784</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114784-2026-11-17</guid>
-      <description>CVE-2026-114784 · P1 重点关注 · 披露 2026-11-17 · CVSS 10.0 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Business Intelligence Enterprise Edition.
+      <title>[critical]Perl 未授权 CWE-191</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129113</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129113-2026-11-18</guid>
+      <description>CVE-2026-129113 · P1 重点关注 · 披露 2026-11-14 · CVSS 9.1 · EPSS 0.2%,前 10% · 类型 CWE-191 · 难度 低(远程·免认证)
+JSON::XS versions from 4.0_00 before 4.05 for Perl corrupt the incremental buffer length by chopping past its end in incr_skip after a top-level number.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Oracle Platform Security 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114824</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114824-2026-11-17</guid>
-      <description>CVE-2026-114824 · P1 重点关注 · 披露 2026-11-17 · CVSS 10.0 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Platform Security for Java.
+      <title>[critical]Perl 未授权 释放后重用(UAF)</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129115</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129115-2026-11-18</guid>
+      <description>CVE-2026-129115 · P1 重点关注 · 披露 2026-11-14 · CVSS 9.1 · EPSS 0.2%,前 10% · 类型 释放后重用(UAF) · 难度 低(远程·免认证)
+JSON::XS versions from 3.0 before 4.05 for Perl read freed stack memory when a FREEZE result's serialisation grows the Perl stack under allow_tags in encode_rv.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Perl 未授权 CWE-401</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124539</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124539-2026-11-18</guid>
+      <description>CVE-2026-124539 · P1 重点关注 · 披露 2026-11-14 · CVSS 9.1 · EPSS 0.2%,前 8% · 类型 CWE-401 · 难度 低(远程·免认证)
+JSON::XS versions before 4.05 for Perl leak the decoded key of an object rejected for a missing colon in decode_hv.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]ansible-galaxy角色安装路径遍历</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-105929</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-105929-2026-11-18</guid>
+      <description>CVE-2026-105929 · P1 重点关注 · 披露 2026-11-18 · 组件 开发运维/CI · CVSS 8.1 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证·需用户交互)
+A path traversal vulnerability (CWE-22) was found in ansible-core's ansible-galaxy role installation.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]ansible-galaxy集合安装目录穿越</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-130644</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-130644-2026-11-18</guid>
+      <description>CVE-2026-130644 · P1 重点关注 · 披露 2026-11-18 · 组件 开发运维/CI · CVSS 8.1 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证·需用户交互)
+A malicious collection artifact -- delivered as a local file, a remote URL, a source directory, a git repository, or as a dependency -- can use a crafted name v…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]KiCad. An 越界写入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-126970</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-126970-2026-11-18</guid>
+      <description>CVE-2026-126970 · P1 重点关注 · 披露 2026-11-18 · CVSS 7.8 · 类型 越界写入 · 难度 高(需本地访问·免认证·需用户交互)
+This vulnerability allows remote attackers to execute arbitrary code on affected installations of KiCad.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Oracle WebLogic Server 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91469</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91469-2026-11-18</guid>
+      <description>CVE-2026-91469 · P1 重点关注 · 披露 2026-11-17 · 组件 Web中间件 · CVSS 9.4 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle WebLogic Server.
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]CIRCUTOR PowerStudio SCADA WAVE 未授权 签名校验错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120387</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120387-2026-11-18</guid>
+      <description>CVE-2026-120387 · P1 重点关注 · 披露 2026-11-17 · CVSS 10.0 · EPSS 0.4%,前 29% · 类型 签名校验错误 · 难度 低(远程·免认证)
+An improper JWT signature verification vulnerability in CIRCUTOR PowerStudio SCADA WAVE desktop version allows an unauthenticated remote attacker to bypass auth…
+信号:</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
       <title>[critical]Oracle Fusion Middleware 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114835</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114835-2026-11-17</guid>
-      <description>CVE-2026-114835 · P1 重点关注 · 披露 2026-11-17 · CVSS 10.0 · 难度 低(远程·免认证)
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91500</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91500-2026-11-18</guid>
+      <description>CVE-2026-91500 · P1 重点关注 · 披露 2026-11-17 · CVSS 10.0 · 难度 低(远程·免认证)
 Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Access Manager.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Oracle Text Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114819</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114819-2026-11-17</guid>
-      <description>CVE-2026-114819 · P1 重点关注 · 披露 2026-11-17 · 组件 数据库 · CVSS 9.9 · 难度 低(远程·需低权限)
-Easily exploitable vulnerability allows low privileged attacker having Create Session privilege with network access via Oracle Net to compromise Oracle Text.
+      <title>[critical]Oracle Fusion Middleware 未授权 Critical</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-91510</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-91510-2026-11-18</guid>
+      <description>CVE-2026-91510 · P1 重点关注 · 披露 2026-11-17 · CVSS 10.0 · 难度 低(远程·免认证)
+Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Access Manager.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]RDBMS Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114822</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114822-2026-11-17</guid>
-      <description>CVE-2026-114822 · P1 重点关注 · 披露 2026-11-17 · 组件 数据库 · CVSS 9.9 · 难度 低(远程·需低权限)
-Easily exploitable vulnerability allows low privileged attacker having Create Session privilege with network access via Oracle Net to compromise RDBMS.
+      <title>[critical]Use 未授权 CWE-321</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114202</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114202-2026-11-18</guid>
+      <description>CVE-2026-114202 · P1 重点关注 · 披露 2026-11-18 · CVSS 10.0 · 类型 CWE-321 · 难度 低(远程·免认证)
+Use of Hard-coded Cryptographic Key in ASUS Control Center Express allows a remote user to gain administrative privileges via a forged authentication token.
 信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Oracle Text Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114848</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114848-2026-11-17</guid>
-      <description>CVE-2026-114848 · P1 重点关注 · 披露 2026-11-17 · 组件 数据库 · CVSS 9.9 · 难度 低(远程·需低权限)
-Easily exploitable vulnerability allows low privileged attacker having Create Session privilege with network access via Oracle Net to compromise Oracle Text.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle Hyperion Financial Management Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114978</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114978-2026-11-17</guid>
-      <description>CVE-2026-114978 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.9 · 难度 低(远程·需低权限)
-Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Hyperion Financial Management.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle AutoVue Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114980</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114980-2026-11-17</guid>
-      <description>CVE-2026-114980 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.9 · 难度 低(远程·需低权限)
-Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle AutoVue.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]BZFlag 未授权 堆溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-130849</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-130849-2026-11-17</guid>
-      <description>CVE-2026-130849 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 类型 堆溢出 · 难度 低(远程·免认证)
-BZFlag bzfs before 2.4.32 contains a heap out-of-bounds write vulnerability in NetHandler::tcpReceive() that allows remote unauthenticated attackers to corrupt …
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Service Delivery Platform 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114826</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114826-2026-11-17</guid>
-      <description>CVE-2026-114826 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via SOAP to compromise Service Delivery Platform.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle APEX 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114849</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114849-2026-11-17</guid>
-      <description>CVE-2026-114849 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTPS to compromise Oracle APEX.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle APEX 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114850</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114850-2026-11-17</guid>
-      <description>CVE-2026-114850 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTPS to compromise Oracle APEX.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle Universal Work Queue 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114863</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114863-2026-11-17</guid>
-      <description>CVE-2026-114863 · P1 重点关注 · 披露 2026-11-17 · 组件 ERP/业务系统 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Universal Work Queue.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Document Management 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114880</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114880-2026-11-17</guid>
-      <description>CVE-2026-114880 · P1 重点关注 · 披露 2026-11-17 · 组件 ERP/业务系统 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Document Management and Collaboration.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle Application Object Library 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114924</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114924-2026-11-17</guid>
-      <description>CVE-2026-114924 · P1 重点关注 · 披露 2026-11-17 · 组件 ERP/业务系统 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Application Object Library.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle Applications Framework 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114925</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114925-2026-11-17</guid>
-      <description>CVE-2026-114925 · P1 重点关注 · 披露 2026-11-17 · 组件 ERP/业务系统 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Applications Framework.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle Hyperion Infrastructure Technology 未授权 Crit</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115047</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115047-2026-11-17</guid>
-      <description>CVE-2026-115047 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Infrastructure Technology.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle Hyperion Infrastructure Technology 未授权 Crit</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115048</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115048-2026-11-17</guid>
-      <description>CVE-2026-115048 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Infrastructure Technology.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle Hyperion Infrastructure Technology 未授权 Crit</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115080</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115080-2026-11-17</guid>
-      <description>CVE-2026-115080 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Infrastructure Technology.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle Hyperion Planning 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115086</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115086-2026-11-17</guid>
-      <description>CVE-2026-115086 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via RMI to compromise Oracle Hyperion Planning.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle Hyperion Planning 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-115089</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-115089-2026-11-17</guid>
-      <description>CVE-2026-115089 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Hyperion Planning.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle AutoVue 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-127324</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-127324-2026-11-17</guid>
-      <description>CVE-2026-127324 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle AutoVue.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle AutoVue 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-127325</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-127325-2026-11-17</guid>
-      <description>CVE-2026-127325 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle AutoVue.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle AutoVue 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-127326</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-127326-2026-11-17</guid>
-      <description>CVE-2026-127326 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle AutoVue.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
-    </item>
-    <item>
-      <title>[critical]Oracle AutoVue 未授权 Critical</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-127327</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-127327-2026-11-17</guid>
-      <description>CVE-2026-127327 · P1 重点关注 · 披露 2026-11-17 · CVSS 9.8 · 难度 低(远程·免认证)
-Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle AutoVue.
-信号:</description>
-      <pubDate>Tue, 17 Nov 2026 23:53:18 +0000</pubDate>
+      <title>今日要点</title>
+      <description>- 今日未见在野利用或勒索软件关联，KEV均未收录。
+- 批量公告集中：Oracle、Atlassian、GitLab各有3条高危，需关注同源修复。
+- 最急处置：Oracle Web中间件3个9.8分认证绕过/缺失认证，优先修复。
+- 次优先：OpenEMR 9.9分SQL注入已有PoC，8.3.0前版本尽快升级。</description>
+      <pubDate>Wed, 18 Nov 2026 04:42:07 +0000</pubDate>
     </item>
   </channel>
 </rss>

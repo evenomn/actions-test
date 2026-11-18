@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-17 23:53 UTC · 共 **209** 条(强烈推荐 42 / 值得 167)
+**更新**: 2026-11-18 04:42 UTC · 共 **204** 条(强烈推荐 42 / 值得 162)
 
 ---
 
@@ -796,46 +796,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级至官方修复版本；无法升级时关闭XML-RPC端点
 影响: Apache(产品与版本待 NVD/厂商补充)
 参考: [参考](https://github.com/apache/roller/pull/171) · [参考](https://lists.apache.org/thread.html/lnz4s26tv6hdo03wngtdbpfj4hg4gtds) · [参考](https://lists.apache.org/thread/cc0jck13nb9vvcmzxzwotr6n16mx28z9)
-
-### WebLogic Core未认证RCE
-[CVE-2026-91456](https://nvd.nist.gov/vuln/detail/CVE-2026-91456) | P1 重点关注 | Web中间件 | CVSS 9.8 | 披露 2026-11-17 | 入库 2026-11-17
-未认证攻击者经SOAP协议访问Core组件即可执行任意代码，接管WebLogic服务器
-复现: 值得 — 未授权经SOAP向Core组件发起请求 · 影响面: Java中间件，常承载核心业务并暴露内网
-处置: 应用Oracle CPU补丁；限制SOAP通道访问来源
-影响: Oracle(产品与版本待 NVD/厂商补充)
-参考: [参考](https://www.oracle.com/security-alerts/cspunov2026.html)
-
-### WebLogic T3未认证RCE
-[CVE-2026-91470](https://nvd.nist.gov/vuln/detail/CVE-2026-91470) | P1 重点关注 | Web中间件 | CVSS 9.8 | 披露 2026-11-17 | 入库 2026-11-17
-未认证攻击者经T3/IIOP协议向Core组件发送恶意数据即可执行代码，接管服务器
-复现: 值得 — 经T3/IIOP协议向Core组件发送构造请求 · 影响面: Java中间件，T3端口常暴露内网
-处置: 应用Oracle CPU补丁；关闭或限制T3/IIOP端口暴露
-影响: Oracle(产品与版本待 NVD/厂商补充)
-参考: [参考](https://www.oracle.com/security-alerts/cspunov2026.html)
-
-### WebLogic TopLink未认证RCE
-[CVE-2026-91570](https://nvd.nist.gov/vuln/detail/CVE-2026-91570) | P1 重点关注 | Web中间件 | CVSS 9.8 | 披露 2026-11-17 | 入库 2026-11-17
-未认证攻击者经HTTP访问TopLink Integration组件即可远程执行代码，完全控制WebLogic
-复现: 值得 — 未授权经HTTP访问TopLink Integration组件接口 · 影响面: Java中间件，常承载核心业务并暴露内网
-处置: 应用Oracle CPU补丁；限制TopLink组件对外暴露
-影响: Oracle(产品与版本待 NVD/厂商补充)
-参考: [参考](https://www.oracle.com/security-alerts/cspunov2026.html)
-
-### WebLogic TopLink未认证RCE
-[CVE-2026-91583](https://nvd.nist.gov/vuln/detail/CVE-2026-91583) | P1 重点关注 | Web中间件 | CVSS 9.8 | 披露 2026-11-17 | 入库 2026-11-17
-未认证攻击者经HTTP访问TopLink Integration组件即可远程执行代码，完全控制WebLogic
-复现: 值得 — 未授权经HTTP访问TopLink Integration组件接口 · 影响面: Java中间件，常承载核心业务并暴露内网
-处置: 应用Oracle CPU补丁；限制TopLink组件对外暴露
-影响: Oracle(产品与版本待 NVD/厂商补充)
-参考: [参考](https://www.oracle.com/security-alerts/cspunov2026.html)
-
-### WebLogic TopLink未认证RCE
-[CVE-2026-91585](https://nvd.nist.gov/vuln/detail/CVE-2026-91585) | P1 重点关注 | Web中间件 | CVSS 9.8 | 披露 2026-11-17 | 入库 2026-11-17
-未认证攻击者经TCP连接TopLink Integration组件即可远程执行代码，完全控制WebLogic
-复现: 值得 — 未授权经TCP向TopLink Integration组件发送构造数据 · 影响面: Java中间件，常承载核心业务并暴露内网
-处置: 应用Oracle CPU补丁；限制TopLink组件TCP端口暴露
-影响: Oracle(产品与版本待 NVD/厂商补充)
-参考: [参考](https://www.oracle.com/security-alerts/cspunov2026.html)
 
 ### ActiveStorage任意文件读写
 [CVE-2026-122006](https://nvd.nist.gov/vuln/detail/CVE-2026-122006) | P1 重点关注 | Web框架 | CVSS 9.8 | EPSS 0.7% | 披露 2026-11-12 | 入库 2026-11-13
