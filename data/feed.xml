@@ -5,34 +5,61 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 19 Nov 2026 14:33:20 +0000</pubDate>
-    <lastBuildDate>Thu, 19 Nov 2026 14:33:20 +0000</lastBuildDate>
+    <pubDate>Thu, 19 Nov 2026 23:39:15 +0000</pubDate>
+    <lastBuildDate>Thu, 19 Nov 2026 23:39:15 +0000</lastBuildDate>
     <item>
-      <title>[critical]TeamCity外部PR远程代码执行</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-132891</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-132891-2026-11-19</guid>
-      <description>CVE-2026-132891 · P1 重点关注 · 披露 2026-11-19 · 组件 开发运维/CI · CVSS 9.8 · 类型 CWE-696 · 难度 低(远程·免认证)
-In JetBrains TeamCity before 2026.2, 2026.1.4, 2025.11.8 remote code execution was possible via external pull requests
-信号:</description>
-      <pubDate>Thu, 19 Nov 2026 14:33:20 +0000</pubDate>
+      <title>[critical]Splunk认证绕过可未授权执行SPL</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-76535</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-76535-2026-11-19</guid>
+      <description>CVE-2026-76535 · P0 立即处置 · 披露 2026-11-19 · 组件 监控运维 · CVSS 9.1 · 类型 认证绕过 · 难度 低(远程·免认证)
+In Splunk Enterprise versions below 10.6.1, 10.4.5, 10.2.9, 10.0.12, and 9.4.17, an unauthenticated user could run arbitrary Search Processing Language (SPL) se…
+信号: 已有技术分析</description>
+      <pubDate>Thu, 19 Nov 2026 23:39:15 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Dell PowerStore SDNAS 未授权 路径遍历/任意文件读取</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116439</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116439-2026-11-19</guid>
-      <description>CVE-2026-116439 · P1 重点关注 · 披露 2026-11-19 · CVSS 9.8 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
-Dell PowerStore SDNAS contains a path traversal vulnerability that could allow an unauthenticated attacker to read, modify, or delete arbitrary files on the NAS…
+      <title>[critical]Splunk SOAR代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-131253</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-131253-2026-11-19</guid>
+      <description>CVE-2026-131253 · P1 重点关注 · 披露 2026-11-19 · 组件 监控运维 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+In Splunk SOAR versions below 8.8.0, an authenticated user that holds a role with the Apps edit, Containers edit, and Playbooks execute permissions could use th…
 信号:</description>
-      <pubDate>Thu, 19 Nov 2026 14:33:20 +0000</pubDate>
+      <pubDate>Thu, 19 Nov 2026 23:39:15 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Dell PowerStore SDNAS 未授权 缓冲区溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-116440</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-116440-2026-11-19</guid>
-      <description>CVE-2026-116440 · P1 重点关注 · 披露 2026-11-19 · CVSS 9.8 · 类型 缓冲区溢出 · 难度 低(远程·免认证)
-Dell PowerStore SDNAS contains a buffer overflow vulnerability that could allow an unauthenticated remote attacker to cause a denial of service or potential cod…
+      <title>[critical]IBM Guardium反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-84236</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-84236-2026-11-19</guid>
+      <description>CVE-2026-84236 · P1 重点关注 · 披露 2026-11-19 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+An unauthenticated remote attacker could exploit this vulnerability to execute arbitrary code on the affected system.
 信号:</description>
-      <pubDate>Thu, 19 Nov 2026 14:33:20 +0000</pubDate>
+      <pubDate>Thu, 19 Nov 2026 23:39:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Flyto2 Core路径遍历致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-77312</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-77312-2026-11-19</guid>
+      <description>CVE-2026-77312 · P1 重点关注 · 披露 2026-11-19 · CVSS 10.0 · 类型 路径遍历/任意文件读取 · 难度 低(远程·免认证)
+A caller able to execute modules or recipes can therefore write attacker-controlled content outside the configured sandbox, potentially overwriting application …
+信号:</description>
+      <pubDate>Thu, 19 Nov 2026 23:39:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Guardium edge控制器SQL注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-87977</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-87977-2026-11-19</guid>
+      <description>CVE-2026-87977 · P1 重点关注 · 披露 2026-11-19 · 组件 ERP/业务系统 · CVSS 9.8 · 类型 SQL注入 · 难度 低(远程·免认证)
+An unauthenticated remote attacker could exploit this vulnerability to access or modify sensitive database information.
+信号:</description>
+      <pubDate>Thu, 19 Nov 2026 23:39:15 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Etherpad未授权任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-114516</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-114516-2026-11-19</guid>
+      <description>CVE-2026-114516 · P1 重点关注 · 披露 2026-11-19 · CVSS 9.8 · 类型 路径遍历/任意文件读取/信息泄露 · 难度 低(远程·免认证)
+The expressPreSession registration and the always-present ep_etherpad-lite core pseudo-plugin make this path reachable without credentials, allowing a remote at…
+信号:</description>
+      <pubDate>Thu, 19 Nov 2026 23:39:15 +0000</pubDate>
     </item>
   </channel>
 </rss>

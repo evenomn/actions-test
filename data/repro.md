@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-19 14:33 UTC · 共 **209** 条(强烈推荐 44 / 值得 165)
+**更新**: 2026-11-19 23:39 UTC · 共 **210** 条(强烈推荐 44 / 值得 166)
 
 ---
 
@@ -1403,6 +1403,14 @@ PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy
 [CVE-2026-107194](https://nvd.nist.gov/vuln/detail/CVE-2026-107194) | CVSS 9.2 | 披露 2026-10-07 | 入库 2026-10-08
 复现: 值得
 参考: [参考](https://jakkaru.de/articles/sungrow-vulnerability-exposes-gigawatts-worldwide) · [参考](https://www.sungrowpower.com/en/products/cloud-software/isolarcloud)
+
+### Splunk认证绕过可未授权执行SPL
+[CVE-2026-76535](https://nvd.nist.gov/vuln/detail/CVE-2026-76535) | P0 立即处置 | 监控运维 | CVSS 9.1 | 披露 2026-11-19 | 入库 2026-11-19
+未认证者利用RapidDiag空共享密钥绕过认证，以已认证身份执行任意SPL，读取或操控数据
+复现: 值得 — 未授权调用RapidDiag任务收集接口，使用空共享密钥认证 · 影响面: Splunk Enterprise，常承载敏感日志
+处置: 升级至10.6.1等厂商修复版本
+影响: Splunk(产品与版本待 NVD/厂商补充)
+参考: [参考](https://advisory.splunk.com/advisories/SVD-2026-1103) · [技术分析](https://sh3llc0d3.com/blog/splunk-patches-140-flaws-across-enterprise-and-soar-880-including-empty-secret-auth-bypass-and-rce/)
 
 ### Aspire Dashboard未授权删遥测
 [CVE-2026-118740](https://nvd.nist.gov/vuln/detail/CVE-2026-118740) | P1 重点关注 | ERP/业务系统 | CVSS 9.1 | EPSS 0.9% | 披露 2026-11-12 | 入库 2026-11-13

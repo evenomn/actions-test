@@ -1,19 +1,21 @@
 {
  "version": 3,
- "generated_at": "2026-11-19T14:33:20+00:00",
+ "generated_at": "2026-11-19T23:39:15+00:00",
  "lookback_hours": 5,
- "count": 3,
+ "count": 6,
  "stats": {
-  "total": 3,
+  "total": 6,
   "by_tier": {
-   "critical": 3
+   "critical": 6
   },
   "by_urgency": {
-   "P1 重点关注": 3
+   "P1 重点关注": 5,
+   "P0 立即处置": 1
   },
   "by_category": {
-   "未知": 2,
-   "开发运维/CI": 1
+   "未知": 3,
+   "监控运维": 2,
+   "ERP/业务系统": 1
   },
   "kev": 0,
   "with_poc": 0,
@@ -23,30 +25,76 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-132891",
+   "id": "CVE-2026-76535",
    "tier": "critical",
-   "title": "TeamCity外部PR远程代码执行",
-   "title_zh": "TeamCity外部PR远程代码执行",
-   "summary_zh": "可提交外部PR的攻击者借拉取请求触发RCE，控制CI服务器并窃取凭据。",
-   "published": "2026-11-19T11:16:55.263",
-   "cvss": 9.8,
+   "title": "Splunk认证绕过可未授权执行SPL",
+   "title_zh": "Splunk认证绕过可未授权执行SPL",
+   "summary_zh": "未认证者利用RapidDiag空共享密钥绕过认证，以已认证身份执行任意SPL，读取或操控数据",
+   "published": "2026-11-19T20:17:52.730",
+   "cvss": 9.1,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-696"
+    "认证绕过"
    ],
-   "vuln_class": "RCE",
+   "vuln_class": "未授权访问",
    "fame_term": null,
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": null,
+   "affected": "Splunk(产品与版本待 NVD/厂商补充)",
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.jetbrains.com/privacy-security/issues-fixed/"
+     "url": "https://advisory.splunk.com/advisories/SVD-2026-1103"
+    },
+    {
+     "label": "技术分析",
+     "url": "https://sh3llc0d3.com/blog/splunk-patches-140-flaws-across-enterprise-and-soar-880-including-empty-secret-auth-bypass-and-rce/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至10.6.1等厂商修复版本",
+   "repro_worthy": "值得",
+   "repro_note": "未授权调用RapidDiag任务收集接口，使用空共享密钥认证",
+   "impact_scope": "Splunk Enterprise，常承载敏感日志",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76535",
+   "description": "In Splunk Enterprise versions below 10.6.1, 10.4.5, 10.2.9, 10.0.12, and 9.4.17, an unauthenticated user could run arbitrary Search Processing Language (SPL) searches through RapidDiag task collection as an authenticated user. The vulnerability is possible because Splunk Enterprise accepts an empty shared secret when it authenticates RapidDiag task-collection requests."
+  },
+  {
+   "id": "CVE-2026-131253",
+   "tier": "critical",
+   "title": "Splunk SOAR代码注入RCE",
+   "title_zh": "Splunk SOAR代码注入RCE",
+   "summary_zh": "高权限用户经App Wizard注入连接器代码，以SOAR进程权限执行命令",
+   "published": "2026-11-19T20:17:40.407",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Splunk(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://advisory.splunk.com/advisories/SVD-2026-1108"
     }
    ],
    "poc": [],
@@ -57,23 +105,65 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级到2026.2/2026.1.4/2025.11.8并审计日志",
+   "action_zh": "升级至Splunk SOAR 8.8.0",
    "repro_worthy": "一般",
-   "repro_note": "外部PR入口；需启用外部PR构建，提交恶意PR触发",
-   "impact_scope": "CI服务器，掌握源码与构建凭据",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132891",
-   "description": "In JetBrains TeamCity before 2026.2, 2026.1.4, 2025.11.8 remote code execution was possible via external pull requests"
+   "repro_note": "登录后进入App Wizard，在连接器标识中注入代码并执行Playbook",
+   "impact_scope": "SOAR自动化平台，高权限用户可RCE",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131253",
+   "description": "In Splunk SOAR versions below 8.8.0, an authenticated user that holds a role with the Apps edit, Containers edit, and Playbooks execute permissions could use the App Wizard to execute arbitrary code as the user account that runs Splunk SOAR. This could compromise the confidentiality, integrity, and availability of the Splunk SOAR instance. The vulnerability exists because the App Wizard does not validate user-supplied identifiers before incorporating them into generated connector code."
   },
   {
-   "id": "CVE-2026-116439",
+   "id": "CVE-2026-84236",
    "tier": "critical",
-   "title": "Dell PowerStore SDNAS 未授权 路径遍历/任意文件读取",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-11-19T13:17:27.837",
+   "title": "IBM Guardium反序列化RCE",
+   "title_zh": "IBM Guardium反序列化RCE",
+   "summary_zh": "未认证远程攻击者可向SharePoint Tap组件发送恶意序列化数据，执行任意代码",
+   "published": "2026-11-19T21:18:06.053",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.ibm.com/support/pages/node/7297484"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Guardium Data Protection至修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "未授权向SharePoint Tap组件发送恶意序列化载荷",
+   "impact_scope": "数据安全审计设备，内网高价值目标",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84236",
+   "description": "IBM Guardium Data Protection 12.2 is vulnerable to insecure deserialization in the SharePoint Tap MulticastTransceiver component. An unauthenticated remote attacker could exploit this vulnerability to execute arbitrary code on the affected system."
+  },
+  {
+   "id": "CVE-2026-77312",
+   "tier": "critical",
+   "title": "Flyto2 Core路径遍历致RCE",
+   "title_zh": "Flyto2 Core路径遍历致RCE",
+   "summary_zh": "可执行模块或配方者利用路径遍历写入沙箱外文件，覆盖代码/启动项并获取主机代码执行",
+   "published": "2026-11-19T22:18:44.013",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
@@ -88,7 +178,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.dell.com/support/kbdoc/en-us/000527640/dsa-2026-479-dell-powerstore-t-security-update-for-multiple-vulnerabilities"
+     "url": "https://github.com/advisories/GHSA-h9f9-h6gm-wc85"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/flytohub/flyto-core/commit/bbb6f1cfec22fee1ea0e6ecf1129d7103c85e09f"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/flytohub/flyto-core/releases/tag/v2.26.8"
     }
    ],
    "poc": [],
@@ -99,29 +197,29 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116439",
-   "description": "Dell PowerStore SDNAS contains a path traversal vulnerability that could allow an unauthenticated attacker to read, modify, or delete arbitrary files on the NAS node."
+   "action_zh": "升级Flyto2 Core并限制模块/配方执行权限",
+   "repro_worthy": "一般",
+   "repro_note": "调用模块/配方功能，在输出路径使用../写入沙箱外",
+   "impact_scope": "自动化/AI工作流内核，沙箱逃逸",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77312",
+   "description": "Flyto2 Core is an execution kernel for automation and AI-agent workflows. A caller able to execute modules or recipes can therefore write attacker-controlled content outside the configured sandbox, potentially overwriting application code, recipes, startup files, scheduled-task files, or authorization files and gaining code execution on the host."
   },
   {
-   "id": "CVE-2026-116440",
+   "id": "CVE-2026-87977",
    "tier": "critical",
-   "title": "Dell PowerStore SDNAS 未授权 缓冲区溢出",
-   "title_zh": null,
-   "summary_zh": null,
-   "published": "2026-11-19T13:17:27.983",
+   "title": "Guardium edge控制器SQL注入",
+   "title_zh": "Guardium edge控制器SQL注入",
+   "summary_zh": "未认证远程攻击者可向edge-controller注入SQL，访问或修改敏感数据库信息",
+   "published": "2026-11-19T21:18:06.517",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "缓冲区溢出"
+    "SQL注入"
    ],
-   "vuln_class": null,
+   "vuln_class": "SQL注入",
    "fame_term": null,
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -130,7 +228,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.dell.com/support/kbdoc/en-us/000527640/dsa-2026-479-dell-powerstore-t-security-update-for-multiple-vulnerabilities"
+     "url": "https://www.ibm.com/support/pages/node/7297484"
     }
    ],
    "poc": [],
@@ -141,22 +239,154 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": null,
-   "repro_worthy": "值得",
-   "repro_note": null,
-   "impact_scope": null,
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116440",
-   "description": "Dell PowerStore SDNAS contains a buffer overflow vulnerability that could allow an unauthenticated remote attacker to cause a denial of service or potential code execution on the NAS node."
+   "action_zh": "升级Guardium Data Protection修复版本",
+   "repro_worthy": "一般",
+   "repro_note": "未授权请求edge-controller参数，构造SQL注入语句",
+   "impact_scope": "数据安全设备，敏感数据库信息",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87977",
+   "description": "IBM Guardium Data Protection 12.2 is vulnerable to SQL injection in the edge-controller component. An unauthenticated remote attacker could exploit this vulnerability to access or modify sensitive database information."
+  },
+  {
+   "id": "CVE-2026-114516",
+   "tier": "critical",
+   "title": "Etherpad未授权任意文件读取",
+   "title_zh": "Etherpad未授权任意文件读取",
+   "summary_zh": "未认证远程攻击者经expressPreSession与核心伪插件路径遍历，读取Etherpad进程可访问任意文件",
+   "published": "2026-11-19T22:17:54.773",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取",
+    "信息泄露"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/ether/etherpad/commit/9c8d16d50e2fdfd9693ab35c43280410cb4db2fc"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ether/etherpad/pull/8081"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ether/etherpad/security/advisories/GHSA-mc8w-wjhw-45x5"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Etherpad修复版本并限制文件权限",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问expressPreSession相关路由，构造路径遍历读取文件",
+   "impact_scope": "协作编辑服务，可能泄露配置密钥",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114516",
+   "description": "On POSIX systems the sanitizer correctly treats backslashes as ordinary filename bytes, but the later conversion turns encoded backslash-separated parent-directory segments into traversal components without revalidation or containment. The expressPreSession registration and the always-present ep_etherpad-lite core pseudo-plugin make this path reachable without credentials, allowing a remote attacker to read any file available to the Etherpad process."
   }
  ],
- "media": [],
+ "media": [
+  {
+   "title": "BerriAI LiteLLM Guardrail Bytecode Sandbox Escape RCE (CVE-2026-40217) Hits CISA KEV Amid Global LLMjacking Wave",
+   "link": "https://sh3llc0d3.com/blog/berriai-litellm-guardrail-bytecode-sandbox-escape-rce-cve-2026-40217-hits-cisa-kev-amid-global-llmjacking-wave/",
+   "cves": [
+    "CVE-2026-40217"
+   ]
+  },
+  {
+   "title": "Splunk Patches ~140 Flaws Across Enterprise and SOAR 8.8.0 Including Empty-Secret Auth Bypass and RCE",
+   "link": "https://sh3llc0d3.com/blog/splunk-patches-140-flaws-across-enterprise-and-soar-880-including-empty-secret-auth-bypass-and-rce/",
+   "cves": [
+    "CVE-2026-76535"
+   ]
+  },
+  {
+   "title": "European Commission Confirms AI-Assisted Cyberattack Powered by Open-Source ARTEX Framework",
+   "link": "https://sh3llc0d3.com/blog/european-commission-confirms-ai-assisted-cyberattack-powered-by-open-source-artex-framework/",
+   "cves": []
+  }
+ ],
  "commits": [
   {
-   "repo": "jenkinsci/jenkins",
-   "sha": "270506f5d6e9410649ec640a5a1f6b5617a7971b",
-   "url": "https://github.com/jenkinsci/jenkins/commit/270506f5d6e9410649ec640a5a1f6b5617a7971b",
-   "title": "Render Timeseries for load statistics and memory usage as theme aware inline svg (#27763)",
-   "date": "2026-11-19T11:06:00",
+   "repo": "haproxy/haproxy",
+   "sha": "a74c9d6e8dc2009fefaec8b9a23e14f9cd7a48a6",
+   "url": "https://github.com/haproxy/haproxy/commit/a74c9d6e8dc2009fefaec8b9a23e14f9cd7a48a6",
+   "title": "BUG/MEDIUM: hlua: make coroutine.create() safe under haproxy (new attempt)",
+   "date": "2026-11-19T14:57:32",
+   "score": 4,
+   "matched": [
+    "UAF",
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "golang/go",
+   "sha": "487f510afbdc036ff114e8c09552fd38bd8d48ee",
+   "url": "https://github.com/golang/go/commit/487f510afbdc036ff114e8c09552fd38bd8d48ee",
+   "title": "crypto/tls: clear PSK from ECH outer hello on construct",
+   "date": "2026-11-19T19:19:27",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-42505"
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "1e109bfbd2f80367882f9866dbc6aa8088f0551f",
+   "url": "https://github.com/php/php-src/commit/1e109bfbd2f80367882f9866dbc6aa8088f0551f",
+   "title": "Fix GHSA-5j3f-64r7-f564: PATH_INFO underflow in CGI init_request_info()",
+   "date": "2026-11-19T15:08:07",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2019-11043"
+  },
+  {
+   "repo": "envoyproxy/envoy",
+   "sha": "ca6157481bb698e978b364f4b5f6763804bb2e21",
+   "url": "https://github.com/envoyproxy/envoy/commit/ca6157481bb698e978b364f4b5f6763804bb2e21",
+   "title": "opentelemetry: Add traceparent parse/serialize methods to SpanContextExtractor (#48449)",
+   "date": "2026-11-19T19:35:37",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "sqlite/sqlite",
+   "sha": "ef1ce9fa9f103f43a49432f6b47360b686a9aee8",
+   "url": "https://github.com/sqlite/sqlite/commit/ef1ce9fa9f103f43a49432f6b47360b686a9aee8",
+   "title": "In sqlite3_deserialize(), when built with SQLITE_ENABLE_API_ARMOR return SQLITE_MISUSE if the db is larger than the targ",
+   "date": "2026-11-19T18:54:51",
+   "score": 2,
+   "matched": [
+    "反序列化"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "grafana/grafana",
+   "sha": "569c372cd41bbad0073263658270fb71f977c869",
+   "url": "https://github.com/grafana/grafana/commit/569c372cd41bbad0073263658270fb71f977c869",
+   "title": "Alerting: Bound and harden the stale marker set of recording rules (#138248)",
+   "date": "2026-11-19T16:38:09",
    "score": 2,
    "matched": [
     "越界读写"
@@ -164,26 +394,50 @@
    "cve": null
   },
   {
-   "repo": "nodejs/node",
-   "sha": "c47b8d8781bc7ac17d363c8cd089ff18573ee482",
-   "url": "https://github.com/nodejs/node/commit/c47b8d8781bc7ac17d363c8cd089ff18573ee482",
-   "title": "url: restrict option copying in urlToHttpOptions to URL instances",
-   "date": "2026-11-19T08:20:21",
+   "repo": "envoyproxy/envoy",
+   "sha": "00cdfc34419f5a43e69a4b21244d19cc22cc94b5",
+   "url": "https://github.com/envoyproxy/envoy/commit/00cdfc34419f5a43e69a4b21244d19cc22cc94b5",
+   "title": "[cache_v2] Recheck cachability on validation (#49114)",
+   "date": "2026-11-19T16:15:21",
    "score": 2,
    "matched": [
-    "SSRF"
+    "安全修复"
    ],
    "cve": null
   },
   {
-   "repo": "haproxy/haproxy",
-   "sha": "715ff9dc90da2315a5286a11c80a86bbb5cfa637",
-   "url": "https://github.com/haproxy/haproxy/commit/715ff9dc90da2315a5286a11c80a86bbb5cfa637",
-   "title": "BUG/MEDIUM: payload: reject out-of-range payload and payload_lv arguments",
-   "date": "2026-11-19T07:21:06",
+   "repo": "php/php-src",
+   "sha": "9300a6f7ae4d4be14d66111fd88fca9d81e34491",
+   "url": "https://github.com/php/php-src/commit/9300a6f7ae4d4be14d66111fd88fca9d81e34491",
+   "title": "Fix GHSA-8mjj-2r7p-4hg2: UAF in debug_backtrace_get_args() on trampoline calls",
+   "date": "2026-11-19T15:10:52",
    "score": 2,
    "matched": [
-    "漏洞相关"
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "e2d3cee9ad4b0b739f4a8ebe6a69c938399b7da6",
+   "url": "https://github.com/php/php-src/commit/e2d3cee9ad4b0b739f4a8ebe6a69c938399b7da6",
+   "title": "Fix GHSA-fm2m-fjf5-v3cp: RCE via corrupted session file",
+   "date": "2026-11-19T15:08:08",
+   "score": 2,
+   "matched": [
+    "RCE"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "cb20015e045508ed6642ab7d72858270f9224d64",
+   "url": "https://github.com/php/php-src/commit/cb20015e045508ed6642ab7d72858270f9224d64",
+   "title": "Fix GHSA-gr4f-wgx5-jpfv: DATEG(tzcache) use-after-free",
+   "date": "2026-11-19T15:08:08",
+   "score": 2,
+   "matched": [
+    "UAF"
    ],
    "cve": null
   }
