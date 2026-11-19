@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-18T18:14:24+00:00",
- "count": 210,
- "count_recommended": 43,
+ "updated_at": "2026-11-19T02:40:46+00:00",
+ "count": 214,
+ "count_recommended": 44,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -297,6 +297,59 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116606",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-40217",
+   "title": "LiteLLM自定义代码接口RCE",
+   "first_seen": "2026-11-19",
+   "last_seen": "2026-11-19",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-04-10",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "访问/guardrails/test_custom_code提交恶意字节码",
+   "impact_scope": "LLM网关，常暴露内网或公网",
+   "action_zh": "升级至最新版，限制/guardrails/test_custom_code访问",
+   "summary_zh": "远程攻击者可经/guardrails/test_custom_code注入字节码执行任意代码",
+   "category": "Web框架",
+   "cvss": 8.8,
+   "epss": 0.1702,
+   "difficulty": "低(远程·需低权限)",
+   "kev": true,
+   "kev_due": "2026-12-02",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/learner202649/CVE-2026-40217-PoC",
+     "label": "Exploit-Index learner202649/CVE-2026-40217-PoC(未验证)(有源码)"
+    },
+    {
+     "url": "https://www.x41-dsec.de/lab/advisories/x41-2026-001-litellm/",
+     "label": "NVD exploit 引用"
+    }
+   ],
+   "affected": "litellm litellm <=2026-04-08",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/errata/RHSA-2026:24866"
+    },
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/errata/RHSA-2026:30056"
+    },
+    {
+     "label": "参考",
+     "url": "https://access.redhat.com/security/cve/CVE-2026-40217"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-40217",
    "change_note": null
   },
   {
@@ -1879,6 +1932,59 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114625",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-90436",
+   "title": "Apache Axis反序列化RCE",
+   "first_seen": "2026-11-19",
+   "last_seen": "2026-11-19",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-06",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "向Axis SOAP端点发恶意fault，需类路径有可用类",
+   "impact_scope": "SOAP中间件，常暴露内网或公网",
+   "action_zh": "暂无官方修复，停用Axis 1.x或限制SOAP端点访问",
+   "summary_zh": "未认证远程攻击者发送恶意SOAP故障，配合类路径可用类执行代码",
+   "category": "视频监控",
+   "cvss": 9.8,
+   "epss": 0.01128,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-21",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/dinosn/axis-cve-2026-90436-lab-poc",
+     "label": "Exploit-Index dinosn/axis-cve-2026-90436-lab-poc(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/fixedbyreboot/CVE-2026-90436-POC",
+     "label": "Exploit-Index fixedbyreboot/CVE-2026-90436-POC(未验证)(有源码)"
+    }
+   ],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/apache/axis-axis1-java/commit/41f3b4e8d04e310ca81f86b92630ab2c11d608bd"
+    },
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread.html/8slf0j9gz35z56t0glt5h0ncwlbn4bdz"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/11/06/12"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-90436",
    "change_note": null
   },
   {
@@ -3889,6 +3995,94 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105135",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-132141",
+   "title": "DrayTek Vigor2960栈溢出",
+   "first_seen": "2026-11-19",
+   "last_seen": "2026-11-19",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-18",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "需固件逆向定位栈溢出处理入口，向对应服务发送构造请求",
+   "impact_scope": "边界路由器/防火墙，常暴露公网",
+   "action_zh": "升级官方修复固件；关闭WAN侧管理界面并限制访问来源",
+   "summary_zh": "远程攻击者向Vigor2960发送构造请求触发栈溢出，可致设备崩溃甚至任意代码执行",
+   "category": null,
+   "cvss": 9.9,
+   "epss": null,
+   "difficulty": "低(远程·需低权限)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0023-authenticated-jsonstatus-usefile-stack-overflow"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-132141"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132141",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-132143",
+   "title": "DrayTek Vigor2960栈溢出",
+   "first_seen": "2026-11-19",
+   "last_seen": "2026-11-19",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-18",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "需固件逆向定位栈溢出处理入口，向对应服务发送构造请求",
+   "impact_scope": "边界路由器/防火墙，常暴露公网",
+   "action_zh": "升级官方修复固件；关闭WAN侧管理界面并限制访问来源",
+   "summary_zh": "远程攻击者向Vigor2960发送构造请求触发栈溢出，可致设备崩溃甚至任意代码执行",
+   "category": null,
+   "cvss": 9.9,
+   "epss": null,
+   "difficulty": "低(远程·需低权限)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0025-authenticated-dowebbackup-stack-overflow"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-132143"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132143",
    "change_note": null
   },
   {

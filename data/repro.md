@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-18 18:14 UTC · 共 **210** 条(强烈推荐 43 / 值得 167)
+**更新**: 2026-11-19 02:40 UTC · 共 **214** 条(强烈推荐 44 / 值得 170)
 
 ---
 
@@ -68,6 +68,16 @@ PoC: [watchtowrlabs/watchTowr-vs-f5-bigip-PreAuth-RCE-CVE-2026-94127 13★(有�
 处置: 升级至9.4.0.030或更高版本
 PoC: [Exploit-Index mandiant/Vulnerability-Disclosures(未验证)(仅README)](https://github.com/mandiant/Vulnerability-Disclosures)
 参考: [参考](https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0042.md) · [参考](https://trust.barracuda.com/security/pre-authentication-authorization-bypass-command-injection) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-116606)
+
+### LiteLLM自定义代码接口RCE
+[CVE-2026-40217](https://nvd.nist.gov/vuln/detail/CVE-2026-40217) | P0 立即处置 | Web框架 | CVSS 8.8 | EPSS 17.0% | 披露 2026-04-10 | 入库 2026-11-19
+🔥 KEV 在野利用,限期 2026-12-02 | PoC 源码可用
+远程攻击者可经/guardrails/test_custom_code注入字节码执行任意代码
+复现: 强烈推荐 — 访问/guardrails/test_custom_code提交恶意字节码 · 影响面: LLM网关，常暴露内网或公网
+处置: 升级至最新版，限制/guardrails/test_custom_code访问
+影响: litellm litellm <=2026-04-08
+PoC: [Exploit-Index learner202649/CVE-2026-40217-PoC(未验证)(有源码)](https://github.com/learner202649/CVE-2026-40217-PoC) · [NVD exploit 引用](https://www.x41-dsec.de/lab/advisories/x41-2026-001-litellm/)
+参考: [参考](https://access.redhat.com/errata/RHSA-2026:24866) · [参考](https://access.redhat.com/errata/RHSA-2026:30056) · [参考](https://access.redhat.com/security/cve/CVE-2026-40217)
 
 ### Ivanti ICS 认证欺骗致远程RCE
 [CVE-2026-104935](https://nvd.nist.gov/vuln/detail/CVE-2026-104935) | P0 立即处置 | 边界设备/VPN | CVSS 8.6 | 披露 2026-10-13 | 入库 2026-10-13
@@ -395,6 +405,16 @@ PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026
 处置: 升级至5.2.3.18或6.1.3.10以上，并限制VCO管理接口公网暴露
 影响: arista velocloud_orchestrator >=5.2.0 <5.2.3.18; arista velocloud_orchestrator >=6.1.0 <6.1.3.10
 参考: [厂商通告](https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114625)
+
+### Apache Axis反序列化RCE
+[CVE-2026-90436](https://nvd.nist.gov/vuln/detail/CVE-2026-90436) | P0 立即处置 | 视频监控 | CVSS 9.8 | EPSS 1.1% | 披露 2026-11-06 | 入库 2026-11-19
+🔥 KEV 在野利用,限期 2026-11-21 | PoC 源码可用
+未认证远程攻击者发送恶意SOAP故障，配合类路径可用类执行代码
+复现: 值得 — 向Axis SOAP端点发恶意fault，需类路径有可用类 · 影响面: SOAP中间件，常暴露内网或公网
+处置: 暂无官方修复，停用Axis 1.x或限制SOAP端点访问
+影响: Apache(产品与版本待 NVD/厂商补充)
+PoC: [Exploit-Index dinosn/axis-cve-2026-90436-lab-poc(未验证)(有源码)](https://github.com/dinosn/axis-cve-2026-90436-lab-poc) · [Exploit-Index fixedbyreboot/CVE-2026-90436-POC(未验证)(有源码)](https://github.com/fixedbyreboot/CVE-2026-90436-POC)
+参考: [参考](https://github.com/apache/axis-axis1-java/commit/41f3b4e8d04e310ca81f86b92630ab2c11d608bd) · [参考](https://lists.apache.org/thread.html/8slf0j9gz35z56t0glt5h0ncwlbn4bdz) · [参考](http://www.openwall.com/lists/oss-security/2026/11/06/12)
 
 ### PHP内存耗尽长跳转UAF致RCE
 [CVE-2026-109618](https://nvd.nist.gov/vuln/detail/CVE-2026-109618) | P0 立即处置 | 安全设备 | CVSS 9.8 | EPSS 100.0% | 披露 2026-10-21 | 入库 2026-10-22
@@ -759,6 +779,20 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 ### CVE-2026-105135
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
+
+### DrayTek Vigor2960栈溢出
+[CVE-2026-132141](https://nvd.nist.gov/vuln/detail/CVE-2026-132141) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-18 | 入库 2026-11-19
+远程攻击者向Vigor2960发送构造请求触发栈溢出，可致设备崩溃甚至任意代码执行
+复现: 值得 — 需固件逆向定位栈溢出处理入口，向对应服务发送构造请求 · 影响面: 边界路由器/防火墙，常暴露公网
+处置: 升级官方修复固件；关闭WAN侧管理界面并限制访问来源
+参考: [参考](https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip) · [参考](https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0023-authenticated-jsonstatus-usefile-stack-overflow) · [参考](https://vuldb.com/cve/CVE-2026-132141)
+
+### DrayTek Vigor2960栈溢出
+[CVE-2026-132143](https://nvd.nist.gov/vuln/detail/CVE-2026-132143) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-18 | 入库 2026-11-19
+远程攻击者向Vigor2960发送构造请求触发栈溢出，可致设备崩溃甚至任意代码执行
+复现: 值得 — 需固件逆向定位栈溢出处理入口，向对应服务发送构造请求 · 影响面: 边界路由器/防火墙，常暴露公网
+处置: 升级官方修复固件；关闭WAN侧管理界面并限制访问来源
+参考: [参考](https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip) · [参考](https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0025-authenticated-dowebbackup-stack-overflow) · [参考](https://vuldb.com/cve/CVE-2026-132143)
 
 ### CVE-2026-16884
 [CVE-2026-16884](https://nvd.nist.gov/vuln/detail/CVE-2026-16884) | P1 重点关注 | ERP/业务系统 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
