@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-19 02:40 UTC · 共 **214** 条(强烈推荐 44 / 值得 170)
+**更新**: 2026-11-19 04:29 UTC · 共 **209** 条(强烈推荐 44 / 值得 165)
 
 ---
 
@@ -185,11 +185,11 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/633633) · [参考](https://hackerone.com/reports/4093475)
 
-### 泛微E-cology任意文件上传RCE
-[CVE-2021-48023](https://nvd.nist.gov/vuln/detail/CVE-2021-48023) | P0 立即处置 | OA/协同办公 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
-未认证攻击者向exportImport上传JSP文件并访问fileTransfer路径，执行任意代码
-复现: 强烈推荐 — 未授权POST uploadOperation.jsp上传JSP并访问 · 影响面: OA系统，常暴露公网/内网
-处置: 升级至修复版本；临时禁用exportImport或限制访问
+### 泛微E-cology未授权文件上传致RCE
+[CVE-2021-48023](https://nvd.nist.gov/vuln/detail/CVE-2021-48023) | P1 重点关注 | OA/协同办公 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
+未授权者向uploadOperation.jsp发送multipart请求上传JSP木马可获服务器权限
+复现: 强烈推荐 — 未授权POST uploadOperation.jsp上传JSP · 影响面: 公网OA系统，常暴露，易被批量利用
+处置: 升级至官方修复版本；无法升级时限制该接口访问并检查上传目录。
 参考: [参考](https://github.com/Ershu1/2021_Hvv/blob/main/%E6%B3%9B%E5%BE%AEOAV9%20%E5%89%8D%E5%8F%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md) · [参考](https://github.com/PeiQi0/PeiQi-WIKI-Book/blob/main/docs/wiki/oa/%E6%B3%9B%E5%BE%AEOA/%E6%B3%9B%E5%BE%AEOA%20E-Cology%20uploadOperation.jsp%20%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md) · [参考](https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/weaver/oa-v9-uploads-file.yaml)
 
 ### FortiMail HA命令注入未授权RCE
@@ -415,6 +415,16 @@ PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026
 影响: Apache(产品与版本待 NVD/厂商补充)
 PoC: [Exploit-Index dinosn/axis-cve-2026-90436-lab-poc(未验证)(有源码)](https://github.com/dinosn/axis-cve-2026-90436-lab-poc) · [Exploit-Index fixedbyreboot/CVE-2026-90436-POC(未验证)(有源码)](https://github.com/fixedbyreboot/CVE-2026-90436-POC)
 参考: [参考](https://github.com/apache/axis-axis1-java/commit/41f3b4e8d04e310ca81f86b92630ab2c11d608bd) · [参考](https://lists.apache.org/thread.html/8slf0j9gz35z56t0glt5h0ncwlbn4bdz) · [参考](http://www.openwall.com/lists/oss-security/2026/11/06/12)
+
+### Synology DSM输出编码缺陷RCE
+[CVE-2024-10441](https://nvd.nist.gov/vuln/detail/CVE-2024-10441) | P0 立即处置 | NAS/存储 | CVSS 9.8 | EPSS 1.3% | 披露 2025-03-19 | 入库 2026-11-19
+🔥 KEV 在野利用,限期 2026-11-21 | 有PoC
+远程未授权攻击者可经管理面触发插件守护进程输出编码缺陷，执行任意代码
+复现: 值得 — 未授权访问DSM/BeeStation管理面，触发插件守护进程输出编码缺陷 · 影响面: NAS存储设备，管理面常暴露公网
+处置: 升级DSM至7.2.2-72806-1、BeeStation至1.1-65374
+影响: synology diskstation_manager >=7.2 <7.2-64570-4; synology diskstation_manager >=7.2.1-69057 <7.2.1-69057-6
+PoC: [Exploit-Index Ntn10/cve-2024-10441-synology-rce(未验证)(仅README)](https://github.com/Ntn10/cve-2024-10441-synology-rce) · [Exploit-Index hazzzein/CVE-2024-10441(未验证)](https://github.com/hazzzein/CVE-2024-10441) · [Exploit-Index nomi-sec/PoC-in-GitHub(未验证)](https://github.com/nomi-sec/PoC-in-GitHub)
+参考: [厂商通告](https://www.synology.com/en-global/security/advisory/Synology_SA_24_20) · [厂商通告](https://www.synology.com/en-global/security/advisory/Synology_SA_24_23) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2024-10441)
 
 ### PHP内存耗尽长跳转UAF致RCE
 [CVE-2026-109618](https://nvd.nist.gov/vuln/detail/CVE-2026-109618) | P0 立即处置 | 安全设备 | CVSS 9.8 | EPSS 100.0% | 披露 2026-10-21 | 入库 2026-10-22
@@ -780,20 +790,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 [CVE-2026-105135](https://nvd.nist.gov/vuln/detail/CVE-2026-105135) | P1 重点关注 | CVSS 10.0 | 披露 2026-10-04 | 入库 2026-10-04
 复现: 值得
 
-### DrayTek Vigor2960栈溢出
-[CVE-2026-132141](https://nvd.nist.gov/vuln/detail/CVE-2026-132141) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-18 | 入库 2026-11-19
-远程攻击者向Vigor2960发送构造请求触发栈溢出，可致设备崩溃甚至任意代码执行
-复现: 值得 — 需固件逆向定位栈溢出处理入口，向对应服务发送构造请求 · 影响面: 边界路由器/防火墙，常暴露公网
-处置: 升级官方修复固件；关闭WAN侧管理界面并限制访问来源
-参考: [参考](https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip) · [参考](https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0023-authenticated-jsonstatus-usefile-stack-overflow) · [参考](https://vuldb.com/cve/CVE-2026-132141)
-
-### DrayTek Vigor2960栈溢出
-[CVE-2026-132143](https://nvd.nist.gov/vuln/detail/CVE-2026-132143) | P1 重点关注 | CVSS 9.9 | 披露 2026-11-18 | 入库 2026-11-19
-远程攻击者向Vigor2960发送构造请求触发栈溢出，可致设备崩溃甚至任意代码执行
-复现: 值得 — 需固件逆向定位栈溢出处理入口，向对应服务发送构造请求 · 影响面: 边界路由器/防火墙，常暴露公网
-处置: 升级官方修复固件；关闭WAN侧管理界面并限制访问来源
-参考: [参考](https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip) · [参考](https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0025-authenticated-dowebbackup-stack-overflow) · [参考](https://vuldb.com/cve/CVE-2026-132143)
-
 ### CVE-2026-16884
 [CVE-2026-16884](https://nvd.nist.gov/vuln/detail/CVE-2026-16884) | P1 重点关注 | ERP/业务系统 | CVSS 9.9 | 披露 2026-11-07 | 入库 2026-11-07
 复现: 值得
@@ -837,37 +833,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 立即升级BIG-IP至F5修复版本，按公告加固
 影响: F5(产品与版本待 NVD/厂商补充)
 参考: [参考](https://my.f5.com/manage/s/article/K000163941)
-
-### BIG-IP栈溢出可致DoS或RCE
-[CVE-2026-120285](https://nvd.nist.gov/vuln/detail/CVE-2026-120285) | P0 立即处置 | 开发库/依赖 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
-未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码
-复现: 值得 — 入口为BIG-IP对外服务，发送特制请求触发栈溢出 · 影响面: 边界负载设备，常暴露公网
-处置: 立即升级BIG-IP至F5修复版本，按公告加固
-影响: F5(产品与版本待 NVD/厂商补充)
-参考: [参考](https://my.f5.com/manage/s/article/K000163939)
-
-### BIG-IP栈溢出可致DoS或RCE
-[CVE-2026-120292](https://nvd.nist.gov/vuln/detail/CVE-2026-120292) | P0 立即处置 | 开发库/依赖 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
-未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码
-复现: 值得 — 入口为BIG-IP对外服务，发送特制请求触发栈溢出 · 影响面: 边界负载设备，常暴露公网
-处置: 立即升级BIG-IP至F5修复版本，按公告加固
-影响: F5(产品与版本待 NVD/厂商补充)
-参考: [参考](https://my.f5.com/manage/s/article/K000163940)
-
-### BIG-IP栈溢出可致DoS或RCE
-[CVE-2026-123637](https://nvd.nist.gov/vuln/detail/CVE-2026-123637) | P0 立即处置 | 开发库/依赖 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
-未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码
-复现: 值得 — 入口为BIG-IP对外服务，发送特制请求触发栈溢出 · 影响面: 边界负载设备，常暴露公网
-处置: 立即升级BIG-IP至F5修复版本，按公告加固
-影响: F5(产品与版本待 NVD/厂商补充)
-参考: [参考](https://my.f5.com/manage/s/article/K000163937)
-
-### ThinkPHP5 _method覆盖RCE
-[CVE-2019-25782](https://nvd.nist.gov/vuln/detail/CVE-2019-25782) | P1 重点关注 | Web框架 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
-未授权攻击者通过POST _method=__construct覆盖filter，注入system执行命令
-复现: 值得 — POST ?s=captcha，_method覆盖filter为system · 影响面: 流行PHP框架，广泛部署于Web业务
-处置: 升级至5.0.24以上；过滤_method与filter参数
-参考: [参考](https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/thinkphp/thinkphp-5023-rce.yaml) · [参考](https://github.com/top-think/framework/commit/4a4b5e64fa4c46f851b4004005bff5f3196de003) · [参考](https://github.com/vulhub/vulhub/tree/master/thinkphp/5.0.23-rce)
 
 ### Apache Roller反序列化RCE
 [CVE-2026-129448](https://nvd.nist.gov/vuln/detail/CVE-2026-129448) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-17 | 入库 2026-11-17

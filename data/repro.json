@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-19T02:40:46+00:00",
- "count": 214,
+ "updated_at": "2026-11-19T04:29:26+00:00",
+ "count": 209,
  "count_recommended": 44,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -912,19 +912,19 @@
   },
   {
    "id": "CVE-2021-48023",
-   "title": "泛微E-cology任意文件上传RCE",
+   "title": "泛微E-cology未授权文件上传致RCE",
    "first_seen": "2026-11-18",
-   "last_seen": "2026-11-18",
+   "last_seen": "2026-11-19",
    "ai_judged": true,
    "third_party": false,
    "open_source": false,
    "published": "2026-11-18",
-   "urgency": "P0 立即处置",
+   "urgency": "P1 重点关注",
    "repro_worthy": "强烈推荐",
-   "repro_note": "未授权POST uploadOperation.jsp上传JSP并访问",
-   "impact_scope": "OA系统，常暴露公网/内网",
-   "action_zh": "升级至修复版本；临时禁用exportImport或限制访问",
-   "summary_zh": "未认证攻击者向exportImport上传JSP文件并访问fileTransfer路径，执行任意代码",
+   "repro_note": "未授权POST uploadOperation.jsp上传JSP",
+   "impact_scope": "公网OA系统，常暴露，易被批量利用",
+   "action_zh": "升级至官方修复版本；无法升级时限制该接口访问并检查上传目录。",
+   "summary_zh": "未授权者向uploadOperation.jsp发送multipart请求上传JSP木马可获服务器权限",
    "category": "OA/协同办公",
    "cvss": 9.8,
    "epss": null,
@@ -1985,6 +1985,63 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-90436",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2024-10441",
+   "title": "Synology DSM输出编码缺陷RCE",
+   "first_seen": "2026-11-19",
+   "last_seen": "2026-11-19",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2025-03-19",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问DSM/BeeStation管理面，触发插件守护进程输出编码缺陷",
+   "impact_scope": "NAS存储设备，管理面常暴露公网",
+   "action_zh": "升级DSM至7.2.2-72806-1、BeeStation至1.1-65374",
+   "summary_zh": "远程未授权攻击者可经管理面触发插件守护进程输出编码缺陷，执行任意代码",
+   "category": "NAS/存储",
+   "cvss": 9.8,
+   "epss": 0.01251,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-21",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "readme",
+   "poc": [
+    {
+     "url": "https://github.com/Ntn10/cve-2024-10441-synology-rce",
+     "label": "Exploit-Index Ntn10/cve-2024-10441-synology-rce(未验证)(仅README)"
+    },
+    {
+     "url": "https://github.com/hazzzein/CVE-2024-10441",
+     "label": "Exploit-Index hazzzein/CVE-2024-10441(未验证)"
+    },
+    {
+     "url": "https://github.com/nomi-sec/PoC-in-GitHub",
+     "label": "Exploit-Index nomi-sec/PoC-in-GitHub(未验证)"
+    }
+   ],
+   "affected": "synology diskstation_manager >=7.2 <7.2-64570-4; synology diskstation_manager >=7.2.1-69057 <7.2.1-69057-6",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_24_20"
+    },
+    {
+     "label": "厂商通告",
+     "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_24_23"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2024-10441"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2024-10441",
    "change_note": null
   },
   {
@@ -3998,94 +4055,6 @@
    "change_note": null
   },
   {
-   "id": "CVE-2026-132141",
-   "title": "DrayTek Vigor2960栈溢出",
-   "first_seen": "2026-11-19",
-   "last_seen": "2026-11-19",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-18",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "需固件逆向定位栈溢出处理入口，向对应服务发送构造请求",
-   "impact_scope": "边界路由器/防火墙，常暴露公网",
-   "action_zh": "升级官方修复固件；关闭WAN侧管理界面并限制访问来源",
-   "summary_zh": "远程攻击者向Vigor2960发送构造请求触发栈溢出，可致设备崩溃甚至任意代码执行",
-   "category": null,
-   "cvss": 9.9,
-   "epss": null,
-   "difficulty": "低(远程·需低权限)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0023-authenticated-jsonstatus-usefile-stack-overflow"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-132141"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132141",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-132143",
-   "title": "DrayTek Vigor2960栈溢出",
-   "first_seen": "2026-11-19",
-   "last_seen": "2026-11-19",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-18",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "需固件逆向定位栈溢出处理入口，向对应服务发送构造请求",
-   "impact_scope": "边界路由器/防火墙，常暴露公网",
-   "action_zh": "升级官方修复固件；关闭WAN侧管理界面并限制访问来源",
-   "summary_zh": "远程攻击者向Vigor2960发送构造请求触发栈溢出，可致设备崩溃甚至任意代码执行",
-   "category": null,
-   "cvss": 9.9,
-   "epss": null,
-   "difficulty": "低(远程·需低权限)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://fw.draytek.com.tw/Vigor2960/Firmware/v1.5.1.7/Vigor2960_v1.5.1.7.zip"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/yikesoftware/DrayTek_Vigor2960_Security_Analysis/tree/main/cases/DRV2960-0025-authenticated-dowebbackup-stack-overflow"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-132143"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132143",
-   "change_note": null
-  },
-  {
    "id": "CVE-2026-16884",
    "title": "CVE-2026-16884",
    "first_seen": "2026-11-07",
@@ -4359,158 +4328,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116953",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-120285",
-   "title": "BIG-IP栈溢出可致DoS或RCE",
-   "first_seen": "2026-11-18",
-   "last_seen": "2026-11-18",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-18",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "值得",
-   "repro_note": "入口为BIG-IP对外服务，发送特制请求触发栈溢出",
-   "impact_scope": "边界负载设备，常暴露公网",
-   "action_zh": "立即升级BIG-IP至F5修复版本，按公告加固",
-   "summary_zh": "未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码",
-   "category": "开发库/依赖",
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "F5(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://my.f5.com/manage/s/article/K000163939"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120285",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-120292",
-   "title": "BIG-IP栈溢出可致DoS或RCE",
-   "first_seen": "2026-11-18",
-   "last_seen": "2026-11-18",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-18",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "值得",
-   "repro_note": "入口为BIG-IP对外服务，发送特制请求触发栈溢出",
-   "impact_scope": "边界负载设备，常暴露公网",
-   "action_zh": "立即升级BIG-IP至F5修复版本，按公告加固",
-   "summary_zh": "未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码",
-   "category": "开发库/依赖",
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "F5(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://my.f5.com/manage/s/article/K000163940"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120292",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-123637",
-   "title": "BIG-IP栈溢出可致DoS或RCE",
-   "first_seen": "2026-11-18",
-   "last_seen": "2026-11-18",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-18",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "值得",
-   "repro_note": "入口为BIG-IP对外服务，发送特制请求触发栈溢出",
-   "impact_scope": "边界负载设备，常暴露公网",
-   "action_zh": "立即升级BIG-IP至F5修复版本，按公告加固",
-   "summary_zh": "未认证远程攻击者可向BIG-IP发送特制请求触发栈溢出，导致DoS并可能执行代码",
-   "category": "开发库/依赖",
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "F5(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://my.f5.com/manage/s/article/K000163937"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123637",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2019-25782",
-   "title": "ThinkPHP5 _method覆盖RCE",
-   "first_seen": "2026-11-18",
-   "last_seen": "2026-11-18",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-18",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "POST ?s=captcha，_method覆盖filter为system",
-   "impact_scope": "流行PHP框架，广泛部署于Web业务",
-   "action_zh": "升级至5.0.24以上；过滤_method与filter参数",
-   "summary_zh": "未授权攻击者通过POST _method=__construct覆盖filter，注入system执行命令",
-   "category": "Web框架",
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/vulnerabilities/thinkphp/thinkphp-5023-rce.yaml"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/top-think/framework/commit/4a4b5e64fa4c46f851b4004005bff5f3196de003"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/vulhub/vulhub/tree/master/thinkphp/5.0.23-rce"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2019-25782",
    "change_note": null
   },
   {
