@@ -5,25 +5,43 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 20 Nov 2026 08:42:42 +0000</pubDate>
-    <lastBuildDate>Fri, 20 Nov 2026 08:42:42 +0000</lastBuildDate>
+    <pubDate>Fri, 20 Nov 2026 17:54:40 +0000</pubDate>
+    <lastBuildDate>Fri, 20 Nov 2026 17:54:40 +0000</lastBuildDate>
     <item>
-      <title>[critical]D-Link DIR-600L GENA接口命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-133493</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-133493-2026-11-20</guid>
-      <description>CVE-2026-133493 · P1 重点关注 · 披露 2026-11-20 · 组件 网络设备 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
-A vulnerability was identified in D-Link DIR-600L 2.17b02. Such manipulation leads to os command injection.
+      <title>[critical]git-lfs SSH URL命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-69260</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-69260-2026-11-20</guid>
+      <description>CVE-2026-69260 · P1 重点关注 · 披露 2026-11-20 · 组件 开发库/依赖 · CVSS 待定(NVD 未评分) · EPSS 1.1%,前 67% · 类型 命令注入(RCE)
+By inserting shell meta-characters into the SSH URL, an attacker may be able to execute arbitrary commands on the remote host, if the host passes the commands t…
 信号:</description>
-      <pubDate>Fri, 20 Nov 2026 08:42:42 +0000</pubDate>
+      <pubDate>Fri, 20 Nov 2026 17:54:40 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Authorizer插件权限分配错误致提权</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129056</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129056-2026-11-20</guid>
-      <description>CVE-2026-129056 · P1 重点关注 · 披露 2026-11-20 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
-Incorrect Privilege Assignment vulnerability in Paul Ryan Authorizer authorizer allows Privilege Escalation.This issue affects Authorizer: from n/a before 3.17.…
+      <title>[critical]Newsletters插件反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129039</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129039-2026-11-20</guid>
+      <description>CVE-2026-129039 · P1 重点关注 · 披露 2026-11-20 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data vulnerability in Tribulant Software Newsletters newsletters-lite allows Object Injection.This issue affects Newsletters: from …
 信号:</description>
-      <pubDate>Fri, 20 Nov 2026 08:42:42 +0000</pubDate>
+      <pubDate>Fri, 20 Nov 2026 17:54:40 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Tegsoft呼叫中心任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-14914</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-14914-2026-11-20</guid>
+      <description>CVE-2026-14914 · P1 重点关注 · 披露 2026-11-20 · CVSS 10.0 · 类型 任意文件上传 · 难度 低(远程·免认证)
+Unrestricted upload of file with dangerous type vulnerability in Tegsoft Yönetim ve Bilişim Hizmetleri Tic.
+信号:</description>
+      <pubDate>Fri, 20 Nov 2026 17:54:40 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]miniOrange OTP认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129073</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129073-2026-11-20</guid>
+      <description>CVE-2026-129073 · P1 重点关注 · 披露 2026-11-20 · 组件 NAS/存储 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
+Authentication Bypass Using an Alternate Path or Channel vulnerability in miniOrange miniorange otp verification miniorange-otp-verification allows Authenticati…
+信号:</description>
+      <pubDate>Fri, 20 Nov 2026 17:54:40 +0000</pubDate>
     </item>
   </channel>
 </rss>

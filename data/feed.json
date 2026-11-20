@@ -1,19 +1,20 @@
 {
  "version": 3,
- "generated_at": "2026-11-20T08:42:42+00:00",
+ "generated_at": "2026-11-20T17:54:40+00:00",
  "lookback_hours": 5,
- "count": 2,
+ "count": 4,
  "stats": {
-  "total": 2,
+  "total": 4,
   "by_tier": {
-   "critical": 2
+   "critical": 4
   },
   "by_urgency": {
-   "P1 重点关注": 2
+   "P1 重点关注": 4
   },
   "by_category": {
-   "网络设备": 1,
-   "未知": 1
+   "未知": 2,
+   "开发库/依赖": 1,
+   "NAS/存储": 1
   },
   "kev": 0,
   "with_poc": 0,
@@ -23,20 +24,56 @@
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-133493",
+   "id": "CVE-2026-69260",
    "tier": "critical",
-   "title": "D-Link DIR-600L GENA接口命令注入",
-   "title_zh": "D-Link DIR-600L GENA接口命令注入",
-   "summary_zh": "远程攻击者可经gena.cgi的GENA处理逻辑拼接系统命令，以设备权限执行任意指令并完全控制路由器。",
-   "published": "2026-11-20T07:17:10.853",
-   "cvss": 10.0,
+   "title": "git-lfs SSH URL命令注入",
+   "title_zh": "git-lfs SSH URL命令注入",
+   "summary_zh": "SSH URL含shell元字符,受害者克隆或拉取时在远端执行任意命令",
+   "published": "2026-11-20T14:47:01Z",
+   "cvss": null,
+   "severity": "HIGH",
+   "vector": null,
+   "epss": 0.01101,
+   "epss_percentile": 0.66502,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "git",
+   "difficulty": null,
+   "products": [],
+   "affected": "go:github.com/git-lfs/git-lfs >= 0.5.0, <= 2.13.3; go:github.com/git-lfs/git-lfs/v3 >= 3.0.0, < 3.8.1(修复: 3.8.1)",
+   "ghsa_url": "https://github.com/advisories/GHSA-w3f2-pr6x-wwjc",
+   "refs": [],
+   "poc": [],
+   "nuclei": false,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至 3.8.1,勿对不可信仓库使用可疑SSH URL",
+   "repro_worthy": "一般",
+   "repro_note": "构造含shell元字符的SSH URL,诱导客户端拉取时触发",
+   "impact_scope": "开发者终端工具,影响开发主机",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-69260",
+   "description": "### Impact When Git LFS makes object transfer or authentication requests to a remote host via SSH, it passes the path component of the remote's SSH URL as part of a command to be executed, but does not properly format the URL's path component as a single argument. By inserting shell meta-characters into the SSH URL, an attacker may be able to execute arbitrary commands on the remote host, if the host passes the commands to a shell without sanitizing them first."
+  },
+  {
+   "id": "CVE-2026-129039",
+   "tier": "critical",
+   "title": "Newsletters插件反序列化RCE",
+   "title_zh": "Newsletters插件反序列化RCE",
+   "summary_zh": "插件反序列化未受信数据,攻击者可注入对象进而远程执行代码",
+   "published": "2026-11-20T14:17:45.273",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "命令注入",
-    "命令注入(RCE)"
+    "反序列化(RCE)"
    ],
    "vuln_class": "RCE",
    "fame_term": null,
@@ -47,15 +84,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/ruanyi101/router-firmware-security-advisories/blob/main/router-firmware-GitHub-advisories/related-findings/D-Link-DIR-600L-gena-cgi-command-injection-affected-model.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-133493"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1049874"
+     "url": "https://patchstack.com/database/wordpress/plugin/newsletters-lite/vulnerability/wordpress-newsletters-plugin-4-18-2-php-object-injection-vulnerability-2?_s_id=cve"
     }
    ],
    "poc": [],
@@ -66,29 +95,29 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "关注厂商固件更新；无法修复时禁用GENA/UPnP并禁止公网访问管理面。",
-   "repro_worthy": "值得",
-   "repro_note": "未授权访问/gena.cgi的GENA处理入口，经未过滤参数注入系统命令。",
-   "impact_scope": "家用/小型办公路由器，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133493",
-   "description": "A vulnerability was identified in D-Link DIR-600L 2.17b02. Affected is the function genacgi_main of the file gena.cgi of the component GENA Handler. Such manipulation leads to os command injection. The attack can be launched remotely. The exploit is publicly available and might be used."
+   "action_zh": "升级至4.18.2之后的修复版本,或先停用该插件",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress站点插件,常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129039",
+   "description": "Deserialization of Untrusted Data vulnerability in Tribulant Software Newsletters newsletters-lite allows Object Injection.This issue affects Newsletters: from n/a through 4.18.2."
   },
   {
-   "id": "CVE-2026-129056",
+   "id": "CVE-2026-14914",
    "tier": "critical",
-   "title": "Authorizer插件权限分配错误致提权",
-   "title_zh": "Authorizer插件权限分配错误致提权",
-   "summary_zh": "低权限用户可利用插件授权流程中的错误权限分配提升为管理员，进而接管WordPress站点。",
-   "published": "2026-11-20T08:18:28.333",
-   "cvss": 9.8,
+   "title": "Tegsoft呼叫中心任意文件上传",
+   "title_zh": "Tegsoft呼叫中心任意文件上传",
+   "summary_zh": "可访问上传功能的攻击者上传危险类型文件并植入WebShell控制服务器",
+   "published": "2026-11-20T14:17:53.043",
+   "cvss": 10.0,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-266"
+    "任意文件上传"
    ],
-   "vuln_class": "提权",
+   "vuln_class": "任意文件读写",
    "fame_term": null,
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -97,7 +126,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://patchstack.com/database/wordpress/plugin/authorizer/vulnerability/wordpress-authorizer-plugin-3-17-2-privilege-escalation-vulnerability?_s_id=cve"
+     "url": "https://siberguvenlik.gov.tr/guvenlik-bildirimleri/detay/tr-26-1588"
     }
    ],
    "poc": [],
@@ -108,34 +137,64 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级Authorizer至3.17.2及以上版本。",
+   "action_zh": "升级至 latest-202611161510 及之后版本,校验上传类型",
+   "repro_worthy": "一般",
+   "repro_note": "向上传接口提交危险类型文件,写入Web可访问目录",
+   "impact_scope": "呼叫中心系统,多部署于企业内外网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14914",
+   "description": "Unrestricted upload of file with dangerous type vulnerability in Tegsoft Yönetim ve Bilişim Hizmetleri Tic. Ltd. Şti. Tegsoft Contact Center allows Upload a Web Shell to a Web Server. This issue affects Tegsoft Contact Center: before latest-202611161510."
+  },
+  {
+   "id": "CVE-2026-129073",
+   "tier": "critical",
+   "title": "miniOrange OTP认证绕过",
+   "title_zh": "miniOrange OTP认证绕过",
+   "summary_zh": "插件认证绕过,攻击者可借替代路径滥用认证流程冒充用户登录",
+   "published": "2026-11-20T13:18:37.040",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "认证绕过"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/miniorange-otp-verification/vulnerability/wordpress-miniorange-otp-verification-plugin-5-6-1-broken-authentication-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至5.6.1之后的修复版本,或改用其他MFA方案",
    "repro_worthy": "不建议",
    "repro_note": null,
-   "impact_scope": "WordPress站点，插件多部署于公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129056",
-   "description": "Incorrect Privilege Assignment vulnerability in Paul Ryan Authorizer authorizer allows Privilege Escalation.This issue affects Authorizer: from n/a before 3.17.2."
+   "impact_scope": "WordPress双因素认证插件",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129073",
+   "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in miniOrange miniorange otp verification miniorange-otp-verification allows Authentication Abuse.This issue affects miniorange otp verification: from n/a through 5.6.1."
   }
  ],
  "media": [],
  "commits": [
   {
-   "repo": "postgres/postgres",
-   "sha": "47ca0f45e6fed487d9c3b83db0e7c6a631c1cfb7",
-   "url": "https://github.com/postgres/postgres/commit/47ca0f45e6fed487d9c3b83db0e7c6a631c1cfb7",
-   "title": "Fix parsing mode tracking when recycling datetime format cache entries",
-   "date": "2026-11-20T06:20:00",
-   "score": 2,
-   "matched": [
-    "格式串"
-   ],
-   "cve": null
-  },
-  {
-   "repo": "postgres/postgres",
-   "sha": "e7e1835e6b026589c8d0650dda4cd1ec8e0e29ea",
-   "url": "https://github.com/postgres/postgres/commit/e7e1835e6b026589c8d0650dda4cd1ec8e0e29ea",
-   "title": "psql: Fix out-of-bounds reads in prompt expansion",
-   "date": "2026-11-20T06:12:30",
+   "repo": "haproxy/haproxy",
+   "sha": "b4e427bda9073816767005d51f5b1ceaab73905b",
+   "url": "https://github.com/haproxy/haproxy/commit/b4e427bda9073816767005d51f5b1ceaab73905b",
+   "title": "BUG/MINOR: tcpcheck: fix out-of-bounds read on the MySQL server version",
+   "date": "2026-11-20T15:56:26",
    "score": 2,
    "matched": [
     "越界读写"
@@ -143,11 +202,95 @@
    "cve": null
   },
   {
+   "repo": "nodejs/node",
+   "sha": "dcaf43a167f14bd8209361ec7f2179f0ac71e7a9",
+   "url": "https://github.com/nodejs/node/commit/dcaf43a167f14bd8209361ec7f2179f0ac71e7a9",
+   "title": "module: disable the compile cache while V8 coverage is collected",
+   "date": "2026-11-20T14:59:50",
+   "score": 2,
+   "matched": [
+    "反序列化"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/httpd",
+   "sha": "05f95a8b31d1e8ec6a24fffedc596a950092c5d6",
+   "url": "https://github.com/apache/httpd/commit/05f95a8b31d1e8ec6a24fffedc596a950092c5d6",
+   "title": "mpm_event, mpm_worker: free what the child still holds before its pools go in one-process mode.",
+   "date": "2026-11-20T14:43:27",
+   "score": 2,
+   "matched": [
+    "类型混淆/double free"
+   ],
+   "cve": null
+  },
+  {
    "repo": "envoyproxy/envoy",
-   "sha": "86f73b924b1cea0f7df7574fe549e669c2e90ef3",
-   "url": "https://github.com/envoyproxy/envoy/commit/86f73b924b1cea0f7df7574fe549e669c2e90ef3",
-   "title": "docs: fix the description of --reject-unknown-dynamic-fields (#49484)",
-   "date": "2026-11-20T05:20:53",
+   "sha": "74c6ca96044aa21885ccb0e146706a1f9e6ce822",
+   "url": "https://github.com/envoyproxy/envoy/commit/74c6ca96044aa21885ccb0e146706a1f9e6ce822",
+   "title": "deps: Bump Go -> 1.27.4 (#49489)",
+   "date": "2026-11-20T14:27:14",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openssl/openssl",
+   "sha": "1b2e71790fcd1e72c710e46b86b1f5f90a721014",
+   "url": "https://github.com/openssl/openssl/commit/1b2e71790fcd1e72c710e46b86b1f5f90a721014",
+   "title": "Configurations/10-main.conf: disable printf builtins for mingw targets",
+   "date": "2026-11-20T14:01:42",
+   "score": 2,
+   "matched": [
+    "格式串"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "b2a5bc68e77e100a6f7b32fc518cb4782d546c97",
+   "url": "https://github.com/haproxy/haproxy/commit/b2a5bc68e77e100a6f7b32fc518cb4782d546c97",
+   "title": "BUG/MINOR: tcpcheck: fix out-of-bounds reads on truncated SPOP hello frames",
+   "date": "2026-11-20T13:23:52",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "a62a434a10ea58e5b6026360b97c26bc5e6bbc55",
+   "url": "https://github.com/haproxy/haproxy/commit/a62a434a10ea58e5b6026360b97c26bc5e6bbc55",
+   "title": "BUG/MINOR: tcpcheck: fix out-of-bounds reads on truncated LDAP bind responses",
+   "date": "2026-11-20T13:23:52",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "778b7af9cb8a106f7a5eea0e2957b790deed7182",
+   "url": "https://github.com/haproxy/haproxy/commit/778b7af9cb8a106f7a5eea0e2957b790deed7182",
+   "title": "BUG/MINOR: ssl/cli: use the right list member in \"add ssl crt-list\" release",
+   "date": "2026-11-20T10:52:20",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openbsd/src",
+   "sha": "b26b5eeaca42706a49e9474ad25eb8a0f37a5201",
+   "url": "https://github.com/openbsd/src/commit/b26b5eeaca42706a49e9474ad25eb8a0f37a5201",
+   "title": "Update to pkgconf 3.0.11",
+   "date": "2026-11-20T10:19:34",
    "score": 2,
    "matched": [
     "安全修复"
