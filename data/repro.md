@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-19 23:39 UTC · 共 **210** 条(强烈推荐 44 / 值得 166)
+**更新**: 2026-11-20 04:16 UTC · 共 **212** 条(强烈推荐 46 / 值得 166)
 
 ---
 
@@ -185,6 +185,16 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/633633) · [参考](https://hackerone.com/reports/4093475)
 
+### VMware vCenter目录服务认证绕过
+[CVE-2026-123890](https://nvd.nist.gov/vuln/detail/CVE-2026-123890) | P1 重点关注 | 容器/虚拟化 | CVSS 9.8 | 披露 2026-11-19 | 入库 2026-11-20
+PoC 源码可用
+未认证远程攻击者可绕过vCenter目录服务认证并取得管理权限，进而控制虚拟化平台
+复现: 强烈推荐 — 未授权访问vCenter Directory Service认证接口，构造请求绕过身份校验 · 影响面: 虚拟化管理平台，内网核心资产
+处置: 升级至9.1.1.0200/9.0.2.0200/8.0 U3m等修复版本
+影响: Broadcom(产品与版本待 NVD/厂商补充)
+PoC: [Quaerendir/cve-2026-123890-audit 0★(有源码)](https://github.com/Quaerendir/cve-2026-123890-audit) · [Cyber-BansalAI/vmware-vcenter-2026 0★(仅README)](https://github.com/Cyber-BansalAI/vmware-vcenter-2026)
+参考: [参考](https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39495)
+
 ### 泛微E-cology未授权文件上传致RCE
 [CVE-2021-48023](https://nvd.nist.gov/vuln/detail/CVE-2021-48023) | P1 重点关注 | OA/协同办公 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
 未授权者向uploadOperation.jsp发送multipart请求上传JSP木马可获服务器权限
@@ -351,6 +361,15 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://gi
 复现: 强烈推荐 — 未认证调用服务器接口修改客户端安全设置，需确认客户端联动 · 影响面: 远程接入服务器，客户端策略被篡改
 处置: 升级至 14.61 并核查客户端安全策略
 参考: [参考](https://www.absolute.com/platform/security-information/vulnerability-archive/cve-2026-116769)
+
+### PHP-FPM请求走私致未授权RCE
+[CVE-2026-129289](https://nvd.nist.gov/vuln/detail/CVE-2026-129289) | P1 重点关注 | CVSS 9.2 | 披露 2026-11-19 | 入库 2026-11-20
+PoC 源码可用
+未认证攻击者用单个畸形multipart请求走私到后端，伪造SCRIPT_FILENAME等参数执行任意PHP代码
+复现: 强烈推荐 — 发送携带未读请求体的multipart请求，走私伪造SCRIPT_FILENAME/PHP_ADMIN_VALUE · 影响面: PHP-FPM Web中间件，全站后端通用
+处置: 关注PHP-FPM修复版本并升级；临时限制未读请求体的multipart转发
+PoC: [HOSTED-POWER/php_uploadprogress_guard 180★(有源码)](https://github.com/HOSTED-POWER/php_uploadprogress_guard)
+参考: [参考](https://github.com/php/php-src/security/advisories/GHSA-qc49-hpvq-g2w6) · [参考](https://bugzilla.suse.com/show_bug.cgi?id=1290687) · [参考](https://github.com/anonaddy/docker/issues/465)
 
 ### Oracle Java未认证远程高危
 [CVE-2026-114820](https://nvd.nist.gov/vuln/detail/CVE-2026-114820) | P0 立即处置 | CVSS 9.1 | 披露 2026-10-24 | 入库 2026-10-24
