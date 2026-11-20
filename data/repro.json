@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-20T04:16:01+00:00",
- "count": 212,
+ "updated_at": "2026-11-20T08:42:42+00:00",
+ "count": 213,
  "count_recommended": 46,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -3150,6 +3150,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-61624",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-133493",
+   "title": "D-Link DIR-600L GENA接口命令注入",
+   "first_seen": "2026-11-20",
+   "last_seen": "2026-11-20",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-20",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问/gena.cgi的GENA处理入口，经未过滤参数注入系统命令。",
+   "impact_scope": "家用/小型办公路由器，常暴露公网",
+   "action_zh": "关注厂商固件更新；无法修复时禁用GENA/UPnP并禁止公网访问管理面。",
+   "summary_zh": "远程攻击者可经gena.cgi的GENA处理逻辑拼接系统命令，以设备权限执行任意指令并完全控制路由器。",
+   "category": "网络设备",
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/ruanyi101/router-firmware-security-advisories/blob/main/router-firmware-GitHub-advisories/related-findings/D-Link-DIR-600L-gena-cgi-command-injection-affected-model.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-133493"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1049874"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133493",
    "change_note": null
   },
   {

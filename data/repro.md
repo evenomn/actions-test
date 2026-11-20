@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-20 04:16 UTC · 共 **212** 条(强烈推荐 46 / 值得 166)
+**更新**: 2026-11-20 08:42 UTC · 共 **213** 条(强烈推荐 46 / 值得 167)
 
 ---
 
@@ -636,6 +636,13 @@ PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/ho
 处置: 升级至 FortiOS 7.6.5 或 7.4.10 及以上版本，并排查入侵痕迹
 影响: fortinet fortios >=6.4.0 <7.4.10; fortinet fortios >=7.6.0 <7.6.5
 参考: [厂商通告](https://fortiguard.fortinet.com/psirt/FG-IR-26-122) · [参考](https://cert-portal.siemens.com/productcert/html/ssa-975644.html) · [参考](https://unit42.paloaltonetworks.com/fortimanager-cve-2024-47575-peerstitch-malware/#post-188095-_guyq53ar8k05)
+
+### D-Link DIR-600L GENA接口命令注入
+[CVE-2026-133493](https://nvd.nist.gov/vuln/detail/CVE-2026-133493) | P1 重点关注 | 网络设备 | CVSS 10.0 | 披露 2026-11-20 | 入库 2026-11-20
+远程攻击者可经gena.cgi的GENA处理逻辑拼接系统命令，以设备权限执行任意指令并完全控制路由器。
+复现: 值得 — 未授权访问/gena.cgi的GENA处理入口，经未过滤参数注入系统命令。 · 影响面: 家用/小型办公路由器，常暴露公网
+处置: 关注厂商固件更新；无法修复时禁用GENA/UPnP并禁止公网访问管理面。
+参考: [参考](https://github.com/ruanyi101/router-firmware-security-advisories/blob/main/router-firmware-GitHub-advisories/related-findings/D-Link-DIR-600L-gena-cgi-command-injection-affected-model.md) · [参考](https://vuldb.com/cve/CVE-2026-133493) · [参考](https://vuldb.com/submit/1049874)
 
 ### 3DEXPERIENCE启动器反序列化RCE
 [CVE-2026-93664](https://nvd.nist.gov/vuln/detail/CVE-2026-93664) | P1 重点关注 | CVSS 10.0 | 披露 2026-11-16 | 入库 2026-11-17
