@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-21 02:35 UTC · 共 **213** 条(强烈推荐 46 / 值得 167)
+**更新**: 2026-11-21 04:15 UTC · 共 **216** 条(强烈推荐 47 / 值得 169)
 
 ---
 
@@ -364,6 +364,13 @@ PoC: [ThomasPoppelgaard/netscaler-ctx697096-checker 18★(有源码)](https://gi
 处置: 升级至 14.61 并核查客户端安全策略
 参考: [参考](https://www.absolute.com/platform/security-information/vulnerability-archive/cve-2026-116769)
 
+### Poste.io邮件服务命令注入RCE
+[CVE-2026-127027](https://nvd.nist.gov/vuln/detail/CVE-2026-127027) | P1 重点关注 | CVSS 9.2 | 披露 2026-11-20 | 入库 2026-11-21
+未认证攻击者向25端口发送恶意附件邮件即可在容器内以root执行任意命令，完全控制邮件服务器。
+复现: 强烈推荐 — 入口：SMTP 25端口投递恶意附件；无需认证，触发root解包命令拼接。 · 影响面: 公网邮件服务器，常暴露25端口
+处置: 升级至厂商修复版本；无法升级时限制25端口来源并禁用自动解包附件。
+参考: [参考](https://cert.pl/en/posts/2026/11/CVE-2026-127027) · [参考](https://poste.io/)
+
 ### PHP-FPM请求走私致未授权RCE
 [CVE-2026-129289](https://nvd.nist.gov/vuln/detail/CVE-2026-129289) | P1 重点关注 | CVSS 9.2 | 披露 2026-11-19 | 入库 2026-11-20
 PoC 源码可用
@@ -640,6 +647,15 @@ PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/ho
 影响: ivanti connect_secure >=25.1.0.0 <25.1.1.3
 参考: [厂商通告](https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935) · [参考](https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111357)
 
+### SAP NetWeaver门户JNDI注入
+[CVE-2025-42884](https://nvd.nist.gov/vuln/detail/CVE-2025-42884) | P0 立即处置 | OA/协同办公 | CVSS 6.5 | EPSS 0.3% | 披露 2025-11-11 | 入库 2026-11-21
+🔥 KEV 在野利用,限期 2026-11-23
+未认证攻击者可向门户JNDI查找注入环境属性或URL，访问非预期提供者并泄露或篡改服务器信息。
+复现: 值得 — 未认证访问门户JNDI查找入口，注入环境属性/URL，需可访问提供者 · 影响面: 企业门户/OA，常暴露内网或公网
+处置: 升级SAP修复版本；限制JNDI提供者并校验查找URL
+影响: sap netweaver_enterprise_portal
+参考: [参考](https://me.sap.com/notes/3660969) · [厂商通告](https://url.sap/sapsecuritypatchday) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-42884)
+
 ### FortiOS 路径遍历任意文件读取
 [CVE-2025-61624](https://nvd.nist.gov/vuln/detail/CVE-2025-61624) | P0 立即处置 | 边界设备/VPN | CVSS 6.5 | EPSS 0.6% | 披露 2026-04-14 | 入库 2026-10-16
 🔥 KEV 在野利用,限期 2026-10-19
@@ -863,6 +879,13 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — ioos服务sub_416D88，group_id/group_name参数拼接命令 · 影响面: 无线AP/路由器，边界暴露面
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
+
+### MONAI Label路径遍历RCE
+[CVE-2026-133968](https://nvd.nist.gov/vuln/detail/CVE-2026-133968) | P0 立即处置 | CVSS 9.8 | 披露 2026-11-20 | 入库 2026-11-21
+攻击者通过PUT /datastore/image的image参数路径遍历写入文件并执行代码，据描述已在野利用。
+复现: 值得 — 向/datastore/image的image参数构造路径遍历并尝试写文件 · 影响面: 医学影像AI平台，内网为主
+处置: 升级官方修复版本；限制/datastore/image接口访问
+参考: [参考](https://github.com/Project-MONAI/MONAILabel/pull/1915) · [参考](https://github.com/Project-MONAI/MONAILabel/security/advisories/GHSA-qc22-rmgc-vg94) · [参考](https://www.theregister.com/security/2026/11/20/china-attackers-deployed-ai-agents-that-autonomously-found-and-exploited-a-0-day-to-take-over-a-university-server/5311382)
 
 ### BIG-IP栈溢出可致DoS或RCE
 [CVE-2026-116953](https://nvd.nist.gov/vuln/detail/CVE-2026-116953) | P0 立即处置 | 开发库/依赖 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18

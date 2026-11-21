@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-21T02:35:31+00:00",
- "count": 213,
- "count_recommended": 46,
+ "updated_at": "2026-11-21T04:15:27+00:00",
+ "count": 216,
+ "count_recommended": 47,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -1768,6 +1768,46 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-127027",
+   "title": "Poste.io邮件服务命令注入RCE",
+   "first_seen": "2026-11-21",
+   "last_seen": "2026-11-21",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-20",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "入口：SMTP 25端口投递恶意附件；无需认证，触发root解包命令拼接。",
+   "impact_scope": "公网邮件服务器，常暴露25端口",
+   "action_zh": "升级至厂商修复版本；无法升级时限制25端口来源并禁用自动解包附件。",
+   "summary_zh": "未认证攻击者向25端口发送恶意附件邮件即可在容器内以root执行任意命令，完全控制邮件服务器。",
+   "category": null,
+   "cvss": 9.2,
+   "epss": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cert.pl/en/posts/2026/11/CVE-2026-127027"
+    },
+    {
+     "label": "参考",
+     "url": "https://poste.io/"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-127027",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-129289",
    "title": "PHP-FPM请求走私致未授权RCE",
    "first_seen": "2026-11-20",
@@ -3179,6 +3219,50 @@
    "change_note": null
   },
   {
+   "id": "CVE-2025-42884",
+   "title": "SAP NetWeaver门户JNDI注入",
+   "first_seen": "2026-11-21",
+   "last_seen": "2026-11-21",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2025-11-11",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未认证访问门户JNDI查找入口，注入环境属性/URL，需可访问提供者",
+   "impact_scope": "企业门户/OA，常暴露内网或公网",
+   "action_zh": "升级SAP修复版本；限制JNDI提供者并校验查找URL",
+   "summary_zh": "未认证攻击者可向门户JNDI查找注入环境属性或URL，访问非预期提供者并泄露或篡改服务器信息。",
+   "category": "OA/协同办公",
+   "cvss": 6.5,
+   "epss": 0.00276,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-23",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "sap netweaver_enterprise_portal",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://me.sap.com/notes/3660969"
+    },
+    {
+     "label": "厂商通告",
+     "url": "https://url.sap/sapsecuritypatchday"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-42884"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-42884",
+   "change_note": null
+  },
+  {
    "id": "CVE-2025-61624",
    "title": "FortiOS 路径遍历任意文件读取",
    "first_seen": "2026-10-16",
@@ -4500,6 +4584,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120228",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-133968",
+   "title": "MONAI Label路径遍历RCE",
+   "first_seen": "2026-11-21",
+   "last_seen": "2026-11-21",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-20",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "向/datastore/image的image参数构造路径遍历并尝试写文件",
+   "impact_scope": "医学影像AI平台，内网为主",
+   "action_zh": "升级官方修复版本；限制/datastore/image接口访问",
+   "summary_zh": "攻击者通过PUT /datastore/image的image参数路径遍历写入文件并执行代码，据描述已在野利用。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Project-MONAI/MONAILabel/pull/1915"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Project-MONAI/MONAILabel/security/advisories/GHSA-qc22-rmgc-vg94"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.theregister.com/security/2026/11/20/china-attackers-deployed-ai-agents-that-autonomously-found-and-exploited-a-0-day-to-take-over-a-university-server/5311382"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133968",
    "change_note": null
   },
   {
