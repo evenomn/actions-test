@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "updated_at": "2026-11-20T17:54:40+00:00",
+ "updated_at": "2026-11-21T02:35:31+00:00",
  "count": 213,
  "count_recommended": 46,
  "pending_count": 0,
@@ -114,6 +114,108 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2015-3306",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-123890",
+   "title": "vCenter 目录服务认证绕过可接管平台",
+   "first_seen": "2026-11-20",
+   "last_seen": "2026-11-21",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-19",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "对 vCenter 目录服务认证接口构造未授权请求，无需任何凭据",
+   "impact_scope": "虚拟化管理平台，运维区核心资产",
+   "action_zh": "升级至 9.1.1.0200 / 9.0.2.0200 / 8.0 U3m 并排查入侵痕迹",
+   "summary_zh": "未认证远程攻击者可绕过 VMware Directory Service 认证，取得 vCenter 管理权限并控制虚拟化平台",
+   "category": "容器/虚拟化",
+   "cvss": 9.8,
+   "epss": 0.00843,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-23",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/sanMuSec/vcenter-80u3m-patch-download",
+     "label": "sanMuSec/vcenter-80u3m-patch-download 1★(仅README)"
+    },
+    {
+     "url": "https://github.com/LLCForge/CVE-2026-123890",
+     "label": "LLCForge/CVE-2026-123890 0★(有源码)"
+    },
+    {
+     "url": "https://cloud.google.com/blog/topics/threat-intelligence/armory-castle-exploits-vsphere?e=48754805",
+     "label": "NVD exploit 引用"
+    }
+   ],
+   "affected": "vmware cloud_foundation >=5.0 <5.2.5; vmware telco_cloud_platform >=3.0 <=5.2",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39495"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-123890"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123890",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-76466",
+   "title": "Expressway 硬编码凭据致远程Root执行",
+   "first_seen": "2026-10-21",
+   "last_seen": "2026-11-21",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-21",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "使用数据库服务内置硬编码凭据登录，网络可达即可 root 执行命令",
+   "impact_scope": "边界协作/VPN设备，常暴露公网",
+   "action_zh": "升级至 X15.5.20 及以上，限制管理面端口暴露",
+   "summary_zh": "未认证远程攻击者利用数据库服务硬编码凭据，以 root 权限执行任意系统命令",
+   "category": "网络设备",
+   "cvss": 9.8,
+   "epss": 0.00417,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-23",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "readme",
+   "poc": [
+    {
+     "url": "https://github.com/dinosn/cve-2026-76466",
+     "label": "Exploit-Index dinosn/cve-2026-76466(未验证)(仅README)"
+    },
+    {
+     "url": "https://www.f6.ru/media-center/press-releases/cisco-cve-2026-76466/",
+     "label": "NVD exploit 引用"
+    }
+   ],
+   "affected": "cisco expressway <x15.5.20",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-vcs-static-cred-hr7EWZ8t"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-76466"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76466",
    "change_note": null
   },
   {
@@ -911,51 +1013,6 @@
    "change_note": null
   },
   {
-   "id": "CVE-2026-123890",
-   "title": "VMware vCenter目录服务认证绕过",
-   "first_seen": "2026-11-20",
-   "last_seen": "2026-11-20",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-19",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "未授权访问vCenter Directory Service认证接口，构造请求绕过身份校验",
-   "impact_scope": "虚拟化管理平台，内网核心资产",
-   "action_zh": "升级至9.1.1.0200/9.0.2.0200/8.0 U3m等修复版本",
-   "summary_zh": "未认证远程攻击者可绕过vCenter目录服务认证并取得管理权限，进而控制虚拟化平台",
-   "category": "容器/虚拟化",
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": "code",
-   "poc": [
-    {
-     "url": "https://github.com/Quaerendir/cve-2026-123890-audit",
-     "label": "Quaerendir/cve-2026-123890-audit 0★(有源码)"
-    },
-    {
-     "url": "https://github.com/Cyber-BansalAI/vmware-vcenter-2026",
-     "label": "Cyber-BansalAI/vmware-vcenter-2026 0★(仅README)"
-    }
-   ],
-   "affected": "Broadcom(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39495"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123890",
-   "change_note": null
-  },
-  {
    "id": "CVE-2021-48023",
    "title": "泛微E-cology未授权文件上传致RCE",
    "first_seen": "2026-11-18",
@@ -1299,42 +1356,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-83399",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-76466",
-   "title": "Expressway硬编码凭据RCE",
-   "first_seen": "2026-10-21",
-   "last_seen": "2026-10-21",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-10-21",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "网络访问Expressway数据库服务，使用硬编码凭据执行命令",
-   "impact_scope": "边界协作网关，常暴露公网",
-   "action_zh": "升级Cisco修复版本；限制Expressway数据库服务网络访问",
-   "summary_zh": "未授权远程攻击者可利用数据库服务硬编码凭据，以root执行任意系统命令。",
-   "category": "网络设备",
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "Cisco(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-vcs-static-cred-hr7EWZ8t"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76466",
    "change_note": null
   },
   {
@@ -2026,6 +2047,55 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114625",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-129448",
+   "title": "Apache Roller XML-RPC反序列化未授权RC",
+   "first_seen": "2026-11-17",
+   "last_seen": "2026-11-21",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": true,
+   "published": "2026-11-17",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权 XML-RPC 端点提交 vendor 扩展类型的恶意序列化数据",
+   "impact_scope": "开源博客/内容平台，常暴露公网",
+   "action_zh": "升级至 6.1.5，或关闭/限制 XML-RPC 端点访问",
+   "summary_zh": "未认证攻击者向 XML-RPC 端点提交恶意厂商扩展类型，反序列化执行任意代码",
+   "category": null,
+   "cvss": 9.8,
+   "epss": 0.01191,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-23",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "readme",
+   "poc": [
+    {
+     "url": "https://github.com/Yanixos/APACHE-CVE-2026-129448",
+     "label": "Exploit-Index Yanixos/APACHE-CVE-2026-129448(未验证)(仅README)"
+    }
+   ],
+   "affected": "apache roller >=4.0 <6.1.5",
+   "patched": null,
+   "refs": [
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/apache/roller/pull/171"
+    },
+    {
+     "label": "厂商通告",
+     "url": "https://lists.apache.org/thread.html/lnz4s26tv6hdo03wngtdbpfj4hg4gtds"
+    },
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread/cc0jck13nb9vvcmzxzwotr6n16mx28z9"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129448",
    "change_note": null
   },
   {
@@ -4466,50 +4536,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116953",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-129448",
-   "title": "Apache Roller反序列化RCE",
-   "first_seen": "2026-11-17",
-   "last_seen": "2026-11-17",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-17",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "未授权向XML-RPC端点提交携带恶意vendor扩展类型的序列化对象",
-   "impact_scope": "开源博客/CMS，常暴露于公网",
-   "action_zh": "升级至官方修复版本；无法升级时关闭XML-RPC端点",
-   "summary_zh": "未认证攻击者向XML-RPC端点提交含恶意扩展类型的序列化数据，即可以服务权限执行任意代码",
-   "category": null,
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "Apache(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/apache/roller/pull/171"
-    },
-    {
-     "label": "参考",
-     "url": "https://lists.apache.org/thread.html/lnz4s26tv6hdo03wngtdbpfj4hg4gtds"
-    },
-    {
-     "label": "参考",
-     "url": "https://lists.apache.org/thread/cc0jck13nb9vvcmzxzwotr6n16mx28z9"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129448",
    "change_note": null
   },
   {

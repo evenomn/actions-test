@@ -5,43 +5,46 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 20 Nov 2026 17:54:40 +0000</pubDate>
-    <lastBuildDate>Fri, 20 Nov 2026 17:54:40 +0000</lastBuildDate>
+    <pubDate>Sat, 21 Nov 2026 02:35:31 +0000</pubDate>
+    <lastBuildDate>Sat, 21 Nov 2026 02:35:31 +0000</lastBuildDate>
     <item>
-      <title>[critical]git-lfs SSH URL命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-69260</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-69260-2026-11-20</guid>
-      <description>CVE-2026-69260 · P1 重点关注 · 披露 2026-11-20 · 组件 开发库/依赖 · CVSS 待定(NVD 未评分) · EPSS 1.1%,前 67% · 类型 命令注入(RCE)
-By inserting shell meta-characters into the SSH URL, an attacker may be able to execute arbitrary commands on the remote host, if the host passes the commands t…
-信号:</description>
-      <pubDate>Fri, 20 Nov 2026 17:54:40 +0000</pubDate>
+      <title>[critical]vCenter 目录服务认证绕过可接管平台</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123890</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123890-2026-11-21</guid>
+      <description>CVE-2026-123890 · P0 立即处置 · 披露 2026-11-19 · 组件 容器/虚拟化 · CVSS 9.8 · EPSS 0.8%,前 59% · 类型 认证绕过 · 难度 低(远程·免认证)
+VMware vCenter contains an authentication bypass vulnerability in the VMware Directory Service.
+信号: KEV 在野利用(CISA 限期 2026-11-23) | 有 PoC | 命中关注词 vmware
+[sanMuSec/vcenter-80u3m-patch-download 1★(仅README)](https://github.com/sanMuSec/vcenter-80u3m-patch-download) · [LLCForge/CVE-2026-123890 0★(有源码)](https://github.com/LLCForge/CVE-2026-123890) · [cloud.google.com/blog/topics/threat-inte](https://cloud.google.com/blog/topics/threat-intelligence/armory-castle-exploits-vsphere?e=48754805)</description>
+      <pubDate>Sat, 21 Nov 2026 02:35:31 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Newsletters插件反序列化RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129039</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129039-2026-11-20</guid>
-      <description>CVE-2026-129039 · P1 重点关注 · 披露 2026-11-20 · CVSS 9.8 · 类型 反序列化(RCE) · 难度 低(远程·免认证)
-Deserialization of Untrusted Data vulnerability in Tribulant Software Newsletters newsletters-lite allows Object Injection.This issue affects Newsletters: from …
-信号:</description>
-      <pubDate>Fri, 20 Nov 2026 17:54:40 +0000</pubDate>
+      <title>[critical]Expressway 硬编码凭据致远程Root执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-76466</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-76466-2026-11-21</guid>
+      <description>CVE-2026-76466 · P0 立即处置 · 披露 2026-10-21 · 组件 网络设备 · CVSS 9.8 · EPSS 0.4%,前 37% · 类型 硬编码凭据 · 难度 低(远程·免认证)
+A vulnerability in the database service feature of Cisco Expressway Series could allow an unauthenticated, remote attacker with network access to a Cisco Expres…
+信号: KEV 在野利用(CISA 限期 2026-11-23) | 有 PoC
+[Exploit-Index dinosn/cve-2026-76466(未验证)(仅README)](https://github.com/dinosn/cve-2026-76466) · [www.f6.ru/media-center/press-releases/ci](https://www.f6.ru/media-center/press-releases/cisco-cve-2026-76466/)</description>
+      <pubDate>Sat, 21 Nov 2026 02:35:31 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Tegsoft呼叫中心任意文件上传</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-14914</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-14914-2026-11-20</guid>
-      <description>CVE-2026-14914 · P1 重点关注 · 披露 2026-11-20 · CVSS 10.0 · 类型 任意文件上传 · 难度 低(远程·免认证)
-Unrestricted upload of file with dangerous type vulnerability in Tegsoft Yönetim ve Bilişim Hizmetleri Tic.
-信号:</description>
-      <pubDate>Fri, 20 Nov 2026 17:54:40 +0000</pubDate>
+      <title>[critical]Apache Roller XML-RPC反序列化未授权RC</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129448</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129448-2026-11-21</guid>
+      <description>CVE-2026-129448 · P0 立即处置 · 披露 2026-11-17 · CVSS 9.8 · EPSS 1.2%,前 69% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+Deserialization of Untrusted Data in Apache Roller versions 4.0.0 through 6.1.4 allows an unauthenticated remote attacker to execute arbitrary code.
+信号: KEV 在野利用(CISA 限期 2026-11-23) | 有 PoC
+[Exploit-Index Yanixos/APACHE-CVE-2026-129448(未验证)(仅README)](https://github.com/Yanixos/APACHE-CVE-2026-129448)</description>
+      <pubDate>Sat, 21 Nov 2026 02:35:31 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]miniOrange OTP认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129073</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129073-2026-11-20</guid>
-      <description>CVE-2026-129073 · P1 重点关注 · 披露 2026-11-20 · 组件 NAS/存储 · CVSS 9.8 · 类型 认证绕过 · 难度 低(远程·免认证)
-Authentication Bypass Using an Alternate Path or Channel vulnerability in miniOrange miniorange otp verification miniorange-otp-verification allows Authenticati…
-信号:</description>
-      <pubDate>Fri, 20 Nov 2026 17:54:40 +0000</pubDate>
+      <title>[critical]SAP NetWeaver 门户 JNDI注入未授权利用</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2025-42884</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2025-42884-2026-11-21</guid>
+      <description>CVE-2025-42884 · P0 立即处置 · 披露 2025-11-11 · 组件 OA/协同办公 · CVSS 6.5 · EPSS 0.3%,前 20% · 类型 CWE-943 · 难度 低(远程·免认证)
+SAP NetWeaver Enterprise Portal allows an unauthenticated attacker to inject JNDI environment properties or pass a URL used during JNDI lookup operations, enabl…
+信号: KEV 在野利用(CISA 限期 2026-11-23)</description>
+      <pubDate>Sat, 21 Nov 2026 02:35:31 +0000</pubDate>
     </item>
   </channel>
 </rss>

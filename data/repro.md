@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-20 17:54 UTC · 共 **213** 条(强烈推荐 46 / 值得 167)
+**更新**: 2026-11-21 02:35 UTC · 共 **213** 条(强烈推荐 46 / 值得 167)
 
 ---
 
@@ -29,6 +29,26 @@ PoC: [jburgess-r7/CVE-2026-97229-PoC 63★(有源码)](https://github.com/jburge
 影响: proftpd proftpd
 PoC: [t0kx/exploit-CVE-2015-3306 152★(有源码)](https://github.com/t0kx/exploit-CVE-2015-3306) · [nootropics/propane 2★(有源码)](https://github.com/nootropics/propane) · [NVD exploit 引用](https://www.exploit-db.com/exploits/36803/)
 参考: [参考](http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157053.html) · [参考](http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157054.html) · [参考](http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157581.html)
+
+### vCenter 目录服务认证绕过可接管平台
+[CVE-2026-123890](https://nvd.nist.gov/vuln/detail/CVE-2026-123890) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | EPSS 0.8% | 披露 2026-11-19 | 入库 2026-11-20
+🔥 KEV 在野利用,限期 2026-11-23 | PoC 源码可用
+未认证远程攻击者可绕过 VMware Directory Service 认证，取得 vCenter 管理权限并控制虚拟化平台
+复现: 强烈推荐 — 对 vCenter 目录服务认证接口构造未授权请求，无需任何凭据 · 影响面: 虚拟化管理平台，运维区核心资产
+处置: 升级至 9.1.1.0200 / 9.0.2.0200 / 8.0 U3m 并排查入侵痕迹
+影响: vmware cloud_foundation >=5.0 <5.2.5; vmware telco_cloud_platform >=3.0 <=5.2
+PoC: [sanMuSec/vcenter-80u3m-patch-download 1★(仅README)](https://github.com/sanMuSec/vcenter-80u3m-patch-download) · [LLCForge/CVE-2026-123890 0★(有源码)](https://github.com/LLCForge/CVE-2026-123890) · [NVD exploit 引用](https://cloud.google.com/blog/topics/threat-intelligence/armory-castle-exploits-vsphere?e=48754805)
+参考: [厂商通告](https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39495) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-123890)
+
+### Expressway 硬编码凭据致远程Root执行
+[CVE-2026-76466](https://nvd.nist.gov/vuln/detail/CVE-2026-76466) | P0 立即处置 | 网络设备 | CVSS 9.8 | EPSS 0.4% | 披露 2026-10-21 | 入库 2026-10-21
+🔥 KEV 在野利用,限期 2026-11-23 | 有PoC
+未认证远程攻击者利用数据库服务硬编码凭据，以 root 权限执行任意系统命令
+复现: 强烈推荐 — 使用数据库服务内置硬编码凭据登录，网络可达即可 root 执行命令 · 影响面: 边界协作/VPN设备，常暴露公网
+处置: 升级至 X15.5.20 及以上，限制管理面端口暴露
+影响: cisco expressway <x15.5.20
+PoC: [Exploit-Index dinosn/cve-2026-76466(未验证)(仅README)](https://github.com/dinosn/cve-2026-76466) · [NVD exploit 引用](https://www.f6.ru/media-center/press-releases/cisco-cve-2026-76466/)
+参考: [厂商通告](https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-vcs-static-cred-hr7EWZ8t) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-76466)
 
 ### Cisco邮件网关路径遍历RCE
 [CVE-2026-76519](https://nvd.nist.gov/vuln/detail/CVE-2026-76519) | P0 立即处置 | 网络设备 | CVSS 9.8 | 披露 2026-10-14 | 入库 2026-10-14
@@ -185,16 +205,6 @@ PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-H
 影响: GitLab(产品与版本待 NVD/厂商补充)
 参考: [参考](https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/) · [参考](https://gitlab.com/gitlab-org/gitlab/-/work_items/633633) · [参考](https://hackerone.com/reports/4093475)
 
-### VMware vCenter目录服务认证绕过
-[CVE-2026-123890](https://nvd.nist.gov/vuln/detail/CVE-2026-123890) | P1 重点关注 | 容器/虚拟化 | CVSS 9.8 | 披露 2026-11-19 | 入库 2026-11-20
-PoC 源码可用
-未认证远程攻击者可绕过vCenter目录服务认证并取得管理权限，进而控制虚拟化平台
-复现: 强烈推荐 — 未授权访问vCenter Directory Service认证接口，构造请求绕过身份校验 · 影响面: 虚拟化管理平台，内网核心资产
-处置: 升级至9.1.1.0200/9.0.2.0200/8.0 U3m等修复版本
-影响: Broadcom(产品与版本待 NVD/厂商补充)
-PoC: [Quaerendir/cve-2026-123890-audit 0★(有源码)](https://github.com/Quaerendir/cve-2026-123890-audit) · [Cyber-BansalAI/vmware-vcenter-2026 0★(仅README)](https://github.com/Cyber-BansalAI/vmware-vcenter-2026)
-参考: [参考](https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39495)
-
 ### 泛微E-cology未授权文件上传致RCE
 [CVE-2021-48023](https://nvd.nist.gov/vuln/detail/CVE-2021-48023) | P1 重点关注 | OA/协同办公 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18
 未授权者向uploadOperation.jsp发送multipart请求上传JSP木马可获服务器权限
@@ -267,14 +277,6 @@ PoC: [Ghost-Bx1/Fortinet-Exploits-CVE-2026-39808-106173-107656 0★(仅README)](
 处置: 应用 Oracle 补丁，限制 T3/IIOP 访问并隔离管理网络
 影响: Oracle(产品与版本待 NVD/厂商补充)
 参考: [参考](https://www.oracle.com/security-alerts/cpuoct2026.html)
-
-### Expressway硬编码凭据RCE
-[CVE-2026-76466](https://nvd.nist.gov/vuln/detail/CVE-2026-76466) | P0 立即处置 | 网络设备 | CVSS 9.8 | 披露 2026-10-21 | 入库 2026-10-21
-未授权远程攻击者可利用数据库服务硬编码凭据，以root执行任意系统命令。
-复现: 强烈推荐 — 网络访问Expressway数据库服务，使用硬编码凭据执行命令 · 影响面: 边界协作网关，常暴露公网
-处置: 升级Cisco修复版本；限制Expressway数据库服务网络访问
-影响: Cisco(产品与版本待 NVD/厂商补充)
-参考: [参考](https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-vcs-static-cred-hr7EWZ8t)
 
 ### FortiSIEM 路径遍历未认证RCE
 [CVE-2026-106173](https://nvd.nist.gov/vuln/detail/CVE-2026-106173) | P1 重点关注 | 边界设备/VPN | CVSS 9.8 | 披露 2026-10-13 | 入库 2026-10-13
@@ -424,6 +426,16 @@ PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026
 处置: 升级至5.2.3.18或6.1.3.10以上，并限制VCO管理接口公网暴露
 影响: arista velocloud_orchestrator >=5.2.0 <5.2.3.18; arista velocloud_orchestrator >=6.1.0 <6.1.3.10
 参考: [厂商通告](https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114625)
+
+### Apache Roller XML-RPC反序列化未授权RC
+[CVE-2026-129448](https://nvd.nist.gov/vuln/detail/CVE-2026-129448) | P0 立即处置 | CVSS 9.8 | EPSS 1.2% | 披露 2026-11-17 | 入库 2026-11-17
+🔥 KEV 在野利用,限期 2026-11-23 | 有PoC | 开源,可源码审计复现
+未认证攻击者向 XML-RPC 端点提交恶意厂商扩展类型，反序列化执行任意代码
+复现: 值得 — 未授权 XML-RPC 端点提交 vendor 扩展类型的恶意序列化数据 · 影响面: 开源博客/内容平台，常暴露公网
+处置: 升级至 6.1.5，或关闭/限制 XML-RPC 端点访问
+影响: apache roller >=4.0 <6.1.5
+PoC: [Exploit-Index Yanixos/APACHE-CVE-2026-129448(未验证)(仅README)](https://github.com/Yanixos/APACHE-CVE-2026-129448)
+参考: [官方补丁](https://github.com/apache/roller/pull/171) · [厂商通告](https://lists.apache.org/thread.html/lnz4s26tv6hdo03wngtdbpfj4hg4gtds) · [参考](https://lists.apache.org/thread/cc0jck13nb9vvcmzxzwotr6n16mx28z9)
 
 ### Apache Axis反序列化RCE
 [CVE-2026-90436](https://nvd.nist.gov/vuln/detail/CVE-2026-90436) | P0 立即处置 | 视频监控 | CVSS 9.8 | EPSS 1.1% | 披露 2026-11-06 | 入库 2026-11-19
@@ -859,14 +871,6 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 立即升级BIG-IP至F5修复版本，按公告加固
 影响: F5(产品与版本待 NVD/厂商补充)
 参考: [参考](https://my.f5.com/manage/s/article/K000163941)
-
-### Apache Roller反序列化RCE
-[CVE-2026-129448](https://nvd.nist.gov/vuln/detail/CVE-2026-129448) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-17 | 入库 2026-11-17
-未认证攻击者向XML-RPC端点提交含恶意扩展类型的序列化数据，即可以服务权限执行任意代码
-复现: 值得 — 未授权向XML-RPC端点提交携带恶意vendor扩展类型的序列化对象 · 影响面: 开源博客/CMS，常暴露于公网
-处置: 升级至官方修复版本；无法升级时关闭XML-RPC端点
-影响: Apache(产品与版本待 NVD/厂商补充)
-参考: [参考](https://github.com/apache/roller/pull/171) · [参考](https://lists.apache.org/thread.html/lnz4s26tv6hdo03wngtdbpfj4hg4gtds) · [参考](https://lists.apache.org/thread/cc0jck13nb9vvcmzxzwotr6n16mx28z9)
 
 ### ActiveStorage任意文件读写
 [CVE-2026-122006](https://nvd.nist.gov/vuln/detail/CVE-2026-122006) | P1 重点关注 | Web框架 | CVSS 9.8 | EPSS 0.7% | 披露 2026-11-12 | 入库 2026-11-13
