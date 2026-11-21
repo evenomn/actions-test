@@ -1,31 +1,172 @@
 {
  "version": 3,
- "generated_at": "2026-11-21T13:36:25+00:00",
+ "generated_at": "2026-11-21T22:14:32+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 2,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 2,
+  "by_tier": {
+   "critical": 2
+  },
+  "by_urgency": {
+   "P1 重点关注": 2
+  },
+  "by_category": {
+   "网络设备": 1,
+   "未知": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
-  "repro_recommended": 0
+  "repro_recommended": 1
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2026-133993",
+   "tier": "critical",
+   "title": "D-Link DIR-600L栈溢出远程利用",
+   "title_zh": "D-Link DIR-600L栈溢出远程利用",
+   "summary_zh": "远程攻击者可向gena.cgi的service参数传入超长数据，触发栈溢出，可能导致代码执行。",
+   "published": "2026-11-21T18:16:54.277",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "内存破坏",
+    "栈溢出"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/ruanyi101/router-firmware-security-advisories/blob/main/router-firmware-GitHub-advisories/related-findings/D-Link-DIR-600L-gena-cgi-stack-overflow-review.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-133993"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1052046"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "联系厂商升级固件；临时限制gena.cgi访问",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "访问gena.cgi的GENA订阅处理，向service参数传超长数据触发溢出",
+   "impact_scope": "边界路由器，公网管理面暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133993",
+   "description": "A security flaw has been discovered in D-Link DIR-600L 2.17b02. This affects the function FUN_0040efb0 of the file gena.cgi of the component GENA Subscription Handler. Performing a manipulation of the argument service results in stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks."
+  },
+  {
+   "id": "CVE-2026-134292",
+   "tier": "critical",
+   "title": "SurrealDB JS引擎能力校验绕过",
+   "title_zh": "SurrealDB JS引擎能力校验绕过",
+   "summary_zh": "具备脚本执行权限者可调用内部函数绕过能力检查",
+   "published": "2026-11-21T17:16:48.897",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失授权(越权)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/surrealdb/surrealdb/security/advisories/GHSA-5w6j-qm42-4rc2"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/surrealdb-1.0.0-before-4.0.0-function-capability-bypass-via-javascript-built-in-bridge"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至4.0.0；禁用不可信JS脚本",
+   "repro_worthy": "一般",
+   "repro_note": "需执行嵌入JS，经surrealdb.functions调内部调度器",
+   "impact_scope": "数据库脚本引擎，权限提升风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134292",
+   "description": "SurrealDB 1.0.0 before 4.0.0 contains a capability check bypass in its embedded JavaScript scripting engine, where the surrealdb.functions bridge calls the internal fnc::synchronous() and fnc::asynchronous() dispatchers without enforcing function capability checks. Authenticated users denied access to built-in functions in SurrealQL can execute them by calling them through surrealdb.functions from embedded JavaScript."
+  }
+ ],
  "media": [],
  "commits": [
   {
-   "repo": "openbsd/src",
-   "sha": "b6ebd0a54002b1cb3c240c3f8199eae45cfc969e",
-   "url": "https://github.com/openbsd/src/commit/b6ebd0a54002b1cb3c240c3f8199eae45cfc969e",
-   "title": "rpki-client: avoid a double free in state file parsing",
-   "date": "2026-11-21T12:01:07",
+   "repo": "nodejs/node",
+   "sha": "08eff138e3f3a138a963a2998b68f832474cc8d0",
+   "url": "https://github.com/nodejs/node/commit/08eff138e3f3a138a963a2998b68f832474cc8d0",
+   "title": "stream: stop reusing a detached onread buffer",
+   "date": "2026-11-21T16:33:22",
    "score": 2,
    "matched": [
-    "类型混淆/double free"
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "spring-projects/spring-framework",
+   "sha": "a85686ec92020c5a2f90373227758a38ace5b679",
+   "url": "https://github.com/spring-projects/spring-framework/commit/a85686ec92020c5a2f90373227758a38ace5b679",
+   "title": "Remove obsolete fast-xml-parser version pin",
+   "date": "2026-11-21T16:27:23",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "sqlite/sqlite",
+   "sha": "430c5210a694fda3fbfc877fb16e58172ce640fb",
+   "url": "https://github.com/sqlite/sqlite/commit/430c5210a694fda3fbfc877fb16e58172ce640fb",
+   "title": "Fix a UAF in the (debugging-use-only) ext/misc/vfslog.c extension.",
+   "date": "2026-11-21T15:00:14",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openbsd/src",
+   "sha": "97dd84951fae57e18f4af85025d5c3841a2a825d",
+   "url": "https://github.com/openbsd/src/commit/97dd84951fae57e18f4af85025d5c3841a2a825d",
+   "title": "Do not use static lists to avoid use-after-free with nested loops,",
+   "date": "2026-11-21T12:52:38",
+   "score": 2,
+   "matched": [
+    "UAF"
    ],
    "cve": null
   }

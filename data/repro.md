@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-21 13:36 UTC · 共 **216** 条(强烈推荐 47 / 值得 169)
+**更新**: 2026-11-21 22:14 UTC · 共 **217** 条(强烈推荐 48 / 值得 169)
 
 ---
 
@@ -174,6 +174,13 @@ PoC: [HackSpeak/CVE-2026-67279 5★(有源码)](https://github.com/HackSpeak/CVE
 影响: strapi strapi >=3.2.1 <4.8.0
 PoC: [Saboor-Hakimi/CVE-2023-22894 13★(有源码)](https://github.com/Saboor-Hakimi/CVE-2023-22894) · [maxntv/CVE-2023-22894-PoC 0★(有源码)](https://github.com/maxntv/CVE-2023-22894-PoC) · [NVD exploit 引用](https://www.ghostccamm.com/blog/multi_strapi_vulns/)
 参考: [参考](https://github.com/strapi/strapi/releases) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-22894)
+
+### D-Link DIR-600L栈溢出远程利用
+[CVE-2026-133993](https://nvd.nist.gov/vuln/detail/CVE-2026-133993) | P1 重点关注 | 网络设备 | CVSS 10.0 | 披露 2026-11-21 | 入库 2026-11-21
+远程攻击者可向gena.cgi的service参数传入超长数据，触发栈溢出，可能导致代码执行。
+复现: 强烈推荐 — 访问gena.cgi的GENA订阅处理，向service参数传超长数据触发溢出 · 影响面: 边界路由器，公网管理面暴露
+处置: 联系厂商升级固件；临时限制gena.cgi访问
+参考: [参考](https://github.com/ruanyi101/router-firmware-security-advisories/blob/main/router-firmware-GitHub-advisories/related-findings/D-Link-DIR-600L-gena-cgi-stack-overflow-review.md) · [参考](https://vuldb.com/cve/CVE-2026-133993) · [参考](https://vuldb.com/submit/1052046)
 
 ### OA协同办公签名校验认证绕过
 [CVE-2026-120017](https://nvd.nist.gov/vuln/detail/CVE-2026-120017) | P1 重点关注 | OA/协同办公 | CVSS 10.0 | 披露 2026-11-10 | 入库 2026-11-10

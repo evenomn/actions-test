@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-21T13:36:25+00:00",
- "count": 216,
- "count_recommended": 47,
+ "updated_at": "2026-11-21T22:14:32+00:00",
+ "count": 217,
+ "count_recommended": 48,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -850,6 +850,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2023-22894",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-133993",
+   "title": "D-Link DIR-600L栈溢出远程利用",
+   "first_seen": "2026-11-21",
+   "last_seen": "2026-11-21",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-21",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "访问gena.cgi的GENA订阅处理，向service参数传超长数据触发溢出",
+   "impact_scope": "边界路由器，公网管理面暴露",
+   "action_zh": "联系厂商升级固件；临时限制gena.cgi访问",
+   "summary_zh": "远程攻击者可向gena.cgi的service参数传入超长数据，触发栈溢出，可能导致代码执行。",
+   "category": "网络设备",
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/ruanyi101/router-firmware-security-advisories/blob/main/router-firmware-GitHub-advisories/related-findings/D-Link-DIR-600L-gena-cgi-stack-overflow-review.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-133993"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1052046"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133993",
    "change_note": null
   },
   {
