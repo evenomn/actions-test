@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-21 22:14 UTC · 共 **217** 条(强烈推荐 48 / 值得 169)
+**更新**: 2026-11-22 03:28 UTC · 共 **219** 条(强烈推荐 48 / 值得 171)
 
 ---
 
@@ -1463,6 +1463,20 @@ PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy
 [CVE-2026-107194](https://nvd.nist.gov/vuln/detail/CVE-2026-107194) | CVSS 9.2 | 披露 2026-10-07 | 入库 2026-10-08
 复现: 值得
 参考: [参考](https://jakkaru.de/articles/sungrow-vulnerability-exposes-gigawatts-worldwide) · [参考](https://www.sungrowpower.com/en/products/cloud-software/isolarcloud)
+
+### fastify/express 空段认证绕过
+[CVE-2026-124626](https://nvd.nist.gov/vuln/detail/CVE-2026-124626) | P1 重点关注 | CVSS 9.1 | 披露 2026-11-21 | 入库 2026-11-22
+未认证客户端发送含空路径段的请求即命中受保护路由，跳过认证中间件直接访问处理器。
+复现: 值得 — 入口为动态挂载路径，插入空路径段使路由匹配而中间件跳过 · 影响面: Node Web框架兼容层，公网API服务
+处置: 升级 @fastify/express 修复版本并核查中间件挂载
+参考: [参考](https://cna.openjsf.org/security-advisories.html) · [参考](https://github.com/fastify/fastify-express/security/advisories/GHSA-662w-h4p6-jq4p)
+
+### @fastify/middie 认证绕过
+[CVE-2026-133250](https://nvd.nist.gov/vuln/detail/CVE-2026-133250) | P1 重点关注 | CVSS 9.1 | 披露 2026-11-21 | 入库 2026-11-22
+路由与中间件判定不一致，未认证客户端可跳过认证、授权或限流中间件直达受保护处理器。
+复现: 值得 — 依赖中间件挂载与前缀路由，构造路径使路由命中而middie跳过 · 影响面: Node中间件引擎，公网API网关
+处置: 升级 @fastify/middie 至官方修复版本
+参考: [参考](https://cna.openjsf.org/security-advisories.html) · [参考](https://github.com/fastify/middie/security/advisories/GHSA-gcf6-j9m3-p97x)
 
 ### Splunk认证绕过可未授权执行SPL
 [CVE-2026-76535](https://nvd.nist.gov/vuln/detail/CVE-2026-76535) | P0 立即处置 | 监控运维 | CVSS 9.1 | 披露 2026-11-19 | 入库 2026-11-19

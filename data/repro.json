@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-21T22:14:32+00:00",
- "count": 217,
+ "updated_at": "2026-11-22T03:28:03+00:00",
+ "count": 219,
  "count_recommended": 48,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -8182,6 +8182,86 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107194",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-124626",
+   "title": "fastify/express 空段认证绕过",
+   "first_seen": "2026-11-22",
+   "last_seen": "2026-11-22",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-21",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "入口为动态挂载路径，插入空路径段使路由匹配而中间件跳过",
+   "impact_scope": "Node Web框架兼容层，公网API服务",
+   "action_zh": "升级 @fastify/express 修复版本并核查中间件挂载",
+   "summary_zh": "未认证客户端发送含空路径段的请求即命中受保护路由，跳过认证中间件直接访问处理器。",
+   "category": null,
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cna.openjsf.org/security-advisories.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/fastify/fastify-express/security/advisories/GHSA-662w-h4p6-jq4p"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124626",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-133250",
+   "title": "@fastify/middie 认证绕过",
+   "first_seen": "2026-11-22",
+   "last_seen": "2026-11-22",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-21",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "依赖中间件挂载与前缀路由，构造路径使路由命中而middie跳过",
+   "impact_scope": "Node中间件引擎，公网API网关",
+   "action_zh": "升级 @fastify/middie 至官方修复版本",
+   "summary_zh": "路由与中间件判定不一致，未认证客户端可跳过认证、授权或限流中间件直达受保护处理器。",
+   "category": null,
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cna.openjsf.org/security-advisories.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/fastify/middie/security/advisories/GHSA-gcf6-j9m3-p97x"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133250",
    "change_note": null
   },
   {
