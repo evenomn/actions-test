@@ -1,20 +1,137 @@
 {
  "version": 3,
- "generated_at": "2026-11-22T08:16:17+00:00",
+ "generated_at": "2026-11-22T17:14:46+00:00",
  "lookback_hours": 5,
- "count": 0,
+ "count": 2,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 2,
+  "by_tier": {
+   "critical": 2
+  },
+  "by_urgency": {
+   "P1 重点关注": 2
+  },
+  "by_category": {
+   "CMS": 1,
+   "未知": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
  "briefing": [],
- "items": [],
+ "items": [
+  {
+   "id": "CVE-2026-131782",
+   "tier": "critical",
+   "title": "Simple Cart反序列化RCE",
+   "title_zh": "Simple Cart反序列化RCE",
+   "summary_zh": "未认证攻击者可构造恶意序列化数据触发对象注入，进而执行任意代码",
+   "published": "2026-11-22T15:17:12.543",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/wordpress-simple-paypal-shopping-cart/vulnerability/wordpress-simple-shopping-cart-plugin-5-3-3-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版本；无法升级时停用该插件",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "第三方WP商城插件，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131782",
+   "description": "Deserialization of Untrusted Data vulnerability in mra13 / Team Tips and Tricks HQ Simple Shopping Cart wordpress-simple-paypal-shopping-cart allows Object Injection.This issue affects Simple Shopping Cart: from n/a through 5.3.3."
+  },
+  {
+   "id": "CVE-2026-131754",
+   "tier": "critical",
+   "title": "APCu Manager反序列化RCE",
+   "title_zh": "APCu Manager反序列化RCE",
+   "summary_zh": "未认证攻击者可构造恶意序列化数据触发对象注入，进而执行任意代码",
+   "published": "2026-11-22T15:17:12.247",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/apcu-manager/vulnerability/wordpress-apcu-manager-plugin-4-6-1-php-object-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版本；无法升级时停用该插件",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "第三方WP性能插件，内网站点",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131754",
+   "description": "Deserialization of Untrusted Data vulnerability in Pierre Lannoy APCu Manager apcu-manager allows Object Injection.This issue affects APCu Manager: from n/a through 4.6.1."
+  }
+ ],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "nodejs/node",
+   "sha": "a143f03cfd86847a35eccc09c7db486a5e88115a",
+   "url": "https://github.com/nodejs/node/commit/a143f03cfd86847a35eccc09c7db486a5e88115a",
+   "title": "stream: check stream/iter byte views by their byteLength alone",
+   "date": "2026-11-22T16:27:33",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "066f18f4f56ab58501b805dfd93f2251079d4fb3",
+   "url": "https://github.com/php/php-src/commit/066f18f4f56ab58501b805dfd93f2251079d4fb3",
+   "title": "ext/pdo_sqlite: Fix use-after-free of bound string and LOB parameters",
+   "date": "2026-11-22T15:40:04",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  }
+ ]
 }
