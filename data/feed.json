@@ -1,33 +1,1199 @@
 {
  "version": 3,
- "generated_at": "2026-11-22T22:36:52+00:00",
- "lookback_hours": 5,
- "count": 0,
+ "generated_at": "2026-11-23T03:59:14+00:00",
+ "lookback_hours": 24,
+ "count": 24,
  "stats": {
-  "total": 0,
-  "by_tier": {},
-  "by_urgency": {},
-  "by_category": {},
+  "total": 24,
+  "by_tier": {
+   "critical": 13,
+   "high": 11
+  },
+  "by_urgency": {
+   "P1 重点关注": 19,
+   "P2 保持关注": 5
+  },
+  "by_category": {
+   "操作系统": 13,
+   "未知": 9,
+   "开发运维/CI": 1,
+   "容器/虚拟化": 1
+  },
   "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
   "repro_recommended": 0
  },
- "briefing": [],
- "items": [],
- "media": [],
- "commits": [
+ "briefing": [
+  "- 未见在野利用或勒索软件关联，风险以高CVSS批量暴露为主。",
+  "- 操作系统集中披露多枚9.8分漏洞，呈批量公告趋势。",
+  "- 立即处置CVE-2026-99385：CVSS9.8、EPSS本批最高。",
+  "- CVE-2026-134814为代码注入RCE，应优先修复。",
+  "- 路径遍历两枚同分8.6，需检查文件读取与访问控制。"
+ ],
+ "items": [
   {
-   "repo": "openssl/openssl",
-   "sha": "d6e61952799396d42c73072eaf71e722df9940e4",
-   "url": "https://github.com/openssl/openssl/commit/d6e61952799396d42c73072eaf71e722df9940e4",
-   "title": "CVE-2026-107494 QUIC: follow up on unbounded RETIRE_CONNECTION_ID backlog (memory DoS)",
-   "date": "2026-11-22T17:40:09",
-   "score": 3,
-   "matched": [
-    "CVE"
+   "id": "CVE-2026-99634",
+   "tier": "critical",
+   "title": "Linux mptcp子流TFO缺陷",
+   "title_zh": "Linux mptcp子流TFO缺陷",
+   "summary_zh": "远程连接可触发MP_JOIN子流误用Fast Open，或致连接异常",
+   "published": "2026-11-20T06:17:56.573",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00168,
+   "epss_percentile": 0.06167,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/3cb3b9f66a7feb13ba320757178d4cc2bd570102"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/6d2cf411aba2aa0bd641b49be5b1964ac5097a50"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/763e4792e46965adf2f0598cec03c97ae8d384f6"
+    }
    ],
-   "cve": "CVE-2026-107494"
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "exchange",
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的Linux内核版本",
+   "repro_worthy": "一般",
+   "repro_note": "需启用MPTCP与Fast Open并构造MP_JOIN子流",
+   "impact_scope": "Linux内核网络栈，MPTCP场景",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99634",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: mptcp: do not use Fast Open on MP_JOIN subflows tcp_fastopen_create_child() hands the SYN packet itself to subflow_syn_recv_sock(). For an MP_JOIN request this takes the fatal fallback: the cloned child is destroyed and handed back with drop_req flagged, but tcp_fastopen_create_child() does not check the flag and queues it, so accept() can expose the freed child."
+  },
+  {
+   "id": "CVE-2026-134827",
+   "tier": "high",
+   "title": "Lightdash GitLab令牌泄露",
+   "title_zh": "Lightdash GitLab令牌泄露",
+   "summary_zh": "项目开发者可将dbt主机指向恶意服务器，窃取GitLab令牌",
+   "published": "2026-11-22T22:17:37.707",
+   "cvss": 7.7,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "凭据保护不足"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/lightdash/lightdash/blob/3.211.0/packages/backend/src/ee/services/AiWritebackService/AiWritebackService.ts#L1165-L1201"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/lightdash/lightdash/commit/e207ceb480e394c7ce50f676057bf4a2807588e6"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/lightdash/lightdash/pull/32389"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": "gitlab",
+   "urgency": "P2 保持关注",
+   "action_zh": "升级Lightdash至3.212.0及以上",
+   "repro_worthy": "一般",
+   "repro_note": "需项目开发者配置host_domain并触发AI读取",
+   "impact_scope": "开发分析平台，GitLab仓库凭据",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134827",
+   "description": "Lightdash before 3.212.0 contains an insufficiently protected credentials vulnerability in getGitlabInstallationRepoReadAccess that sends the organization GitLab app token to unverified hosts. Project developers can set the dbt connection host_domain to an attacker-controlled server and capture the token when the AI agent reads the repository, gaining access to every reachable repository."
+  },
+  {
+   "id": "CVE-2026-134814",
+   "tier": "high",
+   "title": "binary-parser解析定义代码注入",
+   "title_zh": "binary-parser解析定义代码注入",
+   "summary_zh": "控制解析定义者可注入JS，在Node进程执行任意代码",
+   "published": "2026-11-22T22:17:35.660",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/keichi/binary-parser/blob/v2.3.0/lib/binary_parser.ts#L26-L35"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/keichi/binary-parser/commit/110206bb126a80071158fb0e2e3d7cc658f2bfe4"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/keichi/binary-parser/commit/4b26e04c396253e704ad8e41b928d9e31316f62e"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级binary-parser至2.3.1及以上",
+   "repro_worthy": "一般",
+   "repro_note": "需控制length、key等解析定义选项",
+   "impact_scope": "Node.js解析库，依赖方受影响",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134814",
+   "description": "binary-parser before 2.3.1 contains a code injection vulnerability that allows attackers controlling parser definitions to inject JavaScript through string-typed options passed unvalidated by Context.generateOption(). Attackers can supply crafted length, lengthInBytes, key, tag, offset, or namely() alias values to execute arbitrary JavaScript in the Node.js process when the parser is compiled."
+  },
+  {
+   "id": "CVE-2026-99385",
+   "tier": "critical",
+   "title": "Linux smb客户端缓冲区溢出",
+   "title_zh": "Linux smb客户端缓冲区溢出",
+   "summary_zh": "连接恶意SMB服务器可触发SMB2_tcon缓冲区溢出",
+   "published": "2026-11-19T15:17:50.713",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00243,
+   "epss_percentile": 0.15579,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/73cc469b0ff7551f8537ea919709973e6dc4f514"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/75fd4c72aa3dcfabb318144636f416be6796d423"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/acf25a7be39dccdbf60fdf3d437dd7832fa4b6d3"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的Linux内核版本",
+   "repro_worthy": "一般",
+   "repro_note": "需客户端连接恶意SMB服务并执行tcon",
+   "impact_scope": "Linux SMB客户端，恶意服务器攻击",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99385",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: smb: client: fix buffer overflow in SMB2_tcon() In SMB2_tcon(), unc_path is allocated with a fixed buffer size of MAX_SHARENAME_LENGTH * 2 bytes (672 bytes). Commit 62a1a439e0fd (\"cifs: clean up handling of unc= option\") removed the length check on UNC mount options, allowing mount paths to exceed MAX_SHARENAME_LENGTH while retaining the fixed-size buffer allocation in SMB2_tcon()."
+  },
+  {
+   "id": "CVE-2026-99362",
+   "tier": "critical",
+   "title": "nfsd SEQUENCE回复预检缺陷",
+   "title_zh": "nfsd SEQUENCE回复预检缺陷",
+   "summary_zh": "远程NFSv4客户端可触发槽位回复预检异常",
+   "published": "2026-11-19T15:17:47.803",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00228,
+   "epss_percentile": 0.13695,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/1a5a227bca6a8a9f9d31230697aeb84c62a21da6"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/35ff1a7a7e3835c3e974bc5c45d335897564ceae"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/37fc2ec211630360e9aefcaaec8730db964645f2"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的Linux内核版本",
+   "repro_worthy": "一般",
+   "repro_note": "需访问nfsd并发SEQUENCE与回复缓存",
+   "impact_scope": "Linux NFS服务端，暴露存储网络",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99362",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: nfsd: preflight SEQUENCE replies before accepting a slot nfsd4_sequence() narrows the reply buffer to the session's cached reply limit before it accepts the slot seqid."
+  },
+  {
+   "id": "CVE-2026-99366",
+   "tier": "critical",
+   "title": "nfsd会话槽重放修改缺陷",
+   "title_zh": "nfsd会话槽重放修改缺陷",
+   "summary_zh": "远程NFSv4客户端重放缓存回复可扰乱会话槽状态",
+   "published": "2026-11-19T15:17:48.317",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00228,
+   "epss_percentile": 0.13695,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/065764e256ebff20201dca5bc6ff075c6cb62e17"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/0b5149b7ad8ccd64c61e887e2cf1af068b6210c9"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/2987838317501ff67b672ac2a441fe34b7729f3d"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的Linux内核版本",
+   "repro_worthy": "一般",
+   "repro_note": "需构造NFSv4 SEQUENCE重放与槽位竞争",
+   "impact_scope": "Linux NFS服务端，存储网络暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99366",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: nfsd: don't modify a session slot when replaying its cached reply nfsd4_sequence() claims a session slot by setting NFSD4_SLOT_INUSE under nn->client_lock."
+  },
+  {
+   "id": "CVE-2026-99513",
+   "tier": "critical",
+   "title": "Linux lockd块重试UAF漏洞",
+   "title_zh": "Linux lockd块重试UAF漏洞",
+   "summary_zh": "远程NLM请求可触发lockd块重试释放后使用",
+   "published": "2026-11-19T15:18:06.730",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00213,
+   "epss_percentile": 0.11655,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/25d0baa6adb4a0b3f6889d42033ce8df3232bea7"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/6506c27da6756c0c7590ef60774ee5d35f6a4100"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/70825b251e5f7855fd7bd93afc0b698154e00e70"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的Linux内核版本",
+   "repro_worthy": "一般",
+   "repro_note": "需触发NLM阻塞锁重试并制造并发释放",
+   "impact_scope": "Linux NLM锁服务，存储网络",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99513",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: lockd: Fix use-after-free in nlmsvc_retry_blocked nlmsvc_retry_blocked() examines the block at the head of nlm_blocked under nlm_blocked_lock, then releases the lock before calling nlmsvc_grant_blocked() or retry_deferred_block()."
+  },
+  {
+   "id": "CVE-2026-99356",
+   "tier": "critical",
+   "title": "Linux SUNRPC流计数缺陷",
+   "title_zh": "Linux SUNRPC流计数缺陷",
+   "summary_zh": "远程RPC/TLS连接可触发控制记录计数异常",
+   "published": "2026-11-19T15:17:47.070",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00209,
+   "epss_percentile": 0.11125,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/129e7107b971009bc81643d23f3ab949f540d321"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/67d36b376f76a71e52a5f8ed4a4d9d90b8b68133"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/99eb91d68e73a08bfc784eff6f5c02ecb6ea58ba"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的Linux内核版本",
+   "repro_worthy": "一般",
+   "repro_note": "需经TLS承载RPC并构造控制记录",
+   "impact_scope": "Linux SUNRPC服务，TLS场景",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99356",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: SUNRPC: Do not credit control-record octets to the RPC stream svc_tcp_sock_recv_cmsg() receives up to two octets into a local buffer, and returns that count for any record type other than TLS_RECORD_TYPE_ALERT. Nothing reached the caller's buffer, but svc_tcp_read_marker() adds the count to sk_tcplen and svc_tcp_read_msg()'s caller adds it to sk_datalen."
+  },
+  {
+   "id": "CVE-2026-99590",
+   "tier": "critical",
+   "title": "Linux ceph内联数据长度缺陷",
+   "title_zh": "Linux ceph内联数据长度缺陷",
+   "summary_zh": "恶意或异常MDS回复可致客户端内联数据长度越界",
+   "published": "2026-11-20T06:17:50.553",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00168,
+   "epss_percentile": 0.06174,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/9c1d14d3b66b3e1dd96ee664c0dd2548f2b77a52"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/9d06011f8c5b4c9989397a501483fec0f4a149cb"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/b325a1f0d441bb1925ef3c1e09d1db05ecfcc12c"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的Linux内核版本",
+   "repro_worthy": "一般",
+   "repro_note": "需Ceph客户端连接可控制回复的MDS",
+   "impact_scope": "Ceph客户端，存储集群信任边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99590",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: ceph: clamp the inline data length in ceph_fill_inline_data() The MDS decides how much inline data to attach to a reply, and the client parses inline_len without any upper bound: ceph_decode_need() only verifies that the message actually carries that many bytes."
+  },
+  {
+   "id": "CVE-2026-99676",
+   "tier": "critical",
+   "title": "Linux socket引用计数顺序缺陷",
+   "title_zh": "Linux socket引用计数顺序缺陷",
+   "summary_zh": "并发套接字访问可利用引用计数顺序缺陷致UAF",
+   "published": "2026-11-20T06:18:02.340",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00168,
+   "epss_percentile": 0.06175,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/52f5a5ab318f5b120eb686069fbd0108016c02b2"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/5b5d8f351dd96f56a58bb516a80e2d4d742fe4e2"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/6f4fc93f76cd8ebd3c89a064573715503048d1ad"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的Linux内核版本",
+   "repro_worthy": "一般",
+   "repro_note": "需并发触发lockless socket引用计数竞争",
+   "impact_scope": "Linux内核网络栈，并发场景",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99676",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: net: restore refcount ordering for lockless socket access Before commit fb041bb7c0a9 (\"locking/refcount: Consolidate implementations of refcount_t\"), default builds implemented refcount_inc_not_zero() using atomic_add_unless(), which provided full memory ordering on success. The commit removed that ordering on weakly ordered architectures, allowing accesses after a successful reference acquisition to be reordered before it."
+  },
+  {
+   "id": "CVE-2026-99370",
+   "tier": "critical",
+   "title": "nfsd SETXATTR XDR拷贝缺陷",
+   "title_zh": "nfsd SETXATTR XDR拷贝缺陷",
+   "summary_zh": "远程NFSv4客户端可借SETXATTR触发XDR越界拷贝",
+   "published": "2026-11-19T15:17:48.847",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H",
+   "epss": 0.00224,
+   "epss_percentile": 0.13161,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/019cf7e0eebf6dc14b465cc984390b41c854da69"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/20b76bdbd029343ea98944cb88bf016da2371739"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/b01319947c69b0e3ea0fcd4b675eb892f9cad8a0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的Linux内核版本",
+   "repro_worthy": "一般",
+   "repro_note": "需发送跨XDR段SETXATTR请求",
+   "impact_scope": "Linux NFS服务端，存储网络",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99370",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: NFSD: copy SETXATTR data from all XDR buffer segments nfsd4_vbuf_from_vector() manually copies the head followed by whole pages starting at offset zero. This assumes that all remaining data starts at the beginning of the page array and that no data is stored in the tail."
+  },
+  {
+   "id": "CVE-2026-99680",
+   "tier": "critical",
+   "title": "Linux xfs pNFS写布局缺陷",
+   "title_zh": "Linux xfs pNFS写布局缺陷",
+   "summary_zh": "pNFS客户端可提交EOF外写布局，致预分配标记异常",
+   "published": "2026-11-20T06:18:02.863",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
+   "epss": 0.00168,
+   "epss_percentile": 0.0618,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/2748b9277ff5e35e222b6c4d46a8285e3cf6051d"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/8b8e265991556d99b6d721697f148975a7c68767"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/fea6d9e15570eeb41c9e01f22f45a8498d9fe200"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的Linux内核版本",
+   "repro_worthy": "一般",
+   "repro_note": "需pNFS客户端与xfs服务端触发写布局",
+   "impact_scope": "xfs/NFS服务端，pNFS场景",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99680",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: xfs: mark the inode preallocated for pNFS write layouts past EOF xfs_fs_map_blocks() marks the inode XFS_DIFLAG_PREALLOC only when it allocates blocks for a write layout. A write layout past EOF can also hand out allocated blocks, such as speculative preallocation. blockgc then frees them under the layout, and another file may get them. Mark the inode whenever a write mapping ends past EOF."
+  },
+  {
+   "id": "CVE-2026-99679",
+   "tier": "critical",
+   "title": "xfs pNFS空洞提交缺陷",
+   "title_zh": "xfs pNFS空洞提交缺陷",
+   "summary_zh": "pNFS客户端可提交无块空洞布局，致服务端错误分配写块",
+   "published": "2026-11-20T06:18:02.753",
+   "cvss": 9.4,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H",
+   "epss": 0.00156,
+   "epss_percentile": 0.04728,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/bcf0b7f18ad11e1d410e82ffef678705eff0a317"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/d13039937a44e935ed57d661f3f4adcde8375785"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的Linux内核版本",
+   "repro_worthy": "一般",
+   "repro_note": "需构造LAYOUTCOMMIT提交空洞范围",
+   "impact_scope": "xfs/NFS服务端，pNFS场景",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99679",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: xfs: refuse a pNFS LAYOUTCOMMIT of a range without blocks A client can commit a hole in a LAYOUTCOMMIT, because nfsd does not check the extents against its layouts. xfs_iomap_write_unwritten() then allocates written blocks there. A large hole overruns the block reservation and shuts XFS down. A small one exposes stale data. Refuse such a range with -EIO, using XFS_BMAPI_CONVERT_ONLY."
+  },
+  {
+   "id": "CVE-2026-129024",
+   "tier": "high",
+   "title": "Everest Forms路径遍历漏洞",
+   "title_zh": "Everest Forms路径遍历漏洞",
+   "summary_zh": "攻击者可构造路径参数遍历目录，读取受限文件",
+   "published": "2026-11-22T16:16:39.513",
+   "cvss": 8.6,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/everest-forms/vulnerability/wordpress-everest-forms-plugin-3-6-4-arbitrary-file-deletion-vulnerability-2?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Everest Forms至修复版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress表单插件",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129024",
+   "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Everest Forms Everest Forms everest-forms allows Path Traversal.This issue affects Everest Forms: from n/a through 3.6.4."
+  },
+  {
+   "id": "CVE-2026-131750",
+   "tier": "high",
+   "title": "Everest Forms路径遍历漏洞",
+   "title_zh": "Everest Forms路径遍历漏洞",
+   "summary_zh": "攻击者可构造路径参数遍历目录，读取受限文件",
+   "published": "2026-11-22T16:16:40.857",
+   "cvss": 8.6,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/everest-forms/vulnerability/wordpress-everest-forms-plugin-3-6-4-arbitrary-file-deletion-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Everest Forms至修复版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress表单插件",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131750",
+   "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Everest Forms Everest Forms everest-forms allows Path Traversal.This issue affects Everest Forms: from n/a through 3.6.4."
+  },
+  {
+   "id": "CVE-2026-131701",
+   "tier": "high",
+   "title": "WP Media Folder盲SQL注入",
+   "title_zh": "WP Media Folder盲SQL注入",
+   "summary_zh": "攻击者可构造参数触发盲SQL注入，窃取数据库信息",
+   "published": "2026-11-22T11:16:45.960",
+   "cvss": 8.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SQL注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/wp-media-folder/vulnerability/wordpress-wp-media-folder-plugin-6-2-8-sql-injection-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级WP Media Folder至修复版本",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress媒体库插件",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131701",
+   "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in JoomUnited WP Media folder wp-media-folder allows Blind SQL Injection.This issue affects WP Media folder: from n/a through 6.2.8."
+  },
+  {
+   "id": "CVE-2026-134815",
+   "tier": "high",
+   "title": "simple-git参数注入命令执行",
+   "title_zh": "simple-git参数注入命令执行",
+   "summary_zh": "可影响Git参数者注入--exec，在主机执行任意命令",
+   "published": "2026-11-22T22:17:35.807",
+   "cvss": 8.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "参数拼接注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/steveukx/git-js/blob/simple-git%404.0.2/packages/argv-parser/src/vulnerabilities/detect-vulnerable-flags.ts#L71"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/steveukx/git-js/commit/c8ee6bb4dd0c1259af31da821dc68d74ff5d6f10"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/steveukx/git-js/releases/tag/%40simple-git%2Fargv-parser%403.0.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级simple-git至4.1.0及以上",
+   "repro_worthy": "一般",
+   "repro_note": "需应用将可控参数传入listRemote或raw",
+   "impact_scope": "Node.js Git库，依赖应用",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134815",
+   "description": "simple-git before 4.1.0 contains an argument injection vulnerability that allows attackers to bypass the allowUnsafePack guard by supplying the --exec option to non-push git operations. Attackers who influence arguments passed to listRemote() or raw() can inject --exec for ls-remote, archive, fetch-pack or send-pack to execute commands on the host."
+  },
+  {
+   "id": "CVE-2026-99544",
+   "tier": "critical",
+   "title": "Linux内核vmbus边界检查缺失",
+   "title_zh": "Linux内核vmbus边界检查缺失",
+   "summary_zh": "恶意宿主机可操纵VMBus共享环缓冲区索引，导致客户机内核越界访问、崩溃或内存破坏",
+   "published": "2026-11-19T15:18:10.540",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": 0.00157,
+   "epss_percentile": 0.04852,
+   "cwe_labels": [],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "中(需本地访问·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/1611ce4dc6cbace75f27db6a559af8d391a06118"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/1d287c17cc5bfd6386fe0770999be410b248d021"
+    },
+    {
+     "label": "参考",
+     "url": "https://git.kernel.org/stable/c/cdb9126a79b608b4331dfdc03beb05be8d2563be"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至含修复的内核版本；限制不可信宿主环境",
+   "repro_worthy": "一般",
+   "repro_note": "需CoCo VM环境，构造恶意VMBus环缓冲区索引触发越界",
+   "impact_scope": "机密计算虚拟机客户机内核",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99544",
+   "description": "In the Linux kernel, the following vulnerability has been resolved: Drivers: hv: vmbus: Bounds check the shared ring buffer indices In a CoCo VM the host is untrusted. Since the VMBus ring buffer read and write indices live in shared memory, the guest has to treat both as potentially malicious."
+  },
+  {
+   "id": "CVE-2026-134789",
+   "tier": "high",
+   "title": "Settings API远程属性篡改缺陷",
+   "title_zh": "Settings API远程属性篡改缺陷",
+   "summary_zh": "远程攻击者可滥用Settings API属性处理，后果待确认",
+   "published": "2026-11-23T03:17:08.373",
+   "cvss": 7.3,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "沙箱逃逸",
+    "CWE-915"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-134789"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1054181"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/vuln/442157"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "关注官方修复，限制Settings API访问",
+   "repro_worthy": "一般",
+   "repro_note": "入口为server.js Settings API，前置未知",
+   "impact_scope": "未知应用Settings API",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134789",
+   "description": "A weakness has been identified in DumbWareio DumbAssets up to 1.0.11. Affected by this vulnerability is an unknown functionality of the file server.js of the component Settings API. Executing a manipulation of the argument appriseUrl can lead to dynamically-determined object attributes. The attack can be executed remotely. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-134826",
+   "tier": "high",
+   "title": "erxes保险插件未授权模板操作",
+   "title_zh": "erxes保险插件未授权模板操作",
+   "summary_zh": "未授权攻击者可经GraphQL篡改合同模板，并注入HTML借PDF渲染读取内网内容、泄露客户字段",
+   "published": "2026-11-22T22:17:37.550",
+   "cvss": 7.3,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失认证"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/erxes/erxes/blob/3.4.7/backend/plugins/insurance_api/src/modules/insurance/graphql/resolvers/mutations/template.ts#L21-L104"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/erxes/erxes/commit/6370a571faf8e45ca58b9bd7d6d65715a2cf5925"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/erxes/erxes/releases/tag/3.4.14"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至3.4.14及以上；限制GraphQL接口访问",
+   "repro_worthy": "一般",
+   "repro_note": "未授权调用insurance_api GraphQL变更模板，触发PDF渲染外带",
+   "impact_scope": "erxes Web应用，或成内网探测跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134826",
+   "description": "erxes before 3.4.14 contains a missing authentication vulnerability in the insurance_api plugin that allows unauthenticated attackers to create, overwrite or delete contract templates via GraphQL mutations. Attackers can inject HTML into templates rendered by headless Chromium during generateContractPDF to pull internal network content into PDFs and exfiltrate customer fields."
+  },
+  {
+   "id": "CVE-2026-134817",
+   "tier": "high",
+   "title": "mcp-k8s工具参数注入缺陷",
+   "title_zh": "mcp-k8s工具参数注入缺陷",
+   "summary_zh": "远程MCP客户端可注入kubectl参数，影响集群操作",
+   "published": "2026-11-22T22:17:36.147",
+   "cvss": 7.1,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "参数拼接注入"
+   ],
+   "vuln_class": "SQL注入",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Flux159/mcp-server-kubernetes/blob/v4.1.9/src/tools/exec_in_pod.ts#L105"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Flux159/mcp-server-kubernetes/commit/588d4949b0233974c3966a7d24d532be11e56d0d"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Flux159/mcp-server-kubernetes/pull/390"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "升级mcp-server-kubernetes至4.2.0",
+   "repro_worthy": "一般",
+   "repro_note": "需通过MCP工具传入破折号开头的操作数",
+   "impact_scope": "K8s MCP服务，集群操作",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134817",
+   "description": "mcp-server-kubernetes before 4.2.0 contains an argument injection vulnerability that allows remote MCP clients to inject kubectl flags by supplying dash-prefixed values as positional operands in tools such as exec_in_pod, kubectl_patch, and kubectl_logs. Attackers connected over SSE or Streamable HTTP transport can supply values like --filename to make kubectl read files from the server host, bypassing file-read restrictions."
+  },
+  {
+   "id": "CVE-2026-134793",
+   "tier": "high",
+   "title": "Electerm文件名引号命令注入",
+   "title_zh": "Electerm文件名引号命令注入",
+   "summary_zh": "本地攻击者可借含Unicode引号文件名注入PowerShell命令",
+   "published": "2026-11-22T22:17:32.177",
+   "cvss": 7.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "高(需本地访问·免认证·需用户交互)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/electerm/electerm/blob/v5.8.0/src/app/lib/fs.js#L106-L115"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/electerm/electerm/blob/v5.8.0/src/client/components/sftp/file-info-modal.jsx#L183-L192"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/electerm/electerm/commit/488b112d10dc21545f18284d4eb52db6dafb7f31"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "升级Electerm至5.9.0及以上",
+   "repro_worthy": "一般",
+   "repro_note": "需诱导处理含Unicode引号文件或文件夹",
+   "impact_scope": "Windows终端工具，本地利用",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134793",
+   "description": "Electerm before 5.9.0 on Windows contains an OS command injection vulnerability that allows attackers to execute PowerShell code via crafted file or folder names containing Unicode quote characters. Attackers can deliver names containing U+2019 through archives, WSL distributions, or SMB shares, which break out of getFolderSizeWin() and calcLocal() quoting when victims request folder sizes, executing code as the electerm user."
+  },
+  {
+   "id": "CVE-2026-129085",
+   "tier": "high",
+   "title": "WP Customer Area 缺失授权",
+   "title_zh": "WP Customer Area 缺失授权",
+   "summary_zh": "WP Customer Area 8.4.5及之前缺失授权，攻击者可越权操作受控功能，可能泄露或篡改客户数据",
+   "published": "2026-11-22T15:17:12.093",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失授权(越权)"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://patchstack.com/database/wordpress/plugin/customer-area/vulnerability/wordpress-wp-customer-area-plugin-8-4-5-broken-access-control-vulnerability?_s_id=cve"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "联系厂商获取修复版本；审查访问控制配置",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress插件，客户数据管理",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129085",
+   "description": "Missing Authorization vulnerability in Aguila Technologies WP Customer Area customer-area allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects WP Customer Area: from n/a through 8.4.5."
+  },
+  {
+   "id": "CVE-2026-134624",
+   "tier": "critical",
+   "title": "MailAssure LDAP同步SSRF",
+   "title_zh": "MailAssure LDAP同步SSRF",
+   "summary_zh": "已认证API用户可借LDAP同步连接检查，令服务器访问任意内网主机端口并发送构造数据，探测或攻击内网服务",
+   "published": "2026-11-22T19:16:32.163",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SSRF"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://me.n-able.com/s/security-advisory/aArVy0000002mrlKAA"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至20261121.1943及以上；限制出站访问",
+   "repro_worthy": "一般",
+   "repro_note": "已认证API用户配置relay后触发LDAP连接检查，填内网地址",
+   "impact_scope": "邮件安全网关，可探测内网横向",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134624",
+   "description": "N-able MailAssure (SpamExperts) before 20261121.1943 does not restrict the destination of the LDAP synchronisation connection check performed when a relay is configured. An authenticated API user can cause the server to connect to arbitrary internal hosts and ports, determine which are reachable, and send crafted data to internal services."
   }
- ]
+ ],
+ "media": [
+  {
+   "title": "Amazon Threat Intel: Autonomous Cairn AI Agents Discover and Exploit Zero-Day CVE-2026-133968 in MONAI Label in 11 Minutes",
+   "link": "https://sh3llc0d3.com/blog/amazon-threat-intel-autonomous-cairn-ai-agents-discover-and-exploit-zero-day-cve-2026-133968-in-monai-label-in-11-minutes/",
+   "cves": [
+    "CVE-2026-133968"
+   ]
+  },
+  {
+   "title": "Upload2Shell (CVE-2026-125396): Ghostscript Type 1 Font Loader UAF Breaks -dSAFER Sandbox Across Linux Pipelines",
+   "link": "https://sh3llc0d3.com/blog/upload2shell-cve-2026-125396-ghostscript-type-1-font-loader-uaf-breaks-dsafer-sandbox-across-linux-pipelines/",
+   "cves": [
+    "CVE-2026-125396"
+   ]
+  },
+  {
+   "title": "NebuSec Discloses 0.5-Click Meta Muse Cloud VM Escape Chaining Chromium V8 RCE and systemd-nspawn Breakout",
+   "link": "https://sh3llc0d3.com/blog/nebusec-discloses-05-click-meta-muse-cloud-vm-escape-chaining-chromium-v8-rce-and-systemd-nspawn-breakout/",
+   "cves": []
+  },
+  {
+   "title": "Broadcom VMware vCenter Auth Bypass (CVE-2026-123890) and SAP NetWeaver JNDI Flaw (CVE-2025-42884) Hit CISA KEV",
+   "link": "https://sh3llc0d3.com/blog/broadcom-vmware-vcenter-auth-bypass-cve-2026-123890-and-sap-netweaver-jndi-flaw-cve-2025-42884-hit-cisa-kev/",
+   "cves": [
+    "CVE-2026-123890",
+    "CVE-2025-42884"
+   ]
+  }
+ ],
+ "commits": []
 }

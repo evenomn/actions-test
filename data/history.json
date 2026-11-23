@@ -31418,5 +31418,260 @@
     "urgency": "P2 保持关注"
    }
   ]
+ },
+ "2026-11-23": {
+  "qualified": 24,
+  "critical": 13,
+  "kev": 0,
+  "repro_top": 0,
+  "kev_total": 1790,
+  "by_category": {
+   "操作系统": 13,
+   "开发运维/CI": 1,
+   "未分类": 9,
+   "容器/虚拟化": 1
+  },
+  "items": [
+   {
+    "id": "CVE-2026-99634",
+    "title": "Linux mptcp子流TFO缺陷",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-134827",
+    "title": "Lightdash GitLab令牌泄露",
+    "tier": "high",
+    "category": "开发运维/CI",
+    "cvss": 7.7,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-134814",
+    "title": "binary-parser解析定义代码注入",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-99385",
+    "title": "Linux smb客户端缓冲区溢出",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-99362",
+    "title": "nfsd SEQUENCE回复预检缺陷",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-99366",
+    "title": "nfsd会话槽重放修改缺陷",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-99513",
+    "title": "Linux lockd块重试UAF漏洞",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-99356",
+    "title": "Linux SUNRPC流计数缺陷",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-99590",
+    "title": "Linux ceph内联数据长度缺陷",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-99676",
+    "title": "Linux socket引用计数顺序缺陷",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-99370",
+    "title": "nfsd SETXATTR XDR拷贝缺陷",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-99680",
+    "title": "Linux xfs pNFS写布局缺陷",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-99679",
+    "title": "xfs pNFS空洞提交缺陷",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.4,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-129024",
+    "title": "Everest Forms路径遍历漏洞",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.6,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-131750",
+    "title": "Everest Forms路径遍历漏洞",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.6,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-131701",
+    "title": "WP Media Folder盲SQL注入",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.5,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-134815",
+    "title": "simple-git参数注入命令执行",
+    "tier": "high",
+    "category": null,
+    "cvss": 8.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-99544",
+    "title": "Linux内核vmbus边界检查缺失",
+    "tier": "critical",
+    "category": "操作系统",
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-134789",
+    "title": "Settings API远程属性篡改缺陷",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-134826",
+    "title": "erxes保险插件未授权模板操作",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   },
+   {
+    "id": "CVE-2026-134817",
+    "title": "mcp-k8s工具参数注入缺陷",
+    "tier": "high",
+    "category": "容器/虚拟化",
+    "cvss": 7.1,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-134793",
+    "title": "Electerm文件名引号命令注入",
+    "tier": "high",
+    "category": "操作系统",
+    "cvss": 7.8,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-129085",
+    "title": "WP Customer Area 缺失授权",
+    "tier": "high",
+    "category": null,
+    "cvss": 7.5,
+    "kev": false,
+    "repro": "不建议",
+    "urgency": "P2 保持关注"
+   },
+   {
+    "id": "CVE-2026-134624",
+    "title": "MailAssure LDAP同步SSRF",
+    "tier": "critical",
+    "category": null,
+    "cvss": 9.3,
+    "kev": false,
+    "repro": "一般",
+    "urgency": "P1 重点关注"
+   }
+  ]
  }
 }
