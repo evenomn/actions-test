@@ -5,16 +5,36 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 23 Nov 2026 09:16:12 +0000</pubDate>
-    <lastBuildDate>Mon, 23 Nov 2026 09:16:12 +0000</lastBuildDate>
+    <pubDate>Mon, 23 Nov 2026 21:33:45 +0000</pubDate>
+    <lastBuildDate>Mon, 23 Nov 2026 21:33:45 +0000</lastBuildDate>
     <item>
-      <title>[critical]Synology DSM OAuth参数注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120382</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120382-2026-11-23</guid>
-      <description>CVE-2026-120382 · P1 重点关注 · 披露 2026-11-23 · 组件 NAS/存储 · CVSS 9.8 · 类型 参数拼接注入 · 难度 低(远程·免认证)
-An improper neutralization of argument delimiters in a command vulnerability in the OAuth API in Synology DiskStation Manager (DSM) before 7.1.1-42962-10, 7.2.1…
-信号:</description>
-      <pubDate>Mon, 23 Nov 2026 09:16:12 +0000</pubDate>
+      <title>[critical]MONAI Label目录遍历RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-133968</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-133968-2026-11-23</guid>
+      <description>CVE-2026-133968 · P0 立即处置 · 披露 2026-11-20 · CVSS 9.8 · EPSS 3.7%,前 90% · 类型 CWE-24 · 难度 低(远程·免认证)
+monailabel (aka MONAI Label) before 0.8.6 allows directory traversal, with resultant remote code execution, via the image parameter to the PUT /datastore/image …
+信号: KEV 在野利用(CISA 限期 2026-11-26) | 有 PoC
+[Exploit-Index LLCForge/CVE-2026-133968(未验证)](https://github.com/LLCForge/CVE-2026-133968)</description>
+      <pubDate>Mon, 23 Nov 2026 21:33:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MailAssure LDAP同步SSRF</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-134624</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-134624-2026-11-23</guid>
+      <description>CVE-2026-134624 · P0 立即处置 · 披露 2026-11-22 · CVSS 9.3 · EPSS 0.4%,前 30% · 类型 SSRF · 难度 中(远程·需高权限)
+An authenticated API user can cause the server to connect to arbitrary internal hosts and ports, determine which are reachable, and send crafted data to interna…
+信号: KEV 在野利用(CISA 限期 2026-11-26)</description>
+      <pubDate>Mon, 23 Nov 2026 21:33:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]xo-server管理接口认证绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-133469</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-133469-2026-11-23</guid>
+      <description>CVE-2026-133469 · P0 立即处置 · 披露 2026-11-23 · 组件 容器/虚拟化 · CVSS 9.8 · 类型 认证绕过/CWE-1287 · 难度 低(远程·免认证)
+This vulnerability is actively exploited in the wild. This vulnerability is fixed in 6.9.2 and 6.10.1.
+信号: 有 PoC | 暂无官方修复
+[googlesky/CVE-2026-133469 0★(有源码)](https://github.com/googlesky/CVE-2026-133469)</description>
+      <pubDate>Mon, 23 Nov 2026 21:33:45 +0000</pubDate>
     </item>
   </channel>
 </rss>

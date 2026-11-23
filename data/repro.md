@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-23 09:16 UTC · 共 **219** 条(强烈推荐 48 / 值得 171)
+**更新**: 2026-11-23 21:33 UTC · 共 **219** 条(强烈推荐 48 / 值得 171)
 
 ---
 
@@ -887,12 +887,15 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
 
-### MONAI Label路径遍历RCE
-[CVE-2026-133968](https://nvd.nist.gov/vuln/detail/CVE-2026-133968) | P0 立即处置 | CVSS 9.8 | 披露 2026-11-20 | 入库 2026-11-21
-攻击者通过PUT /datastore/image的image参数路径遍历写入文件并执行代码，据描述已在野利用。
-复现: 值得 — 向/datastore/image的image参数构造路径遍历并尝试写文件 · 影响面: 医学影像AI平台，内网为主
-处置: 升级官方修复版本；限制/datastore/image接口访问
-参考: [参考](https://github.com/Project-MONAI/MONAILabel/pull/1915) · [参考](https://github.com/Project-MONAI/MONAILabel/security/advisories/GHSA-qc22-rmgc-vg94) · [参考](https://www.theregister.com/security/2026/11/20/china-attackers-deployed-ai-agents-that-autonomously-found-and-exploited-a-0-day-to-take-over-a-university-server/5311382)
+### xo-server管理接口认证绕过
+[CVE-2026-133469](https://nvd.nist.gov/vuln/detail/CVE-2026-133469) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | 披露 2026-11-23 | 入库 2026-11-23
+PoC 源码可用 | 开源,可源码审计复现 | 暂无官方修复
+管理接口认证校验存在缺陷，未授权攻击者可绕过认证，且已在野利用
+复现: 值得 — 未授权访问xo-server管理接口，构造请求绕过认证 · 影响面: 虚拟化管理平台，常内网暴露
+处置: 暂无官方修复，限制管理接口暴露并加强监测
+影响(暂无官方修复): npm:xo-server <= 5.7.4
+PoC: [googlesky/CVE-2026-133469 0★(有源码)](https://github.com/googlesky/CVE-2026-133469)
+参考: [参考](https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062) · [参考](https://github.com/vatesfr/xen-orchestra/commit/50166fe3a49c02069d35ba9046ca4a1f77f4e11d) · [参考](https://github.com/vatesfr/xen-orchestra/pull/10748)
 
 ### BIG-IP栈溢出可致DoS或RCE
 [CVE-2026-116953](https://nvd.nist.gov/vuln/detail/CVE-2026-116953) | P0 立即处置 | 开发库/依赖 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18

@@ -1,69 +1,270 @@
 {
  "version": 3,
- "generated_at": "2026-11-23T09:16:12+00:00",
+ "generated_at": "2026-11-23T21:33:45+00:00",
  "lookback_hours": 5,
- "count": 1,
+ "count": 3,
  "stats": {
-  "total": 1,
+  "total": 3,
   "by_tier": {
-   "critical": 1
+   "critical": 3
   },
   "by_urgency": {
-   "P1 重点关注": 1
+   "P0 立即处置": 3
   },
   "by_category": {
-   "NAS/存储": 1
+   "未知": 2,
+   "容器/虚拟化": 1
   },
-  "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
+  "kev": 2,
+  "with_poc": 2,
+  "with_poc_source": 1,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-120382",
+   "id": "CVE-2026-133968",
    "tier": "critical",
-   "title": "Synology DSM OAuth参数注入",
-   "title_zh": "Synology DSM OAuth参数注入",
-   "summary_zh": "远程攻击者可经DSM的OAuth API的参数拼接注入命令分隔符,读写任意文件并造成拒绝服务",
-   "published": "2026-11-23T08:17:14.183",
+   "title": "MONAI Label目录遍历RCE",
+   "title_zh": "MONAI Label目录遍历RCE",
+   "summary_zh": "攻击者经image参数目录遍历并远程执行代码，已在野利用",
+   "published": "2026-11-20T19:18:51.670",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.03664,
+   "epss_percentile": 0.89921,
+   "cwe_labels": [
+    "CWE-24"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Project-MONAI/MONAILabel/pull/1915"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Project-MONAI/MONAILabel/releases/tag/0.8.6"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Project-MONAI/MONAILabel/security/advisories/GHSA-qc22-rmgc-vg94"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/LLCForge/CVE-2026-133968",
+     "label": "Exploit-Index LLCForge/CVE-2026-133968(未验证)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-26",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至0.8.6以上，限制datastore接口暴露",
+   "repro_worthy": "一般",
+   "repro_note": "向PUT /datastore/image的image参数构造路径穿越",
+   "impact_scope": "医学影像标注平台，内网部署",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133968",
+   "description": "monailabel (aka MONAI Label) before 0.8.6 allows directory traversal, with resultant remote code execution, via the image parameter to the PUT /datastore/image endpoint, as exploited in the wild starting in September 2026."
+  },
+  {
+   "id": "CVE-2026-134624",
+   "tier": "critical",
+   "title": "MailAssure LDAP同步SSRF",
+   "title_zh": "MailAssure LDAP同步SSRF",
+   "summary_zh": "已认证API用户可让LDAP同步检查连接任意内网主机端口并发送数据，探测内网",
+   "published": "2026-11-22T19:16:32.163",
+   "cvss": 9.3,
+   "severity": "CRITICAL",
+   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": 0.00354,
+   "epss_percentile": 0.2969,
+   "cwe_labels": [
+    "SSRF"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "中(远程·需高权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://me.n-able.com/s/security-advisory/aArVy0000002mrlKAA"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-134624"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-26",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至20261121.1943以上，限制API权限与出网",
+   "repro_worthy": "一般",
+   "repro_note": "认证后配置中继，触发LDAP同步连接检查指向内网",
+   "impact_scope": "邮件安全网关，可探测内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134624",
+   "description": "N-able MailAssure (SpamExperts) before 20261121.1943 does not restrict the destination of the LDAP synchronisation connection check performed when a relay is configured. An authenticated API user can cause the server to connect to arbitrary internal hosts and ports, determine which are reachable, and send crafted data to internal services."
+  },
+  {
+   "id": "CVE-2026-133469",
+   "tier": "critical",
+   "title": "xo-server管理接口认证绕过",
+   "title_zh": "xo-server管理接口认证绕过",
+   "summary_zh": "管理接口认证校验存在缺陷，未授权攻击者可绕过认证，且已在野利用",
+   "published": "2026-11-23T17:17:31.780",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "参数拼接注入"
+    "认证绕过",
+    "CWE-1287"
    ],
-   "vuln_class": "SQL注入",
+   "vuln_class": "未授权访问",
    "fame_term": null,
    "difficulty": "低(远程·免认证)",
    "products": [],
-   "affected": "Synology(产品与版本待 NVD/厂商补充)",
-   "ghsa_url": null,
+   "affected": "npm:xo-server <= 5.7.4",
+   "ghsa_url": "https://github.com/advisories/GHSA-2r3w-c2vx-fv5g",
    "refs": [
     {
      "label": "参考",
-     "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_21"
+     "url": "https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/vatesfr/xen-orchestra/commit/50166fe3a49c02069d35ba9046ca4a1f77f4e11d"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/vatesfr/xen-orchestra/pull/10748"
     }
    ],
-   "poc": [],
+   "poc": [
+    {
+     "url": "https://github.com/googlesky/CVE-2026-133469",
+     "label": "googlesky/CVE-2026-133469 0★(有源码)"
+    }
+   ],
    "nuclei": false,
-   "patched": null,
+   "patched": false,
    "kev": false,
    "kev_due": null,
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级到对应分支修复版(如7.2.2-72806-11),并限制DSM管理面暴露",
-   "repro_worthy": "一般",
-   "repro_note": "入口为DSM OAuth API参数,注入分隔符实现文件读写;暂无",
-   "impact_scope": "NAS存储管理面,常暴露于互联网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120382",
-   "description": "An improper neutralization of argument delimiters in a command vulnerability in the OAuth API in Synology DiskStation Manager (DSM) before 7.1.1-42962-10, 7.2.1-69057-14, 7.2.2-72806-11, 7.3.2-86009-6, and 7.4.1-90080-2 allows remote attackers to read or write arbitrary files and conduct denial-of-service attacks."
+   "urgency": "P0 立即处置",
+   "action_zh": "暂无官方修复，限制管理接口暴露并加强监测",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问xo-server管理接口，构造请求绕过认证",
+   "impact_scope": "虚拟化管理平台，常内网暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133469",
+   "description": "This vulnerability is actively exploited in the wild. This vulnerability is fixed in 6.9.2 and 6.10.1."
   }
  ],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "openssl/openssl",
+   "sha": "5bd2aed595045760ecb4605e27f5eb5e092e0258",
+   "url": "https://github.com/openssl/openssl/commit/5bd2aed595045760ecb4605e27f5eb5e092e0258",
+   "title": "QUIC: limit the number of out-of-order ranges per stream",
+   "date": "2026-11-23T17:24:20",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-84785"
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "f1ad57d3207a9924262d2c9d3467197fbc189ee1",
+   "url": "https://github.com/php/php-src/commit/f1ad57d3207a9924262d2c9d3467197fbc189ee1",
+   "title": "ext/dom: Fix use-after-free in getElementById() after removing an ID attribute",
+   "date": "2026-11-23T21:07:06",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "edfc0da2dfd52b16137d128229c030a4418f14da",
+   "url": "https://github.com/php/php-src/commit/edfc0da2dfd52b16137d128229c030a4418f14da",
+   "title": "ext/phar: unset() of an entry with an open handle use-after-free.",
+   "date": "2026-11-23T20:45:37",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "envoyproxy/envoy",
+   "sha": "0dbbd3065511681a7a496ca370f5997df18ab578",
+   "url": "https://github.com/envoyproxy/envoy/commit/0dbbd3065511681a7a496ca370f5997df18ab578",
+   "title": "network_ext_proc: enforce processing_mode on received responses (#49481)",
+   "date": "2026-11-23T19:12:54",
+   "score": 2,
+   "matched": [
+    "安全修复"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openbsd/src",
+   "sha": "f119e7c0f2f05f502ba34769fe360241d0e94fb0",
+   "url": "https://github.com/openbsd/src/commit/f119e7c0f2f05f502ba34769fe360241d0e94fb0",
+   "title": "rpki-client: validate first host character",
+   "date": "2026-11-23T14:09:28",
+   "score": 2,
+   "matched": [
+    "路径遍历/任意文件"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "785b1576213f39416abd48c4316747eac0387c5e",
+   "url": "https://github.com/haproxy/haproxy/commit/785b1576213f39416abd48c4316747eac0387c5e",
+   "title": "BUG/MEDIUM: mux-fcgi: avoid out-of-bounds path decoding",
+   "date": "2026-11-23T12:34:50",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/rocketmq",
+   "sha": "4bf3011d70a2a8c7ba19ec3d94e1a36ed8e6d91e",
+   "url": "https://github.com/apache/rocketmq/commit/4bf3011d70a2a8c7ba19ec3d94e1a36ed8e6d91e",
+   "title": "[ISSUE 10871] fix(common): validate statistics brief percentile metadata (#11567)",
+   "date": "2026-11-23T12:30:32",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  }
+ ]
 }
