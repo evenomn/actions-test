@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-24 11:10 UTC · 共 **222** 条(强烈推荐 48 / 值得 174)
+**更新**: 2026-11-24 23:08 UTC · 共 **223** 条(强烈推荐 48 / 值得 175)
 
 ---
 
@@ -680,6 +680,15 @@ PoC 源码可用
 处置: 升级A7100RU固件；无法升级则限制管理接口暴露
 PoC: [cveForge/CVE-2026-134882 0★(有源码)](https://github.com/cveForge/CVE-2026-134882)
 参考: [参考](https://vuldb.com/cve/CVE-2026-134882) · [参考](https://vuldb.com/submit/1054781) · [参考](https://vuldb.com/vuln/442238)
+
+### ruflo 未授权命令注入RCE
+[CVE-2026-59726](https://nvd.nist.gov/vuln/detail/CVE-2026-59726) | P1 重点关注 | 数据库 | CVSS 10.0 | EPSS 6.2% | 披露 2026-11-24 | 入库 2026-11-24
+nuclei 模板 | 有PoC | 开源,可源码审计复现
+未认证攻击者经tools/call执行命令获容器shell，窃取密钥并污染AgentDB
+复现: 值得 — 未授权调用tools/call的terminal_execute；需bridge容器暴露 · 影响面: AI Agent容器，暴露则密钥失窃
+处置: 升级至3.16.3；限制bridge容器网络访问并轮换API密钥
+影响: npm:ruflo < 3.16.3(修复: 3.16.3)
+PoC: [EDB-52705](https://www.exploit-db.com/exploits/52705)
 
 ### D-Link DIR-600L GENA接口命令注入
 [CVE-2026-133493](https://nvd.nist.gov/vuln/detail/CVE-2026-133493) | P1 重点关注 | 网络设备 | CVSS 10.0 | 披露 2026-11-20 | 入库 2026-11-20

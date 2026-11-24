@@ -1,36 +1,1198 @@
 {
  "version": 3,
- "generated_at": "2026-11-24T11:10:10+00:00",
+ "generated_at": "2026-11-24T23:08:05+00:00",
  "lookback_hours": 5,
- "count": 2,
+ "count": 32,
  "stats": {
-  "total": 2,
+  "total": 32,
   "by_tier": {
-   "critical": 2
+   "critical": 31,
+   "high": 1
   },
   "by_urgency": {
-   "P1 重点关注": 2
+   "P1 重点关注": 26,
+   "P0 立即处置": 3,
+   "P2 保持关注": 3
   },
   "by_category": {
-   "未知": 2
+   "未知": 30,
+   "CMS": 1,
+   "数据库": 1
   },
-  "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
+  "kev": 3,
+  "with_poc": 3,
+  "with_poc_source": 2,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-128798",
+   "id": "CVE-2026-131914",
    "tier": "critical",
-   "title": "会议设备接口缺失认证泄露元数据",
-   "title_zh": "会议设备接口缺失认证泄露元数据",
-   "summary_zh": "任意连接WiFi的客户端无需凭证即可获取设备信息与会议录音元数据",
-   "published": "2026-11-24T06:17:07.803",
+   "title": "AntiCsrf 反序列化RCE",
+   "title_zh": "AntiCsrf 反序列化RCE",
+   "summary_zh": "未认证远程攻击者经Cookie与表单字段校验缺陷触发对象注入，可执行任意代码",
+   "published": "2026-11-19T02:17:20.360",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00614,
+   "epss_percentile": 0.50152,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "blowdart anticsrf"
+   ],
+   "affected": "blowdart anticsrf",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://codeplexarchive.org/project/AntiCSRF"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mandiant/Vulnerability-Disclosures/blob/master/2026/MNDT-2026-0048.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-131914"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/dinosn/cve-2026-131914-poc",
+     "label": "Exploit-Index dinosn/cve-2026-131914-poc(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/l0lsec/CVE-2026-131914",
+     "label": "Exploit-Index l0lsec/CVE-2026-131914(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/mandiant/Vulnerability-Disclosures",
+     "label": "Exploit-Index mandiant/Vulnerability-Disclosures(未验证)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-27",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至修复版本；无法升级则禁用AntiCsrf组件",
+   "repro_worthy": "一般",
+   "repro_note": "未授权请求触发Cookie与表单字段反序列化；需集成AntiCsrf",
+   "impact_scope": "ASP.NET应用组件，公网入口可触达",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131914",
+   "description": "Deserialization of untrusted data in double-submit cookie vs. form field validation in Idunno.AntiCsrf versions through 0.9.1 Beta on ASP.NET allows remote unauthenticated attackers to execute code via object injection"
+  },
+  {
+   "id": "CVE-2026-132165",
+   "tier": "critical",
+   "title": "Drupal Core 安装器缺陷致接管",
+   "title_zh": "Drupal Core 安装器缺陷致接管",
+   "summary_zh": "安装目录残留时，未认证攻击者经install.php重装站点，可接管或执行代码",
+   "published": "",
+   "cvss": null,
+   "severity": null,
+   "vector": null,
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-636"
+   ],
+   "vuln_class": null,
+   "fame_term": "drupal",
+   "difficulty": null,
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [],
+   "poc": [
+    {
+     "url": "https://github.com/abraxas/drupal-install-takeover",
+     "label": "abraxas/drupal-install-takeover 5★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-27",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级Drupal Core修复版本；删除或禁用install.php",
+   "repro_worthy": "一般",
+   "repro_note": "未授权访问install.php尝试重装；需安装目录残留",
+   "impact_scope": "Drupal站点核心，公网常见",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132165",
+   "description": "Drupal Core contains a not failing securely vulnerability that could allow an unauthenticated attacker to take over an existing site or execute arbitrary code via the Drupal installer. Under specific conditions, the attacker can use install.php to attempt to reinstall Drupal on the site."
+  },
+  {
+   "id": "CVE-2026-132224",
+   "tier": "critical",
+   "title": "Optimizely 项目JS代码注入",
+   "title_zh": "Optimizely 项目JS代码注入",
+   "summary_zh": "攻击者滥用账号注册流程向projectJS注入代码，使CDN资产执行恶意脚本",
+   "published": "2026-11-18T16:18:15.627",
+   "cvss": 8.7,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N",
+   "epss": 0.00411,
+   "epss_percentile": 0.35845,
+   "cwe_labels": [
+    "CWE-642"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "中(远程·需低权限·需用户交互)",
+   "products": [
+    "optimizely web_experimentation"
+   ],
+   "affected": "optimizely web_experimentation <2026-11-17",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://arstechnica.com/security/2026/11/malicious-code-delivered-through-optimizely-hits-visitors-to-hundreds-of-sites/"
+    },
+    {
+     "label": "参考",
+     "url": "https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/brave/adblock-resources/pull/355"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-27",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至2026-11-17后版本；审查并清理projectJS",
+   "repro_worthy": "一般",
+   "repro_note": "经账号注册流程写入projectJS字段，检查CDN资源注入",
+   "impact_scope": "前端实验脚本，波及站点访客",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132224",
+   "description": "Optimizely Web Experimentation before 2026-11-17 mishandles the account signup flow, leading to presence of attacker-controlled code in the projectJS (aka Project JavaScript) field of certain cdn.optimizely.com assets."
+  },
+  {
+   "id": "CVE-2026-59726",
+   "tier": "critical",
+   "title": "ruflo 未授权命令注入RCE",
+   "title_zh": "ruflo 未授权命令注入RCE",
+   "summary_zh": "未认证攻击者经tools/call执行命令获容器shell，窃取密钥并污染AgentDB",
+   "published": "2026-11-24T21:01:10Z",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": null,
+   "epss": 0.06244,
+   "epss_percentile": 0.93652,
+   "cwe_labels": [
+    "命令注入(RCE)",
+    "缺失认证"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "npm:ruflo < 3.16.3(修复: 3.16.3)",
+   "ghsa_url": "https://github.com/advisories/GHSA-c4hm-4h84-2cf3",
+   "refs": [],
+   "poc": [
+    {
+     "url": "https://www.exploit-db.com/exploits/52705",
+     "label": "EDB-52705"
+    }
+   ],
+   "nuclei": true,
+   "patched": true,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至3.16.3；限制bridge容器网络访问并轮换API密钥",
+   "repro_worthy": "值得",
+   "repro_note": "未授权调用tools/call的terminal_execute；需bridge容器暴露",
+   "impact_scope": "AI Agent容器，暴露则密钥失窃",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59726",
+   "description": "Combined, an unauthenticated network attacker could invoke tools/call → terminal_execute inside the bridge container, obtain a shell as node (uid 1000), read every provider API key from the container env, spawn attacker-controlled swarms on the victim's keys, and persist a poisoned pattern into the AgentDB learning store that steers future AI outputs for all users of the instance."
+  },
+  {
+   "id": "CVE-2026-129959",
+   "tier": "high",
+   "title": "Apache组件 缺失授权致RCE",
+   "title_zh": "Apache组件 缺失授权致RCE",
+   "summary_zh": "低权限认证用户可读取配置与密钥文件并写入bundle，导致提权及代码执行",
+   "published": "2026-11-24T19:18:08.400",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "缺失授权(越权)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "apache",
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread/h5458p0jjn5o29hbymolrrlhcmkn053d"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/11/24/5"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至厂商修复版本；临时限制低权限账号写权限",
+   "repro_worthy": "一般",
+   "repro_note": "低权限登录后读取etc/users.properties并写入deploy目录",
+   "impact_scope": "内网中间件，横向提权跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129959",
+   "description": "Consequently, an authenticated user with only low-privileged roles (such as viewer and ssh) can read sensitive configuration and key files (including etc/users.properties and etc/host.key) or write arbitrary bundles/configurations into monitored directories (such as deploy/ or etc/), leading to privilege escalation and arbitrary code execution."
+  },
+  {
+   "id": "CVE-2026-120502",
+   "tier": "critical",
+   "title": "Jena Thrift数据致内存耗尽",
+   "title_zh": "Jena Thrift数据致内存耗尽",
+   "summary_zh": "攻击者发送恶意Thrift数据触发过量内存分配，导致服务不可用",
+   "published": "2026-11-24T19:17:51.650",
+   "cvss": null,
+   "severity": null,
+   "vector": null,
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "反序列化(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "apache",
+   "difficulty": null,
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread.html/fh6dpwv57lcct55bjs6yovhj5jrbwksj"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/11/23/36"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "升级Apache Jena至6.3.0；限制Thrift接口暴露",
+   "repro_worthy": "一般",
+   "repro_note": "向Thrift接口发送构造数据，观察内存异常增长",
+   "impact_scope": "Java语义中间件，内网服务",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120502",
+   "description": "A vulnerability in Apache Jena can cause excess memory allocation from malicious Thrift data. This issue affects Apache Jena: through 6.2.0. Users are recommended to upgrade to version 6.3.0, which fixes the issue."
+  },
+  {
+   "id": "CVE-2026-86155",
+   "tier": "critical",
+   "title": "Jena Fuseki SHACL SSRF",
+   "title_zh": "Jena Fuseki SHACL SSRF",
+   "summary_zh": "攻击者经SHACL校验发起服务端请求，可探测或访问内网资源",
+   "published": "2026-11-24T19:18:25.433",
    "cvss": 10.0,
    "severity": "CRITICAL",
    "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "SSRF"
+   ],
+   "vuln_class": null,
+   "fame_term": "apache",
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread.html/c26p602yxs8g5p6936o03ct7fwqvd90c"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/11/23/32"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Jena Fuseki至6.3.0；限制SHACL远程引用",
+   "repro_worthy": "一般",
+   "repro_note": "提交含远程引用的SHACL数据触发校验，观察外连",
+   "impact_scope": "语义服务，可作内网探测跳板",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86155",
+   "description": "A vulnerability in Apache Jena Fuseki in the SHACL validation functionality cause server side request forgery (SSRF). This issue affects Apache Jena Fuseki: through 6.2.0. Users are recommended to upgrade to version 6.3.0, which fixes the issue."
+  },
+  {
+   "id": "CVE-2026-135793",
+   "tier": "critical",
+   "title": "Panabit Smart Application Gateway 路径遍历/任意文件读取",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-24T18:19:03.360",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/nenghun/IoT/blob/main/Panabit/rce4/Authenticated%20arbitrary%20file%20writedelete%20_rce.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-135793"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1055814"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135793",
+   "description": "A vulnerability was found in Panabit Smart Application Gateway TANGr7p10. Impacted is the function import_upgrde/upload_modkey of the file /admin/cgi-bin/sac/ajax_sac_ap of the component CGI Backend. Performing a manipulation of the argument file/filename results in path traversal. Remote exploitation of the attack is possible. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-136411",
+   "tier": "critical",
+   "title": "BusyBox 未授权 CWE-36",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-24T19:18:17.003",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-36"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/mirror/busybox/blob/fc71374dfccd46448c62947269a35f1420d7ee28/networking/tftp.c#L946-L950"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/mirror/busybox/commit/b67f7b7d14ac98ca84491718d364b955d21a9cd5"
+    },
+    {
+     "label": "参考",
+     "url": "https://lists.busybox.net/pipermail/busybox-cvs/2026-November/042587.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136411",
+   "description": "BusyBox through 1.38.0 contains an absolute path traversal vulnerability in tftpd that allows unauthenticated remote attackers to access files outside any intended directory when started without a DIR argument. Attackers can send RRQ or WRQ packets with file names beginning with '/' to read sensitive files like /etc/shadow or overwrite files, typically as root."
+  },
+  {
+   "id": "CVE-2026-135792",
+   "tier": "critical",
+   "title": "未知组件 命令注入致RCE",
+   "title_zh": "未知组件 命令注入致RCE",
+   "summary_zh": "攻击者经Username参数注入系统命令，可在受影响主机执行任意命令",
+   "published": "2026-11-24T18:19:03.150",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/nenghun/IoT/blob/main/Panabit/rce3/Unauthenticated%20OS%20Command%20Injection.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-135792"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1055813"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级厂商修复版本；过滤Username参数并限制命令执行",
+   "repro_worthy": "一般",
+   "repro_note": "向Username参数注入命令分隔符，验证命令执行",
+   "impact_scope": "受影响主机，命令执行风险高",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135792",
+   "description": "A vulnerability has been found in Panabit Smart Application Gateway TANGr7p10. This issue affects the function send_email_authcode of the file user.cgi of the component Email Auth Code Sender. Such manipulation of the argument Username leads to os command injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-135797",
+   "tier": "critical",
+   "title": "Volans NGFW 命令注入RCE",
+   "title_zh": "Volans NGFW 命令注入RCE",
+   "summary_zh": "攻击者经img参数注入系统命令，可在防火墙执行任意代码",
+   "published": "2026-11-24T19:18:14.630",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/nenghun/IoT/blob/main/Volans%20NGFW%20(nf51)/Root_RCE/Volans%20NGFW%20(nf51)_rce.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-135797"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1055817"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级厂商修复版本；限制管理面暴露并过滤img参数",
+   "repro_worthy": "一般",
+   "repro_note": "向img参数注入命令分隔符；需可访问防火墙管理面",
+   "impact_scope": "边界防火墙，管理面暴露高风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135797",
+   "description": "A vulnerability was identified in Volans NGFW Next-Generation Firewall r5.1. Impacted is the function exec of the file sslvpn/sslvpn_client.php of the component SSLVPN Client. Such manipulation of the argument img leads to os command injection. The attack can be executed remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-123342",
+   "tier": "critical",
+   "title": "ACC 代码注入致RCE",
+   "title_zh": "ACC 代码注入致RCE",
+   "summary_zh": "低权限攻击者无需用户交互即可注入代码，在当前用户上下文执行任意代码",
+   "published": "2026-11-24T18:18:53.000",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-194.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe官方修复版本；限制低权限账号与执行入口",
+   "repro_worthy": "一般",
+   "repro_note": "低权限登录后向受影响功能注入代码；无需用户交互",
+   "impact_scope": "营销平台，承载客户数据与发送",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123342",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-123722",
+   "tier": "critical",
+   "title": "ACC 代码注入致RCE",
+   "title_zh": "ACC 代码注入致RCE",
+   "summary_zh": "低权限攻击者无需用户交互即可注入代码，在当前用户上下文执行任意代码",
+   "published": "2026-11-24T18:18:53.310",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-194.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe官方修复版本；限制低权限账号与执行入口",
+   "repro_worthy": "一般",
+   "repro_note": "低权限登录后向受影响功能注入代码；无需用户交互",
+   "impact_scope": "营销平台，承载客户数据与发送",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123722",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-123723",
+   "tier": "critical",
+   "title": "ACC 代码注入致RCE",
+   "title_zh": "ACC 代码注入致RCE",
+   "summary_zh": "低权限攻击者无需用户交互即可注入代码，在当前用户上下文执行任意代码",
+   "published": "2026-11-24T18:18:53.453",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-194.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe官方修复版本；限制低权限账号与执行入口",
+   "repro_worthy": "一般",
+   "repro_note": "低权限登录后向受影响功能注入代码；无需用户交互",
+   "impact_scope": "营销平台，承载客户数据与发送",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123723",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-123986",
+   "tier": "critical",
+   "title": "ACC 代码注入致RCE",
+   "title_zh": "ACC 代码注入致RCE",
+   "summary_zh": "低权限攻击者无需用户交互即可注入代码，在当前用户上下文执行任意代码",
+   "published": "2026-11-24T18:18:53.603",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-194.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe官方修复版本；限制低权限账号与执行入口",
+   "repro_worthy": "一般",
+   "repro_note": "低权限登录后向受影响功能注入代码；无需用户交互",
+   "impact_scope": "营销平台，承载客户数据与发送",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123986",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-123987",
+   "tier": "critical",
+   "title": "ACC 代码注入致RCE",
+   "title_zh": "ACC 代码注入致RCE",
+   "summary_zh": "低权限攻击者无需用户交互即可注入代码，在当前用户上下文执行任意代码",
+   "published": "2026-11-24T18:18:53.753",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-194.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe官方修复版本；限制低权限账号与执行入口",
+   "repro_worthy": "一般",
+   "repro_note": "低权限登录后向受影响功能注入代码；无需用户交互",
+   "impact_scope": "营销平台，承载客户数据与发送",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123987",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-125675",
+   "tier": "critical",
+   "title": "ACC 代码注入致RCE",
+   "title_zh": "ACC 代码注入致RCE",
+   "summary_zh": "低权限攻击者无需用户交互即可注入代码，在当前用户上下文执行任意代码",
+   "published": "2026-11-24T18:18:54.080",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-194.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级Adobe官方修复版本；限制低权限账号与执行入口",
+   "repro_worthy": "一般",
+   "repro_note": "低权限登录后向受影响功能注入代码；无需用户交互",
+   "impact_scope": "营销平台，承载客户数据与发送",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125675",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-125676",
+   "tier": "critical",
+   "title": "Adobe Campaign代码注入RCE",
+   "title_zh": "Adobe Campaign代码注入RCE",
+   "summary_zh": "低权限攻击者可在ACC中注入并执行代码，无需用户交互，导致服务器失陷",
+   "published": "2026-11-24T18:18:54.227",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/campaign/apsb26-194.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "应用厂商修复版本；限制低权限账号并收敛ACC后台访问",
+   "repro_worthy": "一般",
+   "repro_note": "需低权限ACC账号；在后台代码生成/执行功能注入代码",
+   "impact_scope": "企业营销平台，常内网部署",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125676",
+   "description": "Adobe Campaign Classic (ACC) is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-135791",
+   "tier": "critical",
+   "title": "flowcontrol CGI命令注入RCE",
+   "title_zh": "flowcontrol CGI命令注入RCE",
+   "summary_zh": "攻击者可向flowcontrol接口Name参数注入系统命令，执行任意代码",
+   "published": "2026-11-24T18:19:02.880",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/nenghun/IoT/blob/main/Panabit/rce2/RCE2.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-135791"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1055812"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "联系厂商修复；限制该CGI接口访问并过滤Name参数",
+   "repro_worthy": "一般",
+   "repro_note": "访问flowcontrol/ajax_data_pie，Name参数注入命令",
+   "impact_scope": "未知Web组件，可能暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135791",
+   "description": "A flaw has been found in Panabit Smart Application Gateway TANGr7p10. This vulnerability affects the function edit_data_pie of the file /cgi-bin/flowcontrol/ajax_data_pie. This manipulation of the argument Name causes os command injection. The attack may be initiated remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-123266",
+   "tier": "critical",
+   "title": "Adobe AEM代码注入RCE",
+   "title_zh": "Adobe AEM代码注入RCE",
+   "summary_zh": "低权限攻击者可在AEM后台注入并执行任意代码，无需交互，导致服务失陷",
+   "published": "2026-11-24T19:18:04.280",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/experience-manager/apsb26-104.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "应用厂商修复版本；限制低权限账号并收敛AEM后台访问",
+   "repro_worthy": "一般",
+   "repro_note": "需低权限AEM账号；在后台代码生成/执行功能注入代码",
+   "impact_scope": "企业Web内容平台，常暴露内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123266",
+   "description": "Adobe Experience Manager is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-132877",
+   "tier": "critical",
+   "title": "Adobe AEM代码注入RCE",
+   "title_zh": "Adobe AEM代码注入RCE",
+   "summary_zh": "低权限攻击者可在AEM后台注入并执行任意代码，无需交互，导致服务失陷",
+   "published": "2026-11-24T19:18:09.507",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": "Adobe(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.adobe.com/trust/security/products/experience-manager/apsb26-104.html"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "应用厂商修复版本；限制低权限账号并收敛AEM后台访问",
+   "repro_worthy": "一般",
+   "repro_note": "需低权限AEM账号；在后台代码生成/执行功能注入代码",
+   "impact_scope": "企业Web内容平台，常暴露内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132877",
+   "description": "Adobe Experience Manager is affected by an Improper Control of Generation of Code ('Code Injection') vulnerability that could result in arbitrary code execution in the context of the current user. A low-privileged attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed."
+  },
+  {
+   "id": "CVE-2026-135794",
+   "tier": "critical",
+   "title": "Panabit网关代码注入RCE",
+   "title_zh": "Panabit网关代码注入RCE",
+   "summary_zh": "远程攻击者可能通过代码注入在Panabit网关执行任意代码，致边界失陷",
+   "published": "2026-11-24T19:18:14.237",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "注入",
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/nenghun/IoT/blob/main/Panabit/rce5/Post-authentication%20second-order%20(stored)%20code%20injection_rce.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-135794"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1055815"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "联系厂商获取修复；限制网关管理面公网暴露并加强审计",
+   "repro_worthy": "一般",
+   "repro_note": "定位Panabit网关代码注入接口，确认认证与注入参数",
+   "impact_scope": "应用网关边界设备，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135794",
+   "description": "A vulnerability was determined in Panabit Smart Application Gateway TANGr7p10. The affected element is the function add_crontab of the file admin/cgi-bin/sac/ajax_sac_crontab of the component SAC. Executing a manipulation of the argument cmd can lead to code injection. The attack can be executed remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-135796",
+   "tier": "critical",
+   "title": "Volans NGFW命令注入RCE",
+   "title_zh": "Volans NGFW命令注入RCE",
+   "summary_zh": "远程攻击者可通过命令注入在Volans NGFW执行任意命令，危及边界安全",
+   "published": "2026-11-24T19:18:14.430",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/nenghun/IoT/blob/main/Volans%20NGFW%20(nf51)/RCE/RCE.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-135796"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1055816"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "联系厂商获取修复；限制NGFW管理面公网暴露",
+   "repro_worthy": "一般",
+   "repro_note": "定位NGFW管理接口命令注入参数，确认认证条件",
+   "impact_scope": "下一代防火墙，常暴露公网边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135796",
+   "description": "A vulnerability was determined in Volans NGFW Next-Generation Firewall r5.1. This issue affects the function exec/system of the file modules/assets/port_serve_scan.mds of the component Web Management UI. This manipulation of the argument task_name/where/path causes os command injection. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way."
+  },
+  {
+   "id": "CVE-2026-136434",
+   "tier": "critical",
+   "title": "Super Magic沙箱逃逸代码执行",
+   "title_zh": "Super Magic沙箱逃逸代码执行",
+   "summary_zh": "远程攻击者可绕过Super Magic沙箱，在服务账号上下文执行任意代码",
+   "published": "2026-11-24T19:18:19.273",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-1060/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "隔离Super Magic服务，限制沙箱账号权限并联系厂商修复",
+   "repro_worthy": "一般",
+   "repro_note": "需先进入Super Magic运行环境，利用沙箱缺陷逃逸执行代码",
+   "impact_scope": "应用沙箱环境，可能横向移动",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136434",
+   "description": "This vulnerability allows remote attackers to bypass the sandbox on affected installations of Super Magic. An attacker can leverage this vulnerability to escape the sandbox and execute arbitrary code in the context of the service account."
+  },
+  {
+   "id": "CVE-2026-136441",
+   "tier": "critical",
+   "title": "Bytebase DBHub. An 未授权 授权错误",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-24T19:18:20.130",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-1067/"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136441",
+   "description": "This vulnerability allows remote attackers to bypass authentication on affected installations of Bytebase DBHub. An attacker can leverage this vulnerability to bypass authentication on the system."
+  },
+  {
+   "id": "CVE-2026-123215",
+   "tier": "critical",
+   "title": "Copeland XWEB Pro 未授权 缺失认证",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-24T20:18:45.900",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
@@ -45,7 +1207,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://community.acer.com/en/en/kb/articles/20236-security-advisory-firmware-update-for-acer-connect-m6e-5g-portable-wi-fi-router"
+     "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-328-01.json"
+    },
+    {
+     "label": "参考",
+     "url": "https://webapps.copeland.com/dixell/Content/Pages/SystemSoftwareUpdate/XWEB-PRO/Changelog_XWEB-PRO_v.1.16.1_EN.pdf"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cve.org/CVERecord?id=CVE-2026-123215"
     }
    ],
    "poc": [],
@@ -56,27 +1226,212 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级修复版本，限制WiFi客户端访问并启用认证",
-   "repro_worthy": "一般",
-   "repro_note": "连接同一WiFi后无需认证访问设备信息/录音元数据接口",
-   "impact_scope": "会议室设备，同网段可窥探",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-128798",
-   "description": "Any connected WiFi client can fetch device info and meeting recording metadata without credentials."
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123215",
+   "description": "Copeland XWEB Pro contains a missing authentication vulnerability. Fixed in 1.16.1."
   },
   {
-   "id": "CVE-2026-128797",
+   "id": "CVE-2026-124284",
    "tier": "critical",
-   "title": "Web管理面板绑定公网IPv6暴露API",
-   "title_zh": "Web管理面板绑定公网IPv6暴露API",
-   "summary_zh": "管理面板8080监听所有接口，公网IPv6可直达内部API，绕过防火墙",
-   "published": "2026-11-24T06:17:07.683",
-   "cvss": 10.0,
+   "title": "未授权 凭据保护不足",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-24T22:18:49.567",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "CWE-668"
+    "凭据保护不足"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://techdocs.genetec.com/r/en-US/Security-Center-5.10-guides/5.10-Security-Updates"
+    },
+    {
+     "label": "参考",
+     "url": "https://techdocs.genetec.com/r/en-US/Security-Center-5.11-guides/5.11-Security-Updates"
+    },
+    {
+     "label": "参考",
+     "url": "https://techdocs.genetec.com/r/en-US/Security-Updates-for-Security-Center-5.12/Resolved-vulnerabilities-in-Security-Center-5.12.2.0"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124284",
+   "description": "A critical security vulnerability affects certain authentication methods in Genetec Security Center, including external identity providers using OpenID Connect (OIDC) or SAML 2.0, and Active Directory Federation Services (AD FS) using WS-Trust or WS-Federation. Under specific conditions, successful exploitation may allow an unauthenticated attacker to gain unauthorized access to the system with the privileges of an affected user."
+  },
+  {
+   "id": "CVE-2026-86156",
+   "tier": "critical",
+   "title": "Jena Fuseki 路径遍历读文件",
+   "title_zh": "Jena Fuseki 路径遍历读文件",
+   "summary_zh": "攻击者经SPARQL Update构造路径遍历，可读取Fuseki服务器本地文件",
+   "published": "2026-11-24T19:18:25.573",
+   "cvss": null,
+   "severity": null,
+   "vector": null,
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": "apache",
+   "difficulty": null,
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread.html/d7ghmpo9whqh1lh8jztrzyxodjr3g7tm"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/11/23/33"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "升级Jena Fuseki至6.3.0；限制SPARQL Update权限",
+   "repro_worthy": "一般",
+   "repro_note": "通过SPARQL Update构造路径读取本地文件；需更新权限",
+   "impact_scope": "语义数据库服务，内网数据暴露",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86156",
+   "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') can allow SPARQL Update to access data from local server. This issue affects Apache Jena Fuseki through 6.2.0. Users are recommended to upgrade to version 6.3.0, which fixes the issue."
+  },
+  {
+   "id": "CVE-2026-124324",
+   "tier": "critical",
+   "title": "Jena Fuseki SERVICE越权",
+   "title_zh": "Jena Fuseki SERVICE越权",
+   "summary_zh": "攻击者利用SERVICE操作绕过管理限制，可能执行受限操作并访问内网资源",
+   "published": "2026-11-24T19:18:04.973",
+   "cvss": null,
+   "severity": null,
+   "vector": null,
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "权限提升",
+    "SSRF"
+   ],
+   "vuln_class": "提权",
+   "fame_term": "apache",
+   "difficulty": null,
+   "products": [],
+   "affected": "Apache(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://lists.apache.org/thread.html/810oqbb4t6kp9kngjdld9p5vn469c1lk"
+    },
+    {
+     "label": "参考",
+     "url": "http://www.openwall.com/lists/oss-security/2026/11/23/37"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P2 保持关注",
+   "action_zh": "升级至Jena Fuseki 6.3.0；禁用不必要的SERVICE",
+   "repro_worthy": "一般",
+   "repro_note": "通过SPARQL SERVICE访问管理操作，验证限制绕过",
+   "impact_scope": "语义数据库服务，内网横向",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124324",
+   "description": "A vulnerability in Apache Jena Fuseki allows SERVICE operations to bypass restrictions on administration operations. This issue affects Apache Jena Fuseki: from through 6.2.0. Users are recommended to upgrade to version 6.3.0, which fixes the issue."
+  },
+  {
+   "id": "CVE-2026-109484",
+   "tier": "critical",
+   "title": "Failure 未授权 CWE-75",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-24T18:18:45.157",
+   "cvss": 10.0,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-75"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109484"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109484",
+   "description": "Failure to sanitize special elements into a different plane (special element injection) in Azure App Service allows an unauthorized attacker to elevate privileges over a network."
+  },
+  {
+   "id": "CVE-2026-136404",
+   "tier": "critical",
+   "title": "REGISTER_SUPER_NAK 未授权 栈溢出",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-24T19:18:16.040",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "栈溢出"
    ],
    "vuln_class": null,
    "fame_term": null,
@@ -87,7 +1442,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://community.acer.com/en/en/kb/articles/20236-security-advisory-firmware-update-for-acer-connect-m6e-5g-portable-wi-fi-router"
+     "url": "https://github.com/ntop/n2n/blob/a6f94564f2d6aaad925254590329c274058a53e5/src/sn_utils.c#L2309-L2344"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ntop/n2n/blob/a6f94564f2d6aaad925254590329c274058a53e5/src/wire.c#L649-L679"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/ntop/n2n/commit/854fbbe01bbf131bf4cb88f8450d7084267668e1"
     }
    ],
    "poc": [],
@@ -98,40 +1461,100 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "限制8080绑定内网/关闭公网IPv6访问并升级修复",
-   "repro_worthy": "一般",
-   "repro_note": "检查8080是否绑定公网IPv6并访问内部API",
-   "impact_scope": "设备管理面，公网暴露API",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-128797",
-   "description": "Web administration panel (port 8080) binds to all network interfaces including public IPv6 addresses, making internal API endpoints reachable over WAN without firewall protection (related to CVE-2026-50224)."
-  }
- ],
- "media": [],
- "commits": [
-  {
-   "repo": "sqlite/sqlite",
-   "sha": "0bb190c776bb3cb5091e82bc0d52403d88542873",
-   "url": "https://github.com/sqlite/sqlite/commit/0bb190c776bb3cb5091e82bc0d52403d88542873",
-   "title": "CLI shell: fix a leak of the filename when .open --deserialize fails to read its input file. [bugs:8a48949851|Bug report",
-   "date": "2026-11-24T09:35:07",
-   "score": 3,
-   "matched": [
-    "反序列化",
-    "泄露"
-   ],
-   "cve": null
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136404",
+   "description": "ntop n2n supernode 3.0 through 3.1.1 contains a stack-based buffer overflow vulnerability that allows remote unauthenticated attackers to leak memory and execute code by sending an untrusted 16-bit auth token_size in REGISTER_SUPER_NAK datagrams. Attackers can register an edge in a chosen community, then send an oversized token_size to leak stack canaries and pointers, overwrite the return address, or crash the supernode."
   },
   {
-   "repo": "openssl/openssl",
-   "sha": "65a25c1d968245489bb7857fcbd7efc64d1b2144",
-   "url": "https://github.com/openssl/openssl/commit/65a25c1d968245489bb7857fcbd7efc64d1b2144",
-   "title": "Avoid unlikely DANE \"2 1 0\" check NPE.",
-   "date": "2026-11-24T07:49:08",
-   "score": 3,
-   "matched": [
-    "CVE"
+   "id": "CVE-2026-112732",
+   "tier": "critical",
+   "title": "Double 未授权 CWE-415",
+   "title_zh": null,
+   "summary_zh": null,
+   "published": "2026-11-24T20:18:21.960",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "CWE-415"
    ],
-   "cve": "CVE-2026-84786"
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": "Microsoft(产品与版本待 NVD/厂商补充)",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-112732"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": null,
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112732",
+   "description": "Double free in Microsoft Office Visio allows an unauthorized attacker to execute code over a network."
+  }
+ ],
+ "media": [
+  {
+   "title": "Hex.pm Erlang Parser Unauthenticated Deserialization RCE (CVE-2026-129514, CVSS 10.0) Exploited in the Wild",
+   "link": "https://sh3llc0d3.com/blog/hexpm-erlang-parser-unauthenticated-deserialization-rce-cve-2026-129514-cvss-100-exploited-in-the-wild/",
+   "cves": [
+    "CVE-2026-129514"
+   ]
+  },
+  {
+   "title": "Microsoft Azure API Management Classic Flaw Actively Exploited to Steal Secrets Across Energy Sector Targets",
+   "link": "https://sh3llc0d3.com/blog/microsoft-azure-api-management-classic-flaw-actively-exploited-to-steal-secrets-across-energy-sector-targets/",
+   "cves": []
+  },
+  {
+   "title": "GL.iNet GoodCloud Remote Management Flaw Exploited to Plant Root Malware on Routers and KVM Hardware",
+   "link": "https://sh3llc0d3.com/blog/glinet-goodcloud-remote-management-flaw-exploited-to-plant-root-malware-on-routers-and-kvm-hardware/",
+   "cves": []
+  }
+ ],
+ "commits": [
+  {
+   "repo": "grafana/grafana",
+   "sha": "30d6a779d6527be6d7fe4b1ca00612243ef61c0c",
+   "url": "https://github.com/grafana/grafana/commit/30d6a779d6527be6d7fe4b1ca00612243ef61c0c",
+   "title": "Release: update changelog for main (#138805)",
+   "date": "2026-11-24T17:59:14",
+   "score": 5,
+   "matched": [
+    "CVE",
+    "安全修复"
+   ],
+   "cve": "CVE-2026-88960"
+  },
+  {
+   "repo": "golang/go",
+   "sha": "cc0ae9df8f0172c157b2f4430f4084c732019427",
+   "url": "https://github.com/golang/go/commit/cc0ae9df8f0172c157b2f4430f4084c732019427",
+   "title": "crypto/tls: clarify that non-leaf peer certificates are unverified",
+   "date": "2026-11-24T16:08:56",
+   "score": 2,
+   "matched": [
+    "漏洞相关"
+   ],
+   "cve": null
   }
  ]
 }

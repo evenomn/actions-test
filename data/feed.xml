@@ -5,25 +5,298 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 24 Nov 2026 11:10:10 +0000</pubDate>
-    <lastBuildDate>Tue, 24 Nov 2026 11:10:10 +0000</lastBuildDate>
+    <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    <lastBuildDate>Tue, 24 Nov 2026 23:08:05 +0000</lastBuildDate>
     <item>
-      <title>[critical]会议设备接口缺失认证泄露元数据</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-128798</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-128798-2026-11-24</guid>
-      <description>CVE-2026-128798 · P1 重点关注 · 披露 2026-11-24 · CVSS 10.0 · 类型 缺失认证 · 难度 低(远程·免认证)
-Any connected WiFi client can fetch device info and meeting recording metadata without credentials.
-信号:</description>
-      <pubDate>Tue, 24 Nov 2026 11:10:10 +0000</pubDate>
+      <title>[critical]AntiCsrf 反序列化RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-131914</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-131914-2026-11-24</guid>
+      <description>CVE-2026-131914 · P0 立即处置 · 披露 2026-11-19 · CVSS 9.8 · EPSS 0.6%,前 50% · 类型 反序列化(RCE) · 难度 低(远程·免认证)
+form field validation in Idunno.AntiCsrf versions through 0.9.1 Beta on ASP.NET allows remote unauthenticated attackers to execute code via object injection
+信号: KEV 在野利用(CISA 限期 2026-11-27) | 有 PoC
+[Exploit-Index dinosn/cve-2026-131914-poc(未验证)(有源码)](https://github.com/dinosn/cve-2026-131914-poc) · [Exploit-Index l0lsec/CVE-2026-131914(未验证)(有源码)](https://github.com/l0lsec/CVE-2026-131914) · [Exploit-Index mandiant/Vulnerability-Disclosures(未验证)](https://github.com/mandiant/Vulnerability-Disclosures)</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Web管理面板绑定公网IPv6暴露API</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-128797</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-128797-2026-11-24</guid>
-      <description>CVE-2026-128797 · P1 重点关注 · 披露 2026-11-24 · CVSS 10.0 · 类型 CWE-668 · 难度 低(远程·免认证)
-Web administration panel (port 8080) binds to all network interfaces including public IPv6 addresses, making internal API endpoints reachable over WAN without f…
+      <title>[critical]Drupal Core 安装器缺陷致接管</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-132165</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-132165-2026-11-24</guid>
+      <description>CVE-2026-132165 · P0 立即处置 · 组件 CMS · CVSS 待定(NVD 未评分) · 类型 CWE-636
+Drupal Core contains a not failing securely vulnerability that could allow an unauthenticated attacker to take over an existing site or execute arbitrary code v…
+信号: KEV 在野利用(CISA 限期 2026-11-27) | 有 PoC
+[abraxas/drupal-install-takeover 5★(有源码)](https://github.com/abraxas/drupal-install-takeover)</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Optimizely 项目JS代码注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-132224</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-132224-2026-11-24</guid>
+      <description>CVE-2026-132224 · P0 立即处置 · 披露 2026-11-18 · CVSS 8.7 · EPSS 0.4%,前 36% · 类型 CWE-642 · 难度 中(远程·需低权限·需用户交互)
+Optimizely Web Experimentation before 2026-11-17 mishandles the account signup flow, leading to presence of attacker-controlled code in the projectJS (aka Proje…
+信号: KEV 在野利用(CISA 限期 2026-11-27)</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ruflo 未授权命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59726</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59726-2026-11-24</guid>
+      <description>CVE-2026-59726 · P1 重点关注 · 披露 2026-11-24 · 组件 数据库 · CVSS 10.0 · EPSS 6.2%,前 94% · 类型 命令注入(RCE)/缺失认证 · 难度 低(远程·免认证)
+Combined, an unauthenticated network attacker could invoke tools/call → terminal_execute inside the bridge container, obtain a shell as node (uid 1000), read ev…
+信号: 有 PoC | nuclei 检测模板
+[EDB-52705](https://www.exploit-db.com/exploits/52705)</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[high]Apache组件 缺失授权致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129959</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129959-2026-11-24</guid>
+      <description>CVE-2026-129959 · P1 重点关注 · 披露 2026-11-24 · CVSS 8.8 · 类型 缺失授权(越权) · 难度 低(远程·需低权限)
+Consequently, an authenticated user with only low-privileged roles (such as viewer and ssh) can read sensitive configuration and key files (including etc/users.…
 信号:</description>
-      <pubDate>Tue, 24 Nov 2026 11:10:10 +0000</pubDate>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Jena Thrift数据致内存耗尽</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120502</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120502-2026-11-24</guid>
+      <description>CVE-2026-120502 · P2 保持关注 · 披露 2026-11-24 · CVSS 待定(NVD 未评分) · 类型 反序列化(RCE)
+A vulnerability in Apache Jena can cause excess memory allocation from malicious Thrift data. This issue affects Apache Jena: through 6.2.0.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Jena Fuseki SHACL SSRF</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-86155</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-86155-2026-11-24</guid>
+      <description>CVE-2026-86155 · P1 重点关注 · 披露 2026-11-24 · CVSS 10.0 · 类型 SSRF · 难度 低(远程·免认证)
+A vulnerability in Apache Jena Fuseki in the SHACL validation functionality cause server side request forgery (SSRF).
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Panabit Smart Application Gateway 路径遍历/任意文件读取</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-135793</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-135793-2026-11-24</guid>
+      <description>CVE-2026-135793 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+A vulnerability was found in Panabit Smart Application Gateway TANGr7p10. Performing a manipulation of the argument file/filename results in path traversal.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]BusyBox 未授权 CWE-36</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136411</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136411-2026-11-24</guid>
+      <description>CVE-2026-136411 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.8 · 类型 CWE-36 · 难度 低(远程·免认证)
+BusyBox through 1.38.0 contains an absolute path traversal vulnerability in tftpd that allows unauthenticated remote attackers to access files outside any inten…
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未知组件 命令注入致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-135792</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-135792-2026-11-24</guid>
+      <description>CVE-2026-135792 · P1 重点关注 · 披露 2026-11-24 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+Such manipulation of the argument Username leads to os command injection. The exploit has been disclosed to the public and may be used.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Volans NGFW 命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-135797</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-135797-2026-11-24</guid>
+      <description>CVE-2026-135797 · P1 重点关注 · 披露 2026-11-24 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+A vulnerability was identified in Volans NGFW Next-Generation Firewall r5.1. Such manipulation of the argument img leads to os command injection.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ACC 代码注入致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123342</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123342-2026-11-24</guid>
+      <description>CVE-2026-123342 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ACC 代码注入致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123722</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123722-2026-11-24</guid>
+      <description>CVE-2026-123722 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ACC 代码注入致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123723</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123723-2026-11-24</guid>
+      <description>CVE-2026-123723 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ACC 代码注入致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123986</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123986-2026-11-24</guid>
+      <description>CVE-2026-123986 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ACC 代码注入致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123987</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123987-2026-11-24</guid>
+      <description>CVE-2026-123987 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]ACC 代码注入致RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-125675</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-125675-2026-11-24</guid>
+      <description>CVE-2026-125675 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe Campaign代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-125676</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-125676-2026-11-24</guid>
+      <description>CVE-2026-125676 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]flowcontrol CGI命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-135791</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-135791-2026-11-24</guid>
+      <description>CVE-2026-135791 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+This vulnerability affects the function edit_data_pie of the file /cgi-bin/flowcontrol/ajax_data_pie.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe AEM代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123266</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123266-2026-11-24</guid>
+      <description>CVE-2026-123266 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Adobe AEM代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-132877</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-132877-2026-11-24</guid>
+      <description>CVE-2026-132877 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 代码注入(RCE) · 难度 低(远程·需低权限)
+A low-privileged attacker could exploit this vulnerability to execute arbitrary code.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Panabit网关代码注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-135794</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-135794-2026-11-24</guid>
+      <description>CVE-2026-135794 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 注入/代码注入(RCE) · 难度 低(远程·需低权限)
+A vulnerability was determined in Panabit Smart Application Gateway TANGr7p10. The exploit has been publicly disclosed and may be utilized.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Volans NGFW命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-135796</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-135796-2026-11-24</guid>
+      <description>CVE-2026-135796 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+A vulnerability was determined in Volans NGFW Next-Generation Firewall r5.1. The exploit has been publicly disclosed and may be utilized.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Super Magic沙箱逃逸代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136434</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136434-2026-11-24</guid>
+      <description>CVE-2026-136434 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.8 · 类型 代码注入(RCE) · 难度 低(远程·免认证)
+This vulnerability allows remote attackers to bypass the sandbox on affected installations of Super Magic.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Bytebase DBHub. An 未授权 授权错误</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136441</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136441-2026-11-24</guid>
+      <description>CVE-2026-136441 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.8 · 类型 授权错误 · 难度 低(远程·免认证)
+This vulnerability allows remote attackers to bypass authentication on affected installations of Bytebase DBHub.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Copeland XWEB Pro 未授权 缺失认证</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-123215</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-123215-2026-11-24</guid>
+      <description>CVE-2026-123215 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.8 · 类型 缺失认证 · 难度 低(远程·免认证)
+Copeland XWEB Pro contains a missing authentication vulnerability. Fixed in 1.16.1.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]未授权 凭据保护不足</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124284</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124284-2026-11-24</guid>
+      <description>CVE-2026-124284 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.8 · 类型 凭据保护不足 · 难度 低(远程·免认证)
+Under specific conditions, successful exploitation may allow an unauthenticated attacker to gain unauthorized access to the system with the privileges of an aff…
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Jena Fuseki 路径遍历读文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-86156</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-86156-2026-11-24</guid>
+      <description>CVE-2026-86156 · P2 保持关注 · 披露 2026-11-24 · CVSS 待定(NVD 未评分) · 类型 路径遍历/任意文件读取
+Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') can allow SPARQL Update to access data from local server.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Jena Fuseki SERVICE越权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-124324</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-124324-2026-11-24</guid>
+      <description>CVE-2026-124324 · P2 保持关注 · 披露 2026-11-24 · CVSS 待定(NVD 未评分) · 类型 权限提升/SSRF
+A vulnerability in Apache Jena Fuseki allows SERVICE operations to bypass restrictions on administration operations.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Failure 未授权 CWE-75</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-109484</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-109484-2026-11-24</guid>
+      <description>CVE-2026-109484 · P1 重点关注 · 披露 2026-11-24 · CVSS 10.0 · 类型 CWE-75 · 难度 低(远程·免认证)
+Failure to sanitize special elements into a different plane (special element injection) in Azure App Service allows an unauthorized attacker to elevate privileg…
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]REGISTER_SUPER_NAK 未授权 栈溢出</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136404</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136404-2026-11-24</guid>
+      <description>CVE-2026-136404 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.8 · 类型 栈溢出 · 难度 低(远程·免认证)
+ntop n2n supernode 3.0 through 3.1.1 contains a stack-based buffer overflow vulnerability that allows remote unauthenticated attackers to leak memory and execut…
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]Double 未授权 CWE-415</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-112732</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-112732-2026-11-24</guid>
+      <description>CVE-2026-112732 · P1 重点关注 · 披露 2026-11-24 · CVSS 9.8 · 类型 CWE-415 · 难度 低(远程·免认证)
+Double free in Microsoft Office Visio allows an unauthorized attacker to execute code over a network.
+信号:</description>
+      <pubDate>Tue, 24 Nov 2026 23:08:05 +0000</pubDate>
     </item>
   </channel>
 </rss>

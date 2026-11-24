@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-24T11:10:10+00:00",
- "count": 222,
+ "updated_at": "2026-11-24T23:08:05+00:00",
+ "count": 223,
  "count_recommended": 48,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -3397,6 +3397,42 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134882",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-59726",
+   "title": "ruflo 未授权命令注入RCE",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-24",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": true,
+   "published": "2026-11-24",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权调用tools/call的terminal_execute；需bridge容器暴露",
+   "impact_scope": "AI Agent容器，暴露则密钥失窃",
+   "action_zh": "升级至3.16.3；限制bridge容器网络访问并轮换API密钥",
+   "summary_zh": "未认证攻击者经tools/call执行命令获容器shell，窃取密钥并污染AgentDB",
+   "category": "数据库",
+   "cvss": 10.0,
+   "epss": 0.06244,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": true,
+   "poc_quality": null,
+   "poc": [
+    {
+     "url": "https://www.exploit-db.com/exploits/52705",
+     "label": "EDB-52705"
+    }
+   ],
+   "affected": "npm:ruflo < 3.16.3(修复: 3.16.3)",
+   "patched": true,
+   "refs": [],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59726",
    "change_note": null
   },
   {
