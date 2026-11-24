@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-23 21:33 UTC · 共 **219** 条(强烈推荐 48 / 值得 171)
+**更新**: 2026-11-24 07:05 UTC · 共 **222** 条(强烈推荐 48 / 值得 174)
 
 ---
 
@@ -672,6 +672,15 @@ PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/ho
 影响: fortinet fortios >=6.4.0 <7.4.10; fortinet fortios >=7.6.0 <7.6.5
 参考: [厂商通告](https://fortiguard.fortinet.com/psirt/FG-IR-26-122) · [参考](https://cert-portal.siemens.com/productcert/html/ssa-975644.html) · [参考](https://unit42.paloaltonetworks.com/fortimanager-cve-2024-47575-peerstitch-malware/#post-188095-_guyq53ar8k05)
 
+### TOTOLINK A7100RU命令注入
+[CVE-2026-134882](https://nvd.nist.gov/vuln/detail/CVE-2026-134882) | P1 重点关注 | CVSS 10.0 | EPSS 2.5% | 披露 2026-11-23 | 入库 2026-11-24
+PoC 源码可用
+远程攻击者向cstecgi.cgi的exportOvpn接口提交恶意Username，注入并执行系统命令
+复现: 值得 — 向/cgi-bin/cstecgi.cgi的exportOvpn接口Username参数注入命令 · 影响面: 家用/小型办公路由器，常暴露公网
+处置: 升级A7100RU固件；无法升级则限制管理接口暴露
+PoC: [cveForge/CVE-2026-134882 0★(有源码)](https://github.com/cveForge/CVE-2026-134882)
+参考: [参考](https://vuldb.com/cve/CVE-2026-134882) · [参考](https://vuldb.com/submit/1054781) · [参考](https://vuldb.com/vuln/442238)
+
 ### D-Link DIR-600L GENA接口命令注入
 [CVE-2026-133493](https://nvd.nist.gov/vuln/detail/CVE-2026-133493) | P1 重点关注 | 网络设备 | CVSS 10.0 | 披露 2026-11-20 | 入库 2026-11-20
 远程攻击者可经gena.cgi的GENA处理逻辑拼接系统命令，以设备权限执行任意指令并完全控制路由器。
@@ -886,6 +895,14 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 复现: 值得 — ioos服务sub_416D88，group_id/group_name参数拼接命令 · 影响面: 无线AP/路由器，边界暴露面
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
+
+### CVE-2026-124445
+[CVE-2026-124445](https://nvd.nist.gov/vuln/detail/CVE-2026-124445) | P1 重点关注 | CVSS 9.8 | EPSS 0.5% | 披露 2026-11-08 | 入库 2026-11-24
+PoC 源码可用
+复现: 值得
+影响: open-emr openemr >=7.0.1 <8.4.0
+PoC: [Exploit-Index openemr/openemr(未验证)(有源码)](https://github.com/openemr/openemr) · [NVD exploit 引用](https://github.com/openemr/openemr/security/advisories/GHSA-xg3m-9pfq-c8r6)
+参考: [参考](https://www.vulncheck.com/advisories/openemr-7.0.1-before-8.4.0-onetimeauth-token-replay-and-pin-brute-force)
 
 ### xo-server管理接口认证绕过
 [CVE-2026-133469](https://nvd.nist.gov/vuln/detail/CVE-2026-133469) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | 披露 2026-11-23 | 入库 2026-11-23
@@ -1226,6 +1243,13 @@ PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy
 复现: 值得
 影响: watchguard fireware >=12.0 <12.5.21; watchguard fireware >=12.12 <12.12.3
 参考: [厂商通告](https://psirt.watchguard.com/CVE-2026-86131)
+
+### Dell SONiC未认证命令注入
+[CVE-2026-103788](https://nvd.nist.gov/vuln/detail/CVE-2026-103788) | P1 重点关注 | CVSS 9.6 | 披露 2026-11-23 | 入库 2026-11-24
+邻接网络的未认证攻击者可注入命令并执行，受影响交换机存在被完全接管风险
+复现: 值得 — 邻接网络未认证访问交换机管理面，向命令参数注入 · 影响面: 数据中心交换机，管理网暴露
+处置: 升级至Dell Enterprise SONiC 4.6.1及以上，隔离管理网段
+参考: [参考](https://www.dell.com/support/kbdoc/en-us/000535884/dsa-2026-451-security-update-for-dell-enterprise-sonic-distribution-vulnerabilities)
 
 ### obsidian-tc源校验缺失致SSRF
 [CVE-2026-77363](https://nvd.nist.gov/vuln/detail/CVE-2026-77363) | P1 重点关注 | CVSS 9.6 | EPSS 0.2% | 披露 2026-10-23 | 入库 2026-10-24

@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-23T21:33:45+00:00",
- "count": 219,
+ "updated_at": "2026-11-24T07:05:34+00:00",
+ "count": 222,
  "count_recommended": 48,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -3351,6 +3351,55 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-134882",
+   "title": "TOTOLINK A7100RU命令注入",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-24",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-23",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "向/cgi-bin/cstecgi.cgi的exportOvpn接口Username参数注入命令",
+   "impact_scope": "家用/小型办公路由器，常暴露公网",
+   "action_zh": "升级A7100RU固件；无法升级则限制管理接口暴露",
+   "summary_zh": "远程攻击者向cstecgi.cgi的exportOvpn接口提交恶意Username，注入并执行系统命令",
+   "category": null,
+   "cvss": 10.0,
+   "epss": 0.02524,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/cveForge/CVE-2026-134882",
+     "label": "cveForge/CVE-2026-134882 0★(有源码)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-134882"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1054781"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/vuln/442238"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134882",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-133493",
    "title": "D-Link DIR-600L GENA接口命令注入",
    "first_seen": "2026-11-20",
@@ -4629,6 +4678,51 @@
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120228",
    "change_note": null
+  },
+  {
+   "id": "CVE-2026-124445",
+   "title": "CVE-2026-124445",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-24",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-08",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": null,
+   "impact_scope": null,
+   "action_zh": null,
+   "summary_zh": null,
+   "category": null,
+   "cvss": 9.8,
+   "epss": 0.0051,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/openemr/openemr",
+     "label": "Exploit-Index openemr/openemr(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/openemr/openemr/security/advisories/GHSA-xg3m-9pfq-c8r6",
+     "label": "NVD exploit 引用"
+    }
+   ],
+   "affected": "open-emr openemr >=7.0.1 <8.4.0",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/openemr-7.0.1-before-8.4.0-onetimeauth-token-replay-and-pin-brute-force"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124445",
+   "change_note": "新增公开 PoC 引用"
   },
   {
    "id": "CVE-2026-133469",
@@ -6436,6 +6530,42 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86131",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-103788",
+   "title": "Dell SONiC未认证命令注入",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-24",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-23",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "邻接网络未认证访问交换机管理面，向命令参数注入",
+   "impact_scope": "数据中心交换机，管理网暴露",
+   "action_zh": "升级至Dell Enterprise SONiC 4.6.1及以上，隔离管理网段",
+   "summary_zh": "邻接网络的未认证攻击者可注入命令并执行，受影响交换机存在被完全接管风险",
+   "category": null,
+   "cvss": 9.6,
+   "epss": null,
+   "difficulty": "低(需相邻网络·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://www.dell.com/support/kbdoc/en-us/000535884/dsa-2026-451-security-update-for-dell-enterprise-sonic-distribution-vulnerabilities"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103788",
    "change_note": null
   },
   {
