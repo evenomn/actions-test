@@ -5,45 +5,145 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 25 Nov 2026 09:57:28 +0000</pubDate>
-    <lastBuildDate>Wed, 25 Nov 2026 09:57:28 +0000</lastBuildDate>
+    <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    <lastBuildDate>Wed, 25 Nov 2026 22:37:47 +0000</lastBuildDate>
     <item>
-      <title>[critical]Tenda RX3 httpd认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136547</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136547-2026-11-25</guid>
-      <description>CVE-2026-136547 · P1 重点关注 · 披露 2026-11-25 · 组件 Web中间件 · CVSS 10.0 · 类型 认证绕过 · 难度 低(远程·免认证)
-A vulnerability was determined in Tenda RX3 16.03.13.11_multi. The exploit has been publicly disclosed and may be utilized.
-信号: 有 PoC
-[Exploit-Index Zeyfrost/tenda-rx3-vulns(未验证)(仅README)](https://github.com/Zeyfrost/tenda-rx3-vulns)</description>
-      <pubDate>Wed, 25 Nov 2026 09:57:28 +0000</pubDate>
+      <title>[critical]Xen Orchestra认证绕过可接管</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-133469</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-133469-2026-11-25</guid>
+      <description>CVE-2026-133469 · P0 立即处置 · 披露 2026-11-23 · 组件 容器/虚拟化 · CVSS 9.8 · EPSS 1.1%,前 65% · 类型 认证绕过/CWE-1287 · 难度 低(远程·免认证)
+This vulnerability is actively exploited in the wild. This vulnerability is fixed in 6.9.2 and 6.10.1.
+信号: KEV 在野利用(CISA 限期 2026-11-28) | 有 PoC
+[Exploit-Index vatesfr/xen-orchestra(未验证)(有源码)](https://github.com/vatesfr/xen-orchestra) · [github.com/vatesfr/xen-orchestra/securit](https://github.com/vatesfr/xen-orchestra/security/advisories/GHSA-2r3w-c2vx-fv5g)</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Tenda RX3远程配置命令注入</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136549</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136549-2026-11-25</guid>
-      <description>CVE-2026-136549 · P1 重点关注 · 披露 2026-11-25 · CVSS 10.0 · 类型 注入/命令注入 · 难度 低(远程·免认证)
-The manipulation of the argument remoteIp results in command injection. The attack can be executed remotely.
-信号: 有 PoC
-[Exploit-Index Zeyfrost/tenda-rx3-vulns(未验证)(仅README)](https://github.com/Zeyfrost/tenda-rx3-vulns)</description>
-      <pubDate>Wed, 25 Nov 2026 09:57:28 +0000</pubDate>
+      <title>[critical]Danfoss控制器认证绕过可越权</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2025-41450</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2025-41450-2026-11-25</guid>
+      <description>CVE-2025-41450 · P0 立即处置 · 披露 2025-05-08 · CVSS 7.5 · EPSS 0.5%,前 37% · 类型 CWE-305 · 难度 低(远程·免认证)
+Improper Authentication vulnerability in Danfoss AKSM8xxA Series.This issue affects Danfoss AK-SM 8xxA Series prior to version 4.2
+信号: KEV 在野利用(CISA 限期 2026-12-09) | 有 PoC
+[Exploit-Index Nero22k/CVE-2025-41450_poc(未验证)(有源码)](https://github.com/Nero22k/CVE-2025-41450_poc) · [Exploit-Index fkie-cad/nvd-json-data-feeds(可信✓)(仅README)](https://github.com/fkie-cad/nvd-json-data-feeds) · [Exploit-Index msuiche/fromagegate(未验证)](https://github.com/msuiche/fromagegate)</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Tenda RX3 WiFi设置认证绕过</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136553</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136553-2026-11-25</guid>
-      <description>CVE-2026-136553 · P1 重点关注 · 披露 2026-11-25 · CVSS 10.0 · 类型 认证绕过 · 难度 低(远程·免认证)
-A vulnerability was detected in Tenda RX3 16.03.13.11_multi. Performing a manipulation of the argument loginPwd results in improper authentication.
+      <title>[critical]Juniper SSC命令注入可root执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-103406</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-103406-2026-11-25</guid>
+      <description>CVE-2026-103406 · P0 立即处置 · 披露 2026-10-28 · 组件 网络设备 · CVSS 9.8 · EPSS 0.9%,前 56% · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+An Improper Neutralization of Special Elements used in an OS Command vulnerability in the AutomatedProvisioner in Juniper Networks Session Smart Conductor allow…
+信号: KEV 在野利用(CISA 限期 2026-11-28) | 有 PoC
+[Sable-Research/CVE-2026-103406-Analysis 1★(仅README)](https://github.com/Sable-Research/CVE-2026-103406-Analysis) · [Frostmoon39206/CVE-2026-103406-PoC 0★(有源码)](https://github.com/Frostmoon39206/CVE-2026-103406-PoC)</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MiCollab AWV未授权命令注入RCE</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-133323</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-133323-2026-11-25</guid>
+      <description>CVE-2026-133323 · P0 立即处置 · 披露 2026-11-19 · CVSS 9.8 · EPSS 2.5%,前 86% · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to …
+信号: KEV 在野利用(CISA 限期 2026-11-28)</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AK-SM 800A XML接口路径遍历</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2023-25914</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2023-25914-2026-11-25</guid>
+      <description>CVE-2023-25914 · P0 立即处置 · 披露 2023-08-21 · 组件 ERP/业务系统 · CVSS 8.8 · EPSS 1.1%,前 65% · 类型 路径遍历/任意文件读取 · 难度 低(远程·需低权限)
+Due to improper restriction, authenticated attackers could retrieve and read system files of the underlying server through the XML interface.
+信号: KEV 在野利用(CISA 限期 2026-11-28)</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MiCollab AWV未授权任意文件上传</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-133275</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-133275-2026-11-25</guid>
+      <description>CVE-2026-133275 · P0 立即处置 · 披露 2026-11-19 · CVSS 5.3 · EPSS 0.3%,前 17% · 类型 任意文件上传 · 难度 低(远程·免认证)
+A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to …
+信号: KEV 在野利用(CISA 限期 2026-11-28)</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MiCollab AWV XML注入致命令执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-133303</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-133303-2026-11-25</guid>
+      <description>CVE-2026-133303 · P0 立即处置 · 披露 2026-11-19 · CVSS 9.8 · EPSS 0.5%,前 37% · 类型 CWE-91 · 难度 低(远程·免认证)
+A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to …
+信号: KEV 在野利用(CISA 限期 2026-11-28)</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MiCollab AWV随机标识认证缺陷</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-133311</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-133311-2026-11-25</guid>
+      <description>CVE-2026-133311 · P0 立即处置 · 披露 2026-11-19 · CVSS 5.9 · EPSS 0.4%,前 25% · 类型 凭据保护不足 · 难度 低(远程·利用条件苛刻·免认证)
+A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker, wi…
+信号: KEV 在野利用(CISA 限期 2026-12-09)</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]MiCollab AWV认证逻辑缺陷可绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-133324</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-133324-2026-11-25</guid>
+      <description>CVE-2026-133324 · P0 立即处置 · 披露 2026-11-19 · CVSS 5.3 · EPSS 0.4%,前 27% · 类型 CWE-636 · 难度 低(远程·免认证)
+A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to …
+信号: KEV 在野利用(CISA 限期 2026-11-28)</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]AK-SM 800A认证后命令执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2023-25915</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2023-25915-2026-11-25</guid>
+      <description>CVE-2023-25915 · P0 立即处置 · 披露 2023-08-21 · CVSS 8.8 · EPSS 1.4%,前 73% · 类型 输入校验缺失 · 难度 低(远程·需低权限)
+Due to improper input validation, an authenticated remote attacker could execute arbitrary commands on the target system.
+信号: KEV 在野利用(CISA 限期 2026-11-28)</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]D-Link R32 flupl接口命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136823</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136823-2026-11-25</guid>
+      <description>CVE-2026-136823 · P1 重点关注 · 披露 2026-11-25 · 组件 网络设备 · CVSS 10.0 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·免认证)
+A vulnerability was found in D-Link R32 1.10B02. Performing a manipulation of the argument fpath results in os command injection.
 信号:</description>
-      <pubDate>Wed, 25 Nov 2026 09:57:28 +0000</pubDate>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]Tenda RX3发现服务栈溢出</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136548</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136548-2026-11-25</guid>
-      <description>CVE-2026-136548 · P1 重点关注 · 披露 2026-11-25 · CVSS 10.0 · 类型 内存破坏/栈溢出 · 难度 低(远程·免认证)
-A vulnerability was identified in Tenda RX3 16.03.13.11. The manipulation of the argument Hostname leads to stack-based buffer overflow.
+      <title>[critical]D-Link R32时间设置命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136821</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136821-2026-11-25</guid>
+      <description>CVE-2026-136821 · P1 重点关注 · 披露 2026-11-25 · 组件 网络设备 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+This manipulation of the argument TZLocation causes os command injection. The exploit has been published and may be used.
 信号:</description>
-      <pubDate>Wed, 25 Nov 2026 09:57:28 +0000</pubDate>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]D-Link R32设备设置命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136822</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136822-2026-11-25</guid>
+      <description>CVE-2026-136822 · P1 重点关注 · 披露 2026-11-25 · 组件 网络设备 · CVSS 9.9 · 类型 命令注入/命令注入(RCE) · 难度 低(远程·需低权限)
+Such manipulation of the argument TZLocation leads to os command injection. The exploit has been disclosed to the public and may be used.
+信号:</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]safe_eval 过滤绕过致代码执行</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-133467</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-133467-2026-11-25</guid>
+      <description>CVE-2026-133467 · P1 重点关注 · 披露 2026-11-25 · CVSS 9.8 · 类型 代码注入(RCE)/CWE-693 · 难度 低(远程·免认证)
+An attacker who controls an expression passed to safe_eval() can execute arbitrary Python code with the permissions of the host application.
+信号:</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>[critical]git克隆工具URL参数命令注入</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-137090</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-137090-2026-11-25</guid>
+      <description>CVE-2026-137090 · P1 重点关注 · 披露 2026-11-25 · CVSS 9.8 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
+build-git-clone before 1.0.4 contains an OS command injection vulnerability in the clone() function that allows attackers to execute commands by supplying craft…
+信号:</description>
+      <pubDate>Wed, 25 Nov 2026 22:37:47 +0000</pubDate>
     </item>
   </channel>
 </rss>

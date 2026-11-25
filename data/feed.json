@@ -1,97 +1,589 @@
 {
  "version": 3,
- "generated_at": "2026-11-25T09:57:28+00:00",
+ "generated_at": "2026-11-25T22:37:47+00:00",
  "lookback_hours": 5,
- "count": 4,
+ "count": 15,
  "stats": {
-  "total": 4,
+  "total": 15,
   "by_tier": {
-   "critical": 4
+   "critical": 15
   },
   "by_urgency": {
-   "P1 重点关注": 4
+   "P0 立即处置": 10,
+   "P1 重点关注": 5
   },
   "by_category": {
-   "未知": 3,
-   "Web中间件": 1
+   "未知": 9,
+   "网络设备": 4,
+   "容器/虚拟化": 1,
+   "ERP/业务系统": 1
   },
-  "kev": 0,
-  "with_poc": 2,
-  "with_poc_source": 0,
-  "repro_recommended": 0
+  "kev": 10,
+  "with_poc": 3,
+  "with_poc_source": 3,
+  "repro_recommended": 3
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-136547",
+   "id": "CVE-2026-133469",
    "tier": "critical",
-   "title": "Tenda RX3 httpd认证绕过",
-   "title_zh": "Tenda RX3 httpd认证绕过",
-   "summary_zh": "远程未认证攻击者可绕过R7WebsSecurityHandler认证，访问受保护功能并控制设备",
-   "published": "2026-11-25T05:18:35.270",
-   "cvss": 10.0,
+   "title": "Xen Orchestra认证绕过可接管",
+   "title_zh": "Xen Orchestra认证绕过可接管",
+   "summary_zh": "未认证攻击者可绕过Xen Orchestra登录校验，进而接管虚拟化管理平台与宿主机资源",
+   "published": "2026-11-23T17:17:31.780",
+   "cvss": 9.8,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.01101,
+   "epss_percentile": 0.65258,
    "cwe_labels": [
-    "认证绕过"
+    "认证绕过",
+    "CWE-1287"
    ],
    "vuln_class": "未授权访问",
    "fame_term": null,
    "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
+   "products": [
+    "xen-orchestra xen_orchestra_server",
+    "xen-orchestra xen_orchestra"
+   ],
+   "affected": "xen-orchestra xen_orchestra_server <5.211.2; xen-orchestra xen_orchestra_server >5.213.0 <5.213.1",
    "ghsa_url": null,
    "refs": [
     {
-     "label": "参考",
-     "url": "https://github.com/Zeyfrost/tenda-rx3-vulns/blob/master/auth_bypass/detail.md"
+     "label": "厂商通告",
+     "url": "https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062"
     },
     {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-136547"
+     "label": "官方补丁",
+     "url": "https://github.com/vatesfr/xen-orchestra/commit/50166fe3a49c02069d35ba9046ca4a1f77f4e11d"
     },
     {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1057713"
+     "label": "官方补丁",
+     "url": "https://github.com/vatesfr/xen-orchestra/pull/10748"
     }
    ],
    "poc": [
     {
-     "url": "https://github.com/Zeyfrost/tenda-rx3-vulns",
-     "label": "Exploit-Index Zeyfrost/tenda-rx3-vulns(未验证)(仅README)"
+     "url": "https://github.com/vatesfr/xen-orchestra",
+     "label": "Exploit-Index vatesfr/xen-orchestra(未验证)(有源码)"
     }
    ],
    "nuclei": false,
    "patched": null,
-   "kev": false,
-   "kev_due": null,
+   "kev": true,
+   "kev_due": "2026-11-28",
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复版本；临时关闭公网管理并限制httpd访问",
-   "repro_worthy": "一般",
-   "repro_note": "远程访问httpd受保护接口，构造请求绕过认证",
-   "impact_scope": "SOHO路由器，管理面暴露风险高",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136547",
-   "description": "A vulnerability was determined in Tenda RX3 16.03.13.11_multi. Impacted is the function R7WebsSecurityHandler of the component httpd. Executing a manipulation can lead to improper authentication. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized."
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至6.9.2或6.10.1，并回溯排查历史访问日志",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问Web管理接口构造绕过请求，已有PoC可用",
+   "impact_scope": "虚拟化管理平台，常暴露于内网运维区",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133469",
+   "description": "This vulnerability is actively exploited in the wild. This vulnerability is fixed in 6.9.2 and 6.10.1."
   },
   {
-   "id": "CVE-2026-136549",
+   "id": "CVE-2025-41450",
    "tier": "critical",
-   "title": "Tenda RX3远程配置命令注入",
-   "title_zh": "Tenda RX3远程配置命令注入",
-   "summary_zh": "远程攻击者向remoteIp参数注入命令，经/goform/SetRemoteWebCfg执行，可控制路由器",
-   "published": "2026-11-25T06:17:15.597",
+   "title": "Danfoss控制器认证绕过可越权",
+   "title_zh": "Danfoss控制器认证绕过可越权",
+   "summary_zh": "未认证攻击者可绕过AK-SM 800A机组认证，读取或篡改制冷设备配置",
+   "published": "2025-05-08T10:15:18.380",
+   "cvss": 7.5,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+   "epss": 0.00513,
+   "epss_percentile": 0.37031,
+   "cwe_labels": [
+    "CWE-305"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "danfoss ak-sm_800a_firmware",
+    "danfoss ak-sm_800a"
+   ],
+   "affected": "danfoss ak-sm_800a_firmware <4.2",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.danfoss.com/en/service-and-support/coordinated-vulnerability-disclosure/danfoss-security-advisories/dsa-2025-03-01/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-41450"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/Nero22k/CVE-2025-41450_poc",
+     "label": "Exploit-Index Nero22k/CVE-2025-41450_poc(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/fkie-cad/nvd-json-data-feeds",
+     "label": "Exploit-Index fkie-cad/nvd-json-data-feeds(可信✓)(仅README)"
+    },
+    {
+     "url": "https://github.com/msuiche/fromagegate",
+     "label": "Exploit-Index msuiche/fromagegate(未验证)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-12-09",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至4.2及以上，隔离机组管理网段",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "直接访问机组管理接口发起认证绕过，已有PoC可用",
+   "impact_scope": "制冷/楼宇控制设备，OT侧暴露风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-41450",
+   "description": "Improper Authentication vulnerability in Danfoss AKSM8xxA Series.This issue affects Danfoss AK-SM 8xxA Series prior to version 4.2"
+  },
+  {
+   "id": "CVE-2026-103406",
+   "tier": "critical",
+   "title": "Juniper SSC命令注入可root执行",
+   "title_zh": "Juniper SSC命令注入可root执行",
+   "summary_zh": "远程攻击者构造恶意salt minion ID，在Conductor上以root权限执行任意命令",
+   "published": "2026-10-28T17:17:25.830",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.0086,
+   "epss_percentile": 0.56019,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": "juniper",
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "juniper session_smart_conductor"
+   ],
+   "affected": "juniper session_smart_conductor <7.0.5-14-lts; juniper session_smart_conductor >=7.1.0-50r1 <7.1.7-15-sts",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://supportportal.juniper.net/JSA112183"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-103406"
+    }
+   ],
+   "poc": [
+    {
+     "url": "https://github.com/Sable-Research/CVE-2026-103406-Analysis",
+     "label": "Sable-Research/CVE-2026-103406-Analysis 1★(仅README)"
+    },
+    {
+     "url": "https://github.com/Frostmoon39206/CVE-2026-103406-PoC",
+     "label": "Frostmoon39206/CVE-2026-103406-PoC 0★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至7.0.5-14-LTS或7.1.7-15-STS",
+   "repro_worthy": "值得",
+   "repro_note": "AutomatedProvisioner接收salt minion ID，注入shell元字符",
+   "impact_scope": "SD-WAN控制器/编排节点，多在内网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103406",
+   "description": "An Improper Neutralization of Special Elements used in an OS Command vulnerability in the AutomatedProvisioner in Juniper Networks Session Smart Conductor allows a remote attacker to execute arbitrary commands as root via a specially crafted salt minion ID."
+  },
+  {
+   "id": "CVE-2026-133323",
+   "tier": "critical",
+   "title": "MiCollab AWV未授权命令注入RCE",
+   "title_zh": "MiCollab AWV未授权命令注入RCE",
+   "summary_zh": "未认证攻击者向AWV组件参数注入系统命令，以服务权限执行任意指令",
+   "published": "2026-11-19T17:18:52.880",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.02546,
+   "epss_percentile": 0.85725,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "mitel micollab"
+   ],
+   "affected": "mitel micollab <=10.3.0.18",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+    },
+    {
+     "label": "参考",
+     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133323"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至10.3之后的修复版本并收敛AWV暴露面",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "AWV接口参数未过滤，未授权提交拼接的系统命令",
+   "impact_scope": "统一通信/会议服务器，常暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133323",
+   "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to conduct a blind command injection attack due to insufficient parameter sanitization. A successful exploit could allow an attacker to execute arbitrary commands within the context of the system. This is MTLVULN-1864."
+  },
+  {
+   "id": "CVE-2023-25914",
+   "tier": "critical",
+   "title": "AK-SM 800A XML接口路径遍历",
+   "title_zh": "AK-SM 800A XML接口路径遍历",
+   "summary_zh": "已认证攻击者经XML接口路径遍历读取系统文件，可导致整机失陷",
+   "published": "2023-08-21T21:15:08.970",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.01078,
+   "epss_percentile": 0.64585,
+   "cwe_labels": [
+    "路径遍历/任意文件读取"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [
+    "danfoss ak-sm_800a_firmware",
+    "danfoss ak-sm_800a"
+   ],
+   "affected": "danfoss ak-sm_800a_firmware <=3.3",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://csirt.divd.nl/CVE-2023-25914"
+    },
+    {
+     "label": "参考",
+     "url": "https://csirt.divd.nl/DIVD-2023-00025"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-25914"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至4.2以上，收紧XML接口访问权限",
+   "repro_worthy": "一般",
+   "repro_note": "登录后向XML接口提交路径遍历参数读取系统文件",
+   "impact_scope": "制冷控制设备，需先取得有效账号",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2023-25914",
+   "description": "Due to improper restriction, authenticated attackers could retrieve and read system files of the underlying server through the XML interface. The information that can be read can lead to a full system compromise."
+  },
+  {
+   "id": "CVE-2026-133275",
+   "tier": "critical",
+   "title": "MiCollab AWV未授权任意文件上传",
+   "title_zh": "MiCollab AWV未授权任意文件上传",
+   "summary_zh": "未认证攻击者可上传任意类型文件，导致恶意内容托管与后续利用",
+   "published": "2026-11-19T16:21:31.033",
+   "cvss": 5.3,
+   "severity": "MEDIUM",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+   "epss": 0.00315,
+   "epss_percentile": 0.1686,
+   "cwe_labels": [
+    "任意文件上传"
+   ],
+   "vuln_class": "任意文件读写",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "mitel micollab"
+   ],
+   "affected": "mitel micollab <=10.3.0.18",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+    },
+    {
+     "label": "参考",
+     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133275"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至官方修复版本，限制AWV上传入口",
+   "repro_worthy": "一般",
+   "repro_note": "向AWV上传接口提交非白名单文件类型",
+   "impact_scope": "统一通信服务器Web上传入口",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133275",
+   "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to conduct an arbitrary file upload attack due to insufficient file type validation. A successful exploit could allow an attacker to upload arbitrary files to the target system. This is MTLVULN-1861."
+  },
+  {
+   "id": "CVE-2026-133303",
+   "tier": "critical",
+   "title": "MiCollab AWV XML注入致命令执行",
+   "title_zh": "MiCollab AWV XML注入致命令执行",
+   "summary_zh": "未认证攻击者借助预置恶意内容触发XML注入，在系统上执行命令",
+   "published": "2026-11-19T17:18:51.670",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.00515,
+   "epss_percentile": 0.37111,
+   "cwe_labels": [
+    "CWE-91"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "mitel micollab"
+   ],
+   "affected": "mitel micollab <=10.3.0.18",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+    },
+    {
+     "label": "参考",
+     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至官方修复版本，严格过滤XML外部输入",
+   "repro_worthy": "值得",
+   "repro_note": "先预置恶意内容，再向AWV接口提交构造的XML",
+   "impact_scope": "统一通信服务器，可致整机失陷",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133303",
+   "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to leverage pre-staged malicious content to conduct an XML injection attack due to insufficient parameter validation. A successful exploit could allow an attacker to execute arbitrary commands within the context of the system. This is MTLVULN-1862."
+  },
+  {
+   "id": "CVE-2026-133311",
+   "tier": "critical",
+   "title": "MiCollab AWV随机标识认证缺陷",
+   "title_zh": "MiCollab AWV随机标识认证缺陷",
+   "summary_zh": "未认证攻击者若掌握系统随机标识或预置内容，可绕过认证访问系统",
+   "published": "2026-11-19T17:18:52.740",
+   "cvss": 5.9,
+   "severity": "MEDIUM",
+   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+   "epss": 0.00396,
+   "epss_percentile": 0.2537,
+   "cwe_labels": [
+    "凭据保护不足"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "products": [
+    "mitel micollab"
+   ],
+   "affected": "mitel micollab <=10.3.0.18",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+    },
+    {
+     "label": "参考",
+     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133311"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-12-09",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级修复版本，轮换相关标识与预置内容",
+   "repro_worthy": "一般",
+   "repro_note": "需已知系统生成随机标识或预置内容方可触发",
+   "impact_scope": "统一通信服务器，内网为主",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133311",
+   "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker, with knowledge of a specific system-generated random identifier or pre-staged content, to conduct an unauthorized access attack due to improper authentication mechanisms. A successful exploit could allow an attacker to obtain sensitive information."
+  },
+  {
+   "id": "CVE-2026-133324",
+   "tier": "critical",
+   "title": "MiCollab AWV认证逻辑缺陷可绕过",
+   "title_zh": "MiCollab AWV认证逻辑缺陷可绕过",
+   "summary_zh": "未认证攻击者利用认证处理缺陷绕过登录，越权执行应用内操作",
+   "published": "2026-11-19T17:18:53.017",
+   "cvss": 5.3,
+   "severity": "MEDIUM",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+   "epss": 0.00414,
+   "epss_percentile": 0.273,
+   "cwe_labels": [
+    "CWE-636"
+   ],
+   "vuln_class": "未授权访问",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [
+    "mitel micollab"
+   ],
+   "affected": "mitel micollab <=10.3.0.18",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+    },
+    {
+     "label": "参考",
+     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133324"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至官方修复版本，审计异常认证会话",
+   "repro_worthy": "一般",
+   "repro_note": "构造异常认证请求触发处理缺陷，绕过登录校验",
+   "impact_scope": "统一通信服务器，暴露面较大",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133324",
+   "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to conduct an authentication bypass attack due to improper handling of authentication. A successful exploit could allow an attacker to bypass authentication and perform unauthorized actions within the context of the application. This is MTLVULN-1877."
+  },
+  {
+   "id": "CVE-2023-25915",
+   "tier": "critical",
+   "title": "AK-SM 800A认证后命令执行",
+   "title_zh": "AK-SM 800A认证后命令执行",
+   "summary_zh": "已认证远程攻击者利用输入校验缺陷，在机组系统上执行任意命令",
+   "published": "2023-08-21T21:15:09.170",
+   "cvss": 8.8,
+   "severity": "HIGH",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+   "epss": 0.01431,
+   "epss_percentile": 0.73235,
+   "cwe_labels": [
+    "输入校验缺失"
+   ],
+   "vuln_class": null,
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [
+    "danfoss ak-sm_800a_firmware",
+    "danfoss ak-sm_800a"
+   ],
+   "affected": "danfoss ak-sm_800a_firmware <=3.3",
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://csirt.divd.nl/CVE-2023-25915"
+    },
+    {
+     "label": "参考",
+     "url": "https://csirt.divd.nl/DIVD-2023-00025"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-25915"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级至4.2以上，限制管理账号权限",
+   "repro_worthy": "一般",
+   "repro_note": "登录后向存在缺陷的参数提交命令拼接字符",
+   "impact_scope": "制冷控制设备，需有效账号",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2023-25915",
+   "description": "Due to improper input validation, an authenticated remote attacker could execute arbitrary commands on the target system."
+  },
+  {
+   "id": "CVE-2026-136823",
+   "tier": "critical",
+   "title": "D-Link R32 flupl接口命令注入",
+   "title_zh": "D-Link R32 flupl接口命令注入",
+   "summary_zh": "远程攻击者向flupl self端点fpath参数注入命令，以系统权限执行",
+   "published": "2026-11-25T22:17:20.717",
    "cvss": 10.0,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "注入",
-    "命令注入"
+    "命令注入",
+    "命令注入(RCE)"
    ],
    "vuln_class": "RCE",
    "fame_term": null,
@@ -102,70 +594,15 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/Zeyfrost/tenda-rx3-vulns/blob/master/cmd_injection_remoteIp/detail.md"
+     "url": "https://github.com/Zzzhangxxx/cve/blob/main/D-Link_R32_A1_1.10B02_flupl_self_fpath_OS_Command_Injection.md"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-136549"
+     "url": "https://vuldb.com/cve/CVE-2026-136823"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/1057767"
-    }
-   ],
-   "poc": [
-    {
-     "url": "https://github.com/Zeyfrost/tenda-rx3-vulns",
-     "label": "Exploit-Index Zeyfrost/tenda-rx3-vulns(未验证)(仅README)"
-    }
-   ],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级固件；临时限制/goform接口公网访问",
-   "repro_worthy": "一般",
-   "repro_note": "/goform/SetRemoteWebCfg的remoteIp参数注入命令",
-   "impact_scope": "SOHO路由器，公网管理面风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136549",
-   "description": "A security flaw has been discovered in Tenda RX3 16.03.13.11_multi. The impacted element is the function formSetSafeWanWebMan of the file /goform/SetRemoteWebCfg. The manipulation of the argument remoteIp results in command injection. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks."
-  },
-  {
-   "id": "CVE-2026-136553",
-   "tier": "critical",
-   "title": "Tenda RX3 WiFi设置认证绕过",
-   "title_zh": "Tenda RX3 WiFi设置认证绕过",
-   "summary_zh": "远程攻击者操纵loginPwd参数绕过认证，未授权修改WiFi配置并控制设备",
-   "published": "2026-11-25T07:17:18.930",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "认证绕过"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": null,
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/Zeyfrost/tenda-rx3-vulns/blob/master/password_change_no_verify/detail.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-136553"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1057770"
+     "url": "https://vuldb.com/submit/1059269"
     }
    ],
    "poc": [],
@@ -176,47 +613,47 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级固件；限制/goform/fast_setting_wifi_set访问",
-   "repro_worthy": "一般",
-   "repro_note": "访问fast_setting_wifi_set，loginPwd绕过认证",
-   "impact_scope": "SOHO路由器，WiFi配置可被篡改",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136553",
-   "description": "A vulnerability was detected in Tenda RX3 16.03.13.11_multi. Affected is an unknown function of the file /goform/fast_setting_wifi_set. Performing a manipulation of the argument loginPwd results in improper authentication. It is possible to initiate the attack remotely. The exploit is now public and may be used."
+   "action_zh": "暂无官方修复，停用flupl功能并限制管理访问",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问flupl self端点，fpath参数拼接系统命令",
+   "impact_scope": "SOHO路由器，多暴露于网络边界",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136823",
+   "description": "A vulnerability was found in D-Link R32 1.10B02. This affects an unknown function of the file /usr/bin/httpd of the component flupl self Endpoint. Performing a manipulation of the argument fpath results in os command injection. The attack can be initiated remotely. The exploit has been made public and could be used."
   },
   {
-   "id": "CVE-2026-136548",
+   "id": "CVE-2026-136821",
    "tier": "critical",
-   "title": "Tenda RX3发现服务栈溢出",
-   "title_zh": "Tenda RX3发现服务栈溢出",
-   "summary_zh": "远程攻击者向Hostname传入超长GBK数据，在auto_discover中触发栈溢出，可致崩溃或执行代码",
-   "published": "2026-11-25T06:17:13.967",
-   "cvss": 10.0,
+   "title": "D-Link R32时间设置命令注入",
+   "title_zh": "D-Link R32时间设置命令注入",
+   "summary_zh": "远程攻击者向TZLocation参数注入系统命令，获取设备控制权",
+   "published": "2026-11-25T21:17:19.630",
+   "cvss": 9.9,
    "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "内存破坏",
-    "栈溢出"
+    "命令注入",
+    "命令注入(RCE)"
    ],
-   "vuln_class": null,
+   "vuln_class": "RCE",
    "fame_term": null,
-   "difficulty": "低(远程·免认证)",
+   "difficulty": "低(远程·需低权限)",
    "products": [],
    "affected": null,
    "ghsa_url": null,
    "refs": [
     {
      "label": "参考",
-     "url": "https://github.com/Zeyfrost/tenda-rx3-vulns/blob/master/dhcp_gbk_overflow/detail.md"
+     "url": "https://github.com/Zzzhangxxx/cve/blob/main/D-Link_R32_A1_1.10B02_SetTimeSettings_TZLocation_OS_Command_Injection.md"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-136548"
+     "url": "https://vuldb.com/cve/CVE-2026-136821"
     },
     {
      "label": "参考",
-     "url": "https://vuldb.com/submit/1057714"
+     "url": "https://vuldb.com/submit/1059267"
     }
    ],
    "poc": [],
@@ -227,14 +664,294 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "升级固件；限制自动发现协议访问",
+   "action_zh": "暂无官方修复，限制DHMAPI访问并考虑更换设备",
    "repro_worthy": "一般",
-   "repro_note": "向/bin/auto_discover发送超长Hostname参数",
-   "impact_scope": "SOHO路由器，发现协议暴露风险",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136548",
-   "description": "A vulnerability was identified in Tenda RX3 16.03.13.11. The affected element is an unknown function of the file /bin/auto_discover of the component GBK-to-UTF-8 Conversion. The manipulation of the argument Hostname leads to stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit is publicly available and might be used."
+   "repro_note": "DHMAPI SetTimeSettings 的 TZLocation 参数注入命令",
+   "impact_scope": "SOHO路由器，网络边界设备",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136821",
+   "description": "A flaw has been found in D-Link R32 1.10B02. The affected element is the function SetTimeSettings of the component DHMAPI Action Handler. This manipulation of the argument TZLocation causes os command injection. It is possible to initiate the attack remotely. The exploit has been published and may be used."
+  },
+  {
+   "id": "CVE-2026-136822",
+   "tier": "critical",
+   "title": "D-Link R32设备设置命令注入",
+   "title_zh": "D-Link R32设备设置命令注入",
+   "summary_zh": "远程攻击者通过SetDeviceSettings的TZLocation参数注入并执行命令",
+   "published": "2026-11-25T21:17:19.850",
+   "cvss": 9.9,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入",
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·需低权限)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Zzzhangxxx/cve/blob/main/D-Link_R32_A1_1.10B02_SetDeviceSettings_TZLocation_OS_Command_Injection.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-136822"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1059268"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "暂无官方修复，关闭远程管理并升级固件",
+   "repro_worthy": "一般",
+   "repro_note": "DHMAPI SetDeviceSettings 的 TZLocation 参数注入",
+   "impact_scope": "SOHO路由器，网络边界设备",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136822",
+   "description": "A vulnerability has been found in D-Link R32 1.10B02. The impacted element is the function SetDeviceSettings of the file /usr/bin/httpd of the component DHMAPI Action Handler. Such manipulation of the argument TZLocation leads to os command injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used."
+  },
+  {
+   "id": "CVE-2026-133467",
+   "tier": "critical",
+   "title": "safe_eval 过滤绕过致代码执行",
+   "title_zh": "safe_eval 过滤绕过致代码执行",
+   "summary_zh": "可控表达式传入safe_eval的攻击者用间接下标调用绕过校验，执行任意Python代码",
+   "published": "2026-11-25T20:18:34.460",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "代码注入(RCE)",
+    "CWE-693"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Infinitode/CodeSafe/commit/27f19e220432c9d83f1c463f382d2807b31fe6fd#diff-5e1c6bb51538bc170a88f3fb84b50c7df79ad57a1780a2a5b67450503e96c173"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/Infinitode/CodeSafe/security/advisories/GHSA-7gp8-3j6q-v4h8"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至修复版本，禁止不可信输入进入safe_eval",
+   "repro_worthy": "一般",
+   "repro_note": "构造间接下标表达式调用危险内置函数，绕AST校验",
+   "impact_scope": "Python应用内表达式求值组件",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133467",
+   "description": "From versions 0.0.1 through 0.0.4, the safe_eval() function can be bypassed with indirect subscript calls such as builtins'exec', because AST validation blocks only direct calls to dangerous built-ins. An attacker who controls an expression passed to safe_eval() can execute arbitrary Python code with the permissions of the host application."
+  },
+  {
+   "id": "CVE-2026-137090",
+   "tier": "critical",
+   "title": "git克隆工具URL参数命令注入",
+   "title_zh": "git克隆工具URL参数命令注入",
+   "summary_zh": "可控仓库URL的攻击者在url参数嵌入shell元字符，执行系统命令",
+   "published": "2026-11-25T20:18:46.220",
+   "cvss": 9.8,
+   "severity": "CRITICAL",
+   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "命令注入(RCE)"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": "低(远程·免认证)",
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/emanuelmoraes-dev/build-git-clone/blob/68bc305028d04c9a71a030c4b0b5cc36450201b9/src/index.ts#L77"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/emanuelmoraes-dev/build-git-clone/commit/3d55e64e5b7c61e560b5d030d6a918cad5c67a29"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/emanuelmoraes-dev/build-git-clone/pull/1"
+    }
+   ],
+   "poc": [],
+   "nuclei": false,
+   "patched": null,
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P1 重点关注",
+   "action_zh": "升级至1.0.4以上，校验克隆URL合法性",
+   "repro_worthy": "一般",
+   "repro_note": "向clone()的url参数注入分号或$()等shell元字符",
+   "impact_scope": "CI/构建流程依赖库，供应链风险",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137090",
+   "description": "build-git-clone before 1.0.4 contains an OS command injection vulnerability in the clone() function that allows attackers to execute commands by supplying crafted repository URLs. Attackers can embed shell metacharacters such as ; or $() in the url argument, which is concatenated into a sh -c command, to execute operating system commands with Node.js process privileges."
   }
  ],
- "media": [],
- "commits": []
+ "media": [
+  {
+   "title": "GeoServer Five-Stage Unauthenticated RCE Chain (CVE-2026-120705, CVE-2026-129243, CVE-2026-129245) Actively Exploited in the Wild",
+   "link": "https://sh3llc0d3.com/blog/geoserver-five-stage-unauthenticated-rce-chain-cve-2026-120705-cve-2026-129243-cve-2026-129245-actively-exploited-in-the-wild/",
+   "cves": [
+    "CVE-2026-120705",
+    "CVE-2026-129243",
+    "CVE-2026-129245"
+   ]
+  },
+  {
+   "title": "Stony Brook ContainerBots Study: Automated Bots Exploit Leaked AWS Keys in Public Docker Images in 7.86 Seconds",
+   "link": "https://sh3llc0d3.com/blog/stony-brook-containerbots-study-automated-bots-exploit-leaked-aws-keys-in-public-docker-images-in-786-seconds/",
+   "cves": []
+  },
+  {
+   "title": "Broadcom VMware VMSA-2026-0011 Patches 23 Flaws Including New CVSS 9.8 vmdir Auth Bypass (CVE-2026-123903) and ESX RCEs",
+   "link": "https://sh3llc0d3.com/blog/broadcom-vmware-vmsa-2026-0011-patches-23-flaws-including-new-cvss-98-vmdir-auth-bypass-cve-2026-123903-and-esx-rces/",
+   "cves": [
+    "CVE-2026-123903"
+   ]
+  }
+ ],
+ "commits": [
+  {
+   "repo": "golang/go",
+   "sha": "333e0b78a4fa1c55ea4a8882ba33c0b6b253ed33",
+   "url": "https://github.com/golang/go/commit/333e0b78a4fa1c55ea4a8882ba33c0b6b253ed33",
+   "title": "net/http: avoid using HTTP/2 for proxy connections",
+   "date": "2026-11-25T16:03:17",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-97053"
+  },
+  {
+   "repo": "openssl/openssl",
+   "sha": "95d360af8701a486b6b334513ed33016f4a619ae",
+   "url": "https://github.com/openssl/openssl/commit/95d360af8701a486b6b334513ed33016f4a619ae",
+   "title": "AES-SIV: reject AAD after the payload",
+   "date": "2026-11-25T15:23:12",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-120666"
+  },
+  {
+   "repo": "django/django",
+   "sha": "baa7a80973d32beaa90beed500bd91b17f7c3172",
+   "url": "https://github.com/django/django/commit/baa7a80973d32beaa90beed500bd91b17f7c3172",
+   "title": "Refs CVE-2026-15830 -- Fixed GEOSLimitTest failures on GEOS 3.11.",
+   "date": "2026-11-25T12:49:51",
+   "score": 3,
+   "matched": [
+    "CVE"
+   ],
+   "cve": "CVE-2026-15830"
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "c39caa515a981317b248e1164b62f08325fac033",
+   "url": "https://github.com/php/php-src/commit/c39caa515a981317b248e1164b62f08325fac033",
+   "title": "Fix FFI::string() reading out of bounds for a negative size",
+   "date": "2026-11-25T22:13:37",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "haproxy/haproxy",
+   "sha": "3bba6379c65079f86ff2346a6442e0b8070e77d0",
+   "url": "https://github.com/haproxy/haproxy/commit/3bba6379c65079f86ff2346a6442e0b8070e77d0",
+   "title": "MINOR: http/hardening: implement \"reject-advanced-methods\"",
+   "date": "2026-11-25T18:31:08",
+   "score": 2,
+   "matched": [
+    "漏洞相关"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "apache/httpd",
+   "sha": "1df6ffc7c080137c7e2dd54d8f808f7fbb0b3374",
+   "url": "https://github.com/apache/httpd/commit/1df6ffc7c080137c7e2dd54d8f808f7fbb0b3374",
+   "title": "mod_setenvif: Don't take SetEnvIfExpr backreferences from a stale match (BZ 70369) (#1076)",
+   "date": "2026-11-25T17:50:43",
+   "score": 2,
+   "matched": [
+    "未初始化/内存破坏"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "nodejs/node",
+   "sha": "478c2eea871d09554530ddf298d2bb2fceab077c",
+   "url": "https://github.com/nodejs/node/commit/478c2eea871d09554530ddf298d2bb2fceab077c",
+   "title": "tls: fix OpenSSL compression leak that breaks tests under ASAN",
+   "date": "2026-11-25T16:52:56",
+   "score": 2,
+   "matched": [
+    "泄露",
+    "fuzz/-sanitizer"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openssl/openssl",
+   "sha": "6a9d4acb5f7c70b310d27ed494f5d626e2d3950f",
+   "url": "https://github.com/openssl/openssl/commit/6a9d4acb5f7c70b310d27ed494f5d626e2d3950f",
+   "title": "rsa_kem: check secretlen before writing the RSASVE secret",
+   "date": "2026-11-25T15:47:05",
+   "score": 2,
+   "matched": [
+    "缓冲区溢出"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "openbsd/src",
+   "sha": "0f9e8242202719a27f3c5e624ec90f1a4a862dd7",
+   "url": "https://github.com/openbsd/src/commit/0f9e8242202719a27f3c5e624ec90f1a4a862dd7",
+   "title": "glob.c: Fix potential out-of-bounds write for GLOB_NOSPACE error",
+   "date": "2026-11-25T15:20:50",
+   "score": 2,
+   "matched": [
+    "越界读写"
+   ],
+   "cve": null
+  }
+ ]
 }

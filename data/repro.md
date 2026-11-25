@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-25 09:57 UTC · 共 **224** 条(强烈推荐 48 / 值得 176)
+**更新**: 2026-11-25 22:37 UTC · 共 **228** 条(强烈推荐 50 / 值得 178)
 
 ---
 
@@ -29,6 +29,25 @@ PoC: [jburgess-r7/CVE-2026-97229-PoC 63★(有源码)](https://github.com/jburge
 影响: proftpd proftpd
 PoC: [t0kx/exploit-CVE-2015-3306 152★(有源码)](https://github.com/t0kx/exploit-CVE-2015-3306) · [nootropics/propane 2★(有源码)](https://github.com/nootropics/propane) · [NVD exploit 引用](https://www.exploit-db.com/exploits/36803/)
 参考: [参考](http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157053.html) · [参考](http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157054.html) · [参考](http://lists.fedoraproject.org/pipermail/package-announce/2015-May/157581.html)
+
+### Xen Orchestra认证绕过可接管
+[CVE-2026-133469](https://nvd.nist.gov/vuln/detail/CVE-2026-133469) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | EPSS 1.1% | 披露 2026-11-23 | 入库 2026-11-23
+🔥 KEV 在野利用,限期 2026-11-28 | PoC 源码可用
+未认证攻击者可绕过Xen Orchestra登录校验，进而接管虚拟化管理平台与宿主机资源
+复现: 强烈推荐 — 未授权访问Web管理接口构造绕过请求，已有PoC可用 · 影响面: 虚拟化管理平台，常暴露于内网运维区
+处置: 升级至6.9.2或6.10.1，并回溯排查历史访问日志
+影响: xen-orchestra xen_orchestra_server <5.211.2; xen-orchestra xen_orchestra_server >5.213.0 <5.213.1
+PoC: [Exploit-Index vatesfr/xen-orchestra(未验证)(有源码)](https://github.com/vatesfr/xen-orchestra) · [NVD exploit 引用](https://github.com/vatesfr/xen-orchestra/security/advisories/GHSA-2r3w-c2vx-fv5g)
+参考: [厂商通告](https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062) · [官方补丁](https://github.com/vatesfr/xen-orchestra/commit/50166fe3a49c02069d35ba9046ca4a1f77f4e11d) · [官方补丁](https://github.com/vatesfr/xen-orchestra/pull/10748)
+
+### MiCollab AWV未授权命令注入RCE
+[CVE-2026-133323](https://nvd.nist.gov/vuln/detail/CVE-2026-133323) | P0 立即处置 | CVSS 9.8 | EPSS 2.5% | 披露 2026-11-19 | 入库 2026-11-25
+🔥 KEV 在野利用,限期 2026-11-28
+未认证攻击者向AWV组件参数注入系统命令，以服务权限执行任意指令
+复现: 强烈推荐 — AWV接口参数未过滤，未授权提交拼接的系统命令 · 影响面: 统一通信/会议服务器，常暴露公网
+处置: 升级至10.3之后的修复版本并收敛AWV暴露面
+影响: mitel micollab <=10.3.0.18
+参考: [厂商通告](https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012) · [参考](https://accenture.github.io/cyber-intelligence/micollab-exploitation/) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133323)
 
 ### vCenter 目录服务认证绕过可接管平台
 [CVE-2026-123890](https://nvd.nist.gov/vuln/detail/CVE-2026-123890) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | EPSS 0.8% | 披露 2026-11-19 | 入库 2026-11-20
@@ -128,6 +147,16 @@ PoC: [Exploit-Index 0xBlackash/CVE-2026-123158(未验证)(有源码)](https://gi
 影响: apache struts、oracle siebel_e-billing
 PoC: [NVD exploit 引用](http://packetstormsecurity.com/files/136856/Apache-Struts-2.3.28-Dynamic-Method-Invocation-Remote-Code-Execution.html)
 参考: [参考](http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20160527-01-struts2-en) · [官方补丁](http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html) · [厂商通告](http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html)
+
+### Danfoss控制器认证绕过可越权
+[CVE-2025-41450](https://nvd.nist.gov/vuln/detail/CVE-2025-41450) | P0 立即处置 | CVSS 7.5 | EPSS 0.5% | 披露 2025-05-08 | 入库 2026-11-25
+🔥 KEV 在野利用,限期 2026-12-09 | PoC 源码可用
+未认证攻击者可绕过AK-SM 800A机组认证，读取或篡改制冷设备配置
+复现: 强烈推荐 — 直接访问机组管理接口发起认证绕过，已有PoC可用 · 影响面: 制冷/楼宇控制设备，OT侧暴露风险
+处置: 升级至4.2及以上，隔离机组管理网段
+影响: danfoss ak-sm_800a_firmware <4.2
+PoC: [Exploit-Index Nero22k/CVE-2025-41450_poc(未验证)(有源码)](https://github.com/Nero22k/CVE-2025-41450_poc) · [Exploit-Index fkie-cad/nvd-json-data-feeds(可信✓)(仅README)](https://github.com/fkie-cad/nvd-json-data-feeds) · [Exploit-Index msuiche/fromagegate(未验证)](https://github.com/msuiche/fromagegate)
+参考: [厂商通告](https://www.danfoss.com/en/service-and-support/coordinated-vulnerability-disclosure/danfoss-security-advisories/dsa-2025-03-01/) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-41450)
 
 ### BroadWorks XXE 未授权读文件
 [CVE-2026-20320](https://nvd.nist.gov/vuln/detail/CVE-2026-20320) | P0 立即处置 | ERP/业务系统 | CVSS 7.5 | EPSS 0.4% | 披露 2026-08-19 | 入库 2026-11-10
@@ -258,14 +287,6 @@ PoC: [googlesky/CVE-2026-126148 0★(有源码)](https://github.com/googlesky/CV
 复现: 强烈推荐 — 访问可绕过认证的替代路径，需可达管理接口 · 影响面: API网关管理面，敏感配置中心
 处置: 立即升级至厂商修复版本；限制管理面公网访问
 参考: [参考](https://www.ibm.com/support/pages/node/7295635)
-
-### Juniper SSC 命令注入RCE
-[CVE-2026-103406](https://nvd.nist.gov/vuln/detail/CVE-2026-103406) | P1 重点关注 | 网络设备 | CVSS 9.8 | 披露 2026-10-28 | 入库 2026-10-28
-远程攻击者可向AutomatedProvisioner提交特制salt minion ID注入命令，以root身份执行任意指令
-复现: 强烈推荐 — 向Conductor的Salt接入端口提交特制minion ID触发命令注入 · 影响面: SD-WAN控制器，管理面暴露风险高
-处置: 升级至Juniper修复版本，限制Conductor管理面暴露
-影响: Juniper(产品与版本待 NVD/厂商补充)
-参考: [参考](https://supportportal.juniper.net/JSA112183)
 
 ### FortiSandbox 认证绕过致远程命令执行
 [CVE-2026-107656](https://nvd.nist.gov/vuln/detail/CVE-2026-107656) | P0 立即处置 | 边界设备/VPN | CVSS 9.8 | 披露 2026-10-26 | 入库 2026-10-26
@@ -440,6 +461,25 @@ PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026
 处置: 升级至5.2.3.18或6.1.3.10以上，并限制VCO管理接口公网暴露
 影响: arista velocloud_orchestrator >=5.2.0 <5.2.3.18; arista velocloud_orchestrator >=6.1.0 <6.1.3.10
 参考: [厂商通告](https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114625)
+
+### Juniper SSC命令注入可root执行
+[CVE-2026-103406](https://nvd.nist.gov/vuln/detail/CVE-2026-103406) | P0 立即处置 | 网络设备 | CVSS 9.8 | EPSS 0.9% | 披露 2026-10-28 | 入库 2026-10-28
+🔥 KEV 在野利用,限期 2026-11-28 | PoC 源码可用
+远程攻击者构造恶意salt minion ID，在Conductor上以root权限执行任意命令
+复现: 值得 — AutomatedProvisioner接收salt minion ID，注入shell元字符 · 影响面: SD-WAN控制器/编排节点，多在内网
+处置: 升级至7.0.5-14-LTS或7.1.7-15-STS
+影响: juniper session_smart_conductor <7.0.5-14-lts; juniper session_smart_conductor >=7.1.0-50r1 <7.1.7-15-sts
+PoC: [Sable-Research/CVE-2026-103406-Analysis 1★(仅README)](https://github.com/Sable-Research/CVE-2026-103406-Analysis) · [Frostmoon39206/CVE-2026-103406-PoC 0★(有源码)](https://github.com/Frostmoon39206/CVE-2026-103406-PoC)
+参考: [厂商通告](https://supportportal.juniper.net/JSA112183) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-103406)
+
+### MiCollab AWV XML注入致命令执行
+[CVE-2026-133303](https://nvd.nist.gov/vuln/detail/CVE-2026-133303) | P0 立即处置 | CVSS 9.8 | EPSS 0.5% | 披露 2026-11-19 | 入库 2026-11-25
+🔥 KEV 在野利用,限期 2026-11-28
+未认证攻击者借助预置恶意内容触发XML注入，在系统上执行命令
+复现: 值得 — 先预置恶意内容，再向AWV接口提交构造的XML · 影响面: 统一通信服务器，可致整机失陷
+处置: 升级至官方修复版本，严格过滤XML外部输入
+影响: mitel micollab <=10.3.0.18
+参考: [厂商通告](https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012) · [参考](https://accenture.github.io/cyber-intelligence/micollab-exploitation/) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303)
 
 ### Apache Roller XML-RPC反序列化未授权RC
 [CVE-2026-129448](https://nvd.nist.gov/vuln/detail/CVE-2026-129448) | P0 立即处置 | CVSS 9.8 | EPSS 1.2% | 披露 2026-11-17 | 入库 2026-11-17
@@ -690,6 +730,13 @@ PoC 源码可用
 PoC: [hoarseprairie/CVE-2026-129514-Poc 0★(有源码)](https://github.com/hoarseprairie/CVE-2026-129514-Poc)
 参考: [参考](https://cna.erlef.org/cves/CVE-2026-129514.html) · [参考](https://github.com/hexpm/hexpm/commit/379b0a29bcc95164249f38ad7d772a37a8ff9533) · [参考](https://github.com/hexpm/hexpm/commit/ab1bbcef7cc8395d1056d3b1aa6a174353492d59)
 
+### D-Link R32 flupl接口命令注入
+[CVE-2026-136823](https://nvd.nist.gov/vuln/detail/CVE-2026-136823) | P1 重点关注 | 网络设备 | CVSS 10.0 | 披露 2026-11-25 | 入库 2026-11-25
+远程攻击者向flupl self端点fpath参数注入命令，以系统权限执行
+复现: 值得 — 未授权访问flupl self端点，fpath参数拼接系统命令 · 影响面: SOHO路由器，多暴露于网络边界
+处置: 暂无官方修复，停用flupl功能并限制管理访问
+参考: [参考](https://github.com/Zzzhangxxx/cve/blob/main/D-Link_R32_A1_1.10B02_flupl_self_fpath_OS_Command_Injection.md) · [参考](https://vuldb.com/cve/CVE-2026-136823) · [参考](https://vuldb.com/submit/1059269)
+
 ### TOTOLINK A7100RU命令注入
 [CVE-2026-134882](https://nvd.nist.gov/vuln/detail/CVE-2026-134882) | P1 重点关注 | CVSS 10.0 | EPSS 2.5% | 披露 2026-11-23 | 入库 2026-11-24
 PoC 源码可用
@@ -921,16 +968,6 @@ PoC 源码可用
 影响: open-emr openemr >=7.0.1 <8.4.0
 PoC: [Exploit-Index openemr/openemr(未验证)(有源码)](https://github.com/openemr/openemr) · [NVD exploit 引用](https://github.com/openemr/openemr/security/advisories/GHSA-xg3m-9pfq-c8r6)
 参考: [参考](https://www.vulncheck.com/advisories/openemr-7.0.1-before-8.4.0-onetimeauth-token-replay-and-pin-brute-force)
-
-### xo-server管理接口认证绕过
-[CVE-2026-133469](https://nvd.nist.gov/vuln/detail/CVE-2026-133469) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | 披露 2026-11-23 | 入库 2026-11-23
-PoC 源码可用 | 开源,可源码审计复现 | 暂无官方修复
-管理接口认证校验存在缺陷，未授权攻击者可绕过认证，且已在野利用
-复现: 值得 — 未授权访问xo-server管理接口，构造请求绕过认证 · 影响面: 虚拟化管理平台，常内网暴露
-处置: 暂无官方修复，限制管理接口暴露并加强监测
-影响(暂无官方修复): npm:xo-server <= 5.7.4
-PoC: [googlesky/CVE-2026-133469 0★(有源码)](https://github.com/googlesky/CVE-2026-133469)
-参考: [参考](https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062) · [参考](https://github.com/vatesfr/xen-orchestra/commit/50166fe3a49c02069d35ba9046ca4a1f77f4e11d) · [参考](https://github.com/vatesfr/xen-orchestra/pull/10748)
 
 ### BIG-IP栈溢出可致DoS或RCE
 [CVE-2026-116953](https://nvd.nist.gov/vuln/detail/CVE-2026-116953) | P0 立即处置 | 开发库/依赖 | CVSS 9.8 | 披露 2026-11-18 | 入库 2026-11-18

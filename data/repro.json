@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-25T09:57:28+00:00",
- "count": 224,
- "count_recommended": 48,
+ "updated_at": "2026-11-25T22:37:47+00:00",
+ "count": 228,
+ "count_recommended": 50,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -114,6 +114,103 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2015-3306",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-133469",
+   "title": "Xen Orchestra认证绕过可接管",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-25",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-23",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "未授权访问Web管理接口构造绕过请求，已有PoC可用",
+   "impact_scope": "虚拟化管理平台，常暴露于内网运维区",
+   "action_zh": "升级至6.9.2或6.10.1，并回溯排查历史访问日志",
+   "summary_zh": "未认证攻击者可绕过Xen Orchestra登录校验，进而接管虚拟化管理平台与宿主机资源",
+   "category": "容器/虚拟化",
+   "cvss": 9.8,
+   "epss": 0.01101,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/vatesfr/xen-orchestra",
+     "label": "Exploit-Index vatesfr/xen-orchestra(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/vatesfr/xen-orchestra/security/advisories/GHSA-2r3w-c2vx-fv5g",
+     "label": "NVD exploit 引用"
+    }
+   ],
+   "affected": "xen-orchestra xen_orchestra_server <5.211.2; xen-orchestra xen_orchestra_server >5.213.0 <5.213.1",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062"
+    },
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/vatesfr/xen-orchestra/commit/50166fe3a49c02069d35ba9046ca4a1f77f4e11d"
+    },
+    {
+     "label": "官方补丁",
+     "url": "https://github.com/vatesfr/xen-orchestra/pull/10748"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133469",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-133323",
+   "title": "MiCollab AWV未授权命令注入RCE",
+   "first_seen": "2026-11-25",
+   "last_seen": "2026-11-25",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-19",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "AWV接口参数未过滤，未授权提交拼接的系统命令",
+   "impact_scope": "统一通信/会议服务器，常暴露公网",
+   "action_zh": "升级至10.3之后的修复版本并收敛AWV暴露面",
+   "summary_zh": "未认证攻击者向AWV组件参数注入系统命令，以服务权限执行任意指令",
+   "category": null,
+   "cvss": 9.8,
+   "epss": 0.02546,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "mitel micollab <=10.3.0.18",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+    },
+    {
+     "label": "参考",
+     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133323"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133323",
    "change_note": null
   },
   {
@@ -607,6 +704,59 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2016-3081",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2025-41450",
+   "title": "Danfoss控制器认证绕过可越权",
+   "first_seen": "2026-11-25",
+   "last_seen": "2026-11-25",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2025-05-08",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "直接访问机组管理接口发起认证绕过，已有PoC可用",
+   "impact_scope": "制冷/楼宇控制设备，OT侧暴露风险",
+   "action_zh": "升级至4.2及以上，隔离机组管理网段",
+   "summary_zh": "未认证攻击者可绕过AK-SM 800A机组认证，读取或篡改制冷设备配置",
+   "category": null,
+   "cvss": 7.5,
+   "epss": 0.00513,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-12-09",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/Nero22k/CVE-2025-41450_poc",
+     "label": "Exploit-Index Nero22k/CVE-2025-41450_poc(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/fkie-cad/nvd-json-data-feeds",
+     "label": "Exploit-Index fkie-cad/nvd-json-data-feeds(可信✓)(仅README)"
+    },
+    {
+     "url": "https://github.com/msuiche/fromagegate",
+     "label": "Exploit-Index msuiche/fromagegate(未验证)"
+    }
+   ],
+   "affected": "danfoss ak-sm_800a_firmware <4.2",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.danfoss.com/en/service-and-support/coordinated-vulnerability-disclosure/danfoss-security-advisories/dsa-2025-03-01/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-41450"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-41450",
    "change_note": null
   },
   {
@@ -1287,42 +1437,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17313",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-103406",
-   "title": "Juniper SSC 命令注入RCE",
-   "first_seen": "2026-10-28",
-   "last_seen": "2026-10-28",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-10-28",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "向Conductor的Salt接入端口提交特制minion ID触发命令注入",
-   "impact_scope": "SD-WAN控制器，管理面暴露风险高",
-   "action_zh": "升级至Juniper修复版本，限制Conductor管理面暴露",
-   "summary_zh": "远程攻击者可向AutomatedProvisioner提交特制salt minion ID注入命令，以root身份执行任意指令",
-   "category": "网络设备",
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "Juniper(产品与版本待 NVD/厂商补充)",
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://supportportal.juniper.net/JSA112183"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103406",
    "change_note": null
   },
   {
@@ -2131,6 +2245,99 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114625",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-103406",
+   "title": "Juniper SSC命令注入可root执行",
+   "first_seen": "2026-10-28",
+   "last_seen": "2026-11-25",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-10-28",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "AutomatedProvisioner接收salt minion ID，注入shell元字符",
+   "impact_scope": "SD-WAN控制器/编排节点，多在内网",
+   "action_zh": "升级至7.0.5-14-LTS或7.1.7-15-STS",
+   "summary_zh": "远程攻击者构造恶意salt minion ID，在Conductor上以root权限执行任意命令",
+   "category": "网络设备",
+   "cvss": 9.8,
+   "epss": 0.0086,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/Sable-Research/CVE-2026-103406-Analysis",
+     "label": "Sable-Research/CVE-2026-103406-Analysis 1★(仅README)"
+    },
+    {
+     "url": "https://github.com/Frostmoon39206/CVE-2026-103406-PoC",
+     "label": "Frostmoon39206/CVE-2026-103406-PoC 0★(有源码)"
+    }
+   ],
+   "affected": "juniper session_smart_conductor <7.0.5-14-lts; juniper session_smart_conductor >=7.1.0-50r1 <7.1.7-15-sts",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://supportportal.juniper.net/JSA112183"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-103406"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103406",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-133303",
+   "title": "MiCollab AWV XML注入致命令执行",
+   "first_seen": "2026-11-25",
+   "last_seen": "2026-11-25",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-19",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "先预置恶意内容，再向AWV接口提交构造的XML",
+   "impact_scope": "统一通信服务器，可致整机失陷",
+   "action_zh": "升级至官方修复版本，严格过滤XML外部输入",
+   "summary_zh": "未认证攻击者借助预置恶意内容触发XML注入，在系统上执行命令",
+   "category": null,
+   "cvss": 9.8,
+   "epss": 0.00515,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "mitel micollab <=10.3.0.18",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+    },
+    {
+     "label": "参考",
+     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133303",
    "change_note": null
   },
   {
@@ -3441,6 +3648,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129514",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-136823",
+   "title": "D-Link R32 flupl接口命令注入",
+   "first_seen": "2026-11-25",
+   "last_seen": "2026-11-25",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-25",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问flupl self端点，fpath参数拼接系统命令",
+   "impact_scope": "SOHO路由器，多暴露于网络边界",
+   "action_zh": "暂无官方修复，停用flupl功能并限制管理访问",
+   "summary_zh": "远程攻击者向flupl self端点fpath参数注入命令，以系统权限执行",
+   "category": "网络设备",
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/Zzzhangxxx/cve/blob/main/D-Link_R32_A1_1.10B02_flupl_self_fpath_OS_Command_Injection.md"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-136823"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1059269"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136823",
    "change_note": null
   },
   {
@@ -4816,55 +5067,6 @@
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124445",
    "change_note": "新增公开 PoC 引用"
-  },
-  {
-   "id": "CVE-2026-133469",
-   "title": "xo-server管理接口认证绕过",
-   "first_seen": "2026-11-23",
-   "last_seen": "2026-11-23",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": true,
-   "published": "2026-11-23",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "值得",
-   "repro_note": "未授权访问xo-server管理接口，构造请求绕过认证",
-   "impact_scope": "虚拟化管理平台，常内网暴露",
-   "action_zh": "暂无官方修复，限制管理接口暴露并加强监测",
-   "summary_zh": "管理接口认证校验存在缺陷，未授权攻击者可绕过认证，且已在野利用",
-   "category": "容器/虚拟化",
-   "cvss": 9.8,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": "code",
-   "poc": [
-    {
-     "url": "https://github.com/googlesky/CVE-2026-133469",
-     "label": "googlesky/CVE-2026-133469 0★(有源码)"
-    }
-   ],
-   "affected": "npm:xo-server <= 5.7.4",
-   "patched": false,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/vatesfr/xen-orchestra/commit/50166fe3a49c02069d35ba9046ca4a1f77f4e11d"
-    },
-    {
-     "label": "参考",
-     "url": "https://github.com/vatesfr/xen-orchestra/pull/10748"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133469",
-   "change_note": null
   },
   {
    "id": "CVE-2026-116953",
