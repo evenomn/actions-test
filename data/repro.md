@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-24 23:08 UTC · 共 **223** 条(强烈推荐 48 / 值得 175)
+**更新**: 2026-11-25 05:39 UTC · 共 **224** 条(强烈推荐 48 / 值得 176)
 
 ---
 
@@ -672,6 +672,24 @@ PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/ho
 影响: fortinet fortios >=6.4.0 <7.4.10; fortinet fortios >=7.6.0 <7.6.5
 参考: [厂商通告](https://fortiguard.fortinet.com/psirt/FG-IR-26-122) · [参考](https://cert-portal.siemens.com/productcert/html/ssa-975644.html) · [参考](https://unit42.paloaltonetworks.com/fortimanager-cve-2024-47575-peerstitch-malware/#post-188095-_guyq53ar8k05)
 
+### ruflo 未授权命令注入RCE
+[CVE-2026-59726](https://nvd.nist.gov/vuln/detail/CVE-2026-59726) | P1 重点关注 | 数据库 | CVSS 10.0 | EPSS 6.2% | 披露 2026-11-24 | 入库 2026-11-24
+nuclei 模板 | PoC 源码可用 | 开源,可源码审计复现
+未授权攻击者可调用tools/call执行terminal_execute，获取容器shell并窃取API密钥。
+复现: 值得 — 未授权调用 tools/call 的 terminal_execute 参数 · 影响面: npm AI桥接容器，泄露API密钥
+处置: 升级至 3.16.3 并轮换泄露的 API 密钥
+影响: npm:ruflo < 3.16.3(修复: 3.16.3)
+PoC: [EDB-52705](https://www.exploit-db.com/exploits/52705) · [Exploit-Index HORKimhab/CVE-2026-59726(未验证)(仅README)](https://github.com/HORKimhab/CVE-2026-59726) · [Exploit-Index ruvnet/ruflo(未验证)(有源码)](https://github.com/ruvnet/ruflo)
+
+### hexpm Erlang反序列化RCE
+[CVE-2026-129514](https://nvd.nist.gov/vuln/detail/CVE-2026-129514) | P0 立即处置 | CVSS 10.0 | 披露 2026-11-24 | 入库 2026-11-25
+PoC 源码可用
+未授权远程攻击者可提交恶意 Erlang 外部项请求体，反序列化执行系统命令。
+复现: 值得 — 向 hexpm 接口提交 vnd.hex+erlang 恶意项 · 影响面: Elixir包仓库服务，供应链风险
+处置: 立即升级修复版本，限制 hex+erlang 解析
+PoC: [hoarseprairie/CVE-2026-129514-Poc 0★(有源码)](https://github.com/hoarseprairie/CVE-2026-129514-Poc)
+参考: [参考](https://cna.erlef.org/cves/CVE-2026-129514.html) · [参考](https://github.com/hexpm/hexpm/commit/379b0a29bcc95164249f38ad7d772a37a8ff9533) · [参考](https://github.com/hexpm/hexpm/commit/ab1bbcef7cc8395d1056d3b1aa6a174353492d59)
+
 ### TOTOLINK A7100RU命令注入
 [CVE-2026-134882](https://nvd.nist.gov/vuln/detail/CVE-2026-134882) | P1 重点关注 | CVSS 10.0 | EPSS 2.5% | 披露 2026-11-23 | 入库 2026-11-24
 PoC 源码可用
@@ -680,15 +698,6 @@ PoC 源码可用
 处置: 升级A7100RU固件；无法升级则限制管理接口暴露
 PoC: [cveForge/CVE-2026-134882 0★(有源码)](https://github.com/cveForge/CVE-2026-134882)
 参考: [参考](https://vuldb.com/cve/CVE-2026-134882) · [参考](https://vuldb.com/submit/1054781) · [参考](https://vuldb.com/vuln/442238)
-
-### ruflo 未授权命令注入RCE
-[CVE-2026-59726](https://nvd.nist.gov/vuln/detail/CVE-2026-59726) | P1 重点关注 | 数据库 | CVSS 10.0 | EPSS 6.2% | 披露 2026-11-24 | 入库 2026-11-24
-nuclei 模板 | 有PoC | 开源,可源码审计复现
-未认证攻击者经tools/call执行命令获容器shell，窃取密钥并污染AgentDB
-复现: 值得 — 未授权调用tools/call的terminal_execute；需bridge容器暴露 · 影响面: AI Agent容器，暴露则密钥失窃
-处置: 升级至3.16.3；限制bridge容器网络访问并轮换API密钥
-影响: npm:ruflo < 3.16.3(修复: 3.16.3)
-PoC: [EDB-52705](https://www.exploit-db.com/exploits/52705)
 
 ### D-Link DIR-600L GENA接口命令注入
 [CVE-2026-133493](https://nvd.nist.gov/vuln/detail/CVE-2026-133493) | P1 重点关注 | 网络设备 | CVSS 10.0 | 披露 2026-11-20 | 入库 2026-11-20

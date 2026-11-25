@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-24T23:08:05+00:00",
- "count": 223,
+ "updated_at": "2026-11-25T05:39:48+00:00",
+ "count": 224,
  "count_recommended": 48,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -3351,6 +3351,99 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-59726",
+   "title": "ruflo 未授权命令注入RCE",
+   "first_seen": "2026-11-24",
+   "last_seen": "2026-11-25",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": true,
+   "published": "2026-11-24",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "未授权调用 tools/call 的 terminal_execute 参数",
+   "impact_scope": "npm AI桥接容器，泄露API密钥",
+   "action_zh": "升级至 3.16.3 并轮换泄露的 API 密钥",
+   "summary_zh": "未授权攻击者可调用tools/call执行terminal_execute，获取容器shell并窃取API密钥。",
+   "category": "数据库",
+   "cvss": 10.0,
+   "epss": 0.06244,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": true,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://www.exploit-db.com/exploits/52705",
+     "label": "EDB-52705"
+    },
+    {
+     "url": "https://github.com/HORKimhab/CVE-2026-59726",
+     "label": "Exploit-Index HORKimhab/CVE-2026-59726(未验证)(仅README)"
+    },
+    {
+     "url": "https://github.com/ruvnet/ruflo",
+     "label": "Exploit-Index ruvnet/ruflo(未验证)(有源码)"
+    }
+   ],
+   "affected": "npm:ruflo < 3.16.3(修复: 3.16.3)",
+   "patched": true,
+   "refs": [],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59726",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-129514",
+   "title": "hexpm Erlang反序列化RCE",
+   "first_seen": "2026-11-25",
+   "last_seen": "2026-11-25",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-24",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "向 hexpm 接口提交 vnd.hex+erlang 恶意项",
+   "impact_scope": "Elixir包仓库服务，供应链风险",
+   "action_zh": "立即升级修复版本，限制 hex+erlang 解析",
+   "summary_zh": "未授权远程攻击者可提交恶意 Erlang 外部项请求体，反序列化执行系统命令。",
+   "category": null,
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/hoarseprairie/CVE-2026-129514-Poc",
+     "label": "hoarseprairie/CVE-2026-129514-Poc 0★(有源码)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://cna.erlef.org/cves/CVE-2026-129514.html"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/hexpm/hexpm/commit/379b0a29bcc95164249f38ad7d772a37a8ff9533"
+    },
+    {
+     "label": "参考",
+     "url": "https://github.com/hexpm/hexpm/commit/ab1bbcef7cc8395d1056d3b1aa6a174353492d59"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129514",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-134882",
    "title": "TOTOLINK A7100RU命令注入",
    "first_seen": "2026-11-24",
@@ -3397,42 +3490,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134882",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-59726",
-   "title": "ruflo 未授权命令注入RCE",
-   "first_seen": "2026-11-24",
-   "last_seen": "2026-11-24",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": true,
-   "published": "2026-11-24",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "未授权调用tools/call的terminal_execute；需bridge容器暴露",
-   "impact_scope": "AI Agent容器，暴露则密钥失窃",
-   "action_zh": "升级至3.16.3；限制bridge容器网络访问并轮换API密钥",
-   "summary_zh": "未认证攻击者经tools/call执行命令获容器shell，窃取密钥并污染AgentDB",
-   "category": "数据库",
-   "cvss": 10.0,
-   "epss": 0.06244,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": true,
-   "poc_quality": null,
-   "poc": [
-    {
-     "url": "https://www.exploit-db.com/exploits/52705",
-     "label": "EDB-52705"
-    }
-   ],
-   "affected": "npm:ruflo < 3.16.3(修复: 3.16.3)",
-   "patched": true,
-   "refs": [],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59726",
    "change_note": null
   },
   {
