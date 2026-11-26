@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-25T22:37:47+00:00",
- "count": 228,
+ "updated_at": "2026-11-26T05:26:36+00:00",
+ "count": 229,
  "count_recommended": 50,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -117,6 +117,55 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-133323",
+   "title": "MiCollab AWV未认证命令注入",
+   "first_seen": "2026-11-25",
+   "last_seen": "2026-11-26",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-19",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "AWV组件未认证入口，构造恶意参数触发命令注入",
+   "impact_scope": "统一通信/会议系统，常暴露公网",
+   "action_zh": "升级厂商修复版本，限制AWV接口公网暴露并审计异常命令",
+   "summary_zh": "未认证攻击者可经AWV组件注入系统命令，以服务进程权限执行任意命令。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": 0.02546,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/cveForge/CVE-2026-133323",
+     "label": "Exploit-Index cveForge/CVE-2026-133323(未验证)(有源码)"
+    }
+   ],
+   "affected": "mitel micollab <=10.3.0.18",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+    },
+    {
+     "label": "参考",
+     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133323"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133323",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-133469",
    "title": "Xen Orchestra认证绕过可接管",
    "first_seen": "2026-11-23",
@@ -167,50 +216,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133469",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-133323",
-   "title": "MiCollab AWV未授权命令注入RCE",
-   "first_seen": "2026-11-25",
-   "last_seen": "2026-11-25",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-19",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "AWV接口参数未过滤，未授权提交拼接的系统命令",
-   "impact_scope": "统一通信/会议服务器，常暴露公网",
-   "action_zh": "升级至10.3之后的修复版本并收敛AWV暴露面",
-   "summary_zh": "未认证攻击者向AWV组件参数注入系统命令，以服务权限执行任意指令",
-   "category": null,
-   "cvss": 9.8,
-   "epss": 0.02546,
-   "difficulty": "低(远程·免认证)",
-   "kev": true,
-   "kev_due": "2026-11-28",
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "mitel micollab <=10.3.0.18",
-   "patched": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
-    },
-    {
-     "label": "参考",
-     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133323"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133323",
    "change_note": null
   },
   {
@@ -2248,6 +2253,50 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-133303",
+   "title": "MiCollab AWV未认证XML注入RCE",
+   "first_seen": "2026-11-25",
+   "last_seen": "2026-11-26",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-19",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "需预置恶意内容，经AWV XML入口注入命令",
+   "impact_scope": "统一通信/会议系统，常暴露公网",
+   "action_zh": "升级修复版本，限制AWV接口并校验XML输入",
+   "summary_zh": "未认证攻击者可借助预置恶意内容触发XML注入，进而在系统上下文执行命令。",
+   "category": null,
+   "cvss": 9.8,
+   "epss": 0.00515,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "mitel micollab <=10.3.0.18",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+    },
+    {
+     "label": "参考",
+     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133303",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-103406",
    "title": "Juniper SSC命令注入可root执行",
    "first_seen": "2026-10-28",
@@ -2294,50 +2343,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103406",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-133303",
-   "title": "MiCollab AWV XML注入致命令执行",
-   "first_seen": "2026-11-25",
-   "last_seen": "2026-11-25",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-19",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "值得",
-   "repro_note": "先预置恶意内容，再向AWV接口提交构造的XML",
-   "impact_scope": "统一通信服务器，可致整机失陷",
-   "action_zh": "升级至官方修复版本，严格过滤XML外部输入",
-   "summary_zh": "未认证攻击者借助预置恶意内容触发XML注入，在系统上执行命令",
-   "category": null,
-   "cvss": 9.8,
-   "epss": 0.00515,
-   "difficulty": "低(远程·免认证)",
-   "kev": true,
-   "kev_due": "2026-11-28",
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "mitel micollab <=10.3.0.18",
-   "patched": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
-    },
-    {
-     "label": "参考",
-     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133303",
    "change_note": null
   },
   {
@@ -3558,6 +3563,50 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-133324",
+   "title": "MiCollab AWV未认证认证绕过",
+   "first_seen": "2026-11-26",
+   "last_seen": "2026-11-26",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-19",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未认证访问AWV认证入口，构造请求绕过认证",
+   "impact_scope": "统一通信/会议系统，常暴露公网",
+   "action_zh": "升级厂商修复版本，限制AWV公网访问并审计异常访问",
+   "summary_zh": "未认证攻击者可利用认证处理缺陷绕过登录，在应用内执行未授权操作。",
+   "category": null,
+   "cvss": 5.3,
+   "epss": 0.00414,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "mitel micollab <=10.3.0.18",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+    },
+    {
+     "label": "参考",
+     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133324"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133324",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-59726",
    "title": "ruflo 未授权命令注入RCE",
    "first_seen": "2026-11-24",
@@ -3648,50 +3697,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129514",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-136823",
-   "title": "D-Link R32 flupl接口命令注入",
-   "first_seen": "2026-11-25",
-   "last_seen": "2026-11-25",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-25",
-   "urgency": "P1 重点关注",
-   "repro_worthy": "值得",
-   "repro_note": "未授权访问flupl self端点，fpath参数拼接系统命令",
-   "impact_scope": "SOHO路由器，多暴露于网络边界",
-   "action_zh": "暂无官方修复，停用flupl功能并限制管理访问",
-   "summary_zh": "远程攻击者向flupl self端点fpath参数注入命令，以系统权限执行",
-   "category": "网络设备",
-   "cvss": 10.0,
-   "epss": null,
-   "difficulty": "低(远程·免认证)",
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": null,
-   "patched": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://github.com/Zzzhangxxx/cve/blob/main/D-Link_R32_A1_1.10B02_flupl_self_fpath_OS_Command_Injection.md"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/cve/CVE-2026-136823"
-    },
-    {
-     "label": "参考",
-     "url": "https://vuldb.com/submit/1059269"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136823",
    "change_note": null
   },
   {
@@ -8612,6 +8617,55 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107194",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-135150",
+   "title": "容器网关路径混淆认证绕过",
+   "first_seen": "2026-11-26",
+   "last_seen": "2026-11-26",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-25",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "构造含特殊路径请求，使nginx路由到未认证location",
+   "impact_scope": "API网关/设备管理面，可控制设备",
+   "action_zh": "应用网关修复，审查nginx路由并统一鉴权",
+   "summary_zh": "攻击者构造请求路径绕过nginx认证，经网关访问Things/Policies API并下发设备消息。",
+   "category": "容器/虚拟化",
+   "cvss": 9.1,
+   "epss": null,
+   "difficulty": "低(远程·利用条件苛刻·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/abraxas/cve-2026-135150-lab",
+     "label": "abraxas/cve-2026-135150-lab 1★(有源码)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/eclipse-ditto/ditto/security/advisories/GHSA-f779-cv8j-4p59"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/621"
+    },
+    {
+     "label": "参考",
+     "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/1449"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135150",
    "change_note": null
   },
   {
