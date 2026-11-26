@@ -1,131 +1,33 @@
 {
  "version": 3,
- "generated_at": "2026-11-26T09:41:32+00:00",
+ "generated_at": "2026-11-26T22:27:49+00:00",
  "lookback_hours": 5,
- "count": 2,
+ "count": 0,
  "stats": {
-  "total": 2,
-  "by_tier": {
-   "critical": 2
-  },
-  "by_urgency": {
-   "P0 立即处置": 2
-  },
-  "by_category": {
-   "未知": 2
-  },
-  "kev": 2,
+  "total": 0,
+  "by_tier": {},
+  "by_urgency": {},
+  "by_category": {},
+  "kev": 0,
   "with_poc": 0,
   "with_poc_source": 0,
-  "repro_recommended": 1
+  "repro_recommended": 0
  },
  "briefing": [],
- "items": [
-  {
-   "id": "CVE-2026-133303",
-   "tier": "critical",
-   "title": "MiCollab 未认证XML注入RCE",
-   "title_zh": "MiCollab 未认证XML注入RCE",
-   "summary_zh": "未认证攻击者通过预置恶意内容注入 XML 参数，未做充分校验，可在系统上执行任意命令",
-   "published": "2026-11-19T17:18:51.670",
-   "cvss": 9.8,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": 0.00515,
-   "epss_percentile": 0.37111,
-   "cwe_labels": [
-    "CWE-91"
-   ],
-   "vuln_class": null,
-   "fame_term": null,
-   "difficulty": "低(远程·免认证)",
-   "products": [
-    "mitel micollab"
-   ],
-   "affected": "mitel micollab <=10.3.0.18",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
-    },
-    {
-     "label": "参考",
-     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-11-28",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至厂商最新版本，限制 AWV 公网暴露并排查入侵痕迹",
-   "repro_worthy": "强烈推荐",
-   "repro_note": "AWV 未授权 XML 注入点，需先预置恶意内容再触发命令执行",
-   "impact_scope": "统一通信会议服务器，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133303",
-   "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker to leverage pre-staged malicious content to conduct an XML injection attack due to insufficient parameter validation. A successful exploit could allow an attacker to execute arbitrary commands within the context of the system. This is MTLVULN-1862."
-  },
-  {
-   "id": "CVE-2026-133311",
-   "tier": "critical",
-   "title": "Mitel MiCollab 认证绕过",
-   "title_zh": "Mitel MiCollab 认证绕过",
-   "summary_zh": "未认证攻击者只需掌握系统随机标识或预置内容，即可绕过认证，未授权访问 AWV 组件",
-   "published": "2026-11-19T17:18:52.740",
-   "cvss": 5.9,
-   "severity": "MEDIUM",
-   "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-   "epss": 0.00396,
-   "epss_percentile": 0.2537,
-   "cwe_labels": [
-    "凭据保护不足"
-   ],
-   "vuln_class": "未授权访问",
-   "fame_term": null,
-   "difficulty": "低(远程·利用条件苛刻·免认证)",
-   "products": [
-    "mitel micollab"
-   ],
-   "affected": "mitel micollab <=10.3.0.18",
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
-    },
-    {
-     "label": "参考",
-     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133311"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": true,
-   "kev_due": "2026-12-09",
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P0 立即处置",
-   "action_zh": "升级至厂商最新版本，并限制 AWV 组件的公网访问",
-   "repro_worthy": "一般",
-   "repro_note": "AWV 未授权接口，需已知随机标识或预置内容，验证越权访问",
-   "impact_scope": "统一通信会议系统，常暴露公网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133311",
-   "description": "A vulnerability in the Audio, Web, and Video Conferencing (AWV) component of Mitel MiCollab through 10.3 (10.3.0.18) could allow an unauthenticated attacker, with knowledge of a specific system-generated random identifier or pre-staged content, to conduct an unauthorized access attack due to improper authentication mechanisms. A successful exploit could allow an attacker to obtain sensitive information."
-  }
- ],
+ "items": [],
  "media": [],
- "commits": []
+ "commits": [
+  {
+   "repo": "postgres/postgres",
+   "sha": "b4548161b94567d8e57bf0efdb8005623e1639da",
+   "url": "https://github.com/postgres/postgres/commit/b4548161b94567d8e57bf0efdb8005623e1639da",
+   "title": "Prevent stack overflow in exprLocation()",
+   "date": "2026-11-26T13:19:54",
+   "score": 2,
+   "matched": [
+    "缓冲区溢出"
+   ],
+   "cve": null
+  }
+ ]
 }
