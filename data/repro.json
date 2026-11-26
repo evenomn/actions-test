@@ -1,8 +1,8 @@
 {
  "schema": 2,
- "updated_at": "2026-11-26T05:26:36+00:00",
+ "updated_at": "2026-11-26T09:41:32+00:00",
  "count": 229,
- "count_recommended": 50,
+ "count_recommended": 51,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
  "items": [
@@ -163,6 +163,50 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133323",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-133303",
+   "title": "MiCollab 未认证XML注入RCE",
+   "first_seen": "2026-11-25",
+   "last_seen": "2026-11-26",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-19",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "强烈推荐",
+   "repro_note": "AWV 未授权 XML 注入点，需先预置恶意内容再触发命令执行",
+   "impact_scope": "统一通信会议服务器，常暴露公网",
+   "action_zh": "升级至厂商最新版本，限制 AWV 公网暴露并排查入侵痕迹",
+   "summary_zh": "未认证攻击者通过预置恶意内容注入 XML 参数，未做充分校验，可在系统上执行任意命令",
+   "category": null,
+   "cvss": 9.8,
+   "epss": 0.00515,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-28",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": "mitel micollab <=10.3.0.18",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
+    },
+    {
+     "label": "参考",
+     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133303",
    "change_note": null
   },
   {
@@ -2250,50 +2294,6 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114625",
-   "change_note": null
-  },
-  {
-   "id": "CVE-2026-133303",
-   "title": "MiCollab AWV未认证XML注入RCE",
-   "first_seen": "2026-11-25",
-   "last_seen": "2026-11-26",
-   "ai_judged": true,
-   "third_party": false,
-   "open_source": false,
-   "published": "2026-11-19",
-   "urgency": "P0 立即处置",
-   "repro_worthy": "值得",
-   "repro_note": "需预置恶意内容，经AWV XML入口注入命令",
-   "impact_scope": "统一通信/会议系统，常暴露公网",
-   "action_zh": "升级修复版本，限制AWV接口并校验XML输入",
-   "summary_zh": "未认证攻击者可借助预置恶意内容触发XML注入，进而在系统上下文执行命令。",
-   "category": null,
-   "cvss": 9.8,
-   "epss": 0.00515,
-   "difficulty": "低(远程·免认证)",
-   "kev": true,
-   "kev_due": "2026-11-28",
-   "ransomware": false,
-   "nuclei": false,
-   "poc_quality": null,
-   "poc": [],
-   "affected": "mitel micollab <=10.3.0.18",
-   "patched": null,
-   "refs": [
-    {
-     "label": "厂商通告",
-     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012"
-    },
-    {
-     "label": "参考",
-     "url": "https://accenture.github.io/cyber-intelligence/micollab-exploitation/"
-    },
-    {
-     "label": "参考",
-     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303"
-    }
-   ],
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133303",
    "change_note": null
   },
   {

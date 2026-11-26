@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-26 05:26 UTC · 共 **229** 条(强烈推荐 50 / 值得 179)
+**更新**: 2026-11-26 09:41 UTC · 共 **229** 条(强烈推荐 51 / 值得 178)
 
 ---
 
@@ -39,6 +39,15 @@ PoC: [t0kx/exploit-CVE-2015-3306 152★(有源码)](https://github.com/t0kx/expl
 影响: mitel micollab <=10.3.0.18
 PoC: [Exploit-Index cveForge/CVE-2026-133323(未验证)(有源码)](https://github.com/cveForge/CVE-2026-133323)
 参考: [厂商通告](https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012) · [参考](https://accenture.github.io/cyber-intelligence/micollab-exploitation/) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133323)
+
+### MiCollab 未认证XML注入RCE
+[CVE-2026-133303](https://nvd.nist.gov/vuln/detail/CVE-2026-133303) | P0 立即处置 | CVSS 9.8 | EPSS 0.5% | 披露 2026-11-19 | 入库 2026-11-25
+🔥 KEV 在野利用,限期 2026-11-28
+未认证攻击者通过预置恶意内容注入 XML 参数，未做充分校验，可在系统上执行任意命令
+复现: 强烈推荐 — AWV 未授权 XML 注入点，需先预置恶意内容再触发命令执行 · 影响面: 统一通信会议服务器，常暴露公网
+处置: 升级至厂商最新版本，限制 AWV 公网暴露并排查入侵痕迹
+影响: mitel micollab <=10.3.0.18
+参考: [厂商通告](https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012) · [参考](https://accenture.github.io/cyber-intelligence/micollab-exploitation/) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303)
 
 ### Xen Orchestra认证绕过可接管
 [CVE-2026-133469](https://nvd.nist.gov/vuln/detail/CVE-2026-133469) | P0 立即处置 | 容器/虚拟化 | CVSS 9.8 | EPSS 1.1% | 披露 2026-11-23 | 入库 2026-11-23
@@ -462,15 +471,6 @@ PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026
 处置: 升级至5.2.3.18或6.1.3.10以上，并限制VCO管理接口公网暴露
 影响: arista velocloud_orchestrator >=5.2.0 <5.2.3.18; arista velocloud_orchestrator >=6.1.0 <6.1.3.10
 参考: [厂商通告](https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114625)
-
-### MiCollab AWV未认证XML注入RCE
-[CVE-2026-133303](https://nvd.nist.gov/vuln/detail/CVE-2026-133303) | P0 立即处置 | CVSS 9.8 | EPSS 0.5% | 披露 2026-11-19 | 入库 2026-11-25
-🔥 KEV 在野利用,限期 2026-11-28
-未认证攻击者可借助预置恶意内容触发XML注入，进而在系统上下文执行命令。
-复现: 值得 — 需预置恶意内容，经AWV XML入口注入命令 · 影响面: 统一通信/会议系统，常暴露公网
-处置: 升级修复版本，限制AWV接口并校验XML输入
-影响: mitel micollab <=10.3.0.18
-参考: [厂商通告](https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012) · [参考](https://accenture.github.io/cyber-intelligence/micollab-exploitation/) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133303)
 
 ### Juniper SSC命令注入可root执行
 [CVE-2026-103406](https://nvd.nist.gov/vuln/detail/CVE-2026-103406) | P0 立即处置 | 网络设备 | CVSS 9.8 | EPSS 0.9% | 披露 2026-10-28 | 入库 2026-10-28
