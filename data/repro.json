@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-26T22:27:49+00:00",
- "count": 229,
+ "updated_at": "2026-11-27T05:20:03+00:00",
+ "count": 231,
  "count_recommended": 51,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -5029,6 +5029,51 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-123903",
+   "title": "vCenter目录服务认证绕过",
+   "first_seen": "2026-11-27",
+   "last_seen": "2026-11-27",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-26",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "目录服务认证接口；构造绕过请求，版本待确认",
+   "impact_scope": "虚拟化管理平台，高价值内网资产",
+   "action_zh": "按Broadcom公告升级vCenter至修复版本",
+   "summary_zh": "攻击者可绕过vCenter目录服务认证，访问受保护资源，可能完全接管管理平台",
+   "category": "容器/虚拟化",
+   "cvss": 9.8,
+   "epss": 0.00614,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/dinosn/CVE-2026-123903",
+     "label": "dinosn/CVE-2026-123903 26★(有源码)"
+    },
+    {
+     "url": "https://github.com/Hann1bl3L3ct3r/CVE-2026-123903",
+     "label": "Hann1bl3L3ct3r/CVE-2026-123903 1★(有源码)"
+    }
+   ],
+   "affected": "Broadcom(产品与版本待 NVD/厂商补充)",
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39626"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123903",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-124445",
    "title": "CVE-2026-124445",
    "first_seen": "2026-11-24",
@@ -7517,6 +7562,46 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-64393",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-137481",
+   "title": "Web中间件路径遍历认证绕过",
+   "first_seen": "2026-11-27",
+   "last_seen": "2026-11-27",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-26",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "/public/..;x/admin绕过认证；后端需参数剥离",
+   "impact_scope": "Web中间件/反向代理，公网入口",
+   "action_zh": "升级中间件；规范化路径并校验后端路由",
+   "summary_zh": "未授权攻击者可构造/public/..;x/admin请求绕过认证中间件，访问受保护资源",
+   "category": "Web中间件",
+   "cvss": 9.3,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://github.com/traefik/traefik/security/advisories/GHSA-cp28-5662-543f"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.vulncheck.com/advisories/traefik-before-2.11.62-authorization-bypass-via-sanitizepath-path-parameter-dot-segments"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137481",
    "change_note": null
   },
   {

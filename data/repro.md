@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-26 22:27 UTC · 共 **229** 条(强烈推荐 51 / 值得 178)
+**更新**: 2026-11-27 05:20 UTC · 共 **231** 条(强烈推荐 51 / 值得 180)
 
 ---
 
@@ -964,6 +964,16 @@ PoC: [murrez/CVE-2026-100721 0★(有源码)](https://github.com/murrez/CVE-2026
 处置: 升级厂商修复固件；关闭公网管理面，仅内网受控访问
 参考: [参考](https://github.com/senxitoyshuyi-ui/IOT-CVE/blob/main/vulns/WAVLINK%20WN553X1-B%20Router.md) · [参考](https://vuldb.com/cve/CVE-2026-120228) · [参考](https://vuldb.com/submit/919151)
 
+### vCenter目录服务认证绕过
+[CVE-2026-123903](https://nvd.nist.gov/vuln/detail/CVE-2026-123903) | P1 重点关注 | 容器/虚拟化 | CVSS 9.8 | EPSS 0.6% | 披露 2026-11-26 | 入库 2026-11-27
+PoC 源码可用
+攻击者可绕过vCenter目录服务认证，访问受保护资源，可能完全接管管理平台
+复现: 值得 — 目录服务认证接口；构造绕过请求，版本待确认 · 影响面: 虚拟化管理平台，高价值内网资产
+处置: 按Broadcom公告升级vCenter至修复版本
+影响: Broadcom(产品与版本待 NVD/厂商补充)
+PoC: [dinosn/CVE-2026-123903 26★(有源码)](https://github.com/dinosn/CVE-2026-123903) · [Hann1bl3L3ct3r/CVE-2026-123903 1★(有源码)](https://github.com/Hann1bl3L3ct3r/CVE-2026-123903)
+参考: [参考](https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39626)
+
 ### CVE-2026-124445
 [CVE-2026-124445](https://nvd.nist.gov/vuln/detail/CVE-2026-124445) | P1 重点关注 | CVSS 9.8 | EPSS 0.5% | 披露 2026-11-08 | 入库 2026-11-24
 PoC 源码可用
@@ -1398,6 +1408,13 @@ PoC: [tc4dy/CVE-2026-53921-PoC-Exploit 6★(有源码)](https://github.com/tc4dy
 [CVE-2025-64393](https://nvd.nist.gov/vuln/detail/CVE-2025-64393) | CVSS 9.4 | 披露 2026-10-07 | 入库 2026-10-08
 复现: 值得
 参考: [参考](https://www.veeam.com/KB4934)
+
+### Web中间件路径遍历认证绕过
+[CVE-2026-137481](https://nvd.nist.gov/vuln/detail/CVE-2026-137481) | P1 重点关注 | Web中间件 | CVSS 9.3 | 披露 2026-11-26 | 入库 2026-11-27
+未授权攻击者可构造/public/..;x/admin请求绕过认证中间件，访问受保护资源
+复现: 值得 — /public/..;x/admin绕过认证；后端需参数剥离 · 影响面: Web中间件/反向代理，公网入口
+处置: 升级中间件；规范化路径并校验后端路由
+参考: [参考](https://github.com/traefik/traefik/security/advisories/GHSA-cp28-5662-543f) · [参考](https://www.vulncheck.com/advisories/traefik-before-2.11.62-authorization-bypass-via-sanitizepath-path-parameter-dot-segments)
 
 ### MCP Toolbox路径遍历致任意文件读写
 [CVE-2026-93328](https://nvd.nist.gov/vuln/detail/CVE-2026-93328) | P1 重点关注 | CVSS 9.3 | 披露 2026-10-26 | 入库 2026-10-27
