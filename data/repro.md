@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-27 05:20 UTC · 共 **231** 条(强烈推荐 51 / 值得 180)
+**更新**: 2026-11-27 09:46 UTC · 共 **232** 条(强烈推荐 51 / 值得 181)
 
 ---
 
@@ -973,6 +973,13 @@ PoC 源码可用
 影响: Broadcom(产品与版本待 NVD/厂商补充)
 PoC: [dinosn/CVE-2026-123903 26★(有源码)](https://github.com/dinosn/CVE-2026-123903) · [Hann1bl3L3ct3r/CVE-2026-123903 1★(有源码)](https://github.com/Hann1bl3L3ct3r/CVE-2026-123903)
 参考: [参考](https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/39626)
+
+### RealVNC UDP越界写入未认证RCE
+[CVE-2026-137738](https://nvd.nist.gov/vuln/detail/CVE-2026-137738) | P1 重点关注 | CVSS 9.8 | 披露 2026-11-27 | 入库 2026-11-27
+未认证攻击者经UDP连接触发越界写入，可远程执行代码或造成拒绝服务
+复现: 值得 — 向RealVNC服务UDP端口发送畸形连接数据包触发越界写入 · 影响面: 远程桌面服务端，常暴露网络
+处置: 升级至 7.19.1 及以上；无需UDP连接时禁用该模式
+参考: [参考](https://help.realvnc.com/hc/en-us/articles/40824627217949-Security-Advisory-UDP-based-connection-vulnerability) · [参考](https://wakefield.co/research)
 
 ### CVE-2026-124445
 [CVE-2026-124445](https://nvd.nist.gov/vuln/detail/CVE-2026-124445) | P1 重点关注 | CVSS 9.8 | EPSS 0.5% | 披露 2026-11-08 | 入库 2026-11-24
