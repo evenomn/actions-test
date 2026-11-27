@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-27 09:46 UTC · 共 **232** 条(强烈推荐 51 / 值得 181)
+**更新**: 2026-11-27 22:09 UTC · 共 **235** 条(强烈推荐 51 / 值得 184)
 
 ---
 
@@ -472,6 +472,16 @@ PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026
 影响: arista velocloud_orchestrator >=5.2.0 <5.2.3.18; arista velocloud_orchestrator >=6.1.0 <6.1.3.10
 参考: [厂商通告](https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114625)
 
+### Drupal核心异常条件校验缺失致强制浏览
+[CVE-2026-136716](https://nvd.nist.gov/vuln/detail/CVE-2026-136716) | P0 立即处置 | CMS | CVSS 9.8 | EPSS 1.2% | 披露 2026-11-26 | 入库 2026-11-27
+🔥 KEV 在野利用,限期 2026-11-30 | PoC 源码可用 | 开源,可源码审计复现
+未认证攻击者可构造请求绕过异常条件检查，直接访问受限路径与资源，影响多个核心版本
+复现: 值得 — 直接请求受限路径或文件，验证是否绕过异常条件校验 · 影响面: 开源CMS核心，互联网站点广泛部署
+处置: 升级Drupal核心至官方修复版本，或临时限制敏感路径直接访问
+影响: drupal drupal <10.6.23; drupal drupal >=11.0.0 <11.3.23
+PoC: [googlesky/CVE-2026-136716 0★(有源码)](https://github.com/googlesky/CVE-2026-136716) · [foxcornlab/drupal-installer-scanner 0★(有源码)](https://github.com/foxcornlab/drupal-installer-scanner)
+参考: [厂商通告](https://www.drupal.org/sa-core-2026-019) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-136716)
+
 ### Juniper SSC命令注入可root执行
 [CVE-2026-103406](https://nvd.nist.gov/vuln/detail/CVE-2026-103406) | P0 立即处置 | 网络设备 | CVSS 9.8 | EPSS 0.9% | 披露 2026-10-28 | 入库 2026-10-28
 🔥 KEV 在野利用,限期 2026-11-28 | PoC 源码可用
@@ -721,6 +731,22 @@ PoC: [horizon3ai/AhsayCBS-Auth-Bypass-RCE 1★(有源码)](https://github.com/ho
 处置: 升级厂商修复版本，限制AWV公网访问并审计异常访问
 影响: mitel micollab <=10.3.0.18
 参考: [厂商通告](https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0012) · [参考](https://accenture.github.io/cyber-intelligence/micollab-exploitation/) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-133324)
+
+### GeoServer XXE未授权读取本地文件
+[CVE-2026-120705](https://nvd.nist.gov/vuln/detail/CVE-2026-120705) | P0 立即处置 | 入库 2026-11-27
+🔥 KEV 在野利用,限期 2026-11-30 | PoC 源码可用
+未认证攻击者向WFS 2.0 GetFeatureById的ID参数注入XML外部实体，读取本地文件或发起SSRF
+复现: 值得 — 未授权请求WFS 2.0 GetFeatureById，在ID参数注入XML实体 · 影响面: GIS服务中间件，常直接暴露公网
+处置: 升级GeoServer至官方修复版本，临时禁用WFS 2.0存储查询
+PoC: [Crypto-Cat/geoserver-unauth-rce-poc 37★(有源码)](https://github.com/Crypto-Cat/geoserver-unauth-rce-poc)
+
+### GeoServer服务级角色校验未授权绕过
+[CVE-2026-129243](https://nvd.nist.gov/vuln/detail/CVE-2026-129243) | P0 立即处置 | 入库 2026-11-27
+🔥 KEV 在野利用,限期 2026-11-30 | PoC 源码可用
+未认证攻击者构造带服务前缀参数的请求，绕过服务级角色检查并调用受保护操作
+复现: 值得 — 未授权发送带服务前缀参数的请求，验证角色校验被绕过 · 影响面: GIS服务中间件，常直接暴露公网
+处置: 升级GeoServer至修复版本，并复核服务级角色配置
+PoC: [Crypto-Cat/geoserver-unauth-rce-poc 37★(有源码)](https://github.com/Crypto-Cat/geoserver-unauth-rce-poc)
 
 ### ruflo 未授权命令注入RCE
 [CVE-2026-59726](https://nvd.nist.gov/vuln/detail/CVE-2026-59726) | P1 重点关注 | 数据库 | CVSS 10.0 | EPSS 6.2% | 披露 2026-11-24 | 入库 2026-11-24

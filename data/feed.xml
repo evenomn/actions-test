@@ -5,43 +5,46 @@
     <link>https://github.com/evenomn/actions-test/blob/main/data/</link>
     <description>过去 5 小时符合条件的高价值漏洞(KEV/EPSS/PoC/关注词)</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 27 Nov 2026 09:46:42 +0000</pubDate>
-    <lastBuildDate>Fri, 27 Nov 2026 09:46:42 +0000</lastBuildDate>
+    <pubDate>Fri, 27 Nov 2026 22:09:25 +0000</pubDate>
+    <lastBuildDate>Fri, 27 Nov 2026 22:09:25 +0000</lastBuildDate>
     <item>
-      <title>[critical]Mitel OpenScape命令注入RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-137721</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-137721-2026-11-27</guid>
-      <description>CVE-2026-137721 · P1 重点关注 · 披露 2026-11-27 · CVSS 10.0 · 类型 命令注入(RCE) · 难度 低(远程·免认证)
-A vulnerability in the Platform component of Mitel OpenScape 4000 and OpenScape 4000 Manager could allow an attacker to conduct a command injection attack due t…
-信号:</description>
-      <pubDate>Fri, 27 Nov 2026 09:46:42 +0000</pubDate>
+      <title>[critical]Drupal核心异常条件校验缺失致强制浏览</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136716</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136716-2026-11-27</guid>
+      <description>CVE-2026-136716 · P0 立即处置 · 披露 2026-11-26 · 组件 CMS · CVSS 9.8 · EPSS 1.2%,前 68% · 类型 CWE-754 · 难度 低(远程·免认证)
+Improper Check for Unusual or Exceptional Conditions vulnerability in Drupal Drupal core allows Forceful Browsing.
+信号: KEV 在野利用(CISA 限期 2026-11-30) | 有 PoC
+[googlesky/CVE-2026-136716 0★(有源码)](https://github.com/googlesky/CVE-2026-136716) · [foxcornlab/drupal-installer-scanner 0★(有源码)](https://github.com/foxcornlab/drupal-installer-scanner)</description>
+      <pubDate>Fri, 27 Nov 2026 22:09:25 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]RealVNC UDP越界写入未认证RCE</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-137738</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-137738-2026-11-27</guid>
-      <description>CVE-2026-137738 · P1 重点关注 · 披露 2026-11-27 · CVSS 9.8 · 类型 越界写入 · 难度 低(远程·免认证)
-This could allow an attacker to remotely execute code as root on certain platforms or perform a denial of service attack.
-信号:</description>
-      <pubDate>Fri, 27 Nov 2026 09:46:42 +0000</pubDate>
+      <title>[critical]GeoServer XXE未授权读取本地文件</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-120705</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-120705-2026-11-27</guid>
+      <description>CVE-2026-120705 · P0 立即处置 · CVSS 待定(NVD 未评分) · 类型 CWE-91/XXE
+OsGeo GeoServer contains an XML injection vulnerability that allows an unauthenticated remote attacker to cause the server to read local text files accessible t…
+信号: KEV 在野利用(CISA 限期 2026-11-30) | 有 PoC
+[Crypto-Cat/geoserver-unauth-rce-poc 37★(有源码)](https://github.com/Crypto-Cat/geoserver-unauth-rce-poc)</description>
+      <pubDate>Fri, 27 Nov 2026 22:09:25 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]OpenScape 4000未授权访问漏洞</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-137724</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-137724-2026-11-27</guid>
-      <description>CVE-2026-137724 · P1 重点关注 · 披露 2026-11-27 · CVSS 10.0 · 类型 缺失认证 · 难度 低(远程·免认证)
-A vulnerability in the Platform component of Mitel OpenScape 4000, and OpenScape 4000 Manager could allow an unauthenticated attacker to conduct an unauthorized…
-信号:</description>
-      <pubDate>Fri, 27 Nov 2026 09:46:42 +0000</pubDate>
+      <title>[critical]GeoServer服务级角色校验未授权绕过</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-129243</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-129243-2026-11-27</guid>
+      <description>CVE-2026-129243 · P0 立即处置 · CVSS 待定(NVD 未评分) · 类型 授权错误
+GeoServer contains an incorrect authorization vulnerability that allows an unauthenticated remote attacker to bypass service-level role checks and invoke operat…
+信号: KEV 在野利用(CISA 限期 2026-11-30) | 有 PoC
+[Crypto-Cat/geoserver-unauth-rce-poc 37★(有源码)](https://github.com/Crypto-Cat/geoserver-unauth-rce-poc)</description>
+      <pubDate>Fri, 27 Nov 2026 22:09:25 +0000</pubDate>
     </item>
     <item>
-      <title>[critical]多租户RPC服务认证绕过可冒充管理员</title>
-      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-59103</link>
-      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-59103-2026-11-27</guid>
-      <description>CVE-2026-59103 · P1 重点关注 · 披露 2026-11-27 · CVSS 9.8 · 类型 认证绕过/CWE-807 · 难度 低(远程·免认证)
-An unauthenticated remote attacker can therefore create a valid session as any user, including administrators, in any company (tenant) hosted on the server and …
+      <title>[critical]MemberPress插件权限提升</title>
+      <link>https://nvd.nist.gov/vuln/detail/CVE-2026-136115</link>
+      <guid isPermaLink="false">https://github.com/evenomn/actions-test/blob/main/data/#CVE-2026-136115-2026-11-27</guid>
+      <description>CVE-2026-136115 · P1 重点关注 · 披露 2026-11-27 · CVSS 9.8 · 类型 CWE-266 · 难度 低(远程·免认证)
+Incorrect Privilege Assignment vulnerability in expresstechsoftware MemberPress Discord Addon expresstechsoftwares-memberpress-discord-add-on allows Privilege E…
 信号:</description>
-      <pubDate>Fri, 27 Nov 2026 09:46:42 +0000</pubDate>
+      <pubDate>Fri, 27 Nov 2026 22:09:25 +0000</pubDate>
     </item>
   </channel>
 </rss>

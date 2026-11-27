@@ -30080,11 +30080,11 @@
    "exploit_ref": false
   },
   "CVE-2026-136716": {
-   "date": "2026-11-26",
-   "pushed": false,
+   "date": "2026-11-27",
+   "pushed": true,
    "pushed_at": "2026-11-26",
-   "kev": false,
-   "cvss": null,
+   "kev": true,
+   "cvss": 9.8,
    "last_mod": "",
    "exploit_ref": false
   },
@@ -30856,7 +30856,7 @@
   "CVE-2026-59103": {
    "date": "2026-11-27",
    "pushed": false,
-   "pushed_at": "",
+   "pushed_at": "2026-11-27",
    "kev": false,
    "cvss": 9.8,
    "last_mod": "",
@@ -30865,7 +30865,7 @@
   "CVE-2026-124802": {
    "date": "2026-11-27",
    "pushed": false,
-   "pushed_at": "",
+   "pushed_at": "2026-11-27",
    "kev": false,
    "cvss": null,
    "last_mod": "",
@@ -30874,7 +30874,7 @@
   "CVE-2026-77679": {
    "date": "2026-11-27",
    "pushed": false,
-   "pushed_at": "",
+   "pushed_at": "2026-11-27",
    "kev": false,
    "cvss": null,
    "last_mod": "",
@@ -30883,9 +30883,36 @@
   "CVE-2026-77682": {
    "date": "2026-11-27",
    "pushed": false,
-   "pushed_at": "",
+   "pushed_at": "2026-11-27",
    "kev": false,
    "cvss": null,
+   "last_mod": "",
+   "exploit_ref": false
+  },
+  "CVE-2026-120705": {
+   "date": "2026-11-27",
+   "pushed": true,
+   "pushed_at": "2026-11-27T22:09:25+00:00",
+   "kev": true,
+   "cvss": null,
+   "last_mod": "",
+   "exploit_ref": false
+  },
+  "CVE-2026-129243": {
+   "date": "2026-11-27",
+   "pushed": true,
+   "pushed_at": "2026-11-27T22:09:25+00:00",
+   "kev": true,
+   "cvss": null,
+   "last_mod": "",
+   "exploit_ref": false
+  },
+  "CVE-2026-136115": {
+   "date": "2026-11-27",
+   "pushed": false,
+   "pushed_at": "",
+   "kev": false,
+   "cvss": 9.8,
    "last_mod": "",
    "exploit_ref": false
   }
@@ -30941,7 +30968,12 @@
   "https://sh3llc0d3.com/blog/stony-brook-containerbots-study-automated-bots-exploit-leaked-aws-keys-in-public-docker-images-in-786-seconds/": "2026-11-25",
   "https://sh3llc0d3.com/blog/vinci-rat-delivered-through-official-microsoft-store-app-setup-assistant-to-bypass-windows-smartscreen/": "2026-11-25",
   "https://sh3llc0d3.com/blog/broadcom-vmware-vmsa-2026-0011-patches-23-flaws-including-new-cvss-98-vmdir-auth-bypass-cve-2026-123903-and-esx-rces/": "2026-11-25",
-  "https://sh3llc0d3.com/blog/radware-discloses-exposed-unauthenticated-cloud-waf-management-api-leaking-aws-s3-azure-blob-and-sftp-keys/": "2026-11-25"
+  "https://sh3llc0d3.com/blog/radware-discloses-exposed-unauthenticated-cloud-waf-management-api-leaking-aws-s3-azure-blob-and-sftp-keys/": "2026-11-25",
+  "https://sh3llc0d3.com/blog/booba-ransomware-bridges-unmonitored-us-water-treatment-plant-into-municipal-government-it-network/": "2026-11-27",
+  "https://sh3llc0d3.com/blog/1password-discloses-compromised-employee-github-account-breach-exposing-cicd-srp-parameters-and-recovery-tokens/": "2026-11-27",
+  "https://sh3llc0d3.com/blog/linux-kernel-nfs2root-heap-overflow-cve-2026-99362-exposes-12-years-of-nfsv4-servers-to-remote-root/": "2026-11-27",
+  "https://sh3llc0d3.com/blog/todoist-breach-impacts-6-percent-of-users-after-stolen-vcs-credential-hijacks-ci-workflows-and-legacy-sha-1-hashes/": "2026-11-27",
+  "https://sh3llc0d3.com/blog/juniper-session-smart-conductor-root-os-command-injection-cve-2026-103406-actively-exploited-and-added-to-cisa-kev/": "2026-11-27"
  },
  "commit_seen": {
   "python/cpython@926b0bf311": "2026-10-28",
@@ -31378,6 +31410,9 @@
   "qemu/qemu@799d3c5876": "2026-11-26",
   "postgres/postgres@b4548161b9": "2026-11-26",
   "wireshark/wireshark@acc22ea47f": "2026-11-27",
-  "django/django@c896b3e536": "2026-11-27"
+  "django/django@c896b3e536": "2026-11-27",
+  "php/php-src@59ccd9885c": "2026-11-27",
+  "php/php-src@8f4ae6dd7d": "2026-11-27",
+  "elastic/elasticsearch@0140f6ec24": "2026-11-27"
  }
 }

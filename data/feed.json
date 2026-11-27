@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-11-27T09:46:42+00:00",
+ "generated_at": "2026-11-27T22:09:25+00:00",
  "lookback_hours": 5,
  "count": 4,
  "stats": {
@@ -9,165 +9,178 @@
    "critical": 4
   },
   "by_urgency": {
-   "P1 重点关注": 4
+   "P0 立即处置": 3,
+   "P1 重点关注": 1
   },
   "by_category": {
-   "未知": 4
+   "未知": 3,
+   "CMS": 1
   },
-  "kev": 0,
-  "with_poc": 0,
-  "with_poc_source": 0,
+  "kev": 3,
+  "with_poc": 3,
+  "with_poc_source": 3,
   "repro_recommended": 0
  },
  "briefing": [],
  "items": [
   {
-   "id": "CVE-2026-137721",
+   "id": "CVE-2026-136716",
    "tier": "critical",
-   "title": "Mitel OpenScape命令注入RCE",
-   "title_zh": "Mitel OpenScape命令注入RCE",
-   "summary_zh": "Platform组件参数过滤不足，攻击者可注入命令并以系统权限执行任意指令",
-   "published": "2026-11-27T06:17:09.443",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
-   "cwe_labels": [
-    "命令注入(RCE)"
-   ],
-   "vuln_class": "RCE",
-   "fame_term": null,
-   "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
-   "ghsa_url": null,
-   "refs": [
-    {
-     "label": "参考",
-     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0013"
-    }
-   ],
-   "poc": [],
-   "nuclei": false,
-   "patched": null,
-   "kev": false,
-   "kev_due": null,
-   "ransomware": false,
-   "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "跟进厂商补丁升级，临时限制Platform组件接口暴露",
-   "repro_worthy": "一般",
-   "repro_note": "向Platform组件参数注入命令分隔符，观察系统执行",
-   "impact_scope": "企业语音/UC平台，多暴露于内网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137721",
-   "description": "A vulnerability in the Platform component of Mitel OpenScape 4000 and OpenScape 4000 Manager could allow an attacker to conduct a command injection attack due to insufficient parameter sanitization. A successful exploit could allow an attacker to execute arbitrary commands within the context of the system."
-  },
-  {
-   "id": "CVE-2026-137738",
-   "tier": "critical",
-   "title": "RealVNC UDP越界写入未认证RCE",
-   "title_zh": "RealVNC UDP越界写入未认证RCE",
-   "summary_zh": "未认证攻击者经UDP连接触发越界写入，可远程执行代码或造成拒绝服务",
-   "published": "2026-11-27T06:17:09.867",
+   "title": "Drupal核心异常条件校验缺失致强制浏览",
+   "title_zh": "Drupal核心异常条件校验缺失致强制浏览",
+   "summary_zh": "未认证攻击者可构造请求绕过异常条件检查，直接访问受限路径与资源，影响多个核心版本",
+   "published": "2026-11-26T01:17:10.517",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-   "epss": null,
-   "epss_percentile": null,
+   "epss": 0.01212,
+   "epss_percentile": 0.68449,
    "cwe_labels": [
-    "越界写入"
+    "CWE-754"
    ],
-   "vuln_class": "未授权访问",
-   "fame_term": null,
+   "vuln_class": null,
+   "fame_term": "drupal",
    "difficulty": "低(远程·免认证)",
-   "products": [],
-   "affected": null,
+   "products": [
+    "drupal drupal"
+   ],
+   "affected": "drupal drupal <10.6.23; drupal drupal >=11.0.0 <11.3.23",
    "ghsa_url": null,
    "refs": [
     {
-     "label": "参考",
-     "url": "https://help.realvnc.com/hc/en-us/articles/40824627217949-Security-Advisory-UDP-based-connection-vulnerability"
+     "label": "厂商通告",
+     "url": "https://www.drupal.org/sa-core-2026-019"
     },
     {
      "label": "参考",
-     "url": "https://wakefield.co/research"
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-136716"
     }
    ],
-   "poc": [],
+   "poc": [
+    {
+     "url": "https://github.com/googlesky/CVE-2026-136716",
+     "label": "googlesky/CVE-2026-136716 0★(有源码)"
+    },
+    {
+     "url": "https://github.com/foxcornlab/drupal-installer-scanner",
+     "label": "foxcornlab/drupal-installer-scanner 0★(有源码)"
+    }
+   ],
    "nuclei": false,
    "patched": null,
-   "kev": false,
-   "kev_due": null,
+   "kev": true,
+   "kev_due": "2026-11-30",
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至 7.19.1 及以上；无需UDP连接时禁用该模式",
+   "urgency": "P0 立即处置",
+   "action_zh": "升级Drupal核心至官方修复版本，或临时限制敏感路径直接访问",
    "repro_worthy": "值得",
-   "repro_note": "向RealVNC服务UDP端口发送畸形连接数据包触发越界写入",
-   "impact_scope": "远程桌面服务端，常暴露网络",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137738",
-   "description": "In RealVNC Server before 7.19.1, UDP-based connections could potentially be exploited without authentication to execute code remotely or cause the software to crash. This could allow an attacker to remotely execute code as root on certain platforms or perform a denial of service attack."
+   "repro_note": "直接请求受限路径或文件，验证是否绕过异常条件校验",
+   "impact_scope": "开源CMS核心，互联网站点广泛部署",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136716",
+   "description": "Improper Check for Unusual or Exceptional Conditions vulnerability in Drupal Drupal core allows Forceful Browsing. This issue affects Drupal core versions: from 0.0.0 to 10.6.23, from 11.0.0 to 11.3.23, from 11.4.0 to 11.4.14."
   },
   {
-   "id": "CVE-2026-137724",
+   "id": "CVE-2026-120705",
    "tier": "critical",
-   "title": "OpenScape 4000未授权访问漏洞",
-   "title_zh": "OpenScape 4000未授权访问漏洞",
-   "summary_zh": "认证机制缺陷致未授权攻击者可获取敏感信息并非授权访问系统",
-   "published": "2026-11-27T06:17:09.727",
-   "cvss": 10.0,
-   "severity": "CRITICAL",
-   "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+   "title": "GeoServer XXE未授权读取本地文件",
+   "title_zh": "GeoServer XXE未授权读取本地文件",
+   "summary_zh": "未认证攻击者向WFS 2.0 GetFeatureById的ID参数注入XML外部实体，读取本地文件或发起SSRF",
+   "published": "",
+   "cvss": null,
+   "severity": null,
+   "vector": null,
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "缺失认证"
+    "CWE-91",
+    "XXE"
    ],
-   "vuln_class": "未授权访问",
+   "vuln_class": "RCE",
    "fame_term": null,
-   "difficulty": "低(远程·免认证)",
+   "difficulty": null,
    "products": [],
    "affected": null,
    "ghsa_url": null,
-   "refs": [
+   "refs": [],
+   "poc": [
     {
-     "label": "参考",
-     "url": "https://www.mitel.com/support/security-advisories/mitel-product-security-advisory-misa-2026-0013"
+     "url": "https://github.com/Crypto-Cat/geoserver-unauth-rce-poc",
+     "label": "Crypto-Cat/geoserver-unauth-rce-poc 37★(有源码)"
     }
    ],
-   "poc": [],
    "nuclei": false,
    "patched": null,
-   "kev": false,
-   "kev_due": null,
+   "kev": true,
+   "kev_due": "2026-11-30",
    "ransomware": false,
    "keyword_hit": null,
-   "urgency": "P1 重点关注",
-   "action_zh": "升级至厂商修复版本；临时限制管理面暴露并加强访问控制",
-   "repro_worthy": "一般",
-   "repro_note": "直接访问Platform组件受保护接口，验证无需凭据即可获取数据",
-   "impact_scope": "企业语音/UC平台，多暴露于内网",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137724",
-   "description": "A vulnerability in the Platform component of Mitel OpenScape 4000, and OpenScape 4000 Manager could allow an unauthenticated attacker to conduct an unauthorized access attack due to improper authentication mechanisms. A successful exploit could allow an attacker to obtain sensitive information and gain unauthorized access to system."
+   "urgency": "P0 立即处置",
+   "action_zh": "升级GeoServer至官方修复版本，临时禁用WFS 2.0存储查询",
+   "repro_worthy": "值得",
+   "repro_note": "未授权请求WFS 2.0 GetFeatureById，在ID参数注入XML实体",
+   "impact_scope": "GIS服务中间件，常直接暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120705",
+   "description": "OsGeo GeoServer contains an XML injection vulnerability that allows an unauthenticated remote attacker to cause the server to read local text files accessible to the GeoServer process or fetch attacker-specified HTTP or HTTPS URLs via a crafted ID parameter in the WFS 2.0 GetFeatureById stored query. This vulnerability can be chained with CVE-2026-129244, CVE-2026-129243, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance."
   },
   {
-   "id": "CVE-2026-59103",
+   "id": "CVE-2026-129243",
    "tier": "critical",
-   "title": "多租户RPC服务认证绕过可冒充管理员",
-   "title_zh": "多租户RPC服务认证绕过可冒充管理员",
-   "summary_zh": "未授权攻击者可伪造任意用户（含管理员）会话，跨租户读写业务数据",
-   "published": "2026-11-27T09:17:02.453",
+   "title": "GeoServer服务级角色校验未授权绕过",
+   "title_zh": "GeoServer服务级角色校验未授权绕过",
+   "summary_zh": "未认证攻击者构造带服务前缀参数的请求，绕过服务级角色检查并调用受保护操作",
+   "published": "",
+   "cvss": null,
+   "severity": null,
+   "vector": null,
+   "epss": null,
+   "epss_percentile": null,
+   "cwe_labels": [
+    "授权错误"
+   ],
+   "vuln_class": "RCE",
+   "fame_term": null,
+   "difficulty": null,
+   "products": [],
+   "affected": null,
+   "ghsa_url": null,
+   "refs": [],
+   "poc": [
+    {
+     "url": "https://github.com/Crypto-Cat/geoserver-unauth-rce-poc",
+     "label": "Crypto-Cat/geoserver-unauth-rce-poc 37★(有源码)"
+    }
+   ],
+   "nuclei": false,
+   "patched": null,
+   "kev": true,
+   "kev_due": "2026-11-30",
+   "ransomware": false,
+   "keyword_hit": null,
+   "urgency": "P0 立即处置",
+   "action_zh": "升级GeoServer至修复版本，并复核服务级角色配置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权发送带服务前缀参数的请求，验证角色校验被绕过",
+   "impact_scope": "GIS服务中间件，常直接暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129243",
+   "description": "GeoServer contains an incorrect authorization vulnerability that allows an unauthenticated remote attacker to bypass service-level role checks and invoke operations protected solely by those checks via a request with a prefixed service parameter. This vulnerability can be chained with CVE-2026-129244, CVE-2026-120705, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance."
+  },
+  {
+   "id": "CVE-2026-136115",
+   "tier": "critical",
+   "title": "MemberPress插件权限提升",
+   "title_zh": "MemberPress插件权限提升",
+   "summary_zh": "攻击者利用插件错误的权限分配提升账号权限，进而控制WordPress站点",
+   "published": "2026-11-27T19:16:59.730",
    "cvss": 9.8,
    "severity": "CRITICAL",
    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
    "epss": null,
    "epss_percentile": null,
    "cwe_labels": [
-    "认证绕过",
-    "CWE-807"
+    "CWE-266"
    ],
-   "vuln_class": "未授权访问",
+   "vuln_class": "提权",
    "fame_term": null,
    "difficulty": "低(远程·免认证)",
    "products": [],
@@ -176,7 +189,7 @@
    "refs": [
     {
      "label": "参考",
-     "url": "https://offseq.com/en/research/moneo-cve-2026-59103/"
+     "url": "https://patchstack.com/database/wordpress/plugin/expresstechsoftwares-memberpress-discord-add-on/vulnerability/wordpress-memberpress-discord-addon-plugin-1-1-5-privilege-escalation-vulnerability?_s_id=cve"
     }
    ],
    "poc": [],
@@ -187,27 +200,71 @@
    "ransomware": false,
    "keyword_hit": null,
    "urgency": "P1 重点关注",
-   "action_zh": "暂无官方修复信息时限制服务暴露，等待厂商补丁升级",
-   "repro_worthy": "一般",
-   "repro_note": "向RPC接口提交伪造会话凭据，验证越权调用已认证方法",
-   "impact_scope": "多租户后端服务，横向越权",
-   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59103",
-   "description": "When the check passes, Ping stores an attacker-chosen session ID, user number and company in the server session store, and subsequent session validation accepts that session. An unauthenticated remote attacker can therefore create a valid session as any user, including administrators, in any company (tenant) hosted on the server and invoke authenticated RPC methods with that user's privileges, gaining read and write access to that company's data."
+   "action_zh": "更新MemberPress Discord插件至官方修复版本，或临时停用",
+   "repro_worthy": "不建议",
+   "repro_note": null,
+   "impact_scope": "WordPress会员站点，多暴露公网",
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136115",
+   "description": "Incorrect Privilege Assignment vulnerability in expresstechsoftware MemberPress Discord Addon expresstechsoftwares-memberpress-discord-add-on allows Privilege Escalation.This issue affects MemberPress Discord Addon: from n/a through 1.1.5."
   }
  ],
- "media": [],
+ "media": [
+  {
+   "title": "Linux Kernel NFS2ROOT Heap Overflow (CVE-2026-99362) Exposes 12 Years of NFSv4 Servers to Remote Root",
+   "link": "https://sh3llc0d3.com/blog/linux-kernel-nfs2root-heap-overflow-cve-2026-99362-exposes-12-years-of-nfsv4-servers-to-remote-root/",
+   "cves": [
+    "CVE-2026-99362"
+   ]
+  },
+  {
+   "title": "Todoist Breach Impacts 6 Percent of Users After Stolen VCS Credential Hijacks CI Workflows and Legacy SHA-1 Hashes",
+   "link": "https://sh3llc0d3.com/blog/todoist-breach-impacts-6-percent-of-users-after-stolen-vcs-credential-hijacks-ci-workflows-and-legacy-sha-1-hashes/",
+   "cves": []
+  },
+  {
+   "title": "Juniper Session Smart Conductor Root OS Command Injection (CVE-2026-103406) Actively Exploited and Added to CISA KEV",
+   "link": "https://sh3llc0d3.com/blog/juniper-session-smart-conductor-root-os-command-injection-cve-2026-103406-actively-exploited-and-added-to-cisa-kev/",
+   "cves": [
+    "CVE-2026-103406"
+   ]
+  }
+ ],
  "commits": [
   {
-   "repo": "django/django",
-   "sha": "c896b3e536e55ca6cf55515b236ba11cfda072b0",
-   "url": "https://github.com/django/django/commit/c896b3e536e55ca6cf55515b236ba11cfda072b0",
-   "title": "Fixed #37538, Refs CVE-2026-84429 -- Ignored unparsable media ranges in Accept headers.",
-   "date": "2026-11-27T08:37:28",
-   "score": 3,
+   "repo": "php/php-src",
+   "sha": "59ccd9885ccfce288a80a9e3c01baea0d6879640",
+   "url": "https://github.com/php/php-src/commit/59ccd9885ccfce288a80a9e3c01baea0d6879640",
+   "title": "Fix GH-24701: Use-after-free on typed trait constants during opcache preload (#24710)",
+   "date": "2026-11-27T15:15:24",
+   "score": 2,
    "matched": [
-    "CVE"
+    "UAF"
    ],
-   "cve": "CVE-2026-84429"
+   "cve": null
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "8f4ae6dd7d679c4f53d251bcfad712b7f71eb13a",
+   "url": "https://github.com/php/php-src/commit/8f4ae6dd7d679c4f53d251bcfad712b7f71eb13a",
+   "title": "ext/dom: Fix use-after-free when an XPath callback modifies the document (#25357)",
+   "date": "2026-11-27T14:48:23",
+   "score": 2,
+   "matched": [
+    "UAF"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "elastic/elasticsearch",
+   "sha": "0140f6ec24557708c67abd72b70c9c39a53942a0",
+   "url": "https://github.com/elastic/elasticsearch/commit/0140f6ec24557708c67abd72b70c9c39a53942a0",
+   "title": "ESQL: Shrink deeply nested plan size tests (#167874)",
+   "date": "2026-11-27T13:36:41",
+   "score": 2,
+   "matched": [
+    "反序列化"
+   ],
+   "cve": null
   }
  ]
 }

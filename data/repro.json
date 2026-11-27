@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-27T09:46:42+00:00",
- "count": 232,
+ "updated_at": "2026-11-27T22:09:25+00:00",
+ "count": 235,
  "count_recommended": 51,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -2297,6 +2297,55 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-136716",
+   "title": "Drupal核心异常条件校验缺失致强制浏览",
+   "first_seen": "2026-11-27",
+   "last_seen": "2026-11-27",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": true,
+   "published": "2026-11-26",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "直接请求受限路径或文件，验证是否绕过异常条件校验",
+   "impact_scope": "开源CMS核心，互联网站点广泛部署",
+   "action_zh": "升级Drupal核心至官方修复版本，或临时限制敏感路径直接访问",
+   "summary_zh": "未认证攻击者可构造请求绕过异常条件检查，直接访问受限路径与资源，影响多个核心版本",
+   "category": "CMS",
+   "cvss": 9.8,
+   "epss": 0.01212,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-30",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/googlesky/CVE-2026-136716",
+     "label": "googlesky/CVE-2026-136716 0★(有源码)"
+    },
+    {
+     "url": "https://github.com/foxcornlab/drupal-installer-scanner",
+     "label": "foxcornlab/drupal-installer-scanner 0★(有源码)"
+    }
+   ],
+   "affected": "drupal drupal <10.6.23; drupal drupal >=11.0.0 <11.3.23",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.drupal.org/sa-core-2026-019"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-136716"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-136716",
+   "change_note": null
+  },
+  {
    "id": "CVE-2026-103406",
    "title": "Juniper SSC命令注入可root执行",
    "first_seen": "2026-10-28",
@@ -3604,6 +3653,78 @@
     }
    ],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133324",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-120705",
+   "title": "GeoServer XXE未授权读取本地文件",
+   "first_seen": "2026-11-27",
+   "last_seen": "2026-11-27",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权请求WFS 2.0 GetFeatureById，在ID参数注入XML实体",
+   "impact_scope": "GIS服务中间件，常直接暴露公网",
+   "action_zh": "升级GeoServer至官方修复版本，临时禁用WFS 2.0存储查询",
+   "summary_zh": "未认证攻击者向WFS 2.0 GetFeatureById的ID参数注入XML外部实体，读取本地文件或发起SSRF",
+   "category": null,
+   "cvss": null,
+   "epss": null,
+   "difficulty": null,
+   "kev": true,
+   "kev_due": "2026-11-30",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/Crypto-Cat/geoserver-unauth-rce-poc",
+     "label": "Crypto-Cat/geoserver-unauth-rce-poc 37★(有源码)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120705",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-129243",
+   "title": "GeoServer服务级角色校验未授权绕过",
+   "first_seen": "2026-11-27",
+   "last_seen": "2026-11-27",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权发送带服务前缀参数的请求，验证角色校验被绕过",
+   "impact_scope": "GIS服务中间件，常直接暴露公网",
+   "action_zh": "升级GeoServer至修复版本，并复核服务级角色配置",
+   "summary_zh": "未认证攻击者构造带服务前缀参数的请求，绕过服务级角色检查并调用受保护操作",
+   "category": null,
+   "cvss": null,
+   "epss": null,
+   "difficulty": null,
+   "kev": true,
+   "kev_due": "2026-11-30",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/Crypto-Cat/geoserver-unauth-rce-poc",
+     "label": "Crypto-Cat/geoserver-unauth-rce-poc 37★(有源码)"
+    }
+   ],
+   "affected": null,
+   "patched": null,
+   "refs": [],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129243",
    "change_note": null
   },
   {
