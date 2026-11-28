@@ -1,7 +1,7 @@
 {
  "schema": 2,
- "updated_at": "2026-11-27T22:09:25+00:00",
- "count": 235,
+ "updated_at": "2026-11-28T04:56:29+00:00",
+ "count": 237,
  "count_recommended": 51,
  "pending_count": 0,
  "raw_md": "https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.md",
@@ -2297,6 +2297,59 @@
    "change_note": null
   },
   {
+   "id": "CVE-2026-132165",
+   "title": "Drupal核心关键功能缺失认证",
+   "first_seen": "2026-11-28",
+   "last_seen": "2026-11-28",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": true,
+   "published": "2026-11-26",
+   "urgency": "P0 立即处置",
+   "repro_worthy": "值得",
+   "repro_note": "未授权访问核心关键功能路由,定位缺失鉴权的控制器方法",
+   "impact_scope": "通用CMS核心,互联网站点广泛部署",
+   "action_zh": "立即升级Drupal核心至最新修复版本,并复核关键功能访问控制",
+   "summary_zh": "远程未授权攻击者可访问缺失鉴权的关键功能路由,绕过访问控制并完全控制站点",
+   "category": "CMS",
+   "cvss": 9.8,
+   "epss": 0.08381,
+   "difficulty": "低(远程·免认证)",
+   "kev": true,
+   "kev_due": "2026-11-27",
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": "code",
+   "poc": [
+    {
+     "url": "https://github.com/ashrafzaryouh/CVE-2026-132165",
+     "label": "Exploit-Index ashrafzaryouh/CVE-2026-132165(未验证)(仅README)"
+    },
+    {
+     "url": "https://github.com/lxdwnpiper/CVE-2026-132165-Drupal",
+     "label": "Exploit-Index lxdwnpiper/CVE-2026-132165-Drupal(未验证)(有源码)"
+    },
+    {
+     "url": "https://github.com/malloryai/cve-2026-132165-drupal-installer-check",
+     "label": "Exploit-Index malloryai/cve-2026-132165-drupal-installer-check(未验证)"
+    }
+   ],
+   "affected": "drupal drupal <10.6.22; drupal drupal >=11.0.0 <11.3.22",
+   "patched": null,
+   "refs": [
+    {
+     "label": "厂商通告",
+     "url": "https://www.drupal.org/sa-core-2026-017"
+    },
+    {
+     "label": "参考",
+     "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-132165"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132165",
+   "change_note": "新增评分 9.8"
+  },
+  {
    "id": "CVE-2026-136716",
    "title": "Drupal核心异常条件校验缺失致强制浏览",
    "first_seen": "2026-11-27",
@@ -3725,6 +3778,50 @@
    "patched": null,
    "refs": [],
    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129243",
+   "change_note": null
+  },
+  {
+   "id": "CVE-2026-138004",
+   "title": "TRENDnet路由器UPnP命令注入",
+   "first_seen": "2026-11-28",
+   "last_seen": "2026-11-28",
+   "ai_judged": true,
+   "third_party": false,
+   "open_source": false,
+   "published": "2026-11-27",
+   "urgency": "P1 重点关注",
+   "repro_worthy": "值得",
+   "repro_note": "向/soap.cgi的service参数注入命令,无需认证",
+   "impact_scope": "SOHO路由器,UPnP常暴露公网",
+   "action_zh": "暂无官方修复,停用UPnP或限制/soap.cgi公网访问",
+   "summary_zh": "远程攻击者向UPnP的/soap.cgi接口service参数注入命令,以系统权限执行",
+   "category": null,
+   "cvss": 10.0,
+   "epss": null,
+   "difficulty": "低(远程·免认证)",
+   "kev": false,
+   "kev_due": null,
+   "ransomware": false,
+   "nuclei": false,
+   "poc_quality": null,
+   "poc": [],
+   "affected": null,
+   "patched": null,
+   "refs": [
+    {
+     "label": "参考",
+     "url": "https://gist.github.com/qwq-nm/251e7963d59f41beea2c7ad5ff7ca39f"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/cve/CVE-2026-138004"
+    },
+    {
+     "label": "参考",
+     "url": "https://vuldb.com/submit/1066849"
+    }
+   ],
+   "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138004",
    "change_note": null
   },
   {

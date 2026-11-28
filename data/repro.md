@@ -4,7 +4,7 @@
 > 机器可读版: [`data/repro.json`](https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json)
 > 内网拉取: `git pull` 后读 `data/repro.md`,或 `curl https://raw.githubusercontent.com/evenomn/actions-test/main/data/repro.json`
 
-**更新**: 2026-11-27 22:09 UTC · 共 **235** 条(强烈推荐 51 / 值得 184)
+**更新**: 2026-11-28 04:56 UTC · 共 **237** 条(强烈推荐 51 / 值得 186)
 
 ---
 
@@ -472,6 +472,16 @@ PoC: [abraxas/CVE-2026-5430 1★(有源码)](https://github.com/abraxas/CVE-2026
 影响: arista velocloud_orchestrator >=5.2.0 <5.2.3.18; arista velocloud_orchestrator >=6.1.0 <6.1.3.10
 参考: [厂商通告](https://www.arista.com/en/support/advisories-notices/security-advisory/24838-security-advisory-0199) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-114625)
 
+### Drupal核心关键功能缺失认证
+[CVE-2026-132165](https://nvd.nist.gov/vuln/detail/CVE-2026-132165) | P0 立即处置 | CMS | CVSS 9.8 | EPSS 8.4% | 披露 2026-11-26 | 入库 2026-11-28
+🔥 KEV 在野利用,限期 2026-11-27 | PoC 源码可用 | 开源,可源码审计复现
+远程未授权攻击者可访问缺失鉴权的关键功能路由,绕过访问控制并完全控制站点
+复现: 值得 — 未授权访问核心关键功能路由,定位缺失鉴权的控制器方法 · 影响面: 通用CMS核心,互联网站点广泛部署
+处置: 立即升级Drupal核心至最新修复版本,并复核关键功能访问控制
+影响: drupal drupal <10.6.22; drupal drupal >=11.0.0 <11.3.22
+PoC: [Exploit-Index ashrafzaryouh/CVE-2026-132165(未验证)(仅README)](https://github.com/ashrafzaryouh/CVE-2026-132165) · [Exploit-Index lxdwnpiper/CVE-2026-132165-Drupal(未验证)(有源码)](https://github.com/lxdwnpiper/CVE-2026-132165-Drupal) · [Exploit-Index malloryai/cve-2026-132165-drupal-installer-check(未验证)](https://github.com/malloryai/cve-2026-132165-drupal-installer-check)
+参考: [厂商通告](https://www.drupal.org/sa-core-2026-017) · [参考](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-132165)
+
 ### Drupal核心异常条件校验缺失致强制浏览
 [CVE-2026-136716](https://nvd.nist.gov/vuln/detail/CVE-2026-136716) | P0 立即处置 | CMS | CVSS 9.8 | EPSS 1.2% | 披露 2026-11-26 | 入库 2026-11-27
 🔥 KEV 在野利用,限期 2026-11-30 | PoC 源码可用 | 开源,可源码审计复现
@@ -747,6 +757,13 @@ PoC: [Crypto-Cat/geoserver-unauth-rce-poc 37★(有源码)](https://github.com/C
 复现: 值得 — 未授权发送带服务前缀参数的请求，验证角色校验被绕过 · 影响面: GIS服务中间件，常直接暴露公网
 处置: 升级GeoServer至修复版本，并复核服务级角色配置
 PoC: [Crypto-Cat/geoserver-unauth-rce-poc 37★(有源码)](https://github.com/Crypto-Cat/geoserver-unauth-rce-poc)
+
+### TRENDnet路由器UPnP命令注入
+[CVE-2026-138004](https://nvd.nist.gov/vuln/detail/CVE-2026-138004) | P1 重点关注 | CVSS 10.0 | 披露 2026-11-27 | 入库 2026-11-28
+远程攻击者向UPnP的/soap.cgi接口service参数注入命令,以系统权限执行
+复现: 值得 — 向/soap.cgi的service参数注入命令,无需认证 · 影响面: SOHO路由器,UPnP常暴露公网
+处置: 暂无官方修复,停用UPnP或限制/soap.cgi公网访问
+参考: [参考](https://gist.github.com/qwq-nm/251e7963d59f41beea2c7ad5ff7ca39f) · [参考](https://vuldb.com/cve/CVE-2026-138004) · [参考](https://vuldb.com/submit/1066849)
 
 ### ruflo 未授权命令注入RCE
 [CVE-2026-59726](https://nvd.nist.gov/vuln/detail/CVE-2026-59726) | P1 重点关注 | 数据库 | CVSS 10.0 | EPSS 6.2% | 披露 2026-11-24 | 入库 2026-11-24
