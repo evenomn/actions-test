@@ -1,6 +1,6 @@
 {
  "version": 3,
- "generated_at": "2026-11-28T08:59:16+00:00",
+ "generated_at": "2026-11-28T17:40:15+00:00",
  "lookback_hours": 5,
  "count": 0,
  "stats": {
@@ -18,14 +18,38 @@
  "media": [],
  "commits": [
   {
-   "repo": "wireshark/wireshark",
-   "sha": "8d2280d5f7a208b7b91d6502ef9c19a26daa73b2",
-   "url": "https://github.com/wireshark/wireshark/commit/8d2280d5f7a208b7b91d6502ef9c19a26daa73b2",
-   "title": "BBLOG: Remove a stray 0 from the unknown event info text",
-   "date": "2026-11-28T05:31:10",
+   "repo": "php/php-src",
+   "sha": "beed61d260d0592f16b89318944d0c2c55f6be3b",
+   "url": "https://github.com/php/php-src/commit/beed61d260d0592f16b89318944d0c2c55f6be3b",
+   "title": "streams: Heap overflow when a read filter grows the chunk size",
+   "date": "2026-11-28T16:04:00",
    "score": 2,
    "matched": [
-    "格式串"
+    "缓冲区溢出"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "sqlite/sqlite",
+   "sha": "ca87e788aa9250e0556cf80008b547c0ffd9ad4e",
+   "url": "https://github.com/sqlite/sqlite/commit/ca87e788aa9250e0556cf80008b547c0ffd9ad4e",
+   "title": "CLI shell: have -deserialize honor the -readonly flag. [bugs:3362a0a00d|Bug report 2026-11-28T09:42:17Z].",
+   "date": "2026-11-28T14:04:54",
+   "score": 2,
+   "matched": [
+    "反序列化"
+   ],
+   "cve": null
+  },
+  {
+   "repo": "php/php-src",
+   "sha": "972d6673fc25046129cdf986fcbf0e22be5412e0",
+   "url": "https://github.com/php/php-src/commit/972d6673fc25046129cdf986fcbf0e22be5412e0",
+   "title": "ext/phar: phar_archive_delref() double free on shared archive at shutdown.",
+   "date": "2026-11-28T08:59:25",
+   "score": 2,
+   "matched": [
+    "类型混淆/double free"
    ],
    "cve": null
   }
